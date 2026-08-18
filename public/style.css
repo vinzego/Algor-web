@@ -1982,7 +1982,7 @@ body {
   width: calc(100% + 32px) !important;
   max-width: calc(100% + 32px) !important;
   margin: 20px -16px 40px -16px !important;
-  border-radius: 50px !important;
+  border-radius: 50px 50px 0 0 !important;
   background-color: #0e0e10 !important;
   background-image: 
     radial-gradient(ellipse at top, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
@@ -6945,7 +6945,7 @@ html, body {
     margin-top: 16px !important;
     margin-bottom: 24px !important;
     padding: 50px 16px !important;
-    border-radius: 0 !important;
+    border-radius: 36px 36px 0 0 !important;
     border-left: none !important;
     border-right: none !important;
     box-sizing: border-box !important;
