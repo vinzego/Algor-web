@@ -6928,13 +6928,26 @@ html, body {
     box-sizing: border-box !important;
   }
 
-  #pricing,
-  #ai-automations {
+  #pricing {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 0 16px 0 !important;
     padding: 36px 16px !important;
     border-radius: 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  #ai-automations {
+    width: calc(100% + 28px) !important;
+    max-width: calc(100% + 28px) !important;
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+    margin-top: 16px !important;
+    margin-bottom: 24px !important;
+    padding: 50px 16px !important;
+    border-radius: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
     box-sizing: border-box !important;
   }
 
