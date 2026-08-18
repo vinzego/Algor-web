@@ -1978,7 +1978,7 @@ body {
 #ai-automations {
   position: relative !important;
   z-index: 10 !important;
-  overflow: hidden;
+  overflow: visible !important;
   width: calc(100% + 32px) !important;
   max-width: calc(100% + 32px) !important;
   margin: 20px -16px 40px -16px !important;
@@ -4982,84 +4982,54 @@ body {
   transform: translateY(-4px);
 }
 
-.example-card-header {
+.example-card-top {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .example-tag-num {
   font-family: 'Geist Mono', monospace;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
   color: #dffc2b;
   letter-spacing: 0.8px;
 }
 
-.example-card-header h4 {
-  font-size: 22px;
+.example-card-top h4 {
+  font-size: 20px;
   font-weight: 800;
   color: #ffffff;
   margin: 0;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.3px;
   line-height: 1.35;
 }
 
-.example-card-header p {
-  font-size: 14px;
-  color: #94a3b8;
-  line-height: 1.6;
-  margin: 4px 0 0 0;
-}
-
-.example-card-body-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: center;
-}
-
-.example-details-col {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.example-check-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.example-check-list li {
+.example-card-top p {
   font-size: 13.5px;
-  color: #e2e8f0;
-  font-weight: 550;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  color: #94a3b8;
+  line-height: 1.55;
+  margin: 2px 0 0 0;
 }
 
-.example-result-badge {
+.example-mockup-full {
+  width: 100%;
+}
+
+.example-card-bottom {
+  margin-top: 4px;
+}
+
+.example-stat-badge {
+  font-family: 'Geist', sans-serif;
+  font-size: 12.5px;
+  font-weight: 650;
+  color: #dffc2b;
   background: rgba(223, 252, 43, 0.08);
   border: 1px solid rgba(223, 252, 43, 0.2);
+  padding: 6px 14px;
   border-radius: 12px;
-  padding: 10px 14px;
-  font-size: 13px;
-  color: #ffffff;
-  font-weight: 500;
-}
-
-.example-result-badge span {
-  color: #dffc2b;
-  font-weight: 750;
-}
-
-.example-mockup-col {
-  width: 100%;
+  display: inline-block;
 }
 
 /* 1. Mini Chat Box */
