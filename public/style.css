@@ -1982,23 +1982,24 @@ body {
   width: calc(100% + 32px) !important;
   max-width: calc(100% + 32px) !important;
   margin: 20px -16px 40px -16px !important;
-  border-radius: 50px !important; /* Rounded TOP & BOTTOM edges like pricing */
-  background-color: #1f1f1f !important;
+  border-radius: 50px !important;
+  background-color: #0e0e10 !important;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px) !important;
-  background-size: 36px 36px, 36px 36px !important;
+    radial-gradient(ellipse at top, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 36px 36px, 36px 36px !important;
   color: #ffffff !important;
   border-left: none !important;
   border-right: none !important;
-  border-top: 1px solid #2e2e2e !important;
-  border-bottom: 1px solid #2e2e2e !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   padding: 90px 0 80px 0 !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   gap: 40px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
 }
 
 #ai-automations > * {
@@ -4839,9 +4840,9 @@ body {
   font-family: 'Geist Mono', monospace;
   font-size: 10.5px;
   font-weight: 750;
-  color: #dffc2b;
-  background: rgba(223, 252, 43, 0.1);
-  border: 1px solid rgba(223, 252, 43, 0.2);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 3px 10px;
   border-radius: 12px;
   width: fit-content;
@@ -4930,15 +4931,15 @@ body {
 }
 
 .sticky-step-item.active {
-  background: rgba(223, 252, 43, 0.08);
-  border-color: rgba(223, 252, 43, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .step-num {
   font-family: 'Geist Mono', monospace;
   font-size: 12px;
   font-weight: 800;
-  color: #dffc2b;
+  color: #ffffff;
 }
 
 .step-lbl {
@@ -4967,20 +4968,21 @@ body {
 }
 
 .ai-example-card {
-  background: #18181b;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #121215;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 28px;
   padding: 36px;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ai-example-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.18);
   transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }
 
 .example-card-top {
@@ -4993,8 +4995,9 @@ body {
   font-family: 'Geist Mono', monospace;
   font-size: 10.5px;
   font-weight: 800;
-  color: #dffc2b;
+  color: #ffffff;
   letter-spacing: 0.8px;
+  opacity: 0.9;
 }
 
 .example-card-top h4 {
@@ -5025,9 +5028,9 @@ body {
   font-family: 'Geist', sans-serif;
   font-size: 12.5px;
   font-weight: 650;
-  color: #dffc2b;
-  background: rgba(223, 252, 43, 0.08);
-  border: 1px solid rgba(223, 252, 43, 0.2);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 6px 14px;
   border-radius: 12px;
   display: inline-block;
@@ -5035,11 +5038,11 @@ body {
 
 /* 1. Mini Chat Box */
 .mini-chat-box {
-  background: #18181b;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 .mini-chat-header {
@@ -5058,8 +5061,8 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #dffc2b;
-  box-shadow: 0 0 8px rgba(223, 252, 43, 0.6);
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 .mini-chat-messages {
@@ -5067,7 +5070,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: #141416;
+  background: #0d0d0f;
 }
 
 .chat-row {
@@ -5097,22 +5100,24 @@ body {
 }
 
 .ai-row .bubble {
-  background: #242820;
-  color: #ffffff;
+  background: #ffffff;
+  color: #09090b;
+  font-weight: 500;
   border-radius: 16px 16px 16px 4px;
-  border: 1px solid rgba(223, 252, 43, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.12);
+  border: none;
 }
 
 /* 2. Mini Calendar Box */
 .mini-calendar-box {
-  background: #18181b;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 .mini-cal-header {
@@ -5129,8 +5134,9 @@ body {
 .sync-badge {
   font-family: 'Geist Mono', monospace;
   font-size: 10.5px;
-  color: #dffc2b;
-  background: rgba(223, 252, 43, 0.1);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 2px 8px;
   border-radius: 10px;
 }
@@ -5146,14 +5152,15 @@ body {
 }
 
 .mini-cal-slot.slot-filled {
-  border-left: 3px solid #dffc2b;
+  border-left: 3px solid #ffffff;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .slot-time {
   font-family: 'Geist Mono', monospace;
   font-size: 11px;
   font-weight: 800;
-  color: #dffc2b;
+  color: #ffffff;
 }
 
 .slot-desc {
@@ -5175,14 +5182,14 @@ body {
 
 /* 3. Mini Nurture WhatsApp Box */
 .mini-nurture-box {
-  background: #18181b;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #09090b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 .mini-nurture-header {
@@ -5216,8 +5223,8 @@ body {
 }
 
 .nurture-step.active-step {
-  border-left-color: #dffc2b;
-  background: rgba(223, 252, 43, 0.05);
+  border-left-color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .step-time {
@@ -5228,7 +5235,7 @@ body {
 }
 
 .active-step .step-time {
-  color: #dffc2b;
+  color: #ffffff;
 }
 
 .nurture-step p {
@@ -5243,8 +5250,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(223, 252, 43, 0.04) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   padding: 24px 32px;
   width: 100%;
@@ -5270,22 +5277,23 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #dffc2b;
-  color: #121316;
+  background: #ffffff;
+  color: #09090b;
   font-family: 'Geist', sans-serif;
   font-size: 14px;
-  font-weight: 750;
-  padding: 12px 22px;
+  font-weight: 800;
+  padding: 13px 24px;
   border-radius: 14px;
   text-decoration: none;
   transition: all 0.25s ease;
   white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
 }
 
 .ai-cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(223, 252, 43, 0.35);
-  background: #e5ff38;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+  background: #ffffff;
 }
 
 .btn-arrow {
