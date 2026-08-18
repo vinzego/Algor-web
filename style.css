@@ -3786,23 +3786,24 @@ body {
 
 .footer-card-wrapper {
   width: 100%;
-  max-width: 1600px;
-  padding: 0 24px 32px 24px;
+  padding: 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
+  background-color: #121316;
 }
 
 .brand-footer-card {
   width: 100%;
   max-width: 1600px;
   background-color: #121316;
-  border-radius: 40px;
-  padding: 60px 80px 40px 80px;
+  border-radius: 0 !important;
+  padding: 60px 48px 40px 48px;
   display: flex;
   flex-direction: column;
   gap: 40px;
   box-sizing: border-box;
+  box-shadow: none !important;
 }
 
 .footer-photo-credit-text {
@@ -7046,14 +7047,27 @@ html, body {
     box-sizing: border-box !important;
   }
 
-  /* 4. Footer & Contact Form Section (Kontakt Forma) */
+  /* 4. Footer & Contact Form Section (Flat Full-Width Footer) */
   .footer-hero-and-card-section {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    width: calc(100% + 28px) !important;
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+    margin-bottom: -85px !important;
     margin-top: 24px !important;
-    border-radius: 28px !important;
-    overflow: hidden !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+
+  .footer-card-wrapper {
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .brand-footer-card {
+    border-radius: 0 !important;
+    padding: 40px 20px 30px 20px !important;
+    width: 100% !important;
+    box-shadow: none !important;
   }
 
   .footer-conversion-area {
