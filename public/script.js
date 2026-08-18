@@ -416,4 +416,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 12. AI Section Interactive Tab Pills Switcher
+  const tabPills = document.querySelectorAll('.ai-tab-pills .tab-pill');
+  const tabContents = document.querySelectorAll('.ai-tab-content');
+
+  if (tabPills.length && tabContents.length) {
+    tabPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const targetTabId = pill.getAttribute('data-tab');
+
+        tabPills.forEach(p => p.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        pill.classList.add('active');
+        const targetContent = document.getElementById(targetTabId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  }
+
 });
