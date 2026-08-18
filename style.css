@@ -6,15 +6,13 @@
 }
 
 body {
-  background-color: #fafafb;
+  background-color: #ffffff;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  display: block;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  padding: 16px;
-  gap: 16px;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 /* -------------------------------------------------------------
@@ -22,10 +20,10 @@ body {
 ------------------------------------------------------------- */
 .hero-single-column-mesh {
   width: 100%;
-  max-width: 1600px;
-  min-height: calc(100vh - 32px);
-  border-radius: 36px;
-  background-color: #ffffff !important;
+  max-width: 100%;
+  min-height: 100vh;
+  border-radius: 0;
+  background-color: #ffffff;
   background-image: none !important;
   position: relative !important;
   overflow: hidden !important;
@@ -34,8 +32,9 @@ body {
   flex-direction: column !important;
   justify-content: space-between !important;
   align-items: center !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid #e2e8f0;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #e2e8f0;
   color: #121316;
 }
 
@@ -1622,70 +1621,42 @@ body {
 /* -------------------------------------------------------------
    Info & Stats Section Card
 ------------------------------------------------------------- */
+/* =====================================================
+   FULL-WIDTH SECTION LAYOUT
+   Each section spans edge-to-edge. Background color is
+   set per-section via individual #id rules below.
+   Inner content is constrained to max-width: 1400px.
+===================================================== */
 .info-section-card {
   width: 100%;
-  max-width: 1600px;
+  max-width: 100%;
   background-color: #ffffff;
-  border-radius: 28px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.02);
-  padding: 60px 48px;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 80px 48px;
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin-bottom: 24px;
-  border: 1px solid #e2e8f0;
-  transition: transform 0.3s ease;
+  margin: 0;
+  border: none;
+}
+
+.info-section-card > *,
+.plain-section > * {
+  max-width: 1400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 #about.no-card-box,
 .info-section-card.no-card-box {
-  background-color: transparent !important;
+  background-color: #f8f9fa !important;
   border: none !important;
   box-shadow: none !important;
-  padding-top: 40px !important;
-  padding-bottom: 40px !important;
-}
-
-.info-section-card.about-card-rounded-bottom {
-  border-radius: 0 0 36px 36px !important;
-  border-top: none !important;
-  margin-top: -16px !important;
-  background-color: #ffffff !important;
-  border-left: none !important;
-  border-right: none !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.02) !important;
-  width: calc(100% + 32px) !important;
-  max-width: calc(100% + 32px) !important;
-  margin-left: -16px !important;
-  margin-right: -16px !important;
-  box-sizing: border-box !important;
-}
-
-@media (max-width: 768px) {
-  .info-section-card.about-card-rounded-bottom {
-    border-radius: 0 0 24px 24px !important;
-    margin-top: -16px !important;
-    width: calc(100% + 32px) !important;
-    max-width: calc(100% + 32px) !important;
-    margin-left: -16px !important;
-    margin-right: -16px !important;
-    padding-left: 28px !important;
-    padding-right: 28px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .info-section-card.about-card-rounded-bottom {
-    border-radius: 0 0 18px 18px !important;
-    margin-top: -10px !important;
-    width: calc(100% + 24px) !important;
-    max-width: calc(100% + 24px) !important;
-    margin-left: -12px !important;
-    margin-right: -12px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
 }
 
 .info-header {
@@ -2037,10 +2008,10 @@ body {
   position: relative !important;
   z-index: 10 !important;
   overflow: visible !important;
-  width: calc(100% + 32px) !important;
-  max-width: calc(100% + 32px) !important;
-  margin: 20px -16px 40px -16px !important;
-  border-radius: 50px 50px 0 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
   background-color: #0e0e10 !important;
   background-image: 
     radial-gradient(ellipse at top, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
@@ -2048,25 +2019,39 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px) !important;
   background-size: 100% 100%, 36px 36px, 36px 36px !important;
   color: #ffffff !important;
-  border-left: none !important;
-  border-right: none !important;
+  border: none !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  padding: 90px 0 80px 0 !important;
+  padding: 90px 48px 80px 48px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   gap: 40px !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: none !important;
 }
 
 #ai-automations > * {
   width: 100%;
-  max-width: 1600px;
-  padding-left: 48px;
-  padding-right: 48px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
   box-sizing: border-box;
 }
+
+/* =====================================================
+   PER-SECTION BACKGROUND COLORS
+   Edit the background-color value for each section below.
+===================================================== */
+#about         { background-color: #f8f9fa; }
+#marketing     { background-color: #ffffff; }
+#before-after  { background-color: #f1f5f9; }
+#portfolio     { background-color: #ffffff; }
+#testimonials  { background-color: #f8f9fa; }
+#process       { background-color: #ffffff; }
+#ideal-fit     { background-color: #f1f5f9; }
+#faq           { background-color: #f8f9fa; }
 
 .dark-theme .info-title {
   color: #ffffff !important;
@@ -2305,20 +2290,13 @@ body {
 ------------------------------------------------------------- */
 .plain-section {
   width: 100%;
-  max-width: 1600px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin: 0 auto 24px auto;
-  padding: 60px 48px;
-}
-
-#marketing {
-  background-color: #D4D4D4 !important;
-  border-radius: 36px !important;
-  border: 1px solid #c2c2c2 !important;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02) !important;
-  box-sizing: border-box !important;
+  margin: 0;
+  padding: 80px 48px;
+  background-color: #ffffff;
 }
 
 .marketing-bento-grid {
@@ -3720,15 +3698,12 @@ body {
 ------------------------------------------------------------- */
 .footer-hero-and-card-section {
   background: linear-gradient(180deg, transparent 0%, rgba(223, 252, 43, 0.25) 50%, #dffc2b 100%);
-  width: calc(100% + 32px);
-  margin-left: -16px;
-  margin-right: -16px;
-  margin-bottom: -16px;
+  width: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  margin-top: 60px;
 }
 
 .footer-conversion-area {
@@ -5564,25 +5539,25 @@ body {
   position: relative !important;
   z-index: 10 !important;
   overflow: hidden;
-  width: calc(100% + 32px) !important;
-  max-width: calc(100% + 32px) !important;
-  margin: -60px -16px 40px -16px !important; /* Pull up 60px over the section above */
-  border-radius: 60px 60px 0 0 !important; /* Rounded TOP left & top right corners */
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
   background-color: #ffffff !important;
   background-image: 
     linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px) !important;
   background-size: 36px 36px !important;
   color: #121316 !important;
-  border-left: none !important;
-  border-right: none !important;
-  border-bottom: none !important;
+  border: none !important;
   border-top: 1px solid #e2e8f0 !important;
-  padding: 110px 0 90px 0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 90px 48px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.04) !important;
+  gap: 40px;
+  box-shadow: none !important;
 }
 
 #pricing .info-title {
@@ -7118,12 +7093,17 @@ html, body {
   /* 2. Global Section & Card Scaling */
   .info-section-card,
   .plain-section {
-    padding: 32px 20px !important;
-    border-radius: 22px !important;
+    padding: 48px 20px !important;
+    border-radius: 0 !important;
     gap: 24px !important;
-    margin-bottom: 14px !important;
+    margin: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  .info-section-card > *,
+  .plain-section > * {
+    max-width: 100% !important;
   }
 
   .section-badge {
@@ -7232,21 +7212,18 @@ html, body {
   #pricing {
     width: 100% !important;
     max-width: 100% !important;
-    margin: 0 0 16px 0 !important;
-    padding: 36px 16px !important;
-    border-radius: 24px !important;
+    margin: 0 !important;
+    padding: 48px 20px !important;
+    border-radius: 0 !important;
     box-sizing: border-box !important;
   }
 
   #ai-automations {
-    width: calc(100% + 28px) !important;
-    max-width: calc(100% + 28px) !important;
-    margin-left: -14px !important;
-    margin-right: -14px !important;
-    margin-top: 16px !important;
-    margin-bottom: 24px !important;
-    padding: 50px 16px !important;
-    border-radius: 36px 36px 0 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 50px 20px !important;
+    border-radius: 0 !important;
     border-left: none !important;
     border-right: none !important;
     box-sizing: border-box !important;
@@ -7257,6 +7234,7 @@ html, body {
     padding-left: 0 !important;
     padding-right: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
   }
 
@@ -7444,13 +7422,13 @@ html, body {
 /* Extra Optimization for Small Mobile Screens (<= 480px) */
 @media (max-width: 480px) {
   body {
-    padding: 10px 12px 85px 12px !important;
+    padding: 0 !important;
   }
 
   .info-section-card,
   .plain-section {
-    padding: 24px 16px !important;
-    border-radius: 18px !important;
+    padding: 36px 16px !important;
+    border-radius: 0 !important;
   }
 
   .mesh-hero-headline {
@@ -7471,29 +7449,3 @@ html, body {
     border-radius: 18px !important;
   }
 }
-
-/* Adjust hero section max-width on larger screens and ultrawide monitors */
-@media (min-width: 1620px) {
-  .hero-single-column-mesh,
-  .hero-ultra-modern {
-    max-width: 1800px !important;
-  }
-}
-
-@media (min-width: 2000px) {
-  .hero-single-column-mesh,
-  .hero-ultra-modern {
-    max-width: 2200px !important;
-  }
-}
-
-@media (min-width: 2500px) {
-  .hero-single-column-mesh,
-  .hero-ultra-modern {
-    max-width: 90% !important;
-  }
-}
-
-
-
-
