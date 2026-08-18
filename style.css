@@ -5259,44 +5259,58 @@ body {
   line-height: 1.5;
 }
 
-/* Part 3: Bottom Conversion Banner */
+/* Part 3: Bottom Conversion Banner (Centered Compact Apple Card) */
 .ai-bottom-conversion-banner {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 24px 32px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  padding: 32px 36px;
   width: 100%;
+  max-width: 680px;
+  margin: 36px auto 0 auto;
   box-sizing: border-box;
   gap: 20px;
-  flex-wrap: wrap;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.conversion-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
 }
 
 .conversion-text h4 {
-  font-size: 18px;
-  font-weight: 750;
+  font-size: 20px;
+  font-weight: 800;
   color: #ffffff;
-  margin: 0 0 4px 0;
+  margin: 0;
+  letter-spacing: -0.3px;
 }
 
 .conversion-text p {
-  font-size: 13.5px;
-  color: #94a3b8;
+  font-size: 14px;
+  color: #cbd5e1;
   margin: 0;
+  line-height: 1.55;
+  max-width: 520px;
 }
 
 .ai-cta-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   background: #ffffff;
   color: #09090b;
   font-family: 'Geist', sans-serif;
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 800;
-  padding: 13px 24px;
+  padding: 14px 28px;
   border-radius: 14px;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -7077,9 +7091,25 @@ html, body {
     gap: 20px !important;
     padding: 24px 20px !important;
     border-radius: 20px !important;
-    background: #18181b !important;
+    background: #1a1a1e !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  .ai-bottom-conversion-banner {
+    padding: 24px 20px !important;
+    max-width: 100% !important;
+    border-radius: 20px !important;
+    gap: 16px !important;
+    margin-top: 24px !important;
+  }
+
+  .conversion-text h4 {
+    font-size: 18px !important;
+  }
+
+  .conversion-text p {
+    font-size: 13.5px !important;
   }
 
   /* 4. Footer & Contact Form Section (Flat Full-Width Footer) */
