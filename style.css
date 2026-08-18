@@ -6327,8 +6327,8 @@ html, body {
 ------------------------------------------------------------- */
 @media (max-width: 768px) {
   body {
-    padding: 10px 8px 75px 8px !important; /* Touch-friendly outer padding & bottom space for sticky bar */
-    gap: 12px !important;
+    padding: 12px 14px 85px 14px !important; /* Comfortable outer margin from screen edges */
+    gap: 14px !important;
   }
 
   /* Accessible Touch Targets */
@@ -6348,7 +6348,7 @@ html, body {
   /* 1. Hero Section Adjustments */
   .hero-single-column-mesh {
     min-height: auto !important;
-    padding: 16px 14px 28px 14px !important;
+    padding: 20px 16px 32px 16px !important;
     border-radius: 24px !important;
   }
 
@@ -6440,10 +6440,10 @@ html, body {
   /* 2. Global Section & Card Scaling */
   .info-section-card,
   .plain-section {
-    padding: 28px 16px !important;
-    border-radius: 20px !important;
+    padding: 32px 20px !important;
+    border-radius: 22px !important;
     gap: 24px !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 14px !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -6479,7 +6479,7 @@ html, body {
   .ideal-fit-grid,
   .ai-capabilities-grid {
     grid-template-columns: 1fr !important;
-    gap: 14px !important;
+    gap: 16px !important;
     width: 100% !important;
   }
 
@@ -6494,8 +6494,8 @@ html, body {
   .fit-card,
   .ai-cap-card {
     grid-column: span 1 !important;
-    padding: 20px 16px !important;
-    border-radius: 18px !important;
+    padding: 24px 20px !important;
+    border-radius: 20px !important;
     min-height: auto !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -6503,13 +6503,13 @@ html, body {
 
   .dashed-card,
   .solid-gray-card {
-    padding: 16px !important;
-    border-radius: 16px !important;
+    padding: 20px !important;
+    border-radius: 18px !important;
   }
 
   .stat-card-split-col {
     flex-direction: column !important;
-    gap: 12px !important;
+    gap: 14px !important;
   }
 
   .card-large-text,
@@ -6517,33 +6517,55 @@ html, body {
     font-size: 32px !important;
   }
 
-  /* 4. Pricing Section Edge-to-Edge Adjustments */
+  /* 4. Pricing Section (Paketi) Edge Spacing */
   #pricing {
-    margin: -16px -8px 16px -8px !important;
-    border-radius: 32px 32px 0 0 !important;
-    padding: 50px 0 40px 0 !important;
+    margin: 0 auto 16px auto !important;
+    border-radius: 28px !important;
+    padding: 44px 0 36px 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   #pricing > * {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  /* 5. Sticky Process & Timeline */
+  /* 5. Sticky Process Section (Proces) Edge Spacing */
   .plain-section.process-sticky-section {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .process-sticky-container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #process.process-sticky-section .process-sticky-container {
     padding-left: 12px !important;
     padding-right: 12px !important;
   }
 
-  .process-sticky-container {
-    padding-left: 4px !important;
-    padding-right: 4px !important;
+  /* 6. Footer & Contact Form Section (Kontakt Forma) */
+  .footer-hero-and-card-section {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 24px !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
   }
 
-  /* 6. Footer Conversion Block */
   .footer-conversion-area {
-    padding: 40px 16px 40px 16px !important;
-    gap: 20px !important;
+    padding: 44px 20px 44px 20px !important;
+    gap: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .footer-title {
@@ -6551,36 +6573,37 @@ html, body {
     line-height: 1.25 !important;
   }
 
-  /* 7. Modal Dialogs */
+  /* 7. Modal Dialogs & Booking Cards */
   .booking-modal-card,
   .modal-content {
-    width: 94% !important;
-    padding: 20px 16px !important;
-    border-radius: 20px !important;
+    width: 92% !important;
+    padding: 24px 20px !important;
+    border-radius: 22px !important;
     max-height: 85vh !important;
     overflow-y: auto !important;
+    box-sizing: border-box !important;
   }
 }
 
-/* Extra Optimization for Very Small Screens (<= 480px) */
+/* Extra Optimization for Small Mobile Screens (<= 480px) */
 @media (max-width: 480px) {
   body {
-    padding: 6px 4px 75px 4px !important;
+    padding: 10px 12px 85px 12px !important;
   }
 
   .info-section-card,
   .plain-section {
-    padding: 22px 14px !important;
-    border-radius: 16px !important;
+    padding: 24px 16px !important;
+    border-radius: 18px !important;
   }
 
   .mesh-hero-headline {
-    font-size: 25px !important;
+    font-size: 26px !important;
   }
 
   .info-title,
   .mesh-main-headline {
-    font-size: 21px !important;
+    font-size: 22px !important;
   }
 
   .bento-card,
@@ -6588,7 +6611,8 @@ html, body {
   .price-card,
   .vertical-step-card,
   .portfolio-item-card {
-    padding: 16px 14px !important;
+    padding: 20px 16px !important;
+    border-radius: 18px !important;
   }
 }
 
