@@ -4330,6 +4330,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-width: 580px;
+  width: 100%;
 }
 
 .process-left-indicator {
@@ -6544,6 +6546,11 @@ html, body {
     padding-right: 8px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  .process-sticky-left {
+    max-width: 580px !important;
+    width: 100% !important;
   }
 
   #process.process-sticky-section .process-sticky-container {
