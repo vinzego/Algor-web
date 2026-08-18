@@ -1962,13 +1962,13 @@ body {
    Dark Theme Section Modifier (With Subtle Gray Grid Pattern)
 ------------------------------------------------------------- */
 .dark-theme {
-  background-color: #1a1c22 !important;
+  background-color: #1f1f1f !important;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px) !important;
   background-size: 36px 36px, 36px 36px !important;
   color: #ffffff !important;
-  border: 1px solid #282b34 !important;
+  border: 1px solid #2e2e2e !important;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
 }
 
@@ -4542,12 +4542,12 @@ body {
    Redesigned Card 02: AI Automations & Tech Stack Grid
 ------------------------------------------------------------- */
 .ai-redesign-card {
-  background-color: #1a1c22 !important;
+  background-color: #1f1f1f !important;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px) !important;
   background-size: 36px 36px, 36px 36px !important;
-  border: 1px solid #282b34 !important;
+  border: 1px solid #2e2e2e !important;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
   opacity: 0;
   transform: translateY(70px) scale(0.97);
