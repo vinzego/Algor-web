@@ -1972,6 +1972,43 @@ body {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
 }
 
+/* -------------------------------------------------------------
+   Full-Width Edge-to-Edge AI Section (#ai-automations)
+------------------------------------------------------------- */
+#ai-automations {
+  position: relative !important;
+  z-index: 10 !important;
+  overflow: hidden;
+  width: calc(100% + 32px) !important;
+  max-width: calc(100% + 32px) !important;
+  margin: 20px -16px 40px -16px !important;
+  border-radius: 50px !important; /* Rounded TOP & BOTTOM edges like pricing */
+  background-color: #1f1f1f !important;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px) !important;
+  background-size: 36px 36px, 36px 36px !important;
+  color: #ffffff !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: 1px solid #2e2e2e !important;
+  border-bottom: 1px solid #2e2e2e !important;
+  padding: 90px 0 80px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 40px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+#ai-automations > * {
+  width: 100%;
+  max-width: 1600px;
+  padding-left: 48px;
+  padding-right: 48px;
+  box-sizing: border-box;
+}
+
 .dark-theme .info-title {
   color: #ffffff !important;
 }
@@ -6555,8 +6592,9 @@ html, body {
     font-size: 32px !important;
   }
 
-  /* 4. Pricing Section (Paketi) Edge Spacing */
-  #pricing {
+  /* 4. Pricing Section (Paketi) & AI Section Edge Spacing */
+  #pricing,
+  #ai-automations {
     margin: 0 auto 16px auto !important;
     border-radius: 28px !important;
     padding: 44px 0 36px 0 !important;
@@ -6564,7 +6602,8 @@ html, body {
     max-width: 100% !important;
   }
 
-  #pricing > * {
+  #pricing > *,
+  #ai-automations > * {
     padding-left: 20px !important;
     padding-right: 20px !important;
     width: 100% !important;
