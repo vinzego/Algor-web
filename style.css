@@ -4804,16 +4804,16 @@ body {
   width: fit-content;
 }
 
-.red-badge {
-  background: rgba(239, 68, 68, 0.12);
-  color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.25);
+.problem-tag {
+  background: rgba(255, 255, 255, 0.05);
+  color: #a1a1aa;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.green-badge {
-  background: rgba(223, 252, 43, 0.12);
-  color: #dffc2b;
-  border: 1px solid rgba(223, 252, 43, 0.3);
+.solution-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .prob-sol-box h4 {
@@ -4835,13 +4835,13 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(223, 252, 43, 0.1);
-  border: 1px solid rgba(223, 252, 43, 0.25);
-  color: #dffc2b;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e4e4e7;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 16px;
   flex-shrink: 0;
 }
 
@@ -4876,15 +4876,10 @@ body {
 }
 
 .ai-cap-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(223, 252, 43, 0.4);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
   background-color: rgba(255, 255, 255, 0.04);
-}
-
-.ai-cap-card.featured-cap-card {
-  border-color: rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
 }
 
 .cap-card-header {
@@ -4896,40 +4891,19 @@ body {
 
 .cap-badge {
   font-family: 'Geist Mono', monospace;
-  font-size: 10.5px;
-  font-weight: 800;
-  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #a1a1aa;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 12px;
   border-radius: 12px;
   letter-spacing: 0.5px;
 }
 
-.badge-lime {
-  background-color: rgba(223, 252, 43, 0.1);
-  color: #dffc2b;
-  border: 1px solid rgba(223, 252, 43, 0.25);
-}
-
-.badge-glow {
-  background-color: #dffc2b;
-  color: #121316;
-}
-
-.badge-blue {
-  background-color: rgba(56, 189, 248, 0.1);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.25);
-}
-
-.cap-num {
-  font-family: 'Geist Mono', monospace;
-  font-size: 14px;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.3);
-}
-
 .ai-cap-card h3 {
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 750;
   color: #ffffff;
   margin: 0 0 12px 0;
   letter-spacing: -0.4px;
@@ -4957,16 +4931,16 @@ body {
 
 .cap-check-list li {
   font-size: 13px;
-  color: #e2e8f0;
-  font-weight: 600;
+  color: #cbd5e1;
+  font-weight: 550;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .cap-check {
-  color: #dffc2b;
-  font-weight: 800;
+  color: #a1a1aa;
+  font-weight: 700;
 }
 
 /* Horizontal Process Pipeline */
@@ -4988,16 +4962,16 @@ body {
 
 .pipeline-title {
   font-family: 'Geist Mono', monospace;
-  font-size: 12px;
-  font-weight: 800;
-  color: #dffc2b;
-  letter-spacing: 1px;
+  font-size: 11.5px;
+  font-weight: 750;
+  color: #e4e4e7;
+  letter-spacing: 0.8px;
 }
 
 .pipeline-badge {
   font-family: 'Geist Mono', monospace;
   font-size: 10.5px;
-  font-weight: 750;
+  font-weight: 700;
   color: #94a3b8;
   background-color: rgba(255, 255, 255, 0.05);
   padding: 4px 12px;
@@ -5015,7 +4989,7 @@ body {
 .pipe-node {
   flex: 1;
   min-width: 190px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   padding: 20px 16px;
@@ -5026,13 +5000,8 @@ body {
 }
 
 .pipe-node.active-node {
-  border-color: rgba(223, 252, 43, 0.3);
-  background-color: rgba(223, 252, 43, 0.04);
-}
-
-.pipe-node.pulsing-node {
-  border-color: #dffc2b;
-  box-shadow: 0 0 20px rgba(223, 252, 43, 0.15);
+  border-color: rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.04);
 }
 
 .node-header {
