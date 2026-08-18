@@ -2014,8 +2014,13 @@ body {
   color: #ffffff !important;
 }
 
-.text-muted {
-  color: #898d92 !important;
+.dark-theme .info-subtitle {
+  color: #e2e8f0 !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  max-width: 840px !important;
+  font-weight: 450 !important;
+  margin-top: 8px !important;
 }
 
 .align-center {
