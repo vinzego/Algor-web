@@ -1651,16 +1651,27 @@ body {
   border-top: none !important;
   margin-top: -16px !important;
   background-color: #ffffff !important;
-  border-left: 1px solid #e2e8f0 !important;
-  border-right: 1px solid #e2e8f0 !important;
+  border-left: none !important;
+  border-right: none !important;
   border-bottom: 1px solid #e2e8f0 !important;
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.02) !important;
+  width: calc(100% + 32px) !important;
+  max-width: calc(100% + 32px) !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+  box-sizing: border-box !important;
 }
 
 @media (max-width: 768px) {
   .info-section-card.about-card-rounded-bottom {
     border-radius: 0 0 24px 24px !important;
     margin-top: -16px !important;
+    width: calc(100% + 32px) !important;
+    max-width: calc(100% + 32px) !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding-left: 28px !important;
+    padding-right: 28px !important;
   }
 }
 
@@ -1668,6 +1679,12 @@ body {
   .info-section-card.about-card-rounded-bottom {
     border-radius: 0 0 18px 18px !important;
     margin-top: -10px !important;
+    width: calc(100% + 24px) !important;
+    max-width: calc(100% + 24px) !important;
+    margin-left: -12px !important;
+    margin-right: -12px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 }
 
