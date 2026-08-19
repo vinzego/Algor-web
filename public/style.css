@@ -7927,16 +7927,24 @@ html, body {
 }
 
 /* ==========================================================================
-   PURE 3D CARD FLIP SYSTEM (Same dimensions, exact CTA button alignment)
+   PERFECT 2-STATE 3D CARD FLIP SYSTEM (Unified Border-Radius, No Overlaps)
    ========================================================================== */
 .pricing-grid {
-  perspective: 1000px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+  perspective: 1200px;
+  box-sizing: border-box;
 }
 
 .price-card {
   position: relative;
-  min-height: 560px;
-  height: 560px;
+  width: 100%;
+  min-height: 620px;
+  height: 620px;
+  border-radius: 28px !important;
+  box-sizing: border-box;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -7947,8 +7955,10 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 620px;
   transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
+  border-radius: 28px !important;
 }
 
 .price-card.is-flipped .price-card-inner {
@@ -7962,10 +7972,11 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
+  min-height: 620px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 28px;
-  padding: 32px 28px;
+  border-radius: 28px !important;
+  padding: 28px 24px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -7973,6 +7984,7 @@ html, body {
   background: #ffffff;
   border: 1px solid #e2e8f0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden !important;
 }
 
 .price-card-front {
@@ -7986,10 +7998,61 @@ html, body {
   border-color: #e2e8f0;
 }
 
+/* Featured (Popular) Card Styling */
 .popular-card .price-card-front,
 .popular-card .price-card-back {
-  border-color: #dffc2b;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.09);
+  border: 2px solid #10b981 !important;
+  box-shadow: 0 16px 40px rgba(16, 185, 129, 0.12) !important;
+}
+
+.popular-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* Features List Clean Layout */
+.price-features {
+  margin: 16px 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.price-features li {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #334155;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Front & Back CTA Button Container Alignment */
+.price-card-front .price-cta,
+.price-card-back .card-back-submit-btn {
+  margin-top: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 24px;
+  padding: 13px 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  align-self: stretch;
 }
 
 /* Back Side Form Layout */
@@ -8006,7 +8069,7 @@ html, body {
 }
 
 .card-back-badge {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   color: #0f172a;
 }
@@ -8015,7 +8078,7 @@ html, body {
   background: transparent;
   border: none;
   color: #64748b;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   cursor: pointer;
   padding: 2px 6px;
@@ -8064,15 +8127,8 @@ html, body {
 }
 
 .card-back-group input:focus {
-  border-color: #121316;
+  border-color: #0f172a;
   background-color: #ffffff;
-}
-
-/* CTA buttons on front and back sides are positioned identically at the bottom */
-.price-card-front .price-cta,
-.price-card-back .card-back-submit-btn {
-  margin-top: auto;
-  width: 100%;
 }
 
 .card-back-success {
@@ -8097,9 +8153,24 @@ html, body {
   color: #64748b;
 }
 
-@media (max-width: 768px) {
-  .price-card {
-    min-height: 580px;
-    height: 580px;
+/* Mobile Responsiveness - No Card Overlapping! */
+@media (max-width: 992px) {
+  .pricing-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 36px !important;
+  }
+
+  .price-card,
+  .price-card-inner,
+  .price-card-front,
+  .price-card-back {
+    min-height: 640px !important;
+    height: 640px !important;
+  }
+
+  .price-card-front,
+  .price-card-back {
+    padding: 24px 18px !important;
   }
 }
