@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function openMobileSheet(pkgTitle, pkgPrice) {
     selectedPackageFull = `${pkgTitle} (${pkgPrice})`;
     if (sheetPkgText) {
-      sheetPkgText.textContent = `Odabran paket: ${selectedPackageFull}`;
+      sheetPkgText.innerHTML = `Odabran paket: <strong class="sheet-pkg-name-highlight">${selectedPackageFull}</strong>`;
     }
 
     if (sheetForm) sheetForm.style.display = 'flex';

@@ -8085,45 +8085,65 @@ html, body {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  background-color: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  border-radius: 14px;
-  padding: 10px 14px;
-  margin-bottom: 16px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border: 1px solid rgba(223, 252, 43, 0.25);
+  border-radius: 20px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
   flex-shrink: 0;
 }
 
 .sheet-pkg-badge {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 13px;
-  font-weight: 700;
-  color: #0f172a;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.2px;
 }
 
-.badge-bolt {
-  color: #10b981;
+.badge-bolt-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #dffc2b;
+  color: #0f172a;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 0 10px rgba(223, 252, 43, 0.4);
+  flex-shrink: 0;
+}
+
+.sheet-pkg-name-highlight {
+  color: #dffc2b;
+  font-weight: 800;
 }
 
 .sheet-close-btn {
-  background: transparent;
-  border: none;
-  color: #64748b;
-  font-size: 12.5px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  padding: 5px 12px;
+  border-radius: 14px;
+  transition: all 0.25s ease;
   display: flex;
   align-items: center;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .sheet-close-btn:hover {
+  background: #dffc2b;
   color: #0f172a;
-  background: #e2e8f0;
+  border-color: #dffc2b;
 }
 
 .sheet-form {
