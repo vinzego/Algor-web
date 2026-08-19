@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5.0.0">
+  <link rel="stylesheet" href="style.css?v=6.0.0">
 </head>
 <body>
 
@@ -1153,88 +1153,234 @@
       </p>
     </div>
 
-    <!-- 3 Pricing Cards Grid -->
+    <!-- 3 Pricing Cards Grid with 3D Card Flip -->
     <div class="pricing-grid">
       
       <!-- Card 1: Start Paket -->
-      <!-- Card 1: Start Paket -->
-      <div class="price-card">
-        <div class="price-header">
-          <span class="plan-target-tag">Za tvrtke u usponu</span>
-          <h3>Start</h3>
-          <p>Za stabilnu prisutnost i redovite nove upite</p>
+      <div class="price-card" data-pkg-name="Start Paket">
+        <div class="price-card-flipper">
+          
+          <!-- FRONT SIDE (PACKAGE DETAILS) -->
+          <div class="price-card-front">
+            <div class="price-header">
+              <span class="plan-target-tag">Za tvrtke u usponu</span>
+              <h3>Start</h3>
+              <p>Za stabilnu prisutnost i redovite nove upite</p>
+            </div>
+
+            <div class="price-value-box">
+              <span class="currency">€</span>
+              <span class="price-amount" id="price-marketing">690</span>
+              <span class="period">/mjesečno</span>
+            </div>
+
+            <!-- Unified Package Features -->
+            <ul class="price-features">
+              <li><span class="feat-check">📸</span> Foto &amp; Video Produkcija: Snimanje i fotografiranje na lokaciji klijenta</li>
+              <li><span class="feat-check">📣</span> Oglasi &amp; Mreže: Vođenje Meta kampanje (FB/IG) + 8 objava mjesečno (foto &amp; vizuali)</li>
+              <li><span class="feat-check">🌐</span> Web: Izrada/optimizacija 1 brze landing stranice za oglase</li>
+              <li><span class="feat-check">🤖</span> AI Automatizacija: 24/7 automatski odgovori na poruke s oglasa i hvatanje kupaca</li>
+              <li><span class="feat-check">📊</span> Mjesečni izvještaj: Detaljna analiza kampanja, rezultata i budžeta</li>
+            </ul>
+
+            <button type="button" class="price-cta card-flip-btn">Započni sa Start Paketom ➔</button>
+          </div>
+
+          <!-- BACK SIDE (4-QUESTION FORM) -->
+          <div class="price-card-back">
+            <div class="card-back-header">
+              <span class="card-back-badge">⚡ Start Paket (690 €/mj.)</span>
+              <button type="button" class="card-unflip-btn" title="Okreni natrag">Okreni natrag ↺</button>
+            </div>
+
+            <form class="card-back-form">
+              <h4 class="card-back-title">Unesite vaše kontakt podatke</h4>
+              <p class="card-back-sub">Uvodni 30-minutni poziv i priprema analize.</p>
+
+              <div class="card-back-group">
+                <label>Ime i prezime *</label>
+                <input type="text" class="input-name" required placeholder="npr. Ivan Horvat" />
+              </div>
+
+              <div class="card-back-group">
+                <label>Tvrtka / Web *</label>
+                <input type="text" class="input-company" required placeholder="npr. Moja Tvrtka d.o.o." />
+              </div>
+
+              <div class="card-back-group">
+                <label>E-mail adresa *</label>
+                <input type="email" class="input-email" required placeholder="npr. ivan@tvrtka.hr" />
+              </div>
+
+              <div class="card-back-group">
+                <label>Broj mobitela *</label>
+                <input type="tel" class="input-phone" required placeholder="npr. 091 234 5678" />
+              </div>
+
+              <button type="submit" class="card-back-submit-btn">Potvrdi ➔</button>
+            </form>
+
+            <div class="card-back-success" style="display: none;">
+              <div class="modal-success-icon">✓</div>
+              <h4>Upit uspješno poslan!</h4>
+              <p class="card-success-msg">Kontaktirat ćemo vas u najkraćem roku.</p>
+              <button type="button" class="card-unflip-btn btn-success-unflip">Zatvori ↺</button>
+            </div>
+          </div>
+
         </div>
-
-        <div class="price-value-box">
-          <span class="currency">€</span>
-          <span class="price-amount" id="price-marketing">690</span>
-          <span class="period">/mjesečno</span>
-        </div>
-
-        <!-- Unified Package Features -->
-        <ul class="price-features">
-          <li><span class="feat-check">📸</span> Foto &amp; Video Produkcija: Snimanje i fotografiranje na lokaciji klijenta</li>
-          <li><span class="feat-check">📣</span> Oglasi &amp; Mreže: Vođenje Meta kampanje (FB/IG) + 8 objava mjesečno (foto &amp; vizuali)</li>
-          <li><span class="feat-check">🌐</span> Web: Izrada/optimizacija 1 brze landing stranice za oglase</li>
-          <li><span class="feat-check">🤖</span> AI Automatizacija: 24/7 automatski odgovori na poruke s oglasa i hvatanje kupaca</li>
-          <li><span class="feat-check">📊</span> Mjesečni izvještaj: Detaljna analiza kampanja, rezultata i budžeta</li>
-        </ul>
-
-        <button type="button" class="price-cta">Započni sa Start Paketom ➔</button>
       </div>
 
       <!-- Card 2: Plus Paket (Featured - High Conversion CRO Hero Card) -->
-      <div class="price-card popular-card">
+      <div class="price-card popular-card" data-pkg-name="Plus Paket">
         <div class="popular-tag">★ NAJČEŠĆI ODABIR</div>
-        <div class="price-header">
-          <span class="plan-target-tag target-featured">Za brzi rast i više rezervacija</span>
-          <h3>Plus</h3>
-          <p>Za tvrtke koje žele predvidljiv rast prodaje, foto/video produkciju i 24/7 obradu kupaca</p>
+        <div class="price-card-flipper">
+          
+          <!-- FRONT SIDE (PACKAGE DETAILS) -->
+          <div class="price-card-front">
+            <div class="price-header">
+              <span class="plan-target-tag target-featured">Za brzi rast i više rezervacija</span>
+              <h3>Plus</h3>
+              <p>Za tvrtke koje žele predvidljiv rast prodaje, foto/video produkciju i 24/7 obradu kupaca</p>
+            </div>
+
+            <div class="price-value-box">
+              <span class="currency">€</span>
+              <span class="price-amount text-glow" id="price-combined">1,250</span>
+              <span class="period">/mjesečno</span>
+            </div>
+
+            <!-- Unified Package Features -->
+            <ul class="price-features">
+              <li><span class="feat-check check-glow">📸</span> Foto &amp; Video Produkcija: Snimanje i fotografiranje na lokaciji (foto + Reels/TikTok video)</li>
+              <li><span class="feat-check check-glow">📣</span> Oglasi &amp; Mreže: 2 napredne Meta &amp; Google Ads kampanje + 12 objava mjesečno</li>
+              <li><span class="feat-check check-glow">🌐</span> Web: Izrada prodajne landing stranice s visokom stopom konverzije</li>
+              <li><span class="feat-check check-glow">🤖</span> AI Lead &amp; Booking Engine: AI agent koji zakazuje termine u kalendar i odgovara u 3 sekunde</li>
+              <li><span class="feat-check check-glow">📊</span> Mjesečni izvještaj: Detaljna analitika, uvid u konverzije i optimizacija budžeta</li>
+              <li><span class="feat-check check-glow">🛡️</span> 30 dana garancija na izvedbu</li>
+            </ul>
+
+            <button type="button" class="price-cta btn-glow card-flip-btn">Odaberi Plus Paket ➔</button>
+          </div>
+
+          <!-- BACK SIDE (4-QUESTION FORM) -->
+          <div class="price-card-back">
+            <div class="card-back-header">
+              <span class="card-back-badge">⚡ Odabran: Plus Paket (1.250 €/mj.)</span>
+              <button type="button" class="card-unflip-btn" title="Okreni natrag">Okreni natrag ↺</button>
+            </div>
+
+            <form class="card-back-form">
+              <h4 class="card-back-title">Unesite vaše kontakt podatke</h4>
+              <p class="card-back-sub">Uvodni 30-minutni poziv i priprema analize.</p>
+
+              <div class="card-back-group">
+                <label>Ime i prezime *</label>
+                <input type="text" class="input-name" required placeholder="npr. Ivan Horvat" />
+              </div>
+
+              <div class="card-back-group">
+                <label>Tvrtka / Web *</label>
+                <input type="text" class="input-company" required placeholder="npr. Moja Tvrtka d.o.o." />
+              </div>
+
+              <div class="card-back-group">
+                <label>E-mail adresa *</label>
+                <input type="email" class="input-email" required placeholder="npr. ivan@tvrtka.hr" />
+              </div>
+
+              <div class="card-back-group">
+                <label>Broj mobitela *</label>
+                <input type="tel" class="input-phone" required placeholder="npr. 091 234 5678" />
+              </div>
+
+              <button type="submit" class="card-back-submit-btn">Potvrdi ➔</button>
+            </form>
+
+            <div class="card-back-success" style="display: none;">
+              <div class="modal-success-icon">✓</div>
+              <h4>Upit uspješno poslan!</h4>
+              <p class="card-success-msg">Kontaktirat ćemo vas u najkraćem roku.</p>
+              <button type="button" class="card-unflip-btn btn-success-unflip">Zatvori ↺</button>
+            </div>
+          </div>
+
         </div>
-
-        <div class="price-value-box">
-          <span class="currency">€</span>
-          <span class="price-amount text-glow" id="price-combined">1,250</span>
-          <span class="period">/mjesečno</span>
-        </div>
-
-        <!-- Unified Package Features -->
-        <ul class="price-features">
-          <li><span class="feat-check check-glow">📸</span> Foto &amp; Video Produkcija: Snimanje i fotografiranje na lokaciji (foto + Reels/TikTok video)</li>
-          <li><span class="feat-check check-glow">📣</span> Oglasi &amp; Mreže: 2 napredne Meta &amp; Google Ads kampanje + 12 objava mjesečno</li>
-          <li><span class="feat-check check-glow">🌐</span> Web: Izrada prodajne landing stranice s visokom stopom konverzije</li>
-          <li><span class="feat-check check-glow">🤖</span> AI Lead &amp; Booking Engine: AI agent koji zakazuje termine u kalendar i odgovara u 3 sekunde</li>
-          <li><span class="feat-check check-glow">📊</span> Mjesečni izvještaj: Detaljna analitika, uvid u konverzije i optimizacija budžeta</li>
-          <li><span class="feat-check check-glow">🛡️</span> 30 dana garancija na izvedbu</li>
-        </ul>
-
-        <button type="button" class="price-cta btn-glow">Odaberi Plus Paket ➔</button>
       </div>
 
       <!-- Card 3: Market Leader Paket -->
-      <div class="price-card">
-        <div class="price-header">
-          <span class="plan-target-tag">Za ekspanziju i dominaciju</span>
-          <h3>Market Leader</h3>
-          <p>Potpuna marketing i AI automatizacija za lidere u svojoj niši</p>
+      <div class="price-card" data-pkg-name="Market Leader Paket">
+        <div class="price-card-flipper">
+          
+          <!-- FRONT SIDE (PACKAGE DETAILS) -->
+          <div class="price-card-front">
+            <div class="price-header">
+              <span class="plan-target-tag">Za ekspanziju i dominaciju</span>
+              <h3>Market Leader</h3>
+              <p>Potpuna marketing i AI automatizacija za lidere u svojoj niši</p>
+            </div>
+
+            <div class="price-value-box">
+              <span class="currency">€</span>
+              <span class="price-amount" id="price-ai">2,150</span>
+              <span class="period">/mjesečno</span>
+            </div>
+
+            <!-- Unified Package Features -->
+            <ul class="price-features">
+              <li><span class="feat-check">📸</span> Foto &amp; Video Produkcija: Produkcija ekskluzivnog foto i video sadržaja na lokaciji</li>
+              <li><span class="feat-check">📣</span> Oglasi &amp; Mreže: Multi-kanalne Meta, Google &amp; TikTok kampanje + 16 objava mjesečno</li>
+              <li><span class="feat-check">🌐</span> Web: Kompletan web ili više namjenskih landing stranica s copywritingom</li>
+              <li><span class="feat-check">🤖</span> Custom AI Sustav: Napredni AI asistent integriran u vaš CRM i bazu s e-mail slijedom</li>
+              <li><span class="feat-check">📊</span> Mjesečni izvještaj: Tjedni i mjesečni analitički izvještaji s uvidom u CAC, ROAS i ROI</li>
+            </ul>
+
+            <button type="button" class="price-cta card-flip-btn">Započni s Market Leader Paketom ➔</button>
+          </div>
+
+          <!-- BACK SIDE (4-QUESTION FORM) -->
+          <div class="price-card-back">
+            <div class="card-back-header">
+              <span class="card-back-badge">⚡ Odabran: Market Leader (2.150 €/mj.)</span>
+              <button type="button" class="card-unflip-btn" title="Okreni natrag">Okreni natrag ↺</button>
+            </div>
+
+            <form class="card-back-form">
+              <h4 class="card-back-title">Unesite vaše kontakt podatke</h4>
+              <p class="card-back-sub">Uvodni 30-minutni poziv i priprema analize.</p>
+
+              <div class="card-back-group">
+                <label>Ime i prezime *</label>
+                <input type="text" class="input-name" required placeholder="npr. Ivan Horvat" />
+              </div>
+
+              <div class="card-back-group">
+                <label>Tvrtka / Web *</label>
+                <input type="text" class="input-company" required placeholder="npr. Moja Tvrtka d.o.o." />
+              </div>
+
+              <div class="card-back-group">
+                <label>E-mail adresa *</label>
+                <input type="email" class="input-email" required placeholder="npr. ivan@tvrtka.hr" />
+              </div>
+
+              <div class="card-back-group">
+                <label>Broj mobitela *</label>
+                <input type="tel" class="input-phone" required placeholder="npr. 091 234 5678" />
+              </div>
+
+              <button type="submit" class="card-back-submit-btn">Potvrdi ➔</button>
+            </form>
+
+            <div class="card-back-success" style="display: none;">
+              <div class="modal-success-icon">✓</div>
+              <h4>Upit uspješno poslan!</h4>
+              <p class="card-success-msg">Kontaktirat ćemo vas u najkraćem roku.</p>
+              <button type="button" class="card-unflip-btn btn-success-unflip">Zatvori ↺</button>
+            </div>
+          </div>
+
         </div>
-
-        <div class="price-value-box">
-          <span class="currency">€</span>
-          <span class="price-amount" id="price-ai">2,150</span>
-          <span class="period">/mjesečno</span>
-        </div>
-
-        <!-- Unified Package Features -->
-        <ul class="price-features">
-          <li><span class="feat-check">📸</span> Foto &amp; Video Produkcija: Produkcija ekskluzivnog foto i video sadržaja na lokaciji</li>
-          <li><span class="feat-check">📣</span> Oglasi &amp; Mreže: Multi-kanalne Meta, Google &amp; TikTok kampanje + 16 objava mjesečno</li>
-          <li><span class="feat-check">🌐</span> Web: Kompletan web ili više namjenskih landing stranica s copywritingom</li>
-          <li><span class="feat-check">🤖</span> Custom AI Sustav: Napredni AI asistent integriran u vaš CRM i bazu s e-mail slijedom</li>
-          <li><span class="feat-check">📊</span> Mjesečni izvještaj: Tjedni i mjesečni analitički izvještaji s uvidom u CAC, ROAS i ROI</li>
-        </ul>
-
-        <button type="button" class="price-cta">Započni s Market Leader Paketom ➔</button>
       </div>
 
     <!-- High-Trust B2B Selling Bar -->
@@ -1450,6 +1596,6 @@
 
 
 
-  <script src="script.js?v=5.0.0"></script>
+  <script src="script.js?v=6.0.0"></script>
 </body>
 </html>
