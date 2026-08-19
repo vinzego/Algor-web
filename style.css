@@ -4243,8 +4243,21 @@ body {
   animation: scroll 45s linear infinite;
 }
 
+.gallery-track-reverse {
+  animation-direction: reverse !important;
+}
+
 .gallery-marquee-container:hover .gallery-marquee-track {
   animation-play-state: paused;
+}
+
+.footer-gallery-marquee {
+  background-color: transparent !important;
+  padding: 24px 0 36px 0 !important;
+  margin: 32px 0 !important;
+  border-radius: 0 !important;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent) !important;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent) !important;
 }
 
 .gallery-marquee-row {
