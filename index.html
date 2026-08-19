@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=17.0.0">
+  <link rel="stylesheet" href="style.css?v=18.0.0">
 </head>
 <body>
 
@@ -1468,10 +1468,11 @@
       </button>
     </div>
 
+    <!-- STEP 1: Contact Form -->
     <form id="mobile-sheet-form" class="sheet-form">
       <div class="sheet-title-group">
         <h3 class="sheet-title">Započnimo suradnju</h3>
-        <p class="sheet-subtitle">Unesite podatke i javljamo vam se unutar 2 sata za pripremu analize.</p>
+        <p class="sheet-subtitle">Unesite kontakt podatke za pripremu besplatnog audita ili analize.</p>
       </div>
 
       <div class="sheet-inputs">
@@ -1496,9 +1497,41 @@
         </div>
       </div>
 
-      <button type="submit" class="sheet-submit-btn">Potvrdi i Pošalji ➔</button>
+      <button type="submit" class="sheet-submit-btn">Nastavi na Kalendar ➔</button>
     </form>
 
+    <!-- STEP 2: Google Calendar Step (Optional) -->
+    <div id="sheet-calendar-step" class="sheet-calendar-step" style="display: none;">
+      <div class="sheet-title-group">
+        <h3 class="sheet-title">Odaberite termin u Google Kalendaru</h3>
+        <p class="sheet-subtitle">Odaberite datum i vrijeme za 30-minutni poziv (nije obavezno).</p>
+      </div>
+
+      <!-- Calendar Date & Time Selector -->
+      <div class="gcal-picker-box">
+        <label class="gcal-label">1. Odaberite dan:</label>
+        <div class="gcal-days-grid">
+          <button type="button" class="gcal-day-btn active" data-date="Ponedjeljak, 17. Kol">Pon, 17. Kol</button>
+          <button type="button" class="gcal-day-btn" data-date="Utorak, 18. Kol">Uto, 18. Kol</button>
+          <button type="button" class="gcal-day-btn" data-date="Srijeda, 19. Kol">Sri, 19. Kol</button>
+        </div>
+
+        <label class="gcal-label" style="margin-top: 10px;">2. Odaberite vrijeme poziva:</label>
+        <div class="gcal-slots-grid">
+          <button type="button" class="gcal-slot-btn active" data-time="10:00">10:00h</button>
+          <button type="button" class="gcal-slot-btn" data-time="11:30">11:30h</button>
+          <button type="button" class="gcal-slot-btn" data-time="14:00">14:00h</button>
+          <button type="button" class="gcal-slot-btn" data-time="16:30">16:30h</button>
+        </div>
+      </div>
+
+      <div class="gcal-actions-row">
+        <button type="button" id="gcal-skip-btn" class="gcal-skip-btn">Preskoči ➔</button>
+        <button type="button" id="gcal-confirm-btn" class="sheet-submit-btn gcal-confirm-btn">Potvrdi termin ➔</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Success Box -->
     <div id="sheet-success-box" class="sheet-success" style="display: none;">
       <div class="modal-success-icon">✓</div>
       <h4>Upit uspješno poslan!</h4>
@@ -1507,6 +1540,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=17.0.0"></script>
+  <script src="script.js?v=18.0.0"></script>
 </body>
 </html>

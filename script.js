@@ -266,24 +266,33 @@ document.addEventListener('DOMContentLoaded', () => {
   if (priceCombined) priceCombined.textContent = '1,250';
   if (priceAi) priceAi.textContent = '2,150';
 
-  // 10. Mobile Bottom Sheet Slide-Up Form System
+  // 10. Mobile Bottom Sheet Slide-Up Form & 2-Step Calendar System
   const overlay = document.getElementById('mobile-sheet-overlay');
   const sheet = document.getElementById('mobile-bottom-sheet');
   const sheetCloseBtn = document.getElementById('sheet-close-btn');
   const sheetPkgText = document.getElementById('sheet-pkg-text');
   const sheetForm = document.getElementById('mobile-sheet-form');
+  const sheetCalendarStep = document.getElementById('sheet-calendar-step');
   const sheetSuccessBox = document.getElementById('sheet-success-box');
   const sheetSuccessCloseBtn = document.getElementById('sheet-success-close-btn');
 
+  const gcalSkipBtn = document.getElementById('gcal-skip-btn');
+  const gcalConfirmBtn = document.getElementById('gcal-confirm-btn');
+
   let selectedPackageFull = 'Plus (1.250 €/mj.)';
+  let clientName = 'Klijent';
+  let clientEmail = 'vašu e-mail adresu';
+  let selectedDate = 'Ponedjeljak, 17. Kol';
+  let selectedTime = '11:30';
 
   function openMobileSheet(pkgTitle, pkgPrice) {
     selectedPackageFull = `${pkgTitle} (${pkgPrice})`;
     if (sheetPkgText) {
-      sheetPkgText.innerHTML = `Odabran paket: <strong class="sheet-pkg-name-highlight">${selectedPackageFull}</strong>`;
+      sheetPkgText.innerHTML = `Odabran: <strong class="sheet-pkg-name-highlight">${selectedPackageFull}</strong>`;
     }
 
     if (sheetForm) sheetForm.style.display = 'flex';
+    if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
     if (sheetSuccessBox) sheetSuccessBox.style.display = 'none';
 
     if (overlay) {
@@ -312,7 +321,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (sheetCloseBtn) sheetCloseBtn.addEventListener('click', closeMobileSheet);
   if (sheetSuccessCloseBtn) sheetSuccessCloseBtn.addEventListener('click', closeMobileSheet);
 
-  // Click delegation on package CTAs
+  // Calendar Picker Selection Logic
+  const dayBtns = document.querySelectorAll('.gcal-day-btn');
+  const slotBtns = document.querySelectorAll('.gcal-slot-btn');
+
+  dayBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      dayBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedDate = btn.getAttribute('data-date') || selectedDate;
+    });
+  });
+
+  slotBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      slotBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedTime = btn.getAttribute('data-time') || selectedTime;
+    });
+  });
+
+  // Click delegation on CTA buttons (Hero CTA & Package CTAs)
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn');
     if (btn) {
@@ -320,8 +349,8 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
 
       const card = btn.closest('.price-card');
-      let title = 'Plus';
-      let priceText = '1.250 €/mj.';
+      let title = 'Besplatan Audit';
+      let priceText = '0 €';
 
       if (card) {
         const titleEl = card.querySelector('h3');
@@ -335,33 +364,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Step 1: Form Submit -> Move to Calendar Step
   if (sheetForm) {
     sheetForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const nameInput = document.getElementById('sheet-input-name');
-      const name = nameInput && nameInput.value ? nameInput.value : 'Klijent';
-      const submitBtn = sheetForm.querySelector('.sheet-submit-btn');
+      const emailInput = document.getElementById('sheet-input-email');
+      clientName = nameInput && nameInput.value ? nameInput.value : 'Klijent';
+      clientEmail = emailInput && emailInput.value ? emailInput.value : 'vašu e-mail adresu';
 
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Šaljem upit...</span>';
+      sheetForm.style.display = 'none';
+      if (sheetCalendarStep) {
+        sheetCalendarStep.style.display = 'flex';
       }
+    });
+  }
+
+  // Step 2: Confirm Calendar Slot -> Move to Success
+  if (gcalConfirmBtn) {
+    gcalConfirmBtn.addEventListener('click', () => {
+      gcalConfirmBtn.disabled = true;
+      gcalConfirmBtn.innerHTML = '<span>Potvrđujem...</span>';
 
       setTimeout(() => {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<span>Potvrdi i Pošalji ➔</span>';
-        }
-        sheetForm.reset();
-        sheetForm.style.display = 'none';
+        gcalConfirmBtn.disabled = false;
+        gcalConfirmBtn.innerHTML = '<span>Potvrdi termin ➔</span>';
+
+        if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
         if (sheetSuccessBox) {
           sheetSuccessBox.style.display = 'flex';
           const msg = document.getElementById('sheet-success-desc');
           if (msg) {
-            msg.textContent = `Hvala vam, ${name}! Vaš upit za paket ${selectedPackageFull} je uspješno poslan. Kontaktirat ćemo vas u roku od 2 sata.`;
+            msg.textContent = `Hvala vam, ${clientName}! Pozivnica u Google Kalendaru za ${selectedDate} u ${selectedTime}h i upit za ${selectedPackageFull} uspješno su poslani na ${clientEmail}.`;
           }
         }
       }, 500);
+    });
+  }
+
+  // Step 2: Skip Calendar Slot -> Move to Success
+  if (gcalSkipBtn) {
+    gcalSkipBtn.addEventListener('click', () => {
+      if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
+      if (sheetSuccessBox) {
+        sheetSuccessBox.style.display = 'flex';
+        const msg = document.getElementById('sheet-success-desc');
+        if (msg) {
+          msg.textContent = `Hvala vam, ${clientName}! Vaš upit za ${selectedPackageFull} je uspješno poslan. Javljamo vam se u roku od 2 sata.`;
+        }
+      }
     });
   }
 

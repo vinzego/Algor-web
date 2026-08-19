@@ -8244,3 +8244,103 @@ html, body {
   max-width: 320px;
   line-height: 1.5;
 }
+
+/* Google Calendar Step Styling */
+.sheet-calendar-step {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.gcal-picker-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.gcal-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.gcal-days-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.gcal-day-btn {
+  background: #fafafa;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gcal-day-btn.active,
+.gcal-day-btn:hover {
+  background: #0f172a;
+  color: #dffc2b;
+  border-color: #0f172a;
+}
+
+.gcal-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.gcal-slot-btn {
+  background: #fafafa;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 9px 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gcal-slot-btn.active,
+.gcal-slot-btn:hover {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
+.gcal-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.gcal-skip-btn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 8px;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.gcal-skip-btn:hover {
+  color: #0f172a;
+}
+
+.gcal-confirm-btn {
+  flex: 1;
+}
