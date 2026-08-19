@@ -7945,11 +7945,22 @@ html, body {
     box-sizing: border-box !important;
   }
 
-  .ba-card {
+  #before-after .ba-card,
+  .ba-card,
+  .ba-before,
+  .ba-after {
     padding: 24px 20px !important;
     border-radius: 22px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    transform: none !important;
+  }
+
+  #before-after .ba-card:hover,
+  .ba-card:hover,
+  .ba-before:hover,
+  .ba-after:hover {
+    transform: none !important;
   }
 
   .ba-card-header {
