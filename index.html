@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=33.0.0">
+  <link rel="stylesheet" href="style.css?v=34.0.0">
 </head>
 <body>
 
@@ -326,26 +326,6 @@
 
       </div>
 
-    </div>
-
-    <!-- Looping Image Gallery (6 images, 4:3 Aspect Ratio) -->
-    <div class="gallery-marquee-container">
-      <div class="gallery-marquee-track">
-        <!-- First Set of Images -->
-        <div class="gallery-marquee-row">
-          <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
-        </div>
-        <!-- Second Set of Images (Duplicate for seamless loop) -->
-        <div class="gallery-marquee-row" aria-hidden="true">
-          <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
-        </div>
-      </div>
     </div>
   </section>
   </div>
@@ -1324,26 +1304,53 @@
       </form>
     </div>
 
-    <!-- Footer Reverse Looping Image Gallery (Moves Left to Right) -->
-    <div class="gallery-marquee-container footer-gallery-marquee">
-      <div class="gallery-marquee-track gallery-track-reverse">
-        <!-- First Set of Images -->
-        <div class="gallery-marquee-row">
-          <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
-        </div>
-        <!-- Second Set of Images (Duplicate for seamless loop) -->
-        <div class="gallery-marquee-row" aria-hidden="true">
-          <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
-          <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
+    <!-- Footer Dual Stacked Image Galleries (Top: Right to Left, Bottom: Left to Right) -->
+    <div class="footer-galleries-stack">
+      
+      <!-- Gallery 1 (Top: Scrolls Right to Left) -->
+      <div class="gallery-marquee-container footer-gallery-marquee">
+        <div class="gallery-marquee-track">
+          <!-- First Set of Images -->
+          <div class="gallery-marquee-row">
+            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
+          </div>
+          <!-- Second Set of Images (Duplicate for seamless loop) -->
+          <div class="gallery-marquee-row" aria-hidden="true">
+            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
+          </div>
         </div>
       </div>
+
+      <!-- Gallery 2 (Bottom: Scrolls Left to Right) -->
+      <div class="gallery-marquee-container footer-gallery-marquee">
+        <div class="gallery-marquee-track gallery-track-reverse">
+          <!-- First Set of Images -->
+          <div class="gallery-marquee-row">
+            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
+          </div>
+          <!-- Second Set of Images (Duplicate for seamless loop) -->
+          <div class="gallery-marquee-row" aria-hidden="true">
+            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Bottom Part: Black Card (Nested) -->
@@ -1513,6 +1520,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=33.0.0"></script>
+  <script src="script.js?v=34.0.0"></script>
 </body>
 </html>

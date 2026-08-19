@@ -4251,10 +4251,18 @@ body {
   animation-play-state: paused;
 }
 
+.footer-galleries-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  margin: 36px 0 44px 0 !important;
+  width: 100% !important;
+}
+
 .footer-gallery-marquee {
   background-color: transparent !important;
-  padding: 24px 0 36px 0 !important;
-  margin: 32px 0 !important;
+  padding: 8px 0 !important;
+  margin: 0 !important;
   border-radius: 0 !important;
   mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent) !important;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent) !important;
