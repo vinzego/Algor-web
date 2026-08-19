@@ -7927,7 +7927,7 @@ html, body {
 }
 
 /* ==========================================================================
-   PERFECT 2-STATE 3D CARD FLIP SYSTEM (Unified Border-Radius, No Overlaps)
+   PERFECT 2-STATE 3D CARD FLIP SYSTEM (Single Border, Clean Badge, No Overflow)
    ========================================================================== */
 .pricing-grid {
   display: grid;
@@ -7941,8 +7941,8 @@ html, body {
 .price-card {
   position: relative;
   width: 100%;
-  min-height: 620px;
-  height: 620px;
+  min-height: 660px;
+  height: 660px;
   border-radius: 28px !important;
   box-sizing: border-box;
   background: transparent !important;
@@ -7955,7 +7955,7 @@ html, body {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 620px;
+  min-height: 660px;
   transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
   border-radius: 28px !important;
@@ -7972,7 +7972,7 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  min-height: 620px;
+  min-height: 660px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   border-radius: 28px !important;
@@ -7983,7 +7983,7 @@ html, body {
   justify-content: space-between;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   overflow: hidden !important;
 }
 
@@ -7998,11 +7998,11 @@ html, body {
   border-color: #e2e8f0;
 }
 
-/* Featured (Popular) Card Styling */
+/* Featured (Popular) Card - SINGLE CLEAN ACCENT BORDER (No double glows) */
 .popular-card .price-card-front,
 .popular-card .price-card-back {
-  border: 2px solid #10b981 !important;
-  box-shadow: 0 16px 40px rgba(16, 185, 129, 0.12) !important;
+  border: 2px solid #0f172a !important;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08) !important;
 }
 
 .popular-tag {
@@ -8010,21 +8010,21 @@ html, body {
   align-items: center;
   justify-content: center;
   align-self: center;
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: #ffffff;
+  background: #0f172a;
+  color: #dffc2b;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.6px;
   text-transform: uppercase;
-  padding: 6px 16px;
+  padding: 5px 14px;
   border-radius: 20px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 /* Features List Clean Layout */
 .price-features {
-  margin: 16px 0;
+  margin: 14px 0;
   padding: 0;
   list-style: none;
   display: flex;
@@ -8053,6 +8053,7 @@ html, body {
   font-size: 13.5px;
   font-weight: 700;
   align-self: stretch;
+  flex-shrink: 0;
 }
 
 /* Back Side Form Layout */
@@ -8165,8 +8166,8 @@ html, body {
   .price-card-inner,
   .price-card-front,
   .price-card-back {
-    min-height: 640px !important;
-    height: 640px !important;
+    min-height: 680px !important;
+    height: 680px !important;
   }
 
   .price-card-front,
