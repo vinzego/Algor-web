@@ -8215,17 +8215,17 @@ html, body {
 }
 
 /* ==========================================================================
-   MOBILE BOTTOM SHEET SLIDE-UP FORM (100% Width, ~80% Height, Backdrop Blur)
+   ULTRA-PREMIUM PACKAGE MODAL & MOBILE BOTTOM SHEET SYSTEM
    ========================================================================== */
 .mobile-sheet-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 99998;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
 }
 
@@ -8234,39 +8234,65 @@ html, body {
   pointer-events: auto;
 }
 
+/* Desktop & Laptop Modal Styling (Centered Card Popup) */
 .mobile-bottom-sheet {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 80vh;
-  max-height: 82vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%) scale(0.95);
+  width: 90%;
+  max-width: 520px;
+  height: auto;
+  max-height: 88vh;
   background: #ffffff;
-  border-top-left-radius: 28px;
-  border-top-right-radius: 28px;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+  border-radius: 28px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 30px 70px -15px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(15, 23, 42, 0.05);
   z-index: 99999;
-  padding: 16px 22px 28px 22px;
+  padding: 24px 28px 32px 28px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  transform: translateY(100%);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 .mobile-bottom-sheet.active {
-  transform: translateY(0);
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Mobile Devices (Bottom Slide-Up Sheet) */
+@media (max-width: 768px) {
+  .mobile-bottom-sheet {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+    width: 100%;
+    max-width: 100%;
+    height: 82vh;
+    max-height: 85vh;
+    border-radius: 28px 28px 0 0;
+    border-bottom: none;
+    padding: 16px 22px 28px 22px;
+    box-shadow: 0 -12px 40px rgba(15, 23, 42, 0.22);
+  }
+
+  .mobile-bottom-sheet.active {
+    transform: translateY(0);
+  }
 }
 
 .sheet-drag-handle {
-  width: 44px;
+  width: 42px;
   height: 5px;
   background-color: #cbd5e1;
   border-radius: 10px;
-  margin: 0 auto 14px auto;
+  margin: 0 auto 16px auto;
   flex-shrink: 0;
 }
 
@@ -8274,21 +8300,21 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  border: 1px solid rgba(223, 252, 43, 0.25);
+  border: 1px solid rgba(223, 252, 43, 0.3);
   border-radius: 20px;
-  padding: 10px 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+  padding: 12px 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
   flex-shrink: 0;
 }
 
 .sheet-pkg-badge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: 10px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #ffffff;
   letter-spacing: 0.2px;
@@ -8300,12 +8326,12 @@ html, body {
   justify-content: center;
   background: #dffc2b;
   color: #0f172a;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
-  box-shadow: 0 0 10px rgba(223, 252, 43, 0.4);
+  box-shadow: 0 0 12px rgba(223, 252, 43, 0.45);
   flex-shrink: 0;
 }
 
@@ -8315,18 +8341,18 @@ html, body {
 }
 
 .sheet-close-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 14px;
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   flex-shrink: 0;
 }
 
@@ -8334,6 +8360,7 @@ html, body {
   background: #dffc2b;
   color: #0f172a;
   border-color: #dffc2b;
+  transform: translateY(-1px);
 }
 
 .sheet-form {
@@ -8344,45 +8371,49 @@ html, body {
 }
 
 .sheet-title {
-  font-size: 19px;
+  font-size: 21px;
   font-weight: 800;
   color: #0f172a;
   margin-bottom: 4px;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
 }
 
 .sheet-subtitle {
-  font-size: 13px;
+  font-size: 13.5px;
   color: #64748b;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  line-height: 1.45;
 }
 
 .sheet-inputs {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
 .sheet-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
 }
 
 .sheet-group label {
   font-size: 11.5px;
   font-weight: 700;
-  color: #334155;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .sheet-group input {
-  background-color: #fafafa;
+  background-color: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 11px 14px;
-  color: #121316;
+  border-radius: 14px;
+  padding: 13px 16px;
+  color: #0f172a;
   font-size: 14px;
+  font-weight: 500;
   outline: none;
   transition: all 0.25s ease;
 }
@@ -8390,25 +8421,32 @@ html, body {
 .sheet-group input:focus {
   border-color: #0f172a;
   background-color: #ffffff;
-  box-shadow: 0 0 15px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
 }
 
 .sheet-submit-btn {
-  background-color: #0f172a;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
   color: #ffffff;
   border: none;
   border-radius: 30px;
-  padding: 14px;
-  font-size: 14px;
+  padding: 16px;
+  font-size: 14.5px;
   font-weight: 700;
   cursor: pointer;
   width: 100%;
   transition: all 0.25s ease;
   margin-top: auto;
+  box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .sheet-submit-btn:hover {
-  background-color: #10b981;
+  background: #10b981;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -4px rgba(16, 185, 129, 0.35);
 }
 
 .sheet-success {
@@ -8418,21 +8456,22 @@ html, body {
   justify-content: center;
   text-align: center;
   flex: 1;
-  gap: 12px;
-  padding: 20px 0;
+  gap: 14px;
+  padding: 24px 0;
 }
 
 .sheet-success h4 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
   color: #0f172a;
+  margin: 0;
 }
 
 .sheet-success-msg {
-  font-size: 13.5px;
+  font-size: 14px;
   color: #64748b;
-  max-width: 320px;
-  line-height: 1.5;
+  max-width: 340px;
+  line-height: 1.55;
 }
 
 /* Google Calendar Step Styling */
@@ -8446,14 +8485,16 @@ html, body {
 .gcal-picker-box {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .gcal-label {
   font-size: 12px;
   font-weight: 700;
-  color: #334155;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .gcal-days-grid {
@@ -8463,15 +8504,15 @@ html, body {
 }
 
 .gcal-day-btn {
-  background: #fafafa;
+  background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 10px 6px;
-  font-size: 12.5px;
+  border-radius: 14px;
+  padding: 12px 8px;
+  font-size: 13px;
   font-weight: 700;
   color: #334155;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .gcal-day-btn.active,
@@ -8479,6 +8520,7 @@ html, body {
   background: #0f172a;
   color: #dffc2b;
   border-color: #0f172a;
+  box-shadow: 0 6px 15px -3px rgba(15, 23, 42, 0.2);
 }
 
 .gcal-slots-grid {
@@ -8488,15 +8530,15 @@ html, body {
 }
 
 .gcal-slot-btn {
-  background: #fafafa;
+  background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 9px 4px;
-  font-size: 12px;
+  border-radius: 12px;
+  padding: 10px 6px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #334155;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .gcal-slot-btn.active,
@@ -8504,13 +8546,14 @@ html, body {
   background: #10b981;
   color: #ffffff;
   border-color: #10b981;
+  box-shadow: 0 6px 15px -3px rgba(16, 185, 129, 0.3);
 }
 
 .gcal-actions-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
   margin-top: auto;
 }
 
@@ -8518,10 +8561,10 @@ html, body {
   background: transparent;
   border: none;
   color: #64748b;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
-  padding: 10px 8px;
+  padding: 12px 10px;
   text-decoration: underline;
   transition: color 0.2s ease;
   white-space: nowrap;
