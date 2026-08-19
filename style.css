@@ -7927,82 +7927,37 @@ html, body {
 }
 
 /* ==========================================================================
-   PERFECT 2-STATE 3D CARD FLIP SYSTEM (Single Border, Clean Badge, No Overflow)
+   CLEAN STATIC PRICING CARDS SYSTEM (Zero 2-States, Zero Flips, Zero Modals)
    ========================================================================== */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   align-items: stretch;
-  perspective: 1200px;
   box-sizing: border-box;
 }
 
 .price-card {
-  position: relative;
-  width: 100%;
-  min-height: 590px;
-  height: 590px;
-  border-radius: 28px !important;
-  box-sizing: border-box;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  box-shadow: none !important;
-}
-
-.price-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 590px;
-  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-  transform-style: preserve-3d;
-  border-radius: 28px !important;
-}
-
-.price-card.is-flipped .price-card-inner {
-  transform: rotateY(180deg);
-}
-
-.price-card-front,
-.price-card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 590px;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 28px !important;
-  padding: 24px 22px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 28px;
+  padding: 32px 28px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-  overflow: hidden !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.price-card-front {
-  z-index: 2;
-  transform: rotateY(0deg);
+.price-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.07);
 }
 
-.price-card-back {
-  transform: rotateY(180deg);
-  background: #ffffff;
-  border-color: #e2e8f0;
-}
-
-/* Featured (Popular) Card - SINGLE CLEAN ACCENT BORDER (No double glows) */
-.popular-card .price-card-front,
-.popular-card .price-card-back {
-  border: 2px solid #0f172a !important;
-  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08) !important;
+.price-card.popular-card {
+  border: 2px solid #0f172a;
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
 }
 
 .header-badge-row {
@@ -8028,31 +7983,27 @@ html, body {
   white-space: nowrap;
 }
 
-/* Features List Clean Layout */
 .price-features {
-  margin: 12px 0;
+  margin: 20px 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   flex: 1;
-  justify-content: flex-start;
 }
 
 .price-features li {
   font-size: 13px;
-  line-height: 1.4;
+  line-height: 1.45;
   color: #334155;
   display: flex;
   align-items: flex-start;
   gap: 8px;
 }
 
-/* Front & Back CTA Button Container Alignment */
-.price-card-front .price-cta,
-.price-card-back .card-back-submit-btn {
-  margin-top: 12px;
+.price-cta {
+  margin-top: 16px;
   width: 100%;
   box-sizing: border-box;
   border-radius: 24px;
@@ -8060,125 +8011,15 @@ html, body {
   font-size: 13.5px;
   font-weight: 700;
   align-self: stretch;
-  flex-shrink: 0;
-}
-
-/* Back Side Form Layout */
-.card-back-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  background-color: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 8px 12px;
-  margin-bottom: 12px;
-}
-
-.card-back-badge {
-  font-size: 12px;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.card-unflip-btn {
-  background: transparent;
-  border: none;
-  color: #64748b;
-  font-size: 11.5px;
-  font-weight: 700;
   cursor: pointer;
-  padding: 2px 6px;
-  text-decoration: underline;
-  transition: color 0.2s ease;
 }
 
-.card-unflip-btn:hover {
-  color: #0f172a;
-}
-
-.card-back-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-}
-
-.card-back-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.card-back-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.card-back-group label {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #334155;
-}
-
-.card-back-group input {
-  background-color: #fafafa;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 9px 12px;
-  color: #121316;
-  font-size: 13px;
-  outline: none;
-  transition: all 0.2s ease;
-}
-
-.card-back-group input:focus {
-  border-color: #0f172a;
-  background-color: #ffffff;
-}
-
-.card-back-success {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100%;
-  gap: 10px;
-  padding: 20px 0;
-}
-
-.card-back-success h4 {
-  font-size: 18px;
-  font-weight: 800;
-  color: #0f172a;
-}
-
-.card-success-msg {
-  font-size: 13px;
-  color: #64748b;
-}
-
-/* Mobile Responsiveness - No Card Overlapping! */
 @media (max-width: 992px) {
   .pricing-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 36px !important;
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
-
-  .price-card,
-  .price-card-inner,
-  .price-card-front,
-  .price-card-back {
-    min-height: 600px !important;
-    height: 600px !important;
-  }
-
-  .price-card-front,
-  .price-card-back {
-    padding: 24px 18px !important;
+  .price-card {
+    padding: 24px 20px;
   }
 }

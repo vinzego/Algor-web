@@ -266,64 +266,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (priceCombined) priceCombined.textContent = '1,250';
   if (priceAi) priceAi.textContent = '2,150';
 
-  // 10. PURE 3D CARD FLIP ENGINE (1-to-1 Flip, Same Dimensions, Exact CTA Placement)
+  // 10. Static Pricing Section Click Handler (Prevents default action, cards stay 100% static)
+  window.openBookingModal = function() {
+    return false;
+  };
+  window.closeBookingModal = function() {
+    return false;
+  };
+
   document.addEventListener('click', (e) => {
-    // 1. Click on Front CTA Button -> Flip Card to Back (Show 4-Question Form)
-    const flipBtn = e.target.closest('.card-flip-btn');
-    if (flipBtn) {
+    const btn = e.target.closest('.price-cta, .select-pkg-btn, .custom-ai-link');
+    if (btn) {
       e.preventDefault();
       e.stopPropagation();
-      const card = flipBtn.closest('.price-card');
-      if (card) {
-        card.classList.add('is-flipped');
-      }
-      return;
-    }
-
-    // 2. Click on Unflip Button -> Flip Card Back to Front (Show Features)
-    const unflipBtn = e.target.closest('.card-unflip-btn');
-    if (unflipBtn) {
-      e.preventDefault();
-      e.stopPropagation();
-      const card = unflipBtn.closest('.price-card');
-      if (card) {
-        card.classList.remove('is-flipped');
-        const successBox = card.querySelector('.card-back-success');
-        const formBox = card.querySelector('.card-back-form');
-        if (successBox) successBox.style.display = 'none';
-        if (formBox) formBox.style.display = 'flex';
-      }
-      return;
-    }
-  });
-
-  // 3. Form Submission on Back Side of Card
-  document.addEventListener('submit', (e) => {
-    const form = e.target.closest('.card-back-form');
-    if (form) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const card = form.closest('.price-card');
-      if (!card) return;
-
-      const submitBtn = form.querySelector('.card-back-submit-btn');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Šaljem...</span>';
-      }
-
-      setTimeout(() => {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<span>Potvrdi ➔</span>';
-        }
-        form.style.display = 'none';
-        const successBox = card.querySelector('.card-back-success');
-        if (successBox) {
-          successBox.style.display = 'flex';
-        }
-      }, 400);
+      return false;
     }
   });
 
