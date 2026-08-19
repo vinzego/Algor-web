@@ -380,9 +380,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Step 2: Confirm Calendar Slot -> Move to Success
+  function sendInquiryToBackend(data) {
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).catch(err => console.log('CSV save:', err));
+  }
+
+  // Step 2: Confirm Calendar Slot -> Move to Success & Save CSV
   if (gcalConfirmBtn) {
     gcalConfirmBtn.addEventListener('click', () => {
+      const companyInput = document.getElementById('sheet-input-company');
+      const phoneInput = document.getElementById('sheet-input-phone');
+
+      const company = companyInput && companyInput.value ? companyInput.value : '';
+      const phone = phoneInput && phoneInput.value ? phoneInput.value : '';
+      const slotText = `${selectedDate} u ${selectedTime}h`;
+
+      sendInquiryToBackend({
+        name: clientName,
+        company: company,
+        email: clientEmail,
+        phone: phone,
+        package: selectedPackageFull,
+        calendarSlot: slotText
+      });
+
       gcalConfirmBtn.disabled = true;
       gcalConfirmBtn.innerHTML = '<span>Potvrđujem...</span>';
 
@@ -402,9 +426,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Step 2: Skip Calendar Slot -> Move to Success
+  // Step 2: Skip Calendar Slot -> Move to Success & Save CSV
   if (gcalSkipBtn) {
     gcalSkipBtn.addEventListener('click', () => {
+      const companyInput = document.getElementById('sheet-input-company');
+      const phoneInput = document.getElementById('sheet-input-phone');
+
+      const company = companyInput && companyInput.value ? companyInput.value : '';
+      const phone = phoneInput && phoneInput.value ? phoneInput.value : '';
+
+      sendInquiryToBackend({
+        name: clientName,
+        company: company,
+        email: clientEmail,
+        phone: phone,
+        package: selectedPackageFull,
+        calendarSlot: 'Preskočeno'
+      });
+
       if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
       if (sheetSuccessBox) {
         sheetSuccessBox.style.display = 'flex';
@@ -424,7 +463,20 @@ document.addEventListener('DOMContentLoaded', () => {
     footerContactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('footerName').value;
+      const company = document.getElementById('footerCompany').value;
+      const email = document.getElementById('footerEmail').value;
+      const phone = document.getElementById('footerPhone').value;
+      const pkg = document.getElementById('footerPackage').value;
       const submitBtn = footerContactForm.querySelector('.footer-form-submit-btn');
+
+      sendInquiryToBackend({
+        name: name,
+        company: company,
+        email: email,
+        phone: phone,
+        package: pkg,
+        calendarSlot: 'Upit s podnožja'
+      });
 
       if (submitBtn) {
         submitBtn.disabled = true;
