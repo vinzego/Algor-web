@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #f8f9fa;
   min-height: 100vh;
   display: block;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -19,11 +19,12 @@ body {
    SINGLE-COLUMN ANIMATED GLOWING MESH GRID HERO SECTION (White Theme)
 ------------------------------------------------------------- */
 .hero-single-column-mesh {
-  width: 100%;
-  max-width: 100%;
-  min-height: 100vh;
-  border-radius: 0;
-  background-color: #ffffff;
+  width: calc(100% - 32px);
+  max-width: none;
+  margin: 16px auto !important;
+  min-height: calc(100vh - 32px);
+  border-radius: 32px !important;
+  background-color: #f8f9fa !important;
   background-image: none !important;
   position: relative !important;
   overflow: hidden !important;
@@ -32,9 +33,8 @@ body {
   flex-direction: column !important;
   justify-content: space-between !important;
   align-items: center !important;
-  box-shadow: none;
-  border: none;
-  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+  border: 1px solid #e2e8f0;
   color: #121316;
 }
 
@@ -1652,11 +1652,20 @@ body {
 
 #about.no-card-box,
 .info-section-card.no-card-box {
-  background-color: #f8f9fa !important;
-  border: none !important;
+  width: calc(100% - 32px) !important;
+  max-width: none !important;
+  margin: 16px auto !important;
+  background-color: #e8e8e8 !important;
+  border: 1px solid #e2e8f0 !important;
   box-shadow: none !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
   padding-top: 80px !important;
   padding-bottom: 80px !important;
+}
+
+#about > * {
+  max-width: 100% !important;
 }
 
 .info-header {
@@ -2044,14 +2053,41 @@ body {
    PER-SECTION BACKGROUND COLORS
    Edit the background-color value for each section below.
 ===================================================== */
-#about         { background-color: #f8f9fa; }
-#marketing     { background-color: #ffffff; }
-#before-after  { background-color: #f1f5f9; }
+#about         { background-color: #e8e8e8; }
+
+.marketing-section-wrapper {
+  background-color: #0e0e10 !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+#marketing { 
+  background-color: #f8f9fa !important; 
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 0 48px 48px !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 2;
+  box-shadow: none !important;
+}
+
+#marketing > * {
+  max-width: none !important;
+}
+
+#marketing .process-sticky-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+#before-after  { background-color: #e8e8e8 !important; }
 #portfolio     { background-color: #ffffff; }
 #testimonials  { background-color: #f8f9fa; }
-#process       { background-color: #ffffff; }
-#ideal-fit     { background-color: #f1f5f9; }
-#faq           { background-color: #f8f9fa; }
+#process       { background-color: #e8e8e8 !important; }
+#ideal-fit     { background-color: #ffffff !important; }
+#faq           { background-color: #0e0e10 !important; }
 
 .dark-theme .info-title {
   color: #ffffff !important;
@@ -2949,6 +2985,43 @@ body {
   line-height: 1.5;
 }
 
+/* Dark Theme Overrides for #faq */
+#faq {
+  color: #ffffff !important;
+}
+
+#faq .info-title {
+  color: #ffffff !important;
+}
+
+#faq .info-subtitle {
+  color: #a1a1aa !important;
+}
+
+#faq .disclosure {
+  background: #18181b !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+#faq .disclosure:hover,
+#faq .disclosure[open] {
+  background: #27272a !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+#faq .disclosure summary {
+  color: #ffffff !important;
+}
+
+#faq .disclosure summary::after {
+  color: #dffc2b !important;
+}
+
+#faq .disclosure p {
+  color: #d4d4d8 !important;
+}
+
 /* Testimonials stack */
 .testimonials-stack {
   display: flex;
@@ -3658,6 +3731,39 @@ body {
   }
 }
 
+/* FAQ Section Outer Wrapper (white background behind cut-out top corners) */
+.faq-section-wrapper {
+  background-color: #ffffff !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* FAQ Marquee Container (dark background with top rounded corners) */
+.faq-marquee-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  background-color: #0e0e10 !important;
+  border-radius: 48px 48px 0 0 !important;
+  overflow: hidden !important;
+  padding: 60px 0 20px 0 !important;
+}
+
+.faq-marquee-container .text-marquee-row span {
+  color: #ffffff !important;
+}
+
+.faq-marquee-container .marquee-spinner {
+  color: #dffc2b !important;
+}
+
+@media (max-width: 900px) {
+  .faq-marquee-container {
+    border-radius: 44px 44px 0 0 !important;
+  }
+}
+
 /* Responsive updates for Large Text Marquee */
 @media (max-width: 1100px) {
   .text-marquee-container {
@@ -3697,7 +3803,7 @@ body {
    Nested Dark Brand Footer Card with Conversion Block (Framer style)
 ------------------------------------------------------------- */
 .footer-hero-and-card-section {
-  background: linear-gradient(180deg, transparent 0%, rgba(223, 252, 43, 0.25) 50%, #dffc2b 100%);
+  background: #0e0e10 !important;
   width: 100%;
   margin: 0;
   display: flex;
@@ -3721,7 +3827,7 @@ body {
 .footer-conv-title {
   font-size: 54px;
   font-weight: 800;
-  color: #121316;
+  color: #ffffff !important;
   max-width: 900px;
   line-height: 1.15;
   letter-spacing: -2px;
@@ -3730,7 +3836,7 @@ body {
 
 .footer-conv-subtitle {
   font-size: 18px;
-  color: #4a5568;
+  color: #a1a1aa !important;
   max-width: 620px;
   line-height: 1.6;
   margin: 0;
@@ -3743,13 +3849,13 @@ body {
 }
 
 .footer-form-grid-box {
-  background-color: rgba(255, 255, 255, 0.45);
-  border: 1px solid rgba(18, 19, 22, 0.12);
+  background-color: #18181b !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 28px;
   padding: 24px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -3757,9 +3863,9 @@ body {
 }
 
 .footer-form-grid-box:focus-within {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-color: #121316;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  background-color: #27272a !important;
+  border-color: #dffc2b !important;
+  box-shadow: 0 15px 40px rgba(223, 252, 43, 0.15) !important;
 }
 
 .footer-inputs-top-row {
@@ -3771,13 +3877,13 @@ body {
 .footer-form-field input,
 .footer-textarea-row textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(18, 19, 22, 0.12);
+  background: #09090b !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 14px;
   padding: 12px 16px;
   font-size: 14px;
   font-weight: 600;
-  color: #121316;
+  color: #ffffff !important;
   outline: none;
   font-family: inherit;
   transition: all 0.25s ease;
@@ -3791,14 +3897,14 @@ body {
 
 .footer-form-field input:focus,
 .footer-textarea-row textarea:focus {
-  background: #ffffff;
-  border-color: #121316;
-  box-shadow: 0 0 15px rgba(18, 19, 22, 0.1);
+  background: #000000 !important;
+  border-color: #dffc2b !important;
+  box-shadow: 0 0 15px rgba(223, 252, 43, 0.2) !important;
 }
 
 .footer-form-field input::placeholder,
 .footer-textarea-row textarea::placeholder {
-  color: #64748b;
+  color: #71717a !important;
   font-weight: 500;
 }
 
@@ -3808,8 +3914,8 @@ body {
 }
 
 .footer-form-submit-btn {
-  background-color: #121316;
-  color: #dffc2b;
+  background-color: #dffc2b !important;
+  color: #09090b !important;
   border: none;
   border-radius: 40px;
   padding: 14px 36px;
@@ -3818,7 +3924,13 @@ body {
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 15px rgba(18, 19, 22, 0.2);
+  box-shadow: 0 4px 15px rgba(223, 252, 43, 0.25) !important;
+}
+
+.footer-form-submit-btn:hover {
+  background-color: #baff59 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(223, 252, 43, 0.4) !important;
 }
 
 .footer-form-submit-btn:hover {
@@ -3854,13 +3966,13 @@ body {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  background-color: #121316;
+  background-color: #0e0e10 !important;
 }
 
 .brand-footer-card {
   width: 100%;
   max-width: 1600px;
-  background-color: #121316;
+  background-color: #0e0e10 !important;
   border-radius: 0 !important;
   padding: 60px 48px 40px 48px;
   display: flex;
@@ -4094,6 +4206,8 @@ body {
   padding: 50px 0 70px 0;
   mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  border-radius: 0 0 48px 48px !important;
+  background-color: #f8f9fa !important;
 }
 
 .gallery-marquee-track {
@@ -4138,8 +4252,18 @@ body {
 
 /* Responsive Overrides for Gallery */
 @media (max-width: 900px) {
+  #marketing {
+    width: 100% !important;
+    border-radius: 0 0 44px 44px !important;
+  }
+
   .gallery-marquee-container {
+    border-radius: 0 0 44px 44px !important;
     padding: 30px 0 44px 0;
+  }
+
+  .portfolio-marquee-container {
+    border-radius: 44px 44px 0 0 !important;
   }
   
   .gallery-marquee-track {
@@ -4161,20 +4285,28 @@ body {
 /* -------------------------------------------------------------
    Portfolio Marquee & Section 03 (Blends 100% Seamlessly With Above)
 ------------------------------------------------------------- */
+.portfolio-section-wrapper {
+  background-color: #e8e8e8 !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
 .portfolio-marquee-container {
   width: 100% !important;
-  max-width: 1600px !important;
-  margin: 40px auto 0 auto !important;
-  background-color: transparent !important;
-  border-radius: 0 !important;
-  padding: 30px 0 10px 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  background-color: #ffffff !important;
+  border-radius: 48px 48px 0 0 !important;
+  overflow: hidden !important;
+  padding: 50px 0 10px 0 !important;
 }
 
 #portfolio {
-  background-color: transparent !important;
+  background-color: #ffffff !important;
   width: 100% !important;
-  max-width: 1600px !important;
-  margin: 0 auto 32px auto !important;
+  max-width: 100% !important;
+  margin: 0 !important;
   padding: 60px 48px !important;
   border-radius: 0 !important;
   border: none !important;
@@ -4196,17 +4328,26 @@ body {
 /* -------------------------------------------------------------
    Full-Width White Background & Enlarged Design for Testimonials
 ------------------------------------------------------------- */
+.testimonials-section-wrapper {
+  background-color: #e8e8e8 !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
 #testimonials {
   background-color: #ffffff !important;
-  width: calc(100% + 32px) !important;
-  max-width: calc(100% + 32px) !important;
-  margin: -60px -16px 0 -16px !important;
-  padding: 160px 0 110px 0 !important; /* Generous vertical padding for a large section feel */
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 120px 0 100px 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative !important;
   z-index: 1 !important;
+  border-radius: 0 0 48px 48px !important;
+  overflow: hidden !important;
 }
 
 #testimonials > * {
@@ -4375,8 +4516,9 @@ body {
     padding-right: 0 !important;
   }
   #testimonials {
-    margin-top: -40px !important;
+    margin: 0 !important;
     padding: 100px 0 60px 0 !important;
+    border-radius: 0 0 44px 44px !important;
   }
   #testimonials > * {
     padding-left: 24px;
@@ -4396,10 +4538,10 @@ body {
    Sticky 2-Column Cooperation Process Layout (#process)
 ------------------------------------------------------------- */
 #process.process-sticky-section {
-  background-color: #e2e6ea !important;
-  width: calc(100% + 32px) !important;
-  max-width: calc(100% + 32px) !important;
-  margin: -20px -16px 0 -16px !important;
+  background-color: #e8e8e8 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
   padding: 100px 0 !important;
   border-radius: 0 !important;
   border: none !important;
@@ -5464,15 +5606,26 @@ body {
 /* Mobile overrides to constrain width of bottom text and button */
 @media (max-width: 768px) {
   .ai-bottom-conversion-banner {
-    width: 90% !important;
+    width: 100% !important;
     margin: 40px auto 0 auto !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .conversion-text {
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  .conversion-text h4,
+  .conversion-text p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   .conversion-text p {
     font-size: 13.5px !important;
-    max-width: 290px !important; /* Constrain text width on mobile */
+    max-width: 320px !important; /* Constrain text width on mobile */
     line-height: 1.5 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
   }
   .ai-cta-button {
     width: 100% !important;
@@ -5513,9 +5666,10 @@ body {
     gap: 20px;
   }
   .ai-bottom-conversion-banner {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 20px !important;
   }
   .ai-cta-button {
     width: 100%;
@@ -6238,20 +6392,24 @@ body {
    GOOGLE CALENDAR BOOKING POPUP MODAL STYLES
    ========================================================================== */
 .booking-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 999999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: stretch !important;
+  padding: 0 !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
 }
 
 .booking-modal-overlay.active {
-  display: flex !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 .booking-modal-backdrop {
@@ -6260,31 +6418,31 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  animation: fadeInModalBackdrop 0.35s ease forwards;
-}
-
-@keyframes fadeInModalBackdrop {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  background-color: rgba(14, 14, 16, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .booking-modal-content {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 680px;
-  max-height: 90vh;
+  max-width: 580px;
+  height: 100vh;
+  max-height: 100vh;
   overflow-y: auto;
   background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 28px;
-  padding: 36px 32px;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15), 0 0 30px rgba(0, 0, 0, 0.05);
+  border-radius: 32px 0 0 32px;
+  padding: 40px 36px;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.22);
   color: #121316;
-  animation: slideUpModalBox 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-sizing: border-box;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.booking-modal-overlay.active .booking-modal-content {
+  transform: translateX(0);
 }
 
 @keyframes slideUpModalBox {
@@ -6315,6 +6473,205 @@ body {
   background-color: #e2e8f0;
   color: #000;
   transform: rotate(90deg);
+}
+
+/* Multi-Step Quiz Modal Styles */
+.quiz-modal-content {
+  max-width: 660px !important;
+}
+
+.quiz-top-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.quiz-badge-icon {
+  color: #10b981;
+}
+
+.quiz-progress-bar-container {
+  margin-bottom: 22px;
+}
+
+.quiz-progress-track {
+  width: 100%;
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #dffc2b);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quiz-step-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.quiz-step-panel {
+  display: none;
+  animation: fadeInStep 0.3s ease forwards;
+}
+
+.quiz-step-panel.active {
+  display: block;
+}
+
+@keyframes fadeInStep {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-question-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 6px;
+  letter-spacing: -0.4px;
+}
+
+.quiz-question-subtitle {
+  font-size: 13.5px;
+  color: #64748b;
+  margin-bottom: 20px;
+  line-height: 1.45;
+}
+
+.quiz-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.quiz-cards-grid.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .quiz-cards-grid.grid-2-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.quiz-card-option {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.quiz-card-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quiz-card-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background-color: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px 18px;
+  transition: all 0.25s ease;
+}
+
+.quiz-card-option:hover .quiz-card-inner {
+  background-color: #ffffff;
+  border-color: #94a3b8;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.quiz-card-option input[type="radio"]:checked + .quiz-card-inner {
+  background-color: #f0fdf4;
+  border-color: #10b981;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.14);
+}
+
+.quiz-option-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.quiz-option-text strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.quiz-option-text p {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.quiz-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.quiz-next-btn {
+  background-color: #0f172a;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-left: auto;
+}
+
+.quiz-next-btn:hover {
+  background-color: #10b981;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.quiz-back-btn {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.quiz-back-btn:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
 }
 
 .booking-modal-header {
@@ -6579,27 +6936,83 @@ body {
 /* Mobile Responsive for Booking Modal overlay and content */
 @media (max-width: 768px) {
   .booking-modal-overlay {
-    padding: 12px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+    align-items: stretch !important;
     box-sizing: border-box !important;
   }
   .booking-modal-content {
-    border-radius: 20px !important;
-    padding: 28px 16px 20px 16px !important; /* Reduced padding on mobile */
-    max-height: 92vh !important;
+    border-radius: 0 !important;
+    padding: 56px 20px 24px 20px !important; /* Generous top padding for close button */
+    max-height: 100% !important;
+    height: 100% !important;
     width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
     overflow-x: hidden !important; /* Prevent horizontal overflow */
+    overflow-y: auto !important;
     box-sizing: border-box !important;
+    box-shadow: none !important;
   }
   .booking-modal-close {
     top: 14px !important;
     right: 14px !important;
-    width: 32px !important;
-    height: 32px !important;
-    font-size: 20px !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 22px !important;
+    z-index: 30 !important;
   }
   .booking-modal-header {
     margin-bottom: 16px !important;
-    padding-right: 28px !important; /* Don't overlap close button */
+    padding-right: 0 !important;
+    text-align: center !important;
+  }
+  .quiz-question-title {
+    font-size: 18px !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+  }
+  .quiz-question-subtitle {
+    font-size: 13px !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+  }
+  .quiz-cards-grid {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 10px !important;
+  }
+  .quiz-card-inner {
+    padding: 14px 14px !important;
+    border-radius: 14px !important;
+  }
+  .modal-form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .modal-form-group {
+    grid-column: span 1 !important;
+    width: 100% !important;
+  }
+  .modal-form-group input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .google-calendar-embed-container {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px 12px !important;
+  }
+  .gcal-slots-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .modal-submit-btn,
+  .quiz-next-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
   }
   .booking-modal-header h3 {
     font-size: 17px !important;
@@ -6657,21 +7070,25 @@ body {
 /* ------------------------------------------------------------- */
    BEFORE vs AFTER COMPARISON SECTION (#before-after)
 ------------------------------------------------------------- */
-.before-after-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 1280px;
-  margin: 40px auto 0 auto;
+#before-after .before-after-container {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 32px !important;
+  width: 100% !important;
+  max-width: 1180px !important;
+  margin: 40px auto 0 auto !important;
+  box-sizing: border-box !important;
 }
 
-.ba-card {
+#before-after .ba-card {
   border-radius: 28px;
   padding: 36px 32px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 100% !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box !important;
 }
 
 .ba-before {
@@ -6938,9 +7355,13 @@ body {
   transform: translateY(-1px);
 }
 
+.mobile-sticky-cta-bar {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
   .mobile-sticky-cta-bar {
-    display: block;
+    display: none !important;
   }
 }
 
@@ -6979,8 +7400,8 @@ html, body {
 ------------------------------------------------------------- */
 @media (max-width: 768px) {
   body {
-    padding: 12px 14px 85px 14px !important; /* Comfortable outer margin from screen edges */
-    gap: 14px !important;
+    padding: 0 !important; /* Edge-to-edge layout on mobile */
+    gap: 0 !important;
   }
 
   /* Accessible Touch Targets */
@@ -7002,6 +7423,7 @@ html, body {
     min-height: auto !important;
     padding: 20px 16px 32px 16px !important;
     border-radius: 24px !important;
+    margin: 16px auto !important;
   }
 
   .ultra-navbar {
@@ -7091,7 +7513,7 @@ html, body {
   }
 
   /* 2. Global Section & Card Scaling */
-  .info-section-card,
+  .info-section-card:not(.no-card-box),
   .plain-section {
     padding: 48px 20px !important;
     border-radius: 0 !important;
@@ -7099,6 +7521,14 @@ html, body {
     margin: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
+  }
+
+  #about.no-card-box,
+  .info-section-card.no-card-box {
+    border-radius: 24px !important;
+    margin: 16px auto !important;
+    width: calc(100% - 32px) !important;
+    padding: 32px 16px 48px 16px !important;
   }
 
   .info-section-card > *,
@@ -7179,9 +7609,9 @@ html, body {
   #process.process-sticky-section {
     width: 100% !important;
     max-width: 100% !important;
-    margin: 0 0 16px 0 !important;
+    margin: 0 !important;
     padding: 36px 16px !important;
-    border-radius: 24px !important;
+    border-radius: 0 !important;
     box-sizing: border-box !important;
   }
 
@@ -7254,9 +7684,9 @@ html, body {
   }
 
   /* 2. Before / After Comparison Fixes */
-  .before-after-container {
-    display: flex !important;
-    flex-direction: column !important;
+  #before-after .before-after-container {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     gap: 20px !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -7374,11 +7804,9 @@ html, body {
 
   /* 4. Footer & Contact Form Section (Flat Full-Width Footer) */
   .footer-hero-and-card-section {
-    width: calc(100% + 28px) !important;
-    margin-left: -14px !important;
-    margin-right: -14px !important;
-    margin-bottom: -85px !important;
-    margin-top: 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
     border-radius: 0 !important;
     overflow: visible !important;
   }
@@ -7448,4 +7876,52 @@ html, body {
     padding: 20px 16px !important;
     border-radius: 18px !important;
   }
+}
+
+/* ==========================================================================
+   MODERN SMOOTH SCROLL REVEAL & INTERACTIVE ANIMATIONS
+   ========================================================================== */
+
+/* Reveal base state */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle card lift & glow on hover */
+.ba-card,
+.fit-card,
+.price-card,
+.portfolio-item-card,
+.vertical-step-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+.ba-card:hover,
+.fit-card:hover,
+.price-card:hover,
+.portfolio-item-card:hover,
+.vertical-step-card:hover {
+  transform: translateY(-6px) scale(1.008) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09) !important;
+}
+
+/* Top Scroll Progress Indicator Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #dffc2b, #10b981, #3b82f6);
+  width: 0%;
+  z-index: 99999;
+  transition: width 0.1s ease-out;
+  pointer-events: none;
 }
