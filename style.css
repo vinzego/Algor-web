@@ -1720,6 +1720,24 @@ body {
   color: #fff;
 }
 
+/* Image-Only Bento Card (Column 1) */
+.stat-card.image-card-only {
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background-color: #0f172a !important;
+}
+
+.stat-card.image-card-only img.card-full-img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 310px !important;
+  object-fit: cover !important;
+  object-position: center 15% !important;
+  display: block !important;
+  border-radius: 20px !important;
+}
+
 .card-icon-box {
   width: 40px;
   height: 40px;
