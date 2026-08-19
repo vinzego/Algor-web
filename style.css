@@ -7927,261 +7927,179 @@ html, body {
 }
 
 /* ==========================================================================
-   INLINE CUSTOM PACKAGE SELECTION ANIMATION & FORM CARD
+   PURE 3D CARD FLIP SYSTEM (Same dimensions, exact CTA button alignment)
    ========================================================================== */
-
-/* 1. Selected Card Glow & Inactive Cards Dim */
-.price-card {
-  transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
-}
-
-.price-card.selected-card-glow {
-  box-shadow: 0 0 35px rgba(223, 252, 43, 0.4), 0 10px 30px rgba(0, 0, 0, 0.1) !important;
-  border-color: #dffc2b !important;
-  transform: translateY(-8px) scale(1.02) !important;
-}
-
-.price-card.fade-inactive-card {
-  opacity: 0.3 !important;
-  filter: blur(1.5px) !important;
-  transform: scale(0.97) !important;
-  pointer-events: none !important;
-}
-
-/* 2. Pricing Grid Slide & Fade Out */
 .pricing-grid {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
-  will-change: transform, opacity;
+  perspective: 1000px;
 }
 
-.pricing-grid.slide-up-out {
-  transform: translateY(-45px) !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
+.price-card {
+  position: relative;
+  min-height: 560px;
+  height: 560px;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
 }
 
-/* 3. Inline Booking Card Container */
-.inline-booking-wrapper {
+.price-card-inner {
+  position: relative;
   width: 100%;
-  max-width: 680px;
-  margin: 0 auto 40px auto;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.price-card.is-flipped .price-card-inner {
+  transform: rotateY(180deg);
+}
+
+.price-card-front,
+.price-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 28px;
+  padding: 32px 28px;
   box-sizing: border-box;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-  will-change: transform, opacity;
-}
-
-.inline-booking-wrapper.slide-in-up {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-.inline-booking-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 28px;
-  padding: 32px 36px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-  color: #121316;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-@media (max-width: 600px) {
-  .inline-booking-card {
-    padding: 24px 18px;
-    border-radius: 20px;
-  }
+.price-card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
 }
 
-/* Inline Header Bar */
-.inline-booking-top-bar {
+.price-card-back {
+  transform: rotateY(180deg);
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.popular-card .price-card-front,
+.popular-card .price-card-back {
+  border-color: #dffc2b;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.09);
+}
+
+/* Back Side Form Layout */
+.card-back-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
   background-color: #f1f5f9;
   border: 1px solid #cbd5e1;
-  border-radius: 14px;
-  padding: 10px 16px;
-  margin-bottom: 24px;
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin-bottom: 14px;
 }
 
-.inline-pkg-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13.5px;
+.card-back-badge {
+  font-size: 12.5px;
   font-weight: 700;
   color: #0f172a;
 }
 
-.badge-bolt {
-  color: #10b981;
-}
-
-.inline-change-pkg-btn {
+.card-unflip-btn {
   background: transparent;
   border: none;
   color: #64748b;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  padding: 2px 6px;
   text-decoration: underline;
+  transition: color 0.2s ease;
 }
 
-.inline-change-pkg-btn:hover {
+.card-unflip-btn:hover {
   color: #0f172a;
-  background-color: #e2e8f0;
 }
 
-/* Horizontal Slides Viewport */
-.inline-slides-viewport {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  min-height: 380px;
-}
-
-.inline-slide-panel {
-  width: 100%;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-  box-sizing: border-box;
-}
-
-.inline-slide-panel.slide-active {
-  position: relative;
-  transform: translateX(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.inline-slide-panel.slide-next {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(100%);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.inline-slide-panel.slide-prev {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(-100%);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.inline-slide-header h3 {
-  font-size: 21px;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 6px;
-  letter-spacing: -0.4px;
-}
-
-.inline-slide-header p {
-  font-size: 13.5px;
-  color: #64748b;
-  margin-bottom: 24px;
-}
-
-/* Inline Form Controls */
-.inline-form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-@media (max-width: 600px) {
-  .inline-form-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-}
-
-.inline-form-group {
+.card-back-form {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  justify-content: space-between;
+  flex: 1;
 }
 
-.inline-form-group label {
-  font-size: 12px;
+.card-back-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-back-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.card-back-group label {
+  font-size: 11.5px;
   font-weight: 700;
   color: #334155;
 }
 
-.inline-form-group input {
+.card-back-group input {
   background-color: #fafafa;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 10px;
+  padding: 9px 12px;
   color: #121316;
-  font-size: 14px;
+  font-size: 13px;
   outline: none;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
-.inline-form-group input:focus {
+.card-back-group input:focus {
   border-color: #121316;
   background-color: #ffffff;
-  box-shadow: 0 0 15px rgba(18, 19, 22, 0.08);
 }
 
-.inline-btn-row {
+/* CTA buttons on front and back sides are positioned identically at the bottom */
+.price-card-front .price-cta,
+.price-card-back .card-back-submit-btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+.card-back-success {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-top: 16px;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  gap: 10px;
+  padding: 20px 0;
 }
 
-.inline-btn-row.split-btn-row {
-  justify-content: space-between;
-}
-
-.inline-next-btn,
-.inline-confirm-btn {
-  background-color: #0f172a;
-  color: #ffffff;
-  border: none;
-  border-radius: 30px;
-  padding: 14px 28px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.inline-next-btn:hover,
-.inline-confirm-btn:hover {
-  background-color: #10b981;
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-.inline-back-btn {
-  background-color: #f1f5f9;
-  color: #475569;
-  border: 1px solid #cbd5e1;
-  border-radius: 30px;
-  padding: 12px 22px;
-  font-size: 13.5px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.inline-back-btn:hover {
-  background-color: #e2e8f0;
+.card-back-success h4 {
+  font-size: 18px;
+  font-weight: 800;
   color: #0f172a;
+}
+
+.card-success-msg {
+  font-size: 13px;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .price-card {
+    min-height: 580px;
+    height: 580px;
+  }
 }
