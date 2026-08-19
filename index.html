@@ -447,26 +447,57 @@
 
     <div class="bento-grid-container">
       
-      <!-- Card 1 (Tall): WhatsApp AI Asistent -->
-      <div class="bento-card tall bento-card-pos-1">
+      <!-- ROW 1 - Card 1 (Compact): CRM & Lead sinkronizacija -->
+      <div class="bento-card bento-card-pos-1">
         <div class="bento-card-content">
-          <h4>WhatsApp AI Asistent. <span>24/7 automatsko dopisivanje s gostima, odgovaranje na upite i rezervacija stolova.</span></h4>
+          <h4>CRM &amp; Lead sinkronizacija</h4>
+          <p class="bento-desc">Povezivanje oglasa s vašom bazom podataka bez ručnog unosa i gubitka informacija.</p>
         </div>
         <div class="bento-visual">
-          <div class="mini-chat-box" style="width: 100%; background: #0b2e27; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
-            <div class="mini-chat-header" style="background: #0f3d34; display: flex; align-items: center; gap: 8px; padding: 10px 14px; font-size: 11.5px; border-bottom: 1px solid rgba(255,255,255,0.06);">
-              <span class="online-indicator" style="background: #25d366; width: 6px; height: 6px; border-radius: 50%; display: inline-block;"></span>
+          <div class="agent-node" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 14px 18px; border-radius: 14px; display: flex; align-items: center; gap: 14px; width: 100%; box-sizing: border-box;">
+            <span style="font-size: 22px;">👥</span>
+            <div style="flex: 1;">
+              <h5 style="color: #ffffff; margin: 0; font-size: 13.5px; font-weight: 600;">Novi Lead: Marko P.</h5>
+              <span style="color: #94a3b8; font-size: 11.5px;">Sinkronizirano u CRM</span>
+            </div>
+            <span class="status-dot green" style="background: #8b5cf6; width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 10px #8b5cf6;"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 1 - Card 2 (Compact): Instagram DM Chatbot -->
+      <div class="bento-card bento-card-pos-2">
+        <div class="bento-card-content">
+          <h4>Instagram DM Chatbot</h4>
+          <p class="bento-desc">Automatsko odgovaranje na komentare i slanje privatnih prodajnih linkova u DM.</p>
+        </div>
+        <div class="bento-visual">
+          <div class="agent-node" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 14px 18px; border-radius: 14px; width: 100%; box-sizing: border-box; display: flex; align-items: center; gap: 14px;">
+            <span style="font-size: 22px;">💬</span>
+            <div>
+              <h5 style="color: #ffffff; margin: 0; font-size: 13.5px; font-weight: 600;">Komentar na objavi</h5>
+              <span style="color: #94a3b8; font-size: 11.5px;">Korisnik komentira: "CIJENA"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 1 - Card 3 (Compact): WhatsApp AI Asistent -->
+      <div class="bento-card bento-card-pos-3">
+        <div class="bento-card-content">
+          <h4>WhatsApp AI Asistent</h4>
+          <p class="bento-desc">24/7 automatsko dopisivanje s gostima, odgovaranje na upite i ugovaranje rezervacija.</p>
+        </div>
+        <div class="bento-visual">
+          <div class="mini-chat-box" style="width: 100%; background: #0b2e27; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 14px; overflow: hidden;">
+            <div class="mini-chat-header" style="background: #0f3d34; display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <span class="online-indicator" style="background: #25d366; width: 7px; height: 7px; border-radius: 50%; display: inline-block;"></span>
               <span style="color: #ffffff; font-weight: bold;">WhatsApp AI Rezervacije</span>
             </div>
-            <div class="mini-chat-messages" style="background: #0d0d10; padding: 14px; display: flex; flex-direction: column; gap: 10px;">
-              <div class="chat-row user-row" style="align-self: flex-end; max-width: 85%;">
-                <div class="bubble" style="background: #1e5347; color: #ffffff; border-radius: 8px 0px 8px 8px; padding: 8px 12px; font-size: 11.5px; border: 1px solid rgba(255,255,255,0.05); line-height: 1.4;">
-                  Bok! Imate li slobodan stol za dvoje večeras oko 20h?
-                </div>
-              </div>
-              <div class="chat-row ai-row" style="align-self: flex-start; max-width: 85%;">
-                <div class="bubble" style="background: #1a1a22; color: #ffffff; border-radius: 0px 8px 8px 8px; padding: 8px 12px; font-size: 11.5px; border: 1px solid rgba(255,255,255,0.05); line-height: 1.4;">
-                  Bok! Imamo slobodan stol na terasi u 20:00h i 20:30h. Želite li da Vam rezerviram termin?
+            <div class="mini-chat-messages" style="background: #0d0d10; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
+              <div class="chat-row ai-row" style="align-self: flex-start; max-width: 95%;">
+                <div class="bubble" style="background: #1a1a24; color: #ffffff; border-radius: 4px 10px 10px 10px; padding: 8px 12px; font-size: 11.5px; line-height: 1.4;">
+                  Bok! Imamo slobodan stol u 20:00h. Želite li rezervaciju?
                 </div>
               </div>
             </div>
@@ -474,81 +505,44 @@
         </div>
       </div>
 
-      <!-- Card 2 (Medium): CRM & Lead sinkronizacija -->
-      <div class="bento-card medium bento-card-pos-2">
-        <div class="bento-card-content">
-          <h4>CRM &amp; Lead sinkronizacija. <span>Povezivanje oglasa s vašom bazom podataka bez ručnog unosa.</span></h4>
-        </div>
-        <div class="bento-visual">
-          <div class="agents-visual" style="width: 100%;">
-            <div class="agent-node" style="background: #121214; border: 1px solid rgba(255, 255, 255, 0.06); padding: 10px 14px; border-radius: 12px; display: flex; align-items: center; gap: 12px; font-size: 12px; width: 100%; box-sizing: border-box;">
-              <span style="font-size: 16px;">👥</span>
-              <div>
-                <h5 style="color: #ffffff; margin: 0; font-size: 12px; font-weight: 600;">Novi Lead: Marko P.</h5>
-                <span style="color: #8a8a93; font-size: 10px;">Sinkronizirano u CRM</span>
+      <!-- ROW 2 - Card 4 (Wide 2-Span): Ugovaranje bez poruka -->
+      <div class="bento-card wide bento-card-pos-4">
+        <div class="bento-card-content-split">
+          <div class="bento-text-side">
+            <h4>Ugovaranje bez poruka</h4>
+            <p class="bento-desc">Klijenti sami biraju slobodan termin u vašem Google kalendaru, a AI sustav ih automatski podsjeća putem WhatsAppa ili SMS-a.</p>
+          </div>
+          <div class="bento-visual-side">
+            <div class="chart-visual" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 18px 22px; border-radius: 16px; display: flex; flex-direction: row; gap: 18px; width: 100%; box-sizing: border-box; align-items: center;">
+              <div style="flex: 1;">
+                <span style="font-size: 11px; color: #94a3b8; display: block; margin-bottom: 4px;">Google Kalendar</span>
+                <span style="color: #ffffff; font-size: 14px; font-weight: bold; display: block;">Srijeda @ 15:00h</span>
+                <span style="color: #25d366; font-size: 12px; font-weight: 600;">✓ Rezervirano</span>
               </div>
-              <span class="status-dot green" style="background: #8b5cf6; width: 5px; height: 5px; border-radius: 50%; margin-left: auto;"></span>
+              <div style="width: 1px; height: 44px; background: rgba(255,255,255,0.12);"></div>
+              <div style="flex: 1;">
+                <span style="font-size: 11px; color: #94a3b8; display: block; margin-bottom: 4px;">WhatsApp Podsjetnik</span>
+                <span style="color: #ffffff; font-size: 13px; display: block;">Šalje se 2h prije sastanka</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Card 3 (Tall): Automatski e-mail s popustom -->
-      <div class="bento-card tall bento-card-pos-3">
+      <!-- ROW 2 - Card 5 (1-Span): Automatski e-mail s popustom -->
+      <div class="bento-card bento-card-pos-5">
         <div class="bento-card-content">
-          <h4>Automatski e-mail s popustom. <span>Sustav automatski šalje personalizirani e-mail s 15% popusta korisnicima koji napuste košaricu.</span></h4>
+          <h4>Automatski e-mail s popustom</h4>
+          <p class="bento-desc">Personalizirani e-mail s 15% popusta korisnicima koji napuste košaricu.</p>
         </div>
         <div class="bento-visual">
-          <div class="chart-visual" style="background: #121214; border: 1px solid rgba(255, 255, 255, 0.06); padding: 18px; border-radius: 12px; display: flex; flex-direction: column; gap: 12px; width: 100%;">
-            <div class="chart-header" style="display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; font-size: 11px; color: #a1a1aa; align-items: flex-start;">
+          <div class="chart-visual" style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 16px 18px; border-radius: 14px; display: flex; flex-direction: column; gap: 10px; width: 100%;">
+            <div class="chart-header" style="display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; font-size: 11.5px; color: #94a3b8; align-items: flex-start;">
               <span style="font-weight: bold; color: #ffffff;">Za: klijent@email.com</span>
-              <span>Predmet: Tvojih 15% popusta je spremno! 🎁</span>
+              <span>Predmet: Tvojih 15% popusta! 🎁</span>
             </div>
-            <div style="background: rgba(255,255,255,0.02); border: 1px dashed rgba(139, 92, 246, 0.4); padding: 14px; border-radius: 8px; text-align: center;">
-              <h5 style="color: #ffffff; margin: 0 0 6px 0; font-size: 13px;">Ostvarite 15% popusta</h5>
-              <p style="color: #a1a1aa; font-size: 10.5px; margin: 0 0 10px 0;">Iskoristite kod na blagajni za 15% popusta.</p>
-              <span style="font-family: 'Geist Mono', monospace; background: #8b5cf6; color: #ffffff; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; letter-spacing: 1px;">ALGOR15</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4 (Medium): Instagram DM Chatbot -->
-      <div class="bento-card medium bento-card-pos-4">
-        <div class="bento-card-content">
-          <h4>Instagram DM Chatbot. <span>Automatsko odgovaranje na komentare i slanje prodajnih linkova u DM.</span></h4>
-        </div>
-        <div class="bento-visual">
-          <div class="chatbot-visual" style="flex-direction: column; gap: 8px; width: 100%;">
-            <div class="agent-node" style="background: #121214; border: 1px solid rgba(255, 255, 255, 0.06); padding: 8px 12px; border-radius: 8px; font-size: 11px; width: 100%; box-sizing: border-box; display: flex; align-items: center; gap: 10px;">
-              <span style="font-size: 16px;">💬</span>
-              <div>
-                <h5 style="color: #ffffff; margin: 0; font-size: 12px;">Komentar na objavi</h5>
-                <span style="color: #a1a1aa; font-size: 10px;">Korisnik komentira: "CIJENA"</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5 (Wide): Ugovaranje bez poruka -->
-      <div class="bento-card wide bento-card-pos-5">
-        <div class="bento-card-content" style="flex-direction: row; justify-content: space-between; align-items: center; width: 100%; gap: 30px; display: flex; box-sizing: border-box;">
-          <div style="flex: 1;">
-            <h4>Ugovaranje bez poruka. <span>Klijenti sami biraju slobodan termin u vašem Google kalendaru, a sustav ih automatski podsjeća.</span></h4>
-          </div>
-          <div class="bento-visual" style="flex: 1; margin-top: 0; display: flex; justify-content: flex-end; width: auto;">
-            <div class="chart-visual" style="background: #121214; border: 1px solid rgba(255, 255, 255, 0.06); padding: 16px; border-radius: 12px; display: flex; flex-direction: row; gap: 14px; width: 100%; max-width: 450px; box-sizing: border-box; align-items: center;">
-              <div style="flex: 1;">
-                <span style="font-size: 10px; color: #8a8a93; display: block; margin-bottom: 4px;">Google Kalendar</span>
-                <span style="color: #ffffff; font-size: 13px; font-weight: bold; display: block;">Srijeda @ 15:00h</span>
-                <span style="color: #25d366; font-size: 11px; font-weight: 500;">✓ Rezervirano</span>
-              </div>
-              <div style="width: 1px; height: 40px; background: rgba(255,255,255,0.08);"></div>
-              <div style="flex: 1;">
-                <span style="font-size: 10px; color: #8a8a93; display: block; margin-bottom: 4px;">WhatsApp Podsjetnik</span>
-                <span style="color: #ffffff; font-size: 12px; display: block;">Šalje se 2h prije sastanka</span>
-              </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px dashed rgba(139, 92, 246, 0.5); padding: 12px; border-radius: 10px; text-align: center;">
+              <span style="font-family: 'Geist Mono', monospace; background: #8b5cf6; color: #ffffff; padding: 4px 14px; border-radius: 6px; font-size: 12px; font-weight: bold; letter-spacing: 1px;">ALGOR15</span>
             </div>
           </div>
         </div>
@@ -626,7 +620,7 @@
       <!-- Right: After -->
       <div class="ba-card ba-after">
         <div class="ba-card-header">
-          <span class="ba-badge badge-green">⚡ S Algor studijom (Cjelovit Marketing & AI Sustav)</span>
+          <span class="ba-badge badge-green">✓ S Algor studijom (Cjelovit Marketing & AI Sustav)</span>
         </div>
         <ul class="ba-list">
           <li>
@@ -1099,47 +1093,49 @@
   </section>
 
   <!-- IDEAL CLIENT FIT SECTION (Za koga jest / Za koga nije) -->
-  <section id="ideal-fit" class="plain-section">
-    <div class="info-header align-center">
-      <span class="section-badge">// KVALIFIKACIJA KLIJENATA</span>
-      <h2 class="info-title">
-        Je li Algor studio pravi izbor za vaše poslovanje?
-      </h2>
-      <p class="info-subtitle">
-        Gradimo dugoročna partnerstva s tvrtkama kojima možemo osigurati stvarne konverzije i mjerljiv poslovni rast.
-      </p>
-    </div>
-
-    <div class="ideal-fit-grid">
-      <!-- Ideal Fit Column -->
-      <div class="fit-card fit-yes">
-        <div class="fit-card-title">
-          <span class="fit-title-badge badge-green">✓ KVALIFICIRAN KLIJENT</span>
-          <h3>Za koga JEST naša usluga</h3>
-        </div>
-        <ul class="fit-list">
-          <li><span class="fit-bullet bullet-green">✓</span> Imate razrađenu ponudu usluga ili proizvoda i želite privući više kvalitetnih kupaca.</li>
-          <li><span class="fit-bullet bullet-green">✓</span> Želite cjelovito rješenje na jednom mjestu (foto & video snimanje, Meta/Google oglase, web i AI).</li>
-          <li><span class="fit-bullet bullet-green">✓</span> Želite da se na upite odgovara u 3 sekunde i da se termini ugovaraju automatski 24/7.</li>
-          <li><span class="fit-bullet bullet-green">✓</span> Cijenite transparentnost, fiksne cijene i mjesečne izvještaje s točnim uvidom u rezultate.</li>
-        </ul>
+  <div class="ideal-fit-section-wrapper">
+    <section id="ideal-fit" class="plain-section">
+      <div class="info-header align-center">
+        <span class="section-badge">// KVALIFIKACIJA KLIJENATA</span>
+        <h2 class="info-title">
+          Je li Algor studio pravi izbor za vaše poslovanje?
+        </h2>
+        <p class="info-subtitle">
+          Gradimo dugoročna partnerstva s tvrtkama kojima možemo osigurati stvarne konverzije i mjerljiv poslovni rast.
+        </p>
       </div>
 
-      <!-- Not Ideal Fit Column -->
-      <div class="fit-card fit-no">
-        <div class="fit-card-title">
-          <span class="fit-title-badge badge-red">✕ NIJE ZA VAS</span>
-          <h3>Za koga NIJE naša usluga</h3>
+      <div class="ideal-fit-grid">
+        <!-- Ideal Fit Column -->
+        <div class="fit-card fit-yes">
+          <div class="fit-card-title">
+            <span class="fit-title-badge badge-green">✓ KVALIFICIRAN KLIJENT</span>
+            <h3>Za koga JEST naša usluga</h3>
+          </div>
+          <ul class="fit-list">
+            <li><span class="fit-bullet bullet-green">✓</span> Imate razrađenu ponudu usluga ili proizvoda i želite privući više kvalitetnih kupaca.</li>
+            <li><span class="fit-bullet bullet-green">✓</span> Želite cjelovito rješenje na jednom mjestu (foto & video snimanje, Meta/Google oglase, web i AI).</li>
+            <li><span class="fit-bullet bullet-green">✓</span> Želite da se na upite odgovara u 3 sekunde i da se termini ugovaraju automatski 24/7.</li>
+            <li><span class="fit-bullet bullet-green">✓</span> Cijenite transparentnost, fiksne cijene i mjesečne izvještaje s točnim uvidom u rezultate.</li>
+          </ul>
         </div>
-        <ul class="fit-list">
-          <li><span class="fit-bullet bullet-red">✕</span> Tražite samo "najjeftinije objave na društvenim mrežama" bez fokusiranih oglasnih kampanja.</li>
-          <li><span class="fit-bullet bullet-red">✕</span> Nemate budžet za oglašavanje niti želju za kontinuiranim rastom poslovanja.</li>
-          <li><span class="fit-bullet bullet-red">✕</span> Ne želite profesionalno fotografiranje i snimanje vizualnog sadržaja na vašoj lokaciji.</li>
-          <li><span class="fit-bullet bullet-red">✕</span> Očekujete brze "rezultate preko noći" bez spremnosti na stratešku suradnju.</li>
-        </ul>
+
+        <!-- Not Ideal Fit Column -->
+        <div class="fit-card fit-no">
+          <div class="fit-card-title">
+            <span class="fit-title-badge badge-red">✕ NIJE ZA VAS</span>
+            <h3>Za koga NIJE naša usluga</h3>
+          </div>
+          <ul class="fit-list">
+            <li><span class="fit-bullet bullet-red">✕</span> Tražite samo "najjeftinije objave na društvenim mrežama" bez fokusiranih oglasnih kampanja.</li>
+            <li><span class="fit-bullet bullet-red">✕</span> Nemate budžet za oglašavanje niti želju za kontinuiranim rastom poslovanja.</li>
+            <li><span class="fit-bullet bullet-red">✕</span> Ne želite profesionalno fotografiranje i snimanje vizualnog sadržaja na vašoj lokaciji.</li>
+            <li><span class="fit-bullet bullet-red">✕</span> Očekujete brze "rezultate preko noći" bez spremnosti na stratešku suradnju.</li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- 5. INTERACTIVE PRICING SECTION (Full-Width White Theme) -->
   <section id="pricing" class="full-width-pricing-section white-pricing-section">
