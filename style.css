@@ -5836,10 +5836,18 @@ body {
   border: 1px solid #e2e8f0 !important;
 }
 
-#pricing .plan-target-tag.target-featured {
-  background-color: rgba(223, 252, 43, 0.2) !important;
-  color: #121316 !important;
-  border-color: #dffc2b !important;
+#pricing .plan-target-tag.target-featured,
+.price-card.popular-card .plan-target-tag.target-featured {
+  background-color: rgba(187, 242, 70, 0.15) !important;
+  color: #bbf246 !important;
+  border: 1px solid rgba(187, 242, 70, 0.4) !important;
+}
+
+#pricing .price-card.popular-card .popular-badge-pill,
+.price-card.popular-card .popular-badge-pill {
+  background-color: #ffffff !important;
+  color: #0c0d0e !important;
+  font-weight: 800 !important;
 }
 
 #pricing .price-header h3 {
