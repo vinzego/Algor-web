@@ -266,122 +266,156 @@ document.addEventListener('DOMContentLoaded', () => {
   if (priceCombined) priceCombined.textContent = '1,250';
   if (priceAi) priceAi.textContent = '2,150';
 
-  // 10. Multi-Step Quiz Modal Interactivity
-  const calendarModal = document.getElementById('calendar-booking-modal');
-  const modalBackdrop = document.getElementById('booking-modal-backdrop');
-  const modalCloseBtn = document.getElementById('booking-modal-close');
-  const quizPreselectedPkg = document.getElementById('quiz-preselected-pkg');
-  const bookingForm = document.getElementById('calendar-booking-form');
-  const modalSuccessState = document.getElementById('modal-success-state');
-  const modalSuccessClose = document.getElementById('modal-success-close');
+  // 10. INLINE CUSTOM PACKAGE SELECTION ANIMATION SYSTEM
+  const pricingGrid = document.querySelector('.pricing-grid');
+  const inlineContainer = document.getElementById('inline-booking-container');
+  const inlineSelectedPkgText = document.getElementById('inline-selected-pkg-text');
+  const inlineChangePkgBtn = document.getElementById('inline-change-pkg-btn');
 
-  let currentQuizStep = 1;
-  let activePackageName = 'PLUS (Marketing + AI)';
+  const slideContact = document.getElementById('inline-slide-contact');
+  const slideCalendar = document.getElementById('inline-slide-calendar');
+  const slideSuccess = document.getElementById('inline-slide-success');
 
-  window.quizGoToStep = function(stepNum) {
-    const stepPanels = document.querySelectorAll('.quiz-step-panel');
-    const fill = document.getElementById('quiz-progress-fill');
-    const counter = document.getElementById('quiz-step-counter');
-    const hint = document.getElementById('quiz-step-title-hint');
+  const inlineContactForm = document.getElementById('inline-contact-form');
+  const inlineBackToContactBtn = document.getElementById('inline-back-to-contact-btn');
+  const inlineConfirmBookingBtn = document.getElementById('inline-confirm-booking-btn');
+  const inlineSuccessResetBtn = document.getElementById('inline-success-reset-btn');
 
-    const stepTitles = [
-      "1. Primarni cilj suradnje",
-      "2. Djelatnost poslovanja",
-      "3. Upiti i automatizacija",
-      "4. Kontakt & Google Kalendar"
-    ];
+  let activePackageTitle = 'Plus';
+  let activePackagePrice = '1.250 €/mj.';
+  let activePackageFullText = 'Plus (1.250 €/mj.)';
 
-    if (stepNum < 1) stepNum = 1;
-    if (stepNum > 4) stepNum = 4;
-    currentQuizStep = stepNum;
+  let inlineSelectedDate = 'Ponedjeljak, 17. Kol';
+  let inlineSelectedTime = '11:30';
 
-    stepPanels.forEach(panel => {
-      if (parseInt(panel.getAttribute('data-quiz-step')) === stepNum) {
-        panel.classList.add('active');
+  function resetInlineSlides() {
+    if (slideContact) slideContact.className = 'inline-slide-panel slide-active';
+    if (slideCalendar) slideCalendar.className = 'inline-slide-panel slide-next';
+    if (slideSuccess) slideSuccess.className = 'inline-slide-panel slide-next';
+  }
+
+  function selectPackageInline(cardElement, pkgTitle, pkgPriceText) {
+    activePackageTitle = pkgTitle;
+    activePackagePrice = pkgPriceText;
+    activePackageFullText = `${pkgTitle} (${pkgPriceText})`;
+
+    if (inlineSelectedPkgText) {
+      inlineSelectedPkgText.textContent = `Odabran paket: ${activePackageFullText}`;
+    }
+
+    // Step 1: Glow selected card, dim others
+    const allCards = document.querySelectorAll('.pricing-grid .price-card');
+    allCards.forEach(c => {
+      if (c === cardElement) {
+        c.classList.add('selected-card-glow');
+        c.classList.remove('fade-inactive-card');
       } else {
-        panel.classList.remove('active');
+        c.classList.add('fade-inactive-card');
+        c.classList.remove('selected-card-glow');
       }
     });
 
-    if (fill) fill.style.width = `${stepNum * 25}%`;
-    if (counter) counter.textContent = `Korak ${stepNum} od 4`;
-    if (hint) hint.textContent = stepTitles[stepNum - 1] || '';
+    // Step 2: Slide & fade out pricing grid after 200ms
+    setTimeout(() => {
+      if (pricingGrid) pricingGrid.classList.add('slide-up-out');
+    }, 200);
 
-    // Scroll content to top when changing step
-    const modalContent = document.querySelector('.booking-modal-content');
-    if (modalContent) modalContent.scrollTop = 0;
-  };
+    // Step 3: Hide pricing grid & slide up inline form container after 400ms
+    setTimeout(() => {
+      if (pricingGrid) pricingGrid.style.display = 'none';
+      if (inlineContainer) {
+        resetInlineSlides();
+        inlineContainer.style.display = 'block';
+        setTimeout(() => {
+          inlineContainer.classList.add('slide-in-up');
+        }, 30);
+      }
 
-  function openBookingModal(pkgTitleText) {
-    const calendarModal = document.getElementById('calendar-booking-modal');
-    if (!calendarModal) return;
+      if (inlineContainer) {
+        inlineContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 450);
+  }
 
-    if (pkgTitleText) activePackageName = pkgTitleText;
-
-    if (quizPreselectedPkg) {
-      quizPreselectedPkg.textContent = `Odabrani paket: ${activePackageName}`;
+  function returnToPricingGrid() {
+    if (inlineContainer) {
+      inlineContainer.classList.remove('slide-in-up');
+      setTimeout(() => {
+        inlineContainer.style.display = 'none';
+        if (pricingGrid) {
+          pricingGrid.style.display = 'grid';
+          pricingGrid.classList.remove('slide-up-out');
+          const allCards = document.querySelectorAll('.pricing-grid .price-card');
+          allCards.forEach(c => {
+            c.classList.remove('selected-card-glow', 'fade-inactive-card');
+          });
+        }
+      }, 350);
     }
-
-    if (bookingForm) bookingForm.style.display = 'block';
-    if (modalSuccessState) modalSuccessState.style.display = 'none';
-
-    window.quizGoToStep(1);
-
-    calendarModal.classList.add('active');
-    calendarModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
   }
 
-  function closeBookingModal() {
-    const calendarModal = document.getElementById('calendar-booking-modal');
-    if (!calendarModal) return;
-    calendarModal.classList.remove('active');
-    calendarModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+  if (inlineChangePkgBtn) {
+    inlineChangePkgBtn.addEventListener('click', returnToPricingGrid);
+  }
+  if (inlineSuccessResetBtn) {
+    inlineSuccessResetBtn.addEventListener('click', returnToPricingGrid);
   }
 
-  window.openBookingModal = openBookingModal;
-  window.closeBookingModal = closeBookingModal;
-
-  // Event delegation to capture clicks on any pricing button or custom link
+  // Click delegation on package CTAs
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.price-cta, .select-pkg-btn, .custom-ai-link');
     if (btn) {
       e.preventDefault();
       e.stopPropagation();
+
       const card = btn.closest('.price-card');
-      let pkgName = 'PLUS (Marketing + AI)';
+      let title = 'Plus';
+      let priceText = '1.250 €/mj.';
+
       if (card) {
         const titleEl = card.querySelector('h3');
-        if (titleEl) pkgName = titleEl.textContent.trim();
-      } else if (btn.classList.contains('custom-ai-link')) {
-        pkgName = 'Custom AI Automatizacija';
+        const priceEl = card.querySelector('.price-amount');
+        if (titleEl) title = titleEl.textContent.trim();
+        if (priceEl) priceText = `${priceEl.textContent.trim()} €/mj.`;
+        selectPackageInline(card, title, priceText);
+      } else {
+        const pricingSection = document.getElementById('pricing');
+        if (pricingSection) {
+          pricingSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        const plusCard = document.querySelector('.price-card.popular-card') || document.querySelector('.price-card');
+        if (plusCard) {
+          selectPackageInline(plusCard, 'Plus', '1.250 €/mj.');
+        }
       }
-      openBookingModal(pkgName);
     }
   });
 
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeBookingModal);
-  if (modalBackdrop) modalBackdrop.addEventListener('click', closeBookingModal);
-  if (modalSuccessClose) modalSuccessClose.addEventListener('click', closeBookingModal);
+  // Step 4: Transition to Calendar on Contact Submit
+  if (inlineContactForm) {
+    inlineContactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (slideContact) slideContact.className = 'inline-slide-panel slide-prev';
+      if (slideCalendar) slideCalendar.className = 'inline-slide-panel slide-active';
+    });
+  }
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && calendarModal && calendarModal.style.display === 'flex') {
-      closeBookingModal();
-    }
-  });
+  if (inlineBackToContactBtn) {
+    inlineBackToContactBtn.addEventListener('click', () => {
+      if (slideCalendar) slideCalendar.className = 'inline-slide-panel slide-next';
+      if (slideContact) slideContact.className = 'inline-slide-panel slide-active';
+    });
+  }
 
-  // Date and Time Slot Picker Logic
+  // Google Calendar slot selection inside inline booking
   const dayBtns = document.querySelectorAll('.gcal-day-btn');
   const slotBtns = document.querySelectorAll('.gcal-slot-btn');
-  let selectedDate = 'Ponedjeljak, 17. Kol';
-  let selectedTime = '11:30';
 
   dayBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       dayBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      selectedDate = btn.getAttribute('data-date') || selectedDate;
+      inlineSelectedDate = btn.getAttribute('data-date') || inlineSelectedDate;
     });
   });
 
@@ -389,36 +423,37 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       slotBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      selectedTime = btn.getAttribute('data-time') || selectedTime;
+      inlineSelectedTime = btn.getAttribute('data-time') || inlineSelectedTime;
     });
   });
 
-  // Quiz Booking Form Submission
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('modal-input-name').value;
-      const company = document.getElementById('modal-input-company').value;
-      const email = document.getElementById('modal-input-email').value;
+  // Final Confirmation Submit (Calendar -> Success)
+  if (inlineConfirmBookingBtn) {
+    inlineConfirmBookingBtn.addEventListener('click', () => {
+      const nameInput = document.getElementById('inline-input-name');
+      const companyInput = document.getElementById('inline-input-company');
+      const emailInput = document.getElementById('inline-input-email');
 
-      const submitBtn = document.getElementById('modal-submit-btn');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Šaljem upit i rezervaciju...</span>';
-      }
+      const name = nameInput && nameInput.value ? nameInput.value : 'Klijent';
+      const company = companyInput && companyInput.value ? companyInput.value : 'Tvrtka';
+      const email = emailInput && emailInput.value ? emailInput.value : 'vašu e-mail adresu';
+
+      inlineConfirmBookingBtn.disabled = true;
+      inlineConfirmBookingBtn.innerHTML = '<span>Potvrđujem...</span>';
 
       setTimeout(() => {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<span>Potvrdi ➔</span>';
+        inlineConfirmBookingBtn.disabled = false;
+        inlineConfirmBookingBtn.innerHTML = '<span>Potvrdi ➔</span>';
+
+        if (slideCalendar) slideCalendar.className = 'inline-slide-panel slide-prev';
+        if (slideSuccess) {
+          slideSuccess.className = 'inline-slide-panel slide-active';
+          const successDesc = document.getElementById('inline-success-desc');
+          if (successDesc) {
+            successDesc.textContent = `Hvala vam, ${name}! Za tvrtku ${company} zaprimljen je upit za paket ${activePackageFullText}. Google Kalendar pozivnica za ${inlineSelectedDate} u ${inlineSelectedTime}h poslana je na ${email}.`;
+          }
         }
-        if (bookingForm) bookingForm.style.display = 'none';
-        if (modalSuccessState) {
-          document.getElementById('modal-success-desc').textContent = 
-            `Hvala vam, ${name}! Za tvrtku ${company} zaprimljen je upit za paket ${activePackageName}. Google Kalendar pozivnica za ${selectedDate} u ${selectedTime}h poslana je na ${email}.`;
-          modalSuccessState.style.display = 'block';
-        }
-      }, 700);
+      }, 600);
     });
   }
 
