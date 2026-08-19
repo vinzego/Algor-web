@@ -7155,6 +7155,7 @@ body {
   margin: 52px auto 0 auto !important;
   box-sizing: border-box !important;
   align-items: stretch !important;
+  perspective: 1200px !important;
 }
 
 #before-after .ba-card,
@@ -7166,46 +7167,49 @@ body {
   gap: 32px !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.45s ease, background 0.45s ease !important;
 }
 
-/* Left Card: Classic / Old Way (Apple Light Minimalist Theme) */
+/* Left Card: Classic / Old Way (Slanted Left -2.5deg) */
 .ba-before {
   background-color: #ffffff !important;
   border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.03) !important;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.06) !important;
+  transform: rotate(-2.5deg) translateY(6px) !important;
 }
 
 .ba-before:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.06) !important;
+  transform: rotate(0deg) translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 24px 50px -10px rgba(0, 0, 0, 0.12) !important;
+  border-color: #cbd5e1 !important;
 }
 
-/* Right Card: Algor Studio (Apple Luxury Obsidian Space Black Theme) */
+/* Right Card: Algor Studio (Light Pastel Blue Theme + Slanted Right +2.5deg) */
 .ba-after {
-  background: linear-gradient(155deg, #111318 0%, #090a0d 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 24px 60px -12px rgba(0, 0, 0, 0.4) !important;
-  color: #ffffff !important;
+  background: linear-gradient(145deg, #e0f2fe 0%, #bae6fd 100%) !important;
+  border: 1px solid #7dd3fc !important;
+  box-shadow: 0 20px 45px -10px rgba(14, 165, 233, 0.18), inset 0 1px 0 0 #ffffff !important;
+  color: #0f172a !important;
   position: relative !important;
   overflow: hidden !important;
+  transform: rotate(2.5deg) translateY(-6px) !important;
 }
 
 .ba-after::before {
   content: '' !important;
   position: absolute !important;
-  top: 0 !important;
-  right: 0 !important;
-  width: 260px !important;
-  height: 260px !important;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%) !important;
+  top: -40px !important;
+  right: -40px !important;
+  width: 280px !important;
+  height: 280px !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%) !important;
   pointer-events: none !important;
 }
 
 .ba-after:hover {
-  transform: translateY(-6px) scale(1.008) !important;
-  border-color: rgba(255, 255, 255, 0.28) !important;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35), 0 36px 80px -16px rgba(0, 0, 0, 0.55) !important;
+  transform: rotate(0deg) translateY(-10px) scale(1.015) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 30px 65px -12px rgba(14, 165, 233, 0.28), inset 0 1px 0 0 #ffffff !important;
 }
 
 .ba-card-header {
@@ -7232,12 +7236,10 @@ body {
 }
 
 .ba-after .badge-green {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.3) !important;
+  background-color: #dcfce7 !important;
+  color: #15803d !important;
+  border: 1px solid #bbf7d0 !important;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.12) !important;
 }
 
 .ba-list {
@@ -7274,12 +7276,13 @@ body {
 }
 
 .icon-green {
-  background-color: #ffffff !important;
-  color: #090a0d !important;
-  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2) !important;
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35) !important;
 }
 
-.ba-before .ba-list li strong {
+.ba-before .ba-list li strong,
+.ba-after .ba-list li strong {
   display: block !important;
   font-size: 16.5px !important;
   font-weight: 700 !important;
@@ -7295,18 +7298,9 @@ body {
   margin: 0 !important;
 }
 
-.ba-after .ba-list li strong {
-  display: block !important;
-  font-size: 16.5px !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  letter-spacing: -0.3px !important;
-  margin-bottom: 4px !important;
-}
-
 .ba-after .ba-list li p {
   font-size: 14px !important;
-  color: #94a3b8 !important;
+  color: #334155 !important;
   line-height: 1.55 !important;
   margin: 0 !important;
 }
