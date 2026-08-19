@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=2.0.1">
+  <link rel="stylesheet" href="style.css?v=2.0.2">
 </head>
 <body>
 
@@ -1157,226 +1157,210 @@
     <div class="pricing-grid">
       
       <!-- Card 1: Start Paket -->
-      <div class="price-card">
-        <div class="price-header">
-          <span class="plan-target-tag">Za tvrtke u usponu</span>
-          <h3>Start</h3>
-          <p>Za stabilnu prisutnost i redovite nove upite</p>
+      <!-- Card 1: Start Paket -->
+      <div class="price-card" data-pkg-name="Start Paket" data-pkg-price="690 €/mj.">
+        <div class="card-default-view">
+          <div class="price-header">
+            <span class="plan-target-tag">Za tvrtke u usponu</span>
+            <h3>Start</h3>
+            <p>Za stabilnu prisutnost i redovite nove upite</p>
+          </div>
+
+          <div class="price-value-box">
+            <span class="currency">€</span>
+            <span class="price-amount" id="price-marketing">690</span>
+            <span class="period">/mjesečno</span>
+          </div>
+
+          <!-- Unified Package Features -->
+          <ul class="price-features">
+            <li><span class="feat-check">📸</span> Foto & Video Produkcija: Snimanje i fotografiranje na lokaciji klijenta</li>
+            <li><span class="feat-check">📣</span> Oglasi & Mreže: Vođenje Meta kampanje (FB/IG) + 8 objava mjesečno (foto & vizuali)</li>
+            <li><span class="feat-check">🌐</span> Web: Izrada/optimizacija 1 brze landing stranice za oglase</li>
+            <li><span class="feat-check">🤖</span> AI Automatizacija: 24/7 automatski odgovori na poruke s oglasa i hvatanje kupaca</li>
+            <li><span class="feat-check">📊</span> Mjesečni izvještaj: Detaljna analiza kampanja, rezultata i budžeta</li>
+          </ul>
+
+          <button type="button" class="price-cta">Započni sa Start Paketom ➔</button>
         </div>
-
-        <div class="price-value-box">
-          <span class="currency">€</span>
-          <span class="price-amount" id="price-marketing">690</span>
-          <span class="period">/mjesečno</span>
-        </div>
-
-        <!-- Unified Package Features -->
-        <ul class="price-features">
-          <li><span class="feat-check">📸</span> Foto & Video Produkcija: Snimanje i fotografiranje na lokaciji klijenta</li>
-          <li><span class="feat-check">📣</span> Oglasi & Mreže: Vođenje Meta kampanje (FB/IG) + 8 objava mjesečno (foto & vizuali)</li>
-          <li><span class="feat-check">🌐</span> Web: Izrada/optimizacija 1 brze landing stranice za oglase</li>
-          <li><span class="feat-check">🤖</span> AI Automatizacija: 24/7 automatski odgovori na poruke s oglasa i hvatanje kupaca</li>
-          <li><span class="feat-check">📊</span> Mjesečni izvještaj: Detaljna analiza kampanja, rezultata i budžeta</li>
-        </ul>
-
-        <button type="button" class="price-cta" onclick="window.openBookingModal && window.openBookingModal('Start Paket')">Započni sa Start Paketom ➔</button>
       </div>
 
       <!-- Card 2: Plus Paket (Featured - High Conversion CRO Hero Card) -->
-      <div class="price-card popular-card">
+      <div class="price-card popular-card" data-pkg-name="Plus Paket" data-pkg-price="1.250 €/mj.">
         <div class="popular-tag">★ NAJČEŠĆI ODABIR</div>
-        <div class="price-header">
-          <span class="plan-target-tag target-featured">Za brzi rast i više rezervacija</span>
-          <h3>Plus</h3>
-          <p>Za tvrtke koje žele predvidljiv rast prodaje, foto/video produkciju i 24/7 obradu kupaca</p>
+        <div class="card-default-view">
+          <div class="price-header">
+            <span class="plan-target-tag target-featured">Za brzi rast i više rezervacija</span>
+            <h3>Plus</h3>
+            <p>Za tvrtke koje žele predvidljiv rast prodaje, foto/video produkciju i 24/7 obradu kupaca</p>
+          </div>
+
+          <div class="price-value-box">
+            <span class="currency">€</span>
+            <span class="price-amount text-glow" id="price-combined">1,250</span>
+            <span class="period">/mjesečno</span>
+          </div>
+
+          <!-- Unified Package Features -->
+          <ul class="price-features">
+            <li><span class="feat-check check-glow">📸</span> Foto & Video Produkcija: Snimanje i fotografiranje na lokaciji (foto + Reels/TikTok video)</li>
+            <li><span class="feat-check check-glow">📣</span> Oglasi & Mreže: 2 napredne Meta & Google Ads kampanje + 12 objava mjesečno</li>
+            <li><span class="feat-check check-glow">🌐</span> Web: Izrada prodajne landing stranice s visokom stopom konverzije</li>
+            <li><span class="feat-check check-glow">🤖</span> AI Lead & Booking Engine: AI agent koji zakazuje termine u kalendar i odgovara u 3 sekunde</li>
+            <li><span class="feat-check check-glow">📊</span> Mjesečni izvještaj: Detaljna analitika, uvid u konverzije i optimizacija budžeta</li>
+            <li><span class="feat-check check-glow">🛡️</span> 30 dana garancija na izvedbu</li>
+          </ul>
+
+          <button type="button" class="price-cta btn-glow">Odaberi Plus Paket ➔</button>
         </div>
-
-        <div class="price-value-box">
-          <span class="currency">€</span>
-          <span class="price-amount text-glow" id="price-combined">1,250</span>
-          <span class="period">/mjesečno</span>
-        </div>
-
-        <!-- Unified Package Features -->
-        <ul class="price-features">
-          <li><span class="feat-check check-glow">📸</span> Foto & Video Produkcija: Snimanje i fotografiranje na lokaciji (foto + Reels/TikTok video)</li>
-          <li><span class="feat-check check-glow">📣</span> Oglasi & Mreže: 2 napredne Meta & Google Ads kampanje + 12 objava mjesečno</li>
-          <li><span class="feat-check check-glow">🌐</span> Web: Izrada prodajne landing stranice s visokom stopom konverzije</li>
-          <li><span class="feat-check check-glow">🤖</span> AI Lead & Booking Engine: AI agent koji zakazuje termine u kalendar i odgovara u 3 sekunde</li>
-          <li><span class="feat-check check-glow">📊</span> Mjesečni izvještaj: Detaljna analitika, uvid u konverzije i optimizacija budžeta</li>
-          <li><span class="feat-check check-glow">🛡️</span> 30 dana garancija na izvedbu</li>
-        </ul>
-
-        <button type="button" class="price-cta btn-glow" onclick="window.openBookingModal && window.openBookingModal('Plus Paket')">Odaberi Plus Paket ➔</button>
       </div>
 
       <!-- Card 3: Market Leader Paket -->
-      <div class="price-card">
-        <div class="price-header">
-          <span class="plan-target-tag">Za ekspanziju i dominaciju</span>
-          <h3>Market Leader</h3>
-          <p>Potpuna marketing i AI automatizacija za lidere u svojoj niši</p>
+      <div class="price-card" data-pkg-name="Market Leader Paket" data-pkg-price="2.150 €/mj.">
+        <div class="card-default-view">
+          <div class="price-header">
+            <span class="plan-target-tag">Za ekspanziju i dominaciju</span>
+            <h3>Market Leader</h3>
+            <p>Potpuna marketing i AI automatizacija za lidere u svojoj niši</p>
+          </div>
+
+          <div class="price-value-box">
+            <span class="currency">€</span>
+            <span class="price-amount" id="price-ai">2,150</span>
+            <span class="period">/mjesečno</span>
+          </div>
+
+          <!-- Unified Package Features -->
+          <ul class="price-features">
+            <li><span class="feat-check">📸</span> Foto & Video Produkcija: Produkcija ekskluzivnog foto i video sadržaja na lokaciji</li>
+            <li><span class="feat-check">📣</span> Oglasi & Mreže: Multi-kanalne Meta, Google & TikTok kampanje + 16 objava mjesečno</li>
+            <li><span class="feat-check">🌐</span> Web: Kompletan web ili više namjenskih landing stranica s copywritingom</li>
+            <li><span class="feat-check">🤖</span> Custom AI Sustav: Napredni AI asistent integriran u vaš CRM i bazu s e-mail slijedom</li>
+            <li><span class="feat-check">📊</span> Mjesečni izvještaj: Tjedni i mjesečni analitički izvještaji s uvidom u CAC, ROAS i ROI</li>
+          </ul>
+
+          <button type="button" class="price-cta">Započni s Market Leader Paketom ➔</button>
         </div>
-
-        <div class="price-value-box">
-          <span class="currency">€</span>
-          <span class="price-amount" id="price-ai">2,150</span>
-          <span class="period">/mjesečno</span>
-        </div>
-
-        <!-- Unified Package Features -->
-        <ul class="price-features">
-          <li><span class="feat-check">📸</span> Foto & Video Produkcija: Produkcija ekskluzivnog foto i video sadržaja na lokaciji</li>
-          <li><span class="feat-check">📣</span> Oglasi & Mreže: Multi-kanalne Meta, Google & TikTok kampanje + 16 objava mjesečno</li>
-          <li><span class="feat-check">🌐</span> Web: Kompletan web ili više namjenskih landing stranica s copywritingom</li>
-          <li><span class="feat-check">🤖</span> Custom AI Sustav: Napredni AI asistent integriran u vaš CRM i bazu s e-mail slijedom</li>
-          <li><span class="feat-check">📊</span> Mjesečni izvještaj: Tjedni i mjesečni analitički izvještaji s uvidom u CAC, ROAS i ROI</li>
-        </ul>
-
-        <button type="button" class="price-cta" onclick="window.openBookingModal && window.openBookingModal('Market Leader Paket')">Započni s Market Leader Paketom ➔</button>
       </div>
 
     </div>
 
-    <!-- INLINE BOOKING & QUIZ FORM CONTAINER (Replaces Pricing Grid on Package Select) -->
-    <div id="inline-booking-container" class="inline-booking-wrapper" style="display: none;">
-      <div class="inline-booking-card">
+    <!-- CARD FORM TEMPLATE (Morphs inside the clicked package card in-place) -->
+    <div id="card-form-template" class="card-form-view" style="display: none;">
+      
+      <!-- Top Header Bar with Badge and Change Package Link -->
+      <div class="card-form-top-bar">
+        <div class="card-form-badge">
+          <span class="badge-bolt">⚡</span>
+          <span id="card-form-pkg-name">Plus Paket (1.250 €/mj.)</span>
+        </div>
+        <button type="button" id="card-form-change-btn" class="card-form-change-btn">
+          (Promijeni paket)
+        </button>
+      </div>
+
+      <!-- Horizontal Slides Container -->
+      <div class="card-form-slides-viewport">
         
-        <!-- Header Bar with Selected Package Badge & Change Package Button -->
-        <div class="inline-booking-top-bar">
-          <div class="inline-pkg-badge">
-            <span class="badge-bolt">⚡</span>
-            <span id="inline-selected-pkg-text">Odabran paket: Plus (1.250 €/mj.)</span>
+        <!-- SLIDE 1: UNOS KONTAKT PODATAKA -->
+        <div id="card-slide-contact" class="card-slide-panel slide-active">
+          <div class="card-slide-header">
+            <h4>Unesite vaše podatke</h4>
+            <p>Za uvodni 30-minutni poziv i pripremu analize.</p>
           </div>
-          <button type="button" id="inline-change-pkg-btn" class="inline-change-pkg-btn">
-            (Promijeni paket)
-          </button>
+
+          <form id="card-contact-form" class="card-form-inputs">
+            <div class="card-form-group">
+              <label for="card-input-name">Ime i prezime *</label>
+              <input type="text" id="card-input-name" required placeholder="npr. Ivan Horvat" />
+            </div>
+
+            <div class="card-form-group">
+              <label for="card-input-company">Tvrtka / Web *</label>
+              <input type="text" id="card-input-company" required placeholder="npr. Moja Tvrtka d.o.o." />
+            </div>
+
+            <div class="card-form-group">
+              <label for="card-input-email">E-mail adresa *</label>
+              <input type="email" id="card-input-email" required placeholder="npr. ivan@tvrtka.hr" />
+            </div>
+
+            <div class="card-form-group">
+              <label for="card-input-phone">Broj mobitela *</label>
+              <input type="tel" id="card-input-phone" required placeholder="npr. 091 234 5678" />
+            </div>
+
+            <button type="submit" class="card-form-submit-btn">
+              <span>Rezervirajte termin ➔</span>
+            </button>
+          </form>
         </div>
 
-        <!-- Horizontal Slide Container for Step 1 (Contact) -> Step 2 (Calendar) -->
-        <div class="inline-slides-viewport">
-          
-          <!-- SLIDE 1: UNOS KONTAKT PODATAKA -->
-          <div id="inline-slide-contact" class="inline-slide-panel slide-active">
-            <div class="inline-slide-header">
-              <h3>Unesite vaše kontakt podatke</h3>
-              <p>Za uvodni 30-minutni strateški sastanak i pripremu analize za vašu tvrtku.</p>
-            </div>
-
-            <form id="inline-contact-form" class="inline-contact-form">
-              <div class="inline-form-grid">
-                <div class="inline-form-group">
-                  <label for="inline-input-name">Ime i prezime *</label>
-                  <input type="text" id="inline-input-name" required placeholder="npr. Ivan Horvat" />
-                </div>
-
-                <div class="inline-form-group">
-                  <label for="inline-input-company">Tvrtka / Web *</label>
-                  <input type="text" id="inline-input-company" required placeholder="npr. Moja Tvrtka d.o.o." />
-                </div>
-
-                <div class="inline-form-group">
-                  <label for="inline-input-email">E-mail adresa *</label>
-                  <input type="email" id="inline-input-email" required placeholder="npr. ivan@tvrtka.hr" />
-                </div>
-
-                <div class="inline-form-group">
-                  <label for="inline-input-phone">Broj mobitela *</label>
-                  <input type="tel" id="inline-input-phone" required placeholder="npr. 091 234 5678" />
-                </div>
-              </div>
-
-              <div class="inline-btn-row">
-                <button type="submit" class="inline-next-btn">
-                  <span>Rezervirajte termin ➔</span>
-                </button>
-              </div>
-            </form>
+        <!-- SLIDE 2: ODABIR DATUMA I SATA U GOOGLE KALENDARU -->
+        <div id="card-slide-calendar" class="card-slide-panel slide-next">
+          <div class="card-slide-header">
+            <h4>Odaberite termin poziva</h4>
+            <p>Odaberite slobodan datum i vrijeme u kalendaru.</p>
           </div>
 
-          <!-- SLIDE 2: ODABIR DATUMA I SATA U GOOGLE KALENDARU -->
-          <div id="inline-slide-calendar" class="inline-slide-panel slide-next">
-            <div class="inline-slide-header">
-              <h3>Odaberite datum i vrijeme poziva</h3>
-              <p>Odaberite slobodan termin u Google Kalendaru koji vam najviše odgovara.</p>
+          <div class="gcal-schedule-picker card-gcal-picker">
+            <label class="picker-section-label">1. Odaberite dan:</label>
+            <div class="gcal-days-row">
+              <button type="button" class="gcal-day-btn active" data-date="Ponedjeljak, 17. Kol">
+                <span class="day-name">PON</span>
+                <span class="day-date">17. Kol</span>
+              </button>
+              <button type="button" class="gcal-day-btn" data-date="Utorak, 18. Kol">
+                <span class="day-name">UTO</span>
+                <span class="day-date">18. Kol</span>
+              </button>
+              <button type="button" class="gcal-day-btn" data-date="Srijeda, 19. Kol">
+                <span class="day-name">SRI</span>
+                <span class="day-date">19. Kol</span>
+              </button>
+              <button type="button" class="gcal-day-btn" data-date="Četvrtak, 20. Kol">
+                <span class="day-name">ČET</span>
+                <span class="day-date">20. Kol</span>
+              </button>
+              <button type="button" class="gcal-day-btn" data-date="Petak, 21. Kol">
+                <span class="day-name">PET</span>
+                <span class="day-date">21. Kol</span>
+              </button>
             </div>
 
-            <div class="google-calendar-embed-container inline-gcal">
-              <div class="gcal-embed-header">
-                <div class="gcal-branding">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="4" width="18" height="18" rx="3" fill="#4285F4"/>
-                    <path d="M7 2V6M17 2V6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    <rect x="7" y="9" width="4" height="4" fill="white" rx="1"/>
-                    <rect x="13" y="9" width="4" height="4" fill="white" rx="1"/>
-                    <rect x="7" y="15" width="4" height="4" fill="white" rx="1"/>
-                    <rect x="13" y="15" width="4" height="4" fill="#34A853" rx="1"/>
-                  </svg>
-                  <span>Google Calendar termin poziva</span>
-                </div>
-                <span class="gcal-tz">🌐 Europe/Zagreb (GMT+1)</span>
-              </div>
-
-              <div class="gcal-schedule-picker">
-                <label class="picker-section-label">1. Odaberite dan:</label>
-                <div class="gcal-days-row">
-                  <button type="button" class="gcal-day-btn active" data-date="Ponedjeljak, 17. Kol">
-                    <span class="day-name">PON</span>
-                    <span class="day-date">17. Kol</span>
-                  </button>
-                  <button type="button" class="gcal-day-btn" data-date="Utorak, 18. Kol">
-                    <span class="day-name">UTO</span>
-                    <span class="day-date">18. Kol</span>
-                  </button>
-                  <button type="button" class="gcal-day-btn" data-date="Srijeda, 19. Kol">
-                    <span class="day-name">SRI</span>
-                    <span class="day-date">19. Kol</span>
-                  </button>
-                  <button type="button" class="gcal-day-btn" data-date="Četvrtak, 20. Kol">
-                    <span class="day-name">ČET</span>
-                    <span class="day-date">20. Kol</span>
-                  </button>
-                  <button type="button" class="gcal-day-btn" data-date="Petak, 21. Kol">
-                    <span class="day-name">PET</span>
-                    <span class="day-date">21. Kol</span>
-                  </button>
-                </div>
-
-                <label class="picker-section-label">2. Odaberite vrijeme poziva:</label>
-                <div class="gcal-slots-grid">
-                  <button type="button" class="gcal-slot-btn" data-time="09:00">09:00 CET</button>
-                  <button type="button" class="gcal-slot-btn active" data-time="11:30">11:30 CET</button>
-                  <button type="button" class="gcal-slot-btn" data-time="14:00">14:00 CET</button>
-                  <button type="button" class="gcal-slot-btn" data-time="16:30">16:30 CET</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="inline-btn-row split-btn-row">
-              <button type="button" id="inline-back-to-contact-btn" class="inline-back-btn">
-                <span>← Natrag</span>
-              </button>
-              <button type="button" id="inline-confirm-booking-btn" class="inline-confirm-btn">
-                <span>Potvrdi ➔</span>
-              </button>
+            <label class="picker-section-label">2. Odaberite vrijeme:</label>
+            <div class="gcal-slots-grid">
+              <button type="button" class="gcal-slot-btn" data-time="09:00">09:00 CET</button>
+              <button type="button" class="gcal-slot-btn active" data-time="11:30">11:30 CET</button>
+              <button type="button" class="gcal-slot-btn" data-time="14:00">14:00 CET</button>
+              <button type="button" class="gcal-slot-btn" data-time="16:30">16:30 CET</button>
             </div>
           </div>
 
-          <!-- SLIDE 3: SUCCESS STATE -->
-          <div id="inline-slide-success" class="inline-slide-panel slide-next">
-            <div class="modal-success-box">
-              <div class="modal-success-icon">✓</div>
-              <h4>Upit i uvodni poziv uspješno rezervirani!</h4>
-              <p id="inline-success-desc">Potvrda i Google Kalendar pozivnica poslana je na vašu e-mail adresu.</p>
-              <button type="button" id="inline-success-reset-btn" class="inline-next-btn" style="margin-top: 16px;">
-                <span>Povratak na pakete ➔</span>
-              </button>
-            </div>
+          <div class="card-btn-row">
+            <button type="button" id="card-back-btn" class="card-back-btn">
+              <span>← Natrag</span>
+            </button>
+            <button type="button" id="card-confirm-btn" class="card-confirm-btn">
+              <span>Potvrdi ➔</span>
+            </button>
           </div>
+        </div>
 
+        <!-- SLIDE 3: POTVRDA SUCCESS STATE -->
+        <div id="card-slide-success" class="card-slide-panel slide-next">
+          <div class="modal-success-box card-success-box">
+            <div class="modal-success-icon">✓</div>
+            <h4>Poziv uspješno rezerviran!</h4>
+            <p id="card-success-desc">Potvrda i Google Kalendar pozivnica poslana je na vašu e-mail adresu.</p>
+            <button type="button" id="card-reset-btn" class="card-confirm-btn" style="margin-top: 14px; width: 100%;">
+              <span>Zatvori / Promijeni ➔</span>
+            </button>
+          </div>
         </div>
 
       </div>
+
     </div>
 
     <!-- High-Trust B2B Selling Bar -->
@@ -1882,6 +1866,6 @@
 
 
 
-  <script src="script.js?v=2.0.1"></script>
+  <script src="script.js?v=2.0.2"></script>
 </body>
 </html>
