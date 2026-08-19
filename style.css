@@ -5883,40 +5883,45 @@ body {
 }
 
 #pricing .price-card.popular-card {
-  background-color: #ffffff !important;
-  border: 2px solid #dffc2b !important;
-  color: #121316 !important;
-  box-shadow: 0 16px 45px rgba(223, 252, 43, 0.25) !important;
+  background: linear-gradient(155deg, #0c0d0e 0%, #050506 100%) !important;
+  border: 2px solid #27272a !important;
+  color: #ffffff !important;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 #pricing .price-card.popular-card .price-header h3,
 #pricing .price-card.popular-card .price-amount,
-#pricing .price-card.popular-card .price-value-box {
-  color: #121316 !important;
+#pricing .price-card.popular-card .price-value-box,
+#pricing .price-card.popular-card .price-value-box .currency {
+  color: #ffffff !important;
 }
 
-#pricing .price-card.popular-card .price-header p,
-#pricing .price-card.popular-card .period,
+#pricing .price-card.popular-card .price-header p {
+  color: #e4e4e7 !important;
+}
+
+#pricing .price-card.popular-card .period {
+  color: #a1a1aa !important;
+}
+
 #pricing .price-card.popular-card .price-features li {
-  color: #334155 !important;
+  color: #f4f4f5 !important;
+  font-weight: 500 !important;
 }
 
 #pricing .price-card.popular-card .feat-check {
-  color: #121316 !important;
+  color: #bbf246 !important;
 }
 
 #pricing .price-card.popular-card .price-cta {
-  background-color: #121316 !important;
-  color: #dffc2b !important;
-  font-weight: 800 !important;
-  border: none !important;
-  box-shadow: 0 4px 20px rgba(18, 19, 22, 0.2) !important;
+  background-color: #ffffff !important;
+  color: #0c0d0e !important;
+  border: 1px solid #ffffff !important;
 }
 
 #pricing .price-card.popular-card .price-cta:hover {
-  background-color: #000000 !important;
-  color: #dffc2b !important;
-  transform: translateY(-2px);
+  background-color: #f4f4f5 !important;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.18) !important;
 }
 
 #pricing .pricing-trust-bar {
