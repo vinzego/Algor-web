@@ -1726,12 +1726,17 @@ body {
   overflow: hidden !important;
   position: relative !important;
   background-color: #0f172a !important;
+  height: 100% !important;
+  min-height: 310px !important;
+  align-self: stretch !important;
 }
 
 .stat-card.image-card-only img.card-full-img {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  min-height: 310px !important;
   object-fit: cover !important;
   object-position: center 15% !important;
   display: block !important;
