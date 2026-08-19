@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     aiObserver.observe(aiSection);
   }
 
-  // 9. Pricing Section Static Setup
+  // 9. Static Pricing Section (No clicks, no popups, no animations, no package hiding)
   const priceMarketing = document.getElementById('price-marketing');
   const priceCombined = document.getElementById('price-combined');
   const priceAi = document.getElementById('price-ai');
@@ -266,196 +266,22 @@ document.addEventListener('DOMContentLoaded', () => {
   if (priceCombined) priceCombined.textContent = '1,250';
   if (priceAi) priceAi.textContent = '2,150';
 
-  // 10. INLINE CUSTOM PACKAGE SELECTION ANIMATION SYSTEM
-  const pricingGrid = document.querySelector('.pricing-grid');
-  const inlineContainer = document.getElementById('inline-booking-container');
-  const inlineSelectedPkgText = document.getElementById('inline-selected-pkg-text');
-  const inlineChangePkgBtn = document.getElementById('inline-change-pkg-btn');
+  // 10. Completely disable openBookingModal & package CTA click actions so cards remain 100% static
+  window.openBookingModal = function() {
+    return false;
+  };
+  window.closeBookingModal = function() {
+    return false;
+  };
 
-  const slideContact = document.getElementById('inline-slide-contact');
-  const slideCalendar = document.getElementById('inline-slide-calendar');
-  const slideSuccess = document.getElementById('inline-slide-success');
-
-  const inlineContactForm = document.getElementById('inline-contact-form');
-  const inlineBackToContactBtn = document.getElementById('inline-back-to-contact-btn');
-  const inlineConfirmBookingBtn = document.getElementById('inline-confirm-booking-btn');
-  const inlineSuccessResetBtn = document.getElementById('inline-success-reset-btn');
-
-  let activePackageTitle = 'Plus';
-  let activePackagePrice = '1.250 €/mj.';
-  let activePackageFullText = 'Plus (1.250 €/mj.)';
-
-  let inlineSelectedDate = 'Ponedjeljak, 17. Kol';
-  let inlineSelectedTime = '11:30';
-
-  function resetInlineSlides() {
-    if (slideContact) slideContact.className = 'inline-slide-panel slide-active';
-    if (slideCalendar) slideCalendar.className = 'inline-slide-panel slide-next';
-    if (slideSuccess) slideSuccess.className = 'inline-slide-panel slide-next';
-  }
-
-  function selectPackageInline(cardElement, pkgTitle, pkgPriceText) {
-    activePackageTitle = pkgTitle;
-    activePackagePrice = pkgPriceText;
-    activePackageFullText = `${pkgTitle} (${pkgPriceText})`;
-
-    if (inlineSelectedPkgText) {
-      inlineSelectedPkgText.textContent = `Odabran paket: ${activePackageFullText}`;
-    }
-
-    // Step 1: Glow selected card, dim others
-    const allCards = document.querySelectorAll('.pricing-grid .price-card');
-    allCards.forEach(c => {
-      if (c === cardElement) {
-        c.classList.add('selected-card-glow');
-        c.classList.remove('fade-inactive-card');
-      } else {
-        c.classList.add('fade-inactive-card');
-        c.classList.remove('selected-card-glow');
-      }
-    });
-
-    // Step 2: Slide & fade out pricing grid after 200ms
-    setTimeout(() => {
-      if (pricingGrid) pricingGrid.classList.add('slide-up-out');
-    }, 200);
-
-    // Step 3: Hide pricing grid & slide up inline form container after 400ms
-    setTimeout(() => {
-      if (pricingGrid) pricingGrid.style.display = 'none';
-      if (inlineContainer) {
-        resetInlineSlides();
-        inlineContainer.style.display = 'block';
-        setTimeout(() => {
-          inlineContainer.classList.add('slide-in-up');
-        }, 30);
-      }
-
-      if (inlineContainer) {
-        inlineContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }, 450);
-  }
-
-  function returnToPricingGrid() {
-    if (inlineContainer) {
-      inlineContainer.classList.remove('slide-in-up');
-      setTimeout(() => {
-        inlineContainer.style.display = 'none';
-        if (pricingGrid) {
-          pricingGrid.style.display = 'grid';
-          pricingGrid.classList.remove('slide-up-out');
-          const allCards = document.querySelectorAll('.pricing-grid .price-card');
-          allCards.forEach(c => {
-            c.classList.remove('selected-card-glow', 'fade-inactive-card');
-          });
-        }
-      }, 350);
-    }
-  }
-
-  if (inlineChangePkgBtn) {
-    inlineChangePkgBtn.addEventListener('click', returnToPricingGrid);
-  }
-  if (inlineSuccessResetBtn) {
-    inlineSuccessResetBtn.addEventListener('click', returnToPricingGrid);
-  }
-
-  // Click delegation on package CTAs
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.price-cta, .select-pkg-btn, .custom-ai-link');
+    const btn = e.target.closest('.price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn');
     if (btn) {
       e.preventDefault();
       e.stopPropagation();
-
-      const card = btn.closest('.price-card');
-      let title = 'Plus';
-      let priceText = '1.250 €/mj.';
-
-      if (card) {
-        const titleEl = card.querySelector('h3');
-        const priceEl = card.querySelector('.price-amount');
-        if (titleEl) title = titleEl.textContent.trim();
-        if (priceEl) priceText = `${priceEl.textContent.trim()} €/mj.`;
-        selectPackageInline(card, title, priceText);
-      } else {
-        const pricingSection = document.getElementById('pricing');
-        if (pricingSection) {
-          pricingSection.scrollIntoView({ behavior: 'smooth' });
-        }
-        const plusCard = document.querySelector('.price-card.popular-card') || document.querySelector('.price-card');
-        if (plusCard) {
-          selectPackageInline(plusCard, 'Plus', '1.250 €/mj.');
-        }
-      }
+      return false;
     }
   });
-
-  // Step 4: Transition to Calendar on Contact Submit
-  if (inlineContactForm) {
-    inlineContactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (slideContact) slideContact.className = 'inline-slide-panel slide-prev';
-      if (slideCalendar) slideCalendar.className = 'inline-slide-panel slide-active';
-    });
-  }
-
-  if (inlineBackToContactBtn) {
-    inlineBackToContactBtn.addEventListener('click', () => {
-      if (slideCalendar) slideCalendar.className = 'inline-slide-panel slide-next';
-      if (slideContact) slideContact.className = 'inline-slide-panel slide-active';
-    });
-  }
-
-  // Google Calendar slot selection inside inline booking
-  const dayBtns = document.querySelectorAll('.gcal-day-btn');
-  const slotBtns = document.querySelectorAll('.gcal-slot-btn');
-
-  dayBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      dayBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      inlineSelectedDate = btn.getAttribute('data-date') || inlineSelectedDate;
-    });
-  });
-
-  slotBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      slotBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      inlineSelectedTime = btn.getAttribute('data-time') || inlineSelectedTime;
-    });
-  });
-
-  // Final Confirmation Submit (Calendar -> Success)
-  if (inlineConfirmBookingBtn) {
-    inlineConfirmBookingBtn.addEventListener('click', () => {
-      const nameInput = document.getElementById('inline-input-name');
-      const companyInput = document.getElementById('inline-input-company');
-      const emailInput = document.getElementById('inline-input-email');
-
-      const name = nameInput && nameInput.value ? nameInput.value : 'Klijent';
-      const company = companyInput && companyInput.value ? companyInput.value : 'Tvrtka';
-      const email = emailInput && emailInput.value ? emailInput.value : 'vašu e-mail adresu';
-
-      inlineConfirmBookingBtn.disabled = true;
-      inlineConfirmBookingBtn.innerHTML = '<span>Potvrđujem...</span>';
-
-      setTimeout(() => {
-        inlineConfirmBookingBtn.disabled = false;
-        inlineConfirmBookingBtn.innerHTML = '<span>Potvrdi ➔</span>';
-
-        if (slideCalendar) slideCalendar.className = 'inline-slide-panel slide-prev';
-        if (slideSuccess) {
-          slideSuccess.className = 'inline-slide-panel slide-active';
-          const successDesc = document.getElementById('inline-success-desc');
-          if (successDesc) {
-            successDesc.textContent = `Hvala vam, ${name}! Za tvrtku ${company} zaprimljen je upit za paket ${activePackageFullText}. Google Kalendar pozivnica za ${inlineSelectedDate} u ${inlineSelectedTime}h poslana je na ${email}.`;
-          }
-        }
-      }, 600);
-    });
-  }
 
   // 11. Footer Inline Contact Form Submission
   const footerContactForm = document.getElementById('footerContactForm');
