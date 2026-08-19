@@ -8108,6 +8108,103 @@ html, body {
 }
 
 /* ==========================================================================
+   GLOBAL SIGNATURE CAPSULE PILL BUTTONS (Black & White Variants as in Uploaded Image)
+   ========================================================================== */
+.btn-pill,
+.mesh-primary-btn,
+.price-cta,
+.ultra-nav-cta,
+.sheet-submit-btn,
+.footer-form-submit-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  border-radius: 9999px !important;
+  padding: 6px 7px 6px 24px !important;
+  font-family: inherit !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.2px !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+  line-height: 1.2 !important;
+  width: auto !important;
+}
+
+/* 1. BLACK BUTTON VARIANT (Deep Black with Lime Arrow Circle) */
+.btn-pill-dark,
+.mesh-primary-btn,
+.sheet-submit-btn,
+.footer-form-submit-btn,
+.price-card.popular-card .price-cta {
+  background-color: #0c0d0e !important;
+  color: #ffffff !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 8px 24px -4px rgba(12, 13, 14, 0.25) !important;
+}
+
+.btn-pill-dark:hover,
+.mesh-primary-btn:hover,
+.sheet-submit-btn:hover,
+.footer-form-submit-btn:hover,
+.price-card.popular-card .price-cta:hover {
+  background-color: #17191c !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 30px -4px rgba(12, 13, 14, 0.35) !important;
+}
+
+/* 2. WHITE BUTTON VARIANT (Crisp White with Lime Arrow Circle) */
+.btn-pill-light,
+.ultra-nav-cta,
+.price-cta {
+  background-color: #ffffff !important;
+  color: #0c0d0e !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+}
+
+.btn-pill-light:hover,
+.ultra-nav-cta:hover,
+.price-cta:hover {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09) !important;
+}
+
+/* 3. RIGHT CIRCULAR ACCENT BADGE WITH ARROW ↗ */
+.btn-arrow-circle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  border-radius: 50% !important;
+  background-color: #bbf246 !important;
+  color: #0c0d0e !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 2px 8px rgba(187, 242, 70, 0.35) !important;
+}
+
+.btn-pill:hover .btn-arrow-circle,
+.mesh-primary-btn:hover .btn-arrow-circle,
+.price-cta:hover .btn-arrow-circle,
+.ultra-nav-cta:hover .btn-arrow-circle,
+.sheet-submit-btn:hover .btn-arrow-circle,
+.footer-form-submit-btn:hover .btn-arrow-circle {
+  transform: rotate(45deg) scale(1.05) !important;
+  background-color: #c9ff47 !important;
+}
+
+/* ==========================================================================
    CLEAN STATIC PRICING CARDS SYSTEM (Zero 2-States, Zero Flips, Zero Modals)
    ========================================================================== */
 .pricing-grid {
@@ -8215,14 +8312,14 @@ html, body {
 }
 
 /* ==========================================================================
-   EXCLUSIVE OBSIDIAN & ELECTRIC LIME PACKAGE POPUP MODAL
+   ULTRA-PREMIUM PACKAGE MODAL & MOBILE BOTTOM SHEET SYSTEM
    ========================================================================== */
 .mobile-sheet-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(8, 12, 22, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 99998;
   opacity: 0;
   transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -8234,7 +8331,7 @@ html, body {
   pointer-events: auto;
 }
 
-/* Desktop & Laptop Modal Styling (Deep Dark Luxury Obsidian Card) */
+/* Desktop & Laptop Modal Styling (Centered Card Popup) */
 .mobile-bottom-sheet {
   position: fixed;
   top: 50%;
@@ -8244,12 +8341,12 @@ html, body {
   max-width: 520px;
   height: auto;
   max-height: 88vh;
-  background: linear-gradient(150deg, #0b0f19 0%, #151d2a 100%);
+  background: #ffffff;
   border-radius: 28px;
-  border: 1px solid rgba(223, 252, 43, 0.25);
-  box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(223, 252, 43, 0.08);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 30px 70px -15px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(15, 23, 42, 0.05);
   z-index: 99999;
-  padding: 26px 30px 34px 30px;
+  padding: 24px 28px 32px 28px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -8274,12 +8371,12 @@ html, body {
     transform: translateY(100%);
     width: 100%;
     max-width: 100%;
-    height: 84vh;
-    max-height: 86vh;
+    height: 82vh;
+    max-height: 85vh;
     border-radius: 28px 28px 0 0;
     border-bottom: none;
-    padding: 18px 22px 30px 22px;
-    box-shadow: 0 -14px 45px rgba(0, 0, 0, 0.6);
+    padding: 16px 22px 28px 22px;
+    box-shadow: 0 -12px 40px rgba(15, 23, 42, 0.22);
   }
 
   .mobile-bottom-sheet.active {
@@ -8288,11 +8385,11 @@ html, body {
 }
 
 .sheet-drag-handle {
-  width: 44px;
+  width: 42px;
   height: 5px;
-  background-color: #334155;
+  background-color: #cbd5e1;
   border-radius: 10px;
-  margin: 0 auto 18px auto;
+  margin: 0 auto 16px auto;
   flex-shrink: 0;
 }
 
@@ -8301,12 +8398,12 @@ html, body {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   border: 1px solid rgba(223, 252, 43, 0.3);
   border-radius: 20px;
   padding: 12px 18px;
-  margin-bottom: 24px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin-bottom: 22px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
   flex-shrink: 0;
 }
 
@@ -8316,7 +8413,7 @@ html, body {
   gap: 10px;
   font-size: 13.5px;
   font-weight: 600;
-  color: #f8fafc;
+  color: #ffffff;
   letter-spacing: 0.2px;
 }
 
@@ -8325,13 +8422,13 @@ html, body {
   align-items: center;
   justify-content: center;
   background: #dffc2b;
-  color: #0b0f19;
+  color: #0f172a;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   font-size: 13px;
   font-weight: 800;
-  box-shadow: 0 0 15px rgba(223, 252, 43, 0.6);
+  box-shadow: 0 0 12px rgba(223, 252, 43, 0.45);
   flex-shrink: 0;
 }
 
@@ -8341,9 +8438,9 @@ html, body {
 }
 
 .sheet-close-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
@@ -8358,7 +8455,7 @@ html, body {
 
 .sheet-close-btn:hover {
   background: #dffc2b;
-  color: #0b0f19;
+  color: #0f172a;
   border-color: #dffc2b;
   transform: translateY(-1px);
 }
@@ -8371,76 +8468,72 @@ html, body {
 }
 
 .sheet-title {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 6px;
+  color: #0f172a;
+  margin-bottom: 4px;
   letter-spacing: -0.4px;
 }
 
 .sheet-subtitle {
   font-size: 13.5px;
-  color: #94a3b8;
-  margin-bottom: 22px;
-  line-height: 1.5;
+  color: #64748b;
+  margin-bottom: 20px;
+  line-height: 1.45;
 }
 
 .sheet-inputs {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 26px;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
 .sheet-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .sheet-group label {
   font-size: 11.5px;
   font-weight: 700;
-  color: #cbd5e1;
+  color: #475569;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
 .sheet-group input {
-  background-color: #1e293b;
-  border: 1px solid #334155;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 14px;
-  padding: 14px 18px;
-  color: #ffffff;
-  font-size: 14.5px;
+  padding: 13px 16px;
+  color: #0f172a;
+  font-size: 14px;
   font-weight: 500;
   outline: none;
   transition: all 0.25s ease;
 }
 
-.sheet-group input::placeholder {
-  color: #64748b;
-}
-
 .sheet-group input:focus {
-  border-color: #dffc2b;
-  background-color: #0f172a;
-  box-shadow: 0 0 15px rgba(223, 252, 43, 0.2);
+  border-color: #0f172a;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
 }
 
 .sheet-submit-btn {
-  background: linear-gradient(135deg, #dffc2b 0%, #b8e600 100%);
-  color: #0b0f19;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
   border: none;
   border-radius: 30px;
   padding: 16px;
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 14.5px;
+  font-weight: 700;
   cursor: pointer;
   width: 100%;
   transition: all 0.25s ease;
   margin-top: auto;
-  box-shadow: 0 10px 25px -4px rgba(223, 252, 43, 0.35);
+  box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8449,9 +8542,8 @@ html, body {
 
 .sheet-submit-btn:hover {
   background: #10b981;
-  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px rgba(16, 185, 129, 0.45);
+  box-shadow: 0 12px 25px -4px rgba(16, 185, 129, 0.35);
 }
 
 .sheet-success {
@@ -8468,18 +8560,18 @@ html, body {
 .sheet-success h4 {
   font-size: 22px;
   font-weight: 800;
-  color: #ffffff;
+  color: #0f172a;
   margin: 0;
 }
 
 .sheet-success-msg {
   font-size: 14px;
-  color: #94a3b8;
+  color: #64748b;
   max-width: 340px;
   line-height: 1.55;
 }
 
-/* Google Calendar Step Styling (Dark Obsidian Theme) */
+/* Google Calendar Step Styling */
 .sheet-calendar-step {
   display: flex;
   flex-direction: column;
@@ -8490,16 +8582,16 @@ html, body {
 .gcal-picker-box {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 22px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .gcal-label {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
-  color: #cbd5e1;
+  color: #475569;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
 .gcal-days-grid {
@@ -8509,23 +8601,23 @@ html, body {
 }
 
 .gcal-day-btn {
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 14px;
   padding: 12px 8px;
   font-size: 13px;
   font-weight: 700;
-  color: #cbd5e1;
+  color: #334155;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
 .gcal-day-btn.active,
 .gcal-day-btn:hover {
-  background: #dffc2b;
-  color: #0b0f19;
-  border-color: #dffc2b;
-  box-shadow: 0 8px 20px rgba(223, 252, 43, 0.3);
+  background: #0f172a;
+  color: #dffc2b;
+  border-color: #0f172a;
+  box-shadow: 0 6px 15px -3px rgba(15, 23, 42, 0.2);
 }
 
 .gcal-slots-grid {
@@ -8535,13 +8627,13 @@ html, body {
 }
 
 .gcal-slot-btn {
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 10px 6px;
   font-size: 12.5px;
   font-weight: 700;
-  color: #cbd5e1;
+  color: #334155;
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -8551,7 +8643,7 @@ html, body {
   background: #10b981;
   color: #ffffff;
   border-color: #10b981;
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 6px 15px -3px rgba(16, 185, 129, 0.3);
 }
 
 .gcal-actions-row {
@@ -8565,7 +8657,7 @@ html, body {
 .gcal-skip-btn {
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
@@ -8576,7 +8668,7 @@ html, body {
 }
 
 .gcal-skip-btn:hover {
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .gcal-confirm-btn {
