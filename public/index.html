@@ -1453,6 +1453,61 @@
 
 
 
-  <script src="script.js?v=14.0.0"></script>
+  <!-- Mobile Bottom Sheet Overlay & Drawer -->
+  <div id="mobile-sheet-overlay" class="mobile-sheet-overlay" style="display: none;"></div>
+
+  <div id="mobile-bottom-sheet" class="mobile-bottom-sheet" style="display: none;">
+    <div class="sheet-drag-handle"></div>
+    
+    <div class="sheet-header">
+      <div class="sheet-pkg-badge">
+        <span class="badge-bolt">⚡</span>
+        <span id="sheet-pkg-text">Odabran paket: Plus (1.250 €/mj.)</span>
+      </div>
+      <button type="button" id="sheet-close-btn" class="sheet-close-btn" title="Promijeni paket">
+        <span>Promijeni</span> ✕
+      </button>
+    </div>
+
+    <form id="mobile-sheet-form" class="sheet-form">
+      <div class="sheet-title-group">
+        <h3 class="sheet-title">Započnimo suradnju</h3>
+        <p class="sheet-subtitle">Unesite podatke i javljamo vam se unutar 2 sata za pripremu analize.</p>
+      </div>
+
+      <div class="sheet-inputs">
+        <div class="sheet-group">
+          <label>1. Ime i prezime *</label>
+          <input type="text" id="sheet-input-name" required placeholder="npr. Ivan Horvat" />
+        </div>
+
+        <div class="sheet-group">
+          <label>2. Tvrtka / Web *</label>
+          <input type="text" id="sheet-input-company" required placeholder="npr. Moja Tvrtka d.o.o." />
+        </div>
+
+        <div class="sheet-group">
+          <label>3. E-mail adresa *</label>
+          <input type="email" id="sheet-input-email" required placeholder="npr. ivan@tvrtka.hr" />
+        </div>
+
+        <div class="sheet-group">
+          <label>4. Broj mobitela *</label>
+          <input type="tel" id="sheet-input-phone" required placeholder="npr. 091 234 5678" />
+        </div>
+      </div>
+
+      <button type="submit" class="sheet-submit-btn">Potvrdi i Pošalji ➔</button>
+    </form>
+
+    <div id="sheet-success-box" class="sheet-success" style="display: none;">
+      <div class="modal-success-icon">✓</div>
+      <h4>Upit uspješno poslan!</h4>
+      <p id="sheet-success-desc" class="sheet-success-msg">Kontaktirat ćemo vas u najkraćem roku.</p>
+      <button type="button" id="sheet-success-close-btn" class="sheet-submit-btn">Zatvori ✕</button>
+    </div>
+  </div>
+
+  <script src="script.js?v=15.0.0"></script>
 </body>
 </html>

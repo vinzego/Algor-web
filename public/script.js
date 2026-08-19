@@ -266,22 +266,104 @@ document.addEventListener('DOMContentLoaded', () => {
   if (priceCombined) priceCombined.textContent = '1,250';
   if (priceAi) priceAi.textContent = '2,150';
 
-  // 10. Static Pricing Section Click Handler (Prevents default action, cards stay 100% static)
-  window.openBookingModal = function() {
-    return false;
-  };
-  window.closeBookingModal = function() {
-    return false;
-  };
+  // 10. Mobile Bottom Sheet Slide-Up Form System
+  const overlay = document.getElementById('mobile-sheet-overlay');
+  const sheet = document.getElementById('mobile-bottom-sheet');
+  const sheetCloseBtn = document.getElementById('sheet-close-btn');
+  const sheetPkgText = document.getElementById('sheet-pkg-text');
+  const sheetForm = document.getElementById('mobile-sheet-form');
+  const sheetSuccessBox = document.getElementById('sheet-success-box');
+  const sheetSuccessCloseBtn = document.getElementById('sheet-success-close-btn');
 
+  let selectedPackageFull = 'Plus (1.250 €/mj.)';
+
+  function openMobileSheet(pkgTitle, pkgPrice) {
+    selectedPackageFull = `${pkgTitle} (${pkgPrice})`;
+    if (sheetPkgText) {
+      sheetPkgText.textContent = `Odabran paket: ${selectedPackageFull}`;
+    }
+
+    if (sheetForm) sheetForm.style.display = 'flex';
+    if (sheetSuccessBox) sheetSuccessBox.style.display = 'none';
+
+    if (overlay) {
+      overlay.style.display = 'block';
+      setTimeout(() => overlay.classList.add('active'), 10);
+    }
+    if (sheet) {
+      sheet.style.display = 'flex';
+      setTimeout(() => sheet.classList.add('active'), 10);
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileSheet() {
+    if (overlay) overlay.classList.remove('active');
+    if (sheet) sheet.classList.remove('active');
+
+    setTimeout(() => {
+      if (overlay) overlay.style.display = 'none';
+      if (sheet) sheet.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 350);
+  }
+
+  if (overlay) overlay.addEventListener('click', closeMobileSheet);
+  if (sheetCloseBtn) sheetCloseBtn.addEventListener('click', closeMobileSheet);
+  if (sheetSuccessCloseBtn) sheetSuccessCloseBtn.addEventListener('click', closeMobileSheet);
+
+  // Click delegation on package CTAs
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.price-cta, .select-pkg-btn, .custom-ai-link');
+    const btn = e.target.closest('.price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn');
     if (btn) {
       e.preventDefault();
       e.stopPropagation();
+
+      const card = btn.closest('.price-card');
+      let title = 'Plus';
+      let priceText = '1.250 €/mj.';
+
+      if (card) {
+        const titleEl = card.querySelector('h3');
+        const priceEl = card.querySelector('.price-amount');
+        if (titleEl) title = titleEl.textContent.trim();
+        if (priceEl) priceText = `${priceEl.textContent.trim()} €/mj.`;
+      }
+
+      openMobileSheet(title, priceText);
       return false;
     }
   });
+
+  if (sheetForm) {
+    sheetForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('sheet-input-name');
+      const name = nameInput && nameInput.value ? nameInput.value : 'Klijent';
+      const submitBtn = sheetForm.querySelector('.sheet-submit-btn');
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Šaljem upit...</span>';
+      }
+
+      setTimeout(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Potvrdi i Pošalji ➔</span>';
+        }
+        sheetForm.reset();
+        sheetForm.style.display = 'none';
+        if (sheetSuccessBox) {
+          sheetSuccessBox.style.display = 'flex';
+          const msg = document.getElementById('sheet-success-desc');
+          if (msg) {
+            msg.textContent = `Hvala vam, ${name}! Vaš upit za paket ${selectedPackageFull} je uspješno poslan. Kontaktirat ćemo vas u roku od 2 sata.`;
+          }
+        }
+      }, 500);
+    });
+  }
 
   // 11. Footer Inline Contact Form Submission
   const footerContactForm = document.getElementById('footerContactForm');
