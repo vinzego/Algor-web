@@ -1832,7 +1832,7 @@ body {
 }
 
 .solid-lime-card {
-  background: linear-gradient(145deg, #dffc2b 0%, #caef1a 100%) !important;
+  background: linear-gradient(145deg, #dffc2b 0%, #cbee1d 100%) !important;
   color: #0f172a !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   box-shadow: 0 12px 30px -6px rgba(223, 252, 43, 0.35) !important;
@@ -2025,7 +2025,7 @@ body {
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 1.5px !important;
-  color: #65a30d !important;
+  color: #dffc2b !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
@@ -7940,12 +7940,12 @@ body {
   border-color: #cbd5e1 !important;
 }
 
-/* Right Card: Algor Studio (Lime Theme + Slanted Right +2.5deg) */
+/* Right Card: Algor Studio (Signature Lime #dffc2b Theme) */
 .ba-after {
-  background: linear-gradient(145deg, #f7fee7 0%, #d9f99d 100%) !important;
-  border: 1px solid #bef264 !important;
-  box-shadow: 0 20px 45px -10px rgba(132, 204, 22, 0.25), inset 0 1px 0 0 #ffffff !important;
-  color: #1a2e05 !important;
+  background: linear-gradient(145deg, #dffc2b 0%, #cbee1d 100%) !important;
+  border: 1px solid #c8eb18 !important;
+  box-shadow: 0 20px 45px -10px rgba(223, 252, 43, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.6) !important;
+  color: #0f172a !important;
   position: relative !important;
   overflow: hidden !important;
   transform: rotate(2.5deg) translateY(-6px) !important;
@@ -7958,14 +7958,14 @@ body {
   right: -40px !important;
   width: 280px !important;
   height: 280px !important;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%) !important;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%) !important;
   pointer-events: none !important;
 }
 
 .ba-after:hover {
   transform: rotate(0deg) translateY(-10px) scale(1.015) !important;
-  border-color: #a3e635 !important;
-  box-shadow: 0 30px 65px -12px rgba(132, 204, 22, 0.35), inset 0 1px 0 0 #ffffff !important;
+  border-color: #dffc2b !important;
+  box-shadow: 0 30px 65px -12px rgba(223, 252, 43, 0.45), inset 0 1px 0 0 #ffffff !important;
 }
 
 .ba-card-header {
@@ -7992,10 +7992,10 @@ body {
 }
 
 .ba-after .badge-green {
-  background-color: #ffffff !important;
-  color: #3f6212 !important;
-  border: 1px solid #bef264 !important;
-  box-shadow: 0 2px 8px rgba(132, 204, 22, 0.2) !important;
+  background-color: #0f172a !important;
+  color: #dffc2b !important;
+  border: 1px solid rgba(223, 252, 43, 0.4) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2) !important;
 }
 
 .ba-list {
