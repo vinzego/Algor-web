@@ -3880,7 +3880,7 @@ body {
 
 .footer-conv-subtitle {
   font-size: 18px;
-  color: #a1a1aa !important;
+  color: #e2e8f0 !important;
   max-width: 620px;
   line-height: 1.6;
   margin: 0;
@@ -3893,8 +3893,8 @@ body {
 }
 
 .footer-form-grid-box {
-  background-color: #18181b !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background-color: #181920 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 28px;
   padding: 24px;
   backdrop-filter: blur(10px);
@@ -3907,7 +3907,7 @@ body {
 }
 
 .footer-form-grid-box:focus-within {
-  background-color: #27272a !important;
+  background-color: #21222b !important;
   border-color: #dffc2b !important;
   box-shadow: 0 15px 40px rgba(223, 252, 43, 0.15) !important;
 }
@@ -3921,11 +3921,11 @@ body {
 .footer-form-field input,
 .footer-textarea-row textarea {
   width: 100%;
-  background: #09090b !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: #0c0d12 !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
   border-radius: 14px;
-  padding: 12px 16px;
-  font-size: 14px;
+  padding: 13px 16px;
+  font-size: 14.5px;
   font-weight: 600;
   color: #ffffff !important;
   outline: none;
@@ -3941,15 +3941,16 @@ body {
 
 .footer-form-field input:focus,
 .footer-textarea-row textarea:focus {
-  background: #000000 !important;
+  background: #14151c !important;
   border-color: #dffc2b !important;
-  box-shadow: 0 0 15px rgba(223, 252, 43, 0.2) !important;
+  box-shadow: 0 0 18px rgba(223, 252, 43, 0.25) !important;
 }
 
 .footer-form-field input::placeholder,
 .footer-textarea-row textarea::placeholder {
-  color: #71717a !important;
-  font-weight: 500;
+  color: #cbd5e1 !important;
+  font-weight: 600;
+  opacity: 0.95;
 }
 
 .footer-submit-row {
