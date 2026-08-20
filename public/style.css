@@ -5694,21 +5694,20 @@ body {
   margin: 0 !important;
 }
 
-/* Apple Style Clean Chat Visual inside Main AI Hero Card (Automatske rezervacije) */
+/* Apple Style Floating Chat Bubbles (Automatske rezervacije - No Background, Looping) */
 .chat-apple-style-box {
-  background: #dedcd7 !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  border-radius: 24px !important;
-  padding: 22px 18px !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 12px 35px rgba(0, 0, 0, 0.35) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
   width: 100% !important;
-  max-width: 440px !important;
+  max-width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
+  gap: 14px !important;
   box-sizing: border-box !important;
   position: relative !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 .apple-msg-row {
@@ -5728,32 +5727,32 @@ body {
 }
 
 .apple-avatar {
-  width: 32px !important;
-  height: 32px !important;
+  width: 34px !important;
+  height: 34px !important;
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0 !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
 }
 
 .avatar-user {
   background: #ffffff !important;
   color: #333333 !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
 }
 
 .avatar-user svg {
   width: 18px;
   height: 18px;
-  stroke: #444444;
+  stroke: #222222;
 }
 
 .avatar-bot {
   background: #000000 !important;
   color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
 }
 
 .avatar-bot svg {
@@ -5763,11 +5762,11 @@ body {
 }
 
 .apple-bubble {
-  max-width: 82% !important;
-  font-size: 13.5px !important;
+  max-width: 80% !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
-  line-height: 1.4 !important;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06) !important;
+  line-height: 1.45 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
   box-sizing: border-box !important;
 }
 
@@ -5775,37 +5774,41 @@ body {
   background: #ffffff !important;
   color: #1a1a1a !important;
   border-radius: 20px 20px 20px 6px !important;
-  padding: 11px 16px !important;
+  padding: 12px 18px !important;
 }
 
 .bubble-right {
   background: #000000 !important;
   color: #ffffff !important;
   border-radius: 20px 20px 6px 20px !important;
-  padding: 11px 16px !important;
+  padding: 12px 18px !important;
 }
 
 .bubble-confirm {
   background: #000000 !important;
   color: #ffffff !important;
   border: 1.5px solid #dffc2b !important;
-  box-shadow: 0 0 16px rgba(223, 252, 43, 0.25) !important;
+  box-shadow: 0 0 18px rgba(223, 252, 43, 0.3) !important;
 }
 
-/* Staggered Apple Message Entrance Animations */
-.msg-anim-1 { animation: appleMsgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards !important; }
-.msg-anim-2 { animation: appleMsgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards !important; }
-.msg-anim-3 { animation: appleMsgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.7s forwards !important; }
-.msg-anim-4 { animation: appleMsgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 2.5s forwards !important; }
+/* Seamless Continuous Looping Message Entrance Animations */
+.msg-anim-1 { animation: appleMsgLoop 9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s infinite !important; }
+.msg-anim-2 { animation: appleMsgLoop 9s cubic-bezier(0.16, 1, 0.3, 1) 1.6s infinite !important; }
+.msg-anim-3 { animation: appleMsgLoop 9s cubic-bezier(0.16, 1, 0.3, 1) 3.0s infinite !important; }
+.msg-anim-4 { animation: appleMsgLoop 9s cubic-bezier(0.16, 1, 0.3, 1) 4.4s infinite !important; }
 
-@keyframes appleMsgPop {
+@keyframes appleMsgLoop {
   0% {
     opacity: 0;
-    transform: translateY(14px) scale(0.96);
+    transform: translateY(16px) scale(0.95);
   }
-  100% {
+  10%, 82% {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+  92%, 100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.97);
   }
 }
   border-bottom-right-radius: 4px !important;
