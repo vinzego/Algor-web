@@ -1655,7 +1655,7 @@ body {
   width: calc(100% - 32px) !important;
   max-width: none !important;
   margin: 16px auto !important;
-  background-color: #e8e8e8 !important;
+  background-color: #e5e3df !important;
   border: 1px solid #e2e8f0 !important;
   box-shadow: none !important;
   border-radius: 32px !important;
@@ -2076,7 +2076,7 @@ body {
    PER-SECTION BACKGROUND COLORS
    Edit the background-color value for each section below.
 ===================================================== */
-#about         { background-color: #e8e8e8; }
+#about         { background-color: #e5e3df !important; }
 
 .marketing-section-wrapper {
   background-color: #0e0e10 !important;
@@ -2108,7 +2108,7 @@ body {
 #before-after  { background-color: #e8e8e8 !important; }
 #portfolio     { background-color: #ffffff; }
 #testimonials  { background-color: #f8f9fa; }
-#process       { background-color: #e8e8e8 !important; }
+#process       { background-color: #e5e3df !important; }
 #ideal-fit     { background-color: #ffffff !important; }
 #faq           { background-color: #0e0e10 !important; }
 
@@ -4647,7 +4647,7 @@ body {
    Sticky 2-Column Cooperation Process Layout (#process)
 ------------------------------------------------------------- */
 #process.process-sticky-section {
-  background-color: #e8e8e8 !important;
+  background-color: #e5e3df !important;
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
