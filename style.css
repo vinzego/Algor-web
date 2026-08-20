@@ -6725,6 +6725,7 @@ body {
 
 #pricing .price-card.luxury-card,
 .price-card.luxury-card {
+  cursor: pointer !important;
   background: rgba(14, 14, 18, 0.55) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;

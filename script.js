@@ -341,27 +341,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Click delegation on CTA buttons (Navbar, Hero, Bento Instagram Ad, Pricing Cards)
+  // Click delegation for ALL package cards and CTA buttons across the website
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.package-cta-btn, .ig-ad-cta-banner, .price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn, .btn-lime, .btn-primary, .hero-cta-btn');
-    if (btn) {
-      if (btn.type === 'submit' || btn.closest('form')) return;
+    const cardEl = e.target.closest('.price-card, .luxury-card');
+    const ctaBtn = e.target.closest('.package-cta-btn, .ig-ad-cta-banner, .price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn, .btn-lime, .btn-primary, .hero-cta-btn, .luxury-btn-dark, .luxury-btn-glow');
+
+    if (cardEl || ctaBtn) {
+      const targetBtn = ctaBtn || e.target.closest('button, a');
+      if (targetBtn && (targetBtn.type === 'submit' || targetBtn.closest('form') || targetBtn.id === 'sheet-close-btn' || targetBtn.id === 'sheet-success-close-btn' || targetBtn.classList.contains('sheet-close-btn'))) {
+        return;
+      }
 
       e.preventDefault();
       e.stopPropagation();
 
-      const card = btn.closest('.price-card, .bento-ref-card, .fit-card');
       let title = 'Upit & Savjetovanje';
       let priceText = 'Besplatan Audit';
 
-      if (btn.classList.contains('ig-ad-cta-banner')) {
+      const targetCard = cardEl || (ctaBtn ? ctaBtn.closest('.price-card, .bento-ref-card, .fit-card') : null);
+
+      if (ctaBtn && ctaBtn.classList.contains('ig-ad-cta-banner')) {
         title = 'Ciljani Instagram Oglas';
         priceText = 'Lokacijska Produkcija & Ads';
-      } else if (card) {
-        const titleEl = card.querySelector('h3');
-        const priceEl = card.querySelector('.price-amount');
+      } else if (targetCard) {
+        const titleEl = targetCard.querySelector('h3');
+        const priceValEl = targetCard.querySelector('.price-val, .price-amount');
         if (titleEl) title = titleEl.textContent.trim();
-        if (priceEl) priceText = `${priceEl.textContent.trim()} €/mj.`;
+        if (priceValEl) {
+          priceText = `${priceValEl.textContent.trim()} €/mj.`;
+        } else {
+          priceText = 'Po dogovoru';
+        }
       }
 
       openMobileSheet(title, priceText);
