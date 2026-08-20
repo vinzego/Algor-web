@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karijere & Otvorene Pozicije | Algor studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=46.0.0">
+  <style>
+    body { background-color: #EDEDED !important; color: #1e1e24 !important; font-family: 'Inter', sans-serif !important; margin: 0; padding: 0; }
+    .careers-page-wrapper { max-width: 1100px; margin: 140px auto 80px; padding: 0 24px; }
+    .careers-header { text-align: center; margin-bottom: 64px; }
+    .careers-tag-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; background: #000000; color: #dffc2b; border-radius: 999px; font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 20px; }
+    .careers-main-title { font-size: 46px; font-weight: 800; color: #0a0a0f; letter-spacing: -1.5px; margin: 0 0 16px 0; line-height: 1.1; }
+    .careers-subtitle { font-size: 18px; color: #555560; max-width: 720px; margin: 0 auto; line-height: 1.6; }
+    
+    /* Open Positions Grid */
+    .positions-grid { display: flex; flex-direction: column; gap: 24px; margin-bottom: 80px; }
+    .position-card { background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; border-radius: 24px !important; padding: 36px 40px !important; display: flex; justify-content: space-between; align-items: center; gap: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .position-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); }
+    .position-info h3 { font-size: 22px; font-weight: 700; color: #0a0a0f; margin: 0 0 8px 0; }
+    .position-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .meta-pill { font-size: 12px; font-weight: 600; font-family: 'Geist Mono', monospace; background: #f0ede8; color: #444444; padding: 4px 10px; border-radius: 6px; }
+    .meta-tag { font-size: 12px; font-weight: 700; color: #10b981; }
+    .position-desc { font-size: 14.5px; color: #555560; margin: 0; line-height: 1.55; max-width: 620px; }
+    .apply-btn { background: #000000; color: #ffffff; padding: 12px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 14px; white-space: nowrap; transition: background 0.2s ease, transform 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
+    .apply-btn:hover { background: #1a1a1a; color: #dffc2b; transform: scale(1.03); }
+
+    /* Values Section */
+    .values-box { background: #14151a; color: #ffffff; border-radius: 28px; padding: 56px 48px; margin-bottom: 80px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+    .values-title { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin: 0 0 40px 0; text-align: center; }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+    .value-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 28px; }
+    .value-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+    .value-card h4 { font-size: 18px; font-weight: 700; color: #ffffff; margin: 0 0 8px 0; }
+    .value-card p { font-size: 14px; color: #a0a0ab; line-height: 1.6; margin: 0; }
+
+    @media (max-width: 768px) {
+      .position-card { flex-direction: column; align-items: flex-start; padding: 28px; }
+      .careers-main-title { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Glass Navbar (EXACT MATCH WITH LANDING PAGE) -->
+  <header class="ultra-navbar">
+    <!-- Brand Logo -->
+    <a href="index.html" class="ultra-brand-logo">
+      <span class="logo-accent-dot"></span>
+      <span class="logo-text">algor<span class="logo-ai-badge">studio</span></span>
+    </a>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Otvori izbornik">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <!-- Pill Nav Menu (Desktop & Mobile Drawer) -->
+    <nav class="ultra-nav-menu" id="ultra-nav-menu">
+      <div class="mobile-nav-links-grid">
+        <a href="index.html#about" class="ultra-nav-link">O nama</a>
+        <a href="index.html#marketing" class="ultra-nav-link">Usluge</a>
+        <a href="index.html#portfolio" class="ultra-nav-link">Projekti</a>
+        <a href="index.html#process" class="ultra-nav-link">Proces</a>
+        <a href="index.html#pricing" class="ultra-nav-link">Cijene</a>
+        <a href="karijere.html" class="ultra-nav-link" style="color: #059669 !important; font-weight: 800 !important;">Karijere</a>
+      </div>
+
+      <div class="mobile-nav-email-box">
+        <a href="mailto:info@algorstudio.com" class="mobile-nav-email-link">✉️ info@algorstudio.com</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Careers Content -->
+  <main class="careers-page-wrapper">
+    <header class="careers-header">
+      <div class="careers-tag-badge">
+        <span>🚀 ALGOR STUDIO TIM</span>
+      </div>
+      <h1 class="careers-main-title">Gradi budućnost digitalnog marketinga i AI automatizacija.</h1>
+      <p class="careers-subtitle">Tražimo talentirane stvaraoce, media buyere, video producente i AI entuzijaste koji žele raditi na projektima vrhunske kvalitete.</p>
+    </header>
+
+    <!-- Open Positions Section -->
+    <section class="positions-grid">
+      <!-- Position 1 -->
+      <article class="position-card">
+        <div class="position-info">
+          <div class="position-meta">
+            <span class="meta-pill">Puno radno vrijeme • Remote / Zagreb</span>
+            <span class="meta-tag">● Oglasi &amp; ROAS</span>
+          </div>
+          <h3>Senior Media Buyer (Meta &amp; Google Ads)</h3>
+          <p class="position-desc">Upravljanje značajnim oglašivačkim budžetima za klijente, optimizacija prodajnih lijevaka, izrada strategija i analitika prinosa.</p>
+        </div>
+        <a href="mailto:karijere@algorstudio.com?subject=Prijava: Senior Media Buyer" class="apply-btn"><span>Prijavi se</span> ↗</a>
+      </article>
+
+      <!-- Position 2 -->
+      <article class="position-card">
+        <div class="position-info">
+          <div class="position-meta">
+            <span class="meta-pill">Puno / Skraćeno radno vrijeme • Zagreb</span>
+            <span class="meta-tag">● Video Produkcija</span>
+          </div>
+          <h3>Creative Video Producer &amp; Editor</h3>
+          <p class="position-desc">Snimanje i montaža dinamičnih video oglasa (UGC, reels, reklame), rad sa studijskom opremom i stvaranje vizuala koji konvertiraju.</p>
+        </div>
+        <a href="mailto:karijere@algorstudio.com?subject=Prijava: Video Producer" class="apply-btn"><span>Prijavi se</span> ↗</a>
+      </article>
+
+      <!-- Position 3 -->
+      <article class="position-card">
+        <div class="position-info">
+          <div class="position-meta">
+            <span class="meta-pill">Puno radno vrijeme • Remote</span>
+            <span class="meta-tag">● AI &amp; Automatizacije</span>
+          </div>
+          <h3>AI Automation &amp; CRM Specialist</h3>
+          <p class="position-desc">Razvoj pametnih AI agenata za recepciju i rezervacije, integracija s WhatsApp/E-mail API sustavima i automatizacija CRM procesa.</p>
+        </div>
+        <a href="mailto:karijere@algorstudio.com?subject=Prijava: AI Specialist" class="apply-btn"><span>Prijavi se</span> ↗</a>
+      </article>
+
+      <!-- Position 4: Open Application -->
+      <article class="position-card" style="border-left: 4px solid #dffc2b !important;">
+        <div class="position-info">
+          <div class="position-meta">
+            <span class="meta-pill">Spontana prijava</span>
+            <span class="meta-tag" style="color: #059669;">● Otvoreni poziv</span>
+          </div>
+          <h3>Ne vidiš poziciju za sebe? Pošalji nam prijavu!</h3>
+          <p class="position-desc">Stalno tražimo iznimne talente. Pošalji nam svoj CV ili portfolio i kontaktirat ćemo te čim se otvori odgovarajuća prilika.</p>
+        </div>
+        <a href="mailto:karijere@algorstudio.com?subject=Spontana Prijava" class="apply-btn" style="background: #059669;"><span>Otvorena prijava</span> 📩</a>
+      </article>
+    </section>
+
+    <!-- Why Join Us Section -->
+    <section class="values-box">
+      <h2 class="values-title">Zašto raditi u Algor studiju?</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <span class="value-icon">⚡</span>
+          <h4>Vrhunska Tehnologija</h4>
+          <p>Radimo s najmodernijim AI alatima, studijskom opremom i softverskim rješenjima u industriji.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🎯</span>
+          <h4>Meritokracija &amp; Rast</h4>
+          <p>Cijenimo rezultate i kreativnost. Tvoj rad direktno utječe na rast klijenata i tvoj osobni napredak.</p>
+        </div>
+        <div class="value-card">
+          <span class="value-icon">🌴</span>
+          <h4>Fleksibilan Rad</h4>
+          <p>Hibridni ili remote radni model s fokusom na učinak, a ne na sate provedene u uredu.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Full Footer (Matching Index Page) -->
+  <footer class="site-footer" style="background: #0b0c10; color: #ffffff; padding: 80px 24px 40px;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div class="footer-photo-credit-text" style="color: #888888; font-size: 13px; margin-bottom: 40px;">
+        Sve fotografije na ovoj web stranici je producirao Algor studio.
+      </div>
+
+      <div class="footer-card-top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 60px;">
+        <div class="footer-logo-col" style="max-width: 360px;">
+          <div class="footer-logo" style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; margin-bottom: 16px;">
+            <span class="footer-logo-icon" style="color: #dffc2b;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
+              </svg>
+            </span>
+            <span>ALGOR STUDIO</span>
+          </div>
+          <p class="footer-tagline" style="color: #a0a0ab; font-size: 14px; line-height: 1.6;">Marketing agencija, video produkcija i AI automatizacije za brzorastuće brendove.</p>
+        </div>
+
+        <div class="footer-links-grid" style="display: flex; gap: 60px; flex-wrap: wrap;">
+          <div class="footer-link-group">
+            <h4 style="color: #ffffff; font-size: 15px; margin-bottom: 16px;">Istraži</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+              <li><a href="index.html#about" style="color: #a0a0ab; text-decoration: none;">O nama</a></li>
+              <li><a href="index.html#marketing" style="color: #a0a0ab; text-decoration: none;">Usluge</a></li>
+              <li><a href="index.html#portfolio" style="color: #a0a0ab; text-decoration: none;">Projekti</a></li>
+              <li><a href="index.html#process" style="color: #a0a0ab; text-decoration: none;">Proces</a></li>
+              <li><a href="karijere.html" style="color: #dffc2b; font-weight: 600; text-decoration: none;">Karijere</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-link-group">
+            <h4 style="color: #ffffff; font-size: 15px; margin-bottom: 16px;">Društvene mreže</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+              <li><a href="https://x.com" target="_blank" style="color: #a0a0ab; text-decoration: none;">X / Twitter</a></li>
+              <li><a href="https://youtube.com" target="_blank" style="color: #a0a0ab; text-decoration: none;">YouTube</a></li>
+              <li><a href="https://instagram.com" target="_blank" style="color: #a0a0ab; text-decoration: none;">Instagram</a></li>
+              <li><a href="https://linkedin.com" target="_blank" style="color: #a0a0ab; text-decoration: none;">LinkedIn</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-link-group">
+            <h4 style="color: #ffffff; font-size: 15px; margin-bottom: 16px;">Pravno</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+              <li><a href="politika-privatnosti.html" style="color: #a0a0ab; text-decoration: none;">Politika privatnosti</a></li>
+              <li><a href="uvjeti-koristenja.html" style="color: #a0a0ab; text-decoration: none;">Uvjeti korištenja</a></li>
+              <li><a href="kolacici.html" style="color: #a0a0ab; text-decoration: none;">Politika kolačića</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-card-bottom" style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; color: #777780; font-size: 13px;">
+        <div>©2026 Algor studio. Sva prava pridržana.</div>
+        <div>Izradio Francis &bull; Pokreće <span style="color: #dffc2b; font-weight: 600;">Antigravity</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
