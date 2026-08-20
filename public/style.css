@@ -6405,20 +6405,30 @@ body {
 
 #pricing .price-card.luxury-card.popular-card-lux,
 .price-card.luxury-card.popular-card-lux {
-  background: radial-gradient(circle at 50% 15%, rgba(255, 235, 220, 0.12) 0%, rgba(20, 20, 28, 0.65) 65%),
+  background: radial-gradient(circle at 50% 0%, rgba(223, 252, 43, 0.12) 0%, rgba(20, 20, 28, 0.65) 65%),
               rgba(20, 20, 26, 0.65) !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.28) !important;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(223, 252, 43, 0.3) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(223, 252, 43, 0.4), 0 0 35px rgba(223, 252, 43, 0.08) !important;
 }
 
 #pricing .price-card.luxury-card.popular-card-lux:hover,
 .price-card.luxury-card.popular-card-lux:hover {
-  background: radial-gradient(circle at 50% 15%, rgba(255, 235, 220, 0.18) 0%, rgba(28, 28, 36, 0.82) 65%),
+  background: radial-gradient(circle at 50% 0%, rgba(223, 252, 43, 0.18) 0%, rgba(28, 28, 36, 0.82) 65%),
               rgba(28, 28, 36, 0.82) !important;
-  border-color: rgba(255, 255, 255, 0.45) !important;
-  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.85), inset 0 1px 0 0 rgba(255, 255, 255, 0.4) !important;
+  border-color: rgba(223, 252, 43, 0.5) !important;
+  box-shadow: 0 32px 70px rgba(0, 0, 0, 0.85), inset 0 1px 0 0 rgba(223, 252, 43, 0.6), 0 0 50px rgba(223, 252, 43, 0.16) !important;
+}
+
+.popular-card-lux .ref-tag-mono.tag-popular {
+  color: #dffc2b !important;
+  text-shadow: 0 0 10px rgba(223, 252, 43, 0.4) !important;
+}
+
+.popular-card-lux .check-icon-circle {
+  background: rgba(223, 252, 43, 0.15) !important;
+  color: #dffc2b !important;
 }
 
 .card-top-tag-row {
