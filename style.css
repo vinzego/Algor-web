@@ -8376,14 +8376,7 @@ body {
 
 .ba-after .ba-list li p {
   font-size: 14px !important;
-  color: #94a3b8 !important;
-  line-height: 1.55 !important;
-  margin: 0 !important;
-}
-
-.ba-after .ba-list li p {
-  font-size: 14px !important;
-  color: #334155 !important;
+  color: #e2e8f0 !important;
   line-height: 1.55 !important;
   margin: 0 !important;
 }
