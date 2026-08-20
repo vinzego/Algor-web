@@ -560,11 +560,149 @@ document.addEventListener('DOMContentLoaded', () => {
   progressBar.className = 'scroll-progress-bar';
   document.body.appendChild(progressBar);
 
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = `${scrollPercent}%`;
-  }, { passive: true });
+  // 15. Bento Grid - AI Chat Frame Animation ("AI Automatska Recepcija 24/7")
+  const chatContainer = document.getElementById('bento-chat-container');
+  if (chatContainer) {
+    const chatSequence = [
+      {
+        type: 'user',
+        text: 'Nudite li slobodan termin za petak?',
+        time: '14:20',
+        delay: 700
+      },
+      {
+        type: 'typing',
+        delay: 1100
+      },
+      {
+        type: 'ai',
+        text: 'Imamo slobodno u 14h i 17h. Želite li da vas upišem?',
+        time: '14:20 ✓✓',
+        delay: 1400
+      },
+      {
+        type: 'user',
+        text: 'Može u 14h za Marko!',
+        time: '14:21',
+        delay: 1200
+      },
+      {
+        type: 'pill',
+        text: '📅 Potvrđeno u kalendaru! (Marko • 14:00h)',
+        delay: 1000
+      },
+      {
+        type: 'ai',
+        text: 'Super Marko! Poslao sam SMS s potvrdom i uputama. Vidimo se u petak! 🚀',
+        time: '14:21 ✓✓',
+        delay: 1600
+      }
+    ];
+
+    let chatStep = 0;
+    let chatTimer = null;
+
+    const playNextChatStep = () => {
+      if (chatStep >= chatSequence.length) {
+        chatTimer = setTimeout(() => {
+          chatContainer.innerHTML = '';
+          chatStep = 0;
+          playNextChatStep();
+        }, 4000);
+        return;
+      }
+
+      const item = chatSequence[chatStep];
+      chatStep++;
+
+      const existingTyping = chatContainer.querySelector('.chat-typing-indicator');
+      if (existingTyping) existingTyping.remove();
+
+      if (item.type === 'typing') {
+        const typingEl = document.createElement('div');
+        typingEl.className = 'chat-typing-indicator msg-anim-enter';
+        typingEl.innerHTML = `
+          <span>🤖 Algor AI tipka</span>
+          <span class="typing-dots">
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+          </span>
+        `;
+        chatContainer.appendChild(typingEl);
+      } else if (item.type === 'user') {
+        const msgEl = document.createElement('div');
+        msgEl.className = 'msg-bubble msg-user msg-anim-enter';
+        msgEl.innerHTML = `<span>${item.text}</span><span class="msg-time">${item.time}</span>`;
+        chatContainer.appendChild(msgEl);
+      } else if (item.type === 'ai') {
+        const msgEl = document.createElement('div');
+        msgEl.className = 'msg-bubble msg-ai msg-anim-enter';
+        msgEl.innerHTML = `<span>${item.text}</span><span class="msg-time">${item.time.replace('✓✓', '<span class="blue-ticks">✓✓</span>')}</span>`;
+        chatContainer.appendChild(msgEl);
+      } else if (item.type === 'pill') {
+        const pillEl = document.createElement('div');
+        pillEl.className = 'cal-status-pill msg-anim-enter';
+        pillEl.innerHTML = `<span>${item.text}</span>`;
+        chatContainer.appendChild(pillEl);
+      }
+
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      chatTimer = setTimeout(playNextChatStep, item.delay);
+    };
+
+    chatContainer.innerHTML = '';
+    playNextChatStep();
+  }
+
+  // 16. Bento Grid - Non-Stop Push Notification Stream ("Instant Obavijesti & Baza")
+  const pushContainer = document.getElementById('bento-push-container');
+  if (pushContainer) {
+    const notificationsList = [
+      { icon: '🔔', title: 'Novi klijent u bazi', text: 'Marko P. • Rezervacija 14:00h' },
+      { icon: '⚡', title: 'CRM Sinkronizacija', text: 'Spremljeno u bazu • SMS poslan' },
+      { icon: '💬', title: 'Instagram Direct Upit', text: 'Ana K. • Preuzela ponudu za paket' },
+      { icon: '📅', title: 'Google Kalendar', text: 'Potvrđen termin • Uto, 16:30h' },
+      { icon: '🎯', title: 'Novi Kvalificirani Lead', text: 'Ivan R. • Upit s Meta Ads oglasa' },
+      { icon: '🚀', title: 'AI Automatizacija 24/7', text: 'Poslan cjenik i lokacija u 2s' },
+      { icon: '📩', title: 'Web Form Upit', text: 'Petra S. • Zatražen poziv' }
+    ];
+
+    let notifIndex = 0;
+
+    const pushNewNotification = () => {
+      const data = notificationsList[notifIndex];
+      notifIndex = (notifIndex + 1) % notificationsList.length;
+
+      const newBox = document.createElement('div');
+      newBox.className = 'push-notification-box push-anim-enter';
+      newBox.innerHTML = `
+        <span class="push-icon">${data.icon}</span>
+        <div class="push-text">
+          <strong>${data.title}</strong>
+          <span>${data.text}</span>
+        </div>
+      `;
+
+      pushContainer.insertBefore(newBox, pushContainer.firstChild);
+
+      const currentBoxes = pushContainer.querySelectorAll('.push-notification-box');
+      currentBoxes.forEach((box, idx) => {
+        if (idx === 0) {
+          box.classList.remove('push-secondary');
+        } else if (idx === 1) {
+          box.classList.add('push-secondary');
+        } else {
+          box.classList.add('push-anim-exit');
+          setTimeout(() => box.remove(), 400);
+        }
+      });
+    };
+
+    pushContainer.innerHTML = '';
+    pushNewNotification();
+    setTimeout(pushNewNotification, 1000);
+    setInterval(pushNewNotification, 2400);
+  }
 
 });
