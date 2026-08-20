@@ -385,16 +385,42 @@
         </div>
         <p class="ref-card-desc-muted">Točno znate koliko ste uložili, a koliko vam je novih kupaca i prihoda kampanja donijela.</p>
         <div class="roi-chart-visual-large">
-          <svg viewBox="0 0 200 60" class="roi-svg-large">
+          <div class="roi-chart-legend">
+            <span class="legend-item leg-green"><span class="legend-dot">●</span> Prihod (+320%)</span>
+            <span class="legend-item leg-cyan"><span class="legend-dot">●</span> Meta Leads (+185%)</span>
+            <span class="legend-item leg-purple"><span class="legend-dot">●</span> AI Upiti (+240%)</span>
+          </div>
+          <svg viewBox="0 0 240 90" class="roi-svg-multi-line">
             <defs>
-              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+              <!-- Green Gradient Fill -->
+              <linearGradient id="chartGradGreen" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
                 <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
               </linearGradient>
+              <!-- Cyan Gradient Fill -->
+              <linearGradient id="chartGradCyan" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+              </linearGradient>
             </defs>
-            <path d="M 10,50 Q 50,40 90,25 T 150,15 T 190,5 L 190,60 L 10,60 Z" fill="url(#chartGrad)" />
-            <path d="M 10,50 Q 50,40 90,25 T 150,15 T 190,5" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" />
-            <circle cx="190" cy="5" r="5" fill="#10b981" />
+            
+            <!-- Background Grid Lines -->
+            <line x1="10" y1="20" x2="230" y2="20" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+            <line x1="10" y1="50" x2="230" y2="50" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+            <line x1="10" y1="80" x2="230" y2="80" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+            
+            <!-- Line 3: Purple Line (AI Upiti) -->
+            <path class="chart-line line-purple" d="M 10,75 C 50,70 80,60 120,45 C 160,30 190,38 230,22" fill="none" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round" />
+            
+            <!-- Line 2: Cyan Line & Fill (Meta Leads) -->
+            <path class="chart-area" d="M 10,80 C 50,65 90,55 130,35 C 170,18 200,28 230,12 L 230,85 L 10,85 Z" fill="url(#chartGradCyan)" />
+            <path class="chart-line line-cyan" d="M 10,80 C 50,65 90,55 130,35 C 170,18 200,28 230,12" fill="none" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round" />
+            <circle class="peak-dot dot-cyan" cx="230" cy="12" r="4.5" fill="#38bdf8" />
+            
+            <!-- Line 1: Green Line & Fill (Primary Revenue / ROAS) -->
+            <path class="chart-area" d="M 10,70 C 60,60 100,35 140,22 C 180,10 205,18 230,6 L 230,85 L 10,85 Z" fill="url(#chartGradGreen)" />
+            <path class="chart-line line-green" d="M 10,70 C 60,60 100,35 140,22 C 180,10 205,18 230,6" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" />
+            <circle class="peak-dot dot-green" cx="230" cy="6" r="5.5" fill="#10b981" />
           </svg>
           <div class="roi-revenue-tag-large">Ukupni prihod: <strong>+14.800 €</strong></div>
         </div>
