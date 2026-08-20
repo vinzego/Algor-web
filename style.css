@@ -6334,7 +6334,11 @@ body {
   max-width: 100% !important;
   margin: 0 !important;
   border-radius: 0 !important;
-  background-color: #000000 !important;
+  background-color: #050507 !important;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px) !important;
+  background-size: 40px 40px !important;
   color: #ffffff !important;
   border: none !important;
   padding: 100px 48px !important;
@@ -6363,7 +6367,7 @@ body {
   font-family: 'Geist Mono', monospace !important;
 }
 
-/* Luxury Pricing Grid (High-Contrast Obsidian Cards) */
+/* Luxury Pricing Grid (High-Contrast Translucent Glass Cards) */
 .luxury-pricing-grid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
@@ -6374,8 +6378,10 @@ body {
 }
 
 .luxury-card {
-  background: #111111 !important;
-  border: 1px solid #222222 !important;
+  background: rgba(16, 16, 20, 0.65) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 36px !important;
   padding: 40px 32px !important;
   display: flex !important;
@@ -6383,15 +6389,27 @@ body {
   justify-content: space-between !important;
   box-sizing: border-box !important;
   position: relative !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
-  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease !important;
   min-height: 620px !important;
 }
 
 .luxury-card:hover {
   transform: translateY(-6px) !important;
-  border-color: #444444 !important;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8) !important;
+  background: rgba(24, 24, 30, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.popular-card-lux {
+  background: rgba(22, 22, 28, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.popular-card-lux:hover {
+  background: rgba(30, 30, 38, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
 .card-top-tag-row {
@@ -6484,7 +6502,7 @@ body {
   width: 20px !important;
   height: 20px !important;
   border-radius: 50% !important;
-  background: #222222 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
   color: #ffffff !important;
   display: flex !important;
   align-items: center !important;
@@ -6507,15 +6525,16 @@ body {
 .sprint-time-divider {
   width: 100% !important;
   text-align: center !important;
-  border-bottom: 1px dashed #2a2a2a !important;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15) !important;
   line-height: 0.1em !important;
   margin: 10px 0 16px 0 !important;
 }
 
 .sprint-time-divider span {
-  background: #111111 !important;
+  background: rgba(16, 16, 20, 0.85) !important;
+  backdrop-filter: blur(8px) !important;
   padding: 0 12px !important;
-  color: #666666 !important;
+  color: #888888 !important;
   font-size: 12px !important;
   font-family: 'Inter', sans-serif !important;
 }
