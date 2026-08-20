@@ -5694,73 +5694,111 @@ body {
   margin: 0 !important;
 }
 
-/* WhatsApp/Instagram Chat Visual inside Main AI Hero Card (Tall 520px) */
-.chat-window-frame-large {
-  background: #1c1c22 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+/* Apple Style Clean Chat Visual inside Main AI Hero Card (Automatske rezervacije) */
+.chat-apple-style-box {
+  background: #dedcd7 !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
   border-radius: 24px !important;
-  overflow: hidden !important;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45) !important;
+  padding: 22px 18px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 12px 35px rgba(0, 0, 0, 0.35) !important;
   width: 100% !important;
-  max-width: 380px !important;
-  height: 330px !important;
-  max-height: 330px !important;
+  max-width: 440px !important;
   display: flex !important;
   flex-direction: column !important;
-}
-
-.chat-header-bar {
-  background: #262630 !important;
-  padding: 14px 18px !important;
-  display: flex !important;
-  align-items: center !important;
   gap: 12px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 
-.chat-bot-avatar {
-  width: 36px !important;
-  height: 36px !important;
-  background: #10b981 !important;
+.apple-msg-row {
+  display: flex !important;
+  align-items: flex-end !important;
+  gap: 10px !important;
+  opacity: 0;
+  width: 100% !important;
+}
+
+.msg-left {
+  justify-content: flex-start !important;
+}
+
+.msg-right {
+  justify-content: flex-end !important;
+}
+
+.apple-avatar {
+  width: 32px !important;
+  height: 32px !important;
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 18px !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
 }
 
-.chat-bot-info strong {
+.avatar-user {
+  background: #ffffff !important;
+  color: #333333 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.avatar-user svg {
+  width: 18px;
+  height: 18px;
+  stroke: #444444;
+}
+
+.avatar-bot {
+  background: #000000 !important;
   color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.avatar-bot svg {
+  width: 18px;
+  height: 18px;
+  stroke: #dffc2b;
+}
+
+.apple-bubble {
+  max-width: 82% !important;
   font-size: 13.5px !important;
-  display: block !important;
-}
-
-.online-indicator {
-  color: #10b981 !important;
-  font-size: 11px !important;
   font-weight: 600 !important;
+  line-height: 1.4 !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06) !important;
+  box-sizing: border-box !important;
 }
 
-.chat-messages-container {
-  padding: 16px 18px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 12px !important;
-  background: #121216 !important;
-  flex: 1 !important;
-  height: 260px !important;
-  max-height: 260px !important;
-  overflow-y: auto !important;
-  scroll-behavior: smooth !important;
+.bubble-left {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+  border-radius: 20px 20px 20px 6px !important;
+  padding: 11px 16px !important;
 }
 
-/* Bento Grid Dynamic Animations */
-.msg-anim-enter {
-  animation: msgPopIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+.bubble-right {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-radius: 20px 20px 6px 20px !important;
+  padding: 11px 16px !important;
 }
 
-@keyframes msgPopIn {
+.bubble-confirm {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1.5px solid #dffc2b !important;
+  box-shadow: 0 0 16px rgba(223, 252, 43, 0.25) !important;
+}
+
+/* Staggered Apple Message Entrance Animations */
+.msg-anim-1 { animation: appleMsgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards !important; }
+.msg-anim-2 { animation: appleMsgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards !important; }
+.msg-anim-3 { animation: appleMsgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 1.7s forwards !important; }
+.msg-anim-4 { animation: appleMsgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 2.5s forwards !important; }
+
+@keyframes appleMsgPop {
   0% {
     opacity: 0;
     transform: translateY(14px) scale(0.96);
@@ -5770,14 +5808,6 @@ body {
     transform: translateY(0) scale(1);
   }
 }
-
-.chat-typing-indicator {
-  align-self: flex-end !important;
-  background: rgba(16, 185, 129, 0.15) !important;
-  border: 1px solid rgba(16, 185, 129, 0.35) !important;
-  color: #34d399 !important;
-  padding: 8px 14px !important;
-  border-radius: 16px !important;
   border-bottom-right-radius: 4px !important;
   font-size: 12px !important;
   font-weight: 600 !important;
