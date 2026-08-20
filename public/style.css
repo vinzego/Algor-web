@@ -6324,7 +6324,7 @@ body {
 }
 
 /* -------------------------------------------------------------
-   Full-Width Edge-to-Edge Pricing Section (White Background Theme)
+   Full-Width Edge-to-Edge Pricing Section (Luxury Dark Obsidian Theme)
 ------------------------------------------------------------- */
 #pricing {
   position: relative !important;
@@ -6334,16 +6334,10 @@ body {
   max-width: 100% !important;
   margin: 0 !important;
   border-radius: 0 !important;
-  background-color: #ffffff !important;
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px) !important;
-  background-size: 36px 36px !important;
-  color: #121316 !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
   border: none !important;
-  border-top: 1px solid #e2e8f0 !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  padding: 90px 48px !important;
+  padding: 100px 48px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6352,151 +6346,249 @@ body {
 }
 
 #pricing .info-title {
-  color: #121316 !important;
+  color: #ffffff !important;
+  font-size: clamp(32px, 4.5vw, 54px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px !important;
 }
 
 #pricing .info-subtitle {
-  color: #475569 !important;
+  color: #888888 !important;
 }
 
 #pricing .section-badge {
-  color: #121316 !important;
-  background-color: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
+  color: #888888 !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  font-family: 'Geist Mono', monospace !important;
 }
 
-#pricing .price-card {
-  background-color: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+/* Luxury Pricing Grid (High-Contrast Obsidian Cards) */
+.luxury-pricing-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 24px !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin-top: 20px !important;
 }
 
-#pricing .price-card:hover {
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08) !important;
+.luxury-card {
+  background: #111111 !important;
+  border: 1px solid #222222 !important;
+  border-radius: 36px !important;
+  padding: 40px 32px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease !important;
+  min-height: 620px !important;
 }
 
-#pricing .plan-target-tag {
-  background-color: #f8fafc !important;
-  color: #475569 !important;
-  border: 1px solid #e2e8f0 !important;
+.luxury-card:hover {
+  transform: translateY(-6px) !important;
+  border-color: #444444 !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8) !important;
 }
 
-#pricing .plan-target-tag.target-featured,
-.price-card.popular-card .plan-target-tag.target-featured {
-  background-color: rgba(187, 242, 70, 0.15) !important;
-  color: #bbf246 !important;
-  border: 1px solid rgba(187, 242, 70, 0.4) !important;
+.card-top-tag-row {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
 }
 
-#pricing .price-card.popular-card .popular-badge-pill,
-.price-card.popular-card .popular-badge-pill {
-  background-color: #ffffff !important;
-  color: #0c0d0e !important;
-  font-weight: 800 !important;
+.ref-tag-mono {
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 10.5px !important;
+  color: #777777 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
 }
 
-#pricing .price-header h3 {
-  color: #121316 !important;
-}
-
-#pricing .price-header p {
-  color: #64748b !important;
-}
-
-#pricing .price-value-box {
-  color: #121316 !important;
-}
-
-#pricing .price-amount {
-  color: #121316 !important;
-}
-
-#pricing .period {
-  color: #64748b !important;
-}
-
-#pricing .price-features li {
-  color: #334155 !important;
-}
-
-#pricing .feat-check {
-  color: #121316 !important;
-}
-
-#pricing .price-cta {
-  background-color: #121316 !important;
-  color: #ffffff !important;
-  border: 1px solid #121316 !important;
-}
-
-#pricing .price-cta:hover {
-  background-color: #000000 !important;
-  color: #dffc2b !important;
-  border-color: #000000 !important;
-}
-
-#pricing .price-card.popular-card {
-  background: linear-gradient(155deg, #0c0d0e 0%, #050506 100%) !important;
-  border: 2px solid #27272a !important;
-  color: #ffffff !important;
-  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
-}
-
-#pricing .price-card.popular-card .price-header h3,
-#pricing .price-card.popular-card .price-amount,
-#pricing .price-card.popular-card .price-value-box,
-#pricing .price-card.popular-card .price-value-box .currency {
+.ref-tag-mono.tag-popular {
   color: #ffffff !important;
 }
 
-#pricing .price-card.popular-card .price-header p {
-  color: #e4e4e7 !important;
+.price-header-lux {
+  margin-bottom: 28px !important;
 }
 
-#pricing .price-card.popular-card .period {
-  color: #a1a1aa !important;
+.price-header-lux h3 {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -0.5px !important;
 }
 
-#pricing .price-card.popular-card .price-features li {
-  color: #f4f4f5 !important;
-  font-weight: 500 !important;
+.price-amount-wrap {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 4px !important;
 }
 
-#pricing .price-card.popular-card .feat-check {
-  color: #bbf246 !important;
+.currency-sign {
+  font-size: 28px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  align-self: flex-start !important;
+  margin-top: 4px !important;
 }
 
-#pricing .price-card.popular-card .price-cta {
-  background-color: #ffffff !important;
-  color: #0c0d0e !important;
-  border: 1px solid #ffffff !important;
+.price-val {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 56px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  letter-spacing: -2px !important;
+  line-height: 1 !important;
 }
 
-#pricing .price-card.popular-card .price-cta:hover {
-  background-color: #f4f4f5 !important;
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.18) !important;
+.price-per {
+  font-size: 13.5px !important;
+  color: #777777 !important;
+  margin-left: 4px !important;
+}
+
+/* Feature List (Clean checkmarks) */
+.luxury-features-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 32px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.luxury-features-list li {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  font-size: 13.5px !important;
+  color: #aaaaaa !important;
+  line-height: 1.5 !important;
+}
+
+.luxury-features-list li strong {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.check-icon-circle {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: #222222 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 11px !important;
+  flex-shrink: 0 !important;
+  margin-top: 1px !important;
+}
+
+/* Card Action Area & Divider Line */
+.card-bottom-action-area {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-top: auto !important;
+}
+
+.sprint-time-divider {
+  width: 100% !important;
+  text-align: center !important;
+  border-bottom: 1px dashed #2a2a2a !important;
+  line-height: 0.1em !important;
+  margin: 10px 0 16px 0 !important;
+}
+
+.sprint-time-divider span {
+  background: #111111 !important;
+  padding: 0 12px !important;
+  color: #666666 !important;
+  font-size: 12px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.popular-card-lux .sprint-time-divider span {
+  background: #111111 !important;
+}
+
+.luxury-btn-dark {
+  width: 100% !important;
+  background: #1e1e1e !important;
+  border: 1px solid #333333 !important;
+  color: #ffffff !important;
+  padding: 16px 24px !important;
+  border-radius: 18px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.luxury-btn-dark:hover {
+  background: #2a2a2a !important;
+  border-color: #555555 !important;
+}
+
+.luxury-btn-glow {
+  width: 100% !important;
+  background: #ffffff !important;
+  color: #121212 !important;
+  border: none !important;
+  padding: 16px 24px !important;
+  border-radius: 18px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15) !important;
+}
+
+.luxury-btn-glow:hover {
+  background: #f0f0f0 !important;
+  box-shadow: 0 6px 28px rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+.guarantee-text {
+  font-size: 11.5px !important;
+  color: #666666 !important;
+  text-align: center !important;
 }
 
 #pricing .pricing-trust-bar {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  color: #334155 !important;
+  color: #888888 !important;
 }
 
 #pricing .pricing-trust-bar .trust-item {
-  color: #334155 !important;
+  color: #888888 !important;
 }
 
 #pricing .custom-ai-offer-banner {
   margin-top: 40px !important;
   text-align: center !important;
   padding: 12px 28px !important;
-  background-color: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
+  background-color: #111111 !important;
+  border: 1px solid #222222 !important;
   border-radius: 50px !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -6507,7 +6599,7 @@ body {
 }
 
 #pricing .custom-ai-offer-banner p {
-  color: #1e293b !important;
+  color: #aaaaaa !important;
   font-size: 14px !important;
   font-weight: 600 !important;
   margin: 0 !important;
@@ -6519,8 +6611,8 @@ body {
 }
 
 #pricing .custom-ai-link {
-  background-color: #0f172a !important;
-  color: #dffc2b !important;
+  background-color: #ffffff !important;
+  color: #121212 !important;
   padding: 8px 18px !important;
   border-radius: 50px !important;
   border: none !important;
@@ -6532,9 +6624,19 @@ body {
 }
 
 #pricing .custom-ai-link:hover {
-  background-color: #000000 !important;
+  background-color: #f0f0f0 !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2) !important;
+}
+
+@media (max-width: 992px) {
+  .luxury-pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .luxury-card {
+    min-height: auto !important;
+  }
 }
 
 #pricing > * {
