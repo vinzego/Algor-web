@@ -5535,13 +5535,14 @@ body {
 
 /* Base Reference Card Styles (Spacious & Breathable) */
 .bento-ref-card {
+  padding: 26px 28px !important;
   border-radius: 32px !important;
-  padding: 44px 36px !important;
   position: relative !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: space-between !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
   box-sizing: border-box !important;
   transition: transform 0.35s ease, box-shadow 0.35s ease !important;
 }
@@ -5569,6 +5570,13 @@ body {
   pointer-events: none !important;
 }
 
+.ref-card-header {
+  margin-top: 2px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
 .ref-mono-tag {
   font-family: 'Geist Mono', monospace !important;
   font-size: 10.5px !important;
@@ -5576,7 +5584,7 @@ body {
   letter-spacing: 1px !important;
   text-transform: uppercase !important;
   display: block !important;
-  margin-bottom: 10px !important;
+  margin-bottom: 2px !important;
   font-weight: 700 !important;
 }
 
@@ -5585,9 +5593,9 @@ body {
   font-size: 24px !important;
   font-weight: 700 !important;
   color: #ffffff !important;
-  margin: 0 0 10px 0 !important;
+  margin: 0 0 6px 0 !important;
   letter-spacing: -0.4px !important;
-  line-height: 1.25 !important;
+  line-height: 1.2 !important;
 }
 
 .ref-card-title-white {
@@ -5597,13 +5605,14 @@ body {
   color: #ffffff !important;
   margin: 0 !important;
   letter-spacing: -0.3px !important;
+  line-height: 1.2 !important;
 }
 
 .ref-card-desc {
   font-family: 'Inter', sans-serif !important;
-  font-size: 13.5px !important;
+  font-size: 13px !important;
   color: #a1a1aa !important;
-  line-height: 1.5 !important;
+  line-height: 1.4 !important;
   margin: 0 !important;
 }
 
@@ -5611,8 +5620,8 @@ body {
   font-family: 'Inter', sans-serif !important;
   font-size: 13px !important;
   color: #a1a1aa !important;
-  line-height: 1.5 !important;
-  margin: 8px 0 0 0 !important;
+  line-height: 1.4 !important;
+  margin: 4px 0 0 0 !important;
 }
 
 .card-header-flex {
@@ -5620,6 +5629,7 @@ body {
   justify-content: space-between !important;
   align-items: center !important;
   width: 100% !important;
+  margin-bottom: 2px !important;
 }
 
 .ref-pill-btn {
@@ -5673,7 +5683,7 @@ body {
   letter-spacing: 1px !important;
   text-transform: uppercase !important;
   display: block !important;
-  margin-bottom: 8px !important;
+  margin-bottom: 2px !important;
   font-weight: 700 !important;
 }
 
@@ -5682,15 +5692,16 @@ body {
   font-size: 21px !important;
   font-weight: 700 !important;
   color: #1a1a1a !important;
-  margin: 0 0 6px 0 !important;
+  margin: 2px 0 4px 0 !important;
   letter-spacing: -0.3px !important;
+  line-height: 1.2 !important;
 }
 
 .ref-card-desc-dark {
   font-family: 'Inter', sans-serif !important;
   font-size: 13px !important;
   color: #555555 !important;
-  line-height: 1.45 !important;
+  line-height: 1.4 !important;
   margin: 0 !important;
 }
 
