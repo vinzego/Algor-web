@@ -9700,7 +9700,7 @@ html, body {
   opacity: 1;
 }
 
-/* Mobile Devices (Bottom Slide-Up Sheet - Compact Max 70vh) */
+/* Mobile Devices (Bottom Slide-Up Sheet - Compact Max 75vh) */
 @media (max-width: 768px) {
   .mobile-bottom-sheet {
     top: auto;
@@ -9711,15 +9711,35 @@ html, body {
     width: 100%;
     max-width: 100%;
     height: auto !important;
-    max-height: 70vh !important;
+    max-height: 75vh !important;
     border-radius: 28px 28px 0 0 !important;
     border-bottom: none !important;
-    padding: 16px 20px 24px 20px !important;
-    box-shadow: 0 -16px 50px rgba(0, 0, 0, 0.16) !important;
+    padding: 16px 20px calc(28px + env(safe-area-inset-bottom, 12px)) 20px !important;
+    box-shadow: 0 -16px 50px rgba(0, 0, 0, 0.18) !important;
+    overflow-y: auto !important;
   }
 
   .mobile-bottom-sheet.active {
     transform: translateY(0);
+  }
+
+  .sheet-header {
+    margin-bottom: 12px !important;
+  }
+
+  .sheet-subtitle {
+    margin-bottom: 12px !important;
+  }
+
+  .sheet-inputs {
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .sheet-submit-btn {
+    margin-top: 10px !important;
+    margin-bottom: 8px !important;
+    flex-shrink: 0 !important;
   }
 }
 
