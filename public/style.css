@@ -1831,6 +1831,21 @@ body {
   color: #121316;
 }
 
+.solid-lime-card {
+  background: linear-gradient(145deg, #dffc2b 0%, #caef1a 100%) !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 12px 30px -6px rgba(223, 252, 43, 0.35) !important;
+}
+
+.solid-lime-card .card-info-title {
+  color: #0f172a !important;
+}
+
+.solid-lime-card .card-info-subtext {
+  color: #334155 !important;
+}
+
 .split-bottom {
   min-height: 108px;
   display: flex;
