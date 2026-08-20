@@ -843,8 +843,10 @@ body {
   }
 
   .ultra-nav-menu.open {
+    display: flex !important;
     opacity: 1 !important;
     visibility: visible !important;
+    pointer-events: auto !important;
     transform: translateY(0) scale(1) !important;
   }
 
@@ -8831,8 +8833,8 @@ html, body {
     font-size: 20px !important;
   }
 
-  .ultra-nav-menu {
-    display: none !important; /* Hide desktop horizontal menu on mobile */
+  .ultra-nav-menu:not(.open) {
+    display: none !important;
   }
 
   .ultra-nav-cta {
