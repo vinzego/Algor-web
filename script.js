@@ -655,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
     playNextChatStep();
   }
 
-  // 16. Bento Grid - Non-Stop Push Notification Stream ("Instant Obavijesti & Baza")
+  // 16. Bento Grid - 3D Card Fly-Backwards & Pop-Front Animation ("Instant Obavijesti & Baza")
   const pushContainer = document.getElementById('bento-push-container');
   if (pushContainer) {
     const notificationsList = [
@@ -670,43 +670,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let notifIndex = 0;
 
-    const pushNewNotification = () => {
-      const data = notificationsList[notifIndex];
-      notifIndex = (notifIndex + 1) % notificationsList.length;
-
-      const newBox = document.createElement('div');
-      newBox.className = 'push-notification-box push-anim-from-bottom';
-      newBox.innerHTML = `
+    const createNotificationCard = (data, initialClass = 'push-card-front') => {
+      const box = document.createElement('div');
+      box.className = `push-notification-box ${initialClass}`;
+      box.innerHTML = `
         <span class="push-icon">${data.icon}</span>
         <div class="push-text">
           <strong>${data.title}</strong>
           <span>${data.text}</span>
         </div>
       `;
-
-      pushContainer.appendChild(newBox);
-
-      const currentBoxes = pushContainer.querySelectorAll('.push-notification-box');
-      if (currentBoxes.length > 2) {
-        const topBox = currentBoxes[0];
-        topBox.classList.add('push-anim-fade-top');
-        setTimeout(() => topBox.remove(), 400);
-      }
-
-      const updatedBoxes = pushContainer.querySelectorAll('.push-notification-box');
-      updatedBoxes.forEach((box, idx) => {
-        if (idx === updatedBoxes.length - 1) {
-          box.classList.remove('push-secondary');
-        } else {
-          box.classList.add('push-secondary');
-        }
-      });
+      return box;
     };
 
     pushContainer.innerHTML = '';
-    pushNewNotification();
-    setTimeout(pushNewNotification, 1200);
-    setInterval(pushNewNotification, 2500);
+    
+    let frontCard = createNotificationCard(notificationsList[0], 'push-card-front');
+    let backCard = createNotificationCard(notificationsList[1], 'push-card-back');
+    notifIndex = 2;
+
+    pushContainer.appendChild(frontCard);
+    pushContainer.appendChild(backCard);
+
+    const triggerCardSwapLoop = () => {
+      frontCard.classList.add('push-card-fly-back');
+      const oldFrontCard = frontCard;
+      setTimeout(() => oldFrontCard.remove(), 550);
+
+      backCard.classList.remove('push-card-back');
+      backCard.classList.add('push-card-front');
+      frontCard = backCard;
+
+      const nextData = notificationsList[notifIndex];
+      notifIndex = (notifIndex + 1) % notificationsList.length;
+
+      backCard = createNotificationCard(nextData, 'push-card-back push-card-pop-front');
+      pushContainer.appendChild(backCard);
+    };
+
+    setInterval(triggerCardSwapLoop, 2600);
   }
 
 });
