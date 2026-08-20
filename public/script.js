@@ -410,19 +410,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Step 1: Form Submit -> Move to Calendar Step
+  // Form Submit -> Directly Move to Success Screen & Save CSV
   if (sheetForm) {
     sheetForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const nameInput = document.getElementById('sheet-input-name');
+      const companyInput = document.getElementById('sheet-input-company');
       const emailInput = document.getElementById('sheet-input-email');
+      const phoneInput = document.getElementById('sheet-input-phone');
+
       clientName = nameInput && nameInput.value ? nameInput.value : 'Klijent';
       clientEmail = emailInput && emailInput.value ? emailInput.value : 'vašu e-mail adresu';
+      const company = companyInput && companyInput.value ? companyInput.value : '';
+      const phone = phoneInput && phoneInput.value ? phoneInput.value : '';
 
-      sheetForm.style.display = 'none';
-      if (sheetCalendarStep) {
-        sheetCalendarStep.style.display = 'flex';
+      sendInquiryToBackend({
+        name: clientName,
+        company: company,
+        email: clientEmail,
+        phone: phone,
+        package: selectedPackageFull
+      });
+
+      const submitBtn = sheetForm.querySelector('.sheet-submit-btn');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Šaljem upit...</span>';
       }
+
+      setTimeout(() => {
+        sheetForm.style.display = 'none';
+        if (sheetSuccessBox) {
+          sheetSuccessBox.style.display = 'flex';
+          const msg = document.getElementById('sheet-success-desc');
+          if (msg) {
+            msg.textContent = `Hvala vam, ${clientName}! Vaš upit za ${selectedPackageFull} uspješno je poslan. Kontaktirat ćemo vas na ${clientEmail} u najkraćem roku.`;
+          }
+        }
+      }, 400);
     });
   }
 
@@ -433,50 +458,6 @@ document.addEventListener('DOMContentLoaded', () => {
       body: JSON.stringify(data)
     }).catch(err => console.log('CSV save:', err));
   }
-
-  // Step 2: Confirm Calendar Slot -> Move to Success & Save CSV
-  if (gcalConfirmBtn) {
-    gcalConfirmBtn.addEventListener('click', () => {
-      const companyInput = document.getElementById('sheet-input-company');
-      const phoneInput = document.getElementById('sheet-input-phone');
-
-      const company = companyInput && companyInput.value ? companyInput.value : '';
-      const phone = phoneInput && phoneInput.value ? phoneInput.value : '';
-      const slotText = `${selectedDate} u ${selectedTime}h`;
-
-      sendInquiryToBackend({
-        name: clientName,
-        company: company,
-        email: clientEmail,
-        phone: phone,
-        package: selectedPackageFull,
-        calendarSlot: slotText
-      });
-
-      gcalConfirmBtn.disabled = true;
-      gcalConfirmBtn.innerHTML = '<span>Potvrđujem...</span>';
-
-      setTimeout(() => {
-        gcalConfirmBtn.disabled = false;
-        gcalConfirmBtn.innerHTML = '<span>Potvrdi termin ➔</span>';
-
-        if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
-        if (sheetSuccessBox) {
-          sheetSuccessBox.style.display = 'flex';
-          const msg = document.getElementById('sheet-success-desc');
-          if (msg) {
-            msg.textContent = `Hvala vam, ${clientName}! Pozivnica u Google Kalendaru za ${selectedDate} u ${selectedTime}h i upit za ${selectedPackageFull} uspješno su poslani na ${clientEmail}.`;
-          }
-        }
-      }, 500);
-    });
-  }
-
-  // Step 2: Skip Calendar Slot -> Move to Success & Save CSV
-  if (gcalSkipBtn) {
-    gcalSkipBtn.addEventListener('click', () => {
-      const companyInput = document.getElementById('sheet-input-company');
-      const phoneInput = document.getElementById('sheet-input-phone');
 
       const company = companyInput && companyInput.value ? companyInput.value : '';
       const phone = phoneInput && phoneInput.value ? phoneInput.value : '';

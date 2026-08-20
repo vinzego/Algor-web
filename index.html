@@ -1373,46 +1373,12 @@
       </div>
 
       <button type="submit" class="sheet-submit-btn btn-pill-dark">
-        <span>Nastavi na Kalendar</span>
+        <span>Pošalji Upit</span>
         <span class="btn-arrow-circle">↗</span>
       </button>
     </form>
 
-    <!-- STEP 2: Google Calendar Step (Optional) -->
-    <div id="sheet-calendar-step" class="sheet-calendar-step" style="display: none;">
-      <div class="sheet-title-group">
-        <h3 class="sheet-title">Odaberite termin u Google Kalendaru</h3>
-        <p class="sheet-subtitle">Odaberite datum i vrijeme za 30-minutni poziv (nije obavezno).</p>
-      </div>
-
-      <!-- Calendar Date & Time Selector -->
-      <div class="gcal-picker-box">
-        <label class="gcal-label">1. Odaberite dan:</label>
-        <div class="gcal-days-grid">
-          <button type="button" class="gcal-day-btn active" data-date="Ponedjeljak, 17. Kol">Pon, 17. Kol</button>
-          <button type="button" class="gcal-day-btn" data-date="Utorak, 18. Kol">Uto, 18. Kol</button>
-          <button type="button" class="gcal-day-btn" data-date="Srijeda, 19. Kol">Sri, 19. Kol</button>
-        </div>
-
-        <label class="gcal-label" style="margin-top: 10px;">2. Odaberite vrijeme poziva:</label>
-        <div class="gcal-slots-grid">
-          <button type="button" class="gcal-slot-btn active" data-time="10:00">10:00h</button>
-          <button type="button" class="gcal-slot-btn" data-time="11:30">11:30h</button>
-          <button type="button" class="gcal-slot-btn" data-time="14:00">14:00h</button>
-          <button type="button" class="gcal-slot-btn" data-time="16:30">16:30h</button>
-        </div>
-      </div>
-
-      <div class="gcal-actions-row">
-        <button type="button" id="gcal-skip-btn" class="gcal-skip-btn">Preskoči ➔</button>
-        <button type="button" id="gcal-confirm-btn" class="sheet-submit-btn gcal-confirm-btn btn-pill-dark">
-          <span>Potvrdi termin</span>
-          <span class="btn-arrow-circle">↗</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- STEP 3: Success Box -->
+    <!-- STEP 2: Success Box -->
     <div id="sheet-success-box" class="sheet-success" style="display: none;">
       <div class="modal-success-icon">✓</div>
       <h4>Upit uspješno poslan!</h4>
