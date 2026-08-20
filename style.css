@@ -5240,7 +5240,7 @@ body {
 }
 
 /* ==============================================================
-   5-CARD BLACK BENTO GRID (Beneath About Section)
+   5-CARD WHITE BENTO GRID (Beneath About Section)
    ============================================================== */
 .services-bento-section {
   width: 100% !important;
@@ -5248,7 +5248,7 @@ body {
   margin: 0 auto !important;
   padding: 90px 24px !important;
   box-sizing: border-box !important;
-  background-color: #060709 !important; /* Pozadina bento grida je crna */
+  background-color: #ffffff !important; /* Pozadina bento grida je bijela */
   border-radius: 32px !important;
 }
 
@@ -5262,10 +5262,10 @@ body {
   margin-top: 48px !important;
 }
 
-/* Base Bento Card (Dark Obsidian Luxury Glass) */
+/* Base Bento Card (Clean White Ambient Gradient) */
 .bento-card-item {
-  background: linear-gradient(155deg, #13151c 0%, #0d0e14 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%) !important;
+  border: 1px solid #e2e8f0 !important;
   border-radius: 28px !important;
   padding: 32px 28px !important;
   display: flex !important;
@@ -5273,15 +5273,15 @@ body {
   justify-content: space-between !important;
   position: relative !important;
   overflow: hidden !important;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 16px 40px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: inset 0 1px 0 0 #ffffff, 0 10px 30px rgba(0, 0, 0, 0.04) !important;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
   box-sizing: border-box !important;
 }
 
 .bento-card-item:hover {
   transform: translateY(-5px) !important;
-  border-color: rgba(255, 255, 255, 0.28) !important;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 24px 50px rgba(0, 0, 0, 0.7) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: inset 0 1px 0 0 #ffffff, 0 20px 45px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* Specific Bento Grid Positions */
@@ -5331,9 +5331,9 @@ body {
   font-family: 'Geist Mono', monospace !important;
   font-size: 11px !important;
   font-weight: 700 !important;
-  color: #34d399 !important;
-  background: rgba(16, 185, 129, 0.12) !important;
-  border: 1px solid rgba(52, 211, 153, 0.25) !important;
+  color: #0f172a !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
   padding: 4px 12px !important;
   border-radius: 20px !important;
   text-transform: uppercase !important;
@@ -5345,7 +5345,7 @@ body {
   font-family: 'Inter', sans-serif !important;
   font-size: 21px !important;
   font-weight: 800 !important;
-  color: #ffffff !important;
+  color: #0f172a !important;
   margin: 0 0 10px 0 !important;
   letter-spacing: -0.4px !important;
 }
@@ -5353,201 +5353,267 @@ body {
 .bento-desc {
   font-family: 'Inter', sans-serif !important;
   font-size: 14.5px !important;
-  color: #cbd5e1 !important;
+  color: #475569 !important;
   line-height: 1.55 !important;
   margin: 0 !important;
 }
 
-/* Card 1 Graphic: Video Phone Mockup with Live Ads Metrics */
-.video-phone-mockup {
+/* Card 1 Visual: Instagram Shorts Mockup */
+.ig-shorts-mockup {
   width: 100%;
-  background: #090d16;
+  background: #0f172a;
   border: 1px solid #1e293b;
   border-radius: 18px;
-  padding: 14px;
+  padding: 12px;
   box-sizing: border-box;
+  margin-top: 18px;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.35);
 }
 
-.video-screen-header {
+.ig-shorts-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #ffffff;
   margin-bottom: 8px;
-  font-family: 'Geist Mono', monospace;
-  font-size: 10.5px;
-  color: #94a3b8;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
 }
 
-.video-view-content {
-  position: relative;
+.ig-shorts-body {
   height: 110px;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
+  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
   border-radius: 12px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   overflow: hidden;
 }
 
-.video-play-pulse {
-  width: 38px;
-  height: 38px;
-  background: rgba(187, 242, 70, 0.2);
-  border: 1.5px solid #bbf246;
+.ig-play-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid #ffffff;
   border-radius: 50%;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #bbf246;
   font-size: 14px;
-  animation: playPulse 2s infinite ease-in-out;
+  padding-left: 2px;
 }
 
-@keyframes playPulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(187, 242, 70, 0.4); }
-  50% { transform: scale(1.1); box-shadow: 0 0 16px rgba(187, 242, 70, 0.5); }
-}
-
-.ads-overlay-pill {
+.ig-overlay-badge {
   position: absolute;
   bottom: 8px;
   left: 8px;
-  right: 8px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(59, 130, 246, 0.6);
-  padding: 5px 10px;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: 6px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+}
+
+.ig-badge-title {
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ig-badge-tag {
+  color: #10b981;
+  font-size: 9.5px;
+  font-weight: 600;
+}
+
+.ig-shorts-sidebar {
+  position: absolute;
+  right: 20px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   font-size: 10px;
-  color: #93c5fd;
+  color: #ffffff;
+}
+
+/* Card 2 Visual: Mobile Speed Mockup */
+.mobile-speed-mockup {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 12px;
+  box-sizing: border-box;
+  margin-top: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+}
+
+.speed-badge-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid #10b981;
+  color: #059669;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+  margin-bottom: 12px;
+}
+
+.speed-bolt {
+  font-size: 14px;
+}
+
+.mobile-page-wire {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.wire-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 6px;
+}
+
+.wire-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.wire-dot.red { background: #ef4444; }
+.wire-dot.yellow { background: #f59e0b; }
+.wire-dot.green { background: #10b981; }
+
+.wire-url {
+  font-size: 10px;
+  color: #64748b;
+  margin-left: 6px;
   font-family: 'Geist Mono', monospace;
 }
 
-.ads-roas-badge {
-  color: #10b981;
-  font-weight: 800;
+.wire-hero-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
 }
 
-/* Card 2 Graphic: Tall Vertical WhatsApp AI Chat Experience */
-.wa-tall-chat-container {
+.wire-hero-tag {
+  font-size: 10.5px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.wire-btn-action {
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+/* Card 3 Visual: WhatsApp Chat Mockup */
+.wa-visual-container {
   width: 100%;
-  background: #091714;
-  border: 1px solid rgba(37, 211, 102, 0.25);
-  border-radius: 20px;
-  overflow: hidden;
-  box-sizing: border-box;
   margin-top: 24px;
 }
 
-.wa-tall-chat-header {
-  background: #0f2c25;
-  padding: 12px 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+.wa-chat-mockup {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
 }
 
-.wa-tall-avatar {
-  width: 32px;
-  height: 32px;
-  background: #25d366;
-  color: #ffffff;
+.wa-chat-header {
+  background: #075e54;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wa-avatar {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  color: #075e54;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 18px;
 }
 
-.wa-tall-header-info {
-  flex: 1;
-}
-
-.wa-tall-name {
-  font-size: 12.5px;
-  font-weight: 700;
+.wa-header-text strong {
   color: #ffffff;
+  font-size: 13.5px;
   display: block;
 }
 
-.wa-tall-status {
-  font-size: 10.5px;
+.wa-online-status {
   color: #25d366;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
 }
 
-.wa-tall-chat-body {
-  padding: 16px 14px;
+.wa-chat-body {
+  padding: 18px 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background: #06110f;
+  gap: 12px;
+  background: #efeae2;
 }
 
-.wa-bubble-item {
-  padding: 9px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  line-height: 1.4;
-  max-width: 90%;
+.wa-bubble {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  max-width: 85%;
   position: relative;
-  animation: waFadeIn 0.6s ease-out;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-@keyframes waFadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.wa-bubble-item.user-msg {
+.wa-bubble.user {
   align-self: flex-start;
-  background: #15221e;
-  color: #e2e8f0;
+  background: #ffffff;
+  color: #0f172a;
   border-bottom-left-radius: 2px;
 }
 
-.wa-bubble-item.ai-msg {
+.wa-bubble.ai {
   align-self: flex-end;
-  background: #005c4b;
-  color: #ffffff;
+  background: #dcf8c6;
+  color: #0f172a;
   border-bottom-right-radius: 2px;
 }
 
-.wa-bubble-meta {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 4px;
+.wa-time {
   font-size: 9.5px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 3px;
-}
-
-.wa-bubble-meta .wa-blue-ticks {
-  color: #53bdeb;
-  font-weight: bold;
-}
-
-.wa-cal-confirmation-box {
-  background: rgba(37, 211, 102, 0.12);
-  border: 1px dashed #25d366;
-  padding: 10px 12px;
-  border-radius: 10px;
+  color: #64748b;
+  align-self: flex-end;
   margin-top: 4px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11.5px;
-  color: #25d366;
   font-weight: 600;
 }
 
