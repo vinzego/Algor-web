@@ -2010,15 +2010,15 @@ body {
   font-size: 11px !important;
   font-weight: 700 !important;
   letter-spacing: 1.5px !important;
-  color: #dffc2b !important;
-  background-color: #0c0d0e !important;
-  border: 1px solid rgba(223, 252, 43, 0.3) !important;
-  padding: 6px 16px !important;
-  border-radius: 100px !important;
-  margin-bottom: 16px !important;
+  color: #65a30d !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  margin-bottom: 12px !important;
   display: inline-block !important;
   text-transform: uppercase !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: none !important;
 }
 
 /* -------------------------------------------------------------
@@ -6369,6 +6369,10 @@ body {
 
 #pricing .info-subtitle {
   color: #a1a1aa !important;
+}
+
+#pricing .section-badge {
+  color: #dffc2b !important;
 }
 
 /* Luxury Pricing Grid (High-Contrast Translucent Glass Cards) */
