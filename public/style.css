@@ -9674,20 +9674,21 @@ html, body {
   left: 50%;
   transform: translate(-50%, -46%) scale(0.95);
   width: 92%;
-  max-width: 540px;
+  max-width: 520px;
   height: auto;
-  max-height: 90vh;
-  background: linear-gradient(155deg, #14151b 0%, #0b0c0f 100%) !important;
+  max-height: 85vh;
+  background: rgba(244, 246, 250, 0.96) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
   border-radius: 28px !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-top: 3px solid #dffc2b !important;
-  box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 30px 80px -15px rgba(15, 23, 42, 0.2), inset 0 1px 0 0 rgba(255, 255, 255, 0.9) !important;
   z-index: 99999 !important;
-  padding: 28px 32px 32px 32px !important;
+  padding: 24px 28px 28px 28px !important;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  color: #ffffff !important;
+  color: #0f172a !important;
   opacity: 0;
   transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
   overflow-y: auto;
@@ -9699,7 +9700,7 @@ html, body {
   opacity: 1;
 }
 
-/* Mobile Devices (Bottom Slide-Up Sheet) */
+/* Mobile Devices (Bottom Slide-Up Sheet - Compact Max 70vh) */
 @media (max-width: 768px) {
   .mobile-bottom-sheet {
     top: auto;
@@ -9709,12 +9710,12 @@ html, body {
     transform: translateY(100%);
     width: 100%;
     max-width: 100%;
-    height: 85vh;
-    max-height: 88vh;
+    height: auto !important;
+    max-height: 70vh !important;
     border-radius: 28px 28px 0 0 !important;
     border-bottom: none !important;
-    padding: 20px 22px 32px 22px !important;
-    box-shadow: 0 -16px 50px rgba(0, 0, 0, 0.6) !important;
+    padding: 16px 20px 24px 20px !important;
+    box-shadow: 0 -16px 50px rgba(15, 23, 42, 0.25) !important;
   }
 
   .mobile-bottom-sheet.active {
@@ -9725,9 +9726,9 @@ html, body {
 .sheet-drag-handle {
   width: 42px;
   height: 5px;
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(15, 23, 42, 0.18) !important;
   border-radius: 10px;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 14px auto;
   flex-shrink: 0;
 }
 
@@ -9736,12 +9737,12 @@ html, body {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid rgba(203, 213, 225, 0.7) !important;
   border-radius: 20px !important;
-  padding: 12px 18px !important;
-  margin-bottom: 22px !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+  padding: 10px 16px !important;
+  margin-bottom: 18px !important;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04) !important;
   flex-shrink: 0;
 }
 
@@ -9749,9 +9750,9 @@ html, body {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
-  color: #ffffff !important;
+  color: #0f172a !important;
   letter-spacing: 0.2px;
 }
 
@@ -9759,31 +9760,31 @@ html, body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #dffc2b !important;
-  color: #0b0c0e !important;
+  background: #0f172a !important;
+  color: #dffc2b !important;
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
-  box-shadow: 0 0 12px rgba(223, 252, 43, 0.45);
+  box-shadow: 0 0 10px rgba(15, 23, 42, 0.3);
   flex-shrink: 0;
 }
 
 .sheet-pkg-name-highlight {
-  color: #dffc2b !important;
+  color: #0f172a !important;
   font-weight: 800;
 }
 
 .sheet-close-btn {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  color: #ffffff !important;
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  padding: 6px 14px;
-  border-radius: 14px;
+  padding: 6px 12px;
+  border-radius: 12px;
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
@@ -9792,10 +9793,9 @@ html, body {
 }
 
 .sheet-close-btn:hover {
-  background: #dffc2b !important;
-  color: #0b0c0e !important;
-  border-color: #dffc2b !important;
-  transform: translateY(-1px);
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
 }
 
 .sheet-form {
@@ -9806,76 +9806,93 @@ html, body {
 }
 
 .sheet-title {
-  font-size: 22px !important;
+  font-size: 20px !important;
   font-weight: 800 !important;
-  color: #ffffff !important;
-  margin-bottom: 6px !important;
+  color: #0f172a !important;
+  margin-bottom: 4px !important;
   letter-spacing: -0.4px !important;
 }
 
 .sheet-subtitle {
-  font-size: 13.5px !important;
-  color: #94a3b8 !important;
-  margin-bottom: 22px !important;
-  line-height: 1.5 !important;
+  font-size: 13px !important;
+  color: #475569 !important;
+  margin-bottom: 16px !important;
+  line-height: 1.45 !important;
 }
 
 .sheet-inputs {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 24px;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 .sheet-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .sheet-group label {
-  font-size: 11.5px !important;
+  font-size: 11px !important;
   font-weight: 700 !important;
-  color: #cbd5e1 !important;
+  color: #334155 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
 }
 
 .sheet-group input {
-  background-color: #1a1b22 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
   border-radius: 14px !important;
-  padding: 13px 16px !important;
-  color: #ffffff !important;
+  padding: 11px 14px !important;
+  color: #0f172a !important;
   font-size: 14px !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   outline: none !important;
   transition: all 0.25s ease !important;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04) !important;
 }
 
 .sheet-group input:focus {
-  border-color: #dffc2b !important;
-  background-color: #21222b !important;
-  box-shadow: 0 0 0 3px rgba(223, 252, 43, 0.15) !important;
+  border-color: #0f172a !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1) !important;
 }
 
+/* BLACK SUBMIT BUTTON WITH LIME ARROW CIRCLE */
 .sheet-submit-btn {
-  background: #dffc2b !important;
-  color: #0b0c0e !important;
+  background: #0f172a !important;
+  color: #ffffff !important;
   border: none !important;
   border-radius: 30px !important;
-  padding: 16px !important;
+  padding: 14px !important;
   font-size: 15px !important;
   font-weight: 800 !important;
   cursor: pointer !important;
   width: 100% !important;
   transition: all 0.25s ease !important;
   margin-top: auto;
-  box-shadow: 0 8px 25px -4px rgba(223, 252, 43, 0.3) !important;
+  box-shadow: 0 8px 25px -4px rgba(15, 23, 42, 0.3) !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+}
+
+.sheet-submit-btn:hover {
+  background: #000000 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.4) !important;
+}
+
+.sheet-submit-btn .btn-arrow-circle {
+  background-color: #dffc2b !important;
+  color: #0f172a !important;
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 14px !important;
+  box-shadow: 0 0 10px rgba(223, 252, 43, 0.4) !important;
 }
 
 .sheet-submit-btn:hover {
