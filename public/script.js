@@ -459,29 +459,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }).catch(err => console.log('CSV save:', err));
   }
 
-      const company = companyInput && companyInput.value ? companyInput.value : '';
-      const phone = phoneInput && phoneInput.value ? phoneInput.value : '';
-
-      sendInquiryToBackend({
-        name: clientName,
-        company: company,
-        email: clientEmail,
-        phone: phone,
-        package: selectedPackageFull,
-        calendarSlot: 'Preskočeno'
-      });
-
-      if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
-      if (sheetSuccessBox) {
-        sheetSuccessBox.style.display = 'flex';
-        const msg = document.getElementById('sheet-success-desc');
-        if (msg) {
-          msg.textContent = `Hvala vam, ${clientName}! Vaš upit za ${selectedPackageFull} je uspješno poslan. Javljamo vam se u roku od 2 sata.`;
-        }
-      }
-    });
-  }
-
   // 11. Footer Inline Contact Form Submission
   const footerContactForm = document.getElementById('footerContactForm');
   const footerFormMessage = document.getElementById('footerFormMessage');
