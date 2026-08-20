@@ -5239,6 +5239,461 @@ body {
   color: #ffffff;
 }
 
+/* ==============================================================
+   REFERENCE LUXURY BENTO GRID DESIGN (Placed Beneath About Section)
+   ============================================================== */
+.services-bento-section {
+  width: 100% !important;
+  max-width: 1080px !important;
+  margin: 0 auto !important;
+  padding: 80px 24px !important;
+  box-sizing: border-box !important;
+  background-color: #ffffff !important;
+  border-radius: 32px !important;
+}
+
+.bento-reference-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-rows: 270px 270px 240px !important;
+  gap: 16px !important;
+  width: 100% !important;
+  max-width: 1040px !important;
+  margin: 40px auto 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Card Positions & Heights (270px + 16px + 270px = 556px) */
+.card-tall-left {
+  grid-column: 1 / 2 !important;
+  grid-row: 1 / 3 !important;
+  height: 556px !important;
+  box-sizing: border-box !important;
+}
+
+.card-top-right {
+  grid-column: 2 / 3 !important;
+  grid-row: 1 / 2 !important;
+  height: 270px !important;
+  box-sizing: border-box !important;
+}
+
+.card-mid-right {
+  grid-column: 2 / 3 !important;
+  grid-row: 2 / 3 !important;
+  height: 270px !important;
+  box-sizing: border-box !important;
+}
+
+.card-bottom-left {
+  grid-column: 1 / 2 !important;
+  grid-row: 3 / 4 !important;
+  height: 240px !important;
+  box-sizing: border-box !important;
+}
+
+.card-bottom-right {
+  grid-column: 2 / 3 !important;
+  grid-row: 3 / 4 !important;
+  height: 240px !important;
+  box-sizing: border-box !important;
+}
+
+/* Base Reference Card Styles */
+.bento-ref-card {
+  border-radius: 28px !important;
+  padding: 30px 26px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+  transition: transform 0.35s ease, box-shadow 0.35s ease !important;
+}
+
+.bento-ref-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Dark Theme Cards (#121212) */
+.card-dark {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+.ref-mono-tag {
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 10.5px !important;
+  color: #10b981 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  margin-bottom: 10px !important;
+  font-weight: 700 !important;
+}
+
+.ref-card-title-large {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 0 10px 0 !important;
+  letter-spacing: -0.4px !important;
+  line-height: 1.25 !important;
+}
+
+.ref-card-title-white {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: -0.3px !important;
+}
+
+.ref-card-desc {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13.5px !important;
+  color: #a1a1aa !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+.ref-card-desc-muted {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  color: #a1a1aa !important;
+  line-height: 1.5 !important;
+  margin: 8px 0 0 0 !important;
+}
+
+.card-header-flex {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.ref-pill-btn {
+  background: #ffffff !important;
+  color: #121212 !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+
+.ref-pill-btn.green-accent {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+.ref-pill-btn-dark {
+  background: #121212 !important;
+  color: #ffffff !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+.pill-dot-green {
+  color: #10b981 !important;
+  font-size: 14px !important;
+}
+
+/* Light Warm Stone/Beige Theme Cards (#E5E3DF) */
+.card-beige {
+  background-color: #e5e3df !important;
+  color: #1a1a1a !important;
+}
+
+.ref-mono-tag-dark {
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 10.5px !important;
+  color: #666666 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+  font-weight: 700 !important;
+}
+
+.ref-card-title-dark {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  margin: 0 0 6px 0 !important;
+  letter-spacing: -0.3px !important;
+}
+
+.ref-card-desc-dark {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  color: #555555 !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+
+/* WhatsApp/Instagram Chat Visual inside Left Tall Main Card */
+.wa-chat-visual-box {
+  margin-top: 20px !important;
+  width: 100% !important;
+}
+
+.chat-window-frame {
+  background: #1e1e24 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.chat-header-bar {
+  background: #272730 !important;
+  padding: 12px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.chat-bot-avatar {
+  width: 32px !important;
+  height: 32px !important;
+  background: #10b981 !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+}
+
+.chat-bot-info strong {
+  color: #ffffff !important;
+  font-size: 13px !important;
+  display: block !important;
+}
+
+.online-indicator {
+  color: #10b981 !important;
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+}
+
+.chat-messages-container {
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  background: #141418 !important;
+}
+
+.msg-bubble {
+  padding: 10px 14px !important;
+  border-radius: 14px !important;
+  font-size: 12.5px !important;
+  line-height: 1.45 !important;
+  max-width: 88% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.msg-user {
+  align-self: flex-start !important;
+  background: #272730 !important;
+  color: #ffffff !important;
+  border-bottom-left-radius: 2px !important;
+}
+
+.msg-ai {
+  align-self: flex-end !important;
+  background: #059669 !important;
+  color: #ffffff !important;
+  border-bottom-right-radius: 2px !important;
+}
+
+.msg-time {
+  font-size: 9.5px !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  align-self: flex-end !important;
+  margin-top: 4px !important;
+}
+
+.blue-ticks {
+  color: #60a5fa !important;
+  font-weight: bold !important;
+}
+
+.cal-status-pill {
+  background: rgba(16, 185, 129, 0.18) !important;
+  border: 1px dashed #10b981 !important;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  color: #34d399 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  margin-top: 4px !important;
+}
+
+/* Video Phone Mockup inside Card 1 (Beige Top Right) */
+.beige-video-preview {
+  margin-top: 14px !important;
+}
+
+.video-phone-frame {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06) !important;
+}
+
+.video-play-pulse {
+  width: 32px !important;
+  height: 32px !important;
+  background: #121212 !important;
+  color: #ffffff !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.video-loop-tag {
+  font-size: 11.5px !important;
+  color: #1a1a1a !important;
+  font-weight: 600 !important;
+}
+
+/* Wireframe Preview inside Card 2 (Mid Right Dark Card) */
+.dark-wireframe-preview {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  margin-top: 14px !important;
+}
+
+.wireframe-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.wf-dot {
+  width: 6px !important;
+  height: 6px !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  border-radius: 50% !important;
+}
+
+.wf-url {
+  font-size: 10.5px !important;
+  color: #888888 !important;
+  font-family: 'Geist Mono', monospace !important;
+  margin-left: 6px !important;
+}
+
+.wf-fast-badge {
+  margin-left: auto !important;
+  color: #10b981 !important;
+  font-weight: 700 !important;
+  font-size: 10.5px !important;
+}
+
+/* Push Notification Visual in Bottom Left Beige Card */
+.beige-push-preview {
+  margin-top: 14px !important;
+}
+
+.push-notification-box {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  padding: 12px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+}
+
+.push-icon {
+  font-size: 18px !important;
+}
+
+.push-text {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.push-text strong {
+  font-size: 13px !important;
+  color: #1a1a1a !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.push-text span {
+  font-size: 11.5px !important;
+  color: #666666 !important;
+}
+
+/* ROI Chart Visual in Bottom Right Dark Card */
+.roi-chart-visual {
+  margin-top: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.roi-svg {
+  width: 100% !important;
+  height: 40px !important;
+}
+
+.roi-revenue-tag {
+  font-size: 12px !important;
+  color: #888888 !important;
+}
+
+.roi-revenue-tag strong {
+  color: #10b981 !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 860px) {
+  .bento-reference-wrapper {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .card-tall-left,
+  .card-top-right,
+  .card-mid-right,
+  .card-bottom-left,
+  .card-bottom-right {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    height: auto !important;
+  }
+}
+
 
 
 .bento-card-content h4 {
