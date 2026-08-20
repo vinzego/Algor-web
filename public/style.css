@@ -2105,7 +2105,8 @@ body {
   max-width: none !important;
   width: 100% !important;
 }
-#before-after  { background-color: #f0f0f0 !important; }
+#before-after,
+#before-after.plain-section { background-color: #f0f0f0 !important; }
 #portfolio     { background-color: #f0f0f0 !important; }
 #testimonials  { background-color: #f0f0f0 !important; }
 #process       { background-color: #e5e3df !important; }
@@ -2355,7 +2356,6 @@ body {
   gap: 40px;
   margin: 0;
   padding: 80px 48px;
-  background-color: #ffffff;
 }
 
 .marketing-bento-grid {
@@ -7875,7 +7875,8 @@ body {
 /* ------------------------------------------------------------- */
    BEFORE vs AFTER COMPARISON SECTION (#before-after)
 ------------------------------------------------------------- */
-#before-after {
+#before-after,
+#before-after.plain-section {
   background-color: #f0f0f0 !important;
   padding: 110px 48px !important;
 }
