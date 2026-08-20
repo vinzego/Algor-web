@@ -675,7 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
       notifIndex = (notifIndex + 1) % notificationsList.length;
 
       const newBox = document.createElement('div');
-      newBox.className = 'push-notification-box push-anim-enter';
+      newBox.className = 'push-notification-box push-anim-from-bottom';
       newBox.innerHTML = `
         <span class="push-icon">${data.icon}</span>
         <div class="push-text">
@@ -684,25 +684,29 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      pushContainer.insertBefore(newBox, pushContainer.firstChild);
+      pushContainer.appendChild(newBox);
 
       const currentBoxes = pushContainer.querySelectorAll('.push-notification-box');
-      currentBoxes.forEach((box, idx) => {
-        if (idx === 0) {
+      if (currentBoxes.length > 2) {
+        const topBox = currentBoxes[0];
+        topBox.classList.add('push-anim-fade-top');
+        setTimeout(() => topBox.remove(), 400);
+      }
+
+      const updatedBoxes = pushContainer.querySelectorAll('.push-notification-box');
+      updatedBoxes.forEach((box, idx) => {
+        if (idx === updatedBoxes.length - 1) {
           box.classList.remove('push-secondary');
-        } else if (idx === 1) {
-          box.classList.add('push-secondary');
         } else {
-          box.classList.add('push-anim-exit');
-          setTimeout(() => box.remove(), 400);
+          box.classList.add('push-secondary');
         }
       });
     };
 
     pushContainer.innerHTML = '';
     pushNewNotification();
-    setTimeout(pushNewNotification, 1000);
-    setInterval(pushNewNotification, 2400);
+    setTimeout(pushNewNotification, 1200);
+    setInterval(pushNewNotification, 2500);
   }
 
 });

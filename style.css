@@ -5512,6 +5512,10 @@ body {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45) !important;
   width: 100% !important;
   max-width: 380px !important;
+  height: 330px !important;
+  max-height: 330px !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .chat-header-bar {
@@ -5521,6 +5525,7 @@ body {
   align-items: center !important;
   gap: 12px !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  flex-shrink: 0 !important;
 }
 
 .chat-bot-avatar {
@@ -5547,13 +5552,16 @@ body {
 }
 
 .chat-messages-container {
-  padding: 20px 18px !important;
+  padding: 16px 18px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 14px !important;
+  gap: 12px !important;
   background: #121216 !important;
-  min-height: 250px !important;
-  overflow: hidden !important;
+  flex: 1 !important;
+  height: 260px !important;
+  max-height: 260px !important;
+  overflow-y: auto !important;
+  scroll-behavior: smooth !important;
 }
 
 /* Bento Grid Dynamic Animations */
@@ -5609,14 +5617,14 @@ body {
   40% { transform: translateY(-4px); opacity: 1; }
 }
 
-.push-anim-enter {
-  animation: pushPopIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+.push-anim-from-bottom {
+  animation: pushFromBottom 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
 }
 
-@keyframes pushPopIn {
+@keyframes pushFromBottom {
   0% {
     opacity: 0;
-    transform: translateY(-20px) scale(0.92);
+    transform: translateY(24px) scale(0.95);
   }
   100% {
     opacity: 1;
@@ -5624,18 +5632,16 @@ body {
   }
 }
 
-.push-anim-exit {
-  animation: pushSlideOut 0.4s ease forwards !important;
+.push-anim-fade-top {
+  animation: pushFadeTop 0.4s ease forwards !important;
 }
 
-@keyframes pushSlideOut {
+@keyframes pushFadeTop {
   0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translateY(16px) scale(0.92);
   }
 }
 
@@ -5833,6 +5839,11 @@ body {
 /* Stacked Push Notifications in Card 4 (Beige Bottom Mid - Tall 460px) */
 .beige-push-preview-large {
   margin-top: 20px !important;
+  height: 160px !important;
+  min-height: 160px !important;
+  max-height: 160px !important;
+  overflow: hidden !important;
+  position: relative !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 10px !important;
