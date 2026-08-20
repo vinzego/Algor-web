@@ -780,50 +780,56 @@ body {
 
 @media (max-width: 768px) {
   .ultra-navbar {
-    width: 92% !important;
-    max-width: 92% !important;
-    padding: 12px 18px !important;
-    top: 14px !important;
     position: fixed !important;
+    top: 14px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    padding: 10px 16px !important;
     justify-content: space-between !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    z-index: 100000 !important;
+    background: rgba(14, 15, 20, 0.88) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .desktop-only-cta,
+  .mobile-menu-cta,
+  .ultra-nav-cta {
+    display: none !important;
   }
 
   .mobile-nav-toggle {
     display: flex !important;
   }
 
-  .desktop-only-cta {
-    display: none !important;
-  }
-
-  .mobile-menu-cta {
-    display: flex !important;
-    width: 100% !important;
-    justify-content: center !important;
-    margin-top: 10px !important;
-  }
-
   .ultra-nav-menu {
     display: flex !important;
     position: absolute !important;
-    top: calc(100% + 12px) !important;
+    top: calc(100% + 10px) !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
     background: linear-gradient(155deg, #14151b 0%, #0b0c0f 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 24px !important;
-    padding: 20px !important;
+    border-radius: 20px !important;
+    padding: 16px !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 12px !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+    gap: 8px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7) !important;
     backdrop-filter: blur(20px) !important;
     opacity: 0 !important;
     visibility: hidden !important;
-    transform: translateY(-16px) scale(0.96) !important;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s !important;
+    transform: translateY(-12px) scale(0.96) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s !important;
     z-index: 100000 !important;
   }
 
@@ -835,13 +841,13 @@ body {
 
   .ultra-nav-link {
     color: #ffffff !important;
-    font-size: 15.5px !important;
+    font-size: 15px !important;
     font-weight: 700 !important;
-    padding: 12px 16px !important;
-    border-radius: 14px !important;
+    padding: 11px 14px !important;
+    border-radius: 12px !important;
     text-align: center !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     transition: all 0.2s ease !important;
   }
 
@@ -849,6 +855,10 @@ body {
     background: rgba(223, 252, 43, 0.15) !important;
     color: #dffc2b !important;
     border-color: rgba(223, 252, 43, 0.4) !important;
+  }
+
+  .hero-aigenix-style {
+    padding-top: 88px !important;
   }
 
   .hero-ultra-modern { padding: 24px 20px; }
