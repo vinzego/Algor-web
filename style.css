@@ -9430,10 +9430,10 @@ html, body {
 .sheet-submit-btn,
 .footer-form-submit-btn,
 .price-card.popular-card .price-cta {
-  background-color: #0c0d0e !important;
+  background-color: #000000 !important;
   color: #ffffff !important;
-  border: 1px solid #1e293b !important;
-  box-shadow: 0 8px 24px -4px rgba(12, 13, 14, 0.25) !important;
+  border: 1px solid #181818 !important;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4) !important;
 }
 
 .btn-pill-dark:hover,
@@ -9441,9 +9441,9 @@ html, body {
 .sheet-submit-btn:hover,
 .footer-form-submit-btn:hover,
 .price-card.popular-card .price-cta:hover {
-  background-color: #17191c !important;
+  background-color: #1a1a1a !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 14px 30px -4px rgba(12, 13, 14, 0.35) !important;
+  box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.5) !important;
 }
 
 /* 2. WHITE BUTTON VARIANT (Crisp White with Lime Arrow Circle) */
@@ -9860,9 +9860,10 @@ html, body {
   box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1) !important;
 }
 
-/* BLACK SUBMIT BUTTON WITH LIME ARROW CIRCLE */
+/* PURE JET BLACK SUBMIT BUTTON WITH LIME ARROW CIRCLE */
 .sheet-submit-btn {
-  background: #0f172a !important;
+  background: #000000 !important;
+  background-color: #000000 !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 30px !important;
@@ -9873,7 +9874,7 @@ html, body {
   width: 100% !important;
   transition: all 0.25s ease !important;
   margin-top: auto;
-  box-shadow: 0 8px 25px -4px rgba(15, 23, 42, 0.3) !important;
+  box-shadow: 0 8px 25px -4px rgba(0, 0, 0, 0.4) !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9881,24 +9882,20 @@ html, body {
 }
 
 .sheet-submit-btn:hover {
-  background: #000000 !important;
+  background: #181818 !important;
+  background-color: #181818 !important;
+  color: #ffffff !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.5) !important;
 }
 
 .sheet-submit-btn .btn-arrow-circle {
   background-color: #dffc2b !important;
-  color: #0f172a !important;
+  color: #000000 !important;
   width: 28px !important;
   height: 28px !important;
   font-size: 14px !important;
   box-shadow: 0 0 10px rgba(223, 252, 43, 0.4) !important;
-}
-
-.sheet-submit-btn:hover {
-  background: #c8eb18 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 12px 32px -4px rgba(223, 252, 43, 0.45) !important;
 }
 
 .sheet-success {
