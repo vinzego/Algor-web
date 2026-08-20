@@ -6333,9 +6333,14 @@ body {
   }
 }
 
-/* -------------------------------------------------------------
-   Full-Width Edge-to-Edge Pricing Section (Luxury Dark Obsidian Theme)
-------------------------------------------------------------- */
+/* Pricing Section Outer Wrapper (#e5e3df gray background behind cut-out top rounded corners) */
+.pricing-section-wrapper {
+  background-color: #e5e3df !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
 #pricing {
   position: relative !important;
   z-index: 10 !important;
@@ -6343,7 +6348,7 @@ body {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
-  border-radius: 0 !important;
+  border-radius: 48px 48px 0 0 !important;
   background-color: #050508 !important;
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
