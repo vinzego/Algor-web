@@ -5240,30 +5240,32 @@ body {
 }
 
 /* ==============================================================
-   4-CARD HIGH-CONVERSION BENTO GRID (Beneath About Section)
+   5-CARD BLACK BENTO GRID (Beneath About Section)
    ============================================================== */
 .services-bento-section {
   width: 100% !important;
   max-width: 1240px !important;
   margin: 0 auto !important;
-  padding: 80px 24px !important;
+  padding: 90px 24px !important;
   box-sizing: border-box !important;
+  background-color: #060709 !important; /* Pozadina bento grida je crna */
+  border-radius: 32px !important;
 }
 
-.bento-grid-4-wrapper {
+.bento-grid-5-wrapper {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  grid-template-rows: auto auto !important;
+  grid-template-rows: auto auto auto !important;
   gap: 24px !important;
   width: 100% !important;
   box-sizing: border-box !important;
   margin-top: 48px !important;
 }
 
-/* Base Bento Card */
+/* Base Bento Card (Dark Obsidian Luxury Glass) */
 .bento-card-item {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
+  background: linear-gradient(155deg, #13151c 0%, #0d0e14 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 28px !important;
   padding: 32px 28px !important;
   display: flex !important;
@@ -5271,69 +5273,57 @@ body {
   justify-content: space-between !important;
   position: relative !important;
   overflow: hidden !important;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 16px 40px rgba(0, 0, 0, 0.5) !important;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
   box-sizing: border-box !important;
 }
 
 .bento-card-item:hover {
   transform: translateY(-5px) !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 24px 48px -10px rgba(0, 0, 0, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.28) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 24px 50px rgba(0, 0, 0, 0.7) !important;
 }
 
-/* Specific Grid Positions */
-/* Card 1: Double Width Top-Left (Cols 1-2, Row 1) */
-.bento-card-1-top-left {
-  grid-column: 1 / 3 !important;
-  grid-row: 1 !important;
-  min-height: 340px !important;
+/* Specific Bento Grid Positions */
+/* Card 1: Row 1, Col 1 (1:1) */
+.bento-card-1 {
+  grid-column: 1 / 2 !important;
+  grid-row: 1 / 2 !important;
+  min-height: 320px !important;
 }
 
-/* Card 2: Double Height Tall Right (Col 3, Rows 1-2) */
-.bento-card-2-tall-right {
-  grid-column: 3 !important;
+/* Card 2: Row 2, Col 1 (1:1) */
+.bento-card-2 {
+  grid-column: 1 / 2 !important;
+  grid-row: 2 / 3 !important;
+  min-height: 320px !important;
+}
+
+/* Card 3: Rows 1-2, Cols 2-3 (Tall/Wide card spanning row 1 & 2 across col 2 & 3!) */
+.bento-card-3 {
+  grid-column: 2 / 4 !important;
   grid-row: 1 / 3 !important;
-  min-height: 680px !important;
+  min-height: 660px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
 }
 
-/* Card 3: Standard Bottom-Left (Col 1, Row 2) */
-.bento-card-3-bottom-left {
-  grid-column: 1 !important;
-  grid-row: 2 !important;
-  min-height: 320px !important;
+/* Card 4: Row 3, Cols 1-2 (Horizontal 2:1 card in row 3!) */
+.bento-card-4 {
+  grid-column: 1 / 3 !important;
+  grid-row: 3 / 4 !important;
+  min-height: 260px !important;
 }
 
-/* Card 4: Standard Bottom-Middle (Col 2, Row 2) */
-.bento-card-4-bottom-mid {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  min-height: 320px !important;
+/* Card 5: Row 3, Col 3 (1:1 desno in row 3!) */
+.bento-card-5 {
+  grid-column: 3 / 4 !important;
+  grid-row: 3 / 4 !important;
+  min-height: 260px !important;
 }
 
-/* Card 1 Horizontal Split */
-.bento-card-1-top-left .bento-horizontal-split {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 32px !important;
-  height: 100% !important;
-}
-
-.bento-horizontal-split .bento-content-side {
-  flex: 1.1 !important;
-}
-
-.bento-horizontal-split .bento-visual-side {
-  flex: 0.9 !important;
-  max-width: 320px !important;
-}
-
-/* Typography & Badges */
+/* Typography & Badges inside Bento Cards */
 .bento-badge-pill {
   display: inline-flex !important;
   align-items: center !important;
@@ -5341,9 +5331,9 @@ body {
   font-family: 'Geist Mono', monospace !important;
   font-size: 11px !important;
   font-weight: 700 !important;
-  color: #0f172a !important;
-  background: #f1f5f9 !important;
-  border: 1px solid #e2e8f0 !important;
+  color: #34d399 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+  border: 1px solid rgba(52, 211, 153, 0.25) !important;
   padding: 4px 12px !important;
   border-radius: 20px !important;
   text-transform: uppercase !important;
@@ -5355,7 +5345,7 @@ body {
   font-family: 'Inter', sans-serif !important;
   font-size: 21px !important;
   font-weight: 800 !important;
-  color: #0f172a !important;
+  color: #ffffff !important;
   margin: 0 0 10px 0 !important;
   letter-spacing: -0.4px !important;
 }
@@ -5363,7 +5353,7 @@ body {
 .bento-desc {
   font-family: 'Inter', sans-serif !important;
   font-size: 14.5px !important;
-  color: #475569 !important;
+  color: #cbd5e1 !important;
   line-height: 1.55 !important;
   margin: 0 !important;
 }
