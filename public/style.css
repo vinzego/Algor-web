@@ -2111,7 +2111,7 @@ body {
 #testimonials  { background-color: #f5f5f5 !important; }
 #process       { background-color: #e5e3df !important; }
 #ideal-fit     { background-color: #ffffff !important; }
-#faq           { background-color: #e5e3df !important; }
+#faq           { background-color: #f5f5f5 !important; }
 
 .dark-theme .info-title {
   color: #ffffff !important;
@@ -3008,9 +3008,9 @@ body {
   line-height: 1.5;
 }
 
-/* Gray Theme Overrides for #faq (#e5e3df) */
+/* Gray Theme Overrides for #faq (#f5f5f5) */
 #faq {
-  background-color: #e5e3df !important;
+  background-color: #f5f5f5 !important;
   color: #121316 !important;
 }
 
@@ -3777,7 +3777,7 @@ body {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
-  background-color: #e5e3df !important;
+  background-color: #f5f5f5 !important;
   border-radius: 48px 48px 0 0 !important;
   overflow: hidden !important;
   padding: 60px 0 20px 0 !important;
