@@ -1832,18 +1832,19 @@ body {
 }
 
 .solid-lime-card {
-  background: linear-gradient(145deg, #dffc2b 0%, #cbee1d 100%) !important;
-  color: #0f172a !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 12px 30px -6px rgba(223, 252, 43, 0.35) !important;
+  background: #eaecf0 !important;
+  color: #121316 !important;
+  border: 1px solid #d0d5dd !important;
+  border-top: 3px solid #dffc2b !important;
+  box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.05) !important;
 }
 
 .solid-lime-card .card-info-title {
-  color: #0f172a !important;
+  color: #121316 !important;
 }
 
 .solid-lime-card .card-info-subtext {
-  color: #334155 !important;
+  color: #475569 !important;
 }
 
 .split-bottom {
@@ -7940,12 +7941,12 @@ body {
   border-color: #cbd5e1 !important;
 }
 
-/* Right Card: Algor Studio (Signature Lime #dffc2b Theme) */
+/* Right Card: Algor Studio (Luxury Dark Obsidian Glass with Neon Lime Accents) */
 .ba-after {
-  background: linear-gradient(145deg, #dffc2b 0%, #cbee1d 100%) !important;
-  border: 1px solid #c8eb18 !important;
-  box-shadow: 0 20px 45px -10px rgba(223, 252, 43, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.6) !important;
-  color: #0f172a !important;
+  background: linear-gradient(155deg, #111318 0%, #08090b 100%) !important;
+  border: 1px solid rgba(223, 252, 43, 0.4) !important;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(223, 252, 43, 0.25) !important;
+  color: #ffffff !important;
   position: relative !important;
   overflow: hidden !important;
   transform: rotate(2.5deg) translateY(-6px) !important;
@@ -7958,14 +7959,14 @@ body {
   right: -40px !important;
   width: 280px !important;
   height: 280px !important;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 70%) !important;
+  background: radial-gradient(circle, rgba(223, 252, 43, 0.12) 0%, transparent 70%) !important;
   pointer-events: none !important;
 }
 
 .ba-after:hover {
   transform: rotate(0deg) translateY(-10px) scale(1.015) !important;
   border-color: #dffc2b !important;
-  box-shadow: 0 30px 65px -12px rgba(223, 252, 43, 0.45), inset 0 1px 0 0 #ffffff !important;
+  box-shadow: 0 30px 65px -12px rgba(223, 252, 43, 0.25), inset 0 1px 0 0 #dffc2b !important;
 }
 
 .ba-card-header {
@@ -7992,10 +7993,10 @@ body {
 }
 
 .ba-after .badge-green {
-  background-color: #0f172a !important;
+  background-color: rgba(223, 252, 43, 0.12) !important;
   color: #dffc2b !important;
   border: 1px solid rgba(223, 252, 43, 0.4) !important;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
 .ba-list {
@@ -8032,13 +8033,12 @@ body {
 }
 
 .icon-green {
-  background-color: #10b981 !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35) !important;
+  background-color: #dffc2b !important;
+  color: #0b0c0e !important;
+  box-shadow: 0 4px 14px rgba(223, 252, 43, 0.35) !important;
 }
 
-.ba-before .ba-list li strong,
-.ba-after .ba-list li strong {
+.ba-before .ba-list li strong {
   display: block !important;
   font-size: 16.5px !important;
   font-weight: 700 !important;
@@ -8047,9 +8047,25 @@ body {
   margin-bottom: 4px !important;
 }
 
+.ba-after .ba-list li strong {
+  display: block !important;
+  font-size: 16.5px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.3px !important;
+  margin-bottom: 4px !important;
+}
+
 .ba-before .ba-list li p {
   font-size: 14px !important;
   color: #64748b !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+}
+
+.ba-after .ba-list li p {
+  font-size: 14px !important;
+  color: #94a3b8 !important;
   line-height: 1.55 !important;
   margin: 0 !important;
 }
