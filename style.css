@@ -2006,17 +2006,19 @@ body {
    Common Section Accents
 ------------------------------------------------------------- */
 .section-badge {
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: #898d92;
-  margin-bottom: 12px;
-  display: inline-block;
-}
-
-.dark-theme .section-badge {
-  color: #626569;
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  color: #dffc2b !important;
+  background-color: #0c0d0e !important;
+  border: 1px solid rgba(223, 252, 43, 0.3) !important;
+  padding: 6px 16px !important;
+  border-radius: 100px !important;
+  margin-bottom: 16px !important;
+  display: inline-block !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* -------------------------------------------------------------
@@ -3020,12 +3022,6 @@ body {
 
 #faq .info-subtitle {
   color: #475569 !important;
-}
-
-#faq .section-badge {
-  color: #121316 !important;
-  background-color: rgba(255, 255, 255, 0.6) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 #faq .disclosure {
@@ -6373,13 +6369,6 @@ body {
 
 #pricing .info-subtitle {
   color: #a1a1aa !important;
-}
-
-#pricing .section-badge {
-  color: #a1a1aa !important;
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  font-family: 'Geist Mono', monospace !important;
 }
 
 /* Luxury Pricing Grid (High-Contrast Translucent Glass Cards) */
