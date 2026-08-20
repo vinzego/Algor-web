@@ -5819,23 +5819,23 @@ body {
   gap: 8px !important;
 }
 
-/* 3D Orbiting 4 Brand Logos Animation for Bento Card 1 (Privlačenje - Centered) */
+/* 3D Orbiting 4 Brand Logos Animation for Bento Card 1 (Privlačenje - 100% Centered) */
 .ad-logos-orbit-wrapper {
-  flex: 1 !important;
   width: 100% !important;
-  min-height: 270px !important;
+  min-height: 260px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   position: relative !important;
-  margin: auto 0 !important;
-  overflow: visible !important;
+  margin: 15px 0 !important;
+  box-sizing: border-box !important;
 }
 
 .ad-logos-orbit-stage {
   position: relative !important;
-  width: 230px !important;
-  height: 230px !important;
+  width: 170px !important;
+  height: 170px !important;
+  margin: 0 auto !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -5843,50 +5843,57 @@ body {
 
 .orbit-ring-line {
   position: absolute !important;
-  width: 180px !important;
-  height: 180px !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 150px !important;
+  height: 150px !important;
   border-radius: 50% !important;
-  border: 1.5px dashed rgba(15, 23, 42, 0.2) !important;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05) !important;
+  border: 1.5px dashed rgba(15, 23, 42, 0.22) !important;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.04) !important;
   animation: pulseOrbitRing 3s ease-in-out infinite alternate !important;
 }
 
 @keyframes pulseOrbitRing {
-  0% { transform: scale(0.98); opacity: 0.7; }
-  100% { transform: scale(1.02); opacity: 1; }
+  0% { transform: translate(-50%, -50%) scale(0.98); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.02); opacity: 1; }
 }
 
 .orbit-center-hub {
   position: absolute !important;
-  width: 82px !important;
-  height: 82px !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 72px !important;
+  height: 72px !important;
   border-radius: 50% !important;
   background: #000000 !important;
   border: 2px solid #dffc2b !important;
-  box-shadow: 0 0 24px rgba(223, 252, 43, 0.35) !important;
+  box-shadow: 0 0 20px rgba(223, 252, 43, 0.35) !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   z-index: 5 !important;
   color: #ffffff !important;
-  gap: 2px !important;
+  gap: 1px !important;
 }
 
 .hub-icon {
-  font-size: 20px !important;
+  font-size: 17px !important;
 }
 
 .hub-label {
-  font-size: 9px !important;
+  font-size: 8.5px !important;
   font-weight: 800 !important;
   color: #dffc2b !important;
   font-family: 'Geist Mono', monospace !important;
-  letter-spacing: 0.5px !important;
+  letter-spacing: 0.4px !important;
 }
 
 .orbit-rotating-ring {
   position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
   animation: rotateOrbit 14s linear infinite !important;
@@ -5928,13 +5935,13 @@ body {
 
 .logo-card-badge {
   background: #ffffff !important;
-  padding: 8px 13px !important;
-  border-radius: 18px !important;
+  padding: 6px 11px !important;
+  border-radius: 16px !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
   display: flex !important;
   align-items: center !important;
-  gap: 8px !important;
+  gap: 6px !important;
   animation: counterRotate 14s linear infinite !important;
   white-space: nowrap !important;
 }
@@ -5945,13 +5952,13 @@ body {
 }
 
 .logo-svg {
-  width: 22px !important;
-  height: 22px !important;
+  width: 18px !important;
+  height: 18px !important;
   flex-shrink: 0 !important;
 }
 
 .logo-title {
-  font-size: 12px !important;
+  font-size: 11px !important;
   font-weight: 800 !important;
   color: #0f172a !important;
   font-family: inherit !important;
