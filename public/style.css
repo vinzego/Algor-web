@@ -5345,10 +5345,25 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Dark Theme Cards (#121212) */
+/* Dark Theme Cards (Subtle Luxury Obsidian Gradient & Glow) */
 .card-dark {
-  background-color: #121212 !important;
+  background: linear-gradient(135deg, #1f2026 0%, #121317 50%, #090a0c 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.14) !important;
   color: #ffffff !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.card-dark::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 160px !important;
+  background: radial-gradient(circle at 25% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 75%) !important;
+  pointer-events: none !important;
 }
 
 .ref-mono-tag {
