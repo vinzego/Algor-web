@@ -5254,42 +5254,50 @@ body {
 
 .bento-reference-wrapper {
   display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-rows: repeat(3, minmax(260px, auto)) !important;
   gap: 16px !important;
   width: 100% !important;
-  margin-top: 40px !important;
+  max-width: 1040px !important;
+  margin: 40px auto 0 auto !important;
   box-sizing: border-box !important;
+  align-items: stretch !important;
 }
 
-/* Card Positions (Matching Reference Image Layout) */
+/* Card Positions (Perfect Pixel Alignment) */
 .card-tall-left {
-  grid-column: 1 !important;
+  grid-column: 1 / 2 !important;
   grid-row: 1 / 3 !important;
-  min-height: 540px !important;
+  height: 100% !important;
+  min-height: 0 !important;
 }
 
 .card-top-right {
-  grid-column: 2 !important;
-  grid-row: 1 !important;
-  min-height: 260px !important;
+  grid-column: 2 / 3 !important;
+  grid-row: 1 / 2 !important;
+  height: 100% !important;
+  min-height: 0 !important;
 }
 
 .card-mid-right {
-  grid-column: 2 !important;
-  grid-row: 2 !important;
-  min-height: 260px !important;
+  grid-column: 2 / 3 !important;
+  grid-row: 2 / 3 !important;
+  height: 100% !important;
+  min-height: 0 !important;
 }
 
 .card-bottom-left {
-  grid-column: 1 !important;
-  grid-row: 3 !important;
-  min-height: 260px !important;
+  grid-column: 1 / 2 !important;
+  grid-row: 3 / 4 !important;
+  height: 100% !important;
+  min-height: 0 !important;
 }
 
 .card-bottom-right {
-  grid-column: 2 !important;
-  grid-row: 3 !important;
-  min-height: 260px !important;
+  grid-column: 2 / 3 !important;
+  grid-row: 3 / 4 !important;
+  height: 100% !important;
+  min-height: 0 !important;
 }
 
 /* Base Reference Card Styles */
