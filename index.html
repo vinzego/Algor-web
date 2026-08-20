@@ -27,18 +27,30 @@
         <span class="logo-text">algor<span class="logo-ai-badge">studio</span></span>
       </a>
 
-      <!-- Pill Nav Menu -->
-      <nav class="ultra-nav-menu">
+      <!-- Mobile Hamburger Toggle Button -->
+      <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Otvori izbornik">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <!-- Pill Nav Menu (Desktop & Mobile Drawer) -->
+      <nav class="ultra-nav-menu" id="ultra-nav-menu">
         <a href="#about" class="ultra-nav-link">O nama</a>
         <a href="#marketing" class="ultra-nav-link">Usluge</a>
         <a href="#portfolio" class="ultra-nav-link">Projekti</a>
         <a href="#process" class="ultra-nav-link">Proces</a>
         <a href="#pricing" class="ultra-nav-link">Cijene</a>
         <a href="#faq" class="ultra-nav-link">FAQ</a>
+        
+        <!-- CTA Button Inside Mobile Menu -->
+        <button type="button" class="ultra-nav-cta btn-pill-light mobile-menu-cta">
+          <span>Besplatan Audit</span>
+          <span class="btn-arrow-circle">↗</span>
+        </button>
       </nav>
 
-      <!-- Primary Action CTA Button -->
-      <button type="button" class="ultra-nav-cta btn-pill-light">
+      <!-- Primary Action CTA Button (Desktop) -->
+      <button type="button" class="ultra-nav-cta btn-pill-light desktop-only-cta">
         <span>Besplatan Audit</span>
         <span class="btn-arrow-circle">↗</span>
       </button>
