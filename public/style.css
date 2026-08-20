@@ -227,24 +227,7 @@ body {
   height: 14px !important;
 }
 
-.ultra-nav-menu {
-  background: #ffffff !important;
-  border: 1px solid #cbd5e1 !important;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08) !important;
-  padding: 12px 32px !important;
-  gap: 32px !important;
-}
 
-.ultra-nav-link {
-  color: #1e293b !important;
-  font-weight: 700 !important;
-  font-size: 15.5px !important;
-  transition: color 0.2s ease;
-}
-
-.ultra-nav-link:hover {
-  color: #000000 !important;
-}
 
 .ultra-nav-cta {
   background-color: #0f172a !important;
@@ -303,13 +286,27 @@ body {
 }
 
 /* Floating Glass Header Navbar */
+/* Centered Floating Glass Header Capsule Navbar */
 .ultra-navbar {
-  position: relative;
-  z-index: 20;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  position: fixed !important;
+  top: 24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  max-width: 95vw !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 36px !important;
+  background: rgba(18, 19, 26, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-radius: 40px !important;
+  padding: 10px 28px !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
+  z-index: 100000 !important;
+  margin: 0 auto !important;
 }
 
 .ultra-brand-logo {
@@ -339,15 +336,27 @@ body {
 }
 
 .ultra-nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 8px 24px;
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex !important;
+  align-items: center !important;
+  gap: 28px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.ultra-nav-link {
+  color: #cbd5e1 !important;
+  font-weight: 600 !important;
+  font-size: 14.5px !important;
+  text-decoration: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.ultra-nav-link:hover {
+  color: #dffc2b !important;
+  transform: translateY(-1px) !important;
 }
 
 .ultra-nav-link {
@@ -873,7 +882,7 @@ body {
   background-image: none !important;
   position: relative !important;
   overflow: hidden !important;
-  padding: 32px 48px;
+  padding: 105px 48px 48px 48px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
