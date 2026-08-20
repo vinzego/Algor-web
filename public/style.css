@@ -8816,9 +8816,9 @@ body {
 }
 
 .ba-after .badge-green {
-  background-color: rgba(255, 255, 255, 0.12) !important;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  background-color: rgba(223, 252, 43, 0.15) !important;
+  color: #dffc2b !important;
+  border: 1px solid rgba(223, 252, 43, 0.4) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
