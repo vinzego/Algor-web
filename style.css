@@ -3740,16 +3740,16 @@ body {
 }
 
 .text-marquee-row span {
-  font-size: 96px;
+  font-size: 120px;
   font-weight: 800;
   color: #121316;
-  letter-spacing: -3px;
+  letter-spacing: -4px;
   line-height: 1;
 }
 
 .marquee-spinner {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   color: #c2c5c9;
   animation: spin 12s linear infinite;
   flex-shrink: 0;
@@ -3804,31 +3804,31 @@ body {
     margin: 40px 0 10px 0;
   }
   .text-marquee-row span {
-    font-size: 56px;
-    letter-spacing: -2px;
+    font-size: 72px;
+    letter-spacing: -2.5px;
   }
   .marquee-spinner {
-    width: 42px;
-    height: 42px;
+    width: 52px;
+    height: 52px;
   }
   .text-marquee-row {
-    gap: 40px;
-    padding-right: 40px;
+    gap: 50px;
+    padding-right: 50px;
   }
 }
 
 @media (max-width: 600px) {
   .text-marquee-row span {
-    font-size: 40px;
-    letter-spacing: -1px;
+    font-size: 48px;
+    letter-spacing: -1.5px;
   }
   .marquee-spinner {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
   }
   .text-marquee-row {
-    gap: 30px;
-    padding-right: 30px;
+    gap: 36px;
+    padding-right: 36px;
   }
 }
 
