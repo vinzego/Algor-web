@@ -5358,11 +5358,8 @@ body {
 .card-dark::before {
   content: '' !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  height: 160px !important;
-  background: radial-gradient(circle at 25% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 75%) !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.06) 0%, transparent 65%) !important;
   pointer-events: none !important;
 }
 
