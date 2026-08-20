@@ -5240,7 +5240,7 @@ body {
 }
 
 /* ==============================================================
-   7-CARD SERVICES BENTO GRID (Beneath About Section)
+   7-CARD SERVICES BENTO GRID (Beneath About Section - Light Clean Theme)
    ============================================================== */
 .services-bento-section {
   width: 100% !important;
@@ -5252,42 +5252,75 @@ body {
 
 .services-bento-grid {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-columns: repeat(12, 1fr) !important;
   gap: 24px !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  margin-top: 40px !important;
+  margin-top: 48px !important;
 }
 
+/* Base Bento Card (Clean Pure White with Soft Shadow) */
 .s-bento-card {
-  background: linear-gradient(165deg, #181a22 0%, #0e1015 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 24px !important;
-  padding: 28px 24px !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 28px !important;
+  padding: 32px 28px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
   position: relative !important;
   overflow: hidden !important;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 12px 32px rgba(0, 0, 0, 0.28) !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease !important;
-  min-height: 310px !important;
   box-sizing: border-box !important;
 }
 
 .s-bento-card:hover {
   transform: translateY(-5px) !important;
-  border-color: rgba(255, 255, 255, 0.28) !important;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 20px 48px rgba(0, 0, 0, 0.45) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 24px 48px -10px rgba(0, 0, 0, 0.1) !important;
 }
 
-.s-bento-card-wide {
-  grid-column: span 3 !important;
-  min-height: 230px !important;
+/* 2 Sizes: Large (Span 7) & Medium (Span 5), plus Hero (Span 12) */
+.s-bento-large-7 {
+  grid-column: span 7 !important;
+  min-height: 320px !important;
+}
+
+.s-bento-medium-5 {
+  grid-column: span 5 !important;
+  min-height: 320px !important;
+}
+
+.s-bento-hero-12 {
+  grid-column: span 12 !important;
+  min-height: 250px !important;
+}
+
+/* Horizontal Split for Large Cards on Desktop */
+.s-bento-card-split {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 32px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.s-bento-card-split .s-bento-header {
+  flex: 1.1 !important;
+  margin-bottom: 0 !important;
+}
+
+.s-bento-card-split .s-bento-graphic-wrap {
+  flex: 0.9 !important;
+  max-width: 320px !important;
+  margin-top: 0 !important;
 }
 
 .s-bento-header {
-  margin-bottom: 20px !important;
+  margin-bottom: 24px !important;
 }
 
 .s-bento-tag {
@@ -5296,27 +5329,31 @@ body {
   gap: 6px !important;
   font-family: 'Geist Mono', monospace !important;
   font-size: 11px !important;
-  font-weight: 600 !important;
-  color: #bbf246 !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.8px !important;
-  margin-bottom: 10px !important;
+  letter-spacing: 0.6px !important;
+  margin-bottom: 12px !important;
 }
 
 .s-bento-header h3 {
   font-family: 'Inter', sans-serif !important;
-  font-size: 19px !important;
-  font-weight: 700 !important;
-  color: #ffffff !important;
-  margin: 0 0 8px 0 !important;
-  letter-spacing: -0.3px !important;
+  font-size: 21px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+  margin: 0 0 10px 0 !important;
+  letter-spacing: -0.4px !important;
 }
 
 .s-bento-header p {
   font-family: 'Inter', sans-serif !important;
-  font-size: 13.5px !important;
-  color: #94a3b8 !important;
-  line-height: 1.5 !important;
+  font-size: 14px !important;
+  color: #475569 !important;
+  line-height: 1.55 !important;
   margin: 0 !important;
 }
 
@@ -5328,19 +5365,19 @@ body {
   align-items: center !important;
   justify-content: center !important;
   position: relative !important;
-  overflow: hidden !important;
 }
 
 /* 1. Camera Viewfinder Graphic */
 .camera-viewfinder {
   width: 100%;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  padding: 12px 14px;
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 14px;
   box-sizing: border-box;
   font-family: 'Geist Mono', monospace;
   position: relative;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .viewfinder-top,
@@ -5374,7 +5411,7 @@ body {
 }
 
 .viewfinder-crosshair {
-  height: 64px;
+  height: 60px;
   margin: 8px 0;
   position: relative;
   display: flex;
@@ -5386,15 +5423,14 @@ body {
   position: absolute;
   width: 10px;
   height: 10px;
-  border-color: rgba(255, 255, 255, 0.4);
 }
-.crosshair-corner.tl { top: 4px; left: 4px; border-top: 1.5px solid #fff; border-left: 1.5px solid #fff; }
-.crosshair-corner.tr { top: 4px; right: 4px; border-top: 1.5px solid #fff; border-right: 1.5px solid #fff; }
-.crosshair-corner.bl { bottom: 4px; left: 4px; border-bottom: 1.5px solid #fff; border-left: 1.5px solid #fff; }
-.crosshair-corner.br { bottom: 4px; right: 4px; border-bottom: 1.5px solid #fff; border-right: 1.5px solid #fff; }
+.crosshair-corner.tl { top: 2px; left: 2px; border-top: 1.5px solid #ffffff; border-left: 1.5px solid #ffffff; }
+.crosshair-corner.tr { top: 2px; right: 2px; border-top: 1.5px solid #ffffff; border-right: 1.5px solid #ffffff; }
+.crosshair-corner.bl { bottom: 2px; left: 2px; border-bottom: 1.5px solid #ffffff; border-left: 1.5px solid #ffffff; }
+.crosshair-corner.br { bottom: 2px; right: 2px; border-bottom: 1.5px solid #ffffff; border-right: 1.5px solid #ffffff; }
 
 .crosshair-center {
-  background: rgba(187, 242, 70, 0.15);
+  background: rgba(187, 242, 70, 0.18);
   border: 1px solid #bbf246;
   color: #bbf246;
   padding: 3px 10px;
@@ -5437,10 +5473,10 @@ body {
 /* 2. Paid Ads Radar Graphic */
 .ads-radar-box {
   width: 100%;
-  height: 125px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
+  height: 130px;
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
   position: relative;
   display: flex;
   align-items: center;
@@ -5451,7 +5487,7 @@ body {
 .radar-circle {
   position: absolute;
   border-radius: 50%;
-  border: 1px dashed rgba(59, 130, 246, 0.25);
+  border: 1px dashed rgba(59, 130, 246, 0.3);
 }
 .radar-circle.ring-1 { width: 45px; height: 45px; }
 .radar-circle.ring-2 { width: 85px; height: 85px; }
@@ -5462,7 +5498,7 @@ body {
   width: 130px;
   height: 130px;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.4) 60deg, transparent 65deg);
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.45) 60deg, transparent 65deg);
   animation: radarRotate 4s linear infinite;
 }
 
@@ -5473,8 +5509,8 @@ body {
 
 .radar-ping {
   position: absolute;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(59, 130, 246, 0.6);
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(59, 130, 246, 0.7);
   padding: 3px 8px;
   border-radius: 12px;
   font-size: 9.5px;
@@ -5484,8 +5520,8 @@ body {
   gap: 4px;
   animation: pingFloat 3s infinite ease-in-out alternate;
 }
-.radar-ping.ping-1 { top: 18px; left: 16px; animation-delay: 0.2s; }
-.radar-ping.ping-2 { bottom: 18px; right: 16px; animation-delay: 1.2s; }
+.radar-ping.ping-1 { top: 16px; left: 16px; animation-delay: 0.2s; }
+.radar-ping.ping-2 { bottom: 16px; right: 16px; animation-delay: 1.2s; }
 
 @keyframes pingFloat {
   0% { transform: translateY(0); opacity: 0.8; }
@@ -5509,10 +5545,10 @@ body {
 /* 3. Instagram DM AI Graphic */
 .ig-mockup-box {
   width: 100%;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  padding: 12px 14px;
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 14px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -5523,7 +5559,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
   padding: 6px 10px;
   border-radius: 10px;
 }
@@ -5590,10 +5626,10 @@ body {
 /* 4. Web Landing Stranice Graphic */
 .web-mockup-frame {
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  padding: 12px;
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 14px;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
@@ -5611,7 +5647,7 @@ body {
 .b-dot.green { background: #10b981; }
 
 .browser-url-pill {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   padding: 2px 8px;
   border-radius: 6px;
   font-size: 9.5px;
@@ -5624,8 +5660,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(187, 242, 70, 0.1);
-  border: 1px solid rgba(187, 242, 70, 0.3);
+  background: rgba(187, 242, 70, 0.12);
+  border: 1px solid rgba(187, 242, 70, 0.35);
   padding: 6px 10px;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -5636,7 +5672,7 @@ body {
 .web-loading-beam {
   width: 100%;
   height: 2px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
   margin-bottom: 10px;
@@ -5681,16 +5717,16 @@ body {
 /* 5. Analitika Graphic */
 .analytics-chart-box {
   width: 100%;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
   padding: 14px;
   box-sizing: border-box;
   position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  height: 125px;
+  height: 130px;
 }
 
 .chart-bars-wrap {
@@ -5733,8 +5769,8 @@ body {
 }
 
 .chart-metric-float {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(16, 185, 129, 0.45);
   padding: 6px 10px;
   border-radius: 10px;
   display: flex;
@@ -5755,9 +5791,9 @@ body {
 /* 6. WhatsApp AI Graphic */
 .wa-chat-mockup {
   width: 100%;
-  background: #0b1f1a;
-  border: 1px solid rgba(37, 211, 102, 0.2);
-  border-radius: 14px;
+  background: #091714;
+  border: 1px solid rgba(37, 211, 102, 0.25);
+  border-radius: 16px;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -5768,7 +5804,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 .wa-online-dot {
   width: 7px;
@@ -5783,14 +5819,14 @@ body {
   50% { opacity: 0.4; transform: scale(0.85); }
 }
 .wa-title-text { font-size: 11px; font-weight: 700; color: #ffffff; flex: 1; }
-.wa-badge-status { font-size: 9px; color: #25d366; background: rgba(37,211,102,0.12); padding: 2px 6px; border-radius: 4px; }
+.wa-badge-status { font-size: 9px; color: #25d366; background: rgba(37,211,102,0.15); padding: 2px 6px; border-radius: 4px; }
 
 .wa-chat-body {
-  padding: 10px 12px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  background: #091714;
+  gap: 8px;
+  background: #06110f;
 }
 
 .wa-msg {
@@ -5805,7 +5841,7 @@ body {
 }
 .wa-msg.wa-in {
   align-self: flex-start;
-  background: #192723;
+  background: #15221e;
   color: #e2e8f0;
   border-bottom-left-radius: 2px;
 }
@@ -5818,10 +5854,10 @@ body {
 }
 .wa-checks { font-size: 9.5px; color: #53bdeb; font-weight: 700; }
 
-/* 7. CRM & Lead Sinkronizacija (Wide Card) */
+/* 7. CRM & Lead Sinkronizacija (Hero Card) */
 .visual-crm-wide {
   width: 100% !important;
-  margin-top: 18px !important;
+  margin-top: 20px !important;
 }
 
 .crm-pipeline-flow {
@@ -5830,10 +5866,10 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: 18px 24px;
+  background: #090d16;
+  border: 1px solid #1e293b;
+  border-radius: 18px;
+  padding: 20px 24px;
   box-sizing: border-box;
 }
 
@@ -5849,7 +5885,7 @@ body {
 }
 .crm-node .node-icon { font-size: 22px; }
 .crm-node .node-text { display: flex; flex-direction: column; gap: 2px; }
-.crm-node .node-text strong { font-size: 13px; color: #ffffff; }
+.crm-node .node-text strong { font-size: 13.5px; color: #ffffff; }
 .crm-node .node-text span { font-size: 11px; color: #94a3b8; }
 .crm-node .node-text .node-success { color: #10b981; font-weight: 600; }
 
@@ -5881,12 +5917,19 @@ body {
   100% { left: 100%; opacity: 0; transform: scale(0.6); }
 }
 
-@media (max-width: 900px) {
-  .services-bento-grid {
-    grid-template-columns: 1fr !important;
+@media (max-width: 992px) {
+  .s-bento-large-7,
+  .s-bento-medium-5,
+  .s-bento-hero-12 {
+    grid-column: span 12 !important;
   }
-  .s-bento-card-wide {
-    grid-column: span 1 !important;
+  .s-bento-card-split {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 20px !important;
+  }
+  .s-bento-card-split .s-bento-graphic-wrap {
+    max-width: 100% !important;
   }
   .crm-pipeline-flow {
     flex-direction: column;
