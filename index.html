@@ -391,44 +391,73 @@
           <div class="ref-pill-btn green-accent">+320% ROAS <span class="pill-dot-green">•</span></div>
         </div>
         <p class="ref-card-desc-muted">Točno znate koliko ste uložili, a koliko vam je novih kupaca i prihoda kampanja donijela.</p>
+        
         <div class="roi-chart-visual-large">
           <div class="roi-chart-legend">
-            <span class="legend-item leg-green"><span class="legend-dot">●</span> Prihod (+320%)</span>
-            <span class="legend-item leg-cyan"><span class="legend-dot">●</span> Meta Leads (+185%)</span>
-            <span class="legend-item leg-purple"><span class="legend-dot">●</span> Upiti (+240%)</span>
+            <span class="legend-item leg-lime"><span class="legend-dot">●</span> Prihod (+320%)</span>
+            <span class="legend-item leg-green"><span class="legend-dot">●</span> Upiti (+240%)</span>
+            <span class="legend-item leg-cyan"><span class="legend-dot">●</span> Konverzija (4.8%)</span>
           </div>
-          <svg viewBox="0 0 240 90" class="roi-svg-multi-line">
-            <defs>
-              <!-- Green Gradient Fill -->
-              <linearGradient id="chartGradGreen" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#10b981" stop-opacity="0.35"/>
-                <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
-              </linearGradient>
-              <!-- Cyan Gradient Fill -->
-              <linearGradient id="chartGradCyan" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
-                <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            
-            <!-- Background Grid Lines -->
-            <line x1="10" y1="20" x2="230" y2="20" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
-            <line x1="10" y1="50" x2="230" y2="50" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
-            <line x1="10" y1="80" x2="230" y2="80" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
-            
-            <!-- Line 3: Purple Line (AI Upiti) -->
-            <path class="chart-line line-purple" d="M 10,75 C 50,70 80,60 120,45 C 160,30 190,38 230,22" fill="none" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round" />
-            
-            <!-- Line 2: Cyan Line & Fill (Meta Leads) -->
-            <path class="chart-area" d="M 10,80 C 50,65 90,55 130,35 C 170,18 200,28 230,12 L 230,85 L 10,85 Z" fill="url(#chartGradCyan)" />
-            <path class="chart-line line-cyan" d="M 10,80 C 50,65 90,55 130,35 C 170,18 200,28 230,12" fill="none" stroke="#38bdf8" stroke-width="2.8" stroke-linecap="round" />
-            <circle class="peak-dot dot-cyan" cx="230" cy="12" r="4.5" fill="#38bdf8" />
-            
-            <!-- Line 1: Green Line & Fill (Primary Revenue / ROAS) -->
-            <path class="chart-area" d="M 10,70 C 60,60 100,35 140,22 C 180,10 205,18 230,6 L 230,85 L 10,85 Z" fill="url(#chartGradGreen)" />
-            <path class="chart-line line-green" d="M 10,70 C 60,60 100,35 140,22 C 180,10 205,18 230,6" fill="none" stroke="#10b981" stroke-width="3.5" stroke-linecap="round" />
-            <circle class="peak-dot dot-green" cx="230" cy="6" r="5.5" fill="#10b981" />
-          </svg>
+
+          <div class="roi-chart-container">
+            <!-- Background Equalizer Volume Bars -->
+            <div class="chart-bars-bg">
+              <div class="chart-bar-col bar-1"></div>
+              <div class="chart-bar-col bar-2"></div>
+              <div class="chart-bar-col bar-3"></div>
+              <div class="chart-bar-col bar-4"></div>
+              <div class="chart-bar-col bar-5"></div>
+              <div class="chart-bar-col bar-6"></div>
+              <div class="chart-bar-col bar-7"></div>
+            </div>
+
+            <!-- SVG Wave & Glow Path -->
+            <svg viewBox="0 0 280 110" class="roi-svg-multi-line">
+              <defs>
+                <linearGradient id="chartGradLime" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#dffc2b" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#dffc2b" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="chartGradGreen" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
+                </linearGradient>
+                <filter id="neonGlowLime" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              
+              <!-- Grid Lines -->
+              <line x1="0" y1="25" x2="280" y2="25" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4,4" />
+              <line x1="0" y1="60" x2="280" y2="60" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4,4" />
+              <line x1="0" y1="95" x2="280" y2="95" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4,4" />
+
+              <!-- Secondary Curve (Green) -->
+              <path class="chart-area" d="M 0,95 C 45,85 85,75 130,55 C 175,35 220,40 280,25 L 280,110 L 0,110 Z" fill="url(#chartGradGreen)" />
+              <path class="chart-line line-green" d="M 0,95 C 45,85 85,75 130,55 C 175,35 220,40 280,25" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" />
+
+              <!-- Primary Main Line (Glowing Lime Curve) -->
+              <path class="chart-area area-lime" d="M 0,90 C 50,80 90,60 140,38 C 190,16 230,22 280,10 L 280,110 L 0,110 Z" fill="url(#chartGradLime)" />
+              <path class="chart-line line-lime" d="M 0,90 C 50,80 90,60 140,38 C 190,16 230,22 280,10" fill="none" stroke="#dffc2b" stroke-width="3.5" stroke-linecap="round" filter="url(#neonGlowLime)" />
+
+              <!-- Pulsing Ring Nodes -->
+              <circle class="pulse-beacon" cx="140" cy="38" r="4" fill="#dffc2b" />
+              <circle class="pulse-ring" cx="140" cy="38" r="8" fill="none" stroke="#dffc2b" stroke-width="1.5" />
+
+              <circle class="pulse-beacon peak-beacon" cx="280" cy="10" r="5" fill="#dffc2b" />
+              <circle class="pulse-ring peak-ring" cx="280" cy="10" r="10" fill="none" stroke="#dffc2b" stroke-width="2" />
+            </svg>
+
+            <!-- Floating Live Data Badge -->
+            <div class="chart-live-badge">
+              <span class="badge-dot-live"></span>
+              <span class="badge-txt">+320% ROAS</span>
+            </div>
+          </div>
         </div>
       </div>
 
