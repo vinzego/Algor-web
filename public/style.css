@@ -1655,7 +1655,7 @@ body {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
-  background-color: #f5f5f5 !important;
+  background-color: #EDEDED !important;
   border: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
@@ -2076,7 +2076,7 @@ body {
    PER-SECTION BACKGROUND COLORS
    Edit the background-color value for each section below.
 ===================================================== */
-#about         { background-color: #f5f5f5 !important; }
+#about         { background-color: #EDEDED !important; }
 
 .marketing-section-wrapper {
   background-color: #f5f5f5 !important;
