@@ -5255,44 +5255,44 @@ body {
 .bento-3col-grid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
-  grid-template-rows: 300px 260px !important;
-  gap: 16px !important;
+  grid-template-rows: 520px 460px !important;
+  gap: 20px !important;
   width: 100% !important;
   max-width: 1080px !important;
-  margin: 40px auto 0 auto !important;
+  margin: 50px auto 0 auto !important;
   box-sizing: border-box !important;
 }
 
-/* Row 1 Grid Placement */
+/* Row 1 Grid Placement (Tall 520px cards) */
 .card-col-1-top {
   grid-column: 1 / 2 !important;
   grid-row: 1 / 2 !important;
-  height: 300px !important;
+  height: 520px !important;
 }
 
 .card-col-23-hero {
   grid-column: 2 / 4 !important;
   grid-row: 1 / 2 !important;
-  height: 300px !important;
+  height: 520px !important;
 }
 
-/* Row 2 Grid Placement */
+/* Row 2 Grid Placement (Tall 460px cards) */
 .card-col-1-bot {
   grid-column: 1 / 2 !important;
   grid-row: 2 / 3 !important;
-  height: 260px !important;
+  height: 460px !important;
 }
 
 .card-col-2-bot {
   grid-column: 2 / 3 !important;
   grid-row: 2 / 3 !important;
-  height: 260px !important;
+  height: 460px !important;
 }
 
 .card-col-3-bot {
   grid-column: 3 / 4 !important;
   grid-row: 2 / 3 !important;
-  height: 260px !important;
+  height: 460px !important;
 }
 
 /* Hero Split Layout for Wide Main Card */
@@ -5301,7 +5301,7 @@ body {
   flex-direction: row !important;
   align-items: center !important;
   justify-content: space-between !important;
-  gap: 24px !important;
+  gap: 32px !important;
   width: 100% !important;
   height: 100% !important;
 }
@@ -5311,19 +5311,20 @@ body {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
+  padding-right: 16px !important;
 }
 
 .bento-hero-visual {
-  flex: 1 !important;
+  flex: 1.2 !important;
   display: flex !important;
   justify-content: flex-end !important;
   width: 100% !important;
 }
 
-/* Base Reference Card Styles */
+/* Base Reference Card Styles (Spacious & Breathable) */
 .bento-ref-card {
-  border-radius: 28px !important;
-  padding: 30px 26px !important;
+  border-radius: 32px !important;
+  padding: 44px 36px !important;
   position: relative !important;
   overflow: hidden !important;
   display: flex !important;
@@ -5469,87 +5470,84 @@ body {
   margin: 0 !important;
 }
 
-/* WhatsApp/Instagram Chat Visual inside Left Tall Main Card */
-.wa-chat-visual-box {
-  margin-top: 20px !important;
-  width: 100% !important;
-}
-
-.chat-window-frame {
-  background: #1e1e24 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 20px !important;
+/* WhatsApp/Instagram Chat Visual inside Main AI Hero Card (Tall 520px) */
+.chat-window-frame-large {
+  background: #1c1c22 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 24px !important;
   overflow: hidden !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45) !important;
+  width: 100% !important;
+  max-width: 380px !important;
 }
 
 .chat-header-bar {
-  background: #272730 !important;
-  padding: 12px 16px !important;
+  background: #262630 !important;
+  padding: 14px 18px !important;
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
+  gap: 12px !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .chat-bot-avatar {
-  width: 32px !important;
-  height: 32px !important;
+  width: 36px !important;
+  height: 36px !important;
   background: #10b981 !important;
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 16px !important;
+  font-size: 18px !important;
 }
 
 .chat-bot-info strong {
   color: #ffffff !important;
-  font-size: 13px !important;
+  font-size: 13.5px !important;
   display: block !important;
 }
 
 .online-indicator {
   color: #10b981 !important;
-  font-size: 10.5px !important;
+  font-size: 11px !important;
   font-weight: 600 !important;
 }
 
 .chat-messages-container {
-  padding: 16px !important;
+  padding: 20px 18px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
-  background: #141418 !important;
+  gap: 14px !important;
+  background: #121216 !important;
 }
 
 .msg-bubble {
-  padding: 10px 14px !important;
-  border-radius: 14px !important;
-  font-size: 12.5px !important;
-  line-height: 1.45 !important;
-  max-width: 88% !important;
+  padding: 12px 16px !important;
+  border-radius: 16px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  max-width: 90% !important;
   display: flex !important;
   flex-direction: column !important;
 }
 
 .msg-user {
   align-self: flex-start !important;
-  background: #272730 !important;
+  background: #272732 !important;
   color: #ffffff !important;
-  border-bottom-left-radius: 2px !important;
+  border-bottom-left-radius: 4px !important;
 }
 
 .msg-ai {
   align-self: flex-end !important;
   background: #059669 !important;
   color: #ffffff !important;
-  border-bottom-right-radius: 2px !important;
+  border-bottom-right-radius: 4px !important;
 }
 
 .msg-time {
-  font-size: 9.5px !important;
-  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 10px !important;
+  color: rgba(255, 255, 255, 0.75) !important;
   align-self: flex-end !important;
   margin-top: 4px !important;
 }
@@ -5562,56 +5560,93 @@ body {
 .cal-status-pill {
   background: rgba(16, 185, 129, 0.18) !important;
   border: 1px dashed #10b981 !important;
-  padding: 10px 14px !important;
-  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  border-radius: 14px !important;
   color: #34d399 !important;
-  font-size: 12px !important;
+  font-size: 12.5px !important;
   font-weight: 700 !important;
   text-align: center !important;
-  margin-top: 4px !important;
+  margin-top: 6px !important;
 }
 
-/* Video Phone Mockup inside Card 1 (Beige Top Right) */
-.beige-video-preview {
-  margin-top: 14px !important;
+/* Video Phone Mockup inside Card 1 (Beige Top Left - Tall 520px) */
+.beige-video-preview-large {
+  margin-top: 24px !important;
+  width: 100% !important;
 }
 
-.video-phone-frame {
-  background: #ffffff !important;
-  border-radius: 16px !important;
-  padding: 12px 14px !important;
+.reel-video-mockup {
+  background: #121212 !important;
+  border-radius: 24px !important;
+  height: 240px !important;
+  width: 100% !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden !important;
+  background-image: radial-gradient(circle at center, rgba(16, 185, 129, 0.15) 0%, rgba(18, 18, 18, 0.95) 70%) !important;
+}
+
+.reel-badge-top {
+  align-self: flex-start !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  padding: 6px 12px !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06) !important;
+  gap: 6px !important;
 }
 
-.video-play-pulse {
-  width: 32px !important;
-  height: 32px !important;
-  background: #121212 !important;
-  color: #ffffff !important;
+.rec-dot {
+  color: #ef4444 !important;
+  font-size: 12px !important;
+}
+
+.video-play-center {
+  align-self: center !important;
+  width: 52px !important;
+  height: 52px !important;
   border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #121212 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 12px !important;
-  flex-shrink: 0 !important;
+  font-size: 18px !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+  margin: auto !important;
 }
 
-.video-loop-tag {
-  font-size: 11.5px !important;
-  color: #1a1a1a !important;
-  font-weight: 600 !important;
+.reel-audio-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  padding: 8px 12px !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
 }
 
-/* Wireframe Preview inside Card 2 (Mid Right Dark Card) */
-.dark-wireframe-preview {
+/* Wireframe Preview inside Card 2 (Bottom Left Dark Card - Tall 460px) */
+.dark-wireframe-preview-large {
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 10px 14px !important;
-  margin-top: 14px !important;
+  border-radius: 20px !important;
+  padding: 16px !important;
+  margin-top: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
 }
 
 .wireframe-bar {
@@ -5628,7 +5663,7 @@ body {
 }
 
 .wf-url {
-  font-size: 10.5px !important;
+  font-size: 11px !important;
   color: #888888 !important;
   font-family: 'Geist Mono', monospace !important;
   margin-left: 6px !important;
@@ -5638,26 +5673,70 @@ body {
   margin-left: auto !important;
   color: #10b981 !important;
   font-weight: 700 !important;
-  font-size: 10.5px !important;
+  font-size: 11px !important;
 }
 
-/* Push Notification Visual in Bottom Left Beige Card */
-.beige-push-preview {
-  margin-top: 14px !important;
+.wireframe-page-body {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.wf-hero-title-line {
+  width: 80% !important;
+  height: 10px !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-radius: 6px !important;
+}
+
+.wf-hero-sub-line {
+  width: 55% !important;
+  height: 6px !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 4px !important;
+}
+
+.wf-cta-btn-preview {
+  margin-top: 6px !important;
+  background: #10b981 !important;
+  color: #121212 !important;
+  font-weight: 800 !important;
+  font-size: 11px !important;
+  padding: 8px 18px !important;
+  border-radius: 8px !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Stacked Push Notifications in Card 4 (Beige Bottom Mid - Tall 460px) */
+.beige-push-preview-large {
+  margin-top: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
 }
 
 .push-notification-box {
   background: #ffffff !important;
-  border-radius: 16px !important;
-  padding: 12px 16px !important;
+  border-radius: 18px !important;
+  padding: 14px 18px !important;
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+  gap: 14px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+}
+
+.push-secondary {
+  opacity: 0.8 !important;
+  transform: scale(0.96) !important;
 }
 
 .push-icon {
-  font-size: 18px !important;
+  font-size: 20px !important;
 }
 
 .push-text {
@@ -5666,36 +5745,37 @@ body {
 }
 
 .push-text strong {
-  font-size: 13px !important;
+  font-size: 13.5px !important;
   color: #1a1a1a !important;
   font-family: 'Inter', sans-serif !important;
 }
 
 .push-text span {
-  font-size: 11.5px !important;
+  font-size: 12px !important;
   color: #666666 !important;
 }
 
-/* ROI Chart Visual in Bottom Right Dark Card */
-.roi-chart-visual {
-  margin-top: 12px !important;
+/* ROI Chart Visual in Card 5 (Dark Bottom Right - Tall 460px) */
+.roi-chart-visual-large {
+  margin-top: 20px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 6px !important;
+  gap: 12px !important;
 }
 
-.roi-svg {
+.roi-svg-large {
   width: 100% !important;
-  height: 40px !important;
+  height: 80px !important;
 }
 
-.roi-revenue-tag {
-  font-size: 12px !important;
-  color: #888888 !important;
+.roi-revenue-tag-large {
+  font-size: 13.5px !important;
+  color: #a1a1aa !important;
 }
 
-.roi-revenue-tag strong {
+.roi-revenue-tag-large strong {
   color: #10b981 !important;
+  font-size: 16px !important;
 }
 
 /* Mobile Responsiveness */
