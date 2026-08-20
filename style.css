@@ -809,16 +809,27 @@ body {
     width: 90% !important;
     max-width: 90% !important;
     padding: 10px 18px !important;
-    justify-content: space-between !important;
-    align-items: center !important;
     box-sizing: border-box !important;
     z-index: 100000 !important;
-    background: rgba(236, 239, 244, 0.78) !important;
+    background: rgba(236, 239, 244, 0.88) !important;
     backdrop-filter: blur(24px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
     border-radius: 24px !important;
     box-shadow: 0 12px 35px rgba(15, 23, 42, 0.1) !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .ultra-navbar.expanded {
+    border-radius: 28px !important;
+    padding: 12px 18px 18px 18px !important;
+    background: rgba(240, 243, 248, 0.97) !important;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18) !important;
   }
 
   .desktop-only-cta,
@@ -838,135 +849,74 @@ body {
   }
 
   .ultra-nav-menu {
-    display: flex !important;
-    position: absolute !important;
-    top: calc(100% + 10px) !important;
-    left: 0 !important;
-    right: 0 !important;
     width: 100% !important;
-    box-sizing: border-box !important;
-    background: rgba(244, 246, 250, 0.96) !important;
-    backdrop-filter: blur(28px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.9) !important;
-    border-radius: 26px !important;
-    padding: 18px 16px !important;
+    display: flex !important;
     flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 14px !important;
-    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18) !important;
+    max-height: 0 !important;
     opacity: 0 !important;
     visibility: hidden !important;
-    transform: translateY(-12px) scale(0.96) !important;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s !important;
-    z-index: 100000 !important;
+    overflow: hidden !important;
+    transition: max-height 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin 0.3s ease !important;
+    margin-top: 0 !important;
   }
 
   .ultra-nav-menu.open {
-    display: flex !important;
+    max-height: 600px !important;
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    transform: translateY(0) scale(1) !important;
+    margin-top: 14px !important;
   }
 
   .mobile-nav-links-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 8px !important;
+    width: 100% !important;
+    gap: 0 !important;
+    border-top: 1px solid rgba(15, 23, 42, 0.08) !important;
+    padding-top: 4px !important;
   }
 
   .ultra-nav-link {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding: 13px 18px !important;
-    background: #ffffff !important;
-    border: 1px solid rgba(226, 232, 240, 0.9) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03) !important;
-    text-decoration: none !important;
-    transition: all 0.22s ease !important;
-  }
-
-  .nav-num {
-    display: inline-block !important;
-    font-size: 11.5px !important;
-    font-weight: 800 !important;
-    color: #10b981 !important;
-    background: rgba(16, 185, 129, 0.12) !important;
-    padding: 4px 8px !important;
-    border-radius: 8px !important;
-    font-family: 'Geist Mono', monospace !important;
-  }
-
-  .nav-txt {
-    font-size: 15.5px !important;
+    display: block !important;
+    text-align: center !important;
+    padding: 13px 0 !important;
+    font-size: 16px !important;
     font-weight: 800 !important;
     color: #0f172a !important;
-    flex: 1 !important;
-    text-align: left !important;
-    margin-left: 12px !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    transition: all 0.2s ease !important;
   }
 
-  .nav-arrow {
-    display: inline-block !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    color: #94a3b8 !important;
-    transition: transform 0.2s ease, color 0.2s ease !important;
+  .ultra-nav-link:last-child {
+    border-bottom: none !important;
   }
 
   .ultra-nav-link:hover, .ultra-nav-link:active {
-    background: #0f172a !important;
-    border-color: #0f172a !important;
-    transform: translateY(-1px) !important;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15) !important;
-  }
-
-  .ultra-nav-link:hover .nav-txt,
-  .ultra-nav-link:active .nav-txt {
-    color: #ffffff !important;
-  }
-
-  .ultra-nav-link:hover .nav-arrow,
-  .ultra-nav-link:active .nav-arrow {
-    color: #dffc2b !important;
-    transform: translate(2px, -2px) !important;
+    color: #000000 !important;
+    background: rgba(255, 255, 255, 0.6) !important;
   }
 
   .mobile-nav-email-box {
-    margin-top: 6px !important;
-    padding: 14px 18px !important;
+    margin-top: 14px !important;
+    padding: 12px 16px !important;
     background: linear-gradient(145deg, #111319 0%, #08090d 100%) !important;
-    border-radius: 18px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25) !important;
-  }
-
-  .email-box-top {
+    border-radius: 16px !important;
     display: flex !important;
     align-items: center !important;
-    gap: 6px !important;
-  }
-
-  .email-icon {
-    font-size: 12px !important;
-  }
-
-  .email-label {
-    font-size: 10.5px !important;
-    font-weight: 800 !important;
-    color: #94a3b8 !important;
-    letter-spacing: 0.8px !important;
+    justify-content: center !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
   }
 
   .mobile-nav-email-link {
     color: #dffc2b !important;
-    font-size: 15px !important;
+    font-size: 14.5px !important;
     font-weight: 800 !important;
     font-family: 'Geist Mono', monospace !important;
     text-decoration: none !important;

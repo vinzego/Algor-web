@@ -3,19 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile Navigation Hamburger Toggle & Auto-Close Engine
   const mobileNavToggle = document.getElementById('mobile-nav-toggle');
   const ultraNavMenu = document.getElementById('ultra-nav-menu');
+  const ultraNavbar = document.querySelector('.ultra-navbar');
 
   if (mobileNavToggle && ultraNavMenu) {
     mobileNavToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       mobileNavToggle.classList.toggle('open');
       ultraNavMenu.classList.toggle('open');
+      if (ultraNavbar) ultraNavbar.classList.toggle('expanded');
     });
 
-    const navLinks = ultraNavMenu.querySelectorAll('.ultra-nav-link, .mobile-menu-cta');
+    const navLinks = ultraNavMenu.querySelectorAll('.ultra-nav-link');
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileNavToggle.classList.remove('open');
         ultraNavMenu.classList.remove('open');
+        if (ultraNavbar) ultraNavbar.classList.remove('expanded');
       });
     });
 
@@ -23,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!ultraNavMenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
         mobileNavToggle.classList.remove('open');
         ultraNavMenu.classList.remove('open');
+        if (ultraNavbar) ultraNavbar.classList.remove('expanded');
       }
     });
   }
