@@ -341,18 +341,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Click delegation on CTA buttons (Hero CTA & Package CTAs)
+  // Click delegation on CTA buttons (Navbar, Hero, Bento Instagram Ad, Pricing Cards)
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn');
+    const btn = e.target.closest('.package-cta-btn, .ig-ad-cta-banner, .price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn, .btn-lime, .btn-primary, .hero-cta-btn');
     if (btn) {
+      if (btn.type === 'submit' || btn.closest('form')) return;
+
       e.preventDefault();
       e.stopPropagation();
 
-      const card = btn.closest('.price-card');
-      let title = 'Besplatan Audit';
-      let priceText = '0 €';
+      const card = btn.closest('.price-card, .bento-ref-card, .fit-card');
+      let title = 'Upit & Savjetovanje';
+      let priceText = 'Besplatan Audit';
 
-      if (card) {
+      if (btn.classList.contains('ig-ad-cta-banner')) {
+        title = 'Ciljani Instagram Oglas';
+        priceText = 'Lokacijska Produkcija & Ads';
+      } else if (card) {
         const titleEl = card.querySelector('h3');
         const priceEl = card.querySelector('.price-amount');
         if (titleEl) title = titleEl.textContent.trim();
