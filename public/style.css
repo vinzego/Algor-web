@@ -2110,7 +2110,7 @@ body {
 #testimonials  { background-color: #f8f9fa; }
 #process       { background-color: #e5e3df !important; }
 #ideal-fit     { background-color: #ffffff !important; }
-#faq           { background-color: #0e0e10 !important; }
+#faq           { background-color: #e5e3df !important; }
 
 .dark-theme .info-title {
   color: #ffffff !important;
@@ -3008,41 +3008,51 @@ body {
   line-height: 1.5;
 }
 
-/* Dark Theme Overrides for #faq */
+/* Gray Theme Overrides for #faq (#e5e3df) */
 #faq {
-  color: #ffffff !important;
+  background-color: #e5e3df !important;
+  color: #121316 !important;
 }
 
 #faq .info-title {
-  color: #ffffff !important;
+  color: #121316 !important;
 }
 
 #faq .info-subtitle {
-  color: #a1a1aa !important;
+  color: #475569 !important;
+}
+
+#faq .section-badge {
+  color: #121316 !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 #faq .disclosure {
-  background: #18181b !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+  border-radius: 18px !important;
 }
 
 #faq .disclosure:hover,
 #faq .disclosure[open] {
-  background: #27272a !important;
-  border-color: rgba(255, 255, 255, 0.18) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
 }
 
 #faq .disclosure summary {
-  color: #ffffff !important;
+  color: #121316 !important;
+  font-weight: 700 !important;
 }
 
 #faq .disclosure summary::after {
-  color: #dffc2b !important;
+  color: #10b981 !important;
 }
 
 #faq .disclosure p {
-  color: #d4d4d8 !important;
+  color: #475569 !important;
 }
 
 /* Testimonials stack */
@@ -3754,31 +3764,31 @@ body {
   }
 }
 
-/* FAQ Section Outer Wrapper (white background behind cut-out top corners) */
+/* FAQ Section Outer Wrapper (dark background matching section above behind cut-out top corners) */
 .faq-section-wrapper {
-  background-color: #ffffff !important;
+  background-color: #050508 !important;
   width: 100% !important;
   position: relative !important;
   overflow: hidden !important;
 }
 
-/* FAQ Marquee Container (dark background with top rounded corners) */
+/* FAQ Marquee Container (gray background with top rounded corners) */
 .faq-marquee-container {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
-  background-color: #0e0e10 !important;
+  background-color: #e5e3df !important;
   border-radius: 48px 48px 0 0 !important;
   overflow: hidden !important;
   padding: 60px 0 20px 0 !important;
 }
 
 .faq-marquee-container .text-marquee-row span {
-  color: #ffffff !important;
+  color: #121316 !important;
 }
 
 .faq-marquee-container .marquee-spinner {
-  color: #dffc2b !important;
+  color: #121316 !important;
 }
 
 @media (max-width: 900px) {
