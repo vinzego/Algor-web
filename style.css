@@ -2109,7 +2109,7 @@ body {
 #before-after.plain-section { background-color: #f5f5f5 !important; }
 #portfolio     { background-color: #f5f5f5 !important; }
 #testimonials  { background-color: #f5f5f5 !important; }
-#process       { background-color: #e5e3df !important; }
+#process       { background-color: #f5f5f5 !important; }
 #ideal-fit     { background-color: #ffffff !important; }
 #faq           { background-color: #f5f5f5 !important; }
 
@@ -4657,7 +4657,7 @@ body {
    Sticky 2-Column Cooperation Process Layout (#process)
 ------------------------------------------------------------- */
 #process.process-sticky-section {
-  background-color: #e5e3df !important;
+  background-color: #f5f5f5 !important;
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
