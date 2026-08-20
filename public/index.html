@@ -216,7 +216,7 @@
     </div>
   </section>
 
-  <!-- 3. SERVICES BENTO GRID (Ispod sekcije O nama) -->
+  <!-- 3. SERVICES BENTO GRID (3-Column Layout Beneath About Section) -->
   <section id="marketing" class="plain-section services-bento-section">
     <div class="info-header align-center">
       <span class="section-badge">// SVE NA JEDNOM MJESTU</span>
@@ -228,46 +228,13 @@
       </p>
     </div>
 
-    <div class="bento-reference-wrapper">
+    <div class="bento-reference-wrapper bento-3col-grid">
       
-      <!-- KARTICA 3 (GLAVNA KARTICA - LEFT TALL TOWER): AI Automatska Recepcija 24/7 -->
-      <div class="bento-ref-card card-dark card-tall-left">
-        <div class="card-content-top">
-          <span class="ref-mono-tag">03 KONVERZIJA 24/7 • GLAVNA USLUGA</span>
-          <h3 class="ref-card-title-large">AI Automatska Recepcija 24/7</h3>
-          <p class="ref-card-desc">AI asistent ugovara termine i odgovara na upite u roku od 3 sekunde, čak i vikendom ili izvan radnog vremena. Nijedan klijent ne ostaje neobrađen.</p>
-        </div>
-        <div class="card-visual-center wa-chat-visual-box">
-          <div class="chat-window-frame">
-            <div class="chat-header-bar">
-              <span class="chat-bot-avatar">🤖</span>
-              <div class="chat-bot-info">
-                <strong>Algor AI Recepcija</strong>
-                <span class="online-indicator">● Online • Odgovor u 2s</span>
-              </div>
-            </div>
-            <div class="chat-messages-container">
-              <div class="msg-bubble msg-user">
-                <span>Nudite li slobodan termin za petak?</span>
-                <span class="msg-time">14:20</span>
-              </div>
-              <div class="msg-bubble msg-ai">
-                <span>Imamo slobodno u 14h i 17h. Želite li da vas upišem?</span>
-                <span class="msg-time">14:20 <span class="blue-ticks">✓✓</span></span>
-              </div>
-              <div class="cal-status-pill">
-                <span>📅 Potvrđeno u kalendaru!</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- KARTICA 1 (TOP RIGHT BEIGE CARD): Privlačenje kupcima (Foto, Video & Oglasi) -->
-      <div class="bento-ref-card card-beige card-top-right">
+      <!-- ROW 1, COL 1: KARTICA 1 (PRIVLAČENJE KUPACA) -->
+      <div class="bento-ref-card card-beige card-col-1-top">
         <div class="card-header-flex">
-          <span class="ref-mono-tag-dark">01 PRIVLAČENJE KUPACA</span>
-          <div class="ref-pill-btn-dark">Meta &amp; Google Ads <span class="pill-dot-green">•</span></div>
+          <span class="ref-mono-tag-dark">01 PRIVLAČENJE</span>
+          <div class="ref-pill-btn-dark">Meta &amp; Ads <span class="pill-dot-green">•</span></div>
         </div>
         <div class="ref-card-header">
           <h3 class="ref-card-title-dark">Dolazak na lokaciju &amp; Ciljani Oglasi</h3>
@@ -276,16 +243,51 @@
         <div class="beige-video-preview">
           <div class="video-phone-frame">
             <div class="video-play-pulse">▶</div>
-            <span class="video-loop-tag">🔴 4K Video snimanje na lokaciji (Reels &amp; TikTok)</span>
+            <span class="video-loop-tag">🔴 4K Video Reels &amp; TikTok</span>
           </div>
         </div>
       </div>
 
-      <!-- KARTICA 2 (MID RIGHT DARK CARD): Prodajni lijevak (Landing Stranica) -->
-      <div class="bento-ref-card card-dark card-mid-right">
+      <!-- ROW 1, COLS 2-3: KARTICA 3 (GLAVNA HERO KARTICA - WIDE AI RECEPCIJA 24/7) -->
+      <div class="bento-ref-card card-dark card-col-23-hero">
+        <div class="bento-hero-split">
+          <div class="bento-hero-text">
+            <span class="ref-mono-tag">03 KONVERZIJA 24/7 • GLAVNA USLUGA</span>
+            <h3 class="ref-card-title-large">AI Automatska Recepcija 24/7</h3>
+            <p class="ref-card-desc">AI asistent ugovara termine i odgovara na upite u roku od 3 sekunde, čak i vikendom ili izvan radnog vremena. Nijedan klijent ne ostaje neobrađen.</p>
+          </div>
+          <div class="bento-hero-visual">
+            <div class="chat-window-frame">
+              <div class="chat-header-bar">
+                <span class="chat-bot-avatar">🤖</span>
+                <div class="chat-bot-info">
+                  <strong>Algor AI Recepcija</strong>
+                  <span class="online-indicator">● Online • Odgovor u 2s</span>
+                </div>
+              </div>
+              <div class="chat-messages-container">
+                <div class="msg-bubble msg-user">
+                  <span>Nudite li slobodan termin za petak?</span>
+                  <span class="msg-time">14:20</span>
+                </div>
+                <div class="msg-bubble msg-ai">
+                  <span>Imamo slobodno u 14h i 17h. Upisati vas?</span>
+                  <span class="msg-time">14:20 <span class="blue-ticks">✓✓</span></span>
+                </div>
+                <div class="cal-status-pill">
+                  <span>📅 Potvrđeno u kalendaru!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2, COL 1: KARTICA 2 (PRODAJNI LIJEVAK) -->
+      <div class="bento-ref-card card-dark card-col-1-bot">
         <div class="card-header-flex">
           <h3 class="ref-card-title-white">Brze Prodajne Stranice</h3>
-          <div class="ref-pill-btn green-accent">Brzina učitavanja: 0.8s <span class="pill-dot-green">•</span></div>
+          <div class="ref-pill-btn green-accent">Brzina: 0.8s <span class="pill-dot-green">•</span></div>
         </div>
         <p class="ref-card-desc-muted">Dizajniramo stranice optimizirane za mobitele s jednim ciljem – da posjetitelja s oglasa odmah pretvore u upit ili rezervaciju.</p>
         <div class="dark-wireframe-preview">
@@ -297,8 +299,8 @@
         </div>
       </div>
 
-      <!-- KARTICA 4 (BOTTOM LEFT BEIGE CARD): Centralizirani kontakti (CRM & Obavijesti) -->
-      <div class="bento-ref-card card-beige card-bottom-left">
+      <!-- ROW 2, COL 2: KARTICA 4 (CENTRALIZIRANI KONTAKTI) -->
+      <div class="bento-ref-card card-beige card-col-2-bot">
         <div class="card-header-flex">
           <span class="ref-mono-tag-dark">04 CENTRALIZIRANI KONTAKTI</span>
         </div>
@@ -311,14 +313,14 @@
             <span class="push-icon">🔔</span>
             <div class="push-text">
               <strong>Novi klijent u bazi</strong>
-              <span>Automatski spremljeno u CRM • Obavijest poslana</span>
+              <span>Spremljeno u CRM • Obavijest poslana</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- KARTICA 5 (BOTTOM RIGHT DARK CARD): Mjerenje i Rast (Analitika) -->
-      <div class="bento-ref-card card-dark card-bottom-right">
+      <!-- ROW 2, COL 3: KARTICA 5 (MJERENJE I RAST) -->
+      <div class="bento-ref-card card-dark card-col-3-bot">
         <div class="card-header-flex">
           <h3 class="ref-card-title-white">Jasna Analitika &amp; ROI</h3>
           <div class="ref-pill-btn green-accent">+320% ROAS <span class="pill-dot-green">•</span></div>
@@ -329,7 +331,7 @@
             <path d="M 10,38 Q 50,30 90,20 T 150,12 T 190,4" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
             <circle cx="190" cy="4" r="5" fill="#10b981" />
           </svg>
-          <div class="roi-revenue-tag">Prihod kampanje: <strong>+14.800 €</strong></div>
+          <div class="roi-revenue-tag">Prihod: <strong>+14.800 €</strong></div>
         </div>
       </div>
 
