@@ -5535,14 +5535,14 @@ body {
 
 /* Base Reference Card Styles (Spacious & Breathable) */
 .bento-ref-card {
-  padding: 26px 28px !important;
+  padding: 32px 30px !important;
   border-radius: 32px !important;
   position: relative !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important;
-  gap: 8px !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
   box-sizing: border-box !important;
   transition: transform 0.35s ease, box-shadow 0.35s ease !important;
 }
@@ -6267,13 +6267,15 @@ body {
 
 /* Wireframe Preview inside Card 2 (Bottom Left Dark Card - Tall 460px) */
 .dark-wireframe-preview-large {
+  flex: 1 !important;
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 20px !important;
   padding: 16px !important;
-  margin-top: 20px !important;
+  margin-top: auto !important;
   display: flex !important;
   flex-direction: column !important;
+  justify-content: center !important;
   gap: 14px !important;
 }
 
@@ -6342,10 +6344,10 @@ body {
 
 /* Stacked 3D Push Notifications in Card 4 (Beige Bottom Mid - Tall 460px) */
 .beige-push-preview-large {
-  margin-top: 20px !important;
-  height: 165px !important;
-  min-height: 165px !important;
-  max-height: 165px !important;
+  flex: 1 !important;
+  margin-top: auto !important;
+  height: 180px !important;
+  min-height: 180px !important;
   position: relative !important;
   perspective: 800px !important;
   overflow: hidden !important;
@@ -6404,9 +6406,11 @@ body {
 
 /* ROI Chart Visual in Card 5 (Dark Bottom Right - Tall 460px) */
 .roi-chart-visual-large {
-  margin-top: 14px !important;
+  flex: 1 !important;
+  margin-top: auto !important;
   display: flex !important;
   flex-direction: column !important;
+  justify-content: center !important;
   gap: 10px !important;
 }
 
@@ -6433,7 +6437,7 @@ body {
 .roi-chart-container {
   position: relative !important;
   width: 100% !important;
-  height: 120px !important;
+  height: 135px !important;
   background: rgba(255, 255, 255, 0.02) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 18px !important;
