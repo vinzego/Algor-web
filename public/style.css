@@ -5241,6 +5241,15 @@ body {
   line-height: 1.25;
 }
 
+.unified-bento-section {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 64px auto 16px auto !important;
+  padding-top: 56px !important;
+  border-top: 1px solid #e2e8f0 !important;
+  box-sizing: border-box !important;
+}
+
 .bento-grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

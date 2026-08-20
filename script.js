@@ -236,9 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. AI Automations Card Scroll Pop-Up Reveal
-  const bentoGrid = document.querySelector('.bento-grid-container');
-  if (bentoGrid) {
+  // 8. AI Automations Card Scroll Pop-Up Reveal (Re-animates every time on scroll)
+  const aiSection = document.getElementById('ai-automations');
+  if (aiSection) {
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -20px 0px'
@@ -247,14 +247,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const aiObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          bentoGrid.classList.add('popup-visible');
+          aiSection.classList.add('popup-visible');
         } else {
-          bentoGrid.classList.remove('popup-visible');
+          aiSection.classList.remove('popup-visible');
         }
       });
     }, observerOptions);
 
-    aiObserver.observe(bentoGrid);
+    aiObserver.observe(aiSection);
   }
 
   // 9. Static Pricing Section (No clicks, no popups, no animations, no package hiding)
