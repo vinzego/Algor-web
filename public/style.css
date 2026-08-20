@@ -5705,7 +5705,7 @@ body {
   margin: 0 !important;
 }
 
-/* Apple Style Floating Chat Bubbles (Automatske rezervacije - No Background, Looping) */
+/* Apple Style Floating Chat Bubbles (Automatske rezervacije - Growing Upward Loop) */
 .chat-apple-style-box {
   background: transparent !important;
   border: none !important;
@@ -5713,9 +5713,12 @@ body {
   box-shadow: none !important;
   width: 100% !important;
   max-width: 100% !important;
+  height: 270px !important;
+  min-height: 270px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 14px !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
   box-sizing: border-box !important;
   position: relative !important;
   overflow: visible !important;
@@ -5727,6 +5730,7 @@ body {
   gap: 10px !important;
   opacity: 0;
   width: 100% !important;
+  will-change: transform, opacity !important;
 }
 
 .msg-left {
@@ -5802,24 +5806,24 @@ body {
   box-shadow: 0 0 18px rgba(223, 252, 43, 0.3) !important;
 }
 
-/* Seamless Continuous Looping Message Entrance Animations */
-.msg-anim-1 { animation: appleMsgLoop 9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s infinite !important; }
-.msg-anim-2 { animation: appleMsgLoop 9s cubic-bezier(0.16, 1, 0.3, 1) 1.6s infinite !important; }
-.msg-anim-3 { animation: appleMsgLoop 9s cubic-bezier(0.16, 1, 0.3, 1) 3.0s infinite !important; }
-.msg-anim-4 { animation: appleMsgLoop 9s cubic-bezier(0.16, 1, 0.3, 1) 4.4s infinite !important; }
+/* Upward Growing Looping Message Animations */
+.msg-anim-1 { animation: chatGrowUpLoop 8.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s infinite !important; }
+.msg-anim-2 { animation: chatGrowUpLoop 8.5s cubic-bezier(0.16, 1, 0.3, 1) 1.3s infinite !important; }
+.msg-anim-3 { animation: chatGrowUpLoop 8.5s cubic-bezier(0.16, 1, 0.3, 1) 2.4s infinite !important; }
+.msg-anim-4 { animation: chatGrowUpLoop 8.5s cubic-bezier(0.16, 1, 0.3, 1) 3.5s infinite !important; }
 
-@keyframes appleMsgLoop {
+@keyframes chatGrowUpLoop {
   0% {
     opacity: 0;
-    transform: translateY(16px) scale(0.95);
+    transform: translateY(28px) scale(0.92);
   }
-  10%, 82% {
+  12%, 80% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-  92%, 100% {
+  90%, 100% {
     opacity: 0;
-    transform: translateY(-10px) scale(0.97);
+    transform: translateY(-14px) scale(0.96);
   }
 }
   border-bottom-right-radius: 4px !important;
