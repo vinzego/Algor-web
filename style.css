@@ -2106,8 +2106,8 @@ body {
   width: 100% !important;
 }
 #before-after,
-#before-after.plain-section { background-color: #f0f0f0 !important; }
-#portfolio     { background-color: #f0f0f0 !important; }
+#before-after.plain-section { background-color: #f5f5f5 !important; }
+#portfolio     { background-color: #f5f5f5 !important; }
 #testimonials  { background-color: #f0f0f0 !important; }
 #process       { background-color: #e5e3df !important; }
 #ideal-fit     { background-color: #ffffff !important; }
@@ -4343,7 +4343,7 @@ body {
    Portfolio Marquee & Section 03 (Blends 100% Seamlessly With Above)
 ------------------------------------------------------------- */
 .portfolio-section-wrapper {
-  background-color: #f0f0f0 !important;
+  background-color: #f5f5f5 !important;
   width: 100% !important;
   position: relative !important;
   overflow: hidden !important;
@@ -4353,14 +4353,14 @@ body {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
-  background-color: #f0f0f0 !important;
+  background-color: #f5f5f5 !important;
   border-radius: 48px 48px 0 0 !important;
   overflow: hidden !important;
   padding: 50px 0 10px 0 !important;
 }
 
 #portfolio {
-  background-color: #f0f0f0 !important;
+  background-color: #f5f5f5 !important;
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
@@ -7877,7 +7877,7 @@ body {
 ------------------------------------------------------------- */
 #before-after,
 #before-after.plain-section {
-  background-color: #f0f0f0 !important;
+  background-color: #f5f5f5 !important;
   padding: 110px 48px !important;
 }
 
