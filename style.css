@@ -349,6 +349,7 @@ body {
   display: flex;
   align-items: center;
   gap: 28px;
+  white-space: nowrap !important;
 }
 
 .nav-num, .nav-arrow {
@@ -361,6 +362,7 @@ body {
   font-size: 14.5px !important;
   text-decoration: none !important;
   transition: all 0.25s ease !important;
+  white-space: nowrap !important;
 }
 
 .ultra-nav-link:hover {
