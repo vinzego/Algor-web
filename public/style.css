@@ -5728,7 +5728,6 @@ body {
   display: flex !important;
   align-items: flex-end !important;
   gap: 10px !important;
-  opacity: 0;
   width: 100% !important;
   will-change: transform, opacity !important;
 }
