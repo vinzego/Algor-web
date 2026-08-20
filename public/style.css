@@ -6298,17 +6298,9 @@ body {
 }
 
 .chart-line {
-  stroke-dasharray: 500;
-  stroke-dashoffset: 500;
-  animation: drawChartLineContinuous 4.5s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate !important;
-}
-
-.line-lime { animation-delay: 0s !important; }
-.line-green { animation-delay: 0.3s !important; }
-
-@keyframes drawChartLineContinuous {
-  0% { stroke-dashoffset: 500; }
-  100% { stroke-dashoffset: 0; }
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+  animation: none !important;
 }
 
 /* Pulsing Ring Beacons */
