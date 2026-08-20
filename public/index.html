@@ -1096,9 +1096,48 @@
   </section>
   </div>
 
-  <!-- New Standalone Footer Section (Dual Galleries -> Contact Form -> Footer Card) -->
+  <!-- New Standalone Footer Section (Contact Form -> Dual Galleries -> Footer Card) -->
   <section class="footer-hero-and-card-section">
     
+    <!-- Conversion Block (Soft Light Neon Background - Contact Form) -->
+    <div class="footer-conversion-area">
+      <h2 class="footer-conv-title">
+        Prestanite trošiti proračun na stranice koje ne konvertiraju
+      </h2>
+      <p class="footer-conv-subtitle">
+        Izgradimo prodajni sustav koji pretvara posjetitelje u kvalificirane leadove, telefonske pozive i stvarni profit.
+      </p>
+      
+      <!-- Modern Footer Contact Form with Message Window -->
+      <form id="footerContactForm" class="footer-contact-form">
+        <div class="footer-form-grid-box">
+          <div class="footer-inputs-top-row">
+            <div class="footer-form-field">
+              <input type="text" id="footerName" name="name" placeholder="Ime i prezime *" required />
+            </div>
+            <div class="footer-form-field">
+              <input type="text" id="footerCompany" name="company" placeholder="Tvrtka *" required />
+            </div>
+            <div class="footer-form-field">
+              <input type="email" id="footerEmail" name="email" placeholder="E-mail adresa *" required />
+            </div>
+          </div>
+          
+          <div class="footer-textarea-row">
+            <textarea id="footerMessage" name="message" rows="3" placeholder="Vaša poruka / Ukratko nam opišite što želite automatizirati ili poboljšati u poslovanju..."></textarea>
+          </div>
+
+          <div class="footer-submit-row">
+            <button type="submit" class="footer-form-submit-btn btn-pill-dark">
+              <span>Pošalji upit</span>
+              <span class="btn-arrow-circle">↗</span>
+            </button>
+          </div>
+        </div>
+        <div id="footerFormMessage" class="footer-form-msg" style="display: none;"></div>
+      </form>
+    </div>
+
     <!-- Footer Dual Stacked Image Galleries (Top: Right to Left, Bottom: Left to Right) -->
     <div class="footer-galleries-stack">
       
@@ -1146,45 +1185,6 @@
         </div>
       </div>
 
-    </div>
-
-    <!-- Conversion Block (Soft Light Neon Background - Contact Form) -->
-    <div class="footer-conversion-area">
-      <h2 class="footer-conv-title">
-        Prestanite trošiti proračun na stranice koje ne konvertiraju
-      </h2>
-      <p class="footer-conv-subtitle">
-        Izgradimo prodajni sustav koji pretvara posjetitelje u kvalificirane leadove, telefonske pozive i stvarni profit.
-      </p>
-      
-      <!-- Modern Footer Contact Form with Message Window -->
-      <form id="footerContactForm" class="footer-contact-form">
-        <div class="footer-form-grid-box">
-          <div class="footer-inputs-top-row">
-            <div class="footer-form-field">
-              <input type="text" id="footerName" name="name" placeholder="Ime i prezime *" required />
-            </div>
-            <div class="footer-form-field">
-              <input type="text" id="footerCompany" name="company" placeholder="Tvrtka *" required />
-            </div>
-            <div class="footer-form-field">
-              <input type="email" id="footerEmail" name="email" placeholder="E-mail adresa *" required />
-            </div>
-          </div>
-          
-          <div class="footer-textarea-row">
-            <textarea id="footerMessage" name="message" rows="3" placeholder="Vaša poruka / Ukratko nam opišite što želite automatizirati ili poboljšati u poslovanju..."></textarea>
-          </div>
-
-          <div class="footer-submit-row">
-            <button type="submit" class="footer-form-submit-btn btn-pill-dark">
-              <span>Pošalji upit</span>
-              <span class="btn-arrow-circle">↗</span>
-            </button>
-          </div>
-        </div>
-        <div id="footerFormMessage" class="footer-form-msg" style="display: none;"></div>
-      </form>
     </div>
 
     <!-- Bottom Part: Black Card (Nested) -->
