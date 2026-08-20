@@ -5237,6 +5237,8 @@ body {
   font-size: clamp(26px, 3.5vw, 38px);
   font-weight: 800;
   color: #ffffff;
+}
+
 /* ==============================================================
    7-CARD SERVICES BENTO GRID (Beneath About Section)
    ============================================================== */
@@ -8158,11 +8160,6 @@ body {
 .bullet-red {
   background-color: #fee2e2 !important;
   color: #dc2626 !important;
-}
-  gap: 12px;
-  font-size: 14.5px;
-  color: #334155;
-  line-height: 1.55;
 }
 
 .fit-bullet {
