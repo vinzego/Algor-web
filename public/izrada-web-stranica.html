@@ -1305,15 +1305,44 @@
         padding-right: 0;
       }
       .zigzag-process-container {
-        gap: 40px;
+        gap: 32px;
+        position: relative;
+        padding-left: 20px;
+        margin: 40px auto 0 auto;
+      }
+      /* Continuous Glowing Line on Mobile */
+      .zigzag-process-container::before {
+        content: "";
+        position: absolute;
+        left: 0px;
+        top: 30px;
+        bottom: 30px;
+        width: 3px;
+        background: linear-gradient(to bottom, #29ADFF, #0284c7, #29ADFF);
+        border-radius: 3px;
+        box-shadow: 0 0 12px rgba(41, 173, 255, 0.7);
+        z-index: 1;
+      }
+      .process-drawn-line-svg {
+        display: none;
+      }
+      .zigzag-step-row {
+        justify-content: flex-start !important;
       }
       .zigzag-card {
         width: 100%;
-        padding: 30px 24px;
+        padding: 26px 20px;
       }
-      .process-drawn-line-svg,
       .card-line-anchor-node {
-        display: none;
+        display: block !important;
+        left: -29px !important;
+        right: auto !important;
+        top: 32px;
+        transform: translateY(0);
+        width: 18px;
+        height: 18px;
+        border-width: 3px;
+        z-index: 3;
       }
       .standards-grid-8col {
         grid-template-columns: 1fr;
