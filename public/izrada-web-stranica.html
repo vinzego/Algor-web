@@ -596,26 +596,47 @@
       border-color: rgba(41, 173, 255, 0.55);
     }
 
-    .dark-tech-card {
-      background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.16) 0%, transparent 60%), #0d1017;
-      border: 1.5px solid rgba(41, 173, 255, 0.38);
-      color: #ffffff;
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35);
+    /* Card 1: Warm Golden Yellow Custom Code (Matching Hero Sticky Note #ffd166) */
+    .yellow-tech-card {
+      background: #ffd166 !important;
+      border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+      color: #1a1000 !important;
+      box-shadow: 0 14px 40px rgba(255, 209, 102, 0.28), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
     }
 
-    .dark-tech-card h3 {
-      color: #ffffff;
+    .yellow-tech-card h3 {
+      color: #1a1000 !important;
       font-size: 24px;
-      font-weight: 800;
+      font-weight: 850;
       margin: 0;
       letter-spacing: -0.4px;
     }
 
-    .dark-tech-card p {
-      color: #94a3b8;
+    .yellow-tech-card p {
+      color: #3b2800 !important;
       font-size: 15px;
       line-height: 1.6;
       margin: 0;
+      font-weight: 500;
+    }
+
+    .yellow-tech-card .tech-badge-cyan {
+      background: #ffffff !important;
+      color: #1a1000 !important;
+      border: 1px solid rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .yellow-tech-card .tech-mini-highlight {
+      background: #1a1000 !important;
+      color: #ffd166 !important;
+      border: 1px solid #1a1000 !important;
+    }
+
+    .yellow-tech-card .tech-tag-pill.dark-tag {
+      background: rgba(0, 0, 0, 0.08) !important;
+      color: #1a1000 !important;
+      border: 1px solid rgba(0, 0, 0, 0.12) !important;
+      font-weight: 700 !important;
     }
 
     .light-tech-card {
@@ -1311,8 +1332,8 @@
       <!-- Right Column: 4 Vertical Stacked Cards -->
       <div class="tech-scroll-right-col">
         
-        <!-- Card 1: Custom Code -->
-        <div class="tech-step-card dark-tech-card">
+        <!-- Card 1: Custom Code (Yellow Hero Theme) -->
+        <div class="tech-step-card yellow-tech-card">
           <div class="tech-card-badge-row">
             <span class="tech-badge-cyan">● 01. CODE RJEŠENJA</span>
             <span class="tech-mini-highlight">100% Čisti Kod</span>
