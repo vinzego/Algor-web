@@ -376,6 +376,64 @@
       width: 100%;
       margin-top: 50px;
       z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .figma-hero-ticker-wrap .hero-trust-logo-bar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 28px;
+      padding-bottom: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: transparent;
+      box-sizing: border-box;
+    }
+
+    .figma-hero-ticker-wrap .hero-ticker-track {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      user-select: none;
+      mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+
+    .figma-hero-ticker-wrap .ticker-logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 64px;
+      flex-shrink: 0;
+      min-width: 100%;
+      animation: figmaLogoScrollLeft 28s linear infinite;
+      white-space: nowrap;
+      padding-right: 64px;
+      box-sizing: border-box;
+    }
+
+    .figma-hero-ticker-wrap .ticker-logo-img {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.75;
+      mix-blend-mode: normal;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .figma-hero-ticker-wrap .ticker-logo-img:hover {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+
+    @keyframes figmaLogoScrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
     }
 
     /* Subpage specific styles */
@@ -1494,18 +1552,29 @@
 
     </div>
 
-    <!-- Trust Ticker Bar at Hero Bottom -->
+    <!-- Trust Ticker Bar at Hero Bottom (Dual Tracks for 100% Full-Width Seamless Loop on Desktop & Mobile) -->
     <div class="figma-hero-ticker-wrap">
-      <div class="hero-trust-logo-bar" style="border-top: 1px solid rgba(255, 255, 255, 0.08); background: transparent;">
+      <div class="hero-trust-logo-bar">
         <div class="hero-ticker-track">
+          
+          <!-- First Track -->
           <div class="ticker-logos-row">
-            <img src="supernova.png" alt="Supernova" class="ticker-logo-img logo-supernova" style="filter: brightness(0) invert(1); opacity: 0.7;">
-            <img src="admiral.png" alt="Admiral" class="ticker-logo-img" style="filter: brightness(0) invert(1); opacity: 0.7;">
-            <img src="family_park.png" alt="Family Park" class="ticker-logo-img" style="filter: brightness(0) invert(1); opacity: 0.7;">
-            <img src="taurus_transparent.png" alt="Taurus Restaurant" class="ticker-logo-img" style="filter: brightness(0) invert(1); opacity: 0.7;">
-            <img src="supernova.png" alt="Supernova" class="ticker-logo-img logo-supernova" style="filter: brightness(0) invert(1); opacity: 0.7;">
-            <img src="admiral.png" alt="Admiral" class="ticker-logo-img" style="filter: brightness(0) invert(1); opacity: 0.7;">
+            <img src="supernova.png" alt="Supernova" class="ticker-logo-img logo-supernova">
+            <img src="admiral.png" alt="Admiral" class="ticker-logo-img">
+            <img src="family_park.png" alt="Family Park" class="ticker-logo-img">
+            <img src="taurus_transparent.png" alt="Taurus Restaurant" class="ticker-logo-img">
+            <img src="eschengarten.png" alt="Eschengarten" class="ticker-logo-img">
           </div>
+
+          <!-- Second Track (Duplicate for seamless 100% full-width loop on Desktop) -->
+          <div class="ticker-logos-row" aria-hidden="true">
+            <img src="supernova.png" alt="Supernova" class="ticker-logo-img logo-supernova">
+            <img src="admiral.png" alt="Admiral" class="ticker-logo-img">
+            <img src="family_park.png" alt="Family Park" class="ticker-logo-img">
+            <img src="taurus_transparent.png" alt="Taurus Restaurant" class="ticker-logo-img">
+            <img src="eschengarten.png" alt="Eschengarten" class="ticker-logo-img">
+          </div>
+
         </div>
       </div>
     </div>
