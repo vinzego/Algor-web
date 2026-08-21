@@ -2350,7 +2350,6 @@ body {
 #testimonials  { background-color: #f5f5f5 !important; }
 #process       { background-color: #f5f5f5 !important; }
 #ideal-fit     { background-color: #ffffff !important; }
-#faq           { background-color: #f5f5f5 !important; }
 
 .dark-theme .info-title {
   color: #ffffff !important;
@@ -3247,45 +3246,52 @@ body {
   line-height: 1.5;
 }
 
-/* Gray Theme Overrides for #faq (#f5f5f5) */
+/* Black Theme Overrides for #faq (#050508) with Inverted Text */
 #faq {
-  background-color: #f5f5f5 !important;
-  color: #121316 !important;
+  background-color: #050508 !important;
+  color: #ffffff !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 #faq .info-title {
-  color: #121316 !important;
+  color: #ffffff !important;
 }
 
 #faq .info-subtitle {
-  color: #475569 !important;
+  color: #94a3b8 !important;
+}
+
+#faq .section-badge {
+  background: rgba(41, 173, 255, 0.14) !important;
+  color: #29ADFF !important;
+  border: 1px solid rgba(41, 173, 255, 0.35) !important;
 }
 
 #faq .disclosure {
-  background: #ffffff !important;
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
   border-radius: 18px !important;
 }
 
 #faq .disclosure:hover,
 #faq .disclosure[open] {
-  background: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(41, 173, 255, 0.5) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(41, 173, 255, 0.15) !important;
 }
 
 #faq .disclosure summary {
-  color: #121316 !important;
+  color: #ffffff !important;
   font-weight: 700 !important;
 }
 
 #faq .disclosure summary::after {
-  color: #10b981 !important;
+  color: #29ADFF !important;
 }
 
 #faq .disclosure p {
-  color: #475569 !important;
+  color: #cbd5e1 !important;
 }
 
 /* Testimonials stack */
@@ -4005,23 +4011,24 @@ body {
   overflow: hidden !important;
 }
 
-/* FAQ Marquee Container (gray background with top rounded corners) */
+/* FAQ Marquee Container (dark obsidian background with top rounded corners) */
 .faq-marquee-container {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
-  background-color: #f5f5f5 !important;
+  background-color: #050508 !important;
   border-radius: 48px 48px 0 0 !important;
   overflow: hidden !important;
   padding: 60px 0 20px 0 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .faq-marquee-container .text-marquee-row span {
-  color: #121316 !important;
+  color: #ffffff !important;
 }
 
 .faq-marquee-container .marquee-spinner {
-  color: #121316 !important;
+  color: #29ADFF !important;
 }
 
 @media (max-width: 900px) {
