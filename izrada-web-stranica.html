@@ -486,6 +486,129 @@
       border-radius: 6px;
     }
 
+    /* =========================================================
+       OBSIDIAN DARK FAQ SECTION (BLACK BACKGROUND & INVERTED TEXT)
+       ========================================================= */
+    .faq-dark-obsidian-section {
+      width: calc(100% - 32px);
+      max-width: 1280px;
+      margin: 60px auto !important;
+      background-color: #08090d !important;
+      border: 1.5px solid rgba(41, 173, 255, 0.28) !important;
+      border-radius: 36px !important;
+      padding: 70px 48px !important;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45), 0 0 35px rgba(41, 173, 255, 0.08) !important;
+      box-sizing: border-box !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .faq-dark-header {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 50px auto;
+    }
+
+    .faq-dark-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(41, 173, 255, 0.16);
+      color: #29ADFF;
+      border: 1px solid rgba(41, 173, 255, 0.4);
+      border-radius: 999px;
+      font-family: "Geist Mono", monospace;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .faq-dark-title {
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 850;
+      color: #ffffff !important;
+      letter-spacing: -1px;
+      margin: 0 0 16px 0;
+      line-height: 1.15;
+    }
+
+    .faq-dark-subtitle {
+      font-size: 16px;
+      color: #94a3b8 !important;
+      line-height: 1.65;
+      margin: 0 auto;
+    }
+
+    .faq-dark-accordion-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .faq-dark-disclosure {
+      background: rgba(255, 255, 255, 0.035) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: 20px !important;
+      padding: 24px 28px !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .faq-dark-disclosure:hover,
+    .faq-dark-disclosure[open] {
+      background: rgba(41, 173, 255, 0.065) !important;
+      border-color: rgba(41, 173, 255, 0.55) !important;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(41, 173, 255, 0.12) !important;
+    }
+
+    .faq-dark-summary {
+      font-weight: 750 !important;
+      font-size: 17.5px !important;
+      color: #ffffff !important;
+      letter-spacing: -0.3px;
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-dark-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-dark-summary::after {
+      content: "+";
+      font-size: 20px;
+      font-weight: 400;
+      color: #29ADFF;
+      transition: transform 0.25s ease;
+      margin-left: 16px;
+      flex-shrink: 0;
+    }
+
+    .faq-dark-disclosure[open] .faq-dark-summary::after {
+      content: "−";
+      transform: rotate(180deg);
+      color: #29ADFF;
+    }
+
+    .faq-dark-answer {
+      margin-top: 14px;
+      font-size: 15px;
+      color: #cbd5e1 !important;
+      line-height: 1.65;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
     @media (max-width: 992px) {
       .web-compare-grid {
         grid-template-columns: 1fr;
@@ -515,6 +638,11 @@
       .process-drawn-line-svg,
       .card-line-anchor-node {
         display: none;
+      }
+      .faq-dark-obsidian-section {
+        width: calc(100% - 24px);
+        padding: 48px 24px !important;
+        border-radius: 28px !important;
       }
     }
   </style>
@@ -1008,44 +1136,42 @@
     </section>
   </div>
 
-  <!-- 6. FAQ SECTION (Plain Gray Background) -->
-  <section id="faq" class="plain-section" style="margin-top: 40px;">
-    <div class="info-header align-center">
-      <span class="section-badge">// ČESTO POSTAVLJANA PITANJA</span>
-      <h2 class="info-title">
+  <!-- 6. FAQ SECTION (OBSIDIAN DARK THEME WITH INVERTED TEXT) -->
+  <section id="faq" class="faq-dark-obsidian-section">
+    <div class="faq-dark-header">
+      <div class="faq-dark-badge">// ČESTO POSTAVLJANA PITANJA</div>
+      <h2 class="faq-dark-title">
         Odgovori na ključna pitanja o izradi web stranica
       </h2>
-      <p class="info-subtitle">
-        Sve što trebate znati o procesu izrade, rokovima, domenama i SEO optimizaciji.
+      <p class="faq-dark-subtitle">
+        Sve što trebate znati o procesu izrade, rokovima, domenama, CMS uređivanju i SEO optimizaciji.
       </p>
     </div>
 
-    <div class="faq-single-column">
-      <div class="accordion-group">
-        <!-- FAQ 1 -->
-        <details class="disclosure" name="faq-group" open>
-          <summary>Koliko traje izrada web stranice?</summary>
-          <p>Za jednostavnije landing stranice rok isporuke je obično 5 do 7 radnih dana. Za cjelovite višestranične poslovne web stranice rok je između 10 i 14 radnih dana od primitka svih potrebnih materijala.</p>
-        </details>
+    <div class="faq-dark-accordion-group">
+      <!-- FAQ 1 -->
+      <details class="faq-dark-disclosure" name="faq-group" open>
+        <summary class="faq-dark-summary">Koliko traje izrada web stranice?</summary>
+        <p class="faq-dark-answer">Za jednostavnije landing stranice rok isporuke je obično 5 do 7 radnih dana. Za cjelovite višestranične poslovne web stranice rok je između 10 i 14 radnih dana od primitka svih potrebnih materijala.</p>
+      </details>
 
-        <!-- FAQ 2 -->
-        <details class="disclosure" name="faq-group">
-          <summary>Mogu li samostalno mijenjati tekstove i slike na stranici?</summary>
-          <p>Da! Ako odaberete CMS ili no-code rješenje (ili prilagođeni admin panel), dobit ćete jednostavno sučelje gdje u par klikova možete mijenjati tekstove, cijene, slike i dodavati nove blog objave. Također vam osiguravamo kratku video edukaciju.</p>
-        </details>
+      <!-- FAQ 2 -->
+      <details class="faq-dark-disclosure" name="faq-group">
+        <summary class="faq-dark-summary">Mogu li samostalno mijenjati tekstove i slike na stranici?</summary>
+        <p class="faq-dark-answer">Da! Ako odaberete CMS ili no-code rješenje (ili prilagođeni admin panel), dobit ćete jednostavno sučelje gdje u par klikova možete mijenjati tekstove, cijene, slike i dodavati nove blog objave. Također vam osiguravamo kratku video edukaciju.</p>
+      </details>
 
-        <!-- FAQ 3 -->
-        <details class="disclosure" name="faq-group">
-          <summary>Što je s domenom i hostingom?</summary>
-          <p>Pomažemo vam u odabiru i registraciji domene (.hr, .com i sl.) te postavljamo web na brze i sigurne cloud poslužitelje sa besplatnim SSL sigurnosnim certifikatom.</p>
-        </details>
+      <!-- FAQ 3 -->
+      <details class="faq-dark-disclosure" name="faq-group">
+        <summary class="faq-dark-summary">Što je s domenom i hostingom?</summary>
+        <p class="faq-dark-answer">Pomažemo vam u odabiru i registraciji domene (.hr, .com i sl.) te postavljamo web na brze i sigurne cloud poslužitelje sa besplatnim SSL sigurnosnim certifikatom.</p>
+      </details>
 
-        <!-- FAQ 4 -->
-        <details class="disclosure" name="faq-group">
-          <summary>Je li web optimiziran za Google (SEO)?</summary>
-          <p>Apsolutno. Svaka stranica koju izrađujemo ima ugrađenu tehničku SEO optimizaciju: semantičke HTML tagove, meta opise, OpenGraph oznake, komprimirane slike nove generacije (WebP/AVIF) i prijavu na Google Search Console za brzo indeksiranje.</p>
-        </details>
-      </div>
+      <!-- FAQ 4 -->
+      <details class="faq-dark-disclosure" name="faq-group">
+        <summary class="faq-dark-summary">Je li web optimiziran za Google (SEO)?</summary>
+        <p class="faq-dark-answer">Apsolutno. Svaka stranica koju izrađujemo ima ugrađenu tehničku SEO optimizaciju: semantičke HTML tagove, meta opise, OpenGraph oznake, komprimirane slike nove generacije (WebP/AVIF) i prijavu na Google Search Console za brzo indeksiranje.</p>
+      </details>
     </div>
   </section>
 
