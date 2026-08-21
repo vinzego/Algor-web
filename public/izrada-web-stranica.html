@@ -164,7 +164,6 @@
       transform: translateY(-5px);
     }
 
-    /* ROW 1: Left = Wide (7 cols), Right = 1:1 (5 cols) */
     .bento-row1-wide {
       grid-column: span 7;
       background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.16) 0%, transparent 60%), #0d1017;
@@ -194,7 +193,6 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     }
 
-    /* ROW 2: Left = 1:1 (5 cols), Right = Wide (7 cols) */
     .bento-row2-square {
       grid-column: span 5;
       background: #ffffff;
@@ -223,7 +221,6 @@
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     }
 
-    /* Bento Internal Layout Elements */
     .bento-card-header {
       display: flex;
       justify-content: space-between;
@@ -467,52 +464,157 @@
       margin: -4px 0;
     }
 
-    /* Process Flow for Web */
-    .web-process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      width: 100%;
-      max-width: 1280px;
-      margin: 48px auto 0 auto;
-      box-sizing: border-box;
-    }
-
-    .web-step-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 30px 24px;
+    /* =========================================================
+       ZIG-ZAG CONNECTED PROCESS FLOW (KAKO RADIMO)
+       ========================================================= */
+    .zigzag-process-container {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      width: 100%;
+      max-width: 1080px;
+      margin: 60px auto 0 auto;
+      box-sizing: border-box;
       position: relative;
     }
 
-    .web-step-num {
+    .zigzag-step-row {
+      display: flex;
+      width: 100%;
+      position: relative;
+    }
+
+    .zigzag-step-row.align-left {
+      justify-content: flex-start;
+    }
+
+    .zigzag-step-row.align-right {
+      justify-content: flex-end;
+    }
+
+    .zigzag-card {
+      width: 56%;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 26px;
+      padding: 34px 36px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-sizing: border-box;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      z-index: 2;
+    }
+
+    .zigzag-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      border-color: rgba(41, 173, 255, 0.5);
+    }
+
+    .zigzag-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .zigzag-step-badge {
       font-family: "Geist Mono", monospace;
       font-size: 12px;
       font-weight: 800;
       color: #29ADFF;
       background: rgba(41, 173, 255, 0.1);
-      padding: 4px 10px;
+      border: 1px solid rgba(41, 173, 255, 0.3);
+      padding: 5px 12px;
       border-radius: 999px;
-      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .web-step-card h4 {
-      font-size: 17px;
-      font-weight: 700;
+    .zigzag-step-icon {
+      font-size: 24px;
+    }
+
+    .zigzag-card h4 {
+      font-size: 21px;
+      font-weight: 800;
       color: #0f172a;
       margin: 0;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
     }
 
-    .web-step-card p {
-      font-size: 13.5px;
+    .zigzag-card p {
+      font-size: 14.5px;
       color: #64748b;
-      line-height: 1.55;
+      line-height: 1.6;
       margin: 0;
+    }
+
+    .zigzag-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .zigzag-mini-tag {
+      font-family: "Geist Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+      background: #f8fafc;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Connecting Arrow Track between Steps */
+    .zigzag-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+      position: relative;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .zigzag-connector-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      border: 1.5px dashed rgba(41, 173, 255, 0.45);
+      border-radius: 999px;
+      padding: 6px 20px;
+      box-shadow: 0 4px 15px rgba(41, 173, 255, 0.08);
+    }
+
+    .connector-txt {
+      font-family: "Geist Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #0284c7;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .connector-arrow {
+      font-size: 16px;
+      color: #29ADFF;
+      font-weight: bold;
+    }
+
+    .connector-to-right {
+      align-self: center;
+      transform: translateX(10%);
+    }
+
+    .connector-to-left {
+      align-self: center;
+      transform: translateX(-10%);
     }
 
     @media (max-width: 900px) {
@@ -533,15 +635,13 @@
         grid-template-columns: 1fr;
         gap: 20px;
       }
-      .web-process-steps {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+      .zigzag-card {
+        width: 100%;
+        padding: 28px 24px;
       }
-    }
-
-    @media (max-width: 600px) {
-      .web-process-steps {
-        grid-template-columns: 1fr;
+      .connector-to-right,
+      .connector-to-left {
+        transform: none;
       }
     }
   </style>
@@ -796,40 +896,110 @@
     </div>
   </section>
 
-  <!-- 4. PROCES IZRADE U 4 KORAKA -->
+  <!-- 4. PROCES IZRADE U 4 KORAKA (ZIG-ZAG CONNECTED FLOW) -->
   <section id="proces" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// KAKO RADIMO</span>
       <h2 class="info-title">Jednostavan proces od ideje do lansiranja</h2>
       <p class="info-subtitle">
-        Transparentan proces rada bez komplikacija i kašnjenja.
+        Transparentan proces rada u 4 povezana koraka – bez komplikacija i kašnjenja.
       </p>
     </div>
 
-    <div class="web-process-steps">
-      <div class="web-step-card">
-        <span class="web-step-num">01. PLANIRANJE</span>
-        <h4>Strategija &amp; Struktura</h4>
-        <p>Analiziramo vašu branšu, ciljanu publiku i definiramo jasnu strukturu stranice koja vodi posjetitelja do upita.</p>
+    <div class="zigzag-process-container">
+      
+      <!-- KORAK 01: LIJEVO -->
+      <div class="zigzag-step-row align-left">
+        <div class="zigzag-card">
+          <div class="zigzag-card-header">
+            <span class="zigzag-step-badge"><span>●</span> KORAK 01</span>
+            <span class="zigzag-step-icon">🎯</span>
+          </div>
+          <h4>01. Strategija &amp; Struktura</h4>
+          <p>Analiziramo vašu branšu, ciljanu publiku i definiramo jasnu strukturu stranice koja vodi posjetitelja do upita ili kupnje. Kreiramo wireframe skicu prije dizajna.</p>
+          <div class="zigzag-card-tags">
+            <span class="zigzag-mini-tag">Analiza konkurencije</span>
+            <span class="zigzag-mini-tag">Wireframe arhitektura</span>
+            <span class="zigzag-mini-tag">Plan konverzije</span>
+          </div>
+        </div>
       </div>
 
-      <div class="web-step-card">
-        <span class="web-step-num">02. DIZAJN</span>
-        <h4>UI / UX Vizual</h4>
-        <p>Kreiramo moderan, estetski i pregledan dizajn prilagođen vašem brendu s fokusom na savršeno mobilno iskustvo.</p>
+      <!-- KONEKTOR 1 -> 2 (IDE PREMA DESNO) -->
+      <div class="zigzag-connector connector-to-right">
+        <div class="zigzag-connector-line">
+          <span class="connector-txt">Odobrenje strukture</span>
+          <span class="connector-arrow">➔</span>
+        </div>
       </div>
 
-      <div class="web-step-card">
-        <span class="web-step-num">03. RAZVOJ</span>
-        <h4>Kodiranje &amp; Brzina</h4>
-        <p>Programiramo stranicu, optimiziramo sve slike i video materijale te testiramo brzinu učitavanja na svim uređajima.</p>
+      <!-- KORAK 02: DESNO -->
+      <div class="zigzag-step-row align-right">
+        <div class="zigzag-card">
+          <div class="zigzag-card-header">
+            <span class="zigzag-step-badge"><span>●</span> KORAK 02</span>
+            <span class="zigzag-step-icon">🎨</span>
+          </div>
+          <h4>02. UI / UX Vizual &amp; Prototip</h4>
+          <p>Kreiramo moderan, estetski i pregledan vizualni identitet weba prilagođen vašem brendu s fokusom na savršeno mobilno iskustvo i privlačne interakcije.</p>
+          <div class="zigzag-card-tags">
+            <span class="zigzag-mini-tag">Figma / Dizajn sustav</span>
+            <span class="zigzag-mini-tag">Mobile-First UI</span>
+            <span class="zigzag-mini-tag">Odobrenje klijenta</span>
+          </div>
+        </div>
       </div>
 
-      <div class="web-step-card">
-        <span class="web-step-num">04. LANSIRANJE</span>
-        <h4>SEO &amp; Objava</h4>
-        <p>Povezujemo domenu, aktiviramo SSL certifikat, prijavljujemo stranicu na Google i predajemo vam sve pristupe.</p>
+      <!-- KONEKTOR 2 -> 3 (IDE PREMA LIJEVO) -->
+      <div class="zigzag-connector connector-to-left">
+        <div class="zigzag-connector-line">
+          <span class="connector-arrow">⬅</span>
+          <span class="connector-txt">Početak razvoja i kodiranja</span>
+        </div>
       </div>
+
+      <!-- KORAK 03: LIJEVO -->
+      <div class="zigzag-step-row align-left">
+        <div class="zigzag-card">
+          <div class="zigzag-card-header">
+            <span class="zigzag-step-badge"><span>●</span> KORAK 03</span>
+            <span class="zigzag-step-icon">⚡</span>
+          </div>
+          <h4>03. Custom Razvoj &amp; Optimizacija Brzine</h4>
+          <p>Programiramo stranicu, optimiziramo sve slike i video materijale (WebP/AVIF), implementiramo brzi kod i testiramo brzinu učitavanja na svim uređajima.</p>
+          <div class="zigzag-card-tags">
+            <span class="zigzag-mini-tag">Čisti HTML/CSS/JS</span>
+            <span class="zigzag-mini-tag">PageSpeed 95+ test</span>
+            <span class="zigzag-mini-tag">Responzivno testiranje</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KONEKTOR 3 -> 4 (IDE PREMA DESNO) -->
+      <div class="zigzag-connector connector-to-right">
+        <div class="zigzag-connector-line">
+          <span class="connector-txt">SEO &amp; Domena spremna</span>
+          <span class="connector-arrow">➔</span>
+        </div>
+      </div>
+
+      <!-- KORAK 04: DESNO -->
+      <div class="zigzag-step-row align-right">
+        <div class="zigzag-card">
+          <div class="zigzag-card-header">
+            <span class="zigzag-step-badge"><span>●</span> KORAK 04</span>
+            <span class="zigzag-step-icon">🚀</span>
+          </div>
+          <h4>04. Lansiranje, SEO &amp; Prijava na Google</h4>
+          <p>Povezujemo vašu domenu, aktiviramo SSL sigurnosni certifikat, prijavljujemo sitemap na Google Search Console i predajemo vam sve administrativne pristupe.</p>
+          <div class="zigzag-card-tags">
+            <span class="zigzag-mini-tag">Google Search Console</span>
+            <span class="zigzag-mini-tag">SSL Sigurnost</span>
+            <span class="zigzag-mini-tag">Podrška 30-60 dana</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
