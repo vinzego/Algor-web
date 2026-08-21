@@ -136,332 +136,241 @@
     .compare-list-good .good-icon { color: #29ADFF; font-weight: bold; font-size: 15px; flex-shrink: 0; }
 
     /* =========================================================
-       EXPANDED ASYMMETRICAL BENTO GRID (WIDER DESKTOP CARDS)
+       LUXURY DARK STATS & SHOWCASE BENTO GRID (MATCHING USER REFERENCE)
        ========================================================= */
-    .tech-bento-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 28px;
+    .lux-bento-section {
       width: 100%;
       max-width: 1280px;
       margin: 50px auto 0 auto;
       box-sizing: border-box;
-      align-items: stretch;
     }
 
-    .bento-tech-card {
+    .lux-bento-grid-3col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.3fr;
+      grid-auto-rows: minmax(330px, auto);
+      gap: 20px;
+      width: 100%;
       box-sizing: border-box;
-      border-radius: 30px;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .lux-bcard {
+      background: #0f1219;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 26px;
+      padding: 34px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .lux-bcard:hover {
+      transform: translateY(-4px);
+      border-color: rgba(41, 173, 255, 0.45);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 30px rgba(41, 173, 255, 0.1);
+    }
+
+    /* Top Accent Line with Label */
+    .lux-bcard-topline {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .bento-tech-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .bento-row1-wide {
-      grid-column: span 7;
-      background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.16) 0%, transparent 60%), #0d1017;
-      border: 1.5px solid rgba(41, 173, 255, 0.38);
-      padding: 42px 42px;
-      color: #ffffff;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 30px rgba(41, 173, 255, 0.08);
-      min-height: 400px;
-    }
-
-    .bento-row1-wide:hover {
-      border-color: rgba(41, 173, 255, 0.65);
-      box-shadow: 0 26px 65px rgba(0, 0, 0, 0.5), 0 0 45px rgba(41, 173, 255, 0.18);
-    }
-
-    .bento-row1-square {
-      grid-column: span 5;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 42px 38px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-      min-height: 400px;
-    }
-
-    .bento-row1-square:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-    }
-
-    .bento-row2-square {
-      grid-column: span 5;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 42px 38px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-      min-height: 400px;
-    }
-
-    .bento-row2-square:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-    }
-
-    .bento-row2-wide {
-      grid-column: span 7;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      padding: 42px 42px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-      min-height: 400px;
-    }
-
-    .bento-row2-wide:hover {
-      border-color: #cbd5e1;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-    }
-
-    .bento-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 22px;
-      flex-wrap: wrap;
       gap: 12px;
+      width: 100%;
     }
 
-    .bento-badge-pill {
-      display: inline-flex;
+    .lux-topline-header {
+      display: flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-family: "Geist Mono", monospace;
-      font-size: 11.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      background: rgba(41, 173, 255, 0.16);
-      color: #29ADFF;
-      border: 1px solid rgba(41, 173, 255, 0.4);
-    }
-
-    .bento-badge-pill.light-pill {
-      background: #f1f5f9;
-      color: #0f172a;
-      border: 1px solid #e2e8f0;
-    }
-
-    .badge-dot-cyan {
-      color: #29ADFF;
-      font-size: 12px;
-    }
-
-    .bento-stat-highlight {
-      font-family: "Geist Mono", monospace;
-      font-size: 12px;
-      font-weight: 700;
-      color: #10b981;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 5px 12px;
-      border-radius: 999px;
-    }
-
-    .bento-connect-badge {
+      justify-content: space-between;
       font-family: "Geist Mono", monospace;
       font-size: 12px;
       font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .lux-topline-header .topline-icon {
       color: #29ADFF;
+      font-size: 14px;
     }
 
-    .bento-content-split {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
+    .lux-colored-bar {
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      position: relative;
     }
 
-    .bento-text-area h3 {
-      font-size: 23px;
-      font-weight: 800;
-      margin: 0 0 10px 0;
-      letter-spacing: -0.4px;
+    .lux-colored-bar.bar-cyan {
+      background: linear-gradient(90deg, #29ADFF 0%, rgba(41, 173, 255, 0.15) 100%);
     }
 
-    .bento-row1-wide .bento-text-area h3 {
+    .lux-colored-bar.bar-gold {
+      background: linear-gradient(90deg, #38bdf8 0%, rgba(56, 189, 248, 0.15) 100%);
+    }
+
+    .lux-colored-bar.bar-pink {
+      background: linear-gradient(90deg, #29ADFF 0%, rgba(41, 173, 255, 0.15) 100%);
+    }
+
+    /* Card Middle: Huge Typography */
+    .lux-bcard-main {
+      margin: 18px 0;
+    }
+
+    .lux-giant-stat {
+      font-size: clamp(48px, 5.5vw, 76px);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin: 0 0 12px 0;
+      font-family: "Inter", sans-serif;
+    }
+
+    .stat-cyan {
+      color: #29ADFF;
+      text-shadow: 0 0 35px rgba(41, 173, 255, 0.28);
+    }
+
+    .stat-white {
       color: #ffffff;
     }
 
-    .bento-row2-wide .bento-text-area h3,
-    .bento-row1-square h3,
-    .bento-row2-square h3 {
-      color: #0f172a;
-      font-size: 22px;
-      font-weight: 800;
-      margin: 0 0 10px 0;
-      letter-spacing: -0.4px;
+    .stat-gradient {
+      background: linear-gradient(135deg, #ffffff 30%, #29ADFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .bento-text-area p {
+    .lux-stat-desc {
       font-size: 14px;
-      line-height: 1.6;
-      margin: 0 0 18px 0;
-    }
-
-    .bento-row1-wide .bento-text-area p {
       color: #94a3b8;
-    }
-
-    .bento-row2-wide .bento-text-area p,
-    .bento-row1-square p,
-    .bento-row2-square p {
-      color: #64748b;
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0 0 18px 0;
-    }
-
-    .bento-icon-circle {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      background: rgba(41, 173, 255, 0.1);
-      color: #29ADFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      border: 1px solid rgba(41, 173, 255, 0.25);
-      margin-bottom: 16px;
-    }
-
-    .pillar-tags-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .code-tag-pill {
-      font-family: "Geist Mono", monospace;
-      font-size: 11.5px;
-      font-weight: 600;
-      background: #f1f5f9;
-      color: #334155;
-      padding: 5px 12px;
-      border-radius: 8px;
-    }
-
-    .code-tag-pill.dark-pill {
-      background: rgba(255, 255, 255, 0.08);
-      color: #cbd5e1;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    /* Mini Code Window in Bento 1 */
-    .bento-mini-code-window {
-      background: #06070a;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 18px;
-      padding: 18px 20px;
-      font-family: "Geist Mono", monospace;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .code-window-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .code-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-    }
-    .code-dot.red { background: #ef4444; }
-    .code-dot.yellow { background: #f59e0b; }
-    .code-dot.green { background: #10b981; }
-
-    .code-file-title {
-      font-size: 11px;
-      color: #64748b;
-      margin-left: 6px;
-    }
-
-    .code-snippet-body {
+      line-height: 1.55;
       margin: 0;
-      font-size: 12px;
-      line-height: 1.6;
-      color: #cbd5e1;
-      overflow-x: auto;
+      max-width: 92%;
     }
 
-    .tok-kw { color: #f43f5e; font-weight: 600; }
-    .tok-var { color: #38bdf8; }
-    .tok-fn { color: #a78bfa; }
-    .tok-prop { color: #94a3b8; }
-    .tok-str { color: #34d399; }
-    .tok-bool { color: #fbbf24; }
+    /* Bottom Row Metadata */
+    .lux-bcard-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-family: "Geist Mono", monospace;
+      font-size: 12px;
+      color: #64748b;
+    }
 
-    /* Flow Visual in Bento 4 */
-    .bento-flow-visual {
+    .lux-bcard-bottom .bottom-icon {
+      color: #29ADFF;
+      font-size: 14px;
+    }
+
+    /* Card 3: Large Portrait Image Card */
+    .lux-portrait-card {
+      grid-row: span 1;
+      background: #080a0f;
+      padding: 0;
+      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 16px 18px;
+      justify-content: flex-end;
+      min-height: 340px;
     }
 
-    .flow-pill-step {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 9px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #1e293b;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    .lux-portrait-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: contrast(1.05) brightness(0.9);
+      transition: transform 0.4s ease;
     }
 
-    .flow-pill-step.active {
-      border-color: rgba(41, 173, 255, 0.5);
-      background: rgba(41, 173, 255, 0.06);
-      color: #0284c7;
+    .lux-portrait-card:hover .lux-portrait-img {
+      transform: scale(1.03);
     }
 
-    .flow-pill-step .step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #0f172a;
+    .lux-portrait-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 75%;
+      background: linear-gradient(to top, #090b10 15%, rgba(9, 11, 16, 0.8) 55%, transparent 100%);
+      z-index: 1;
+    }
+
+    .lux-portrait-content {
+      position: relative;
+      z-index: 2;
+      padding: 28px 28px 24px 28px;
+    }
+
+    .lux-portrait-quote {
+      font-size: 16px;
+      font-weight: 700;
       color: #ffffff;
+      line-height: 1.45;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.3px;
+    }
+
+    .lux-portrait-author {
+      font-size: 12px;
+      font-family: "Geist Mono", monospace;
+      color: #29ADFF;
+      margin: 0;
+    }
+
+    /* Wide Card in Row 2 */
+    .lux-bcard-wide {
+      grid-column: span 1;
+      background: radial-gradient(circle at 10% 90%, rgba(41, 173, 255, 0.12) 0%, transparent 60%), #0f1219;
+    }
+
+    /* CTA Card in Bottom Right */
+    .lux-cta-card {
+      background: #121622;
+      border: 1.5px solid rgba(41, 173, 255, 0.35);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .lux-cta-btn {
+      width: 100%;
+      background: #29ADFF;
+      color: #080a0f;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-size: 14px;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      font-family: "Geist Mono", monospace;
-      font-weight: 700;
+      gap: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 16px;
+      text-decoration: none;
+      font-family: "Inter", sans-serif;
     }
 
-    .flow-pill-step.active .step-num {
-      background: #29ADFF;
-      color: #0f172a;
-    }
-
-    .flow-arrow-down {
-      text-align: center;
-      font-size: 11px;
-      color: #94a3b8;
-      margin: -4px 0;
+    .lux-cta-btn:hover {
+      background: #ffffff;
+      color: #080a0f;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(41, 173, 255, 0.4);
     }
 
     /* =========================================================
@@ -478,7 +387,6 @@
       position: relative;
     }
 
-    /* Continuous SVG connecting line passing through cards */
     .process-drawn-line-svg {
       position: absolute;
       top: 40px;
@@ -526,7 +434,6 @@
       border-color: rgba(41, 173, 255, 0.6);
     }
 
-    /* Connector Node that anchors directly to the continuous line */
     .card-line-anchor-node {
       position: absolute;
       width: 24px;
@@ -605,23 +512,24 @@
       border-radius: 6px;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
+      .lux-bento-grid-3col {
+        grid-template-columns: 1fr 1fr;
+      }
+      .lux-portrait-card {
+        grid-column: span 2;
+        min-height: 320px;
+      }
+    }
+
+    @media (max-width: 768px) {
       .web-compare-grid,
-      .tech-bento-grid {
+      .lux-bento-grid-3col {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 16px;
       }
-      .bento-row1-wide,
-      .bento-row1-square,
-      .bento-row2-square,
-      .bento-row2-wide {
+      .lux-portrait-card {
         grid-column: span 1;
-        padding: 30px 24px;
-        min-height: auto;
-      }
-      .bento-content-split {
-        grid-template-columns: 1fr;
-        gap: 20px;
       }
       .zigzag-process-container {
         gap: 40px;
@@ -630,9 +538,7 @@
         width: 100%;
         padding: 30px 24px;
       }
-      .process-drawn-line-svg {
-        display: none;
-      }
+      .process-drawn-line-svg,
       .card-line-anchor-node {
         display: none;
       }
@@ -777,7 +683,7 @@
     </div>
   </section>
 
-  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (WIDER ASYMMETRICAL 2-ROW BENTO GRID) -->
+  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (LUXURY DARK STATS & SHOWCASE BENTO GRID) -->
   <section id="tehnologije" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// TEHNOLOGIJE &amp; METODOLOGIJA</span>
@@ -787,105 +693,129 @@
       </p>
     </div>
 
-    <div class="tech-bento-grid">
-      
-      <!-- RED 1 - LIJEVO: Custom Code (Duža / Wide Card - 7 Stupaca) -->
-      <div class="bento-tech-card bento-row1-wide">
-        <div class="bento-card-header">
-          <div class="bento-badge-pill"><span class="badge-dot-cyan">●</span> 100% ČISTI KOD &amp; BRZINA</div>
-          <span class="bento-stat-highlight">⚡ 99/100 PageSpeed</span>
-        </div>
+    <div class="lux-bento-section">
+      <div class="lux-bento-grid-3col">
         
-        <div class="bento-content-split">
-          <div class="bento-text-area">
-            <h3>Custom Code Razvoj</h3>
-            <p>Ručno optimiziran HTML5, moderni CSS i JavaScript. Bez nepotrebnih datoteka i sporih predložaka koji guše performanse. Svaka linija koda napisana je za maksimalnu brzinu i stabilnost.</p>
-            <div class="pillar-tags-row">
-              <span class="code-tag-pill dark-pill">HTML5 &amp; CSS3</span>
-              <span class="code-tag-pill dark-pill">JS ES6+</span>
-              <span class="code-tag-pill dark-pill">Node.js</span>
-              <span class="code-tag-pill dark-pill">API</span>
+        <!-- ROW 1 - CARD 1: 99% PageSpeed Score -->
+        <div class="lux-bcard">
+          <div class="lux-bcard-topline">
+            <div class="lux-topline-header">
+              <span>Google PageSpeed &amp; SEO</span>
+              <span class="topline-icon">⚡</span>
             </div>
+            <div class="lux-colored-bar bar-cyan"></div>
           </div>
-          
-          <div class="bento-mini-code-window">
-            <div class="code-window-header">
-              <span class="code-dot red"></span>
-              <span class="code-dot yellow"></span>
-              <span class="code-dot green"></span>
-              <span class="code-file-title">fast-render.js</span>
+
+          <div class="lux-bcard-main">
+            <div class="lux-giant-stat stat-cyan">99%</div>
+            <p class="lux-stat-desc">Prosječna ocjena brzine i optimizacije na mobilnim uređajima i računalima.</p>
+          </div>
+
+          <div class="lux-bcard-bottom">
+            <span>Core Web Vitals Spreman</span>
+            <span class="bottom-icon">🌐</span>
+          </div>
+        </div>
+
+        <!-- ROW 1 - CARD 2: 100% Kontrola & No-Code CMS -->
+        <div class="lux-bcard">
+          <div class="lux-bcard-topline">
+            <div class="lux-topline-header">
+              <span>No-Code &amp; CMS</span>
+              <span class="topline-icon">✦</span>
             </div>
-            <pre class="code-snippet-body"><code><span class="tok-kw">const</span> <span class="tok-var">customWeb</span> = <span class="tok-kw">new</span> <span class="tok-fn">AlgorStudio</span>({
-  <span class="tok-prop">loadTime</span>: <span class="tok-str">"&lt; 0.8s"</span>,
-  <span class="tok-prop">seoReady</span>: <span class="tok-bool">true</span>,
-  <span class="tok-prop">mobileFirst</span>: <span class="tok-bool">true</span>
-});
-<span class="tok-var">customWeb</span>.<span class="tok-fn">deploy</span>();</code></pre>
+            <div class="lux-colored-bar bar-gold"></div>
+          </div>
+
+          <div class="lux-bcard-main">
+            <div class="lux-giant-stat stat-white">100%</div>
+            <p class="lux-stat-desc">Samostalna kontrola nad sadržajem, objavama, cijenama i blogom bez programera.</p>
+          </div>
+
+          <div class="lux-bcard-bottom">
+            <span>Webflow • Framer • Headless</span>
+            <span class="bottom-icon">⚡</span>
           </div>
         </div>
-      </div>
 
-      <!-- RED 1 - DESNO: No-Code & CMS (1:1 Kvadratna / Manja Card - 5 Stupaca) -->
-      <div class="bento-tech-card bento-row1-square">
-        <div>
-          <div class="bento-badge-pill light-pill" style="margin-bottom: 16px;"><span class="badge-dot-cyan">●</span> CMS &amp; FLEKSIBILNOST</div>
-          <div class="bento-icon-circle">⚡</div>
-          <h3>No-Code &amp; CMS</h3>
-          <p>Želite sami ažurirati cijene, objavljivati novosti ili mijenjati ponude bez zvanja programera? Postavljamo Webflow, Framer ili headless CMS s intuitivnim panelom.</p>
-        </div>
-        <div class="pillar-tags-row">
-          <span class="code-tag-pill">Webflow</span>
-          <span class="code-tag-pill">Framer</span>
-          <span class="code-tag-pill">Headless CMS</span>
-          <span class="code-tag-pill">Edukacija</span>
-        </div>
-      </div>
-
-      <!-- RED 2 - LIJEVO: Tehnički & Lokalni SEO (1:1 Kvadratna / Manja Card - 5 Stupaca) -->
-      <div class="bento-tech-card bento-row2-square">
-        <div>
-          <div class="bento-badge-pill light-pill" style="margin-bottom: 16px;"><span class="badge-dot-cyan">●</span> GOOGLE POZICIJE</div>
-          <div class="bento-icon-circle">🔍</div>
-          <h3>Tehnički &amp; Lokalni SEO</h3>
-          <p>Stranice gradimo prema najstrožim Google smjernicama: semantički tagovi, Schema.org strukturirani podaci, OpenGraph oznake i automatska prijava na Google Search Console.</p>
-        </div>
-        <div class="pillar-tags-row">
-          <span class="code-tag-pill">Schema.org</span>
-          <span class="code-tag-pill">Search Console</span>
-          <span class="code-tag-pill">Sitemap</span>
-          <span class="code-tag-pill">OpenGraph</span>
-        </div>
-      </div>
-
-      <!-- RED 2 - DESNO: Marketing, AI (Duža / Wide Card - 7 Stupaca) -->
-      <div class="bento-tech-card bento-row2-wide">
-        <div class="bento-card-header">
-          <div class="bento-badge-pill light-pill"><span class="badge-dot-cyan">●</span> PRODAJNI LIJEVAK</div>
-          <span class="bento-connect-badge">⚡ Instant notifikacije</span>
+        <!-- ROW 1 - CARD 3: Portrait Showcase Card -->
+        <div class="lux-bcard lux-portrait-card">
+          <img src="about_person.jpg" alt="Algor Studio Development" class="lux-portrait-img" />
+          <div class="lux-portrait-overlay"></div>
+          <div class="lux-portrait-content">
+            <p class="lux-portrait-quote">"Web stranica mora raditi za vas i donositi mjerljiv ROI 24 sata dnevno."</p>
+            <p class="lux-portrait-author">Algor studio &bull; Custom Web &amp; AI</p>
+          </div>
         </div>
 
-        <div class="bento-content-split">
-          <div class="bento-text-area">
-            <h3>Marketing &amp; AI Integracije</h3>
-            <p>Web nije samo digitalna posjetnica nego stroj za privlačenje kupaca. Povezujemo ga s Meta Pixelom, Google Analyticsom 4, WhatsApp AI botom i vašim CRM sustavom.</p>
-            <div class="pillar-tags-row">
-              <span class="code-tag-pill">Meta Pixel</span>
-              <span class="code-tag-pill">GA4</span>
-              <span class="code-tag-pill">WhatsApp AI</span>
-              <span class="code-tag-pill">Instant SMS</span>
+        <!-- ROW 2 - CARD 4: < 0.8s Custom Code (Code Solutions) -->
+        <div class="lux-bcard lux-bcard-wide">
+          <div class="lux-bcard-topline">
+            <div class="lux-topline-header">
+              <span>Custom Code (CSS, JS, Node.js)</span>
+              <span class="topline-icon">💻</span>
             </div>
+            <div class="lux-colored-bar bar-cyan"></div>
           </div>
 
-          <div class="bento-flow-visual">
-            <div class="flow-pill-step"><span class="step-num">1</span> Posjetitelj na webu</div>
-            <div class="flow-arrow-down">↓</div>
-            <div class="flow-pill-step"><span class="step-num">2</span> Pametna forma / WhatsApp</div>
-            <div class="flow-arrow-down">↓</div>
-            <div class="flow-pill-step active"><span class="step-num">3</span> Obavijest na mobitel</div>
+          <div class="lux-bcard-main">
+            <div class="lux-giant-stat stat-gradient">&lt; 0.8s</div>
+            <p class="lux-stat-desc">Munjevito učitavanje bez nepotrebnih datoteka. Pisanje čistog, ručno optimiziranog koda za maksimalnu brzinu i stabilnost.</p>
+          </div>
+
+          <div class="lux-bcard-bottom">
+            <span>HTML5 • CSS3 • JavaScript • Node.js</span>
+            <span class="bottom-icon">🚀</span>
           </div>
         </div>
-      </div>
 
+        <!-- ROW 2 - CARD 5: #1 Rangiranje & Tehnički SEO -->
+        <div class="lux-bcard">
+          <div class="lux-bcard-topline">
+            <div class="lux-topline-header">
+              <span>Tehnički &amp; Lokalni SEO</span>
+              <span class="topline-icon">🔍</span>
+            </div>
+            <div class="lux-colored-bar bar-pink"></div>
+          </div>
+
+          <div class="lux-bcard-main">
+            <div class="lux-giant-stat stat-cyan">#1</div>
+            <p class="lux-stat-desc">Schema.org strukturirani podaci, OpenGraph oznake i automatska Google Search Console prijava.</p>
+          </div>
+
+          <div class="lux-bcard-bottom">
+            <span>Search Console &amp; Sitemap XML</span>
+            <span class="bottom-icon">📈</span>
+          </div>
+        </div>
+
+        <!-- ROW 2 - CARD 6: Interactive CTA / Let's Talk -->
+        <div class="lux-bcard lux-cta-card">
+          <div class="lux-bcard-topline">
+            <div class="lux-topline-header">
+              <span>Započnimo projekt</span>
+              <span class="topline-icon">✉️</span>
+            </div>
+            <div class="lux-colored-bar bar-cyan"></div>
+          </div>
+
+          <div class="lux-bcard-main">
+            <h3 style="color: #ffffff; font-size: 24px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -0.5px;">Zatražite procjenu</h3>
+            <p class="lux-stat-desc">Besplatna analiza i ponuda za izradu novog ili redizajn postojećeg weba.</p>
+            <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Web%20Stranicu" class="lux-cta-btn">
+              <span>Zatraži Ponudu</span>
+              <span>➔</span>
+            </a>
+          </div>
+
+          <div class="lux-bcard-bottom">
+            <span>Rok odgovora unutar 24h</span>
+            <span class="bottom-icon">🔒</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
