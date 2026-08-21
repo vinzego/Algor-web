@@ -135,68 +135,195 @@
     .compare-list-good li { color: #cbd5e1; }
     .compare-list-good .good-icon { color: #29ADFF; font-weight: bold; font-size: 15px; flex-shrink: 0; }
 
-    /* Pillars Bento Grid */
-    .web-pillars-grid {
+    /* =========================================================
+       BENTO GRID FOR TECHNOLOGIES & METHODOLOGY
+       ========================================================= */
+    .tech-bento-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      gap: 24px;
       width: 100%;
-      max-width: 1040px;
+      max-width: 1060px;
       margin: 48px auto 0 auto;
       box-sizing: border-box;
     }
 
-    .pillar-box {
+    .bento-tech-card {
+      box-sizing: border-box;
+      border-radius: 28px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-tech-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Wide Dark Card (Custom Code) */
+    .bento-wide-dark {
+      grid-column: span 2;
+      background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.15) 0%, transparent 60%), #0d1017;
+      border: 1.5px solid rgba(41, 173, 255, 0.35);
+      padding: 38px 40px;
+      color: #ffffff;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 30px rgba(41, 173, 255, 0.08);
+    }
+
+    .bento-wide-dark:hover {
+      border-color: rgba(41, 173, 255, 0.6);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 45px rgba(41, 173, 255, 0.15);
+    }
+
+    /* Wide Light Card (Marketing & AI) */
+    .bento-wide-light {
+      grid-column: span 2;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 24px;
-      padding: 36px 32px;
+      padding: 38px 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    .bento-wide-light:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+    }
+
+    /* Small Light Cards (No-Code & SEO) */
+    .bento-small-light {
+      grid-column: span 1;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 34px 32px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      justify-content: space-between;
+      gap: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
-    .pillar-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    .bento-small-light:hover {
       border-color: #cbd5e1;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
     }
 
-    .pillar-icon-wrap {
-      width: 50px;
-      height: 50px;
+    .bento-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .bento-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-family: "Geist Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      background: rgba(41, 173, 255, 0.16);
+      color: #29ADFF;
+      border: 1px solid rgba(41, 173, 255, 0.4);
+    }
+
+    .bento-badge-pill.light-pill {
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+    }
+
+    .badge-dot-cyan {
+      color: #29ADFF;
+      font-size: 12px;
+    }
+
+    .bento-stat-highlight {
+      font-family: "Geist Mono", monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .bento-connect-badge {
+      font-family: "Geist Mono", monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: #29ADFF;
+    }
+
+    .bento-content-split {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .bento-text-area h3 {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.4px;
+    }
+
+    .bento-wide-dark .bento-text-area h3 {
+      color: #ffffff;
+    }
+
+    .bento-wide-light .bento-text-area h3,
+    .bento-small-light h3 {
+      color: #0f172a;
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0 0 8px 0;
+      letter-spacing: -0.3px;
+    }
+
+    .bento-text-area p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 18px 0;
+    }
+
+    .bento-wide-dark .bento-text-area p {
+      color: #94a3b8;
+    }
+
+    .bento-wide-light .bento-text-area p,
+    .bento-small-light p {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.55;
+      margin: 0 0 16px 0;
+    }
+
+    .bento-icon-circle {
+      width: 48px;
+      height: 48px;
       border-radius: 14px;
       background: rgba(41, 173, 255, 0.1);
       color: #29ADFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 22px;
       border: 1px solid rgba(41, 173, 255, 0.25);
-    }
-
-    .pillar-title {
-      font-size: 19px;
-      font-weight: 750;
-      color: #0f172a;
-      margin: 0;
-      letter-spacing: -0.3px;
-    }
-
-    .pillar-desc {
-      font-size: 14px;
-      color: #64748b;
-      line-height: 1.6;
-      margin: 0;
+      margin-bottom: 16px;
     }
 
     .pillar-tags-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 6px;
     }
 
     .code-tag-pill {
@@ -209,13 +336,125 @@
       border-radius: 6px;
     }
 
+    .code-tag-pill.dark-pill {
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Mini Code Window in Bento 1 */
+    .bento-mini-code-window {
+      background: #06070a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 16px 18px;
+      font-family: "Geist Mono", monospace;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .code-window-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .code-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+    .code-dot.red { background: #ef4444; }
+    .code-dot.yellow { background: #f59e0b; }
+    .code-dot.green { background: #10b981; }
+
+    .code-file-title {
+      font-size: 11px;
+      color: #64748b;
+      margin-left: 6px;
+    }
+
+    .code-snippet-body {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      overflow-x: auto;
+    }
+
+    .tok-kw { color: #f43f5e; font-weight: 600; }
+    .tok-var { color: #38bdf8; }
+    .tok-fn { color: #a78bfa; }
+    .tok-prop { color: #94a3b8; }
+    .tok-str { color: #34d399; }
+    .tok-bool { color: #fbbf24; }
+
+    /* Flow Visual in Bento 4 */
+    .bento-flow-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+
+    .flow-pill-step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1e293b;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .flow-pill-step.active {
+      border-color: rgba(41, 173, 255, 0.5);
+      background: rgba(41, 173, 255, 0.06);
+      color: #0284c7;
+    }
+
+    .flow-pill-step .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #0f172a;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-family: "Geist Mono", monospace;
+      font-weight: 700;
+    }
+
+    .flow-pill-step.active .step-num {
+      background: #29ADFF;
+      color: #0f172a;
+    }
+
+    .flow-arrow-down {
+      text-align: center;
+      font-size: 11px;
+      color: #94a3b8;
+      margin: -4px 0;
+    }
+
     /* Process Flow for Web */
     .web-process-steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       width: 100%;
-      max-width: 1040px;
+      max-width: 1060px;
       margin: 48px auto 0 auto;
       box-sizing: border-box;
     }
@@ -259,7 +498,17 @@
 
     @media (max-width: 900px) {
       .web-compare-grid,
-      .web-pillars-grid {
+      .tech-bento-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .bento-wide-dark,
+      .bento-wide-light,
+      .bento-small-light {
+        grid-column: span 1;
+        padding: 30px 24px;
+      }
+      .bento-content-split {
         grid-template-columns: 1fr;
         gap: 24px;
       }
@@ -378,7 +627,7 @@
   </main>
 
   <!-- 2. USPOREDBA: KORISNIČKO ISKUSTVO & BRZINA -->
-  <section id="prednosti" class="plain-section" style="max-width: 1040px; margin: 60px auto; padding: 40px 24px;">
+  <section id="prednosti" class="plain-section" style="max-width: 1060px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// ZAŠTO CUSTOM WEB</span>
       <h2 class="info-title">Zašto spori predlošci gube novac, a brzi web donosi kupce</h2>
@@ -414,73 +663,121 @@
     </div>
   </section>
 
-  <!-- 3. TEHNOLOGIJE & MOGUĆNOSTI (Code + No-Code) -->
-  <section id="tehnologije" class="plain-section" style="max-width: 1040px; margin: 60px auto; padding: 40px 24px;">
+  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (BENTO GRID) -->
+  <section id="tehnologije" class="plain-section" style="max-width: 1060px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// TEHNOLOGIJE &amp; METODOLOGIJA</span>
-      <h2 class="info-title">Kombinacija čistog koda i fleksibilnih rješenja</h2>
+      <h2 class="info-title">Kombinacija čistog koda i modernog dizajna</h2>
       <p class="info-subtitle">
-        Biramo optimalnu tehnologiju ovisno o cilju vašeg poslovanja – od jednostavnih landing stranica do naprednih web aplikacija.
+        Biramo optimalnu tehnologiju ovisno o cilju vašeg poslovanja – od ultra-brzih custom code rješenja do fleksibilnih CMS sustava.
       </p>
     </div>
 
-    <div class="web-pillars-grid">
-      <!-- Pillar 1: Custom Code -->
-      <div class="pillar-box">
-        <div class="pillar-icon-wrap">💻</div>
-        <h3 class="pillar-title">Custom Code Razvoj</h3>
-        <p class="pillar-desc">Pisanje čistog, ručno optimiziranog koda bez viška datoteka. Idealno za maksimalnu brzinu, specifične animacije, interaktivne kalkulatore i web aplikacije.</p>
-        <div class="pillar-tags-row">
-          <span class="code-tag-pill">HTML5 &amp; Modern CSS</span>
-          <span class="code-tag-pill">JavaScript (ES6+)</span>
-          <span class="code-tag-pill">Node.js</span>
-          <span class="code-tag-pill">API Integracije</span>
+    <div class="tech-bento-grid">
+      
+      <!-- Bento Card 1: Custom Code (Large Dark Card / 2 Columns Span) -->
+      <div class="bento-tech-card bento-wide-dark">
+        <div class="bento-card-header">
+          <div class="bento-badge-pill"><span class="badge-dot-cyan">●</span> 100% ČISTI KOD &amp; BRZINA</div>
+          <span class="bento-stat-highlight">⚡ 99/100 Google PageSpeed</span>
+        </div>
+        
+        <div class="bento-content-split">
+          <div class="bento-text-area">
+            <h3>Custom Code Razvoj (Code Solutions)</h3>
+            <p>Ručno optimiziran HTML5, moderni CSS i JavaScript. Bez nepotrebnih datoteka i sporih predložaka koji guše performanse. Svaka linija koda napisana je za maksimalnu brzinu i stabilnost.</p>
+            <div class="pillar-tags-row">
+              <span class="code-tag-pill dark-pill">HTML5 &amp; Modern CSS</span>
+              <span class="code-tag-pill dark-pill">JavaScript ES6+</span>
+              <span class="code-tag-pill dark-pill">Node.js Backend</span>
+              <span class="code-tag-pill dark-pill">REST / API Integracije</span>
+            </div>
+          </div>
+          
+          <div class="bento-mini-code-window">
+            <div class="code-window-header">
+              <span class="code-dot red"></span>
+              <span class="code-dot yellow"></span>
+              <span class="code-dot green"></span>
+              <span class="code-file-title">fast-render.js</span>
+            </div>
+            <pre class="code-snippet-body"><code><span class="tok-kw">const</span> <span class="tok-var">customWeb</span> = <span class="tok-kw">new</span> <span class="tok-fn">AlgorStudio</span>({
+  <span class="tok-prop">loadTime</span>: <span class="tok-str">"&lt; 0.8s"</span>,
+  <span class="tok-prop">seoReady</span>: <span class="tok-bool">true</span>,
+  <span class="tok-prop">mobileFirst</span>: <span class="tok-bool">true</span>,
+  <span class="tok-prop">cleanCode</span>: <span class="tok-bool">true</span>
+});
+<span class="tok-var">customWeb</span>.<span class="tok-fn">deploy</span>();</code></pre>
+          </div>
         </div>
       </div>
 
-      <!-- Pillar 2: No-Code & Headless CMS -->
-      <div class="pillar-box">
-        <div class="pillar-icon-wrap">⚡</div>
-        <h3 class="pillar-title">No-Code &amp; CMS Fleksibilnost</h3>
-        <p class="pillar-desc">Za projekte gdje klijent želi jednostavno samostalno dodavati nove objave, ponude ili mijenjati cijene u par klikova bez programiranja.</p>
+      <!-- Bento Card 2: No-Code & CMS Fleksibilnost (1 Column) -->
+      <div class="bento-tech-card bento-small-light">
+        <div>
+          <div class="bento-badge-pill light-pill" style="margin-bottom: 16px;"><span class="badge-dot-cyan">●</span> SAMOSTALNO UREĐIVANJE</div>
+          <div class="bento-icon-circle">⚡</div>
+          <h3>No-Code &amp; CMS Rješenja</h3>
+          <p>Želite sami ažurirati cijene, objavljivati novosti ili mijenjati ponude bez zvanja programera? Postavljamo Webflow, Framer ili headless CMS s jednostavnim administrativnim panelom.</p>
+        </div>
         <div class="pillar-tags-row">
           <span class="code-tag-pill">Webflow</span>
           <span class="code-tag-pill">Framer</span>
           <span class="code-tag-pill">Headless CMS</span>
-          <span class="code-tag-pill">Jednostavno uređivanje</span>
+          <span class="code-tag-pill">Video Edukacija</span>
         </div>
       </div>
 
-      <!-- Pillar 3: Tehnički & Lokalni SEO -->
-      <div class="pillar-box">
-        <div class="pillar-icon-wrap">🔍</div>
-        <h3 class="pillar-title">Google SEO &amp; Indeksiranje</h3>
-        <p class="pillar-desc">Postavljamo tehnički ispravnu strukturu, meta opise, OpenGraph preview za društvene mreže i semantički HTML koji Google prepoznaje i visoko pozicionira.</p>
+      <!-- Bento Card 3: Tehnički & Lokalni SEO (1 Column) -->
+      <div class="bento-tech-card bento-small-light">
+        <div>
+          <div class="bento-badge-pill light-pill" style="margin-bottom: 16px;"><span class="badge-dot-cyan">●</span> GOOGLE POZICIJE</div>
+          <div class="bento-icon-circle">🔍</div>
+          <h3>Tehnički &amp; Lokalni SEO</h3>
+          <p>Stranice gradimo prema najstrožim Google smjernicama: semantički tagovi, Schema.org strukturirani podaci, OpenGraph oznake i automatska prijava na Google Search Console.</p>
+        </div>
         <div class="pillar-tags-row">
           <span class="code-tag-pill">Schema.org</span>
-          <span class="code-tag-pill">Google Search Console</span>
-          <span class="code-tag-pill">Sitemap &amp; Robots.txt</span>
-          <span class="code-tag-pill">Brzi DNS</span>
+          <span class="code-tag-pill">Search Console</span>
+          <span class="code-tag-pill">Sitemap XML</span>
+          <span class="code-tag-pill">OpenGraph</span>
         </div>
       </div>
 
-      <!-- Pillar 4: Marketing & AI Integracije -->
-      <div class="pillar-box">
-        <div class="pillar-icon-wrap">🤖</div>
-        <h3 class="pillar-title">Marketing &amp; AI Povezivost</h3>
-        <p class="pillar-desc">Web nije izoliran otok – odmah ga povezujemo s Meta Pixelom, Google Analytics 4, WhatsApp asistentom i vašom bazom kontakata za praćenje točnog ROI-a.</p>
-        <div class="pillar-tags-row">
-          <span class="code-tag-pill">Meta Pixel &amp; CAPI</span>
-          <span class="code-tag-pill">Google Analytics 4</span>
-          <span class="code-tag-pill">WhatsApp AI Chat</span>
-          <span class="code-tag-pill">CRM Sinkronizacija</span>
+      <!-- Bento Card 4: Marketing & AI Integracije (2 Columns Span) -->
+      <div class="bento-tech-card bento-wide-light">
+        <div class="bento-card-header">
+          <div class="bento-badge-pill light-pill"><span class="badge-dot-cyan">●</span> PRODAJNI LIJEVAK</div>
+          <span class="bento-connect-badge">⚡ Automatizirano slanje upita</span>
+        </div>
+
+        <div class="bento-content-split">
+          <div class="bento-text-area">
+            <h3>Marketing, AI &amp; CRM Integracije</h3>
+            <p>Web nije samo digitalna posjetnica nego stroj za privlačenje kupaca. Odmah ga povezujemo s Meta Pixelom, Google Analytics 4, WhatsApp AI asistentom i vašim email/CRM sustavom za instant notifikacije.</p>
+            <div class="pillar-tags-row">
+              <span class="code-tag-pill">Meta Pixel &amp; CAPI</span>
+              <span class="code-tag-pill">Google Analytics 4</span>
+              <span class="code-tag-pill">WhatsApp AI Chat</span>
+              <span class="code-tag-pill">Instant SMS / Email</span>
+            </div>
+          </div>
+
+          <div class="bento-flow-visual">
+            <div class="flow-pill-step"><span class="step-num">1</span> Posjetitelj na webu</div>
+            <div class="flow-arrow-down">↓</div>
+            <div class="flow-pill-step"><span class="step-num">2</span> Pametna forma / WhatsApp</div>
+            <div class="flow-arrow-down">↓</div>
+            <div class="flow-pill-step active"><span class="step-num">3</span> Obavijest na vaš mobitel</div>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- 4. PROCES IZRADE U 4 KORAKA -->
-  <section id="proces" class="plain-section" style="max-width: 1040px; margin: 60px auto; padding: 40px 24px;">
+  <section id="proces" class="plain-section" style="max-width: 1060px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// KAKO RADIMO</span>
       <h2 class="info-title">Jednostavan proces od ideje do lansiranja</h2>
