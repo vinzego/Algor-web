@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const { Client } = require('@notionhq/client');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -20,6 +21,20 @@ const CSV_FILE = path.join(__dirname, 'upiti.csv');
 let notion = null;
 if (process.env.NOTION_TOKEN && process.env.NOTION_DATABASE_ID) {
   notion = new Client({ auth: process.env.NOTION_TOKEN });
+}
+
+// Initialize Nodemailer SMTP Transporter
+let mailTransporter = null;
+if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+  mailTransporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: parseInt(process.env.SMTP_PORT || '465', 10),
+    secure: process.env.SMTP_PORT === '465' || true,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
+    }
+  });
 }
 
 // Helper function to append to CSV with UTF-8 BOM for Microsoft Excel compatibility
@@ -152,6 +167,121 @@ async function saveInquiryToNotion(data) {
   });
 }
 
+// Helper function to send an automated confirmation email to the client
+async function sendClientConfirmationEmail(data) {
+  if (!mailTransporter || !data.email) return;
+
+  const clientName = data.name || 'poštovani';
+  const pkg = data.package || 'Izrada Weba & Digitalna Rješenja';
+  const company = data.company || 'Nije navedeno';
+  const phone = data.phone || 'Nije naveden';
+  const note = data.calendarSlot && data.calendarSlot !== 'Nije odabrano' && data.calendarSlot !== 'Upit s podnožja'
+    ? data.calendarSlot
+    : 'Besplatna procjena projekta i savjetovanje';
+
+  const htmlContent = `
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Potvrda primitka upita | Algor Studio</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f1f3f7; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1e293b;">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f1f3f7; padding: 40px 16px;">
+    <tr>
+      <td align="center">
+        <table width="100%" max-width="600" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; background-color: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
+          
+          <!-- Header Banner -->
+          <tr>
+            <td style="background-color: #050508; padding: 36px 32px; text-align: center; border-bottom: 2px solid #29ADFF;">
+              <h1 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff;">
+                ALGOR<span style="color: #29ADFF;">STUDIO</span>
+              </h1>
+              <p style="margin: 8px 0 0 0; font-size: 13px; color: #94a3b8; letter-spacing: 1px; text-transform: uppercase;">
+                Digitalna Agencija &bull; Web &bull; Marketing &bull; AI
+              </p>
+            </td>
+          </tr>
+
+          <!-- Main Content -->
+          <tr>
+            <td style="padding: 36px 32px 24px 32px;">
+              <h2 style="margin: 0 0 16px 0; font-size: 22px; font-weight: 700; color: #0f172a;">
+                Pozdrav ${clientName},
+              </h2>
+              <p style="margin: 0 0 20px 0; font-size: 15px; line-height: 1.6; color: #475569;">
+                Hvala vam na javljanju! Vaš upit je uspješno zaprimljen u naš sustav. Naš tim će detaljno pregledati vaše zahtjeve i javiti vam se u najkraćem mogućem roku (unutar <strong>2 radna sata</strong>).
+              </p>
+
+              <!-- Summary Card -->
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f8fafc; border-radius: 14px; border: 1px solid #e2e8f0; margin: 24px 0; padding: 20px;">
+                <tr>
+                  <td>
+                    <h3 style="margin: 0 0 14px 0; font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">
+                      📋 Sažetak vašeg upita:
+                    </h3>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="6" style="font-size: 14px;">
+                      <tr>
+                        <td width="38%" style="color: #64748b; font-weight: 600;">Odabrana usluga:</td>
+                        <td style="color: #0f172a; font-weight: 700;">${pkg}</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #64748b; font-weight: 600;">Ime i prezime:</td>
+                        <td style="color: #0f172a; font-weight: 600;">${clientName}</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #64748b; font-weight: 600;">Tvrtka / Web:</td>
+                        <td style="color: #0f172a;">${company}</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #64748b; font-weight: 600;">Kontakt telefon:</td>
+                        <td style="color: #0f172a;">${phone}</td>
+                      </tr>
+                      <tr>
+                        <td style="color: #64748b; font-weight: 600;">Napomena / Detalji:</td>
+                        <td style="color: #0f172a;">${note}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin: 24px 0 0 0; font-size: 14px; line-height: 1.6; color: #64748b;">
+                Ako u međuvremenu imate bilo kakva dodatna pitanja ili želite priložiti dodatne materijale, slobodno odgovorite izravno na ovaj email.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #050508; padding: 24px 32px; text-align: center; border-top: 1px solid rgba(255,255,255,0.08);">
+              <p style="margin: 0; font-size: 13px; color: #94a3b8;">
+                <strong>Algor Studio</strong> &bull; <a href="https://algor.studio" style="color: #29ADFF; text-decoration: none;">algor.studio</a> &bull; <a href="mailto:info@algor.studio" style="color: #29ADFF; text-decoration: none;">info@algor.studio</a>
+              </p>
+              <p style="margin: 8px 0 0 0; font-size: 11.5px; color: #64748b;">
+                Ovaj email je automatska potvrda zaprimanja vašeg upita.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `;
+
+  await mailTransporter.sendMail({
+    from: '"Algor Studio" <info@algor.studio>',
+    to: data.email,
+    subject: `Potvrda zaprimanja upita: ${pkg} | Algor Studio`,
+    html: htmlContent
+  });
+}
+
 // API endpoint to submit inquiries
 app.post('/api/contact', async (req, res) => {
   try {
@@ -169,7 +299,17 @@ app.post('/api/contact', async (req, res) => {
       console.error('Greška pri spremanju u Notion:', notionErr.message);
     }
 
-    res.json({ success: true, message: 'Upit je uspješno spremljen u CSV i Notion!' });
+    // 3. Automatically send client confirmation email
+    try {
+      if (email) {
+        await sendClientConfirmationEmail({ name, company, email, phone, package: pkg, calendarSlot });
+        console.log(`✓ Automatski potvrdni email poslan klijentu: ${email}`);
+      }
+    } catch (emailErr) {
+      console.error('Greška pri slanju potvrdnog emaila:', emailErr.message);
+    }
+
+    res.json({ success: true, message: 'Upit je uspješno spremljen u CSV, Notion i poslan je potvrdni email!' });
   } catch (err) {
     console.error('Greška pri spremanju upita:', err);
     res.status(500).json({ success: false, error: 'Spremanje upita nije uspjelo.' });
