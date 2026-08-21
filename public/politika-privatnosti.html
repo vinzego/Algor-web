@@ -7,21 +7,44 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=45.0.0">
+  <link rel="stylesheet" href="style.css?v=46.0.0">
   <style>
     body { background-color: #EDEDED !important; color: #1e1e24 !important; font-family: 'Inter', sans-serif !important; margin: 0; padding: 0; }
-    .legal-page-wrapper { max-width: 1000px; margin: 140px auto 80px; padding: 0 24px; }
+    .legal-page-wrapper { max-width: 960px; margin: 140px auto 80px; padding: 0 24px; }
     .legal-card-box { background: #ffffff !important; border: 1px solid rgba(0, 0, 0, 0.08) !important; border-radius: 28px !important; padding: 56px 48px !important; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04) !important; }
-    .legal-tag-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; background: #000000; color: #29ADFF; border-radius: 999px; font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 20px; }
-    .legal-main-title { font-size: 40px; font-weight: 800; color: #0a0a0f; letter-spacing: -1.2px; margin: 0 0 12px 0; }
-    .legal-updated-date { font-size: 14px; color: #666670; margin-bottom: 40px; }
-    .legal-content h2 { font-size: 22px; font-weight: 700; color: #0a0a0f; margin-top: 32px; margin-bottom: 14px; letter-spacing: -0.4px; }
-    .legal-content h2:first-child { margin-top: 0; }
-    .legal-content p { font-size: 15.5px; line-height: 1.7; color: #3a3a42; margin-bottom: 18px; }
-    .legal-content ul { padding-left: 22px; margin-bottom: 24px; color: #3a3a42; }
-    .legal-content li { font-size: 15.5px; line-height: 1.7; margin-bottom: 10px; }
-    .legal-back-btn { display: inline-flex; align-items: center; gap: 8px; color: #111111; font-weight: 700; text-decoration: none; margin-bottom: 28px; font-size: 14px; transition: transform 0.2s ease; }
+    .legal-tag-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 16px; background: #050508; color: #29ADFF; border-radius: 999px; font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; }
+    .legal-main-title { font-size: clamp(32px, 4vw, 42px); font-weight: 800; color: #0f172a; letter-spacing: -1.2px; margin: 0 0 12px 0; }
+    .legal-updated-date { font-size: 14px; color: #64748b; margin-bottom: 36px; }
+    
+    .legal-intro-box { background: #f8fafc; border-left: 4px solid #29ADFF; border-radius: 0 16px 16px 0; padding: 22px 24px; margin-bottom: 36px; }
+    .legal-intro-box p { margin: 0 0 12px 0; font-size: 15px; line-height: 1.7; color: #334155; }
+    .legal-intro-box p:last-child { margin-bottom: 0; }
+
+    .legal-section-block { margin-top: 36px; padding-top: 28px; border-top: 1px solid #f1f5f9; }
+    .legal-section-block:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+    
+    .legal-content h2 { font-size: 21px; font-weight: 800; color: #0f172a; margin: 0 0 16px 0; letter-spacing: -0.4px; display: flex; align-items: center; gap: 10px; }
+    .legal-content p { font-size: 15.5px; line-height: 1.75; color: #334155; margin-bottom: 16px; }
+    .legal-content ul { list-style: none; padding: 0; margin: 0 0 20px 0; }
+    .legal-content li { font-size: 15px; line-height: 1.7; color: #334155; margin-bottom: 12px; padding-left: 26px; position: relative; }
+    .legal-content li::before { content: "⚬"; position: absolute; left: 6px; top: 0; color: #29ADFF; font-size: 20px; font-weight: 800; line-height: 1.3; }
+    
+    .legal-info-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 24px; margin: 20px 0; }
+    .legal-info-card ul { margin: 0; }
+    .legal-info-card li { margin-bottom: 8px; }
+    .legal-info-card li:last-child { margin-bottom: 0; }
+
+    .legal-highlight { color: #0f172a; font-weight: 600; }
+    .legal-link { color: #0284c7; text-decoration: none; font-weight: 600; }
+    .legal-link:hover { text-decoration: underline; }
+
+    .legal-back-btn { display: inline-flex; align-items: center; gap: 8px; color: #0f172a; font-weight: 700; text-decoration: none; margin-bottom: 28px; font-size: 14px; transition: transform 0.2s ease; }
     .legal-back-btn:hover { transform: translateX(-4px); }
+
+    @media (max-width: 768px) {
+      .legal-card-box { padding: 36px 24px !important; border-radius: 20px !important; }
+      .legal-page-wrapper { margin-top: 100px; padding: 0 16px; }
+    }
   </style>
 </head>
 <body>
@@ -66,40 +89,148 @@
         <span>🔒 PRAVNI DOKUMENT</span>
       </div>
       <h1 class="legal-main-title">Politika Privatnosti</h1>
-      <p class="legal-updated-date">Zadnje ažuriranje: 20. kolovoza 2026. godine</p>
+      <p class="legal-updated-date">Zadnja izmjena: <strong>21. kolovoza 2026. godine</strong></p>
+
+      <div class="legal-intro-box">
+        <p><strong>Uvodne odredbe</strong><br>
+        Ova Politika privatnosti objašnjava kako <strong>Vinzego, obrt za proizvodnju i usluge</strong> (u daljnjem tekstu: "Voditelj obrade", "Mi", "Nas") prikuplja, koristi, štiti i obrađuje vaše osobne podatke prilikom posjeta našoj web stranici <a href="https://algor.studio" class="legal-link">algor.studio</a> i korištenja naših usluga.</p>
+        <p>Vaša privatnost i zaštita osobnih podataka izuzetno su nam važni. Smatramo da su privatnost i zaštita podataka temeljna ljudska prava. Naše poslovanje usklađeno je s Općom uredbom o zaštiti podataka (GDPR) (Uredba (EU) 2016/679) i Zakonom o provedbi Opće uredbe o zaštiti podataka (NN 42/2018).</p>
+        <p>Nikada nećemo prodavati, iznajmljivati, distribuirati niti na bilo koji drugi nezakonit način javno objavljivati vaše osobne podatke. Osobne podatke prikupljamo i obrađujemo samo kada je to zaista neophodno i u skladu sa zakonom.</p>
+      </div>
 
       <div class="legal-content">
-        <h2>1. Opće Informacije</h2>
-        <p>Algor studio (u daljnjem tekstu "mi", "nas" ili "naš") pridaje najvišu važnost zaštiti vaših osobnih podataka i privatnosti. Ova Politika privatnosti objašnjava kako prikupljamo, koristimo, čuvamo i štitimo vaše osobne podatke kada posjećujete našu web stranicu ili koristite naše usluge digitalnog marketinga, video produkcije i AI automatizacije.</p>
+        
+        <!-- 1. Tko smo mi -->
+        <div class="legal-section-block">
+          <h2>1. Tko smo mi (Voditelj obrade)</h2>
+          <p>Voditelj obrade vaših osobnih podataka je:</p>
+          <div class="legal-info-card">
+            <ul>
+              <li><strong>Naziv obrta:</strong> Vinzego, obrt za proizvodnju i usluge</li>
+              <li><strong>Adresa sjedišta:</strong> Markovo Polje, Zlatarska ulica 26a, Zagreb</li>
+              <li><strong>OIB:</strong> 03419409491</li>
+              <li><strong>E-mail adresa za upite o zaštiti podataka:</strong> <a href="mailto:info@algor.studio" class="legal-link">info@algor.studio</a></li>
+            </ul>
+          </div>
+        </div>
 
-        <h2>2. Podaci Koje Prikupljamo</h2>
-        <p>Prikupljamo samo nužne podatke za pružanje vrhunske usluge i komunikaciju s vama:</p>
-        <ul>
-          <li><strong>Kontakt podaci:</strong> Ime, prezime, e-mail adresa, broj telefona i naziv tvrtke koje unesete u naše obrasce za upit ili besplatni audit.</li>
-          <li><strong>Tehnički podaci posjeta:</strong> IP adresa, vrsta preglednika, operativni sustav, vrijeme pristupa i posjećene stranice na našoj platformi.</li>
-          <li><strong>Podaci o poslovnim potrebama:</strong> Informacije o vašem poslovanju i ciljevima koje podijelite s nama radi izrade ponude.</li>
-        </ul>
+        <!-- 2. Koje osobne podatke prikupljamo -->
+        <div class="legal-section-block">
+          <h2>2. Koje osobne podatke prikupljamo?</h2>
+          <p>Prilikom vašeg korištenja naše web stranice možemo prikupljati i obrađivati sljedeće kategorije osobnih podataka:</p>
+          <ul>
+            <li><strong>Identifikacijski i kontakt podaci:</strong> Ime, prezime, e-mail adresa, broj telefona, naziv tvrtke (ukoliko nas kontaktirate putem kontakt forme ili se prijavljujete na newsletter).</li>
+            <li><strong>Tehnički podaci i podaci o korištenju (Analitika):</strong> IP adresa, vrsta i verzija internetskog preglednika, operativni sustav, vrijeme i datum pristupa, podaci o vašem ponašanju na web stranici (koje stranice posjećujete, koliko se zadržavate, na što klikate). Ovi podaci najčešće se prikupljaju putem kolačića (Cookies) i sličnih tehnologija.</li>
+          </ul>
+        </div>
 
-        <h2>3. Svrha i Pravna Osnova Obrade Podataka</h2>
-        <p>Vaše podatke obrađujemo isključivo u sljedeće svrhe:</p>
-        <ul>
-          <li>Priprema i izrada besplatnog marketing &amp; AI audita za vaše poslovanje.</li>
-          <li>Komunikacija i realizacija ugovorenih paketa usluga (oglasi, snimanje, automatizacija).</li>
-          <li>Poboljšanje funkcionalnosti, brzine i sigurnosti naše web lokacije.</li>
-          <li>Ispunjavanje zakonskih, poreznih i računovodstvenih obveza.</li>
-        </ul>
+        <!-- 3. Svrhe i pravni temelj -->
+        <div class="legal-section-block">
+          <h2>3. U koje svrhe i na kojem pravnom temelju prikupljamo podatke?</h2>
+          <p>Vaše osobne podatke obrađujemo samo u zakonski dopuštene svrhe, a to su:</p>
+          <ul>
+            <li><strong>Komunikacija i odgovaranje na upite:</strong> Kada ispunite kontakt formu, prikupljamo vaše ime, e-mail adresu i naziv tvrtke kako bismo vam mogli odgovoriti na vaš upit ili pružiti zatražene informacije. <em>(Pravni temelj: Legitimni interes za komunikaciju s korisnicima ili korak prije sklapanja ugovora)</em>.</li>
+            <li><strong>Poboljšanje web stranice i analitika:</strong> Tehničke podatke i podatke o ponašanju koristimo kako bismo analizirali promet na stranici, razumjeli kako korisnici koriste naše usluge te kako bismo unaprijedili funkcionalnost i korisničko iskustvo. <em>(Pravni temelj: Vaša izričita privola koju dajete putem Cookie bannera)</em>.</li>
+            <li><strong>Marketinške aktivnosti:</strong> Slanje promotivnih ponuda, obavijesti i novosti putem e-maila. <em>(Pravni temelj: Vaša izričita privola)</em>.</li>
+            <li><strong>Izvršavanje zakonskih obveza:</strong> U određenim slučajevima obvezni smo čuvati određene podatke kako bismo ispunili zakonske zahtjeve (npr. računovodstveni i porezni propisi).</li>
+          </ul>
+        </div>
 
-        <h2>4. Sigurnost i Čuvanje Podataka</h2>
-        <p>Primjenjujemo najmodernije enkripcijske standarde (SSL/TLS) i organizacijske mjere kako bismo osigurali da su vaši podaci 100% zaštićeni od neovlaštenog pristupa, zlouporabe ili gubitka. Podatke čuvamo samo onoliko koliko je potrebno za ispunjenje svrhe obrade ili zakonskih rokova.</p>
+        <!-- 4. Kako prikupljamo podatke -->
+        <div class="legal-section-block">
+          <h2>4. Kako prikupljamo vaše podatke?</h2>
+          <ul>
+            <li><strong>Izravno od vas:</strong> Kada ispunjavate kontakt forme, šaljete nam e-mail ili se prijavljujete na naše usluge.</li>
+            <li><strong>Automatski putem web stranice:</strong> Korištenjem kolačića (Cookies) i alata za analitiku prilikom vašeg pregledavanja stranice.</li>
+          </ul>
+        </div>
 
-        <h2>5. Vaša Prava prema GDPR-u</h2>
-        <p>Sukladno Općoj uredbi o zaštiti podataka (GDPR), imate pravo u bilo kojem trenutku zatražiti pristup vašim podacima, ispravak, brisanje ("pravo na zaborav") te ograničenje obrade. Zahtjev možete poslati na e-mail: <strong>info@algor.studio</strong>.</p>
+        <!-- 5. Kolačići -->
+        <div class="legal-section-block">
+          <h2>5. Kolačići (Cookies)</h2>
+          <p>Naša web stranica koristi kolačiće. Kolačići su male tekstualne datoteke koje se pohranjuju na vaš uređaj. Koristimo ih za:</p>
+          <ul>
+            <li><strong>Nužne kolačiće:</strong> Neophodni za osnovno funkcioniranje web stranice (za ove kolačiće nije potrebna privola).</li>
+            <li><strong>Analitičke kolačiće:</strong> Pomažu nam pratiti broj posjeta i način na koji korisnici koriste stranicu. Ove kolačiće koristimo isključivo ukoliko nam za to date jasnu privolu putem našeg Cookie bannera.</li>
+            <li><strong>Marketinške kolačiće:</strong> Koriste se za praćenje korisnika na različitim web stranicama s ciljem prikazivanja relevantnih oglasa. I ovi kolačići zahtijevaju vašu izričitu privolu.</li>
+          </ul>
+          <p>Detaljnije informacije o kolačićima, točnom trajanju i načinu upravljanja možete pronaći u našoj <a href="kolacici.html" class="legal-link">Politici kolačića</a>.</p>
+        </div>
+
+        <!-- 6. Koliko dugo čuvamo podatke -->
+        <div class="legal-section-block">
+          <h2>6. Koliko dugo čuvamo vaše podatke?</h2>
+          <p>Vaše osobne podatke čuvamo samo onoliko dugo koliko je potrebno za ispunjenje svrhe u koju su prikupljeni ili koliko nas obvezuju zakonski propisi:</p>
+          <ul>
+            <li>Podatke iz kontakt formi čuvamo do završetka komunikacije odnosno rješavanja vašeg upita.</li>
+            <li>Podatke za koje ste dali privolu čuvamo dok ne povučete privolu (odjavite se).</li>
+            <li>Analitički podaci (IP adrese u anonimiziranom obliku) čuvaju se u skladu s postavkama analitičkih alata (npr. 14 ili 26 mjeseci).</li>
+          </ul>
+        </div>
+
+        <!-- 7. Treće strane -->
+        <div class="legal-section-block">
+          <h2>7. Tko ima pristup vašim podacima (Treće strane)?</h2>
+          <p>Vaš kontakt i osobne podatke nikada nećemo dati trećoj strani bez vaše dozvole, osim u svrhu redovnog poslovanja. Za obradu osobnih podataka u naše ime možemo koristiti usluge pouzdanih poslovnih partnera (Izvršitelji obrade). Svi partneri pažljivo su odabrani i obvezuju se na strogo poštivanje GDPR-a.</p>
+          <p>Vaši podaci mogu biti podijeljeni sa:</p>
+          <ul>
+            <li>Pružateljima usluga web hostinga i održavanja stranice.</li>
+            <li>Pružateljima alata za analitiku (npr. Google LLC, ako pristanete na kolačiće).</li>
+            <li>Pružateljima usluga slanja e-mail pošte.</li>
+            <li>Nadležnim državnim tijelima isključivo na temelju valjanog zakonskog naloga.</li>
+          </ul>
+        </div>
+
+        <!-- 8. Sigurnost podataka -->
+        <div class="legal-section-block">
+          <h2>8. Sigurnost vaših podataka</h2>
+          <p>Provodimo odgovarajuće tehničke i organizacijske mjere kako bismo osigurali sigurnost vaših osobnih podataka te spriječili neovlašten pristup, gubitak ili uništenje. Naša web stranica koristi HTTPS certifikat (SSL/TLS enkripciju) kako bi komunikacija između vašeg preglednika i našeg poslužitelja bila zaštićena.</p>
+          <p><strong>O povredi osobnih podataka (Data Breach):</strong><br>
+          U slučaju povrede sigurnosti osobnih podataka iz naše baze koja bi mogla predstavljati visok rizik za vaša prava i slobode, obavijestit ćemo vas i nadležnu Agenciju za zaštitu osobnih podataka (AZOP) u roku od 72 sata, u skladu sa zakonskim obvezama.</p>
+        </div>
+
+        <!-- 9. Vaša prava -->
+        <div class="legal-section-block">
+          <h2>9. Vaša prava u vezi s osobnim podacima</h2>
+          <p>Sukladno GDPR-u i hrvatskom Zakonu o provedbi Opće uredbe o zaštiti podataka, u svakom trenutku imate sljedeća prava:</p>
+          <ul>
+            <li><strong>Pravo na pristup:</strong> Imate pravo tražiti potvrdu obrađujemo li vaše podatke te, ako da, dobiti pristup tim podacima.</li>
+            <li><strong>Pravo na ispravak:</strong> Možete zatražiti ispravak netočnih ili nepotpunih podataka.</li>
+            <li><strong>Pravo na brisanje ("Pravo na zaborav"):</strong> Možete tražiti brisanje vaših podataka ako više nisu potrebni za svrhu prikupljanja ili ako povučete privolu.</li>
+            <li><strong>Pravo na ograničenje obrade:</strong> U određenim situacijama možete tražiti da ograničimo obradu vaših podataka.</li>
+            <li><strong>Pravo na prigovor:</strong> Možete prigovoriti obradi podataka koja se temelji na našem legitimnom interesu.</li>
+            <li><strong>Pravo na prenosivost podataka:</strong> Možete tražiti da vam vaše podatke dostavimo u strukturiranom, uobičajeno upotrebljavanom i strojno čitljivom formatu.</li>
+            <li><strong>Pravo na povlačenje privole:</strong> Bilo kada se možete odjaviti i povući privolu za obradu podataka, bez utjecaja na zakonitost ranije obrade.</li>
+          </ul>
+          <p>Svoja prava možete ostvariti slanjem zahtjeva na našu e-mail adresu: <a href="mailto:info@algor.studio" class="legal-link">info@algor.studio</a>. Odgovorit ćemo vam u najkraćem mogućem roku, a najkasnije u roku od 30 dana.</p>
+        </div>
+
+        <!-- 10. Prigovor AZOP-u -->
+        <div class="legal-section-block">
+          <h2>10. Pravo na podnošenje pritužbe nadzornom tijelu</h2>
+          <p>Ako smatrate da je obrada vaših osobnih podataka u suprotnosti s Općom uredbom o zaštiti podataka (GDPR), imate pravo podnijeti pritužbu <strong>Agenciji za zaštitu osobnih podataka (AZOP)</strong>:</p>
+          <div class="legal-info-card">
+            <ul>
+              <li><strong>Nadležno tijelo:</strong> Agencija za zaštitu osobnih podataka (AZOP)</li>
+              <li><strong>Adresa:</strong> Selska cesta 136, 10000 Zagreb, Hrvatska</li>
+              <li><strong>E-mail:</strong> <a href="mailto:azop@azop.hr" class="legal-link">azop@azop.hr</a></li>
+              <li><strong>Web stranica:</strong> <a href="https://www.azop.hr" target="_blank" rel="noopener" class="legal-link">www.azop.hr ↗</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 11. Promjene -->
+        <div class="legal-section-block">
+          <h2>11. Promjene Politike privatnosti</h2>
+          <p>Zadržavamo pravo izmjene ove Politike privatnosti u bilo kojem trenutku u skladu sa zakonodavstvom ili razvojem poslovanja. Preporučujemo da povremeno provjeravate ovu stranicu kako biste bili informirani o eventualnim promjenama.</p>
+        </div>
+
       </div>
     </div>
   </main>
 
   <!-- Full Footer (Matching Index Page) -->
-  <footer class="site-footer" style="background: #0b0c10; color: #ffffff; padding: 80px 24px 40px;">
+  <footer class="site-footer" style="background: #050508; color: #ffffff; padding: 80px 24px 40px;">
     <div style="max-width: 1280px; margin: 0 auto;">
       <div class="footer-photo-credit-text" style="color: #888888; font-size: 13px; margin-bottom: 40px;">
         Sve fotografije na ovoj web stranici je producirao Algor studio.
