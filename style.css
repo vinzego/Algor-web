@@ -10886,22 +10886,60 @@ html, body {
   justify-content: center;
   text-align: center;
   flex: 1;
-  gap: 14px;
-  padding: 24px 0;
+  gap: 16px;
+  padding: 32px 12px 20px 12px;
+  box-sizing: border-box;
+}
+
+.sheet-success .modal-success-icon {
+  width: 64px !important;
+  height: 64px !important;
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border: 2px solid #10b981 !important;
+  color: #059669 !important;
+  font-size: 30px !important;
+  font-weight: 900 !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 8px auto !important;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25) !important;
 }
 
 .sheet-success h4 {
-  font-size: 22px !important;
-  font-weight: 800 !important;
-  color: #ffffff !important;
+  font-size: 24px !important;
+  font-weight: 850 !important;
+  color: #0f172a !important;
   margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .sheet-success-msg {
-  font-size: 14px !important;
-  color: #94a3b8 !important;
-  max-width: 340px;
-  line-height: 1.55;
+  font-size: 15px !important;
+  color: #334155 !important;
+  font-weight: 500 !important;
+  max-width: 380px;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+.sheet-success .sheet-submit-btn {
+  margin-top: 12px !important;
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  padding: 14px 36px !important;
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18) !important;
+  transition: all 0.25s ease !important;
+}
+
+.sheet-success .sheet-submit-btn:hover {
+  background-color: #000000 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28) !important;
 }
 
 /* Google Calendar Step Styling */
