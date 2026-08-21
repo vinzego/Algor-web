@@ -13,45 +13,33 @@
   <link rel="stylesheet" href="style.css?v=55.0.0">
 
   <style>
-    /* Specific styles for Web Development Subpage */
-    .web-page-wrapper {
-      width: 100%;
-      box-sizing: border-box;
-    }
-
+    /* Subpage specific styles */
     .web-feature-badge-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 32px;
+      margin-top: 30px;
     }
 
     .web-speed-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 16px;
+      padding: 7px 16px;
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 999px;
       font-family: "Geist Mono", monospace;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       color: #0f172a;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
 
-    .web-speed-badge .badge-val-green {
-      color: #10b981;
-      font-weight: 800;
-    }
-
-    .web-speed-badge .badge-val-blue {
-      color: #29ADFF;
-      font-weight: 800;
-    }
+    .web-speed-badge .badge-val-green { color: #10b981; font-weight: 800; }
+    .web-speed-badge .badge-val-blue { color: #29ADFF; font-weight: 800; }
 
     /* Comparison Section Grid */
     .web-compare-grid {
@@ -60,7 +48,7 @@
       gap: 32px;
       width: 100%;
       max-width: 1040px;
-      margin: 50px auto 0 auto;
+      margin: 48px auto 0 auto;
       box-sizing: border-box;
     }
 
@@ -69,7 +57,7 @@
       padding: 40px 36px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
       box-sizing: border-box;
     }
 
@@ -92,7 +80,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      padding: 4px 12px;
+      padding: 5px 12px;
       border-radius: 999px;
       width: fit-content;
     }
@@ -110,7 +98,7 @@
     }
 
     .compare-title-bad {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 800;
       color: #1e293b;
       margin: 0;
@@ -118,7 +106,7 @@
     }
 
     .compare-title-good {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 800;
       color: #ffffff;
       margin: 0;
@@ -131,38 +119,21 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .compare-list li {
       display: flex;
       align-items: flex-start;
       gap: 12px;
-      font-size: 14.5px;
+      font-size: 14px;
       line-height: 1.5;
     }
 
-    .compare-list-bad li {
-      color: #64748b;
-    }
-
-    .compare-list-bad .bad-icon {
-      color: #ef4444;
-      font-weight: bold;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
-
-    .compare-list-good li {
-      color: #cbd5e1;
-    }
-
-    .compare-list-good .good-icon {
-      color: #29ADFF;
-      font-weight: bold;
-      font-size: 16px;
-      flex-shrink: 0;
-    }
+    .compare-list-bad li { color: #64748b; }
+    .compare-list-bad .bad-icon { color: #ef4444; font-weight: bold; font-size: 15px; flex-shrink: 0; }
+    .compare-list-good li { color: #cbd5e1; }
+    .compare-list-good .good-icon { color: #29ADFF; font-weight: bold; font-size: 15px; flex-shrink: 0; }
 
     /* Pillars Bento Grid */
     .web-pillars-grid {
@@ -171,7 +142,7 @@
       gap: 28px;
       width: 100%;
       max-width: 1040px;
-      margin: 50px auto 0 auto;
+      margin: 48px auto 0 auto;
       box-sizing: border-box;
     }
 
@@ -194,28 +165,28 @@
     }
 
     .pillar-icon-wrap {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
       background: rgba(41, 173, 255, 0.1);
       color: #29ADFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26px;
+      font-size: 24px;
       border: 1px solid rgba(41, 173, 255, 0.25);
     }
 
     .pillar-title {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 750;
       color: #0f172a;
       margin: 0;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.3px;
     }
 
     .pillar-desc {
-      font-size: 14.5px;
+      font-size: 14px;
       color: #64748b;
       line-height: 1.6;
       margin: 0;
@@ -245,7 +216,7 @@
       gap: 20px;
       width: 100%;
       max-width: 1040px;
-      margin: 50px auto 0 auto;
+      margin: 48px auto 0 auto;
       box-sizing: border-box;
     }
 
@@ -253,7 +224,7 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 20px;
-      padding: 28px 24px;
+      padding: 28px 22px;
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -262,7 +233,7 @@
 
     .web-step-num {
       font-family: "Geist Mono", monospace;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       color: #29ADFF;
       background: rgba(41, 173, 255, 0.1);
@@ -272,7 +243,7 @@
     }
 
     .web-step-card h4 {
-      font-size: 17px;
+      font-size: 16.5px;
       font-weight: 700;
       color: #0f172a;
       margin: 0;
@@ -307,7 +278,7 @@
 </head>
 <body>
 
-  <!-- Floating Frosted Glass Navbar -->
+  <!-- Floating Capsule Navbar -->
   <header class="ultra-navbar">
     <a href="index.html" class="ultra-brand-logo">
       <span class="logo-accent-dot"></span>
@@ -329,7 +300,7 @@
         <a href="#prednosti" class="ultra-nav-link">Prednosti</a>
         <a href="#tehnologije" class="ultra-nav-link">Tehnologije</a>
         <a href="#proces" class="ultra-nav-link">Proces</a>
-        <a href="#paketi" class="ultra-nav-link">Cijene</a>
+        <a href="#pricing" class="ultra-nav-link">Cijene</a>
         <a href="karijere.html" class="ultra-nav-link">Karijere</a>
       </div>
 
@@ -370,7 +341,7 @@
         </div>
       </div>
 
-      <!-- Performance & SEO Badges Row -->
+      <!-- Performance Badges -->
       <div class="web-feature-badge-row">
         <div class="web-speed-badge">
           <span>⚡ PageSpeed:</span>
@@ -389,7 +360,6 @@
           <span class="badge-val-blue">Schema.org Spreman</span>
         </div>
       </div>
-
     </div>
 
     <!-- Trust Ticker Bar -->
@@ -546,11 +516,11 @@
     </div>
   </section>
 
-  <!-- 5. PAKETI I CIJENE IZRADE WEBA -->
-  <div class="pricing-section-wrapper" id="paketi">
-    <section class="full-width-pricing-section white-pricing-section">
+  <!-- 5. PAKETI I CIJENE IZRADE WEBA (EXACT MATCHING OBSIDIAN LUXURY GRID) -->
+  <div class="pricing-section-wrapper">
+    <section id="pricing" class="full-width-pricing-section white-pricing-section">
       <div class="info-header align-center">
-        <span class="section-badge">// PAKETI I INVESTICIJA</span>
+        <span class="section-badge">// PAKETI &amp; INVESTICIJA</span>
         <h2 class="info-title">Transparentne početne cijene za izradu weba</h2>
         <p class="info-subtitle text-muted">
           Jednokratna investicija u digitalni izlog koji radi za vas 24/7. Bez skrivenih troškova.
@@ -585,9 +555,9 @@
             <div class="sprint-time-divider">
               <span>Brza isporuka</span>
             </div>
-            <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Landing%20Stranicu" class="luxury-btn-dark" style="text-decoration: none; text-align: center; display: block;">
+            <button type="button" class="luxury-btn-dark" onclick="location.href='mailto:info@algorstudio.com?subject=Upit%20za%20Landing%20Stranicu'">
               <span>Zatraži Ponudu</span>
-            </a>
+            </button>
             <span class="guarantee-text">Uključeno 30 dana besplatne podrške</span>
           </div>
         </div>
@@ -618,9 +588,9 @@
             <div class="sprint-time-divider">
               <span>Preporučeno za tvrtke i usluge</span>
             </div>
-            <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Business%20Web" class="luxury-btn-glow" style="text-decoration: none; text-align: center; display: block;">
+            <button type="button" class="luxury-btn-glow" onclick="location.href='mailto:info@algorstudio.com?subject=Upit%20za%20Business%20Web'">
               <span>Zatraži Ponudu</span>
-            </a>
+            </button>
             <span class="guarantee-text">Uključeno 60 dana besplatne podrške</span>
           </div>
         </div>
@@ -651,16 +621,16 @@
             <div class="sprint-time-divider">
               <span>Potpuno prilagođeno rješenje</span>
             </div>
-            <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Custom%20Web%20Aplikaciju" class="luxury-btn-dark" style="text-decoration: none; text-align: center; display: block;">
+            <button type="button" class="luxury-btn-dark" onclick="location.href='mailto:info@algorstudio.com?subject=Upit%20za%20Custom%20Web%20Aplikaciju'">
               <span>Zatraži Ponudu</span>
-            </a>
+            </button>
             <span class="guarantee-text">Uključena garancija i održavanje</span>
           </div>
         </div>
 
       </div>
 
-      <!-- Trust Bar -->
+      <!-- High-Trust B2B Selling Bar -->
       <div class="pricing-trust-bar">
         <div class="trust-item">
           <span class="trust-icon">⚡</span>
@@ -676,97 +646,130 @@
         </div>
       </div>
 
+      <!-- Custom AI / Web Offer Link Banner -->
       <div class="custom-ai-offer-banner">
-        <p>Trebate redizajn postojećeg weba ili specifičnu procjenu? <a href="mailto:info@algorstudio.com?subject=Procjena%20projekta" class="custom-ai-link">Javite nam se ➔</a></p>
+        <p>Trebate redizajn postojećeg weba ili specifičnu procjenu? <button type="button" class="custom-ai-link" onclick="location.href='mailto:info@algorstudio.com?subject=Procjena%20projekta'">Javite nam se ➔</button></p>
       </div>
     </section>
   </div>
 
-  <!-- 6. FAQ SEKCIJA -->
-  <section class="plain-section" style="max-width: 860px; margin: 80px auto; padding: 40px 24px;">
+  <!-- 6. FAQ SEKCIJA (EXACT MATCHING ACCORDION) -->
+  <section id="faq" class="plain-section" style="margin-top: 40px;">
     <div class="info-header align-center">
-      <span class="section-badge">// ČESTA PITANJA</span>
-      <h2 class="info-title">Odgovori na ključna pitanja</h2>
+      <span class="section-badge">// ČESTO POSTAVLJANA PITANJA</span>
+      <h2 class="info-title">
+        Odgovori na ključna pitanja o izradi web stranica
+      </h2>
+      <p class="info-subtitle">
+        Sve što trebate znati o procesu izrade, rokovima, domenama i SEO optimizaciji.
+      </p>
     </div>
 
-    <div class="faq-list" style="margin-top: 40px; display: flex; flex-direction: column; gap: 16px;">
-      <details class="faq-item" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; cursor: pointer;">
-        <summary style="font-weight: 700; font-size: 16px; color: #0f172a; outline: none;">Koliko traje izrada web stranice?</summary>
-        <p style="margin-top: 12px; font-size: 14.5px; color: #64748b; line-height: 1.6;">Za jednostavnije landing stranice rok isporuke je obično 5 do 7 radnih dana. Za cjelovite višestranične poslovne web stranice rok je između 10 i 14 radnih dana od primitka svih potrebnih materijala.</p>
-      </details>
+    <div class="faq-single-column">
+      <div class="accordion-group">
+        <!-- FAQ 1 -->
+        <details class="disclosure" name="faq-group" open>
+          <summary>Koliko traje izrada web stranice?</summary>
+          <p>Za jednostavnije landing stranice rok isporuke je obično 5 do 7 radnih dana. Za cjelovite višestranične poslovne web stranice rok je između 10 i 14 radnih dana od primitka svih potrebnih materijala.</p>
+        </details>
 
-      <details class="faq-item" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; cursor: pointer;">
-        <summary style="font-weight: 700; font-size: 16px; color: #0f172a; outline: none;">Mogu li samostalno mijenjati tekstove i slike na stranici?</summary>
-        <p style="margin-top: 12px; font-size: 14.5px; color: #64748b; line-height: 1.6;">Da! Ako odaberete CMS ili no-code rješenje (ili prilagođeni admin panel), dobit ćete jednostavno sučelje gdje u par klikova možete mijenjati tekstove, cijene, slike i dodavati nove blog objave. Također vam osiguravamo kratku video edukaciju.</p>
-      </details>
+        <!-- FAQ 2 -->
+        <details class="disclosure" name="faq-group">
+          <summary>Mogu li samostalno mijenjati tekstove i slike na stranici?</summary>
+          <p>Da! Ako odaberete CMS ili no-code rješenje (ili prilagođeni admin panel), dobit ćete jednostavno sučelje gdje u par klikova možete mijenjati tekstove, cijene, slike i dodavati nove blog objave. Također vam osiguravamo kratku video edukaciju.</p>
+        </details>
 
-      <details class="faq-item" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; cursor: pointer;">
-        <summary style="font-weight: 700; font-size: 16px; color: #0f172a; outline: none;">Što je s domenom i hostingom?</summary>
-        <p style="margin-top: 12px; font-size: 14.5px; color: #64748b; line-height: 1.6;">Pomažemo vam u odabiru i registraciji domene (.hr, .com i sl.) te postavljamo web na brze i sigurne cloud poslužitelje sa besplatnim SSL sigurnosnim certifikatom.</p>
-      </details>
+        <!-- FAQ 3 -->
+        <details class="disclosure" name="faq-group">
+          <summary>Što je s domenom i hostingom?</summary>
+          <p>Pomažemo vam u odabiru i registraciji domene (.hr, .com i sl.) te postavljamo web na brze i sigurne cloud poslužitelje sa besplatnim SSL sigurnosnim certifikatom.</p>
+        </details>
 
-      <details class="faq-item" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; cursor: pointer;">
-        <summary style="font-weight: 700; font-size: 16px; color: #0f172a; outline: none;">Je li web optimiziran za Google (SEO)?</summary>
-        <p style="margin-top: 12px; font-size: 14.5px; color: #64748b; line-height: 1.6;">Apsolutno. Svaka stranica koju izrađujemo ima ugrađenu tehničku SEO optimizaciju: semantičke HTML tagove, meta opise, OpenGraph oznake, komprimirane slike nove generacije (WebP/AVIF) i prijavu na Google Search Console za brzo indeksiranje.</p>
-      </details>
+        <!-- FAQ 4 -->
+        <details class="disclosure" name="faq-group">
+          <summary>Je li web optimiziran za Google (SEO)?</summary>
+          <p>Apsolutno. Svaka stranica koju izrađujemo ima ugrađenu tehničku SEO optimizaciju: semantičke HTML tagove, meta opise, OpenGraph oznake, komprimirane slike nove generacije (WebP/AVIF) i prijavu na Google Search Console za brzo indeksiranje.</p>
+        </details>
+      </div>
     </div>
   </section>
 
-  <!-- 7. FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-top">
-        <div class="footer-brand-col">
-          <div class="footer-logo">
-            <span class="logo-accent-dot"></span>
-            <span class="logo-text">algor<span class="logo-ai-badge">studio</span></span>
+  <!-- 7. FOOTER SECTION (EXACT MATCHING CAPSULE FOOTER AS IN INDEX.HTML) -->
+  <section class="footer-wrapper">
+    <div class="footer-card-box">
+      <footer class="footer-inner">
+        
+        <!-- Photo Production Credit Text -->
+        <div class="footer-photo-credit-text">
+          Sve fotografije i web rješenja na ovoj stranici producira Algor studio.
+        </div>
+
+        <!-- Top Row: Branding and Links -->
+        <div class="footer-card-top">
+          
+          <!-- Left Column: Logo & Tagline -->
+          <div class="footer-logo-col">
+            <div class="footer-logo">
+              <span class="footer-logo-icon" style="color: #29ADFF;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
+                </svg>
+              </span>
+              <span class="footer-brand-title">ALGOR STUDIO</span>
+            </div>
+            <p class="footer-tagline">Marketing agencija, video produkcija, izrada weba i AI automatizacije za brzorastuće brendove.</p>
           </div>
-          <p class="footer-tagline">Marketing agencija, video produkcija, izrada weba i AI automatizacije za brzorastuće brendove.</p>
+          
+          <!-- Right Columns: Links -->
+          <div class="footer-links-grid">
+            <div class="footer-link-group">
+              <h4>Istraži</h4>
+              <ul>
+                <li><a href="index.html#about">O nama</a></li>
+                <li><a href="index.html#marketing">Usluge</a></li>
+                <li><a href="izrada-web-stranica.html" style="color: #29ADFF; font-weight: 700;">Izrada Weba</a></li>
+                <li><a href="index.html#portfolio">Projekti</a></li>
+                <li><a href="index.html#process">Proces</a></li>
+                <li><a href="index.html#pricing">Cjenik</a></li>
+                <li><a href="karijere.html">Karijere</a></li>
+              </ul>
+            </div>
+            
+            <div class="footer-link-group">
+              <h4>Društvene mreže</h4>
+              <ul>
+                <li><a href="https://x.com" target="_blank">X / Twitter</a></li>
+                <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-link-group">
+              <h4>Pravno</h4>
+              <ul>
+                <li><a href="politika-privatnosti.html">Politika privatnosti</a></li>
+                <li><a href="uvjeti-koristenja.html">Uvjeti korištenja</a></li>
+                <li><a href="kolacici.html">Politika kolačića</a></li>
+              </ul>
+            </div>
+          </div>
+          
         </div>
         
-        <div class="footer-links-grid">
-          <div class="footer-link-group">
-            <h4>Istraži</h4>
-            <ul>
-              <li><a href="index.html#about">O nama</a></li>
-              <li><a href="index.html#marketing">Usluge</a></li>
-              <li><a href="izrada-web-stranica.html" style="color: #29ADFF; font-weight: 700;">Izrada Weba</a></li>
-              <li><a href="index.html#portfolio">Projekti</a></li>
-              <li><a href="index.html#process">Proces</a></li>
-              <li><a href="index.html#pricing">Cjenik</a></li>
-              <li><a href="karijere.html">Karijere</a></li>
-            </ul>
+        <!-- Bottom Row: Copyright and Maker -->
+        <div class="footer-card-bottom">
+          <div class="footer-copy-text">
+            ©2026 Algor studio. Sva prava pridržana.
           </div>
-          
-          <div class="footer-link-group">
-            <h4>Društvene mreže</h4>
-            <ul>
-              <li><a href="https://x.com" target="_blank">X / Twitter</a></li>
-              <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
-              <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-              <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-            </ul>
-          </div>
-          
-          <div class="footer-link-group">
-            <h4>Pravno</h4>
-            <ul>
-              <li><a href="politika-privatnosti.html">Politika privatnosti</a></li>
-              <li><a href="uvjeti-koristenja.html">Uvjeti korištenja</a></li>
-              <li><a href="kolacici.html">Kolačići</a></li>
-            </ul>
+          <div class="footer-credit">
+            Izradio <a href="https://github.com" target="_blank">Francis</a> &bull; Pokreće <a href="#" style="color: #29ADFF; font-weight: 600;">Antigravity</a>
           </div>
         </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <div class="footer-copy">&copy; 2026 Algor studio. Sva prava pridržana.</div>
-        <div class="footer-credits">
-          Izradio Francis &bull; Pokreće <span style="color: #29ADFF; font-weight: 600;">Antigravity</span>
-        </div>
-      </div>
+        
+      </footer>
     </div>
-  </footer>
+  </section>
 
   <script src="script.js?v=42.0.0"></script>
 </body>
