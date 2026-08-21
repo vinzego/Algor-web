@@ -6632,10 +6632,16 @@ body {
    ============================================================== */
 .process-stack-section {
   width: 100% !important;
-  max-width: 1040px !important;
+  max-width: 840px !important;
   margin: 0 auto !important;
   padding: 80px 24px 120px 24px !important;
   box-sizing: border-box !important;
+}
+
+.process-stack-section > * {
+  max-width: 840px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .stacking-cards-container {
@@ -6643,8 +6649,8 @@ body {
   flex-direction: column !important;
   gap: 40px !important;
   width: 100% !important;
-  max-width: 1040px !important;
-  margin-top: 60px !important;
+  max-width: 840px !important;
+  margin-top: 50px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   position: relative !important;
@@ -6654,6 +6660,9 @@ body {
   position: sticky !important;
   top: calc(140px + (var(--stack-index, 1) - 1) * 35px) !important;
   width: 100% !important;
+  max-width: 840px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   border-radius: 28px !important;
   box-sizing: border-box !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
