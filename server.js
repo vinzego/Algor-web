@@ -25,7 +25,7 @@ if (process.env.NOTION_TOKEN && process.env.NOTION_DATABASE_ID) {
 // Helper function to append to CSV with UTF-8 BOM for Microsoft Excel compatibility
 function saveInquiryToCSV(data) {
   const fileExists = fs.existsSync(CSV_FILE);
-  const header = 'Datum i Vrijeme,Ime i Prezime,Tvrtka ili Web,E-mail,Mobitel,Odabrani Paket,Termin u Kalendaru\n';
+  const header = 'Datum i Vrijeme,Ime i Prezime,Tvrtka ili Web,E-mail,Mobitel,Odabrani Paket,Vrijednost (€),Izvor Stranica,Uređaj,Termin u Kalendaru\n';
   
   const timestamp = new Date().toLocaleString('hr-HR', { timeZone: 'Europe/Zagreb' });
   const escapeCsv = (str) => `"${(str || '').toString().replace(/"/g, '""')}"`;
@@ -37,6 +37,9 @@ function saveInquiryToCSV(data) {
     escapeCsv(data.email),
     escapeCsv(data.phone),
     escapeCsv(data.package),
+    escapeCsv(data.estimatedValue || 0),
+    escapeCsv(data.source || 'Web'),
+    escapeCsv(data.device || 'Desktop'),
     escapeCsv(data.calendarSlot || 'Nije odabrano')
   ].join(',') + '\n';
 
@@ -45,6 +48,20 @@ function saveInquiryToCSV(data) {
   } else {
     fs.appendFileSync(CSV_FILE, row, 'utf8');
   }
+}
+
+function getEstimatedDealValue(pkg) {
+  if (!pkg) return 0;
+  const p = pkg.toLowerCase();
+  if (p.includes('490')) return 490;
+  if (p.includes('990')) return 990;
+  if (p.includes('1850') || p.includes('1.850') || p.includes('1,850')) return 1850;
+  if (p.includes('690')) return 690;
+  if (p.includes('1250') || p.includes('1.250') || p.includes('1,250')) return 1250;
+  if (p.includes('2150') || p.includes('2.150') || p.includes('2,150')) return 2150;
+  if (p.includes('instagram') || p.includes('oglas')) return 500;
+  if (p.includes('audit')) return 0;
+  return 0;
 }
 
 function normalizeNotionPackage(pkg) {
@@ -71,6 +88,9 @@ async function saveInquiryToNotion(data) {
   }
 
   const cleanPackage = normalizeNotionPackage(data.package);
+  const estimatedValue = getEstimatedDealValue(data.package);
+  const source = data.source || 'Izrada Web Stranica';
+  const device = data.device || 'Desktop';
 
   const properties = {
     'Ime i prezime': {
@@ -90,6 +110,15 @@ async function saveInquiryToNotion(data) {
     },
     'Paket': {
       select: { name: cleanPackage }
+    },
+    'Izvor': {
+      select: { name: source }
+    },
+    'Uređaj': {
+      select: { name: device }
+    },
+    'Vrijednost (€)': {
+      number: estimatedValue
     }
   };
 
@@ -108,7 +137,7 @@ async function saveInquiryToNotion(data) {
           {
             type: 'text',
             text: {
-              content: `📋 Detalji upita s weba:\n• Ime i prezime: ${data.name || '-'}\n• Tvrtka / Web: ${data.company || '-'}\n• Email: ${data.email || '-'}\n• Mobitel: ${data.phone || '-'}\n• Odabrani paket: ${data.package || '-'}\n• Napomena / poruka: ${data.calendarSlot || 'Nema napomene'}`
+              content: `📋 Detalji upita s weba:\n• Ime i prezime: ${data.name || '-'}\n• Tvrtka / Web: ${data.company || '-'}\n• Email: ${data.email || '-'}\n• Mobitel: ${data.phone || '-'}\n• Odabrani paket: ${data.package || '-'}\n• Procijenjena vrijednost: ${estimatedValue} €\n• Izvor stranice: ${source}\n• Uređaj: ${device}\n• Napomena / poruka: ${data.calendarSlot || 'Nema napomene'}`
             }
           }
         ]
@@ -126,15 +155,16 @@ async function saveInquiryToNotion(data) {
 // API endpoint to submit inquiries
 app.post('/api/contact', async (req, res) => {
   try {
-    const { name, company, email, phone, package: pkg, calendarSlot } = req.body;
+    const { name, company, email, phone, package: pkg, calendarSlot, source, device } = req.body;
+    const estimatedValue = getEstimatedDealValue(pkg);
     
     // 1. Save to CSV backup
-    saveInquiryToCSV({ name, company, email, phone, package: pkg, calendarSlot });
+    saveInquiryToCSV({ name, company, email, phone, package: pkg, calendarSlot, source, device, estimatedValue });
 
     // 2. Save directly to Notion database
     try {
-      await saveInquiryToNotion({ name, company, email, phone, package: pkg, calendarSlot });
-      console.log(`✓ Upit uspješno poslan u Notion [Algor upiti] za: ${name}`);
+      await saveInquiryToNotion({ name, company, email, phone, package: pkg, calendarSlot, source, device, estimatedValue });
+      console.log(`✓ Upit uspješno poslan u Notion [Algor upiti]: ${name} | ${pkg} (${estimatedValue} €) | ${source} | ${device}`);
     } catch (notionErr) {
       console.error('Greška pri spremanju u Notion:', notionErr.message);
     }

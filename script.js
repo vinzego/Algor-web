@@ -459,12 +459,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function detectInquirySource() {
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('izrada-web-stranica')) return 'Izrada Web Stranica';
+    if (path.includes('karijere')) return 'Karijere';
+    return 'Marketing & AI (Naslovna)';
+  }
+
+  function detectUserDevice() {
+    return (window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+      ? 'Mobitel'
+      : 'Desktop';
+  }
+
   function sendInquiryToBackend(data) {
+    const payload = {
+      ...data,
+      source: data.source || detectInquirySource(),
+      device: data.device || detectUserDevice()
+    };
+
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    }).catch(err => console.log('CSV save:', err));
+      body: JSON.stringify(payload)
+    }).catch(err => console.log('Inquiry sync error:', err));
   }
 
   // 11. Footer Inline Contact Form Submission
@@ -477,8 +496,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = document.getElementById('footerName').value;
       const company = document.getElementById('footerCompany').value;
       const email = document.getElementById('footerEmail').value;
-      const phone = document.getElementById('footerPhone').value;
-      const pkg = document.getElementById('footerPackage').value;
+      const phoneInput = document.getElementById('footerPhone');
+      const phone = phoneInput ? phoneInput.value : '';
+      const pkgInput = document.getElementById('footerPackage');
+      const pkg = pkgInput ? pkgInput.value : 'Upit s podnožja';
+      const msgInput = document.getElementById('footerMessage');
+      const msg = msgInput ? msgInput.value : '';
       const submitBtn = footerContactForm.querySelector('.footer-form-submit-btn');
 
       sendInquiryToBackend({
@@ -487,7 +510,8 @@ document.addEventListener('DOMContentLoaded', () => {
         email: email,
         phone: phone,
         package: pkg,
-        calendarSlot: 'Upit s podnožja'
+        calendarSlot: msg || 'Upit s podnožja',
+        source: 'Podnožje (Footer Forma)'
       });
 
       if (submitBtn) {
