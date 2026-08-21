@@ -54,32 +54,33 @@ async function saveInquiryToNotion(data) {
     return;
   }
 
+  const titleContent = `${data.name || 'Novi upit'} • ${data.package || 'Web upit'}`;
   const properties = {
-    'Ime i prezime': {
-      title: [{ text: { content: data.name || 'Nije navedeno' } }]
+    'Name': {
+      title: [{ text: { content: titleContent } }]
+    },
+    'Ime': {
+      rich_text: [{ text: { content: data.name || '-' } }]
     },
     'Email': {
-      email: data.email || ''
+      email: data.email || null
     },
-    'Tvrtka/web': {
-      rich_text: [{ text: { content: data.company || '-' } }]
+    'Projekt': {
+      rich_text: [{ text: { content: `${data.package || 'Opći upit'} • ${data.company || '-'}` } }]
     },
-    'Mobitel': {
-      phone_number: data.phone || ''
+    'Poruka': {
+      rich_text: [{ text: { content: `Mobitel: ${data.phone || '-'} | Napomena: ${data.calendarSlot || 'Izravan upit'}` } }]
     },
-    'Datum upita': {
-      date: { start: new Date().toISOString() }
+    'Datum': {
+      date: { start: new Date().toISOString().split('T')[0] }
+    },
+    'Status': {
+      status: { name: 'Novi upit' }
     }
   };
 
-  if (data.package) {
-    properties['Paket'] = {
-      select: { name: data.package }
-    };
-  }
-
   const children = [];
-  if (data.calendarSlot) {
+  if (data.company || data.phone || data.calendarSlot) {
     children.push({
       object: 'block',
       type: 'paragraph',
@@ -87,7 +88,7 @@ async function saveInquiryToNotion(data) {
         rich_text: [
           {
             type: 'text',
-            text: { content: `Termin / Napomena: ${data.calendarSlot}` }
+            text: { content: `Ime: ${data.name || '-'}\nTvrtka: ${data.company || '-'}\nEmail: ${data.email || '-'}\nMobitel: ${data.phone || '-'}\nPaket: ${data.package || '-'}\nNapomena: ${data.calendarSlot || '-'}` }
           }
         ]
       }
