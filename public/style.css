@@ -6830,14 +6830,14 @@ body {
 .stack-card-desc {
   font-family: 'Inter', sans-serif !important;
   font-size: 15px !important;
-  line-height: 1.6 !important;
+  line-height: 1.65 !important;
   margin: 0 0 20px 0 !important;
 }
 
-.stack-card-1 .stack-card-desc { color: #4b5563 !important; }
-.stack-card-2 .stack-card-desc { color: #9ca3af !important; }
-.stack-card-3 .stack-card-desc { color: #475569 !important; }
-.stack-card-4 .stack-card-desc { color: #94a3b8 !important; }
+.stack-card-1 .stack-card-desc { color: #1e293b !important; font-weight: 450 !important; }
+.stack-card-2 .stack-card-desc { color: #f1f5f9 !important; font-weight: 450 !important; }
+.stack-card-3 .stack-card-desc { color: #1e293b !important; font-weight: 450 !important; }
+.stack-card-4 .stack-card-desc { color: #f1f5f9 !important; font-weight: 450 !important; }
 
 .stack-feature-list {
   list-style: none !important;
@@ -6853,13 +6853,13 @@ body {
   align-items: center !important;
   gap: 10px !important;
   font-size: 14px !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
-.stack-card-1 .stack-feature-list li { color: #1f2937 !important; }
-.stack-card-2 .stack-feature-list li { color: #e5e7eb !important; }
+.stack-card-1 .stack-feature-list li { color: #0f172a !important; }
+.stack-card-2 .stack-feature-list li { color: #ffffff !important; }
 .stack-card-3 .stack-feature-list li { color: #0f172a !important; }
-.stack-card-4 .stack-feature-list li { color: #e2e8f0 !important; }
+.stack-card-4 .stack-feature-list li { color: #ffffff !important; }
 
 .feat-check {
   display: inline-flex !important;
