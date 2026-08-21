@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Click delegation for ALL package cards and CTA buttons across the website
   document.addEventListener('click', (e) => {
     const cardEl = e.target.closest('.price-card, .luxury-card');
-    const ctaBtn = e.target.closest('.package-cta-btn, .ig-ad-cta-banner, .price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn, .btn-lime, .btn-primary, .hero-cta-btn, .luxury-btn-dark, .luxury-btn-glow');
+    const ctaBtn = e.target.closest('.package-cta-btn, .ig-ad-cta-banner, .price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn, .btn-lime, .btn-primary, .hero-cta-btn, .luxury-btn-dark, .luxury-btn-glow, .figma-cta-btn');
 
     if (cardEl || ctaBtn) {
       const targetBtn = ctaBtn || e.target.closest('button, a');
@@ -391,15 +391,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const targetCard = cardEl || (ctaBtn ? ctaBtn.closest('.price-card, .bento-ref-card, .fit-card') : null);
 
-      if (ctaBtn && ctaBtn.classList.contains('ig-ad-cta-banner')) {
+      if (ctaBtn && ctaBtn.classList.contains('figma-cta-btn')) {
+        title = 'Izrada Web Stranice';
+        priceText = 'Besplatna Procjena';
+      } else if (ctaBtn && ctaBtn.classList.contains('ig-ad-cta-banner')) {
         title = 'Ciljani Instagram Oglas';
         priceText = 'Lokacijska Produkcija & Ads';
+      } else if (ctaBtn && ctaBtn.classList.contains('custom-ai-link')) {
+        title = 'Procjena Projekta / Redizajn';
+        priceText = 'Custom Rješenje';
       } else if (targetCard) {
         const titleEl = targetCard.querySelector('h3');
         const priceValEl = targetCard.querySelector('.price-val, .price-amount');
+        const pricePerEl = targetCard.querySelector('.price-per');
         if (titleEl) title = titleEl.textContent.trim();
         if (priceValEl) {
-          priceText = `${priceValEl.textContent.trim()} €/mj.`;
+          const per = pricePerEl ? pricePerEl.textContent.trim() : 'jednokratno';
+          priceText = `${priceValEl.textContent.trim()} € (${per})`;
         } else {
           priceText = 'Po dogovoru';
         }
