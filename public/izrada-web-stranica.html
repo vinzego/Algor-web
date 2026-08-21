@@ -47,7 +47,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 32px;
       width: 100%;
-      max-width: 1060px;
+      max-width: 1240px;
       margin: 48px auto 0 auto;
       box-sizing: border-box;
     }
@@ -136,22 +136,22 @@
     .compare-list-good .good-icon { color: #29ADFF; font-weight: bold; font-size: 15px; flex-shrink: 0; }
 
     /* =========================================================
-       ASYMMETRICAL 2-ROW BENTO GRID (2 CARD SIZES: WIDE & 1:1)
+       EXPANDED ASYMMETRICAL BENTO GRID (WIDER DESKTOP CARDS)
        ========================================================= */
     .tech-bento-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 24px;
+      gap: 28px;
       width: 100%;
-      max-width: 1080px;
-      margin: 48px auto 0 auto;
+      max-width: 1280px;
+      margin: 50px auto 0 auto;
       box-sizing: border-box;
       align-items: stretch;
     }
 
     .bento-tech-card {
       box-sizing: border-box;
-      border-radius: 28px;
+      border-radius: 30px;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
       position: relative;
       overflow: hidden;
@@ -161,37 +161,37 @@
     }
 
     .bento-tech-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-5px);
     }
 
     /* ROW 1: Left = Wide (7 cols), Right = 1:1 (5 cols) */
     .bento-row1-wide {
       grid-column: span 7;
-      background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.15) 0%, transparent 60%), #0d1017;
-      border: 1.5px solid rgba(41, 173, 255, 0.35);
-      padding: 36px 36px;
+      background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.16) 0%, transparent 60%), #0d1017;
+      border: 1.5px solid rgba(41, 173, 255, 0.38);
+      padding: 42px 42px;
       color: #ffffff;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 30px rgba(41, 173, 255, 0.08);
-      min-height: 380px;
+      min-height: 400px;
     }
 
     .bento-row1-wide:hover {
-      border-color: rgba(41, 173, 255, 0.6);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 45px rgba(41, 173, 255, 0.15);
+      border-color: rgba(41, 173, 255, 0.65);
+      box-shadow: 0 26px 65px rgba(0, 0, 0, 0.5), 0 0 45px rgba(41, 173, 255, 0.18);
     }
 
     .bento-row1-square {
       grid-column: span 5;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      padding: 36px 32px;
+      padding: 42px 38px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-      min-height: 380px;
+      min-height: 400px;
     }
 
     .bento-row1-square:hover {
       border-color: #cbd5e1;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     }
 
     /* ROW 2: Left = 1:1 (5 cols), Right = Wide (7 cols) */
@@ -199,28 +199,28 @@
       grid-column: span 5;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      padding: 36px 32px;
+      padding: 42px 38px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-      min-height: 380px;
+      min-height: 400px;
     }
 
     .bento-row2-square:hover {
       border-color: #cbd5e1;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     }
 
     .bento-row2-wide {
       grid-column: span 7;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      padding: 36px 36px;
+      padding: 42px 42px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-      min-height: 380px;
+      min-height: 400px;
     }
 
     .bento-row2-wide:hover {
       border-color: #cbd5e1;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     }
 
     /* Bento Internal Layout Elements */
@@ -228,19 +228,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .bento-badge-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 999px;
       font-family: "Geist Mono", monospace;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -262,31 +262,31 @@
 
     .bento-stat-highlight {
       font-family: "Geist Mono", monospace;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
       color: #10b981;
       background: rgba(16, 185, 129, 0.12);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 999px;
     }
 
     .bento-connect-badge {
       font-family: "Geist Mono", monospace;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 600;
       color: #29ADFF;
     }
 
     .bento-content-split {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
       align-items: center;
     }
 
     .bento-text-area h3 {
-      font-size: 21px;
+      font-size: 23px;
       font-weight: 800;
       margin: 0 0 10px 0;
       letter-spacing: -0.4px;
@@ -300,16 +300,16 @@
     .bento-row1-square h3,
     .bento-row2-square h3 {
       color: #0f172a;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
-      margin: 0 0 8px 0;
-      letter-spacing: -0.3px;
+      margin: 0 0 10px 0;
+      letter-spacing: -0.4px;
     }
 
     .bento-text-area p {
-      font-size: 13.5px;
-      line-height: 1.55;
-      margin: 0 0 16px 0;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 18px 0;
     }
 
     .bento-row1-wide .bento-text-area p {
@@ -320,23 +320,23 @@
     .bento-row1-square p,
     .bento-row2-square p {
       color: #64748b;
-      font-size: 13.5px;
-      line-height: 1.55;
-      margin: 0 0 16px 0;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 18px 0;
     }
 
     .bento-icon-circle {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
       background: rgba(41, 173, 255, 0.1);
       color: #29ADFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 24px;
       border: 1px solid rgba(41, 173, 255, 0.25);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .pillar-tags-row {
@@ -347,12 +347,12 @@
 
     .code-tag-pill {
       font-family: "Geist Mono", monospace;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
       background: #f1f5f9;
       color: #334155;
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 5px 12px;
+      border-radius: 8px;
     }
 
     .code-tag-pill.dark-pill {
@@ -365,24 +365,24 @@
     .bento-mini-code-window {
       background: #06070a;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
-      padding: 14px 16px;
+      border-radius: 18px;
+      padding: 18px 20px;
       font-family: "Geist Mono", monospace;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
     .code-window-header {
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 10px;
-      padding-bottom: 6px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .code-dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
     }
     .code-dot.red { background: #ef4444; }
@@ -397,8 +397,8 @@
 
     .code-snippet-body {
       margin: 0;
-      font-size: 11.5px;
-      line-height: 1.55;
+      font-size: 12px;
+      line-height: 1.6;
       color: #cbd5e1;
       overflow-x: auto;
     }
@@ -414,22 +414,22 @@
     .bento-flow-visual {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 14px 16px;
+      border-radius: 18px;
+      padding: 16px 18px;
     }
 
     .flow-pill-step {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 7px 12px;
-      font-size: 12.5px;
+      border-radius: 12px;
+      padding: 9px 14px;
+      font-size: 13px;
       font-weight: 600;
       color: #1e293b;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
@@ -442,15 +442,15 @@
     }
 
     .flow-pill-step .step-num {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       border-radius: 50%;
       background: #0f172a;
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10.5px;
+      font-size: 11px;
       font-family: "Geist Mono", monospace;
       font-weight: 700;
     }
@@ -462,7 +462,7 @@
 
     .flow-arrow-down {
       text-align: center;
-      font-size: 10px;
+      font-size: 11px;
       color: #94a3b8;
       margin: -4px 0;
     }
@@ -473,7 +473,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
       width: 100%;
-      max-width: 1060px;
+      max-width: 1280px;
       margin: 48px auto 0 auto;
       box-sizing: border-box;
     }
@@ -482,7 +482,7 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 20px;
-      padding: 28px 22px;
+      padding: 30px 24px;
       display: flex;
       flex-direction: column;
       gap: 14px;
@@ -501,7 +501,7 @@
     }
 
     .web-step-card h4 {
-      font-size: 16.5px;
+      font-size: 17px;
       font-weight: 700;
       color: #0f172a;
       margin: 0;
@@ -509,7 +509,7 @@
     }
 
     .web-step-card p {
-      font-size: 13px;
+      font-size: 13.5px;
       color: #64748b;
       line-height: 1.55;
       margin: 0;
@@ -648,7 +648,7 @@
   </main>
 
   <!-- 2. USPOREDBA: KORISNIČKO ISKUSTVO & BRZINA -->
-  <section id="prednosti" class="plain-section" style="max-width: 1060px; margin: 60px auto; padding: 40px 24px;">
+  <section id="prednosti" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// ZAŠTO CUSTOM WEB</span>
       <h2 class="info-title">Zašto spori predlošci gube novac, a brzi web donosi kupce</h2>
@@ -684,8 +684,8 @@
     </div>
   </section>
 
-  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (ASYMMETRICAL 2-ROW BENTO GRID) -->
-  <section id="tehnologije" class="plain-section" style="max-width: 1080px; margin: 60px auto; padding: 40px 24px;">
+  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (WIDER ASYMMETRICAL 2-ROW BENTO GRID) -->
+  <section id="tehnologije" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// TEHNOLOGIJE &amp; METODOLOGIJA</span>
       <h2 class="info-title">Kombinacija čistog koda i modernog dizajna</h2>
@@ -797,7 +797,7 @@
   </section>
 
   <!-- 4. PROCES IZRADE U 4 KORAKA -->
-  <section id="proces" class="plain-section" style="max-width: 1060px; margin: 60px auto; padding: 40px 24px;">
+  <section id="proces" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// KAKO RADIMO</span>
       <h2 class="info-title">Jednostavan proces od ideje do lansiranja</h2>
