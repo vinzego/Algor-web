@@ -691,6 +691,56 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.appendChild(banner);
     }
 
+    // Helper functions for real browser cookies
+    const setCookie = (name, value, days) => {
+      let expires = "";
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+    };
+
+    const getCookie = (name) => {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    };
+
+    const applyConsent = (type) => {
+      // Store in both localStorage and real browser cookie for 365 days
+      localStorage.setItem('algor_cookie_consent', type);
+      setCookie('algor_cookie_consent', type, 365);
+      
+      // Dispatch event for analytics / scripts to listen to
+      window.dispatchEvent(new CustomEvent('algorCookieConsent', { detail: { consent: type } }));
+
+      // Google Consent Mode v2 support (if gtag exists)
+      if (typeof window.gtag === 'function') {
+        if (type === 'all') {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+          });
+        } else {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
+      }
+    };
+
     const showBanner = () => {
       setTimeout(() => {
         banner.classList.add('visible');
@@ -701,9 +751,11 @@ document.addEventListener("DOMContentLoaded", () => {
       banner.classList.remove('visible');
     };
 
-    const consent = localStorage.getItem('algor_cookie_consent');
+    const consent = localStorage.getItem('algor_cookie_consent') || getCookie('algor_cookie_consent');
     if (!consent) {
       showBanner();
+    } else {
+      applyConsent(consent);
     }
 
     const btnAccept = document.getElementById('cookie-btn-accept');
@@ -711,14 +763,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnAccept) {
       btnAccept.addEventListener('click', () => {
-        localStorage.setItem('algor_cookie_consent', 'all');
+        applyConsent('all');
         hideBanner();
       });
     }
 
     if (btnNecessary) {
       btnNecessary.addEventListener('click', () => {
-        localStorage.setItem('algor_cookie_consent', 'necessary');
+        applyConsent('necessary');
         hideBanner();
       });
     }
