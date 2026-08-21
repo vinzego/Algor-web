@@ -957,6 +957,113 @@
       border-color: rgba(41, 173, 255, 0.6);
     }
 
+    /* Korak 01: Brand Blue #29ADFF */
+    .zigzag-blue-card {
+      background: #29ADFF !important;
+      border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+      color: #06070a !important;
+      box-shadow: 0 16px 45px rgba(41, 173, 255, 0.35), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    .zigzag-blue-card h4 {
+      color: #06070a !important;
+      font-weight: 850 !important;
+    }
+
+    .zigzag-blue-card p {
+      color: #082136 !important;
+      font-weight: 500 !important;
+    }
+
+    .zigzag-blue-card .zigzag-step-badge {
+      background: #ffffff !important;
+      color: #0284c7 !important;
+      border-color: rgba(0, 0, 0, 0.12) !important;
+    }
+
+    .zigzag-blue-card .zigzag-mini-tag {
+      background: rgba(255, 255, 255, 0.5) !important;
+      color: #06070a !important;
+      border: 1px solid rgba(255, 255, 255, 0.7) !important;
+      font-weight: 700 !important;
+      backdrop-filter: blur(4px);
+    }
+
+    .zigzag-blue-card .card-line-anchor-node {
+      background: #06070a !important;
+      border-color: #ffffff !important;
+    }
+
+    /* Korak 02: Warm Golden Yellow #FFD166 */
+    .zigzag-yellow-card {
+      background: #FFD166 !important;
+      border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+      color: #1a1000 !important;
+      box-shadow: 0 16px 45px rgba(255, 209, 102, 0.3), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+    }
+
+    .zigzag-yellow-card h4 {
+      color: #1a1000 !important;
+      font-weight: 850 !important;
+    }
+
+    .zigzag-yellow-card p {
+      color: #3b2800 !important;
+      font-weight: 500 !important;
+    }
+
+    .zigzag-yellow-card .zigzag-step-badge {
+      background: #ffffff !important;
+      color: #1a1000 !important;
+      border-color: rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .zigzag-yellow-card .zigzag-mini-tag {
+      background: rgba(0, 0, 0, 0.08) !important;
+      color: #1a1000 !important;
+      border: 1px solid rgba(0, 0, 0, 0.12) !important;
+      font-weight: 700 !important;
+    }
+
+    .zigzag-yellow-card .card-line-anchor-node {
+      background: #1a1000 !important;
+      border-color: #ffd166 !important;
+    }
+
+    /* Korak 03: Obsidian Black #0D1017 */
+    .zigzag-black-card {
+      background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.16) 0%, transparent 60%), #0D1017 !important;
+      border: 1.5px solid rgba(41, 173, 255, 0.38) !important;
+      color: #ffffff !important;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35) !important;
+    }
+
+    .zigzag-black-card h4 {
+      color: #ffffff !important;
+      font-weight: 850 !important;
+    }
+
+    .zigzag-black-card p {
+      color: #cbd5e1 !important;
+    }
+
+    .zigzag-black-card .zigzag-step-badge {
+      background: rgba(41, 173, 255, 0.16) !important;
+      color: #29ADFF !important;
+      border-color: rgba(41, 173, 255, 0.4) !important;
+    }
+
+    .zigzag-black-card .zigzag-mini-tag {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: #cbd5e1 !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    }
+
+    .zigzag-black-card .card-line-anchor-node {
+      background: #0f172a !important;
+      border-color: #29ADFF !important;
+    }
+
     .card-line-anchor-node {
       position: absolute;
       width: 24px;
@@ -1828,9 +1935,9 @@
         <polygon points="620,745 635,760 618,765" fill="#29ADFF" />
       </svg>
 
-      <!-- KORAK 01: LIJEVO -->
+      <!-- KORAK 01: LIJEVO (Brand Blue #29ADFF) -->
       <div class="zigzag-step-row align-left">
-        <div class="zigzag-card">
+        <div class="zigzag-card zigzag-blue-card">
           <span class="card-line-anchor-node"></span>
           <div class="zigzag-card-header">
             <span class="zigzag-step-badge"><span>●</span> KORAK 01</span>
@@ -1846,9 +1953,9 @@
         </div>
       </div>
 
-      <!-- KORAK 02: DESNO -->
+      <!-- KORAK 02: DESNO (Warm Golden Yellow #FFD166) -->
       <div class="zigzag-step-row align-right">
-        <div class="zigzag-card">
+        <div class="zigzag-card zigzag-yellow-card">
           <span class="card-line-anchor-node"></span>
           <div class="zigzag-card-header">
             <span class="zigzag-step-badge"><span>●</span> KORAK 02</span>
@@ -1864,9 +1971,9 @@
         </div>
       </div>
 
-      <!-- KORAK 03: LIJEVO -->
+      <!-- KORAK 03: LIJEVO (Obsidian Black #0D1017) -->
       <div class="zigzag-step-row align-left">
-        <div class="zigzag-card">
+        <div class="zigzag-card zigzag-black-card">
           <span class="card-line-anchor-node"></span>
           <div class="zigzag-card-header">
             <span class="zigzag-step-badge"><span>●</span> KORAK 03</span>
