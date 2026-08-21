@@ -653,7 +653,7 @@
     </section>
   </div>
 
-  <!-- 6. FAQ SEKCIJA (EXACT MATCHING ACCORDION) -->
+  <!-- 6. FAQ SECTION (Plain Gray Background) -->
   <section id="faq" class="plain-section" style="margin-top: 40px;">
     <div class="info-header align-center">
       <span class="section-badge">// ČESTO POSTAVLJANA PITANJA</span>
@@ -694,14 +694,55 @@
     </div>
   </section>
 
-  <!-- 7. FOOTER SECTION (EXACT MATCHING CAPSULE FOOTER AS IN INDEX.HTML) -->
-  <section class="footer-wrapper">
-    <div class="footer-card-box">
-      <footer class="footer-inner">
+  <!-- 7. FOOTER SECTION (EXACT MATCHING AS IN INDEX.HTML) -->
+  <section class="footer-hero-and-card-section" style="margin-top: 60px;">
+    
+    <!-- Conversion Block (Contact Form) -->
+    <div class="footer-conversion-area">
+      <h2 class="footer-conv-title">
+        Prestanite gubiti posjetitelje na sporim stranicama
+      </h2>
+      <p class="footer-conv-subtitle">
+        Izradimo brz i moderan web koji pretvara posjete u upite, pozive i stvaran prihod.
+      </p>
+      
+      <!-- Contact Form -->
+      <form id="footerContactForm" class="footer-contact-form">
+        <div class="footer-form-grid-box">
+          <div class="footer-inputs-top-row">
+            <div class="footer-form-field">
+              <input type="text" id="footerName" name="name" placeholder="Ime i prezime *" required />
+            </div>
+            <div class="footer-form-field">
+              <input type="text" id="footerCompany" name="company" placeholder="Tvrtka / Djelatnost *" required />
+            </div>
+            <div class="footer-form-field">
+              <input type="email" id="footerEmail" name="email" placeholder="E-mail adresa *" required />
+            </div>
+          </div>
+          
+          <div class="footer-textarea-row">
+            <textarea id="footerMessage" name="message" rows="3" placeholder="Opišite nam ukratko što vam je potrebno (novi web, redizajn, landing stranica, web shop...)..."></textarea>
+          </div>
+
+          <div class="footer-submit-row">
+            <button type="submit" class="footer-form-submit-btn btn-pill-dark">
+              <span>Zatraži Ponudu</span>
+              <span class="btn-arrow-circle">↗</span>
+            </button>
+          </div>
+        </div>
+        <div id="footerFormMessage" class="footer-form-msg" style="display: none;"></div>
+      </form>
+    </div>
+
+    <!-- Bottom Part: Black Card (Nested) -->
+    <div class="footer-card-wrapper">
+      <footer class="brand-footer-card">
         
         <!-- Photo Production Credit Text -->
         <div class="footer-photo-credit-text">
-          Sve fotografije i web rješenja na ovoj stranici producira Algor studio.
+          Sve web stranice i fotografije na ovoj domeni producira Algor studio.
         </div>
 
         <!-- Top Row: Branding and Links -->
@@ -710,7 +751,7 @@
           <!-- Left Column: Logo & Tagline -->
           <div class="footer-logo-col">
             <div class="footer-logo">
-              <span class="footer-logo-icon" style="color: #29ADFF;">
+              <span class="footer-logo-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
                 </svg>
