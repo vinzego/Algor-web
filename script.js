@@ -679,7 +679,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <span>Privatnost &amp; Kolačići</span>
             </div>
             <p class="cookie-banner-text">
-              Koristimo kolačiće kako bismo osigurali ispravan rad stranice, analizirali posjećenost i pružili najbolje korisničko iskustvo. Više detalja saznajte u našoj <a href="kolacici.html" class="cookie-link">Politici kolačića</a>.
+              Ova web stranica koristi kolačiće i srodne tehnologije za optimizaciju performansi, analitiku posjećenosti i unaprjeđenje korisničkog iskustva. Klikom na „Prihvati sve” pristajete na obradu podataka u navedene svrhe. Saznajte više u našoj <a href="kolacici.html" class="cookie-link">Politici kolačića</a>.
             </p>
           </div>
           <div class="cookie-banner-actions">
