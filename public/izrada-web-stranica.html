@@ -912,13 +912,13 @@
 
     .process-drawn-line-svg {
       position: absolute;
-      top: 40px;
-      bottom: 40px;
+      top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% - 80px);
+      height: 100%;
       pointer-events: none;
       z-index: 1;
+      overflow: visible;
     }
 
     .zigzag-step-row {
@@ -1305,7 +1305,7 @@
         padding-right: 0;
       }
       .zigzag-process-container {
-        gap: 44px;
+        gap: 52px;
         position: relative;
         padding-left: 0;
         margin: 40px auto 0 auto;
@@ -1316,13 +1316,13 @@
       .process-drawn-line-svg {
         display: block !important;
         position: absolute;
-        top: 30px;
-        bottom: 30px;
+        top: 0;
         left: 0;
         width: 100%;
-        height: calc(100% - 60px);
+        height: 100%;
         pointer-events: none;
         z-index: 1 !important;
+        overflow: visible;
       }
       .zigzag-step-row {
         width: 100%;
@@ -1337,30 +1337,28 @@
         justify-content: flex-end !important;
       }
       .zigzag-card {
-        width: 86% !important;
-        padding: 28px 22px;
+        width: 80% !important;
+        padding: 28px 20px;
         position: relative;
         z-index: 2 !important;
       }
       .card-line-anchor-node {
         display: block !important;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
         z-index: 3 !important;
       }
       .zigzag-step-row.align-left .card-line-anchor-node {
-        right: -10px !important;
+        right: -11px !important;
         left: auto !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        width: 20px;
-        height: 20px;
       }
       .zigzag-step-row.align-right .card-line-anchor-node {
-        left: -10px !important;
+        left: -11px !important;
         right: auto !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        width: 20px;
-        height: 20px;
       }
       .standards-grid-8col {
         grid-template-columns: 1fr;
@@ -1946,16 +1944,16 @@
 
     <div class="zigzag-process-container">
       
-      <!-- Continuous Flowing SVG Line Drawn Across the Whole Process -->
-      <svg class="process-drawn-line-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+      <!-- Continuous Flowing SVG Line Directly Connecting All Anchor Dots -->
+      <svg id="processConnectingSvg" class="process-drawn-line-svg" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="drawnLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#29ADFF" stop-opacity="0.85" />
+            <stop offset="0%" stop-color="#29ADFF" stop-opacity="0.9" />
             <stop offset="50%" stop-color="#0284c7" stop-opacity="0.95" />
-            <stop offset="100%" stop-color="#29ADFF" stop-opacity="0.85" />
+            <stop offset="100%" stop-color="#29ADFF" stop-opacity="0.9" />
           </linearGradient>
           <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feGaussianBlur stdDeviation="3.5" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -1963,23 +1961,15 @@
           </filter>
         </defs>
         
-        <!-- Smooth Snaking Line passing through Card 1 -> Card 2 -> Card 3 -> Card 4 -->
-        <path d="M 540,110 C 780,110 700,260 460,370 C 220,480 300,630 540,630 C 780,630 700,780 460,890" 
+        <!-- Dynamic Curved Path Connecting Dot 1 -> Dot 2 -> Dot 3 -> Dot 4 -->
+        <path id="processConnectingPath" 
+              d="M 540,110 C 780,110 700,260 460,370 C 220,480 300,630 540,630 C 780,630 700,780 460,890"
               fill="none" 
               stroke="url(#drawnLineGrad)" 
               stroke-width="3.5" 
               stroke-dasharray="10 8" 
               stroke-linecap="round"
               filter="url(#glowEffect)" />
-        
-        <!-- Arrowhead Marker 1 (Heading towards Card 2) -->
-        <polygon points="620,225 635,240 618,245" fill="#29ADFF" />
-        
-        <!-- Arrowhead Marker 2 (Heading towards Card 3) -->
-        <polygon points="380,485 365,500 382,505" fill="#29ADFF" />
-
-        <!-- Arrowhead Marker 3 (Heading towards Card 4) -->
-        <polygon points="620,745 635,760 618,765" fill="#29ADFF" />
       </svg>
 
       <!-- KORAK 01: LIJEVO (Brand Blue #29ADFF) -->

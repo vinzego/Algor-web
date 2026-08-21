@@ -567,3 +567,62 @@ document.addEventListener('DOMContentLoaded', () => {
   // 15. Pure CSS Keyframe Animated Chat Loop (Automatske rezervacije)
   // Managed 100% via pure CSS keyframe rules for bulletproof reliability
 });
+
+
+/* =========================================================
+   DYNAMIC SVG PROCESS LINE: CONNECT DOT TO DOT DIRECTLY
+   ========================================================= */
+function updateProcessSvgLine() {
+  const container = document.querySelector(".zigzag-process-container");
+  const svg = document.getElementById("processConnectingSvg");
+  const path = document.getElementById("processConnectingPath");
+  if (!container || !svg || !path) return;
+  
+  const nodes = container.querySelectorAll(".card-line-anchor-node");
+  if (nodes.length < 2) return;
+  
+  const cRect = container.getBoundingClientRect();
+  const w = Math.round(cRect.width);
+  const h = Math.round(cRect.height);
+  if (w <= 0 || h <= 0) return;
+  
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+  
+  const pts = [];
+  nodes.forEach(node => {
+    const r = node.getBoundingClientRect();
+    pts.push({
+      x: (r.left + r.width / 2) - cRect.left,
+      y: (r.top + r.height / 2) - cRect.top
+    });
+  });
+  
+  let d = `M ${pts[0].x},${pts[0].y} `;
+  
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p1 = pts[i];
+    const p2 = pts[i + 1];
+    const dy = p2.y - p1.y;
+    
+    // For swooping S-curve between dots
+    const isP1Right = p1.x > p2.x;
+    const cp1x = isP1Right ? p1.x + 35 : p1.x - 35;
+    const cp1y = p1.y + dy * 0.45;
+    
+    const cp2x = isP1Right ? p2.x - 35 : p2.x + 35;
+    const cp2y = p1.y + dy * 0.55;
+    
+    d += `C ${cp1x},${cp1y} ${cp2x},${cp2y} ${p2.x},${p2.y} `;
+  }
+  
+  path.setAttribute("d", d);
+}
+
+window.addEventListener("load", updateProcessSvgLine);
+window.addEventListener("resize", updateProcessSvgLine);
+window.addEventListener("orientationchange", updateProcessSvgLine);
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(updateProcessSvgLine, 100);
+  setTimeout(updateProcessSvgLine, 400);
+  setTimeout(updateProcessSvgLine, 1000);
+});
