@@ -657,4 +657,81 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(updateProcessSvgLine, 100);
   setTimeout(updateProcessSvgLine, 400);
   setTimeout(updateProcessSvgLine, 1000);
+
+  // ========================================================
+  // GDPR Cookie Consent Banner Engine (Algor Studio)
+  // ========================================================
+  const initCookieConsent = () => {
+    let banner = document.getElementById('algor-cookie-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'algor-cookie-banner';
+      banner.className = 'algor-cookie-banner';
+      banner.setAttribute('role', 'dialog');
+      banner.setAttribute('aria-modal', 'true');
+      banner.setAttribute('aria-label', 'Postavke kolačića i privatnost');
+      
+      banner.innerHTML = `
+        <div class="cookie-banner-inner">
+          <div class="cookie-banner-content">
+            <div class="cookie-banner-badge">
+              <span class="cookie-icon">🍪</span>
+              <span>Privatnost &amp; Kolačići</span>
+            </div>
+            <p class="cookie-banner-text">
+              Koristimo kolačiće kako bismo osigurali ispravan rad stranice, analizirali posjećenost i pružili najbolje korisničko iskustvo. Više detalja saznajte u našoj <a href="kolacici.html" class="cookie-link">Politici kolačića</a>.
+            </p>
+          </div>
+          <div class="cookie-banner-actions">
+            <button type="button" id="cookie-btn-accept" class="cookie-btn cookie-btn-accept">Prihvati sve</button>
+            <button type="button" id="cookie-btn-necessary" class="cookie-btn cookie-btn-necessary">Samo nužni</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(banner);
+    }
+
+    const showBanner = () => {
+      setTimeout(() => {
+        banner.classList.add('visible');
+      }, 600);
+    };
+
+    const hideBanner = () => {
+      banner.classList.remove('visible');
+    };
+
+    const consent = localStorage.getItem('algor_cookie_consent');
+    if (!consent) {
+      showBanner();
+    }
+
+    const btnAccept = document.getElementById('cookie-btn-accept');
+    const btnNecessary = document.getElementById('cookie-btn-necessary');
+
+    if (btnAccept) {
+      btnAccept.addEventListener('click', () => {
+        localStorage.setItem('algor_cookie_consent', 'all');
+        hideBanner();
+      });
+    }
+
+    if (btnNecessary) {
+      btnNecessary.addEventListener('click', () => {
+        localStorage.setItem('algor_cookie_consent', 'necessary');
+        hideBanner();
+      });
+    }
+
+    // Allow reopening cookie banner anytime from footer or settings
+    const triggerLinks = document.querySelectorAll('a[href="#cookie-settings"], .open-cookie-banner');
+    triggerLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showBanner();
+      });
+    });
+  };
+
+  initCookieConsent();
 });

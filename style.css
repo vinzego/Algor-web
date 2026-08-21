@@ -11054,3 +11054,141 @@ html, body {
 .gcal-confirm-btn {
   flex: 1;
 }
+
+/* ==========================================================================
+   ALGOR STUDIO - LUXURY COOKIE BANNER (GDPR COMPLIANT)
+   ========================================================================== */
+.algor-cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  max-width: 580px;
+  margin: 0 auto;
+  z-index: 999999;
+  background: rgba(14, 14, 18, 0.92);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 22px 26px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(41, 173, 255, 0.08);
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.algor-cookie-banner.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cookie-banner-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cookie-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #29ADFF;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.cookie-icon {
+  font-size: 15px;
+}
+
+.cookie-banner-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.cookie-link {
+  color: #29ADFF;
+  text-decoration: underline;
+  font-weight: 600;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.cookie-link:hover {
+  color: #ffffff;
+}
+
+.cookie-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cookie-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.cookie-btn-accept {
+  background: #ffffff;
+  color: #050508;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+}
+
+.cookie-btn-accept:hover {
+  background: #29ADFF;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(41, 173, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.cookie-btn-necessary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cookie-btn-necessary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .algor-cookie-banner {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    padding: 18px 20px;
+    border-radius: 16px;
+  }
+  
+  .cookie-banner-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cookie-btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+}
