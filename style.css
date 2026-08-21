@@ -6643,13 +6643,13 @@ body {
   flex-direction: column !important;
   gap: 40px !important;
   width: 100% !important;
-  margin-top: 50px !important;
+  margin-top: 65px !important;
   position: relative !important;
 }
 
 .stack-card-item {
   position: sticky !important;
-  top: calc(90px + (var(--stack-index, 1) - 1) * 32px) !important;
+  top: calc(140px + (var(--stack-index, 1) - 1) * 35px) !important;
   width: 100% !important;
   border-radius: 28px !important;
   box-sizing: border-box !important;
@@ -7166,7 +7166,7 @@ body {
     min-height: auto !important;
   }
   .stack-card-item {
-    top: calc(80px + (var(--stack-index, 1) - 1) * 20px) !important;
+    top: calc(105px + (var(--stack-index, 1) - 1) * 20px) !important;
   }
 }
 
