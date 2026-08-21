@@ -848,6 +848,87 @@
     }
 
     /* =========================================================
+       ALL-INCLUDED STANDARDS SECTION (UKLJUČENO U SVAKI PROJEKT)
+       ========================================================= */
+    .standards-section-container {
+      max-width: 1280px;
+      margin: 70px auto 40px auto;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+
+    .standards-grid-8col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .standard-feature-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-sizing: border-box;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .standard-feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(41, 173, 255, 0.55);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    }
+
+    .standard-icon-pill {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(41, 173, 255, 0.1);
+      border: 1px solid rgba(41, 173, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #29ADFF;
+    }
+
+    .standard-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .standard-included-tag {
+      font-family: "Geist Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .standard-feature-card h3 {
+      font-size: 18.5px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+      letter-spacing: -0.3px;
+    }
+
+    .standard-feature-card p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* =========================================================
        FULL-WIDTH BLACK FAQ SECTION (EDGE-TO-EDGE & INVERTED TEXT)
        ========================================================= */
     .faq-dark-fullwidth-section {
@@ -966,6 +1047,13 @@
       border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
+    @media (max-width: 1100px) {
+      .standards-grid-8col {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
     @media (max-width: 992px) {
       .web-compare-grid {
         grid-template-columns: 1fr;
@@ -1013,6 +1101,10 @@
       .card-line-anchor-node {
         display: none;
       }
+      .standards-grid-8col {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
   </style>
 </head>
@@ -1039,6 +1131,7 @@
         <a href="izrada-web-stranica.html" class="ultra-nav-link" style="color: #29ADFF !important; font-weight: 800 !important;">Izrada Weba</a>
         <a href="#prednosti" class="ultra-nav-link">Prednosti</a>
         <a href="#tehnologije" class="ultra-nav-link">Tehnologije</a>
+        <a href="#standardi" class="ultra-nav-link">Standardi</a>
         <a href="#proces" class="ultra-nav-link">Proces</a>
         <a href="#pricing" class="ultra-nav-link">Cijene</a>
         <a href="karijere.html" class="ultra-nav-link">Karijere</a>
@@ -1286,7 +1379,102 @@
     </div>
   </section>
 
-  <!-- 4. PROCES IZRADE U 4 KORAKA (CONTINUOUS DRAWN CONNECTING LINE THROUGH ALL CARDS) -->
+  <!-- 4. STANDARDI KVALITETE: UKLJUČENO U SVAKI PROJEKT (8-FEATURE GRID) -->
+  <section id="standardi" class="standards-section-container">
+    <div class="info-header align-center">
+      <span class="section-badge">// BEZ SKRIVENIH TROŠKOVA</span>
+      <h2 class="info-title">Uključeno u svaki web projekt koji isporučujemo</h2>
+      <p class="info-subtitle">
+        Bez obzira na odabrani paket, svaki web izrađujemo prema najvišim tehničkim, sigurnosnim i prodajnim standardima.
+      </p>
+    </div>
+
+    <div class="standards-grid-8col">
+      
+      <!-- Feature 1: Mobile-First -->
+      <div class="standard-feature-card">
+        <div class="standard-card-header">
+          <div class="standard-icon-pill">📱</div>
+          <span class="standard-included-tag">✓ UKLJUČENO</span>
+        </div>
+        <h3>100% Mobile-First UX</h3>
+        <p>Preko 80% posjetitelja dolazi s mobitela. Vaš web izgleda besprijekorno na svim iPhone, Android i tablet uređajima.</p>
+      </div>
+
+      <!-- Feature 2: SSL Sigurnost -->
+      <div class="standard-feature-card">
+        <div class="standard-card-header">
+          <div class="standard-icon-pill">🔒</div>
+          <span class="standard-included-tag">✓ UKLJUČENO</span>
+        </div>
+        <h3>SSL Certifikat &amp; HTTPS</h3>
+        <p>Besplatna enkripcija podataka, zeleni lokot u pregledniku i potpuna sigurnost za vaše posjetitelje i Google rangiranje.</p>
+      </div>
+
+      <!-- Feature 3: Brzina -->
+      <div class="standard-feature-card">
+        <div class="standard-card-header">
+          <div class="standard-icon-pill">⚡</div>
+          <span class="standard-included-tag">✓ UKLJUČENO</span>
+        </div>
+        <h3>PageSpeed 95+ Optimizacija</h3>
+        <p>Kompresija koda, WebP slike nove generacije i brzi poslužitelji osiguravaju učitavanje stranice u manje od 0.8 sekundi.</p>
+      </div>
+
+      <!-- Feature 4: Tracking & Analitika -->
+      <div class="standard-feature-card">
+        <div class="standard-card-header">
+          <div class="standard-icon-pill">📊</div>
+          <span class="standard-included-tag">✓ UKLJUČENO</span>
+        </div>
+        <h3>GA4 &amp; Meta Pixel Tracking</h3>
+        <p>Povezujemo Google Analytics 4, Meta Pixel i Google Tag Manager kako biste točno znali tko posjećuje web i odakle kupci dolaze.</p>
+      </div>
+
+      <!-- Feature 5: GDPR & Kolačići -->
+      <div class="standard-feature-card">
+        <div class="standard-card-header">
+          <div class="standard-icon-pill">🍪</div>
+          <span class="standard-included-tag">✓ UKLJUČENO</span>
+        </div>
+        <h3>GDPR &amp; Cookie Usklađenost</h3>
+        <p>Ugrađena moderna traka za privole kolačića i usklađenost s europskim regulativama o zaštiti osobnih podataka.</p>
+      </div>
+
+      <!-- Feature 6: Tehnički SEO -->
+      <div class="standard-feature-card">
+        <div class="standard-card-header">
+          <div class="standard-icon-pill">🔍</div>
+          <span class="standard-included-tag">✓ UKLJUČENO</span>
+        </div>
+        <h3>Schema.org &amp; Search Console</h3>
+        <p>Strukturirani podaci za tražilice, XML sitemap mapa stranice i automatska prijava Googleu za brzo indeksiranje.</p>
+      </div>
+
+      <!-- Feature 7: WhatsApp & Forme -->
+      <div class="standard-feature-card">
+        <div class="standard-card-header">
+          <div class="standard-icon-pill">💬</div>
+          <span class="standard-included-tag">✓ UKLJUČENO</span>
+        </div>
+        <h3>WhatsApp &amp; Instant Forme</h3>
+        <p>Pametne kontakt forme koje odmah šalju notifikacije na vaš email i WhatsApp gumb za direktan kontakt s kupcima.</p>
+      </div>
+
+      <!-- Feature 8: Video Edukacija -->
+      <div class="standard-feature-card">
+        <div class="standard-card-header">
+          <div class="standard-icon-pill">🎓</div>
+          <span class="standard-included-tag">✓ UKLJUČENO</span>
+        </div>
+        <h3>Video Edukacija &amp; Podrška</h3>
+        <p>Kratki video vodič prilagođen vašem webu kako biste sami mogli mijenjati sadržaj, uz 30 do 60 dana besplatne podrške.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. PROCES IZRADE U 4 KORAKA (CONTINUOUS DRAWN CONNECTING LINE THROUGH ALL CARDS) -->
   <section id="proces" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// KAKO RADIMO</span>
@@ -1409,7 +1597,7 @@
     </div>
   </section>
 
-  <!-- 5. PAKETI I CIJENE IZRADE WEBA (EXACT MATCHING OBSIDIAN LUXURY GRID) -->
+  <!-- 6. PAKETI I CIJENE IZRADE WEBA (EXACT MATCHING OBSIDIAN LUXURY GRID) -->
   <div class="pricing-section-wrapper">
     <section id="pricing" class="full-width-pricing-section white-pricing-section">
       <div class="info-header align-center">
@@ -1546,7 +1734,7 @@
     </section>
   </div>
 
-  <!-- 6. FAQ SECTION (FULL-WIDTH BLACK BACKGROUND & INVERTED TEXT) -->
+  <!-- 7. FAQ SECTION (FULL-WIDTH BLACK BACKGROUND & INVERTED TEXT) -->
   <section id="faq" class="faq-dark-fullwidth-section">
     <div class="faq-dark-header">
       <div class="faq-dark-badge">// ČESTO POSTAVLJANA PITANJA</div>
@@ -1585,7 +1773,7 @@
     </div>
   </section>
 
-  <!-- 7. FOOTER SECTION (EXACT MATCHING AS IN INDEX.HTML) -->
+  <!-- 8. FOOTER SECTION (EXACT MATCHING AS IN INDEX.HTML) -->
   <section class="footer-hero-and-card-section" style="margin-top: 0; background: #050508 !important;">
     
     <!-- Conversion Block (Contact Form) -->
