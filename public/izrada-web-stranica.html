@@ -136,241 +136,208 @@
     .compare-list-good .good-icon { color: #29ADFF; font-weight: bold; font-size: 15px; flex-shrink: 0; }
 
     /* =========================================================
-       LUXURY DARK STATS & SHOWCASE BENTO GRID (MATCHING USER REFERENCE)
+       HERO-STYLE BIG CARD: STICKY LEFT COLUMN + 4 RIGHT CARDS
        ========================================================= */
-    .lux-bento-section {
-      width: 100%;
-      max-width: 1280px;
-      margin: 50px auto 0 auto;
-      box-sizing: border-box;
-    }
-
-    .lux-bento-grid-3col {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.3fr;
-      grid-auto-rows: minmax(330px, auto);
-      gap: 20px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .lux-bcard {
-      background: #0f1219;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 26px;
-      padding: 34px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-sizing: border-box;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .lux-bcard:hover {
-      transform: translateY(-4px);
-      border-color: rgba(41, 173, 255, 0.45);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 30px rgba(41, 173, 255, 0.1);
-    }
-
-    /* Top Accent Line with Label */
-    .lux-bcard-topline {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      width: 100%;
-    }
-
-    .lux-topline-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: "Geist Mono", monospace;
-      font-size: 12px;
-      font-weight: 600;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
-
-    .lux-topline-header .topline-icon {
-      color: #29ADFF;
-      font-size: 14px;
-    }
-
-    .lux-colored-bar {
-      width: 100%;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 2px;
-      position: relative;
-    }
-
-    .lux-colored-bar.bar-cyan {
-      background: linear-gradient(90deg, #29ADFF 0%, rgba(41, 173, 255, 0.15) 100%);
-    }
-
-    .lux-colored-bar.bar-gold {
-      background: linear-gradient(90deg, #38bdf8 0%, rgba(56, 189, 248, 0.15) 100%);
-    }
-
-    .lux-colored-bar.bar-pink {
-      background: linear-gradient(90deg, #29ADFF 0%, rgba(41, 173, 255, 0.15) 100%);
-    }
-
-    /* Card Middle: Huge Typography */
-    .lux-bcard-main {
-      margin: 18px 0;
-    }
-
-    .lux-giant-stat {
-      font-size: clamp(48px, 5.5vw, 76px);
-      font-weight: 900;
-      line-height: 0.95;
-      letter-spacing: -2px;
-      margin: 0 0 12px 0;
-      font-family: "Inter", sans-serif;
-    }
-
-    .stat-cyan {
-      color: #29ADFF;
-      text-shadow: 0 0 35px rgba(41, 173, 255, 0.28);
-    }
-
-    .stat-white {
-      color: #ffffff;
-    }
-
-    .stat-gradient {
-      background: linear-gradient(135deg, #ffffff 30%, #29ADFF 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .lux-stat-desc {
-      font-size: 14px;
-      color: #94a3b8;
-      line-height: 1.55;
-      margin: 0;
-      max-width: 92%;
-    }
-
-    /* Bottom Row Metadata */
-    .lux-bcard-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      font-family: "Geist Mono", monospace;
-      font-size: 12px;
-      color: #64748b;
-    }
-
-    .lux-bcard-bottom .bottom-icon {
-      color: #29ADFF;
-      font-size: 14px;
-    }
-
-    /* Card 3: Large Portrait Image Card */
-    .lux-portrait-card {
-      grid-row: span 1;
-      background: #080a0f;
-      padding: 0;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      min-height: 340px;
-    }
-
-    .lux-portrait-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: contrast(1.05) brightness(0.9);
-      transition: transform 0.4s ease;
-    }
-
-    .lux-portrait-card:hover .lux-portrait-img {
-      transform: scale(1.03);
-    }
-
-    .lux-portrait-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 75%;
-      background: linear-gradient(to top, #090b10 15%, rgba(9, 11, 16, 0.8) 55%, transparent 100%);
-      z-index: 1;
-    }
-
-    .lux-portrait-content {
-      position: relative;
-      z-index: 2;
-      padding: 28px 28px 24px 28px;
-    }
-
-    .lux-portrait-quote {
-      font-size: 16px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.45;
-      margin: 0 0 10px 0;
-      letter-spacing: -0.3px;
-    }
-
-    .lux-portrait-author {
-      font-size: 12px;
-      font-family: "Geist Mono", monospace;
-      color: #29ADFF;
-      margin: 0;
-    }
-
-    /* Wide Card in Row 2 */
-    .lux-bcard-wide {
-      grid-column: span 1;
-      background: radial-gradient(circle at 10% 90%, rgba(41, 173, 255, 0.12) 0%, transparent 60%), #0f1219;
-    }
-
-    /* CTA Card in Bottom Right */
-    .lux-cta-card {
-      background: #121622;
-      border: 1.5px solid rgba(41, 173, 255, 0.35);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    }
-
-    .lux-cta-btn {
-      width: 100%;
-      background: #29ADFF;
-      color: #080a0f;
-      border: none;
-      border-radius: 999px;
-      padding: 14px 24px;
-      font-size: 14px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      margin-top: 16px;
-      text-decoration: none;
-      font-family: "Inter", sans-serif;
-    }
-
-    .lux-cta-btn:hover {
+    .tech-hero-card-container {
       background: #ffffff;
-      color: #080a0f;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(41, 173, 255, 0.4);
+      border: 1.5px solid #e2e8f0;
+      border-radius: 36px;
+      padding: 64px 56px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04);
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      margin: 50px auto 0 auto;
+    }
+
+    .tech-sticky-split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.18fr;
+      gap: 64px;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    /* Left Column: Sticky */
+    .tech-sticky-left-col {
+      position: sticky;
+      top: 130px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-right: 12px;
+    }
+
+    .tech-sticky-title {
+      font-size: clamp(30px, 3.2vw, 42px);
+      font-weight: 850;
+      line-height: 1.15;
+      color: #0a0a0f;
+      letter-spacing: -1px;
+      margin: 0;
+    }
+
+    .tech-sticky-desc {
+      font-size: 15.5px;
+      color: #555560;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .tech-sticky-trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      font-family: "Geist Mono", monospace;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0f172a;
+      width: fit-content;
+      margin-top: 10px;
+    }
+
+    .tech-sticky-trust-badge .spark-icon {
+      color: #29ADFF;
+    }
+
+    /* Right Column: 4 Stacked Cards */
+    .tech-scroll-right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .tech-step-card {
+      border-radius: 26px;
+      padding: 38px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-sizing: border-box;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .tech-step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      border-color: rgba(41, 173, 255, 0.5);
+    }
+
+    /* Card 1: Dark Obsidian Custom Code */
+    .dark-tech-card {
+      background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.16) 0%, transparent 60%), #0d1017;
+      border: 1.5px solid rgba(41, 173, 255, 0.38);
+      color: #ffffff;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .dark-tech-card h3 {
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.4px;
+    }
+
+    .dark-tech-card p {
+      color: #94a3b8;
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Cards 2, 3, 4: Light Luxury */
+    .light-tech-card {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      color: #0f172a;
+    }
+
+    .light-tech-card h3 {
+      color: #0f172a;
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.4px;
+    }
+
+    .light-tech-card p {
+      color: #64748b;
+      font-size: 14.5px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .tech-card-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tech-badge-cyan {
+      font-family: "Geist Mono", monospace;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      background: rgba(41, 173, 255, 0.16);
+      color: #29ADFF;
+      border: 1px solid rgba(41, 173, 255, 0.4);
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .tech-badge-cyan.light-badge {
+      background: #ffffff;
+      color: #0284c7;
+      border: 1px solid #cbd5e1;
+    }
+
+    .tech-mini-highlight {
+      font-family: "Geist Mono", monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .tech-mini-highlight.light-highlight {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .tech-tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .tech-tag-pill {
+      font-family: "Geist Mono", monospace;
+      font-size: 11.5px;
+      font-weight: 600;
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid #e2e8f0;
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+
+    .tech-tag-pill.dark-tag {
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     /* =========================================================
@@ -512,24 +479,23 @@
       border-radius: 6px;
     }
 
-    @media (max-width: 1024px) {
-      .lux-bento-grid-3col {
-        grid-template-columns: 1fr 1fr;
-      }
-      .lux-portrait-card {
-        grid-column: span 2;
-        min-height: 320px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .web-compare-grid,
-      .lux-bento-grid-3col {
+    @media (max-width: 900px) {
+      .web-compare-grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 20px;
       }
-      .lux-portrait-card {
-        grid-column: span 1;
+      .tech-hero-card-container {
+        padding: 36px 24px;
+        border-radius: 28px;
+      }
+      .tech-sticky-split-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .tech-sticky-left-col {
+        position: relative;
+        top: 0;
+        padding-right: 0;
       }
       .zigzag-process-container {
         gap: 40px;
@@ -683,136 +649,93 @@
     </div>
   </section>
 
-  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (LUXURY DARK STATS & SHOWCASE BENTO GRID) -->
-  <section id="tehnologije" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 40px 24px;">
-    <div class="info-header align-center">
-      <span class="section-badge">// TEHNOLOGIJE &amp; METODOLOGIJA</span>
-      <h2 class="info-title">Kombinacija čistog koda i modernog dizajna</h2>
-      <p class="info-subtitle">
-        Biramo optimalnu tehnologiju ovisno o cilju vašeg poslovanja – od ultra-brzih custom code rješenja do fleksibilnih CMS sustava.
-      </p>
-    </div>
-
-    <div class="lux-bento-section">
-      <div class="lux-bento-grid-3col">
+  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (BIG HERO-STYLE CARD WITH STICKY LEFT COLUMN + 4 RIGHT CARDS) -->
+  <section id="tehnologije" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 0 24px;">
+    <div class="tech-hero-card-container">
+      <div class="tech-sticky-split-layout">
         
-        <!-- ROW 1 - CARD 1: 99% PageSpeed Score -->
-        <div class="lux-bcard">
-          <div class="lux-bcard-topline">
-            <div class="lux-topline-header">
-              <span>Google PageSpeed &amp; SEO</span>
-              <span class="topline-icon">⚡</span>
-            </div>
-            <div class="lux-colored-bar bar-cyan"></div>
-          </div>
-
-          <div class="lux-bcard-main">
-            <div class="lux-giant-stat stat-cyan">99%</div>
-            <p class="lux-stat-desc">Prosječna ocjena brzine i optimizacije na mobilnim uređajima i računalima.</p>
-          </div>
-
-          <div class="lux-bcard-bottom">
-            <span>Core Web Vitals Spreman</span>
-            <span class="bottom-icon">🌐</span>
+        <!-- Left Column: Sticky Title & Description -->
+        <div class="tech-sticky-left-col">
+          <span class="section-badge">// TEHNOLOGIJE &amp; METODOLOGIJA</span>
+          <h2 class="tech-sticky-title">
+            Tehnologija građena za vrhunske performanse i stabilan rast.
+          </h2>
+          <p class="tech-sticky-desc">
+            Ne koristimo zastarjele i spore predloške. Biramo optimalan spoj čistog koda i fleksibilnih modernih platformi kako bi vaš web bio brz, siguran i prilagođen privlačenju kupaca.
+          </p>
+          <div class="tech-sticky-trust-badge">
+            <span class="spark-icon">⚡</span>
+            <span>Prilagođeno ciljevima vašeg poslovanja</span>
           </div>
         </div>
 
-        <!-- ROW 1 - CARD 2: 100% Kontrola & No-Code CMS -->
-        <div class="lux-bcard">
-          <div class="lux-bcard-topline">
-            <div class="lux-topline-header">
-              <span>No-Code &amp; CMS</span>
-              <span class="topline-icon">✦</span>
+        <!-- Right Column: 4 Vertical Stacked Cards -->
+        <div class="tech-scroll-right-col">
+          
+          <!-- Card 1: Custom Code -->
+          <div class="tech-step-card dark-tech-card">
+            <div class="tech-card-badge-row">
+              <span class="tech-badge-cyan">● 01. CODE RJEŠENJA</span>
+              <span class="tech-mini-highlight">100% Čisti Kod</span>
             </div>
-            <div class="lux-colored-bar bar-gold"></div>
-          </div>
-
-          <div class="lux-bcard-main">
-            <div class="lux-giant-stat stat-white">100%</div>
-            <p class="lux-stat-desc">Samostalna kontrola nad sadržajem, objavama, cijenama i blogom bez programera.</p>
-          </div>
-
-          <div class="lux-bcard-bottom">
-            <span>Webflow • Framer • Headless</span>
-            <span class="bottom-icon">⚡</span>
-          </div>
-        </div>
-
-        <!-- ROW 1 - CARD 3: Portrait Showcase Card -->
-        <div class="lux-bcard lux-portrait-card">
-          <img src="about_person.jpg" alt="Algor Studio Development" class="lux-portrait-img" />
-          <div class="lux-portrait-overlay"></div>
-          <div class="lux-portrait-content">
-            <p class="lux-portrait-quote">"Web stranica mora raditi za vas i donositi mjerljiv ROI 24 sata dnevno."</p>
-            <p class="lux-portrait-author">Algor studio &bull; Custom Web &amp; AI</p>
-          </div>
-        </div>
-
-        <!-- ROW 2 - CARD 4: < 0.8s Custom Code (Code Solutions) -->
-        <div class="lux-bcard lux-bcard-wide">
-          <div class="lux-bcard-topline">
-            <div class="lux-topline-header">
-              <span>Custom Code (CSS, JS, Node.js)</span>
-              <span class="topline-icon">💻</span>
+            <h3>Custom Code Razvoj</h3>
+            <p>Pisanje ručno optimiziranog HTML5, modernog CSS-a i JavaScripta bez nepotrebnih datoteka i sporih pluginova. Idealan izbor za munjevito brze stranice, interaktivne kalkulatore, baze podataka i specifične animacije.</p>
+            <div class="tech-tags-list">
+              <span class="tech-tag-pill dark-tag">HTML5 &amp; Modern CSS</span>
+              <span class="tech-tag-pill dark-tag">JavaScript ES6+</span>
+              <span class="tech-tag-pill dark-tag">Node.js Backend</span>
+              <span class="tech-tag-pill dark-tag">API Integracije</span>
             </div>
-            <div class="lux-colored-bar bar-cyan"></div>
           </div>
 
-          <div class="lux-bcard-main">
-            <div class="lux-giant-stat stat-gradient">&lt; 0.8s</div>
-            <p class="lux-stat-desc">Munjevito učitavanje bez nepotrebnih datoteka. Pisanje čistog, ručno optimiziranog koda za maksimalnu brzinu i stabilnost.</p>
-          </div>
-
-          <div class="lux-bcard-bottom">
-            <span>HTML5 • CSS3 • JavaScript • Node.js</span>
-            <span class="bottom-icon">🚀</span>
-          </div>
-        </div>
-
-        <!-- ROW 2 - CARD 5: #1 Rangiranje & Tehnički SEO -->
-        <div class="lux-bcard">
-          <div class="lux-bcard-topline">
-            <div class="lux-topline-header">
-              <span>Tehnički &amp; Lokalni SEO</span>
-              <span class="topline-icon">🔍</span>
+          <!-- Card 2: No-Code & CMS -->
+          <div class="tech-step-card light-tech-card">
+            <div class="tech-card-badge-row">
+              <span class="tech-badge-cyan light-badge">● 02. NO-CODE &amp; CMS</span>
+              <span class="tech-mini-highlight light-highlight">Samostalno Uređivanje</span>
             </div>
-            <div class="lux-colored-bar bar-pink"></div>
-          </div>
-
-          <div class="lux-bcard-main">
-            <div class="lux-giant-stat stat-cyan">#1</div>
-            <p class="lux-stat-desc">Schema.org strukturirani podaci, OpenGraph oznake i automatska Google Search Console prijava.</p>
-          </div>
-
-          <div class="lux-bcard-bottom">
-            <span>Search Console &amp; Sitemap XML</span>
-            <span class="bottom-icon">📈</span>
-          </div>
-        </div>
-
-        <!-- ROW 2 - CARD 6: Interactive CTA / Let's Talk -->
-        <div class="lux-bcard lux-cta-card">
-          <div class="lux-bcard-topline">
-            <div class="lux-topline-header">
-              <span>Započnimo projekt</span>
-              <span class="topline-icon">✉️</span>
+            <h3>No-Code &amp; CMS Sustavi</h3>
+            <p>Za klijente koji žele jednostavno i brzo sami mijenjati cijene, objavljivati novosti ili uređivati ponude bez zvanja programera. Koristimo Webflow, Framer ili prilagođeni headless CMS s intuitivnim panelom i video edukacijom.</p>
+            <div class="tech-tags-list">
+              <span class="tech-tag-pill">Webflow</span>
+              <span class="tech-tag-pill">Framer</span>
+              <span class="tech-tag-pill">Headless CMS</span>
+              <span class="tech-tag-pill">Video Edukacija</span>
             </div>
-            <div class="lux-colored-bar bar-cyan"></div>
           </div>
 
-          <div class="lux-bcard-main">
-            <h3 style="color: #ffffff; font-size: 24px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -0.5px;">Zatražite procjenu</h3>
-            <p class="lux-stat-desc">Besplatna analiza i ponuda za izradu novog ili redizajn postojećeg weba.</p>
-            <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Web%20Stranicu" class="lux-cta-btn">
-              <span>Zatraži Ponudu</span>
-              <span>➔</span>
-            </a>
+          <!-- Card 3: SEO -->
+          <div class="tech-step-card light-tech-card">
+            <div class="tech-card-badge-row">
+              <span class="tech-badge-cyan light-badge">● 03. GOOGLE RANGIRANJE</span>
+              <span class="tech-mini-highlight light-highlight">SEO Optimizirano</span>
+            </div>
+            <h3>Tehnički &amp; Lokalni SEO</h3>
+            <p>Svaka web stranica izgrađena je prema strogim Google smjernicama: semantička struktura, Schema.org strukturirani podaci za tražilice, OpenGraph oznake za društvene mreže i automatska prijava na Google Search Console.</p>
+            <div class="tech-tags-list">
+              <span class="tech-tag-pill">Schema.org</span>
+              <span class="tech-tag-pill">Google Search Console</span>
+              <span class="tech-tag-pill">XML Sitemap</span>
+              <span class="tech-tag-pill">Lokalni SEO</span>
+            </div>
           </div>
 
-          <div class="lux-bcard-bottom">
-            <span>Rok odgovora unutar 24h</span>
-            <span class="bottom-icon">🔒</span>
+          <!-- Card 4: Brzina -->
+          <div class="tech-step-card light-tech-card">
+            <div class="tech-card-badge-row">
+              <span class="tech-badge-cyan light-badge">● 04. PERFORMANSE</span>
+              <span class="tech-mini-highlight light-highlight">&lt; 0.8s Učitavanje</span>
+            </div>
+            <h3>Munjevita Brzina &amp; Optimizacija</h3>
+            <p>Slike nove generacije (WebP/AVIF), kompresija koda, lazy loading i brzi cloud serveri osiguravaju da se vaša web stranica otvara u tren oka na svim mobilnim mrežama i uređajima s najvišim PageSpeed ocjenama.</p>
+            <div class="tech-tags-list">
+              <span class="tech-tag-pill">PageSpeed 95+</span>
+              <span class="tech-tag-pill">WebP / AVIF formati</span>
+              <span class="tech-tag-pill">Cloud Serveri</span>
+              <span class="tech-tag-pill">SSL Sigurnost</span>
+            </div>
           </div>
+
         </div>
 
       </div>
