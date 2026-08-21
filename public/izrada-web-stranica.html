@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Izrada Web Stranica | Brze & Prilagođene Stranice | Algor studio</title>
+  <meta name="description" content="Izrada modernih, munjevito brzih i custom web stranica prilagođenih za konverziju i Google SEO. Code (CSS, JS, Node.js) i No-Code rješenja.">
+  
+  <!-- Google Fonts: Inter & Geist Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=55.0.0">
+
+  <style>
+    /* Specific styles for Web Development Subpage */
+    .web-page-wrapper {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .web-feature-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .web-speed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 999px;
+      font-family: "Geist Mono", monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .web-speed-badge .badge-val-green {
+      color: #10b981;
+      font-weight: 800;
+    }
+
+    .web-speed-badge .badge-val-blue {
+      color: #29ADFF;
+      font-weight: 800;
+    }
+
+    /* Comparison Section Grid */
+    .web-compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      width: 100%;
+      max-width: 1040px;
+      margin: 50px auto 0 auto;
+      box-sizing: border-box;
+    }
+
+    .web-compare-card {
+      border-radius: 28px;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-sizing: border-box;
+    }
+
+    .web-compare-bad {
+      background: #ffffff;
+      border: 1px solid #fee2e2;
+      box-shadow: 0 12px 36px rgba(239, 68, 68, 0.04);
+    }
+
+    .web-compare-good {
+      background: #0d1017;
+      border: 1.5px solid rgba(41, 173, 255, 0.5);
+      color: #ffffff;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 35px rgba(41, 173, 255, 0.12);
+    }
+
+    .compare-card-tag {
+      font-family: "Geist Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .tag-bad {
+      background: #fef2f2;
+      color: #ef4444;
+      border: 1px solid #fecaca;
+    }
+
+    .tag-good {
+      background: rgba(41, 173, 255, 0.16);
+      color: #29ADFF;
+      border: 1px solid rgba(41, 173, 255, 0.4);
+    }
+
+    .compare-title-bad {
+      font-size: 24px;
+      font-weight: 800;
+      color: #1e293b;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .compare-title-good {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .compare-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+
+    .compare-list-bad li {
+      color: #64748b;
+    }
+
+    .compare-list-bad .bad-icon {
+      color: #ef4444;
+      font-weight: bold;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .compare-list-good li {
+      color: #cbd5e1;
+    }
+
+    .compare-list-good .good-icon {
+      color: #29ADFF;
+      font-weight: bold;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    /* Pillars Bento Grid */
+    .web-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      width: 100%;
+      max-width: 1040px;
+      margin: 50px auto 0 auto;
+      box-sizing: border-box;
+    }
+
+    .pillar-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .pillar-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      border-color: #cbd5e1;
+    }
+
+    .pillar-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: rgba(41, 173, 255, 0.1);
+      color: #29ADFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      border: 1px solid rgba(41, 173, 255, 0.25);
+    }
+
+    .pillar-title {
+      font-size: 20px;
+      font-weight: 750;
+      color: #0f172a;
+      margin: 0;
+      letter-spacing: -0.4px;
+    }
+
+    .pillar-desc {
+      font-size: 14.5px;
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .pillar-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .code-tag-pill {
+      font-family: "Geist Mono", monospace;
+      font-size: 11px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #334155;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Process Flow for Web */
+    .web-process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      width: 100%;
+      max-width: 1040px;
+      margin: 50px auto 0 auto;
+      box-sizing: border-box;
+    }
+
+    .web-step-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+
+    .web-step-num {
+      font-family: "Geist Mono", monospace;
+      font-size: 13px;
+      font-weight: 800;
+      color: #29ADFF;
+      background: rgba(41, 173, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    .web-step-card h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0;
+      letter-spacing: -0.3px;
+    }
+
+    .web-step-card p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .web-compare-grid,
+      .web-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .web-process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .web-process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Frosted Glass Navbar -->
+  <header class="ultra-navbar">
+    <a href="index.html" class="ultra-brand-logo">
+      <span class="logo-accent-dot"></span>
+      <span class="logo-text">algor<span class="logo-ai-badge">studio</span></span>
+    </a>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Otvori izbornik">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <!-- Pill Nav Menu -->
+    <nav class="ultra-nav-menu" id="ultra-nav-menu">
+      <div class="mobile-nav-links-grid">
+        <a href="index.html" class="ultra-nav-link">Naslovna</a>
+        <a href="index.html#about" class="ultra-nav-link">O nama</a>
+        <a href="izrada-web-stranica.html" class="ultra-nav-link" style="color: #29ADFF !important; font-weight: 800 !important;">Izrada Weba</a>
+        <a href="#prednosti" class="ultra-nav-link">Prednosti</a>
+        <a href="#tehnologije" class="ultra-nav-link">Tehnologije</a>
+        <a href="#proces" class="ultra-nav-link">Proces</a>
+        <a href="#paketi" class="ultra-nav-link">Cijene</a>
+        <a href="karijere.html" class="ultra-nav-link">Karijere</a>
+      </div>
+
+      <div class="mobile-nav-email-box">
+        <a href="mailto:info@algorstudio.com" class="mobile-nav-email-link">✉️ info@algorstudio.com</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- 1. HERO SECTION -->
+  <main class="hero-card hero-single-column-mesh">
+    <div class="mesh-grid-container" id="mesh-grid-container"></div>
+    <div class="hero-radial-glow"></div>
+
+    <div class="hero-center-column">
+      <div class="mesh-eyebrow-pill">
+        <span class="eyebrow-spark">⚡</span>
+        <span class="eyebrow-txt">CUSTOM WEB DEVELOPMENT &amp; DIZAJN</span>
+      </div>
+
+      <h1 class="mesh-hero-headline">
+        Brze web stranice koje<br>
+        <span class="gradient-lime-text">pretvaraju posjetitelje u kupce.</span>
+      </h1>
+
+      <p class="mesh-hero-subtext">
+        Dizajniramo i programiramo moderne, munjevito brze web stranice. Spajamo custom code (CSS, JS, Node.js) s fleksibilnim no-code platformama – 100% optimizirano za visoke pozicije na Googleu i mobitele.
+      </p>
+
+      <div class="mesh-actions-stack">
+        <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Izradu%20Web%20Stranice" class="mesh-primary-btn btn-pill-dark" style="text-decoration: none;">
+          <span>Zatraži Besplatnu Procjenu Weba</span>
+          <span class="btn-arrow-circle">↗</span>
+        </a>
+
+        <div class="mesh-micro-trust">
+          <span class="trust-lock">🔒</span> Besplatna analiza • Fiksna cijena • Isporučeno u dogovorenom roku
+        </div>
+      </div>
+
+      <!-- Performance & SEO Badges Row -->
+      <div class="web-feature-badge-row">
+        <div class="web-speed-badge">
+          <span>⚡ PageSpeed:</span>
+          <span class="badge-val-green">99/100</span>
+        </div>
+        <div class="web-speed-badge">
+          <span>🚀 Učitavanje:</span>
+          <span class="badge-val-green">&lt; 0.8s</span>
+        </div>
+        <div class="web-speed-badge">
+          <span>📱 Mobile-First:</span>
+          <span class="badge-val-blue">100% Responsive</span>
+        </div>
+        <div class="web-speed-badge">
+          <span>🔍 SEO:</span>
+          <span class="badge-val-blue">Schema.org Spreman</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Trust Ticker Bar -->
+    <div class="hero-trust-logo-bar">
+      <div class="hero-ticker-track">
+        <div class="ticker-logos-row">
+          <img src="supernova.png" alt="Supernova" class="ticker-logo-img logo-supernova">
+          <img src="admiral.png" alt="Admiral" class="ticker-logo-img">
+          <img src="family_park.png" alt="Family Park" class="ticker-logo-img">
+          <img src="taurus_transparent.png" alt="Taurus Restaurant" class="ticker-logo-img">
+          <img src="supernova.png" alt="Supernova" class="ticker-logo-img logo-supernova">
+          <img src="admiral.png" alt="Admiral" class="ticker-logo-img">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 2. USPOREDBA: KORISNIČKO ISKUSTVO & BRZINA -->
+  <section id="prednosti" class="plain-section" style="max-width: 1040px; margin: 60px auto; padding: 40px 24px;">
+    <div class="info-header align-center">
+      <span class="section-badge">// ZAŠTO CUSTOM WEB</span>
+      <h2 class="info-title">Zašto spori predlošci gube novac, a brzi web donosi kupce</h2>
+      <p class="info-subtitle">
+        Preko 80% posjeta dolazi s pametnih telefona. Ako se web učitava dulje od 2 sekunde, više od polovice posjetitelja zauvijek odlazi konkurenciji.
+      </p>
+    </div>
+
+    <div class="web-compare-grid">
+      <!-- Klasični spori web -->
+      <div class="web-compare-card web-compare-bad">
+        <div class="compare-card-tag tag-bad">✕ KLASIČNI SPORI WEB</div>
+        <h3 class="compare-title-bad">Preopterećeni WordPress predlošci</h3>
+        <ul class="compare-list compare-list-bad">
+          <li><span class="bad-icon">✕</span> Učitavanje 4–8 sekundi zbog previše nepotrebnih dodataka (pluginova).</li>
+          <li><span class="bad-icon">✕</span> Loše mobilno iskustvo – elementi bježe izvan ekrana.</li>
+          <li><span class="bad-icon">✕</span> Slabi rezultati na Googleu zbog lošeg tehničkog SEO-a.</li>
+          <li><span class="bad-icon">✕</span> Stalni sigurnosni problemi i rušenje sustava nakon ažuriranja.</li>
+        </ul>
+      </div>
+
+      <!-- Algor Custom Web -->
+      <div class="web-compare-card web-compare-good">
+        <div class="compare-card-tag tag-good">✓ ALGOR CUSTOM WEB</div>
+        <h3 class="compare-title-good">Optimiziran, brz i konverzijski web</h3>
+        <ul class="compare-list compare-list-good">
+          <li><span class="good-icon">✓</span> Munjevito učitavanje (&lt; 0.8 sekundi) s najvišim ocjenama na Google PageSpeedu.</li>
+          <li><span class="good-icon">✓</span> 100% prilagođeno mobitelima – dizajnirano za jednostavnu rezervaciju ili upit.</li>
+          <li><span class="good-icon">✓</span> Ugrađena SEO optimizacija, Schema strukturirani podaci i brzi cloud serveri.</li>
+          <li><span class="good-icon">✓</span> Povezano s vašim oglasima, WhatsAppom i automatskim obavijestima na mobitel.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. TEHNOLOGIJE & MOGUĆNOSTI (Code + No-Code) -->
+  <section id="tehnologije" class="plain-section" style="max-width: 1040px; margin: 60px auto; padding: 40px 24px;">
+    <div class="info-header align-center">
+      <span class="section-badge">// TEHNOLOGIJE &amp; METODOLOGIJA</span>
+      <h2 class="info-title">Kombinacija čistog koda i fleksibilnih rješenja</h2>
+      <p class="info-subtitle">
+        Biramo optimalnu tehnologiju ovisno o cilju vašeg poslovanja – od jednostavnih landing stranica do naprednih web aplikacija.
+      </p>
+    </div>
+
+    <div class="web-pillars-grid">
+      <!-- Pillar 1: Custom Code -->
+      <div class="pillar-box">
+        <div class="pillar-icon-wrap">💻</div>
+        <h3 class="pillar-title">Custom Code Razvoj</h3>
+        <p class="pillar-desc">Pisanje čistog, ručno optimiziranog koda bez viška datoteka. Idealno za maksimalnu brzinu, specifične animacije, interaktivne kalkulatore i web aplikacije.</p>
+        <div class="pillar-tags-row">
+          <span class="code-tag-pill">HTML5 &amp; Modern CSS</span>
+          <span class="code-tag-pill">JavaScript (ES6+)</span>
+          <span class="code-tag-pill">Node.js</span>
+          <span class="code-tag-pill">API Integracije</span>
+        </div>
+      </div>
+
+      <!-- Pillar 2: No-Code & Headless CMS -->
+      <div class="pillar-box">
+        <div class="pillar-icon-wrap">⚡</div>
+        <h3 class="pillar-title">No-Code &amp; CMS Fleksibilnost</h3>
+        <p class="pillar-desc">Za projekte gdje klijent želi jednostavno samostalno dodavati nove objave, ponude ili mijenjati cijene u par klikova bez programiranja.</p>
+        <div class="pillar-tags-row">
+          <span class="code-tag-pill">Webflow</span>
+          <span class="code-tag-pill">Framer</span>
+          <span class="code-tag-pill">Headless CMS</span>
+          <span class="code-tag-pill">Jednostavno uređivanje</span>
+        </div>
+      </div>
+
+      <!-- Pillar 3: Tehnički & Lokalni SEO -->
+      <div class="pillar-box">
+        <div class="pillar-icon-wrap">🔍</div>
+        <h3 class="pillar-title">Google SEO &amp; Indeksiranje</h3>
+        <p class="pillar-desc">Postavljamo tehnički ispravnu strukturu, meta opise, OpenGraph preview za društvene mreže i semantički HTML koji Google prepoznaje i visoko pozicionira.</p>
+        <div class="pillar-tags-row">
+          <span class="code-tag-pill">Schema.org</span>
+          <span class="code-tag-pill">Google Search Console</span>
+          <span class="code-tag-pill">Sitemap &amp; Robots.txt</span>
+          <span class="code-tag-pill">Brzi DNS</span>
+        </div>
+      </div>
+
+      <!-- Pillar 4: Marketing & AI Integracije -->
+      <div class="pillar-box">
+        <div class="pillar-icon-wrap">🤖</div>
+        <h3 class="pillar-title">Marketing &amp; AI Povezivost</h3>
+        <p class="pillar-desc">Web nije izoliran otok – odmah ga povezujemo s Meta Pixelom, Google Analytics 4, WhatsApp asistentom i vašom bazom kontakata za praćenje točnog ROI-a.</p>
+        <div class="pillar-tags-row">
+          <span class="code-tag-pill">Meta Pixel &amp; CAPI</span>
+          <span class="code-tag-pill">Google Analytics 4</span>
+          <span class="code-tag-pill">WhatsApp AI Chat</span>
+          <span class="code-tag-pill">CRM Sinkronizacija</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PROCES IZRADE U 4 KORAKA -->
+  <section id="proces" class="plain-section" style="max-width: 1040px; margin: 60px auto; padding: 40px 24px;">
+    <div class="info-header align-center">
+      <span class="section-badge">// KAKO RADIMO</span>
+      <h2 class="info-title">Jednostavan proces od ideje do lansiranja</h2>
+      <p class="info-subtitle">
+        Transparentan proces rada bez komplikacija i kašnjenja.
+      </p>
+    </div>
+
+    <div class="web-process-steps">
+      <div class="web-step-card">
+        <span class="web-step-num">01. PLANIRANJE</span>
+        <h4>Strategija &amp; Struktura</h4>
+        <p>Analiziramo vašu branšu, ciljanu publiku i definiramo jasnu strukturu stranice koja vodi posjetitelja do upita.</p>
+      </div>
+
+      <div class="web-step-card">
+        <span class="web-step-num">02. DIZAJN</span>
+        <h4>UI / UX Vizual</h4>
+        <p>Kreiramo moderan, estetski i pregledan dizajn prilagođen vašem brendu s fokusom na savršeno mobilno iskustvo.</p>
+      </div>
+
+      <div class="web-step-card">
+        <span class="web-step-num">03. RAZVOJ</span>
+        <h4>Kodiranje &amp; Brzina</h4>
+        <p>Programiramo stranicu, optimiziramo sve slike i video materijale te testiramo brzinu učitavanja na svim uređajima.</p>
+      </div>
+
+      <div class="web-step-card">
+        <span class="web-step-num">04. LANSIRANJE</span>
+        <h4>SEO &amp; Objava</h4>
+        <p>Povezujemo domenu, aktiviramo SSL certifikat, prijavljujemo stranicu na Google i predajemo vam sve pristupe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PAKETI I CIJENE IZRADE WEBA -->
+  <div class="pricing-section-wrapper" id="paketi">
+    <section class="full-width-pricing-section white-pricing-section">
+      <div class="info-header align-center">
+        <span class="section-badge">// PAKETI I INVESTICIJA</span>
+        <h2 class="info-title">Transparentne početne cijene za izradu weba</h2>
+        <p class="info-subtitle text-muted">
+          Jednokratna investicija u digitalni izlog koji radi za vas 24/7. Bez skrivenih troškova.
+        </p>
+      </div>
+
+      <div class="pricing-grid luxury-pricing-grid">
+        
+        <!-- Paket 1: Landing Page -->
+        <div class="price-card luxury-card">
+          <div class="card-top-tag-row">
+            <span class="ref-tag-mono">FOKUS NA OGLASE</span>
+          </div>
+          <div class="price-header-lux">
+            <h3>Landing Stranica</h3>
+            <div class="price-amount-wrap">
+              <span class="currency-sign">od €</span>
+              <span class="price-val">490</span>
+              <span class="price-per">jednokratno</span>
+            </div>
+          </div>
+
+          <ul class="luxury-features-list">
+            <li><span class="check-icon-circle">✓</span> <span><strong>1 Fokusirana stranica:</strong> Dizajnirana isključivo za konverziju s oglasa</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Munjevita brzina:</strong> Učitavanje &lt; 0.8s s optimiziranim medijima</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Mobile-First UX:</strong> Savršena prilagodba za pametne telefone</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Tracking integracija:</strong> Meta Pixel, Google Analytics i Tag Manager</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Rok isporuke:</strong> 5 do 7 radnih dana</span></li>
+          </ul>
+
+          <div class="card-bottom-action-area">
+            <div class="sprint-time-divider">
+              <span>Brza isporuka</span>
+            </div>
+            <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Landing%20Stranicu" class="luxury-btn-dark" style="text-decoration: none; text-align: center; display: block;">
+              <span>Zatraži Ponudu</span>
+            </a>
+            <span class="guarantee-text">Uključeno 30 dana besplatne podrške</span>
+          </div>
+        </div>
+
+        <!-- Paket 2: Business Web (Popular) -->
+        <div class="price-card luxury-card popular-card-lux">
+          <div class="card-top-tag-row">
+            <span class="ref-tag-mono tag-popular">★ NAJPOPULARNIJI IZBOR</span>
+          </div>
+          <div class="price-header-lux">
+            <h3>Business Web</h3>
+            <div class="price-amount-wrap">
+              <span class="currency-sign">od €</span>
+              <span class="price-val">990</span>
+              <span class="price-per">jednokratno</span>
+            </div>
+          </div>
+
+          <ul class="luxury-features-list">
+            <li><span class="check-icon-circle">✓</span> <span><strong>Kompletan web (do 6 stranica):</strong> Naslovna, O nama, Usluge, Galerija, Blog, Kontakt</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Custom / CMS opcija:</strong> Mogućnost samostalnog uređivanja sadržaja</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Napredni Google SEO:</strong> Schema podaci, sitemap i Google indeksiranje</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Kontakt &amp; WhatsApp forme:</strong> Instant zaprimanje upita na mobitel i email</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Rok isporuke:</strong> 10 do 14 radnih dana</span></li>
+          </ul>
+
+          <div class="card-bottom-action-area">
+            <div class="sprint-time-divider">
+              <span>Preporučeno za tvrtke i usluge</span>
+            </div>
+            <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Business%20Web" class="luxury-btn-glow" style="text-decoration: none; text-align: center; display: block;">
+              <span>Zatraži Ponudu</span>
+            </a>
+            <span class="guarantee-text">Uključeno 60 dana besplatne podrške</span>
+          </div>
+        </div>
+
+        <!-- Paket 3: Custom Web Aplikacija / Shop -->
+        <div class="price-card luxury-card">
+          <div class="card-top-tag-row">
+            <span class="ref-tag-mono">NAPREDNA RJEŠENJA</span>
+          </div>
+          <div class="price-header-lux">
+            <h3>Custom Aplikacija</h3>
+            <div class="price-amount-wrap">
+              <span class="currency-sign">od €</span>
+              <span class="price-val">1,850</span>
+              <span class="price-per">jednokratno</span>
+            </div>
+          </div>
+
+          <ul class="luxury-features-list">
+            <li><span class="check-icon-circle">✓</span> <span><strong>Custom Node.js &amp; Baza:</strong> Interaktivni kalkulatori, korisnički portali</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>E-Commerce opcija:</strong> Web trgovina s kartičnim plaćanjem (Stripe/Corvus)</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Custom AI integracije:</strong> AI asistent koji čita podatke iz vaše baze</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Maksimalna sigurnost:</strong> Namjenski cloud serveri i automatski backup</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Rok isporuke:</strong> Prema specifikaciji projekta</span></li>
+          </ul>
+
+          <div class="card-bottom-action-area">
+            <div class="sprint-time-divider">
+              <span>Potpuno prilagođeno rješenje</span>
+            </div>
+            <a href="mailto:info@algorstudio.com?subject=Upit%20za%20Custom%20Web%20Aplikaciju" class="luxury-btn-dark" style="text-decoration: none; text-align: center; display: block;">
+              <span>Zatraži Ponudu</span>
+            </a>
+            <span class="guarantee-text">Uključena garancija i održavanje</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust Bar -->
+      <div class="pricing-trust-bar">
+        <div class="trust-item">
+          <span class="trust-icon">⚡</span>
+          <span>Google PageSpeed 95+ zajamčen</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🛡️</span>
+          <span>Fiksna cijena bez naknadnih iznenađenja</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🤝</span>
+          <span>Edukacija i podrška nakon objave</span>
+        </div>
+      </div>
+
+      <div class="custom-ai-offer-banner">
+        <p>Trebate redizajn postojećeg weba ili specifičnu procjenu? <a href="mailto:info@algorstudio.com?subject=Procjena%20projekta" class="custom-ai-link">Javite nam se ➔</a></p>
+      </div>
+    </section>
+  </div>
+
+  <!-- 6. FAQ SEKCIJA -->
+  <section class="plain-section" style="max-width: 860px; margin: 80px auto; padding: 40px 24px;">
+    <div class="info-header align-center">
+      <span class="section-badge">// ČESTA PITANJA</span>
+      <h2 class="info-title">Odgovori na ključna pitanja</h2>
+    </div>
+
+    <div class="faq-list" style="margin-top: 40px; display: flex; flex-direction: column; gap: 16px;">
+      <details class="faq-item" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; cursor: pointer;">
+        <summary style="font-weight: 700; font-size: 16px; color: #0f172a; outline: none;">Koliko traje izrada web stranice?</summary>
+        <p style="margin-top: 12px; font-size: 14.5px; color: #64748b; line-height: 1.6;">Za jednostavnije landing stranice rok isporuke je obično 5 do 7 radnih dana. Za cjelovite višestranične poslovne web stranice rok je između 10 i 14 radnih dana od primitka svih potrebnih materijala.</p>
+      </details>
+
+      <details class="faq-item" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; cursor: pointer;">
+        <summary style="font-weight: 700; font-size: 16px; color: #0f172a; outline: none;">Mogu li samostalno mijenjati tekstove i slike na stranici?</summary>
+        <p style="margin-top: 12px; font-size: 14.5px; color: #64748b; line-height: 1.6;">Da! Ako odaberete CMS ili no-code rješenje (ili prilagođeni admin panel), dobit ćete jednostavno sučelje gdje u par klikova možete mijenjati tekstove, cijene, slike i dodavati nove blog objave. Također vam osiguravamo kratku video edukaciju.</p>
+      </details>
+
+      <details class="faq-item" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; cursor: pointer;">
+        <summary style="font-weight: 700; font-size: 16px; color: #0f172a; outline: none;">Što je s domenom i hostingom?</summary>
+        <p style="margin-top: 12px; font-size: 14.5px; color: #64748b; line-height: 1.6;">Pomažemo vam u odabiru i registraciji domene (.hr, .com i sl.) te postavljamo web na brze i sigurne cloud poslužitelje sa besplatnim SSL sigurnosnim certifikatom.</p>
+      </details>
+
+      <details class="faq-item" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px 24px; cursor: pointer;">
+        <summary style="font-weight: 700; font-size: 16px; color: #0f172a; outline: none;">Je li web optimiziran za Google (SEO)?</summary>
+        <p style="margin-top: 12px; font-size: 14.5px; color: #64748b; line-height: 1.6;">Apsolutno. Svaka stranica koju izrađujemo ima ugrađenu tehničku SEO optimizaciju: semantičke HTML tagove, meta opise, OpenGraph oznake, komprimirane slike nove generacije (WebP/AVIF) i prijavu na Google Search Console za brzo indeksiranje.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <div class="footer-logo">
+            <span class="logo-accent-dot"></span>
+            <span class="logo-text">algor<span class="logo-ai-badge">studio</span></span>
+          </div>
+          <p class="footer-tagline">Marketing agencija, video produkcija, izrada weba i AI automatizacije za brzorastuće brendove.</p>
+        </div>
+        
+        <div class="footer-links-grid">
+          <div class="footer-link-group">
+            <h4>Istraži</h4>
+            <ul>
+              <li><a href="index.html#about">O nama</a></li>
+              <li><a href="index.html#marketing">Usluge</a></li>
+              <li><a href="izrada-web-stranica.html" style="color: #29ADFF; font-weight: 700;">Izrada Weba</a></li>
+              <li><a href="index.html#portfolio">Projekti</a></li>
+              <li><a href="index.html#process">Proces</a></li>
+              <li><a href="index.html#pricing">Cjenik</a></li>
+              <li><a href="karijere.html">Karijere</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-link-group">
+            <h4>Društvene mreže</h4>
+            <ul>
+              <li><a href="https://x.com" target="_blank">X / Twitter</a></li>
+              <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+              <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+              <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-link-group">
+            <h4>Pravno</h4>
+            <ul>
+              <li><a href="politika-privatnosti.html">Politika privatnosti</a></li>
+              <li><a href="uvjeti-koristenja.html">Uvjeti korištenja</a></li>
+              <li><a href="kolacici.html">Kolačići</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 Algor studio. Sva prava pridržana.</div>
+        <div class="footer-credits">
+          Izradio Francis &bull; Pokreće <span style="color: #29ADFF; font-weight: 600;">Antigravity</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=42.0.0"></script>
+</body>
+</html>
