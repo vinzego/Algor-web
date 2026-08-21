@@ -1305,44 +1305,62 @@
         padding-right: 0;
       }
       .zigzag-process-container {
-        gap: 32px;
+        gap: 44px;
         position: relative;
-        padding-left: 20px;
+        padding-left: 0;
         margin: 40px auto 0 auto;
       }
-      /* Continuous Glowing Line on Mobile */
       .zigzag-process-container::before {
-        content: "";
-        position: absolute;
-        left: 0px;
-        top: 30px;
-        bottom: 30px;
-        width: 3px;
-        background: linear-gradient(to bottom, #29ADFF, #0284c7, #29ADFF);
-        border-radius: 3px;
-        box-shadow: 0 0 12px rgba(41, 173, 255, 0.7);
-        z-index: 1;
+        display: none !important;
       }
       .process-drawn-line-svg {
-        display: none;
+        display: block !important;
+        position: absolute;
+        top: 30px;
+        bottom: 30px;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 60px);
+        pointer-events: none;
+        z-index: 1 !important;
       }
       .zigzag-step-row {
+        width: 100%;
+        display: flex;
+        position: relative;
+        z-index: 2 !important;
+      }
+      .zigzag-step-row.align-left {
         justify-content: flex-start !important;
       }
+      .zigzag-step-row.align-right {
+        justify-content: flex-end !important;
+      }
       .zigzag-card {
-        width: 100%;
-        padding: 26px 20px;
+        width: 86% !important;
+        padding: 28px 22px;
+        position: relative;
+        z-index: 2 !important;
       }
       .card-line-anchor-node {
         display: block !important;
-        left: -29px !important;
+        z-index: 3 !important;
+      }
+      .zigzag-step-row.align-left .card-line-anchor-node {
+        right: -10px !important;
+        left: auto !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 20px;
+        height: 20px;
+      }
+      .zigzag-step-row.align-right .card-line-anchor-node {
+        left: -10px !important;
         right: auto !important;
-        top: 32px;
-        transform: translateY(0);
-        width: 18px;
-        height: 18px;
-        border-width: 3px;
-        z-index: 3;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 20px;
+        height: 20px;
       }
       .standards-grid-8col {
         grid-template-columns: 1fr;
