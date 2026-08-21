@@ -28,7 +28,7 @@ body {
   background-image: none !important;
   position: relative !important;
   overflow: hidden !important;
-  padding: 32px 48px;
+  padding: 100px 48px 32px 48px !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-between !important;
@@ -36,6 +36,7 @@ body {
   box-shadow: 0 8px 32px rgba(0,0,0,0.04);
   border: 1px solid #e2e8f0;
   color: #121316;
+  box-sizing: border-box !important;
 }
 
 /* Animated Glowing Mesh Grid Overlay (Perfect 1:1 Small Squares on All Devices) */
@@ -86,13 +87,42 @@ body {
 .hero-center-column {
   position: relative;
   z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
   max-width: 920px;
-  margin: auto;
-  padding: 60px 0 40px 0;
+  width: 100% !important;
+  margin: auto !important;
+  padding: 20px 0 !important;
+  flex: 1 !important;
+}
+
+.mesh-eyebrow-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 18px !important;
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+  margin-bottom: 22px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  letter-spacing: -0.2px !important;
+}
+
+.eyebrow-spark {
+  color: #29ADFF !important;
+  font-size: 14px !important;
+}
+
+.eyebrow-txt {
+  color: #1e293b !important;
 }
 
 .mesh-hero-headline {
@@ -9755,12 +9785,14 @@ html, body {
   .hero-single-column-mesh {
     min-height: calc(100vh - 32px) !important;
     min-height: calc(100dvh - 32px) !important;
-    padding: 20px 16px 24px 16px !important;
+    padding: 85px 16px 20px 16px !important;
     border-radius: 24px !important;
     margin: 16px auto !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
   }
 
   .ultra-navbar {
@@ -9780,14 +9812,20 @@ html, body {
   }
 
   .hero-center-column {
-    margin: 12px auto 0 auto !important;
-    padding: 10px 0 20px 0 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: auto !important;
+    padding: 10px 0 !important;
     width: 100% !important;
   }
 
-  .hero-status-pill {
-    margin-bottom: 16px !important;
+  .mesh-eyebrow-pill {
     padding: 6px 14px !important;
+    margin-bottom: 16px !important;
+    font-size: 11.5px !important;
   }
 
   .status-text {
