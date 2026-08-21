@@ -3248,9 +3248,16 @@ body {
 
 /* Black Theme Overrides for #faq (#050508) with Inverted Text */
 #faq {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
   background-color: #050508 !important;
   color: #ffffff !important;
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 90px 24px !important;
+  box-sizing: border-box !important;
 }
 
 #faq .info-title {
