@@ -4083,7 +4083,7 @@ body {
    Nested Dark Brand Footer Card with Conversion Block (Framer style)
 ------------------------------------------------------------- */
 .footer-hero-and-card-section {
-  background: #0e0e10 !important;
+  background: #050508 !important;
   width: 100%;
   margin: 0;
   display: flex;
@@ -4247,13 +4247,13 @@ body {
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  background-color: #0e0e10 !important;
+  background-color: #050508 !important;
 }
 
 .brand-footer-card {
   width: 100%;
   max-width: 1600px;
-  background-color: #0e0e10 !important;
+  background-color: #050508 !important;
   border-radius: 0 !important;
   padding: 60px 48px 40px 48px;
   display: flex;
