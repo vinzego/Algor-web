@@ -5827,13 +5827,6 @@ body {
     transform: translateY(36px) scale(0.94);
   }
 }
-  border-bottom-right-radius: 4px !important;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
 
 /* 3D Orbiting 4 Brand Logos Animation for Bento Card 1 (Privlačenje - 100% Centered) */
 .ad-logos-orbit-wrapper {
@@ -6634,28 +6627,546 @@ body {
   font-size: 16px !important;
 }
 
-/* Mobile Responsiveness */
+/* ==============================================================
+   4-CARD STACKING PROCESS SECTION (Sticky Stacking Cards Effect)
+   ============================================================== */
+.process-stack-section {
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 80px 24px 120px 24px !important;
+  box-sizing: border-box !important;
+}
+
+.stacking-cards-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 40px !important;
+  width: 100% !important;
+  margin-top: 50px !important;
+  position: relative !important;
+}
+
+.stack-card-item {
+  position: sticky !important;
+  top: calc(90px + (var(--stack-index, 1) - 1) * 32px) !important;
+  width: 100% !important;
+  border-radius: 28px !important;
+  box-sizing: border-box !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Card 1: Warm Sand Beige Tone */
+.stack-card-1 {
+  background: #f7f5f0 !important;
+  border: 1px solid #eae5d9 !important;
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+  z-index: 10 !important;
+}
+
+/* Card 2: Deep Obsidian Dark Tone */
+.stack-card-2 {
+  background: #111318 !important;
+  border: 1px solid #232733 !important;
+  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  z-index: 20 !important;
+}
+
+/* Card 3: Crisp Pure White Tone */
+.stack-card-3 {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 24px 56px -8px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  z-index: 30 !important;
+}
+
+/* Card 4: Sleek Graphite Dark Tone */
+.stack-card-4 {
+  background: #0d1017 !important;
+  border: 1px solid #1e2433 !important;
+  box-shadow: 0 28px 64px -8px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3) !important;
+  z-index: 40 !important;
+}
+
+.stack-card-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 48px !important;
+  padding: 44px 40px !important;
+  min-height: 380px !important;
+  box-sizing: border-box !important;
+}
+
+.stack-card-left {
+  flex: 1.15 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+.stack-card-right {
+  flex: 0.85 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+/* Typography & Pills */
+.stack-num-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 16px !important;
+}
+
+.stack-card-1 .stack-num-pill {
+  background: #ede8dc !important;
+  color: #1a1a1a !important;
+  border: 1px solid #dfd8c7 !important;
+}
+
+.stack-card-2 .stack-num-pill {
+  background: rgba(223, 252, 43, 0.15) !important;
+  color: #dffc2b !important;
+  border: 1px solid rgba(223, 252, 43, 0.35) !important;
+}
+
+.stack-card-3 .stack-num-pill {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.stack-card-4 .stack-num-pill {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+
+.stack-card-title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: clamp(22px, 2.5vw, 28px) !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  margin: 0 0 14px 0 !important;
+  letter-spacing: -0.5px !important;
+}
+
+.stack-card-1 .stack-card-title,
+.stack-card-3 .stack-card-title {
+  color: #111827 !important;
+}
+
+.stack-card-2 .stack-card-title,
+.stack-card-4 .stack-card-title {
+  color: #ffffff !important;
+}
+
+.stack-card-desc {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  margin: 0 0 20px 0 !important;
+}
+
+.stack-card-1 .stack-card-desc { color: #4b5563 !important; }
+.stack-card-2 .stack-card-desc { color: #9ca3af !important; }
+.stack-card-3 .stack-card-desc { color: #475569 !important; }
+.stack-card-4 .stack-card-desc { color: #94a3b8 !important; }
+
+.stack-feature-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.stack-feature-list li {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+.stack-card-1 .stack-feature-list li { color: #1f2937 !important; }
+.stack-card-2 .stack-feature-list li { color: #e5e7eb !important; }
+.stack-card-3 .stack-feature-list li { color: #0f172a !important; }
+.stack-card-4 .stack-feature-list li { color: #e2e8f0 !important; }
+
+.feat-check {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+.stack-card-1 .feat-check { background: #1a1a1a !important; color: #ffffff !important; }
+.stack-card-2 .feat-check { background: #dffc2b !important; color: #000000 !important; }
+.stack-card-3 .feat-check { background: #10b981 !important; color: #ffffff !important; }
+.stack-card-4 .feat-check { background: #10b981 !important; color: #ffffff !important; }
+
+/* -------------------------------------------------------------
+   CARD 01 GRAPHIC: Rotating Orbit Carousel (Google, Meta, FB, IG)
+   ------------------------------------------------------------- */
+.stack-orbit-visual {
+  position: relative !important;
+  width: 280px !important;
+  height: 280px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.stack-orbit-ring {
+  position: absolute !important;
+  width: 220px !important;
+  height: 220px !important;
+  border-radius: 50% !important;
+  border: 1.5px dashed rgba(0, 0, 0, 0.15) !important;
+}
+
+.stack-orbit-center {
+  width: 90px !important;
+  height: 90px !important;
+  border-radius: 50% !important;
+  background: #111318 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15) !important;
+  z-index: 5 !important;
+}
+
+.center-cam-icon { font-size: 24px !important; margin-bottom: 2px !important; }
+.center-cam-label {
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  color: #dffc2b !important;
+  letter-spacing: 0.8px !important;
+}
+
+.stack-orbit-spinner {
+  position: absolute !important;
+  width: 220px !important;
+  height: 220px !important;
+  border-radius: 50% !important;
+  animation: orbitRotateSpin 18s linear infinite !important;
+}
+
+@keyframes orbitRotateSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.orbit-badge {
+  position: absolute !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+  padding: 6px 12px !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  animation: orbitCounterRotate 18s linear infinite !important;
+}
+
+@keyframes orbitCounterRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.orbit-badge.badge-google { top: -14px; left: 50%; margin-left: -48px; }
+.orbit-badge.badge-meta { right: -16px; top: 50%; margin-top: -16px; }
+.orbit-badge.badge-fb { bottom: -14px; left: 50%; margin-left: -52px; }
+.orbit-badge.badge-ig { left: -16px; top: 50%; margin-top: -16px; }
+
+.orbit-svg { width: 16px !important; height: 16px !important; }
+
+/* -------------------------------------------------------------
+   CARD 02 GRAPHIC: Mobile Landing Web Preview Mockup
+   ------------------------------------------------------------- */
+.stack-mobile-preview-box {
+  position: relative !important;
+  width: 240px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.stack-phone-shell {
+  width: 210px !important;
+  background: #000000 !important;
+  border: 2.5px solid #2e3444 !important;
+  border-radius: 26px !important;
+  padding: 8px !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6) !important;
+  box-sizing: border-box !important;
+}
+
+.stack-phone-notch {
+  width: 60px !important;
+  height: 4px !important;
+  background: #2e3444 !important;
+  border-radius: 4px !important;
+  margin: 0 auto 6px auto !important;
+}
+
+.stack-phone-screen {
+  background: #181b22 !important;
+  border-radius: 18px !important;
+  padding: 12px 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.phone-screen-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-size: 9px !important;
+  font-family: 'Geist Mono', monospace !important;
+  color: #9ca3af !important;
+}
+
+.ps-badge { color: #dffc2b !important; font-weight: 800 !important; }
+.ps-url { color: #6b7280 !important; }
+
+.phone-screen-hero {
+  background: #222631 !important;
+  border-radius: 12px !important;
+  padding: 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  align-items: center !important;
+}
+
+.ps-title-line { width: 75% !important; height: 8px !important; background: #ffffff !important; border-radius: 4px !important; }
+.ps-desc-line { width: 55% !important; height: 5px !important; background: #4b5563 !important; border-radius: 3px !important; }
+
+.ps-img-placeholder {
+  width: 100% !important;
+  height: 60px !important;
+  background: linear-gradient(135deg, #2d3342, #1c202a) !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.ps-play-dot {
+  width: 24px !important;
+  height: 24px !important;
+  background: rgba(223, 252, 43, 0.2) !important;
+  border: 1px solid #dffc2b !important;
+  color: #dffc2b !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 9px !important;
+}
+
+.ps-cta-btn {
+  width: 100% !important;
+  background: #dffc2b !important;
+  color: #000000 !important;
+  font-size: 9.5px !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+  padding: 6px 0 !important;
+  border-radius: 6px !important;
+  letter-spacing: 0.3px !important;
+}
+
+.stack-float-stat {
+  position: absolute !important;
+  bottom: -10px !important;
+  right: -10px !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  z-index: 10 !important;
+}
+
+.stat-dot-green { color: #10b981 !important; }
+
+/* -------------------------------------------------------------
+   CARD 03 GRAPHIC: Workflow Flow Nodes & Light Pulse Particles
+   ------------------------------------------------------------- */
+.stack-flow-diagram {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  max-width: 280px !important;
+}
+
+.flow-step-node {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 10px 16px !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  transition: transform 0.2s ease !important;
+}
+
+.node-icon-box { font-size: 20px !important; }
+.node-info { display: flex !important; flex-direction: column !important; gap: 2px !important; }
+.node-info strong { font-size: 13px !important; color: #0f172a !important; }
+.node-info span { font-size: 11px !important; color: #64748b !important; }
+
+.flow-step-node.node-ai {
+  background: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+}
+.flow-step-node.node-ai .node-info strong { color: #15803d !important; }
+
+.flow-step-node.node-confirmed {
+  background: #eff6ff !important;
+  border-color: #bfdbfe !important;
+}
+.flow-step-node.node-confirmed .node-info strong { color: #1d4ed8 !important; }
+
+.flow-arrow-line {
+  position: relative !important;
+  width: 2px !important;
+  height: 20px !important;
+  background: #cbd5e1 !important;
+  margin: -6px 0 -6px 24px !important;
+}
+
+.flow-pulse-particle {
+  position: absolute !important;
+  top: 0 !important;
+  left: -2px !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: #10b981 !important;
+  border-radius: 50% !important;
+  animation: flowParticleDown 1.8s infinite linear !important;
+}
+
+@keyframes flowParticleDown {
+  0% { top: 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* -------------------------------------------------------------
+   CARD 04 GRAPHIC: CRM Live Dashboard & Notification
+   ------------------------------------------------------------- */
+.stack-crm-dashboard {
+  width: 100% !important;
+  max-width: 300px !important;
+  background: #161b24 !important;
+  border: 1px solid #262f3f !important;
+  border-radius: 18px !important;
+  padding: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4) !important;
+}
+
+.stack-dashboard-top {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+}
+
+.stack-dash-metric {
+  flex: 1 !important;
+  background: #0f131a !important;
+  border: 1px solid #202736 !important;
+  border-radius: 10px !important;
+  padding: 8px 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+.dash-lbl { font-size: 9px !important; color: #94a3b8 !important; font-family: 'Geist Mono', monospace !important; }
+.dash-val { font-size: 16px !important; font-weight: 800 !important; color: #10b981 !important; }
+
+.stack-dash-notification {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-radius: 12px !important;
+  padding: 10px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+  animation: notifFloat 3s infinite ease-in-out alternate !important;
+}
+
+@keyframes notifFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+
+.dash-notif-icon { font-size: 18px !important; }
+.dash-notif-text { display: flex !important; flex-direction: column !important; flex: 1 !important; }
+.dash-notif-text strong { font-size: 11.5px !important; color: #0f172a !important; }
+.dash-notif-text span { font-size: 10px !important; color: #64748b !important; }
+.dash-notif-time { font-size: 9px !important; color: #94a3b8 !important; }
+
+.stack-dash-live-pill {
+  font-size: 10px !important;
+  color: #94a3b8 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-family: 'Geist Mono', monospace !important;
+}
+
+.dash-live-dot { color: #10b981 !important; font-size: 12px !important; }
+
+/* Responsive adjustments for stacking cards */
 @media (max-width: 900px) {
-  .bento-3col-grid {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto !important;
-  }
-  .card-col-1-top,
-  .card-col-23-hero,
-  .card-col-1-bot,
-  .card-col-2-bot,
-  .card-col-3-bot {
-    grid-column: 1 !important;
-    grid-row: auto !important;
-    height: auto !important;
-    min-height: 240px !important;
-  }
-  .bento-hero-split {
+  .stack-card-inner {
     flex-direction: column !important;
-    gap: 16px !important;
+    gap: 32px !important;
+    padding: 32px 24px !important;
+    min-height: auto !important;
   }
-  .bento-hero-visual {
-    justify-content: center !important;
+  .stack-card-item {
+    top: calc(80px + (var(--stack-index, 1) - 1) * 20px) !important;
   }
 }
 
