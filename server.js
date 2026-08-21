@@ -47,12 +47,30 @@ function saveInquiryToCSV(data) {
   }
 }
 
+function normalizeNotionPackage(pkg) {
+  if (!pkg) return 'Custom Paket';
+  const p = pkg.toLowerCase();
+  if (p.includes('490')) return 'Landing Stranica (od 490 €)';
+  if (p.includes('990')) return 'Business Web (od 990 €)';
+  if (p.includes('1850') || p.includes('1.850') || p.includes('1,850')) return 'Custom Aplikacija (od 1.850 €)';
+  if (p.includes('690') || p.includes('start')) return 'Start (690 €/mj.)';
+  if (p.includes('1250') || p.includes('1.250') || p.includes('1,250') || p.includes('plus') || p.includes('pro')) return 'Plus (1.250 €/mj.)';
+  if (p.includes('2150') || p.includes('2.150') || p.includes('2,150') || p.includes('ultra') || p.includes('ai')) return 'Pro / AI (2.150 €/mj.)';
+  if (p.includes('audit') || p.includes('savjetovanj')) return 'Besplatan Audit (0 €)';
+  if (p.includes('instagram') || p.includes('oglas')) return 'Ciljani Instagram Oglas';
+  if (p.includes('procjena') && p.includes('web')) return 'Izrada Weba (Besplatna Procjena)';
+  if (p.includes('redizajn') || p.includes('procjena')) return 'Procjena Projekta / Redizajn';
+  return pkg.replace(/,/g, '.').trim() || 'Custom Paket';
+}
+
 // Helper function to save inquiry to Notion database "Algor upiti"
 async function saveInquiryToNotion(data) {
   if (!notion || !process.env.NOTION_DATABASE_ID) {
     console.warn('Notion API credentials missing, skipping Notion save.');
     return;
   }
+
+  const cleanPackage = normalizeNotionPackage(data.package);
 
   const properties = {
     'Ime i prezime': {
@@ -69,32 +87,15 @@ async function saveInquiryToNotion(data) {
     },
     'Status': {
       status: { name: 'Novi upit' }
+    },
+    'Paket': {
+      select: { name: cleanPackage }
     }
   };
 
   if (data.phone) {
-    // Notion phone number accepts standard phone strings
     properties['Mobitel'] = {
       phone_number: data.phone.trim()
-    };
-  }
-
-  if (data.package) {
-    // Clean and normalize package name to match select options
-    let pkgName = data.package.trim();
-    if (pkgName.includes('490')) pkgName = 'Landing Stranica (od 490 €)';
-    else if (pkgName.includes('990')) pkgName = 'Business Web (od 990 €)';
-    else if (pkgName.includes('1,850') || pkgName.includes('1.850') || pkgName.includes('1850')) pkgName = 'Custom Aplikacija (od 1.850 €)';
-    else if (pkgName.includes('690')) pkgName = 'Start (690 €/mj.)';
-    else if (pkgName.includes('1.250') || pkgName.includes('1250')) pkgName = 'Plus (1.250 €/mj.)';
-    else if (pkgName.includes('2.150') || pkgName.includes('2150')) pkgName = 'Pro / AI (2.150 €/mj.)';
-    else if (pkgName.toLowerCase().includes('audit') || pkgName.toLowerCase().includes('savjetovanj')) pkgName = 'Besplatan Audit (0 €)';
-    else if (pkgName.toLowerCase().includes('instagram') || pkgName.toLowerCase().includes('oglas')) pkgName = 'Ciljani Instagram Oglas';
-    else if (pkgName.toLowerCase().includes('procjena') && pkgName.toLowerCase().includes('web')) pkgName = 'Izrada Weba (Besplatna Procjena)';
-    else if (pkgName.toLowerCase().includes('redizajn') || pkgName.toLowerCase().includes('procjena')) pkgName = 'Procjena Projekta / Redizajn';
-    
-    properties['Paket'] = {
-      select: { name: pkgName }
     };
   }
 
@@ -107,7 +108,7 @@ async function saveInquiryToNotion(data) {
           {
             type: 'text',
             text: {
-              content: `📋 Detalji upita s weba:\n• Ime i prezime: ${data.name || '-'}\n• Tvrtka / Web: ${data.company || '-'}\n• Email: ${data.email || '-'}\n• Mobitel: ${data.phone || '-'}\n• Odabrani paket / usluga: ${data.package || '-'}\n• Napomena / poruka: ${data.calendarSlot || 'Nema napomene'}`
+              content: `📋 Detalji upita s weba:\n• Ime i prezime: ${data.name || '-'}\n• Tvrtka / Web: ${data.company || '-'}\n• Email: ${data.email || '-'}\n• Mobitel: ${data.phone || '-'}\n• Odabrani paket: ${data.package || '-'}\n• Napomena / poruka: ${data.calendarSlot || 'Nema napomene'}`
             }
           }
         ]
