@@ -47,7 +47,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 32px;
       width: 100%;
-      max-width: 1040px;
+      max-width: 1060px;
       margin: 48px auto 0 auto;
       box-sizing: border-box;
     }
@@ -136,16 +136,17 @@
     .compare-list-good .good-icon { color: #29ADFF; font-weight: bold; font-size: 15px; flex-shrink: 0; }
 
     /* =========================================================
-       BENTO GRID FOR TECHNOLOGIES & METHODOLOGY
+       ASYMMETRICAL 2-ROW BENTO GRID (2 CARD SIZES: WIDE & 1:1)
        ========================================================= */
     .tech-bento-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(12, 1fr);
       gap: 24px;
       width: 100%;
-      max-width: 1060px;
+      max-width: 1080px;
       margin: 48px auto 0 auto;
       box-sizing: border-box;
+      align-items: stretch;
     }
 
     .bento-tech-card {
@@ -154,66 +155,82 @@
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .bento-tech-card:hover {
       transform: translateY(-4px);
     }
 
-    /* Wide Dark Card (Custom Code) */
-    .bento-wide-dark {
-      grid-column: span 2;
+    /* ROW 1: Left = Wide (7 cols), Right = 1:1 (5 cols) */
+    .bento-row1-wide {
+      grid-column: span 7;
       background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.15) 0%, transparent 60%), #0d1017;
       border: 1.5px solid rgba(41, 173, 255, 0.35);
-      padding: 38px 40px;
+      padding: 36px 36px;
       color: #ffffff;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), 0 0 30px rgba(41, 173, 255, 0.08);
+      min-height: 380px;
     }
 
-    .bento-wide-dark:hover {
+    .bento-row1-wide:hover {
       border-color: rgba(41, 173, 255, 0.6);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 45px rgba(41, 173, 255, 0.15);
     }
 
-    /* Wide Light Card (Marketing & AI) */
-    .bento-wide-light {
-      grid-column: span 2;
+    .bento-row1-square {
+      grid-column: span 5;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      padding: 38px 40px;
+      padding: 36px 32px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      min-height: 380px;
     }
 
-    .bento-wide-light:hover {
+    .bento-row1-square:hover {
       border-color: #cbd5e1;
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
     }
 
-    /* Small Light Cards (No-Code & SEO) */
-    .bento-small-light {
-      grid-column: span 1;
+    /* ROW 2: Left = 1:1 (5 cols), Right = Wide (7 cols) */
+    .bento-row2-square {
+      grid-column: span 5;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      padding: 34px 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 20px;
+      padding: 36px 32px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      min-height: 380px;
     }
 
-    .bento-small-light:hover {
+    .bento-row2-square:hover {
       border-color: #cbd5e1;
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
     }
 
+    .bento-row2-wide {
+      grid-column: span 7;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      padding: 36px 36px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      min-height: 380px;
+    }
+
+    .bento-row2-wide:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.07);
+    }
+
+    /* Bento Internal Layout Elements */
     .bento-card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .bento-badge-pill {
@@ -245,7 +262,7 @@
 
     .bento-stat-highlight {
       font-family: "Geist Mono", monospace;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #10b981;
       background: rgba(16, 185, 129, 0.12);
@@ -256,31 +273,32 @@
 
     .bento-connect-badge {
       font-family: "Geist Mono", monospace;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       color: #29ADFF;
     }
 
     .bento-content-split {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 32px;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
       align-items: center;
     }
 
     .bento-text-area h3 {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 800;
       margin: 0 0 10px 0;
       letter-spacing: -0.4px;
     }
 
-    .bento-wide-dark .bento-text-area h3 {
+    .bento-row1-wide .bento-text-area h3 {
       color: #ffffff;
     }
 
-    .bento-wide-light .bento-text-area h3,
-    .bento-small-light h3 {
+    .bento-row2-wide .bento-text-area h3,
+    .bento-row1-square h3,
+    .bento-row2-square h3 {
       color: #0f172a;
       font-size: 20px;
       font-weight: 800;
@@ -289,19 +307,20 @@
     }
 
     .bento-text-area p {
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0 0 18px 0;
+      font-size: 13.5px;
+      line-height: 1.55;
+      margin: 0 0 16px 0;
     }
 
-    .bento-wide-dark .bento-text-area p {
+    .bento-row1-wide .bento-text-area p {
       color: #94a3b8;
     }
 
-    .bento-wide-light .bento-text-area p,
-    .bento-small-light p {
+    .bento-row2-wide .bento-text-area p,
+    .bento-row1-square p,
+    .bento-row2-square p {
       color: #64748b;
-      font-size: 14px;
+      font-size: 13.5px;
       line-height: 1.55;
       margin: 0 0 16px 0;
     }
@@ -317,7 +336,7 @@
       justify-content: center;
       font-size: 22px;
       border: 1px solid rgba(41, 173, 255, 0.25);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .pillar-tags-row {
@@ -347,7 +366,7 @@
       background: #06070a;
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 16px;
-      padding: 16px 18px;
+      padding: 14px 16px;
       font-family: "Geist Mono", monospace;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
@@ -356,14 +375,14 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .code-dot {
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
     }
     .code-dot.red { background: #ef4444; }
@@ -378,8 +397,8 @@
 
     .code-snippet-body {
       margin: 0;
-      font-size: 12px;
-      line-height: 1.6;
+      font-size: 11.5px;
+      line-height: 1.55;
       color: #cbd5e1;
       overflow-x: auto;
     }
@@ -395,25 +414,25 @@
     .bento-flow-visual {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       background: #f8fafc;
       border: 1px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 18px 20px;
+      border-radius: 16px;
+      padding: 14px 16px;
     }
 
     .flow-pill-step {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 8px 14px;
-      font-size: 13px;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 12.5px;
       font-weight: 600;
       color: #1e293b;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
     }
 
     .flow-pill-step.active {
@@ -423,15 +442,15 @@
     }
 
     .flow-pill-step .step-num {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: #0f172a;
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
+      font-size: 10.5px;
       font-family: "Geist Mono", monospace;
       font-weight: 700;
     }
@@ -443,7 +462,7 @@
 
     .flow-arrow-down {
       text-align: center;
-      font-size: 11px;
+      font-size: 10px;
       color: #94a3b8;
       margin: -4px 0;
     }
@@ -502,15 +521,17 @@
         grid-template-columns: 1fr;
         gap: 20px;
       }
-      .bento-wide-dark,
-      .bento-wide-light,
-      .bento-small-light {
+      .bento-row1-wide,
+      .bento-row1-square,
+      .bento-row2-square,
+      .bento-row2-wide {
         grid-column: span 1;
         padding: 30px 24px;
+        min-height: auto;
       }
       .bento-content-split {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 20px;
       }
       .web-process-steps {
         grid-template-columns: repeat(2, 1fr);
@@ -663,8 +684,8 @@
     </div>
   </section>
 
-  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (BENTO GRID) -->
-  <section id="tehnologije" class="plain-section" style="max-width: 1060px; margin: 60px auto; padding: 40px 24px;">
+  <!-- 3. TEHNOLOGIJE & METODOLOGIJA (ASYMMETRICAL 2-ROW BENTO GRID) -->
+  <section id="tehnologije" class="plain-section" style="max-width: 1080px; margin: 60px auto; padding: 40px 24px;">
     <div class="info-header align-center">
       <span class="section-badge">// TEHNOLOGIJE &amp; METODOLOGIJA</span>
       <h2 class="info-title">Kombinacija čistog koda i modernog dizajna</h2>
@@ -675,22 +696,22 @@
 
     <div class="tech-bento-grid">
       
-      <!-- Bento Card 1: Custom Code (Large Dark Card / 2 Columns Span) -->
-      <div class="bento-tech-card bento-wide-dark">
+      <!-- RED 1 - LIJEVO: Custom Code (Duža / Wide Card - 7 Stupaca) -->
+      <div class="bento-tech-card bento-row1-wide">
         <div class="bento-card-header">
           <div class="bento-badge-pill"><span class="badge-dot-cyan">●</span> 100% ČISTI KOD &amp; BRZINA</div>
-          <span class="bento-stat-highlight">⚡ 99/100 Google PageSpeed</span>
+          <span class="bento-stat-highlight">⚡ 99/100 PageSpeed</span>
         </div>
         
         <div class="bento-content-split">
           <div class="bento-text-area">
-            <h3>Custom Code Razvoj (Code Solutions)</h3>
+            <h3>Custom Code Razvoj</h3>
             <p>Ručno optimiziran HTML5, moderni CSS i JavaScript. Bez nepotrebnih datoteka i sporih predložaka koji guše performanse. Svaka linija koda napisana je za maksimalnu brzinu i stabilnost.</p>
             <div class="pillar-tags-row">
-              <span class="code-tag-pill dark-pill">HTML5 &amp; Modern CSS</span>
-              <span class="code-tag-pill dark-pill">JavaScript ES6+</span>
-              <span class="code-tag-pill dark-pill">Node.js Backend</span>
-              <span class="code-tag-pill dark-pill">REST / API Integracije</span>
+              <span class="code-tag-pill dark-pill">HTML5 &amp; CSS3</span>
+              <span class="code-tag-pill dark-pill">JS ES6+</span>
+              <span class="code-tag-pill dark-pill">Node.js</span>
+              <span class="code-tag-pill dark-pill">API</span>
             </div>
           </div>
           
@@ -704,32 +725,31 @@
             <pre class="code-snippet-body"><code><span class="tok-kw">const</span> <span class="tok-var">customWeb</span> = <span class="tok-kw">new</span> <span class="tok-fn">AlgorStudio</span>({
   <span class="tok-prop">loadTime</span>: <span class="tok-str">"&lt; 0.8s"</span>,
   <span class="tok-prop">seoReady</span>: <span class="tok-bool">true</span>,
-  <span class="tok-prop">mobileFirst</span>: <span class="tok-bool">true</span>,
-  <span class="tok-prop">cleanCode</span>: <span class="tok-bool">true</span>
+  <span class="tok-prop">mobileFirst</span>: <span class="tok-bool">true</span>
 });
 <span class="tok-var">customWeb</span>.<span class="tok-fn">deploy</span>();</code></pre>
           </div>
         </div>
       </div>
 
-      <!-- Bento Card 2: No-Code & CMS Fleksibilnost (1 Column) -->
-      <div class="bento-tech-card bento-small-light">
+      <!-- RED 1 - DESNO: No-Code & CMS (1:1 Kvadratna / Manja Card - 5 Stupaca) -->
+      <div class="bento-tech-card bento-row1-square">
         <div>
-          <div class="bento-badge-pill light-pill" style="margin-bottom: 16px;"><span class="badge-dot-cyan">●</span> SAMOSTALNO UREĐIVANJE</div>
+          <div class="bento-badge-pill light-pill" style="margin-bottom: 16px;"><span class="badge-dot-cyan">●</span> CMS &amp; FLEKSIBILNOST</div>
           <div class="bento-icon-circle">⚡</div>
-          <h3>No-Code &amp; CMS Rješenja</h3>
-          <p>Želite sami ažurirati cijene, objavljivati novosti ili mijenjati ponude bez zvanja programera? Postavljamo Webflow, Framer ili headless CMS s jednostavnim administrativnim panelom.</p>
+          <h3>No-Code &amp; CMS</h3>
+          <p>Želite sami ažurirati cijene, objavljivati novosti ili mijenjati ponude bez zvanja programera? Postavljamo Webflow, Framer ili headless CMS s intuitivnim panelom.</p>
         </div>
         <div class="pillar-tags-row">
           <span class="code-tag-pill">Webflow</span>
           <span class="code-tag-pill">Framer</span>
           <span class="code-tag-pill">Headless CMS</span>
-          <span class="code-tag-pill">Video Edukacija</span>
+          <span class="code-tag-pill">Edukacija</span>
         </div>
       </div>
 
-      <!-- Bento Card 3: Tehnički & Lokalni SEO (1 Column) -->
-      <div class="bento-tech-card bento-small-light">
+      <!-- RED 2 - LIJEVO: Tehnički & Lokalni SEO (1:1 Kvadratna / Manja Card - 5 Stupaca) -->
+      <div class="bento-tech-card bento-row2-square">
         <div>
           <div class="bento-badge-pill light-pill" style="margin-bottom: 16px;"><span class="badge-dot-cyan">●</span> GOOGLE POZICIJE</div>
           <div class="bento-icon-circle">🔍</div>
@@ -739,27 +759,27 @@
         <div class="pillar-tags-row">
           <span class="code-tag-pill">Schema.org</span>
           <span class="code-tag-pill">Search Console</span>
-          <span class="code-tag-pill">Sitemap XML</span>
+          <span class="code-tag-pill">Sitemap</span>
           <span class="code-tag-pill">OpenGraph</span>
         </div>
       </div>
 
-      <!-- Bento Card 4: Marketing & AI Integracije (2 Columns Span) -->
-      <div class="bento-tech-card bento-wide-light">
+      <!-- RED 2 - DESNO: Marketing, AI (Duža / Wide Card - 7 Stupaca) -->
+      <div class="bento-tech-card bento-row2-wide">
         <div class="bento-card-header">
           <div class="bento-badge-pill light-pill"><span class="badge-dot-cyan">●</span> PRODAJNI LIJEVAK</div>
-          <span class="bento-connect-badge">⚡ Automatizirano slanje upita</span>
+          <span class="bento-connect-badge">⚡ Instant notifikacije</span>
         </div>
 
         <div class="bento-content-split">
           <div class="bento-text-area">
-            <h3>Marketing, AI &amp; CRM Integracije</h3>
-            <p>Web nije samo digitalna posjetnica nego stroj za privlačenje kupaca. Odmah ga povezujemo s Meta Pixelom, Google Analytics 4, WhatsApp AI asistentom i vašim email/CRM sustavom za instant notifikacije.</p>
+            <h3>Marketing &amp; AI Integracije</h3>
+            <p>Web nije samo digitalna posjetnica nego stroj za privlačenje kupaca. Povezujemo ga s Meta Pixelom, Google Analyticsom 4, WhatsApp AI botom i vašim CRM sustavom.</p>
             <div class="pillar-tags-row">
-              <span class="code-tag-pill">Meta Pixel &amp; CAPI</span>
-              <span class="code-tag-pill">Google Analytics 4</span>
-              <span class="code-tag-pill">WhatsApp AI Chat</span>
-              <span class="code-tag-pill">Instant SMS / Email</span>
+              <span class="code-tag-pill">Meta Pixel</span>
+              <span class="code-tag-pill">GA4</span>
+              <span class="code-tag-pill">WhatsApp AI</span>
+              <span class="code-tag-pill">Instant SMS</span>
             </div>
           </div>
 
@@ -768,7 +788,7 @@
             <div class="flow-arrow-down">↓</div>
             <div class="flow-pill-step"><span class="step-num">2</span> Pametna forma / WhatsApp</div>
             <div class="flow-arrow-down">↓</div>
-            <div class="flow-pill-step active"><span class="step-num">3</span> Obavijest na vaš mobitel</div>
+            <div class="flow-pill-step active"><span class="step-num">3</span> Obavijest na mobitel</div>
           </div>
         </div>
       </div>
