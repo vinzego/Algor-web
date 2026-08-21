@@ -6632,7 +6632,7 @@ body {
    ============================================================== */
 .process-stack-section {
   width: 100% !important;
-  max-width: 1240px !important;
+  max-width: 1040px !important;
   margin: 0 auto !important;
   padding: 80px 24px 120px 24px !important;
   box-sizing: border-box !important;
@@ -6643,7 +6643,10 @@ body {
   flex-direction: column !important;
   gap: 40px !important;
   width: 100% !important;
-  margin-top: 65px !important;
+  max-width: 1040px !important;
+  margin-top: 60px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   position: relative !important;
 }
 
@@ -6693,9 +6696,9 @@ body {
   flex-direction: row !important;
   align-items: center !important;
   justify-content: space-between !important;
-  gap: 48px !important;
-  padding: 44px 40px !important;
-  min-height: 380px !important;
+  gap: 40px !important;
+  padding: 38px 36px !important;
+  min-height: 360px !important;
   box-sizing: border-box !important;
 }
 
