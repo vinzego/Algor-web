@@ -709,6 +709,87 @@
     }
 
     /* =========================================================
+       ALL-INCLUDED STANDARDS SECTION (UKLJUČENO U SVAKI PROJEKT)
+       ========================================================= */
+    .standards-section-container {
+      max-width: 1280px;
+      margin: 70px auto 40px auto;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+
+    .standards-grid-8col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .standard-feature-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-sizing: border-box;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .standard-feature-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(41, 173, 255, 0.55);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    }
+
+    .standard-icon-pill {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(41, 173, 255, 0.1);
+      border: 1px solid rgba(41, 173, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #29ADFF;
+    }
+
+    .standard-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .standard-included-tag {
+      font-family: "Geist Mono", monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .standard-feature-card h3 {
+      font-size: 18.5px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0;
+      letter-spacing: -0.3px;
+    }
+
+    .standard-feature-card p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* =========================================================
        CONTINUOUS HAND-DRAWN ROADMAP LINE THROUGH ALL CARDS
        ========================================================= */
     .zigzag-process-container {
@@ -845,87 +926,6 @@
       border: 1px solid #e2e8f0;
       padding: 5px 12px;
       border-radius: 6px;
-    }
-
-    /* =========================================================
-       ALL-INCLUDED STANDARDS SECTION (UKLJUČENO U SVAKI PROJEKT)
-       ========================================================= */
-    .standards-section-container {
-      max-width: 1280px;
-      margin: 70px auto 40px auto;
-      padding: 0 24px;
-      box-sizing: border-box;
-    }
-
-    .standards-grid-8col {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .standard-feature-card {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 24px;
-      padding: 30px 26px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      box-sizing: border-box;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
-    }
-
-    .standard-feature-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(41, 173, 255, 0.55);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
-    }
-
-    .standard-icon-pill {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: rgba(41, 173, 255, 0.1);
-      border: 1px solid rgba(41, 173, 255, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      color: #29ADFF;
-    }
-
-    .standard-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .standard-included-tag {
-      font-family: "Geist Mono", monospace;
-      font-size: 11px;
-      font-weight: 700;
-      color: #10b981;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      padding: 4px 10px;
-      border-radius: 999px;
-    }
-
-    .standard-feature-card h3 {
-      font-size: 18.5px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 0;
-      letter-spacing: -0.3px;
-    }
-
-    .standard-feature-card p {
-      font-size: 14px;
-      color: #64748b;
-      line-height: 1.55;
-      margin: 0;
     }
 
     /* =========================================================
@@ -1132,6 +1132,7 @@
         <a href="#prednosti" class="ultra-nav-link">Prednosti</a>
         <a href="#tehnologije" class="ultra-nav-link">Tehnologije</a>
         <a href="#standardi" class="ultra-nav-link">Standardi</a>
+        <a href="#testimonials" class="ultra-nav-link">Iskustva</a>
         <a href="#proces" class="ultra-nav-link">Proces</a>
         <a href="#pricing" class="ultra-nav-link">Cijene</a>
         <a href="karijere.html" class="ultra-nav-link">Karijere</a>
@@ -1473,6 +1474,204 @@
 
     </div>
   </section>
+
+  <!-- 4.5 TESTIMONIALS SECTION (EXACT MATCHING FROM INDEX.HTML) -->
+  <div class="testimonials-section-wrapper" style="margin: 40px 0;">
+    <section id="testimonials" class="plain-section">
+      <div class="info-header align-center">
+        <span class="section-badge">// DOJMOVI KLIJENATA &amp; PARTNERA</span>
+        <h2 class="info-title">
+          Iskustva klijenata u suradnji s Algor studijom
+        </h2>
+        <p class="info-subtitle">
+          Mjerljiv poslovni rast klijenata i stabilan povrat ulaganja u marketing temelj su svake suradnje.
+        </p>
+        
+        <!-- Social Proof Score Badge -->
+        <div class="testimonials-score-badge">
+          <div class="score-stars">★★★★★</div>
+          <div class="score-text"><strong>4.9 / 5.0</strong> prosječna ocjena iz 40+ uspješno izvedenih projekata</div>
+        </div>
+      </div>
+
+      <!-- Infinite Testimonials Ticker (Enlarged Cards) -->
+      <div class="testimonials-ticker-container">
+        <div class="testimonials-ticker-track">
+          
+          <!-- First Set of 5 Cards -->
+          <div class="testimonials-logos-row">
+            
+            <!-- Card 1 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"Implementacija AI agenta za kvalifikaciju leadova doslovno nam je spasila prodajni odjel. Vrijeme odaziva palo je s 4 sata na 3 sekunde, a ROI je bio trenutan već u prvom mjesecu."</p>
+              <div class="client-author-box">
+                <div class="author-avatar">GM</div>
+                <div class="client-author-info">
+                  <strong>Goran M.</strong>
+                  <span>CEO, Nova Media</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"Snimanje na lokaciji bilo je nevjerojatno organizirano i ugodno. Dobili smo 30 vrhunskih videa u jednom danu – organski doseg na Instagramu i TikToku skočio je za 350%."</p>
+              <div class="client-author-box">
+                <div class="author-avatar avatar-purple">MR</div>
+                <div class="client-author-info">
+                  <strong>Martina R.</strong>
+                  <span>Marketing Voditeljica, Lumina Estetika</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"AI agent za korisničku podršku samostalno rješava 92% upita kupaca bez ljudske intervencije. Smanjili smo troškove podrške i istovremeno podigli zadovoljstvo kupaca."</p>
+              <div class="client-author-box">
+                <div class="author-avatar avatar-blue">IK</div>
+                <div class="client-author-info">
+                  <strong>Ivan K.</strong>
+                  <span>Osnivač, Optima d.o.o.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"Njihovo vođenje Meta i Google kampanja donijelo nam je 3.5x više kvalificiranih upita uz smanjenje troška po leadu. Tim koji uistinu razumije B2B analitiku i konverzije."</p>
+              <div class="client-author-box">
+                <div class="author-avatar avatar-green">EV</div>
+                <div class="client-author-info">
+                  <strong>Elena V.</strong>
+                  <span>Direktorica, B2B Consulting</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"Spoj vrhunske video produkcije i automatizacije CRM lijevka transformirao je našu prodaju. Dobivamo gotove zakazane sastanke direktno u kalendar svaki dan."</p>
+              <div class="client-author-box">
+                <div class="author-avatar avatar-orange">DR</div>
+                <div class="client-author-info">
+                  <strong>David R.</strong>
+                  <span>Suosnivač, Apex Labs</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Second Set of 5 Cards (Duplicate for seamless loop) -->
+          <div class="testimonials-logos-row" aria-hidden="true">
+            
+            <!-- Card 1 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"Implementacija AI agenta za kvalifikaciju leadova doslovno nam je spasila prodajni odjel. Vrijeme odaziva palo je s 4 sata na 3 sekunde, a ROI je bio trenutan već u prvom mjesecu."</p>
+              <div class="client-author-box">
+                <div class="author-avatar">GM</div>
+                <div class="client-author-info">
+                  <strong>Goran M.</strong>
+                  <span>CEO, Nova Media</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"Snimanje na lokaciji bilo je nevjerojatno organizirano i ugodno. Dobili smo 30 vrhunskih videa u jednom danu – organski doseg na Instagramu i TikToku skočio je za 350%."</p>
+              <div class="client-author-box">
+                <div class="author-avatar avatar-purple">MR</div>
+                <div class="client-author-info">
+                  <strong>Martina R.</strong>
+                  <span>Marketing Voditeljica, Lumina Estetika</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"AI agent za korisničku podršku samostalno rješava 92% upita kupaca bez ljudske intervencije. Smanjili smo troškove podrške i istovremeno podigli zadovoljstvo kupaca."</p>
+              <div class="client-author-box">
+                <div class="author-avatar avatar-blue">IK</div>
+                <div class="client-author-info">
+                  <strong>Ivan K.</strong>
+                  <span>Osnivač, Optima d.o.o.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"Njihovo vođenje Meta i Google kampanja donijelo nam je 3.5x više kvalificiranih upita uz smanjenje troška po leadu. Tim koji uistinu razumije B2B analitiku i konverzije."</p>
+              <div class="client-author-box">
+                <div class="author-avatar avatar-green">EV</div>
+                <div class="client-author-info">
+                  <strong>Elena V.</strong>
+                  <span>Direktorica, B2B Consulting</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="client-quote-card ticker-card">
+              <div class="card-top-row">
+                <div class="client-rating">★★★★★</div>
+                <span class="verified-tag">✓ Verificiran Klijent</span>
+              </div>
+              <p class="client-text">"Spoj vrhunske video produkcije i automatizacije CRM lijevka transformirao je našu prodaju. Dobivamo gotove zakazane sastanke direktno u kalendar svaki dan."</p>
+              <div class="client-author-box">
+                <div class="author-avatar avatar-orange">DR</div>
+                <div class="client-author-info">
+                  <strong>David R.</strong>
+                  <span>Suosnivač, Apex Labs</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- 5. PROCES IZRADE U 4 KORAKA (CONTINUOUS DRAWN CONNECTING LINE THROUGH ALL CARDS) -->
   <section id="proces" class="plain-section" style="max-width: 1280px; margin: 60px auto; padding: 40px 24px;">
