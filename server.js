@@ -68,31 +68,25 @@ function saveInquiryToCSV(data) {
 function getEstimatedDealValue(pkg) {
   if (!pkg) return 0;
   const p = pkg.toLowerCase();
+  if (p.includes('start') || p.includes('690')) return 690;
+  if (p.includes('pro') || p.includes('plus') || p.includes('1250') || p.includes('1.250')) return 1250;
+  if (p.includes('ultra') || p.includes('ai') || p.includes('2150') || p.includes('2.150')) return 2150;
   if (p.includes('490')) return 490;
   if (p.includes('990')) return 990;
   if (p.includes('1850') || p.includes('1.850') || p.includes('1,850')) return 1850;
-  if (p.includes('690')) return 690;
-  if (p.includes('1250') || p.includes('1.250') || p.includes('1,250')) return 1250;
-  if (p.includes('2150') || p.includes('2.150') || p.includes('2,150')) return 2150;
   if (p.includes('instagram') || p.includes('oglas')) return 500;
   if (p.includes('audit')) return 0;
   return 0;
 }
 
 function normalizeNotionPackage(pkg) {
-  if (!pkg) return 'Custom Paket';
+  if (!pkg) return 'Izrada weba';
   const p = pkg.toLowerCase();
-  if (p.includes('490')) return 'Landing Stranica (od 490 €)';
-  if (p.includes('990')) return 'Business Web (od 990 €)';
-  if (p.includes('1850') || p.includes('1.850') || p.includes('1,850')) return 'Custom Aplikacija (od 1.850 €)';
-  if (p.includes('690') || p.includes('start')) return 'Start (690 €/mj.)';
-  if (p.includes('1250') || p.includes('1.250') || p.includes('1,250') || p.includes('plus') || p.includes('pro')) return 'Plus (1.250 €/mj.)';
-  if (p.includes('2150') || p.includes('2.150') || p.includes('2,150') || p.includes('ultra') || p.includes('ai')) return 'Pro / AI (2.150 €/mj.)';
-  if (p.includes('audit') || p.includes('savjetovanj')) return 'Besplatan Audit (0 €)';
-  if (p.includes('instagram') || p.includes('oglas')) return 'Ciljani Instagram Oglas';
-  if (p.includes('procjena') && p.includes('web')) return 'Izrada Weba (Besplatna Procjena)';
-  if (p.includes('redizajn') || p.includes('procjena')) return 'Procjena Projekta / Redizajn';
-  return pkg.replace(/,/g, '.').trim() || 'Custom Paket';
+  if (p.includes('start') || p.includes('690')) return 'Paket Start';
+  if (p.includes('plus') || p.includes('pro') || p.includes('1250') || p.includes('1.250')) return 'Paket Pro';
+  if (p.includes('ultra') || p.includes('ai') || p.includes('2150') || p.includes('2.150')) return 'Paket Ultra';
+  if (p.includes('audit') || p.includes('savjetovanj')) return 'Besplatan Audit';
+  return 'Izrada weba';
 }
 
 // Helper function to save inquiry to Notion database "Algor upiti"
@@ -327,241 +321,7 @@ app.get('/admin/export-csv', (req, res) => {
   }
 });
 
-// System instruction and knowledge base for Algor AI
-const ALGOR_AI_SYSTEM_INSTRUCTION = `
-Vi ste Algor AI, 24/7 inteligentni marketing i prodajni AI agent (AI Lead Engine) tvrtke Algor Studio.
 
-GLAVNI FOKUS I STROGO PRAVILO:
-1. STROGO ZABRANJENO NUDITI IZRADO WEBA U PRVOJ PORUCI! Glavni cilj je prodaja i ugovaranje sastanka za **Pro Marketing Paket** (Meta & Google Ads kampanje, 360° marketing, akvizicija klijenata) te **Besplatan Marketing & Prodajni Audit**.
-2. TRENUTNA KONVERZIJA: Čim klijent pritisne brzi gumb ili izrazi interes za marketing, audit ili sastanak, Algor AI MORA ODMAH zatražiti podatke u jednoj poruci!
-
-PRAVILA STILA I DUŽINE ODGOVORA:
-1. POTPUNI ODGOVORI: Svaki odgovor mora biti u potpunosti dovršen s točkom na kraju. Nikada nemojte stati usred riječi ili rečenice.
-2. KRATKO I DIREKTNO (2 do 4 retka teksta): Budite brzi i prodajno usmjereni.
-3. TREĆE LICE: O tvrtki i rezultatima govorite ISKLJUČIVO u trećem licu ("Algor Studio osigurava...", "Pro paket donosi..."). Za sebe koristite "Algor AI".
-
-PRIMJER BRZOG PRODAJNOG ODGOVORA ZA PRO PAKET:
-"Odlično! Za ugovaranje sastanka oko Pro Marketing Paketa i besplatnog audita, ostavite mi u jednoj poruci:
-1. Vaše ime i prezime
-2. Naziv tvrtke ili web stranicu
-3. E-mail adresu i željeni datum/vrijeme (Uživo ili Google Meet).
-Algor AI odmah rezervira Vaš termin i šalje potvrdu!"
-
-AUTOMATSKO SPREMANJE U NOTION (TAJNI MARKER):
-Kada klijent dostavi Ime, Tvrtku, Email, Vrstu sastanka (Uživo ili Google Meet) i Datum/Vrijeme, na KRAJU vašeg odgovora priložite tajni JSON marker:
-[[LEAD_DATA: {"name": "...", "company": "...", "email": "...", "phone": "...", "meetingType": "Uživo ili Google Meet", "dateTime": "..."}]]
-
-O ALGOR STUDIJU & PAKETIMA:
-- Glavni fokus: **Pro Paket** (1.250 €/mj) – Meta & Google Ads kampanje, WhatsApp podrška 24/5, akvizicija kupaca i kompletno vođenje marketinga. Uključen besplatan marketing audit.
-- Ostali paketi: Start (690 €/mj), Ultra (2.150 €/mj).
-`;
-
-// API endpoint for Algor AI Chatbot & Appointment Booking
-app.post('/api/chat', async (req, res) => {
-  try {
-    const { messages, leadData } = req.body;
-    const apiKey = process.env.GEMINI_API_KEY;
-
-    if (!apiKey) {
-      return res.status(500).json({ error: 'GEMINI_API_KEY nije konfiguriran u .env datoteci.' });
-    }
-
-    // Direct Lead / Booking submission fallback
-    if (leadData && (leadData.name || leadData.email)) {
-      const { name, company, email, phone, package: pkg, calendarSlot, source, device } = leadData;
-      const estimatedValue = getEstimatedDealValue(pkg || 'Besplatan Audit (0 €)');
-
-      saveInquiryToCSV({
-        name,
-        company,
-        email,
-        phone: phone || 'Nije naveden',
-        package: pkg || 'Sastanak (Algor AI)',
-        calendarSlot: calendarSlot || 'Ugovoreno u chatu s Algor AI',
-        source: source || 'Algor AI Conversational Lead',
-        device: device || 'Web Widget',
-        estimatedValue
-      });
-
-      try {
-        await saveInquiryToNotion({
-          name,
-          company,
-          email,
-          phone: phone || 'Nije naveden',
-          package: pkg || 'Sastanak (Algor AI)',
-          calendarSlot: calendarSlot || 'Ugovoreno u chatu s Algor AI',
-          source: source || 'Algor AI Conversational Lead',
-          device: device || 'Web Widget',
-          estimatedValue
-        });
-      } catch (notionErr) {
-        console.error('Algor AI Notion error:', notionErr.message);
-      }
-
-      try {
-        if (email) {
-          await sendClientConfirmationEmail({
-            name,
-            company,
-            email,
-            phone: phone || 'Nije naveden',
-            package: pkg || 'Sastanak & Besplatan Audit (Algor AI)',
-            calendarSlot: calendarSlot || 'Ugovoreno u realnom vremenu putem Algor AI agenta'
-          });
-        }
-      } catch (emailErr) {
-        console.error('Algor AI email confirmation error:', emailErr.message);
-      }
-
-      return res.json({
-        success: true,
-        bookingConfirmed: true,
-        reply: `Odlično, ${name}! Algor AI je zabilježio vaš zahtjev za sastankom u Notion bazi. Potvrda je poslana na ${email}. Tim Algor Studija će vas kontaktirati ubrzo.`
-      });
-    }
-
-    // Gemini 3.6 Flash API conversation
-    const formattedContents = [];
-    if (Array.isArray(messages)) {
-      messages.forEach(msg => {
-        formattedContents.push({
-          role: msg.role === 'user' ? 'user' : 'model',
-          parts: [{ text: msg.content || msg.text || '' }]
-        });
-      });
-    }
-
-    if (formattedContents.length === 0) {
-      formattedContents.push({
-        role: 'user',
-        parts: [{ text: 'Pozdrav' }]
-      });
-    }
-
-    const requestBody = {
-      systemInstruction: {
-        parts: [{ text: ALGOR_AI_SYSTEM_INSTRUCTION }]
-      },
-      contents: formattedContents,
-      generationConfig: {
-        temperature: 0.5,
-        maxOutputTokens: 1200
-      }
-    };
-
-    const modelsToTry = [
-      'gemini-2.5-flash',
-      'gemini-1.5-flash',
-      'gemini-2.0-flash-lite',
-      'gemini-3.6-flash'
-    ];
-
-    let geminiData = null;
-    let lastErrorMsg = '';
-
-    for (const model of modelsToTry) {
-      try {
-        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
-        const resAttempt = await fetch(geminiUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(requestBody)
-        });
-
-        const dataAttempt = await resAttempt.json();
-        if (resAttempt.ok && dataAttempt.candidates && dataAttempt.candidates.length > 0) {
-          geminiData = dataAttempt;
-          break;
-        } else {
-          lastErrorMsg = dataAttempt.error?.message || 'Quota limit';
-        }
-      } catch (mErr) {
-        lastErrorMsg = mErr.message;
-      }
-    }
-
-    let aiReplyText = '';
-    if (geminiData && geminiData.candidates && geminiData.candidates[0]?.content?.parts?.[0]?.text) {
-      aiReplyText = geminiData.candidates[0].content.parts[0].text;
-    } else {
-      aiReplyText = 'Odlično! Algor Studio u sklopu Pro Marketing Paketa osigurava kompletne Meta & Google Ads kampanje, akviziciju klijenata i WhatsApp podršku 24/5. Želite li sastanak uživo ili Google Meet poziv?';
-    }
-
-    // Conversational Lead extraction & Notion sync
-    let leadMatch = aiReplyText.match(/\[\[LEAD_DATA:\s*(\{.*?\})\s*\]\]/s);
-    let parsedLead = null;
-
-    if (leadMatch && leadMatch[1]) {
-      try {
-        parsedLead = JSON.parse(leadMatch[1]);
-      } catch (pErr) {
-        console.error('Greška pri parsiranju JSON leada:', pErr.message);
-      }
-      aiReplyText = aiReplyText.replace(/\[\[LEAD_DATA:\s*\{.*?\}\s*\]\]/s, '').trim();
-    }
-
-    // Fallback extraction from last user message
-    if (!parsedLead && Array.isArray(messages) && messages.length > 0) {
-      const lastUserMsg = messages.filter(m => m.role === 'user').pop();
-      if (lastUserMsg && lastUserMsg.content) {
-        const text = lastUserMsg.content;
-        const emailMatch = text.match(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/);
-        if (emailMatch) {
-          const email = emailMatch[0];
-          const isLive = /uživo|lokacij|zagreb/i.test(text);
-          const meetingType = isLive ? 'Sastanak uživo' : 'Google Meet poziv';
-          
-          parsedLead = {
-            name: text.match(/(?:ime je|sam|pozrav,?\s*)([A-ZČĆŠĐŽa-zčćšđž]+\s+[A-ZČĆŠĐŽa-zčćšđž]+)/i)?.[1] || 'Klijent s weba',
-            company: text.match(/(?:tvrtka|web|d\.o\.o\.|j\.d\.o\.o\.|craft|studio)\s*:?\s*([A-ZČĆŠĐŽa-zčćšđž0-9\s.]+)/i)?.[1] || 'Nije navedeno',
-            email: email,
-            phone: text.match(/\+?\d[\d\s-]{7,}\d/)?.[0] || 'Nije naveden',
-            meetingType: meetingType,
-            dateTime: text.match(/(?:u|dana|datum)?\s*([0-9]{1,2}[\.\/][0-9]{1,2}|ponedjeljak|utorak|srijeda|četvrtak|petak|subota|nedjelja|\b\d{1,2}:\d{2}\b)/i)?.[0] || 'Po dogovoru'
-          };
-        }
-      }
-    }
-
-    if (parsedLead && parsedLead.email) {
-      const name = parsedLead.name || 'Klijent';
-      const company = parsedLead.company || 'Nije navedeno';
-      const email = parsedLead.email;
-      const phone = parsedLead.phone || 'Nije naveden';
-      const meetingType = parsedLead.meetingType || 'Google Meet';
-      const dateTime = parsedLead.dateTime || 'Po dogovoru';
-      const pkg = `Sastanak: ${meetingType} (${dateTime})`;
-      const calendarSlot = `${meetingType} — ${dateTime}`;
-
-      saveInquiryToCSV({
-        name, company, email, phone, package: pkg, calendarSlot, source: 'Algor AI Conversational Lead', device: 'Web Chat', estimatedValue: 0
-      });
-
-      try {
-        await saveInquiryToNotion({
-          name, company, email, phone, package: pkg, calendarSlot, source: 'Algor AI Conversational Lead', device: 'Web Chat', estimatedValue: 0
-        });
-        console.log(`✓ Conversational Lead usmjeren u Notion: ${name} (${email}) | ${meetingType} ${dateTime}`);
-      } catch (nErr) {
-        console.error('Notion error:', nErr.message);
-      }
-
-      try {
-        await sendClientConfirmationEmail({
-          name, company, email, phone, package: pkg, calendarSlot
-        });
-      } catch (eErr) {
-        console.error('Mail error:', eErr.message);
-      }
-    }
-
-    res.json({ success: true, reply: aiReplyText });
-  } catch (err) {
-    console.error('Greška na /api/chat ruti:', err);
-    res.status(500).json({ error: 'Došlo je do neočekivane greške.' });
-  }
-});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
