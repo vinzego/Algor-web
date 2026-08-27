@@ -798,13 +798,41 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document.getElementById('algor-ai-input');
     const sendBtn = document.getElementById('algor-ai-send-btn');
     const chipBtns = document.querySelectorAll('.ai-chip-btn');
+    const previewBubble = document.getElementById('algor-ai-preview-bubble');
+    const previewCloseBtn = document.getElementById('algor-ai-preview-close');
 
     if (!toggleBtn || !chatWindow) return;
 
     let conversationHistory = [];
 
+    // Auto popup preview bubble after 1.8 seconds
+    setTimeout(() => {
+      if (previewBubble && chatWindow.classList.contains('hidden') && !sessionStorage.getItem('algor_ai_bubble_dismissed')) {
+        previewBubble.classList.remove('hidden');
+      }
+    }, 1800);
+
+    if (previewBubble) {
+      previewBubble.addEventListener('click', (e) => {
+        if (e.target.closest('.preview-close-btn')) return;
+        previewBubble.classList.add('hidden');
+        sessionStorage.setItem('algor_ai_bubble_dismissed', 'true');
+        chatWindow.classList.remove('hidden');
+        if (chatInput) chatInput.focus();
+      });
+    }
+
+    if (previewCloseBtn) {
+      previewCloseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (previewBubble) previewBubble.classList.add('hidden');
+        sessionStorage.setItem('algor_ai_bubble_dismissed', 'true');
+      });
+    }
+
     // Toggle Window
     toggleBtn.addEventListener('click', () => {
+      if (previewBubble) previewBubble.classList.add('hidden');
       chatWindow.classList.toggle('hidden');
       if (!chatWindow.classList.contains('hidden') && chatInput) {
         chatInput.focus();

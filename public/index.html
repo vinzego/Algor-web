@@ -1346,13 +1346,29 @@
     </div>
   </div>
 
-  <!-- Algor AI Floating Chatbot Widget -->
+  <!-- Algor AI Floating Chatbot Widget (Redesign 2026) -->
   <div id="algor-ai-widget" class="algor-ai-widget">
+    
+    <!-- Auto-Popup Welcome Preview Bubble -->
+    <div id="algor-ai-preview-bubble" class="algor-ai-preview-bubble hidden">
+      <button type="button" id="algor-ai-preview-close" class="preview-close-btn" title="Zatvori obavijest">&times;</button>
+      <div class="preview-bubble-content">
+        <div class="preview-avatar">
+          <span class="preview-pulse-dot"></span>
+          🤖
+        </div>
+        <div class="preview-text-body">
+          <span class="preview-author">Algor AI • 24/7 Agent</span>
+          <p class="preview-msg">Pozdrav! 👋 Ovdje možete uživo ugovoriti sastanak i besplatan audit u 30 sekundi!</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Floating Trigger Button -->
     <button type="button" id="algor-ai-toggle-btn" class="algor-ai-trigger-btn" aria-label="Otvorite Algor AI asistenta">
       <span class="algor-ai-badge-pulse"></span>
       <div class="algor-ai-avatar-icon">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
           <path d="M12 6v6l4 2"/>
           <circle cx="12" cy="12" r="3" fill="#29ADFF"/>
@@ -1364,7 +1380,7 @@
       </div>
     </button>
 
-    <!-- Chat Overlay Window -->
+    <!-- Chat Overlay Window (Redesigned) -->
     <div id="algor-ai-window" class="algor-ai-window hidden" aria-hidden="true">
       <!-- Chat Header -->
       <div class="algor-ai-header">
@@ -1374,8 +1390,8 @@
             🤖
           </div>
           <div>
-            <h4 class="algor-ai-title">Algor AI <span class="ai-tag">24/7 Agent</span></h4>
-            <p class="algor-ai-subtitle">Algor Studio • Besplatan Audit &amp; Termini</p>
+            <h4 class="algor-ai-title">Algor AI <span class="ai-tag">24/7 Lead Agent</span></h4>
+            <p class="algor-ai-subtitle">Algor Studio • Sastanci &amp; Besplatan Audit</p>
           </div>
         </div>
         <button type="button" id="algor-ai-close-btn" class="algor-ai-close-btn" aria-label="Zatvori chat">&times;</button>
@@ -1401,13 +1417,15 @@
 
       <!-- Input Area -->
       <div class="algor-ai-footer">
-        <input type="text" id="algor-ai-input" placeholder="Napišite poruku Algor AI agentu..." autocomplete="off">
-        <button type="button" id="algor-ai-send-btn" class="algor-ai-send-btn" aria-label="Pošalji poruku">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="22" y1="2" x2="11" y2="13"/>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-        </button>
+        <div class="input-wrapper">
+          <input type="text" id="algor-ai-input" placeholder="Napišite poruku Algor AI agentu..." autocomplete="off">
+          <button type="button" id="algor-ai-send-btn" class="algor-ai-send-btn" aria-label="Pošalji poruku">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
