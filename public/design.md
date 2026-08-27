@@ -9,7 +9,7 @@ Dokumentacija dizajna, boja, tipografije, komponenti, pravila i arhitekture koda
 - **Naziv brenda:** Algor Studio
 - **Pravni subjekt:** Vinzego, obrt za proizvodnju i usluge
 - **Vlasnik:** Vinko Grgić
-- **Sjedište:** Markovo Polje, Zlatarska ulica 26a, 10000 Zagreb, Hrvatska
+- **Sjedište:** Markovo Polje, Zlatarska ulica 26a, 10360 Zagreb, Hrvatska
 - **OIB:** 03419409491
 - **Službena e-mail adresa:** `info@algor.studio`
 - **Službena web stranica:** `https://algor.studio`
