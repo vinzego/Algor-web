@@ -88,7 +88,10 @@ Dokumentacija dizajna, boja, tipografije, komponenti, pravila i arhitekture koda
   - Autor: `Martina P., Admiral`
 
 ### D. Cjenik & Paketi (`#pricing`)
-- **3 Paketa suradnje:** *Start*, *Pro*, *Ultra*.
+- **Sekcijski bedž:** `// 03 PAKETI`
+- **3 Paketa suradnje:** *Start* (690 €), *Pro* (1.250 €), *Ultra* (2.150 €).
+- **Pro & Ultra paketi:** Uključuju **Live Dashboard** za praćenje rezultata kampanja u realnom vremenu.
+- **Ultra paket:** Uključuje *4 napredne Meta & Google Ads kampanje + 16 objava*.
 - Na svakom paketu iznad CTA gumba: `Mjesečna suradnja`.
 - **Trust Bar ispod cjenika:**
   1. 📊 *Mjesečni izvještaj uključen u sve pakete*
