@@ -329,30 +329,31 @@ app.get('/admin/export-csv', (req, res) => {
 
 // System instruction and knowledge base for Algor AI
 const ALGOR_AI_SYSTEM_INSTRUCTION = `
-Vi ste Algor AI, 24/7 inteligentni prodajni AI agent (AI Lead Engine) tvrtke Algor Studio.
+Vi ste Algor AI, 24/7 inteligentni marketing i prodajni AI agent (AI Lead Engine) tvrtke Algor Studio.
 
-GLAVNI CILJ - TRENUTNA KONVERZIJA I PRIKUPLJANJE PODATAKA:
-Čim klijent stisne brzi gumb ili izrazi želju za sastankom, besplatnim auditom ili cijenama, Algor AI MORA ODMAH i DIREKTNO zatražiti podatke u jednoj poruci! Nemojte pisati općenite odgovore bez traženja podataka za termin.
+GLAVNI FOKUS I STROGO PRAVILO:
+1. STROGO ZABRANJENO NUDITI IZRADO WEBA U PRVOJ PORUCI! Glavni cilj je prodaja i ugovaranje sastanka za **Pro Marketing Paket** (Meta & Google Ads kampanje, 360° marketing, akvizicija klijenata) te **Besplatan Marketing & Prodajni Audit**.
+2. TRENUTNA KONVERZIJA: Čim klijent pritisne brzi gumb ili izrazi interes za marketing, audit ili sastanak, Algor AI MORA ODMAH zatražiti podatke u jednoj poruci!
 
 PRAVILA STILA I DUŽINE ODGOVORA:
 1. POTPUNI ODGOVORI: Svaki odgovor mora biti u potpunosti dovršen s točkom na kraju. Nikada nemojte stati usred riječi ili rečenice.
-2. KRATKO I DIREKTNO (2 do 4 retka teksta): Izbjegavajte dugačke uvodne tekstove.
-3. STROGO TREĆE LICE: O tvrtki, uslugama i rezultatima govorite ISKLJUČIVO u trećem licu ("Algor Studio nudi...", "Tim Algor Studija osigurava..."). Za sebe koristite "Algor AI".
+2. KRATKO I DIREKTNO (2 do 4 retka teksta): Budite brzi i prodajno usmjereni.
+3. TREĆE LICE: O tvrtki i rezultatima govorite ISKLJUČIVO u trećem licu ("Algor Studio osigurava...", "Pro paket donosi..."). Za sebe koristite "Algor AI".
 
-PRIMJER KAKO AGENT ODMAH TRAŽI PODATKE ZA TERMIN:
-"Odlično! Za ugovaranje sastanka i besplatan audit, ostavite mi u jednoj poruci:
+PRIMJER BRZOG PRODAJNOG ODGOVORA ZA PRO PAKET:
+"Odlično! Za ugovaranje sastanka oko Pro Marketing Paketa i besplatnog audita, ostavite mi u jednoj poruci:
 1. Vaše ime i prezime
-2. Naziv tvrtke ili web
-3. E-mail adresu i željeni datum/vrijeme (uživo ili Google Meet).
-Algor AI odmah rezervira termin i sprema ga u Notion bazu!"
+2. Naziv tvrtke ili web stranicu
+3. E-mail adresu i željeni datum/vrijeme (Uživo ili Google Meet).
+Algor AI odmah rezervira Vaš termin i šalje potvrdu!"
 
 AUTOMATSKO SPREMANJE U NOTION (TAJNI MARKER):
 Kada klijent dostavi Ime, Tvrtku, Email, Vrstu sastanka (Uživo ili Google Meet) i Datum/Vrijeme, na KRAJU vašeg odgovora priložite tajni JSON marker:
 [[LEAD_DATA: {"name": "...", "company": "...", "email": "...", "phone": "...", "meetingType": "Uživo ili Google Meet", "dateTime": "..."}]]
 
-O ALGOR STUDIJU:
-- Usluge: Izrada ultra brzih web stranica (od 490 €), Meta/Google Ads kampanje, Foto & Video produkcija, AI automatizacije.
-- Paketi: Start (690 €/mj), Pro (1.250 €/mj), Ultra (2.150 €/mj). Uključen besplatan audit.
+O ALGOR STUDIJU & PAKETIMA:
+- Glavni fokus: **Pro Paket** (1.250 €/mj) – Meta & Google Ads kampanje, WhatsApp podrška 24/5, akvizicija kupaca i kompletno vođenje marketinga. Uključen besplatan marketing audit.
+- Ostali paketi: Start (690 €/mj), Ultra (2.150 €/mj).
 `;
 
 // API endpoint for Algor AI Chatbot & Appointment Booking
@@ -449,26 +450,42 @@ app.post('/api/chat', async (req, res) => {
       }
     };
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(requestBody)
-    });
+    const modelsToTry = [
+      'gemini-2.5-flash',
+      'gemini-1.5-flash',
+      'gemini-2.0-flash-lite',
+      'gemini-3.6-flash'
+    ];
 
-    const data = await response.json();
+    let geminiData = null;
+    let lastErrorMsg = '';
 
-    if (!response.ok) {
-      console.error('Gemini API Response Error:', data);
-      return res.status(response.status).json({ error: data.error?.message || 'Greška pri komunikaciji s Gemini API-jem.' });
+    for (const model of modelsToTry) {
+      try {
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+        const resAttempt = await fetch(geminiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody)
+        });
+
+        const dataAttempt = await resAttempt.json();
+        if (resAttempt.ok && dataAttempt.candidates && dataAttempt.candidates.length > 0) {
+          geminiData = dataAttempt;
+          break;
+        } else {
+          lastErrorMsg = dataAttempt.error?.message || 'Quota limit';
+        }
+      } catch (mErr) {
+        lastErrorMsg = mErr.message;
+      }
     }
 
     let aiReplyText = '';
-    if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
-      aiReplyText = data.candidates[0].content.parts.map(p => p.text).join('\n');
-    }
-
-    if (!aiReplyText) {
-      aiReplyText = 'Algor AI je tu da ugovori vaš sastanak. Želite li sastanak uživo ili Google Meet poziv?';
+    if (geminiData && geminiData.candidates && geminiData.candidates[0]?.content?.parts?.[0]?.text) {
+      aiReplyText = geminiData.candidates[0].content.parts[0].text;
+    } else {
+      aiReplyText = 'Odlično! Algor Studio u sklopu Pro Marketing Paketa osigurava kompletne Meta & Google Ads kampanje, akviziciju klijenata i WhatsApp podršku 24/5. Želite li sastanak uživo ili Google Meet poziv?';
     }
 
     // Conversational Lead extraction & Notion sync
