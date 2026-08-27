@@ -77,7 +77,7 @@ Dokumentacija dizajna, boja, tipografije, komponenti, pravila i arhitekture koda
 ### B. Hero Sekcija
 - **Interaktivna mreža:** Dinamički 1:1 grid kvadrata s neonskim raspršivanjem miša (`#mesh-grid-container`).
 - **Social Proof Pill:** Avatari + `20+` klijenata | ⭐⭐⭐⭐⭐ `4.9/5` | *Marketing i AI podrška za restorane, hotele, poliklinike i lokalne usluge*.
-- **Ticker Logotipi klijenata:** Supernova, Admiral, Family Park, Restoran Taurus, Eschengarten.
+- **Ticker Logotipi klijenata:** Supernova, Admiral, Admiral Hotel, Family Park, Restoran Taurus, Eschengarten.
 
 ### C. Sekcija "O nama" (`#about`)
 - **Kartica 1 & 2:** Holistički pristup (Snimanje + Oglasi + Web + AI) i 15-minutni strateški poziv.
