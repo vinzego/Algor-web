@@ -13,6 +13,7 @@ Dokumentacija dizajna, boja, tipografije, komponenti, pravila i arhitekture koda
 - **OIB:** 03419409491
 - **Službena e-mail adresa:** `info@algor.studio`
 - **Službena web stranica:** `https://algor.studio`
+- **Službeni Instagram profil:** `https://www.instagram.com/ibold_studio?igsi=cGo4b3VvenlwNnp4&utm_source=qr`
 - **Nadležni sud:** Stvarno nadležni sud u Zagrebu
 - **Ton komunikacije:** Objektivan, u 3. licu jednine (*"Algor studio producira...", "osigurana je podrška..."*), luksuzan, tehnološki napredan i usmjeren na mjerljive poslovne rezultate.
 
