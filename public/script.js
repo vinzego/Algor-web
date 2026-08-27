@@ -786,4 +786,137 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initCookieConsent();
+
+  // ========================================================
+  // Algor AI Chatbot & 24/7 Appointment Controller
+  // ========================================================
+  const initAlgorAIChatbot = () => {
+    const toggleBtn = document.getElementById('algor-ai-toggle-btn');
+    const chatWindow = document.getElementById('algor-ai-window');
+    const closeBtn = document.getElementById('algor-ai-close-btn');
+    const messagesContainer = document.getElementById('algor-ai-messages');
+    const chatInput = document.getElementById('algor-ai-input');
+    const sendBtn = document.getElementById('algor-ai-send-btn');
+    const chipBtns = document.querySelectorAll('.ai-chip-btn');
+
+    if (!toggleBtn || !chatWindow) return;
+
+    let conversationHistory = [];
+
+    // Toggle Window
+    toggleBtn.addEventListener('click', () => {
+      chatWindow.classList.toggle('hidden');
+      if (!chatWindow.classList.contains('hidden') && chatInput) {
+        chatInput.focus();
+      }
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        chatWindow.classList.add('hidden');
+      });
+    }
+
+    // Quick Action Chips
+    chipBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const query = btn.getAttribute('data-query');
+        if (query) {
+          sendMessage(query);
+        }
+      });
+    });
+
+    // Send message triggers
+    if (sendBtn) {
+      sendBtn.addEventListener('click', () => {
+        const text = chatInput ? chatInput.value.trim() : '';
+        if (text) {
+          sendMessage(text);
+          if (chatInput) chatInput.value = '';
+        }
+      });
+    }
+
+    if (chatInput) {
+      chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const text = chatInput.value.trim();
+          if (text) {
+            sendMessage(text);
+            chatInput.value = '';
+          }
+        }
+      });
+    }
+
+    async function sendMessage(text) {
+      appendMessage('user', text);
+      conversationHistory.push({ role: 'user', content: text });
+      showTypingIndicator();
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: conversationHistory })
+        });
+
+        const data = await response.json();
+        removeTypingIndicator();
+
+        if (data.reply) {
+          appendMessage('bot', data.reply);
+          conversationHistory.push({ role: 'model', content: data.reply });
+        } else {
+          appendMessage('bot', 'Algor AI je spreman pomoći vam sa svim pitanjima o Algor Studiju.');
+        }
+      } catch (err) {
+        removeTypingIndicator();
+        appendMessage('bot', 'Algor AI trenutno obradi upit. Pokušajte ponovno.');
+      }
+    }
+
+    function appendMessage(role, text) {
+      if (!messagesContainer) return;
+      const bubble = document.createElement('div');
+      bubble.className = `ai-msg-bubble ${role}`;
+      
+      const content = document.createElement('div');
+      content.className = 'ai-msg-content';
+
+      let formattedText = text
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+      content.innerHTML = `<p>${formattedText}</p>`;
+      bubble.appendChild(content);
+      messagesContainer.appendChild(bubble);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+      if (!messagesContainer) return;
+      const typing = document.createElement('div');
+      typing.id = 'ai-typing-indicator';
+      typing.className = 'ai-msg-bubble bot';
+      typing.innerHTML = `
+        <div class="ai-msg-content">
+          <div class="typing-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      `;
+      messagesContainer.appendChild(typing);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+      const typing = document.getElementById('ai-typing-indicator');
+      if (typing) typing.remove();
+    }
+  };
+
+  initAlgorAIChatbot();
 });
+
