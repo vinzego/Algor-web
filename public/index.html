@@ -74,7 +74,7 @@
       <!-- Primary Action Button & Micro Trust Line -->
       <div class="mesh-actions-stack">
         <button type="button" class="mesh-primary-btn btn-pill-dark">
-          <span>Započni Besplatan Audit</span>
+          <span>Zatraži uvodni razgovor</span>
           <span class="btn-arrow-circle">↗</span>
         </button>
 
@@ -412,6 +412,28 @@
         </div>
       </div>
 
+      <!-- KARTICA 05: CTA Kartica (15-min besplatne konzultacije) -->
+      <div class="stack-card-item stack-card-5" style="--stack-index: 5;">
+        <div class="stack-card-inner">
+          <div class="stack-card-left">
+            <div class="stack-num-pill" style="background: rgba(41, 173, 255, 0.15); color: #29ADFF; border: 1px solid rgba(41, 173, 255, 0.3);">BESPLATNO</div>
+            <h3 class="stack-card-title" style="color: #29ADFF;">Zatražite besplatne poslovne konzultacije</h3>
+            <p class="stack-card-desc">Dogovorite kratki, 15-minutni razgovor bez obveza. Postavite pitanja, dobijte konkretan marketinški savjet i jasnu ponudu skrojenu za vašu tvrtku.</p>
+            <ul class="stack-feature-list">
+              <li><span class="feat-check" style="color: #29ADFF;">✓</span> 15 minuta trajanje poziva</li>
+              <li><span class="feat-check" style="color: #29ADFF;">✓</span> 100% besplatno i bez ikakvih obveza</li>
+              <li><span class="feat-check" style="color: #29ADFF;">✓</span> Konkretne marketing preporuke</li>
+            </ul>
+          </div>
+          <div class="stack-card-right" style="display: flex; align-items: center; justify-content: center;">
+            <button type="button" class="mesh-primary-btn btn-pill-dark package-cta-btn" style="padding: 20px 40px; font-size: 1.1rem; width: 80%; justify-content: center;">
+              <span>Dogovori sastanak</span>
+              <span class="btn-arrow-circle">↗</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -633,6 +655,46 @@
             <span class="metric-num">+20%</span>
             <span class="metric-lbl">Veći angažman</span>
           </div>
+        </div>
+      </div>
+
+      <!-- Project 4: CTA Card -->
+      <div class="portfolio-item-card port-cta-card" style="border: 2px dashed #29ADFF; background-color: rgba(41, 173, 255, 0.02);">
+        <div class="port-client-logo-row">
+          <div class="client-brand-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon-svg" style="color: #29ADFF;">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span class="brand-name-text" style="color: #29ADFF;">ALGOR STUDIO</span>
+          </div>
+          <span class="port-status">// Besplatno</span>
+        </div>
+
+        <div class="port-card-header">
+          <span class="port-tag" style="background: rgba(41, 173, 255, 0.1); color: #29ADFF; border: 1px solid rgba(41, 173, 255, 0.2);">15-min Konzultacije</span>
+        </div>
+
+        <div class="port-body">
+          <h3>Zatražite besplatne poslovne konzultacije</h3>
+          <p>Dogovorite kratki, 15-minutni sastanak bez obveza. Postavite pitanja, dobijte konkretan savjet za svoj marketing i otkrijte koji od naših modela suradnje najbolje odgovara vašim trenutnim potrebama.</p>
+        </div>
+
+        <div class="port-metrics" style="margin-top: 15px; margin-bottom: 20px; border-top: 1px dashed rgba(0,0,0,0.08); padding-top: 15px;">
+          <div class="port-metric-box">
+            <span class="metric-num">15m</span>
+            <span class="metric-lbl">Trajanje poziva</span>
+          </div>
+          <div class="port-metric-box">
+            <span class="metric-num">100%</span>
+            <span class="metric-lbl">Besplatno</span>
+          </div>
+        </div>
+
+        <div class="port-actions">
+          <button type="button" class="mesh-primary-btn btn-pill-dark package-cta-btn" style="width: 100%; justify-content: center; box-sizing: border-box;">
+            <span>Dogovori sastanak</span>
+            <span class="btn-arrow-circle">↗</span>
+          </button>
         </div>
       </div>
 
@@ -1332,15 +1394,47 @@
       </div>
 
       <button type="submit" class="sheet-submit-btn btn-pill-dark">
-        <span>Pošalji Upit</span>
+        <span>Odaberi termin</span>
         <span class="btn-arrow-circle">↗</span>
       </button>
     </form>
 
-    <!-- STEP 2: Success Box -->
+    <!-- STEP 2: Custom Calendar Slot Picker -->
+    <div id="sheet-calendar-step" class="sheet-calendar-step" style="display: none; flex-direction: column; width: 100%;">
+      <div class="sheet-title-group">
+        <h3 class="sheet-title">Odaberite termin razgovora</h3>
+        <p class="sheet-subtitle">Svi termini su izraženi u srednjoeuropskom vremenu (CET). Trajanje: 15 minuta.</p>
+      </div>
+
+      <div class="sheet-inputs" style="gap: 20px;">
+        <div class="sheet-group">
+          <label for="sheet-input-date">1. Odaberite datum (Pon - Pet) *</label>
+          <input type="date" id="sheet-input-date" required style="width: 100%; box-sizing: border-box; padding: 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; font-family: inherit; font-size: 1rem; color: #1e293b;" />
+        </div>
+
+        <div class="sheet-group">
+          <label>2. Odaberite vrijeme *</label>
+          <div id="sheet-time-slots-container" class="time-slots-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; max-height: 220px; overflow-y: auto; padding-right: 5px;">
+            <!-- Generated dynamically via JS -->
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 15px; margin-top: 25px; width: 100%;">
+        <button type="button" id="sheet-calendar-back-btn" class="sheet-submit-btn" style="background: transparent; border: 1.5px solid #cbd5e1; color: #1e293b; width: 35%; justify-content: center;">
+          <span>Nazad</span>
+        </button>
+        <button type="button" id="sheet-calendar-submit-btn" class="sheet-submit-btn btn-pill-dark" style="width: 65%; justify-content: center;" disabled>
+          <span>Potvrdi Termin</span>
+          <span class="btn-arrow-circle">↗</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3: Success Box -->
     <div id="sheet-success-box" class="sheet-success" style="display: none;">
       <div class="modal-success-icon">✓</div>
-      <h4>Upit uspješno poslan!</h4>
+      <h4>Sastanak uspješno zakazan!</h4>
       <p id="sheet-success-desc" class="sheet-success-msg">Kontaktirat ćemo vas u najkraćem roku.</p>
       <button type="button" id="sheet-success-close-btn" class="sheet-submit-btn">Zatvori ✕</button>
     </div>

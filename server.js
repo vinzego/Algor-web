@@ -137,6 +137,12 @@ async function saveInquiryToNotion(data) {
     };
   }
 
+  if (data.calendarSlot) {
+    properties['Termin sastanka'] = {
+      rich_text: [{ text: { content: data.calendarSlot.trim() } }]
+    };
+  }
+
   const children = [
     {
       object: 'block',

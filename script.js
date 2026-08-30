@@ -418,7 +418,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Form Submit -> Directly Move to Success Screen & Save CSV
+  // Multi-step Appointment Booking System
+  let cachedContactData = {};
+  let selectedTimeSlot = '';
+
   if (sheetForm) {
     sheetForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -428,34 +431,167 @@ document.addEventListener('DOMContentLoaded', () => {
       const phoneInput = document.getElementById('sheet-input-phone');
 
       clientName = nameInput && nameInput.value ? nameInput.value : 'Klijent';
-      clientEmail = emailInput && emailInput.value ? emailInput.value : 'vašu e-mail adresu';
+      clientEmail = emailInput && emailInput.value ? emailInput.value : '';
       const company = companyInput && companyInput.value ? companyInput.value : '';
       const phone = phoneInput && phoneInput.value ? phoneInput.value : '';
 
-      sendInquiryToBackend({
+      cachedContactData = {
         name: clientName,
         company: company,
         email: clientEmail,
         phone: phone,
         package: selectedPackageFull
+      };
+
+      // Switch to Step 2: Calendar Slot Selection
+      sheetForm.style.display = 'none';
+      if (sheetCalendarStep) {
+        sheetCalendarStep.style.display = 'flex';
+        
+        // Setup Date Input min value & default date
+        const dateInput = document.getElementById('sheet-input-date');
+        if (dateInput) {
+          const today = new Date();
+          // Find next working day
+          let nextDay = new Date();
+          if (nextDay.getDay() === 0) nextDay.setDate(nextDay.getDate() + 1); // Sunday -> Monday
+          else if (nextDay.getDay() === 6) nextDay.setDate(nextDay.getDate() + 2); // Saturday -> Monday
+          
+          dateInput.min = today.toISOString().split('T')[0];
+          dateInput.value = nextDay.toISOString().split('T')[0];
+          
+          selectedTimeSlot = '';
+          checkCalendarStepValidity();
+          renderTimeSlots();
+        }
+      }
+    });
+  }
+
+  // Step 2 Date change validation (only Monday - Friday)
+  const dateInputEl = document.getElementById('sheet-input-date');
+  if (dateInputEl) {
+    dateInputEl.addEventListener('change', () => {
+      const selected = new Date(dateInputEl.value);
+      const day = selected.getDay();
+      if (day === 0 || day === 6) {
+        alert('Molimo odaberite radni dan (ponedjeljak - petak).');
+        // Find next Monday
+        let nextMon = new Date(dateInputEl.value);
+        nextMon.setDate(nextMon.getDate() + (day === 0 ? 1 : 2));
+        dateInputEl.value = nextMon.toISOString().split('T')[0];
+      }
+      selectedTimeSlot = '';
+      checkCalendarStepValidity();
+      renderTimeSlots();
+    });
+  }
+
+  const timeSlotsContainer = document.getElementById('sheet-time-slots-container');
+  const calendarSubmitBtn = document.getElementById('sheet-calendar-submit-btn');
+  const calendarBackBtn = document.getElementById('sheet-calendar-back-btn');
+
+  const slots = [
+    '09:00 - 09:15',
+    '09:30 - 09:45',
+    '10:00 - 10:15',
+    '10:30 - 10:45',
+    '11:00 - 11:15',
+    '11:30 - 11:45',
+    '12:00 - 12:15',
+    '12:30 - 12:45',
+    '13:00 - 13:15',
+    '13:30 - 13:45',
+    '14:00 - 14:15',
+    '14:30 - 14:45',
+    '15:00 - 15:15',
+    '15:30 - 15:45'
+  ];
+
+  function renderTimeSlots() {
+    if (!timeSlotsContainer) return;
+    timeSlotsContainer.innerHTML = '';
+    
+    slots.forEach(time => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gcal-slot-btn';
+      btn.style.cssText = 'padding: 12px; border-radius: 8px; border: 1.5px solid #cbd5e1; background: #fff; color: #1e293b; font-family: inherit; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; font-weight: 500;';
+      btn.textContent = time;
+
+      btn.addEventListener('click', () => {
+        timeSlotsContainer.querySelectorAll('.gcal-slot-btn').forEach(b => {
+          b.style.background = '#fff';
+          b.style.color = '#1e293b';
+          b.style.borderColor = '#cbd5e1';
+        });
+        btn.style.background = '#29ADFF';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#29ADFF';
+        selectedTimeSlot = time;
+        checkCalendarStepValidity();
       });
 
+      timeSlotsContainer.appendChild(btn);
+    });
+  }
+
+  function checkCalendarStepValidity() {
+    const dInput = document.getElementById('sheet-input-date');
+    if (calendarSubmitBtn) {
+      if (dInput && dInput.value && selectedTimeSlot) {
+        calendarSubmitBtn.removeAttribute('disabled');
+      } else {
+        calendarSubmitBtn.setAttribute('disabled', 'true');
+      }
+    }
+  }
+
+  if (calendarBackBtn) {
+    calendarBackBtn.addEventListener('click', () => {
+      if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
+      if (sheetForm) sheetForm.style.display = 'flex';
+      
+      // Reset submit button state
       const submitBtn = sheetForm.querySelector('.sheet-submit-btn');
       if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Šaljem upit...</span>';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Odaberi termin</span><span class="btn-arrow-circle">↗</span>';
       }
+    });
+  }
+
+  if (calendarSubmitBtn) {
+    calendarSubmitBtn.addEventListener('click', () => {
+      const dInput = document.getElementById('sheet-input-date');
+      if (!dInput || !selectedTimeSlot) return;
+
+      const formattedDate = new Date(dInput.value).toLocaleDateString('hr-HR', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      const appointmentStr = `${formattedDate} u ${selectedTimeSlot}`;
+
+      calendarSubmitBtn.disabled = true;
+      calendarSubmitBtn.innerHTML = '<span>Rezerviram...</span>';
+
+      sendInquiryToBackend({
+        ...cachedContactData,
+        calendarSlot: appointmentStr
+      });
 
       setTimeout(() => {
-        sheetForm.style.display = 'none';
+        if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
         if (sheetSuccessBox) {
           sheetSuccessBox.style.display = 'flex';
           const msg = document.getElementById('sheet-success-desc');
           if (msg) {
-            msg.textContent = `Hvala vam, ${clientName}! Vaš upit za ${selectedPackageFull} uspješno je poslan. Kontaktirat ćemo vas na ${clientEmail} u najkraćem roku.`;
+            msg.innerHTML = `Hvala vam, <strong>${clientName}</strong>!<br>Vaš termin za uvodni razgovor (<strong>${appointmentStr}</strong>) je uspješno potvrđen.<br><br>Poslali smo Vam detalje i potvrdu na email <strong>${clientEmail}</strong>.`;
           }
         }
-      }, 400);
+      }, 500);
     });
   }
 
