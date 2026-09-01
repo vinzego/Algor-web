@@ -60,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ultraNavbar) ultraNavbar.classList.remove('expanded');
       }
     });
+  }
+
   // ========================================================
   // GDPR Cookie Consent Banner Engine (Algor Studio)
   // ========================================================
