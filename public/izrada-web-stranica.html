@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Geist+Mono:wght@300;400;500;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="logo_black_transparent.png">
-  <link rel="stylesheet" href="style.css?v=65.0.0">
+  <link rel="stylesheet" href="style.css?v=66.0.0">
   <link rel="prefetch" href="kontakt.html">
   <link rel="prefetch" href="kontakt.html?paket=web-landing">
   <link rel="prefetch" href="kontakt.html?paket=web-business">
@@ -2395,67 +2395,6 @@
     </div>
   </section>
 
-
-  <!-- Mobile & Desktop Pop-up Modal / Bottom Sheet (Connected directly to Notion) -->
-  <div id="mobile-sheet-overlay" class="mobile-sheet-overlay" style="display: none;"></div>
-
-  <div id="mobile-bottom-sheet" class="mobile-bottom-sheet" style="display: none;">
-    <div class="sheet-drag-handle"></div>
-    
-    <div class="sheet-header">
-      <div class="sheet-pkg-badge">
-        <span class="badge-bolt-pill">⚡</span>
-        <span id="sheet-pkg-text">Odabran paket: <strong class="sheet-pkg-name-highlight">Business Web (od 990 €)</strong></span>
-      </div>
-      <button type="button" id="sheet-close-btn" class="sheet-close-btn" title="Zatvori prozor">
-        <span>Zatvori</span> ✕
-      </button>
-    </div>
-
-    <!-- STEP 1: Contact Form (Direct to Notion) -->
-    <form id="mobile-sheet-form" class="sheet-form">
-      <div class="sheet-title-group">
-        <h3 class="sheet-title">Započnimo vaš projekt</h3>
-        <p class="sheet-subtitle">Unesite osnovne kontakt podatke za besplatnu analizu i ponudu.</p>
-      </div>
-
-      <div class="sheet-inputs">
-        <div class="sheet-group">
-          <label>1. Ime i prezime *</label>
-          <input type="text" id="sheet-input-name" required placeholder="npr. Ivan Horvat" />
-        </div>
-
-        <div class="sheet-group">
-          <label>2. Tvrtka / Djelatnost *</label>
-          <input type="text" id="sheet-input-company" required placeholder="npr. Moja Tvrtka d.o.o." />
-        </div>
-
-        <div class="sheet-group">
-          <label>3. E-mail adresa *</label>
-          <input type="email" id="sheet-input-email" required placeholder="npr. ivan@tvrtka.hr" />
-        </div>
-
-        <div class="sheet-group">
-          <label>4. Broj mobitela *</label>
-          <input type="tel" id="sheet-input-phone" required placeholder="npr. 091 234 5678" />
-        </div>
-      </div>
-
-      <button type="submit" class="sheet-submit-btn btn-pill-dark">
-        <span>Pošalji Upit u Algor Studio</span>
-        <span class="btn-arrow-circle">↗</span>
-      </button>
-    </form>
-
-    <!-- STEP 2: Success Box -->
-    <div id="sheet-success-box" class="sheet-success" style="display: none;">
-      <div class="modal-success-icon">✓</div>
-      <h4>Upit uspješno poslan!</h4>
-      <p id="sheet-success-desc" class="sheet-success-msg">Vaš upit je automatski zaprimljen. Kontaktirat ćemo vas u najkraćem roku.</p>
-      <button type="button" id="sheet-success-close-btn" class="sheet-submit-btn">Zatvori ✕</button>
-    </div>
-  </div>
-
-  <script defer src="script.js?v=65.0.0"></script>
+  <script defer src="script.js?v=66.0.0"></script>
 </body>
 </html>

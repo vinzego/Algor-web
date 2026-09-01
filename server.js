@@ -437,16 +437,6 @@ app.get('/admin/export-csv', (req, res) => {
   }
 });
 
-
-
-app.get('/kontakt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'kontakt.html'));
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
