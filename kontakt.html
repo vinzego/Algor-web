@@ -9,8 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="logo_black_transparent.png">
-  <link rel="preload" as="style" href="style.css?v=64.0.0">
-  <link rel="stylesheet" href="style.css?v=64.0.0">
+  <link rel="preload" as="style" href="style.css?v=65.0.0">
+  <link rel="stylesheet" href="style.css?v=65.0.0" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=65.0.0"></noscript>
   <style>
     /* Contact Page Luxury Theme */
     body {
@@ -692,6 +693,70 @@
         padding: 130px 20px 60px;
       }
     }
+
+    /* Critical Ultra Navbar Styles for Instant Paint */
+    .ultra-navbar {
+      position: fixed !important;
+      top: 24px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: auto !important;
+      max-width: 95vw !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 36px !important;
+      background: rgba(246, 246, 248, 0.92) !important;
+      backdrop-filter: blur(28px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.95) !important;
+      border-radius: 40px !important;
+      padding: 10px 30px !important;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.9) !important;
+      z-index: 100000 !important;
+      margin: 0 auto !important;
+    }
+    .ultra-brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .navbar-brand-logo-img { height: 32px; width: auto; display: block; object-fit: contain; }
+    .ultra-nav-menu { display: flex !important; align-items: center !important; gap: 28px !important; background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
+    .mobile-nav-links-grid { display: flex; align-items: center; gap: 28px; white-space: nowrap !important; }
+    .ultra-nav-link { color: #334155 !important; font-weight: 700 !important; font-size: 14.5px !important; text-decoration: none !important; transition: all 0.25s ease !important; white-space: nowrap !important; }
+    .ultra-nav-link:hover { color: #000000 !important; transform: translateY(-1px) !important; }
+    .mobile-nav-toggle { display: none; background: transparent; border: none; cursor: pointer; padding: 8px; z-index: 100001; }
+    .mobile-nav-email-box { display: none !important; }
+
+    @media (max-width: 900px) {
+      .ultra-navbar { width: calc(100% - 32px) !important; max-width: 100% !important; justify-content: space-between !important; padding: 12px 20px !important; border-radius: 20px !important; top: 16px !important; }
+      .mobile-nav-toggle { display: flex !important; flex-direction: column; justify-content: center; gap: 5px; width: 34px; height: 34px; }
+      .hamburger-bar { width: 22px; height: 2px; background: #0f172a; border-radius: 2px; transition: all 0.3s ease; }
+      .mobile-nav-toggle.open .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .mobile-nav-toggle.open .hamburger-bar:nth-child(2) { opacity: 0; }
+      .mobile-nav-toggle.open .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .ultra-nav-menu { display: none !important; position: absolute; top: calc(100% + 10px); left: 0; width: 100%; background: #ffffff !important; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15); flex-direction: column; gap: 16px; }
+      .ultra-nav-menu.open { display: flex !important; }
+      .mobile-nav-links-grid { flex-direction: column; align-items: flex-start; gap: 14px; width: 100%; }
+      .ultra-nav-link { font-size: 16px !important; color: #0f172a !important; padding: 8px 0; width: 100%; border-bottom: 1px solid #f1f5f9; }
+      .mobile-nav-email-box { display: block !important; margin-top: 10px; }
+      .mobile-nav-email-link { color: #29ADFF; font-weight: 700; text-decoration: none; font-size: 14px; }
+    }
+
+    /* Critical Footer Styles */
+    .footer-card-wrapper { max-width: 1240px; margin: 0 auto; padding: 0 24px 60px; box-sizing: border-box; }
+    .brand-footer-card { background: #0f172a; border-radius: 28px; padding: 60px 48px 40px; color: #ffffff; }
+    .footer-top-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+    .footer-brand-title { font-size: 24px; font-weight: 800; margin-bottom: 14px; }
+    .footer-tagline { color: #94a3b8; font-size: 14.5px; line-height: 1.6; max-width: 320px; }
+    .footer-col-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-bottom: 18px; }
+    .footer-links-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links-list a { color: #cbd5e1; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-links-list a:hover { color: #29ADFF; }
+    .footer-bottom-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; font-size: 13.5px; color: #64748b; }
+    .footer-credit-brand { color: #ffffff; font-weight: 700; }
+    @media (max-width: 800px) {
+      .footer-top-row { grid-template-columns: 1fr; gap: 32px; }
+      .brand-footer-card { padding: 40px 24px 30px; }
+      .footer-bottom-row { flex-direction: column; gap: 12px; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -993,6 +1058,6 @@
     </footer>
   </div>
 
-  <script defer src="script.js?v=64.0.0"></script>
+  <script defer src="script.js?v=65.0.0"></script>
 </body>
 </html>

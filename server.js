@@ -5,38 +5,60 @@ const fs = require('fs');
 const { Client } = require('@notionhq/client');
 const nodemailer = require('nodemailer');
 
+const compression = require('compression');
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Enable gzip/deflate compression for all requests (cuts payload by ~80%)
+app.use(compression({
+  threshold: 1024,
+  level: 6
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Pre-warmed fast paths for HTML pages
+const publicDir = path.join(__dirname, 'public');
+
+app.get(['/kontakt', '/kontakt.html'], (req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'kontakt.html'));
+});
+
+app.get(['/izrada-web-stranica', '/izrada-web-stranica.html'], (req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'izrada-web-stranica.html'));
+});
+
+app.get(['/karijere', '/karijere.html'], (req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'karijere.html'));
+});
+
+app.get(['/', '/index.html'], (req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'index.html'));
+});
 
 // Serve static files with instant cache for assets
 const staticOptions = {
   maxAge: '2h',
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
     } else {
-      res.setHeader('Cache-Control', 'public, max-age=7200');
+      res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
     }
   }
 };
-app.use(express.static(path.join(__dirname, 'public'), staticOptions));
+app.use(express.static(publicDir, staticOptions));
 app.use(express.static(__dirname, staticOptions));
-
-// Direct fast routes for HTML pages
-app.get(['/kontakt', '/kontakt.html'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'kontakt.html'));
-});
-
-app.get(['/izrada-web-stranica', '/izrada-web-stranica.html'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'izrada-web-stranica.html'));
-});
-
-app.get(['/', '/index.html'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
 
 const CSV_FILE = path.join(__dirname, 'upiti.csv');
 
