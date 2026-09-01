@@ -23,24 +23,49 @@ app.use(express.urlencoded({ extended: true }));
 const publicDir = path.join(__dirname, 'public');
 
 app.get(['/kontakt', '/kontakt.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/kontakt');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
   res.sendFile(path.join(publicDir, 'kontakt.html'));
 });
 
 app.get(['/izrada-web-stranica', '/izrada-web-stranica.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/izrada-web-stranica');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
   res.sendFile(path.join(publicDir, 'izrada-web-stranica.html'));
 });
 
 app.get(['/karijere', '/karijere.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/karijere');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
   res.sendFile(path.join(publicDir, 'karijere.html'));
 });
 
+app.get(['/politika-privatnosti', '/politika-privatnosti.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/politika-privatnosti');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'politika-privatnosti.html'));
+});
+
+app.get(['/uvjeti-koristenja', '/uvjeti-koristenja.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/uvjeti-koristenja');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'uvjeti-koristenja.html'));
+});
+
+app.get(['/kolacici', '/kolacici.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/kolacici');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'kolacici.html'));
+});
+
 app.get(['/', '/index.html'], (req, res) => {
+  if (req.path === '/index.html') return res.redirect(301, '/');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
   res.sendFile(path.join(publicDir, 'index.html'));
