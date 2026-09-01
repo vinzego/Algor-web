@@ -750,10 +750,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!words.length) return;
 
         const rect = revealContainer.getBoundingClientRect();
-        const isProcessStatement = (revealContainer.id === 'process-statement-reveal' || revealContainer.classList.contains('process-reveal-title'));
-        // Delayed trigger for oversized statement: starts when element reaches ~68% of screen height
-        const start = isProcessStatement ? (windowHeight * 0.68) : (windowHeight * 0.90);
-        const end = isProcessStatement ? (windowHeight * 0.18) : (windowHeight * 0.32);
+        const isProcessStatement = (revealContainer.id === 'process-statement-reveal' || revealContainer.classList.contains('ecosystem-reveal-title') || revealContainer.classList.contains('process-reveal-title'));
+        const start = windowHeight * 0.88;
+        const end = windowHeight * 0.30;
         
         let globalProgress = 0;
         if (rect.top <= start && rect.top >= end) {
