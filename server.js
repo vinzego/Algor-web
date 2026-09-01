@@ -25,6 +25,19 @@ const staticOptions = {
 app.use(express.static(path.join(__dirname, 'public'), staticOptions));
 app.use(express.static(__dirname, staticOptions));
 
+// Direct fast routes for HTML pages
+app.get(['/kontakt', '/kontakt.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kontakt.html'));
+});
+
+app.get(['/izrada-web-stranica', '/izrada-web-stranica.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'izrada-web-stranica.html'));
+});
+
+app.get(['/', '/index.html'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 const CSV_FILE = path.join(__dirname, 'upiti.csv');
 
 // Initialize Notion Client if credentials exist

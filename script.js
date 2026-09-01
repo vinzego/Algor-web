@@ -60,8 +60,554 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ultraNavbar) ultraNavbar.classList.remove('expanded');
       }
     });
+  // ========================================================
+  // GDPR Cookie Consent Banner Engine (Algor Studio)
+  // ========================================================
+  const initCookieConsent = () => {
+    let banner = document.getElementById('algor-cookie-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'algor-cookie-banner';
+      banner.className = 'algor-cookie-banner';
+      banner.setAttribute('role', 'dialog');
+      banner.setAttribute('aria-modal', 'true');
+      banner.setAttribute('aria-label', 'Postavke kolačića i privatnost');
+      
+      banner.innerHTML = `
+        <div class="cookie-banner-inner">
+          <div class="cookie-banner-content">
+            <div class="cookie-banner-badge">
+              <span class="cookie-icon">🍪</span>
+              <span>Privatnost &amp; Kolačići</span>
+            </div>
+            <p class="cookie-banner-text">
+              Ova web stranica koristi kolačiće i srodne tehnologije za optimizaciju performansi, analitiku posjećenosti i unaprjeđenje korisničkog iskustva. Klikom na „Prihvati sve” pristajete na obradu podataka u navedene svrhe. Saznajte više u našoj <a href="kolacici.html" class="cookie-link">Politici kolačića</a>.
+            </p>
+          </div>
+          <div class="cookie-banner-actions">
+            <button type="button" id="cookie-btn-accept" class="cookie-btn cookie-btn-accept">Prihvati sve</button>
+            <button type="button" id="cookie-btn-necessary" class="cookie-btn cookie-btn-necessary">Samo nužni</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(banner);
+    }
+
+    const setCookie = (name, value, days) => {
+      let expires = "";
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+    };
+
+    const getCookie = (name) => {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    };
+
+    const applyConsent = (type) => {
+      localStorage.setItem('algor_cookie_consent', type);
+      setCookie('algor_cookie_consent', type, 365);
+      window.dispatchEvent(new CustomEvent('algorCookieConsent', { detail: { consent: type } }));
+      if (typeof window.gtag === 'function') {
+        if (type === 'all') {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+          });
+        } else {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
+      }
+    };
+
+    const showBanner = () => {
+      setTimeout(() => {
+        banner.classList.add('visible');
+      }, 600);
+    };
+
+    const hideBanner = () => {
+      banner.classList.remove('visible');
+    };
+
+    const consent = localStorage.getItem('algor_cookie_consent') || getCookie('algor_cookie_consent');
+    if (!consent) {
+      showBanner();
+    } else {
+      applyConsent(consent);
+    }
+
+    const btnAccept = document.getElementById('cookie-btn-accept');
+    const btnNecessary = document.getElementById('cookie-btn-necessary');
+
+    if (btnAccept) {
+      btnAccept.addEventListener('click', () => {
+        applyConsent('all');
+        hideBanner();
+      });
+    }
+
+    if (btnNecessary) {
+      btnNecessary.addEventListener('click', () => {
+        applyConsent('necessary');
+        hideBanner();
+      });
+    }
+
+    const triggerLinks = document.querySelectorAll('a[href="#cookie-settings"], .open-cookie-banner');
+    triggerLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showBanner();
+      });
+    });
+  };
+
+  initCookieConsent();
+
+  // ========================================================
+  // Dedicated Fast Path for Contact Page (kontakt.html)
+  // ========================================================
+  const contactFormStep1 = document.getElementById('contact-page-form-step-1');
+  const contactFormStep2 = document.getElementById('contact-page-form-step-2');
+  const contactStepSuccess = document.getElementById('contact-page-step-success');
+
+  if (contactFormStep1 && contactFormStep2) {
+    let contactPageData = {};
+    let selectedMeetingType = 'Sastanak uživo';
+    let selectedContactSlot = '';
+    let selectedCalendarDateStr = '';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const pkgParam = urlParams.get('paket');
+    let selectedPackageName = 'Besplatan Audit';
+    let formPackageLabel = 'Besplatan Audit (Konzultacije)';
+
+    if (pkgParam) {
+      const p = pkgParam.toLowerCase();
+      if (p.includes('start')) {
+        selectedPackageName = 'Paket Start';
+        formPackageLabel = 'Paket Start (690 €/mj.)';
+      } else if (p.includes('pro') || p.includes('plus')) {
+        selectedPackageName = 'Paket Pro';
+        formPackageLabel = 'Paket Pro (1.250 €/mj.)';
+      } else if (p.includes('ultra') || p.includes('ai')) {
+        selectedPackageName = 'Paket Ultra';
+        formPackageLabel = 'Paket Ultra (2.150 €/mj.)';
+      } else if (p.includes('landing') || p.includes('web-start') || p.includes('490')) {
+        selectedPackageName = 'Izrada weba';
+        formPackageLabel = 'Landing Stranica (od 490 €)';
+      } else if (p.includes('business') || p.includes('web-business') || p.includes('web-pro') || p.includes('990')) {
+        selectedPackageName = 'Izrada weba';
+        formPackageLabel = 'Business Web (od 990 €)';
+      } else if (p.includes('custom') || p.includes('web-custom') || p.includes('shop') || p.includes('1850')) {
+        selectedPackageName = 'Izrada weba';
+        formPackageLabel = 'Custom Web Aplikacija (od 1.850 €)';
+      }
+    }
+
+    const formPkgName = document.getElementById('form-pkg-name');
+    if (formPkgName) {
+      formPkgName.textContent = formPackageLabel;
+    }
+
+    const stepInd1 = document.getElementById('step-ind-1');
+    const stepInd2 = document.getElementById('step-ind-2');
+    const typeCardLive = document.getElementById('type-card-live');
+    const typeCardMeet = document.getElementById('type-card-meet');
+    const contactDateInput = document.getElementById('contact-date');
+    const contactSlotsWrap = document.getElementById('contact-time-slots-wrap');
+    const contactBtnBack = document.getElementById('contact-btn-back');
+    const contactBtnConfirm = document.getElementById('contact-btn-confirm');
+    const contactSuccessSummary = document.getElementById('contact-success-summary');
+
+    const calMonthTitle = document.getElementById('cal-month-title');
+    const calDaysGrid = document.getElementById('cal-days-grid');
+    const calPrevMonthBtn = document.getElementById('cal-prev-month');
+    const calNextMonthBtn = document.getElementById('cal-next-month');
+    const calSelectedBadge = document.getElementById('cal-selected-badge');
+    const calSelectedBadgeText = document.getElementById('cal-selected-badge-text');
+
+    const monthNamesHr = [
+      'Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj',
+      'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'
+    ];
+
+    let currentCalDate = new Date();
+    let calViewYear = currentCalDate.getFullYear();
+    let calViewMonth = currentCalDate.getMonth();
+
+    const contactSlotsList = [
+      '09:00',
+      '09:45',
+      '10:30',
+      '11:15',
+      '12:00',
+      '12:45',
+      '13:30',
+      '14:15',
+      '15:00',
+      '15:45'
+    ];
+
+    if (typeCardLive && typeCardMeet) {
+      typeCardLive.addEventListener('click', () => {
+        typeCardLive.classList.add('selected');
+        typeCardMeet.classList.remove('selected');
+        selectedMeetingType = 'Sastanak uživo';
+      });
+
+      typeCardMeet.addEventListener('click', () => {
+        typeCardMeet.classList.add('selected');
+        typeCardLive.classList.remove('selected');
+        selectedMeetingType = 'Google Meet poziv';
+      });
+    }
+
+    function renderCalendar() {
+      if (!calDaysGrid || !calMonthTitle) return;
+
+      calMonthTitle.textContent = `${monthNamesHr[calViewMonth]} ${calViewYear}.`;
+
+      const realToday = new Date();
+      const isPastMonth = (calViewYear < realToday.getFullYear()) || 
+                          (calViewYear === realToday.getFullYear() && calViewMonth <= realToday.getMonth());
+      if (calPrevMonthBtn) {
+        calPrevMonthBtn.disabled = isPastMonth;
+      }
+
+      calDaysGrid.innerHTML = '';
+
+      const firstDayObj = new Date(calViewYear, calViewMonth, 1);
+      let startingDayIndex = firstDayObj.getDay();
+      startingDayIndex = (startingDayIndex === 0) ? 6 : startingDayIndex - 1;
+
+      const daysInMonth = new Date(calViewYear, calViewMonth + 1, 0).getDate();
+
+      for (let i = 0; i < startingDayIndex; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-day-cell cal-day-empty';
+        calDaysGrid.appendChild(emptyCell);
+      }
+
+      const todayZero = new Date(realToday.getFullYear(), realToday.getMonth(), realToday.getDate());
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cellDate = new Date(calViewYear, calViewMonth, day);
+        const dayOfWeek = cellDate.getDay();
+        const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+        const isPast = (cellDate < todayZero);
+
+        const dayStr = `${calViewYear}-${String(calViewMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+        const cell = document.createElement('div');
+        cell.className = 'cal-day-cell';
+        cell.textContent = day;
+
+        if (isPast) {
+          cell.classList.add('cal-day-past');
+        } else if (isWeekend) {
+          cell.classList.add('cal-day-weekend');
+          cell.title = 'Vikend (Neradni dan)';
+        } else {
+          cell.classList.add('cal-day-active');
+          if (dayStr === selectedCalendarDateStr) {
+            cell.classList.add('cal-day-selected');
+          }
+
+          cell.addEventListener('click', () => {
+            selectedCalendarDateStr = dayStr;
+            if (contactDateInput) {
+              contactDateInput.value = dayStr;
+            }
+
+            const formatted = cellDate.toLocaleDateString('hr-HR', {
+              weekday: 'long',
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            });
+
+            if (calSelectedBadge && calSelectedBadgeText) {
+              calSelectedBadgeText.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+              calSelectedBadge.style.display = 'inline-flex';
+            }
+
+            renderCalendar();
+            checkContactValidity();
+          });
+        }
+
+        calDaysGrid.appendChild(cell);
+      }
+    }
+
+    if (calPrevMonthBtn) {
+      calPrevMonthBtn.addEventListener('click', () => {
+        calViewMonth--;
+        if (calViewMonth < 0) {
+          calViewMonth = 11;
+          calViewYear--;
+        }
+        renderCalendar();
+      });
+    }
+
+    if (calNextMonthBtn) {
+      calNextMonthBtn.addEventListener('click', () => {
+        calViewMonth++;
+        if (calViewMonth > 11) {
+          calViewMonth = 0;
+          calViewYear++;
+        }
+        renderCalendar();
+      });
+    }
+
+    function renderContactSlots() {
+      if (!contactSlotsWrap) return;
+      contactSlotsWrap.innerHTML = '';
+
+      contactSlotsList.forEach(slot => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'contact-slot-btn';
+        btn.textContent = slot;
+
+        if (slot === selectedContactSlot) {
+          btn.classList.add('selected');
+        }
+
+        btn.addEventListener('click', () => {
+          contactSlotsWrap.querySelectorAll('.contact-slot-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          selectedContactSlot = slot;
+          checkContactValidity();
+        });
+
+        contactSlotsWrap.appendChild(btn);
+      });
+    }
+
+    function checkContactValidity() {
+      if (contactBtnConfirm) {
+        if (contactDateInput && contactDateInput.value && selectedContactSlot) {
+          contactBtnConfirm.removeAttribute('disabled');
+        } else {
+          contactBtnConfirm.setAttribute('disabled', 'true');
+        }
+      }
+    }
+
+    contactFormStep1.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nameVal = document.getElementById('contact-name').value.trim();
+      const compVal = document.getElementById('contact-company').value.trim();
+      const emailVal = document.getElementById('contact-email').value.trim();
+      const phoneInput = document.getElementById('contact-phone');
+      const phoneVal = phoneInput ? phoneInput.value.trim() : '';
+
+      contactPageData = {
+        name: nameVal,
+        company: compVal,
+        email: emailVal,
+        phone: phoneVal
+      };
+
+      contactFormStep1.style.display = 'none';
+      contactFormStep2.style.display = 'block';
+
+      if (stepInd1) stepInd1.classList.remove('active');
+      if (stepInd2) stepInd2.classList.add('active');
+
+      const now = new Date();
+      let initDate = new Date();
+      if (initDate.getDay() === 0) {
+        initDate.setDate(initDate.getDate() + 1);
+      } else if (initDate.getDay() === 6) {
+        initDate.setDate(initDate.getDate() + 2);
+      }
+
+      calViewYear = initDate.getFullYear();
+      calViewMonth = initDate.getMonth();
+
+      selectedCalendarDateStr = `${calViewYear}-${String(calViewMonth + 1).padStart(2, '0')}-${String(initDate.getDate()).padStart(2, '0')}`;
+      if (contactDateInput) {
+        contactDateInput.value = selectedCalendarDateStr;
+      }
+
+      const formatted = initDate.toLocaleDateString('hr-HR', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      if (calSelectedBadge && calSelectedBadgeText) {
+        calSelectedBadgeText.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+        calSelectedBadge.style.display = 'inline-flex';
+      }
+
+      selectedContactSlot = '';
+      renderCalendar();
+      renderContactSlots();
+      checkContactValidity();
+    });
+
+    if (contactBtnBack) {
+      contactBtnBack.addEventListener('click', () => {
+        contactFormStep2.style.display = 'none';
+        contactFormStep1.style.display = 'block';
+        if (stepInd1) stepInd1.classList.add('active');
+        if (stepInd2) stepInd2.classList.remove('active');
+      });
+    }
+
+    if (contactBtnConfirm) {
+      contactBtnConfirm.addEventListener('click', async () => {
+        if (!contactDateInput || !contactDateInput.value || !selectedContactSlot) {
+          alert('Molimo odaberite datum i vrijeme termina.');
+          return;
+        }
+
+        contactBtnConfirm.disabled = true;
+        contactBtnConfirm.innerHTML = '<span>Rezerviram...</span>';
+
+        const dateVal = contactDateInput.value;
+        let formattedDate = dateVal;
+        try {
+          const parts = dateVal.split('-');
+          if (parts.length === 3) {
+            const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+            formattedDate = d.toLocaleDateString('hr-HR', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            });
+          }
+        } catch (e) {
+          console.error('Date format error:', e);
+        }
+
+        const appointmentDetails = `${selectedMeetingType} • ${formattedDate} u ${selectedContactSlot}h`;
+
+        try {
+          await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: contactPageData.name || 'Klijent',
+              company: contactPageData.company || '',
+              email: contactPageData.email || '',
+              phone: contactPageData.phone || '',
+              package: selectedPackageName,
+              appointmentDate: dateVal,
+              appointmentTime: selectedContactSlot,
+              meetingType: selectedMeetingType,
+              calendarSlot: appointmentDetails,
+              source: 'Kontakt stranica',
+              device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
+            })
+          });
+        } catch (err) {
+          console.log('Inquiry submit note:', err);
+        }
+
+        const stepsBar = document.querySelector('.booking-steps-bar');
+        if (stepsBar) stepsBar.style.display = 'none';
+
+        contactFormStep2.style.display = 'none';
+        if (contactStepSuccess) {
+          contactStepSuccess.style.display = 'block';
+          if (contactSuccessSummary) {
+            contactSuccessSummary.innerHTML = `
+              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vaše rezervacije:</div>
+              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${contactPageData.name || ''}</div>
+              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
+              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
+              ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
+              <div style="margin-bottom: 6px;">📦 <strong>Paket:</strong> ${selectedPackageName}</div>
+              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
+                📅 ${appointmentDetails}
+              </div>
+            `;
+          }
+          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
+
+    const contactBtnSkip = document.getElementById('contact-btn-skip');
+    if (contactBtnSkip) {
+      contactBtnSkip.addEventListener('click', async () => {
+        contactBtnSkip.disabled = true;
+        if (contactBtnConfirm) contactBtnConfirm.disabled = true;
+
+        try {
+          await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: contactPageData.name || 'Klijent',
+              company: contactPageData.company || '',
+              email: contactPageData.email || '',
+              phone: contactPageData.phone || '',
+              package: selectedPackageName,
+              calendarSlot: 'Termin nije odabran (Preskočeno)',
+              source: 'Kontakt stranica',
+              device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
+            })
+          });
+        } catch (err) {
+          console.log('Inquiry submit note:', err);
+        }
+
+        const stepsBar = document.querySelector('.booking-steps-bar');
+        if (stepsBar) stepsBar.style.display = 'none';
+
+        contactFormStep2.style.display = 'none';
+        if (contactStepSuccess) {
+          contactStepSuccess.style.display = 'block';
+          if (contactSuccessSummary) {
+            contactSuccessSummary.innerHTML = `
+              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vašeg upita:</div>
+              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${contactPageData.name || ''}</div>
+              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
+              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
+              ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
+              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
+                📦 <strong>Usluga:</strong> ${selectedPackageName}
+              </div>
+            `;
+          }
+          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
+
+    // Early return so homepage-only scripts never execute on kontakt.html!
+    return;
   }
-  
+
   // Dynamic Animated Glowing Mesh Grid Engine (Perfect 1:1 Squares on All Screen Sizes)
   const meshContainer = document.getElementById('mesh-grid-container');
   if (meshContainer) {
@@ -800,569 +1346,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(updateProcessSvgLine, 100);
   setTimeout(updateProcessSvgLine, 400);
   setTimeout(updateProcessSvgLine, 1000);
-
-  // ========================================================
-  // GDPR Cookie Consent Banner Engine (Algor Studio)
-  // ========================================================
-  const initCookieConsent = () => {
-    let banner = document.getElementById('algor-cookie-banner');
-    if (!banner) {
-      banner = document.createElement('div');
-      banner.id = 'algor-cookie-banner';
-      banner.className = 'algor-cookie-banner';
-      banner.setAttribute('role', 'dialog');
-      banner.setAttribute('aria-modal', 'true');
-      banner.setAttribute('aria-label', 'Postavke kolačića i privatnost');
-      
-      banner.innerHTML = `
-        <div class="cookie-banner-inner">
-          <div class="cookie-banner-content">
-            <div class="cookie-banner-badge">
-              <span class="cookie-icon">🍪</span>
-              <span>Privatnost &amp; Kolačići</span>
-            </div>
-            <p class="cookie-banner-text">
-              Ova web stranica koristi kolačiće i srodne tehnologije za optimizaciju performansi, analitiku posjećenosti i unaprjeđenje korisničkog iskustva. Klikom na „Prihvati sve” pristajete na obradu podataka u navedene svrhe. Saznajte više u našoj <a href="kolacici.html" class="cookie-link">Politici kolačića</a>.
-            </p>
-          </div>
-          <div class="cookie-banner-actions">
-            <button type="button" id="cookie-btn-accept" class="cookie-btn cookie-btn-accept">Prihvati sve</button>
-            <button type="button" id="cookie-btn-necessary" class="cookie-btn cookie-btn-necessary">Samo nužni</button>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(banner);
-    }
-
-    // Helper functions for real browser cookies
-    const setCookie = (name, value, days) => {
-      let expires = "";
-      if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
-    };
-
-    const getCookie = (name) => {
-      const nameEQ = name + "=";
-      const ca = document.cookie.split(';');
-      for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-      }
-      return null;
-    };
-
-    const applyConsent = (type) => {
-      // Store in both localStorage and real browser cookie for 365 days
-      localStorage.setItem('algor_cookie_consent', type);
-      setCookie('algor_cookie_consent', type, 365);
-      
-      // Dispatch event for analytics / scripts to listen to
-      window.dispatchEvent(new CustomEvent('algorCookieConsent', { detail: { consent: type } }));
-
-      // Google Consent Mode v2 support (if gtag exists)
-      if (typeof window.gtag === 'function') {
-        if (type === 'all') {
-          window.gtag('consent', 'update', {
-            'analytics_storage': 'granted',
-            'ad_storage': 'granted',
-            'ad_user_data': 'granted',
-            'ad_personalization': 'granted'
-          });
-        } else {
-          window.gtag('consent', 'update', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied'
-          });
-        }
-      }
-    };
-
-    const showBanner = () => {
-      setTimeout(() => {
-        banner.classList.add('visible');
-      }, 600);
-    };
-
-    const hideBanner = () => {
-      banner.classList.remove('visible');
-    };
-
-    const consent = localStorage.getItem('algor_cookie_consent') || getCookie('algor_cookie_consent');
-    if (!consent) {
-      showBanner();
-    } else {
-      applyConsent(consent);
-    }
-
-    const btnAccept = document.getElementById('cookie-btn-accept');
-    const btnNecessary = document.getElementById('cookie-btn-necessary');
-
-    if (btnAccept) {
-      btnAccept.addEventListener('click', () => {
-        applyConsent('all');
-        hideBanner();
-      });
-    }
-
-    if (btnNecessary) {
-      btnNecessary.addEventListener('click', () => {
-        applyConsent('necessary');
-        hideBanner();
-      });
-    }
-
-    // Allow reopening cookie banner anytime from footer or settings
-    const triggerLinks = document.querySelectorAll('a[href="#cookie-settings"], .open-cookie-banner');
-    triggerLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        showBanner();
-      });
-    });
-  };
-
-  // 12. Dedicated Contact Page Booking Flow (kontakt.html)
-  const contactFormStep1 = document.getElementById('contact-page-form-step-1');
-  const contactFormStep2 = document.getElementById('contact-page-form-step-2');
-  const contactStepSuccess = document.getElementById('contact-page-step-success');
-
-  if (contactFormStep1 && contactFormStep2) {
-    let contactPageData = {};
-    let selectedMeetingType = 'Sastanak uživo';
-    let selectedContactSlot = '';
-    let selectedCalendarDateStr = '';
-
-    // URL Query Parameter for selected package (e.g. ?paket=pro)
-    const urlParams = new URLSearchParams(window.location.search);
-    const pkgParam = urlParams.get('paket');
-    let selectedPackageName = 'Besplatan Audit';
-    let formPackageLabel = 'Besplatan Audit (Konzultacije)';
-
-    if (pkgParam) {
-      const p = pkgParam.toLowerCase();
-      if (p.includes('start')) {
-        selectedPackageName = 'Paket Start';
-        formPackageLabel = 'Paket Start (690 €/mj.)';
-      } else if (p.includes('pro') || p.includes('plus')) {
-        selectedPackageName = 'Paket Pro';
-        formPackageLabel = 'Paket Pro (1.250 €/mj.)';
-      } else if (p.includes('ultra') || p.includes('ai')) {
-        selectedPackageName = 'Paket Ultra';
-        formPackageLabel = 'Paket Ultra (2.150 €/mj.)';
-      } else if (p.includes('landing') || p.includes('web-start') || p.includes('490')) {
-        selectedPackageName = 'Izrada weba';
-        formPackageLabel = 'Landing Stranica (od 490 €)';
-      } else if (p.includes('business') || p.includes('web-business') || p.includes('web-pro') || p.includes('990')) {
-        selectedPackageName = 'Izrada weba';
-        formPackageLabel = 'Business Web (od 990 €)';
-      } else if (p.includes('custom') || p.includes('web-custom') || p.includes('shop') || p.includes('1850')) {
-        selectedPackageName = 'Izrada weba';
-        formPackageLabel = 'Custom Web Aplikacija (od 1.850 €)';
-      }
-    }
-
-    const formPkgName = document.getElementById('form-pkg-name');
-    if (formPkgName) {
-      formPkgName.textContent = formPackageLabel;
-    }
-
-    const stepInd1 = document.getElementById('step-ind-1');
-    const stepInd2 = document.getElementById('step-ind-2');
-    const typeCardLive = document.getElementById('type-card-live');
-    const typeCardMeet = document.getElementById('type-card-meet');
-    const contactDateInput = document.getElementById('contact-date');
-    const contactSlotsWrap = document.getElementById('contact-time-slots-wrap');
-    const contactBtnBack = document.getElementById('contact-btn-back');
-    const contactBtnConfirm = document.getElementById('contact-btn-confirm');
-    const contactSuccessSummary = document.getElementById('contact-success-summary');
-
-    // Calendar Elements
-    const calMonthTitle = document.getElementById('cal-month-title');
-    const calDaysGrid = document.getElementById('cal-days-grid');
-    const calPrevMonthBtn = document.getElementById('cal-prev-month');
-    const calNextMonthBtn = document.getElementById('cal-next-month');
-    const calSelectedBadge = document.getElementById('cal-selected-badge');
-    const calSelectedBadgeText = document.getElementById('cal-selected-badge-text');
-
-    const monthNamesHr = [
-      'Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj',
-      'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'
-    ];
-
-    let currentCalDate = new Date();
-    let calViewYear = currentCalDate.getFullYear();
-    let calViewMonth = currentCalDate.getMonth();
-
-    const contactSlotsList = [
-      '09:00',
-      '09:45',
-      '10:30',
-      '11:15',
-      '12:00',
-      '12:45',
-      '13:30',
-      '14:15',
-      '15:00',
-      '15:45'
-    ];
-
-    // Handle Meeting Type click
-    if (typeCardLive && typeCardMeet) {
-      typeCardLive.addEventListener('click', () => {
-        typeCardLive.classList.add('selected');
-        typeCardMeet.classList.remove('selected');
-        selectedMeetingType = 'Sastanak uživo';
-      });
-
-      typeCardMeet.addEventListener('click', () => {
-        typeCardMeet.classList.add('selected');
-        typeCardLive.classList.remove('selected');
-        selectedMeetingType = 'Google Meet poziv';
-      });
-    }
-
-    function renderCalendar() {
-      if (!calDaysGrid || !calMonthTitle) return;
-
-      calMonthTitle.textContent = `${monthNamesHr[calViewMonth]} ${calViewYear}.`;
-
-      // Disable prev button if view is current month or earlier
-      const realToday = new Date();
-      const isPastMonth = (calViewYear < realToday.getFullYear()) || 
-                          (calViewYear === realToday.getFullYear() && calViewMonth <= realToday.getMonth());
-      if (calPrevMonthBtn) {
-        calPrevMonthBtn.disabled = isPastMonth;
-      }
-
-      calDaysGrid.innerHTML = '';
-
-      // First day of month (0=Sun, 1=Mon, ..., 6=Sat)
-      const firstDayObj = new Date(calViewYear, calViewMonth, 1);
-      let startingDayIndex = firstDayObj.getDay();
-      startingDayIndex = (startingDayIndex === 0) ? 6 : startingDayIndex - 1;
-
-      const daysInMonth = new Date(calViewYear, calViewMonth + 1, 0).getDate();
-
-      // Empty padding cells before month start
-      for (let i = 0; i < startingDayIndex; i++) {
-        const emptyCell = document.createElement('div');
-        emptyCell.className = 'cal-day-cell cal-day-empty';
-        calDaysGrid.appendChild(emptyCell);
-      }
-
-      const todayZero = new Date(realToday.getFullYear(), realToday.getMonth(), realToday.getDate());
-
-      for (let day = 1; day <= daysInMonth; day++) {
-        const cellDate = new Date(calViewYear, calViewMonth, day);
-        const dayOfWeek = cellDate.getDay();
-        const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
-        const isPast = (cellDate < todayZero);
-
-        const dayStr = `${calViewYear}-${String(calViewMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-
-        const cell = document.createElement('div');
-        cell.className = 'cal-day-cell';
-        cell.textContent = day;
-
-        if (isPast) {
-          cell.classList.add('cal-day-past');
-        } else if (isWeekend) {
-          cell.classList.add('cal-day-weekend');
-          cell.title = 'Vikend (Neradni dan)';
-        } else {
-          cell.classList.add('cal-day-active');
-          if (dayStr === selectedCalendarDateStr) {
-            cell.classList.add('cal-day-selected');
-          }
-
-          cell.addEventListener('click', () => {
-            selectedCalendarDateStr = dayStr;
-            if (contactDateInput) {
-              contactDateInput.value = dayStr;
-            }
-
-            const formatted = cellDate.toLocaleDateString('hr-HR', {
-              weekday: 'long',
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric'
-            });
-
-            if (calSelectedBadge && calSelectedBadgeText) {
-              calSelectedBadgeText.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
-              calSelectedBadge.style.display = 'inline-flex';
-            }
-
-            renderCalendar();
-            checkContactValidity();
-          });
-        }
-
-        calDaysGrid.appendChild(cell);
-      }
-    }
-
-    if (calPrevMonthBtn) {
-      calPrevMonthBtn.addEventListener('click', () => {
-        calViewMonth--;
-        if (calViewMonth < 0) {
-          calViewMonth = 11;
-          calViewYear--;
-        }
-        renderCalendar();
-      });
-    }
-
-    if (calNextMonthBtn) {
-      calNextMonthBtn.addEventListener('click', () => {
-        calViewMonth++;
-        if (calViewMonth > 11) {
-          calViewMonth = 0;
-          calViewYear++;
-        }
-        renderCalendar();
-      });
-    }
-
-    function renderContactSlots() {
-      if (!contactSlotsWrap) return;
-      contactSlotsWrap.innerHTML = '';
-
-      contactSlotsList.forEach(slot => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'contact-slot-btn';
-        btn.textContent = slot;
-
-        if (slot === selectedContactSlot) {
-          btn.classList.add('selected');
-        }
-
-        btn.addEventListener('click', () => {
-          contactSlotsWrap.querySelectorAll('.contact-slot-btn').forEach(b => b.classList.remove('selected'));
-          btn.classList.add('selected');
-          selectedContactSlot = slot;
-          checkContactValidity();
-        });
-
-        contactSlotsWrap.appendChild(btn);
-      });
-    }
-
-    function checkContactValidity() {
-      if (contactBtnConfirm) {
-        if (contactDateInput && contactDateInput.value && selectedContactSlot) {
-          contactBtnConfirm.removeAttribute('disabled');
-        } else {
-          contactBtnConfirm.setAttribute('disabled', 'true');
-        }
-      }
-    }
-
-    // Step 1 Submit -> Advance to Step 2
-    contactFormStep1.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const nameVal = document.getElementById('contact-name').value.trim();
-      const compVal = document.getElementById('contact-company').value.trim();
-      const emailVal = document.getElementById('contact-email').value.trim();
-      const phoneInput = document.getElementById('contact-phone');
-      const phoneVal = phoneInput ? phoneInput.value.trim() : '';
-
-      contactPageData = {
-        name: nameVal,
-        company: compVal,
-        email: emailVal,
-        phone: phoneVal
-      };
-
-      contactFormStep1.style.display = 'none';
-      contactFormStep2.style.display = 'block';
-
-      if (stepInd1) stepInd1.classList.remove('active');
-      if (stepInd2) stepInd2.classList.add('active');
-
-      // Find initial next working day (skip weekend)
-      const now = new Date();
-      let initDate = new Date();
-      if (initDate.getDay() === 0) {
-        initDate.setDate(initDate.getDate() + 1); // Sunday -> Monday
-      } else if (initDate.getDay() === 6) {
-        initDate.setDate(initDate.getDate() + 2); // Saturday -> Monday
-      }
-
-      calViewYear = initDate.getFullYear();
-      calViewMonth = initDate.getMonth();
-
-      selectedCalendarDateStr = `${calViewYear}-${String(calViewMonth + 1).padStart(2, '0')}-${String(initDate.getDate()).padStart(2, '0')}`;
-      if (contactDateInput) {
-        contactDateInput.value = selectedCalendarDateStr;
-      }
-
-      const formatted = initDate.toLocaleDateString('hr-HR', {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      });
-
-      if (calSelectedBadge && calSelectedBadgeText) {
-        calSelectedBadgeText.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
-        calSelectedBadge.style.display = 'inline-flex';
-      }
-
-      selectedContactSlot = '';
-      renderCalendar();
-      renderContactSlots();
-      checkContactValidity();
-    });
-
-    // Back button
-    if (contactBtnBack) {
-      contactBtnBack.addEventListener('click', () => {
-        contactFormStep2.style.display = 'none';
-        contactFormStep1.style.display = 'block';
-        if (stepInd1) stepInd1.classList.add('active');
-        if (stepInd2) stepInd2.classList.remove('active');
-      });
-    }
-
-    // Confirm & Submit
-    if (contactBtnConfirm) {
-      contactBtnConfirm.addEventListener('click', async () => {
-        if (!contactDateInput || !contactDateInput.value || !selectedContactSlot) {
-          alert('Molimo odaberite datum i vrijeme termina.');
-          return;
-        }
-
-        contactBtnConfirm.disabled = true;
-        contactBtnConfirm.innerHTML = '<span>Rezerviram...</span>';
-
-        const dateVal = contactDateInput.value;
-        let formattedDate = dateVal;
-        try {
-          const parts = dateVal.split('-');
-          if (parts.length === 3) {
-            const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
-            formattedDate = d.toLocaleDateString('hr-HR', {
-              weekday: 'long',
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            });
-          }
-        } catch (e) {
-          console.error('Date format error:', e);
-        }
-
-        const appointmentDetails = `${selectedMeetingType} • ${formattedDate} u ${selectedContactSlot}h`;
-
-        try {
-          await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: contactPageData.name || 'Klijent',
-              company: contactPageData.company || '',
-              email: contactPageData.email || '',
-              phone: contactPageData.phone || '',
-              package: selectedPackageName,
-              appointmentDate: dateVal,
-              appointmentTime: selectedContactSlot,
-              meetingType: selectedMeetingType,
-              calendarSlot: appointmentDetails,
-              source: 'Kontakt stranica',
-              device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
-            })
-          });
-        } catch (err) {
-          console.log('Inquiry submit note:', err);
-        }
-
-        // Hide Step 2 & Steps Bar, Display Step 3 Success
-        const stepsBar = document.querySelector('.booking-steps-bar');
-        if (stepsBar) stepsBar.style.display = 'none';
-
-        contactFormStep2.style.display = 'none';
-        if (contactStepSuccess) {
-          contactStepSuccess.style.display = 'block';
-          if (contactSuccessSummary) {
-            contactSuccessSummary.innerHTML = `
-              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vaše rezervacije:</div>
-              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${contactPageData.name || ''}</div>
-              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
-              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
-              ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
-              <div style="margin-bottom: 6px;">📦 <strong>Paket:</strong> ${selectedPackageName}</div>
-              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
-                📅 ${appointmentDetails}
-              </div>
-            `;
-          }
-          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
-    }
-
-    // Skip Date Selection Button
-    const contactBtnSkip = document.getElementById('contact-btn-skip');
-    if (contactBtnSkip) {
-      contactBtnSkip.addEventListener('click', async () => {
-        contactBtnSkip.disabled = true;
-        if (contactBtnConfirm) contactBtnConfirm.disabled = true;
-
-        try {
-          await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: contactPageData.name || 'Klijent',
-              company: contactPageData.company || '',
-              email: contactPageData.email || '',
-              phone: contactPageData.phone || '',
-              package: selectedPackageName,
-              calendarSlot: 'Termin nije odabran (Preskočeno)',
-              source: 'Kontakt stranica',
-              device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
-            })
-          });
-        } catch (err) {
-          console.log('Inquiry submit note:', err);
-        }
-
-        const stepsBar = document.querySelector('.booking-steps-bar');
-        if (stepsBar) stepsBar.style.display = 'none';
-
-        contactFormStep2.style.display = 'none';
-        if (contactStepSuccess) {
-          contactStepSuccess.style.display = 'block';
-          if (contactSuccessSummary) {
-            contactSuccessSummary.innerHTML = `
-              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vašeg upita:</div>
-              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${contactPageData.name || ''}</div>
-              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
-              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
-              ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
-              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
-                📦 <strong>Usluga:</strong> ${selectedPackageName}
-              </div>
-            `;
-          }
-          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
-    }
-  }
-
-  initCookieConsent();
-
 });
 
 
