@@ -740,43 +740,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 5. Scroll Reveal Text Color Fade Animation (Word-by-word)
-  const revealText = document.getElementById('about-reveal-text');
-  if (revealText) {
-    const words = revealText.querySelectorAll('.reveal-word');
-    
+  const scrollRevealContainers = document.querySelectorAll('.scroll-reveal-text');
+  if (scrollRevealContainers.length > 0) {
     const updateRevealWords = () => {
-      const rect = revealText.getBoundingClientRect();
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
       
-      const start = windowHeight * 0.90;
-      const end = windowHeight * 0.35;
-      
-      let globalProgress = 0;
-      if (rect.top <= start && rect.top >= end) {
-        globalProgress = (start - rect.top) / (start - end);
-      } else if (rect.top < end) {
-        globalProgress = 1;
-      } else {
-        globalProgress = 0;
-      }
-      
-      const totalWords = words.length;
-      words.forEach((word, index) => {
-        const wordStart = index / totalWords;
-        const wordEnd = (index + 1) / totalWords;
+      scrollRevealContainers.forEach(revealContainer => {
+        const words = revealContainer.querySelectorAll('.reveal-word');
+        if (!words.length) return;
+
+        const rect = revealContainer.getBoundingClientRect();
+        const start = windowHeight * 0.90;
+        const end = windowHeight * 0.32;
         
-        let wordProgress = 0;
-        if (globalProgress >= wordEnd) {
-          wordProgress = 1;
-        } else if (globalProgress <= wordStart) {
-          wordProgress = 0;
+        let globalProgress = 0;
+        if (rect.top <= start && rect.top >= end) {
+          globalProgress = (start - rect.top) / (start - end);
+        } else if (rect.top < end) {
+          globalProgress = 1;
         } else {
-          wordProgress = (globalProgress - wordStart) / (wordEnd - wordStart);
+          globalProgress = 0;
         }
         
-        // Fades from light grey (rgba(15, 23, 42, 0.18)) to full black (rgba(15, 23, 42, 1.0))
-        const opacity = 0.18 + (0.82 * wordProgress);
-        word.style.color = `rgba(15, 23, 42, ${opacity})`;
+        const totalWords = words.length;
+        words.forEach((word, index) => {
+          const wordStart = index / totalWords;
+          const wordEnd = (index + 1) / totalWords;
+          
+          let wordProgress = 0;
+          if (globalProgress >= wordEnd) {
+            wordProgress = 1;
+          } else if (globalProgress <= wordStart) {
+            wordProgress = 0;
+          } else {
+            wordProgress = (globalProgress - wordStart) / (wordEnd - wordStart);
+          }
+          
+          // Fades from light grey (rgba(15, 23, 42, 0.15)) to full black (rgba(15, 23, 42, 1.0))
+          const opacity = 0.15 + (0.85 * wordProgress);
+          word.style.color = `rgba(15, 23, 42, ${opacity})`;
+        });
       });
     };
 

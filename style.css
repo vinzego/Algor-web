@@ -4506,6 +4506,72 @@ body {
 }
 
 /* -------------------------------------------------------------
+   Oversized Centered Scroll Reveal Statement (Below Process)
+------------------------------------------------------------- */
+.process-statement-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 160px 24px 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.process-statement-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.process-reveal-title {
+  font-size: clamp(34px, 4.4vw, 58px) !important;
+  font-weight: 800 !important;
+  line-height: 1.22 !important;
+  letter-spacing: -0.035em !important;
+  color: #0f172a;
+  text-align: center !important;
+  margin: 0 auto !important;
+  max-width: 1200px !important;
+  display: block;
+}
+
+.process-reveal-title .reveal-word {
+  display: inline-block;
+  margin: 0 0.15em 0.12em 0;
+  color: rgba(15, 23, 42, 0.15);
+  transition: color 0.15s ease;
+}
+
+@media (max-width: 900px) {
+  .process-statement-section {
+    padding: 110px 20px 100px;
+  }
+  .process-reveal-title {
+    font-size: clamp(26px, 5.5vw, 38px) !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.28 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .process-statement-section {
+    padding: 85px 16px 80px;
+  }
+  .process-reveal-title {
+    font-size: 24px !important;
+    line-height: 1.32 !important;
+  }
+}
+
+/* -------------------------------------------------------------
    Looping Image Gallery (6 images, 4:3 Aspect Ratio)
 ------------------------------------------------------------- */
 .gallery-marquee-container {
