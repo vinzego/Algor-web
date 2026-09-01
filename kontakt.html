@@ -38,24 +38,6 @@
       margin: 0 auto 56px;
     }
 
-    .contact-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 18px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #29ADFF;
-      border-radius: 999px;
-      font-family: 'Geist Mono', monospace;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 20px;
-      backdrop-filter: blur(10px);
-    }
-
     .contact-title {
       font-size: clamp(34px, 4.5vw, 54px);
       font-weight: 800;
@@ -92,11 +74,10 @@
 
     /* Left Info Card */
     .contact-info-panel {
-      background: rgba(17, 19, 24, 0.85);
+      background: #111318;
       border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 24px;
       padding: 36px 32px;
-      backdrop-filter: blur(20px);
     }
 
     .info-panel-title {
@@ -728,19 +709,22 @@
     /* Critical Footer Styles */
     .footer-card-wrapper { max-width: 1240px; margin: 0 auto; padding: 0 24px 60px; box-sizing: border-box; }
     .brand-footer-card { background: #0f172a; border-radius: 28px; padding: 60px 48px 40px; color: #ffffff; }
-    .footer-top-row { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
-    .footer-brand-title { font-size: 24px; font-weight: 800; margin-bottom: 14px; }
-    .footer-tagline { color: #94a3b8; font-size: 14.5px; line-height: 1.6; max-width: 320px; }
-    .footer-col-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-bottom: 18px; }
-    .footer-links-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
-    .footer-links-list a { color: #cbd5e1; text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .footer-links-list a:hover { color: #29ADFF; }
-    .footer-bottom-row { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; font-size: 13.5px; color: #64748b; }
+    .footer-photo-credit-text { font-size: 13px; color: #64748b; margin-bottom: 28px; font-weight: 500; }
+    .footer-card-top { display: flex; justify-content: space-between; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
+    .footer-logo-col { max-width: 320px; }
+    .footer-tagline { color: #94a3b8; font-size: 14.5px; line-height: 1.6; margin-top: 14px; }
+    .footer-links-grid { display: flex; gap: 60px; flex-wrap: wrap; }
+    .footer-link-group h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-bottom: 18px; }
+    .footer-link-group ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .footer-link-group a { color: #cbd5e1; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .footer-link-group a:hover { color: #29ADFF; }
+    .footer-card-bottom { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; font-size: 13.5px; color: #64748b; }
     .footer-credit-brand { color: #ffffff; font-weight: 700; }
     @media (max-width: 800px) {
-      .footer-top-row { grid-template-columns: 1fr; gap: 32px; }
+      .footer-card-top { flex-direction: column; gap: 32px; }
+      .footer-links-grid { gap: 32px; }
       .brand-footer-card { padding: 40px 24px 30px; }
-      .footer-bottom-row { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-card-bottom { flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
 </head>
