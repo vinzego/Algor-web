@@ -1243,6 +1243,9 @@ document.addEventListener("DOMContentLoaded", () => {
               email: contactPageData.email || '',
               phone: contactPageData.phone || '',
               package: selectedPackageName,
+              appointmentDate: dateVal,
+              appointmentTime: selectedContactSlot,
+              meetingType: selectedMeetingType,
               calendarSlot: appointmentDetails,
               source: 'Kontakt stranica',
               device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'

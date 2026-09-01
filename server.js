@@ -89,6 +89,61 @@ function normalizeNotionPackage(pkg) {
   return 'Izrada weba';
 }
 
+// Helper to format appointment date & time range for Notion Date property
+function formatNotionAppointmentDate(dateStr, timeStr, fullText) {
+  const text = (dateStr || '') + ' ' + (fullText || '');
+  if (text.includes('Preskočeno') || text.includes('Nije')) return null;
+
+  let year, month, day;
+
+  // 1. Try ISO YYYY-MM-DD
+  const isoMatch = text.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (isoMatch) {
+    [, year, month, day] = isoMatch;
+  } else {
+    // 2. Try Croatian date e.g. 4. rujna 2026.
+    const hrMatch = text.match(/(\d{1,2})\.\s*([a-zA-ZčćžšđČĆŽŠĐ]+)\s*(\d{4})/i);
+    if (hrMatch) {
+      day = hrMatch[1].padStart(2, '0');
+      const monthName = hrMatch[2].toLowerCase();
+      const hrMonths = {
+        'siječnja': '01', 'siječanj': '01',
+        'veljače': '02', 'veljača': '02',
+        'ožujka': '03', 'ožujak': '03',
+        'travnja': '04', 'travanj': '04',
+        'svibnja': '05', 'svibanj': '05',
+        'lipnja': '06', 'lipanj': '06',
+        'srpnja': '07', 'srpanj': '07',
+        'kolovoza': '08', 'kolovoz': '08',
+        'rujna': '09', 'rujan': '09',
+        'listopada': '10', 'listopad': '10',
+        'studenoga': '11', 'studeni': '11',
+        'prosinca': '12', 'prosinac': '12'
+      };
+      month = hrMonths[monthName];
+      year = hrMatch[3];
+    }
+  }
+
+  if (!year || !month || !day) return null;
+
+  const timeSource = (timeStr || '') + ' ' + (fullText || '');
+  const timeMatch = timeSource.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);
+
+  if (timeMatch) {
+    const sH = timeMatch[1].padStart(2, '0');
+    const sM = timeMatch[2];
+    const eH = timeMatch[3].padStart(2, '0');
+    const eM = timeMatch[4];
+    return {
+      start: `${year}-${month}-${day}T${sH}:${sM}:00+02:00`,
+      end: `${year}-${month}-${day}T${eH}:${eM}:00+02:00`
+    };
+  }
+
+  return { start: `${year}-${month}-${day}` };
+}
+
 // Helper function to save inquiry to Notion database "Algor upiti"
 async function saveInquiryToNotion(data) {
   if (!notion || !process.env.NOTION_DATABASE_ID) {
@@ -140,6 +195,19 @@ async function saveInquiryToNotion(data) {
   if (data.calendarSlot) {
     properties['Termin sastanka'] = {
       rich_text: [{ text: { content: data.calendarSlot.trim() } }]
+    };
+  }
+
+  // Populate Notion 'Termin' Date property
+  const appointmentDateObj = formatNotionAppointmentDate(
+    data.appointmentDate,
+    data.appointmentTime,
+    data.calendarSlot
+  );
+
+  if (appointmentDateObj) {
+    properties['Termin'] = {
+      date: appointmentDateObj
     };
   }
 
@@ -285,7 +353,7 @@ async function sendClientConfirmationEmail(data) {
 // API endpoint to submit inquiries
 app.post('/api/contact', async (req, res) => {
   try {
-    const { name, company, email, phone, package: pkg, calendarSlot, source, device } = req.body;
+    const { name, company, email, phone, package: pkg, appointmentDate, appointmentTime, meetingType, calendarSlot, source, device } = req.body;
     const estimatedValue = getEstimatedDealValue(pkg);
     
     // 1. Save to CSV backup
@@ -293,7 +361,7 @@ app.post('/api/contact', async (req, res) => {
 
     // 2. Save directly to Notion database
     try {
-      await saveInquiryToNotion({ name, company, email, phone, package: pkg, calendarSlot, source, device, estimatedValue });
+      await saveInquiryToNotion({ name, company, email, phone, package: pkg, appointmentDate, appointmentTime, meetingType, calendarSlot, source, device, estimatedValue });
       console.log(`✓ Upit uspješno poslan u Notion [Algor upiti]: ${name} | ${pkg} (${estimatedValue} €) | ${source} | ${device}`);
     } catch (notionErr) {
       console.error('Greška pri spremanju u Notion:', notionErr.message);
