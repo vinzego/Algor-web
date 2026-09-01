@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kontakt &amp; Rezervacija Termina | Algor studio</title>
+  <meta name="description" content="Dogovorite besplatne 15-minutne poslovne konzultacije s Algor studijom. Odaberite sastanak uživo ili Google Meet poziv u željenom terminu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo_black_transparent.png">
+  <link rel="stylesheet" href="style.css?v=65.0.0">
+  <style>
+    /* Contact Page Luxury Theme */
+    body {
+      background-color: #050508 !important;
+      color: #f1f5f9 !important;
+      font-family: 'Inter', sans-serif !important;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .contact-hero-section {
+      position: relative;
+      padding: 150px 24px 80px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .contact-glow-ambient {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 750px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(41, 173, 255, 0.14) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .contact-header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto 56px;
+    }
+
+    .contact-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #29ADFF;
+      border-radius: 999px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-title {
+      font-size: clamp(34px, 4.5vw, 54px);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -1.6px;
+      line-height: 1.15;
+      margin: 0 0 18px 0;
+    }
+
+    .contact-title span {
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .contact-desc {
+      font-size: clamp(15.5px, 1.8vw, 18px);
+      color: #94a3b8;
+      line-height: 1.65;
+      margin: 0 auto;
+      max-width: 680px;
+    }
+
+    /* Main 2-Column Grid */
+    .contact-layout-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 90px;
+    }
+
+    /* Left Info Card */
+    .contact-info-panel {
+      background: rgba(17, 19, 24, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 24px;
+      padding: 36px 32px;
+      backdrop-filter: blur(20px);
+    }
+
+    .info-panel-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.4px;
+    }
+
+    .info-panel-desc {
+      font-size: 14.5px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0 0 28px 0;
+    }
+
+    .info-perks-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .info-perk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 14.5px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .info-perk-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(41, 173, 255, 0.15);
+      color: #29ADFF;
+      font-size: 13px;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .contact-direct-box {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-direct-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #29ADFF;
+      text-decoration: none;
+      font-size: 14.5px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .contact-direct-link:hover {
+      color: #60c5ff;
+    }
+
+    /* Right Interactive Booking Box */
+    .contact-card-box {
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 28px;
+      padding: 40px 36px;
+      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Selected Package Inside Form Banner */
+    .form-selected-pkg-banner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, rgba(41, 173, 255, 0.08) 0%, rgba(2, 132, 199, 0.03) 100%);
+      border: 1.5px solid rgba(41, 173, 255, 0.28);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin-bottom: 24px;
+    }
+
+    .pkg-banner-icon {
+      font-size: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(41, 173, 255, 0.15);
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pkg-banner-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .pkg-banner-sub {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: 'Geist Mono', monospace;
+    }
+
+    .pkg-banner-title {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.2px;
+    }
+
+    /* Steps Progress Bar */
+    .booking-steps-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .booking-step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #94a3b8;
+    }
+
+    .booking-step-indicator.active {
+      color: #0f172a;
+    }
+
+    .step-num-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .booking-step-indicator.active .step-num-circle {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .step-divider-line {
+      flex: 1;
+      height: 2px;
+      background: #e2e8f0;
+      margin: 0 16px;
+    }
+
+    /* Form Fields */
+    .contact-form-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 6px 0;
+      letter-spacing: -0.4px;
+    }
+
+    .contact-form-subtitle {
+      font-size: 14px;
+      color: #64748b;
+      margin: 0 0 24px 0;
+    }
+
+    .form-inputs-group {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .form-field-unit {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field-unit label {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .form-field-unit label span.req {
+      color: #ef4444;
+    }
+
+    .form-field-unit label span.opt {
+      font-weight: 400;
+      color: #94a3b8;
+      font-size: 12.5px;
+    }
+
+    .form-field-unit input,
+    .form-field-unit select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: 1.5px solid #cbd5e1;
+      font-family: inherit;
+      font-size: 15px;
+      color: #0f172a;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .form-field-unit input:focus {
+      border-color: #29ADFF;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(41, 173, 255, 0.15);
+    }
+
+    /* Meeting Type Selector (Live vs Google Meet) */
+    .meeting-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .meeting-type-card {
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 16px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+      background: #f8fafc;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .meeting-type-card:hover {
+      border-color: #94a3b8;
+      background: #ffffff;
+    }
+
+    .meeting-type-card.selected {
+      border-color: #29ADFF;
+      background: rgba(41, 173, 255, 0.08);
+      box-shadow: 0 4px 14px rgba(41, 173, 255, 0.15);
+    }
+
+    .meeting-type-icon {
+      font-size: 20px;
+    }
+
+    .meeting-type-name {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Custom Modern Calendar Widget */
+    .custom-calendar-widget {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 6px;
+    }
+
+    .calendar-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding: 0 4px;
+    }
+
+    .cal-month-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.3px;
+      text-transform: capitalize;
+    }
+
+    .cal-nav-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #1e293b;
+      font-size: 14px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cal-nav-btn:hover:not(:disabled) {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+
+    .cal-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .cal-weekdays-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .cal-weekend-hdr {
+      color: #94a3b8;
+    }
+
+    .cal-days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+    }
+
+    .cal-day-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+      user-select: none;
+    }
+
+    .cal-day-cell.cal-day-empty {
+      background: transparent;
+      cursor: default;
+    }
+
+    .cal-day-cell.cal-day-active {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      color: #0f172a;
+      cursor: pointer;
+    }
+
+    .cal-day-cell.cal-day-active:hover {
+      background: #f0f9ff;
+      border-color: #29ADFF;
+      color: #0284c7;
+      transform: scale(1.04);
+    }
+
+    .cal-day-cell.cal-day-selected {
+      background: #29ADFF !important;
+      border-color: #29ADFF !important;
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      box-shadow: 0 4px 12px rgba(41, 173, 255, 0.35);
+    }
+
+    .cal-day-cell.cal-day-weekend {
+      background: #f1f5f9;
+      color: #cbd5e1;
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .cal-day-cell.cal-day-past {
+      color: #cbd5e1;
+      background: transparent;
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    .cal-selected-badge {
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0369a1;
+      background: rgba(41, 173, 255, 0.1);
+      padding: 6px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Time Slots Grid */
+    .contact-time-slots-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      max-height: 230px;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-top: 6px;
+    }
+
+    .contact-slot-btn {
+      padding: 12px 10px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: #1e293b;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-align: center;
+    }
+
+    .contact-slot-btn:hover {
+      border-color: #29ADFF;
+      color: #0f172a;
+      background: #f0f9ff;
+    }
+
+    .contact-slot-btn.selected {
+      background: #29ADFF !important;
+      color: #ffffff !important;
+      border-color: #29ADFF !important;
+      box-shadow: 0 4px 12px rgba(41, 173, 255, 0.35);
+    }
+
+    /* Action Buttons */
+    .btn-step-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .btn-contact-primary {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 24px;
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .btn-contact-primary:hover:not(:disabled) {
+      background: #1e293b;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.3);
+    }
+
+    .btn-contact-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-contact-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 22px;
+      background: transparent;
+      color: #1e293b;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-contact-secondary:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+
+    /* Step 3 Success Card */
+    .contact-success-state {
+      text-align: center;
+      padding: 24px 12px;
+    }
+
+    .success-check-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #10b981;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 900;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.4);
+    }
+
+    .success-heading {
+      font-size: 24px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.5px;
+    }
+
+    .success-message-text {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    }
+
+    .success-summary-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: #1e293b;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 960px) {
+      .contact-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .contact-card-box {
+        padding: 32px 24px;
+      }
+      .contact-hero-section {
+        padding: 130px 20px 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Glass Navbar -->
+  <header class="ultra-navbar">
+    <!-- Brand Logo -->
+    <a href="index.html" class="ultra-brand-logo" aria-label="Algor studio Početna">
+      <img src="logo_black_transparent.png" alt="Algor studio" class="navbar-brand-logo-img">
+    </a>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Otvori izbornik">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <!-- Pill Nav Menu (Desktop & Mobile Drawer) -->
+    <nav class="ultra-nav-menu" id="ultra-nav-menu">
+      <div class="mobile-nav-links-grid">
+        <a href="index.html#about" class="ultra-nav-link">O nama</a>
+        <a href="index.html#marketing" class="ultra-nav-link">Usluge</a>
+        <a href="index.html#portfolio" class="ultra-nav-link">Projekti</a>
+        <a href="index.html#process" class="ultra-nav-link">Proces</a>
+        <a href="index.html#pricing" class="ultra-nav-link">Cijene</a>
+        <a href="index.html#faq" class="ultra-nav-link">FAQ</a>
+      </div>
+
+      <div class="mobile-nav-email-box">
+        <a href="mailto:info@algor.studio" class="mobile-nav-email-link">✉️ info@algor.studio</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Contact Layout -->
+  <main class="contact-hero-section">
+    <div class="contact-glow-ambient"></div>
+
+    <!-- Header Section -->
+    <header class="contact-header">
+      <h1 class="contact-title">
+        <span>Stupite u kontakt &amp; ugovorite termin.</span>
+      </h1>
+      <p class="contact-desc">
+        Ispunite kratke podatke i u idućem koraku odaberite želite li sastanak uživo ili Google Meet poziv te željeni datum i sat.
+      </p>
+    </header>
+
+    <!-- Contact & Booking Grid -->
+    <section class="contact-layout-grid">
+      
+      <!-- Left: Value & Details Panel -->
+      <div class="contact-info-panel">
+        <h2 class="info-panel-title">Što možete očekivati na pozivu?</h2>
+        <p class="info-panel-desc">Kratak, fokusiran i koristan 15-minutni uvodni razgovor prilagođen Vašoj industriji i ciljevima.</p>
+
+        <ul class="info-perks-list">
+          <li class="info-perk-item">
+            <span class="info-perk-icon">✓</span>
+            <div><strong>Konkretna analiza:</strong> Pregledat ćemo Vaše trenutno stanje i marketing prisutnost.</div>
+          </li>
+          <li class="info-perk-item">
+            <span class="info-perk-icon">✓</span>
+            <div><strong>Jasne preporuke:</strong> Prijedlog modela suradnje i alata koji donose najbrži povrat investicije.</div>
+          </li>
+          <li class="info-perk-item">
+            <span class="info-perk-icon">✓</span>
+            <div><strong>100% bez obveza:</strong> Razgovor služi za upoznavanje i procjenu bez ikakvog pritiska na kupnju.</div>
+          </li>
+        </ul>
+
+        <div class="contact-direct-box">
+          <div style="font-size: 13px; color: #94a3b8;">Imate hitan upit ili specifično pitanje?</div>
+          <a href="mailto:info@algor.studio" class="contact-direct-link">✉️ info@algor.studio</a>
+        </div>
+      </div>
+
+      <!-- Right: Multi-Step Interactive Form Box -->
+      <div class="contact-card-box">
+        
+        <!-- Selected Package Inside Form Banner -->
+        <div class="form-selected-pkg-banner" id="form-selected-pkg-banner">
+          <div class="pkg-banner-icon">⚡</div>
+          <div class="pkg-banner-info">
+            <span class="pkg-banner-sub">ODABRANI MODEL / USLUGA:</span>
+            <strong class="pkg-banner-title" id="form-pkg-name">Besplatan Audit (Konzultacije)</strong>
+          </div>
+        </div>
+
+        <!-- Steps Progress Indicator -->
+        <div class="booking-steps-bar">
+          <div class="booking-step-indicator active" id="step-ind-1">
+            <span class="step-num-circle">1</span>
+            <span>Vaši podaci</span>
+          </div>
+          <div class="step-divider-line"></div>
+          <div class="booking-step-indicator" id="step-ind-2">
+            <span class="step-num-circle">2</span>
+            <span>Odabir termina</span>
+          </div>
+        </div>
+
+        <!-- STEP 1: Basic Information -->
+        <form id="contact-page-form-step-1">
+          <h3 class="contact-form-title">Unesite osnovne podatke</h3>
+          <p class="contact-form-subtitle">Sve je obavezno ispuniti osim broja mobitela.</p>
+
+          <div class="form-inputs-group">
+            <div class="form-field-unit">
+              <label for="contact-name">Ime i prezime <span class="req">*</span></label>
+              <input type="text" id="contact-name" required placeholder="npr. Ivan Horvat" autocomplete="name" />
+            </div>
+
+            <div class="form-field-unit">
+              <label for="contact-company">Tvrtka / Web <span class="req">*</span></label>
+              <input type="text" id="contact-company" required placeholder="npr. Moja Tvrtka d.o.o." autocomplete="organization" />
+            </div>
+
+            <div class="form-field-unit">
+              <label for="contact-email">Email adresa <span class="req">*</span></label>
+              <input type="email" id="contact-email" required placeholder="npr. ivan@tvrtka.hr" autocomplete="email" />
+            </div>
+
+            <div class="form-field-unit">
+              <label for="contact-phone">Broj mobitela <span class="opt">(opcionalno)</span></label>
+              <input type="tel" id="contact-phone" placeholder="npr. 091 234 5678" autocomplete="tel" />
+            </div>
+          </div>
+
+          <button type="submit" class="btn-contact-primary">
+            <span>Nastavi na odabir termina</span>
+            <span>↗</span>
+          </button>
+        </form>
+
+        <!-- STEP 2: Meeting Type, Date & Time Picker -->
+        <div id="contact-page-form-step-2" style="display: none;">
+          <h3 class="contact-form-title">Odaberite vrstu i termin sastanka</h3>
+          <p class="contact-form-subtitle">Odaberite način održavanja sastanka, radni dan i vrijeme.</p>
+
+          <div class="form-inputs-group">
+            <!-- 1. Meeting Type (Live vs Google Meet) -->
+            <div class="form-field-unit">
+              <label>1. Način održavanja sastanka <span class="req">*</span></label>
+              <div class="meeting-type-grid">
+                <div class="meeting-type-card selected" data-meeting="Sastanak uživo" id="type-card-live">
+                  <span class="meeting-type-icon">🏢</span>
+                  <span class="meeting-type-name">Sastanak uživo</span>
+                </div>
+                <div class="meeting-type-card" data-meeting="Google Meet poziv" id="type-card-meet">
+                  <span class="meeting-type-icon">💻</span>
+                  <span class="meeting-type-name">Google Meet poziv</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Interactive Calendar Date Picker (Mon-Fri) -->
+            <div class="form-field-unit">
+              <label>2. Odaberite datum (Pon - Pet) <span class="req">*</span></label>
+              <div class="custom-calendar-widget" id="custom-calendar-widget">
+                <div class="calendar-nav-bar">
+                  <button type="button" class="cal-nav-btn" id="cal-prev-month" aria-label="Prethodni mjesec">←</button>
+                  <div class="cal-month-title" id="cal-month-title">Rujan 2026.</div>
+                  <button type="button" class="cal-nav-btn" id="cal-next-month" aria-label="Sljedeći mjesec">→</button>
+                </div>
+                <div class="cal-weekdays-grid">
+                  <span>Pon</span>
+                  <span>Uto</span>
+                  <span>Sri</span>
+                  <span>Čet</span>
+                  <span>Pet</span>
+                  <span class="cal-weekend-hdr">Sub</span>
+                  <span class="cal-weekend-hdr">Ned</span>
+                </div>
+                <div class="cal-days-grid" id="cal-days-grid">
+                  <!-- Dynamically populated via JS -->
+                </div>
+                <div class="cal-selected-badge" id="cal-selected-badge" style="display: none;">
+                  <span>📅</span> <span id="cal-selected-badge-text">Odabrani datum</span>
+                </div>
+                <input type="hidden" id="contact-date" required />
+              </div>
+            </div>
+
+            <!-- 3. Time Slots (45-min intervali) -->
+            <div class="form-field-unit">
+              <label>3. Odaberite vrijeme termina <span class="req">*</span></label>
+              <div id="contact-time-slots-wrap" class="contact-time-slots-grid">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-step-row">
+            <button type="button" class="btn-contact-secondary" id="contact-btn-back">
+              <span>Nazad</span>
+            </button>
+            <button type="button" class="btn-contact-primary" id="contact-btn-confirm" disabled>
+              <span>Potvrdi i rezerviraj termin</span>
+              <span>↗</span>
+            </button>
+          </div>
+          <div style="text-align: center; margin-top: 14px;">
+            <button type="button" id="contact-btn-skip" style="background: none; border: none; color: #64748b; font-size: 13.5px; font-weight: 600; text-decoration: underline; cursor: pointer; padding: 6px 12px; transition: color 0.2s;">
+              Preskoči odabir termina i odmah pošalji upit →
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Success State -->
+        <div id="contact-page-step-success" class="contact-success-state" style="display: none;">
+          <div class="success-check-circle">✓</div>
+          <h3 class="success-heading">Sastanak je uspješno zakazan!</h3>
+          <p class="success-message-text">
+            Hvala vam! Vaš zahtjev za terminom je zaprimljen i potvrđen.
+          </p>
+
+          <div class="success-summary-card" id="contact-success-summary">
+            <!-- Dynamic summary text -->
+          </div>
+
+          <a href="index.html" class="btn-contact-primary" style="text-decoration: none;">
+            <span>Povratak na naslovnu stranicu</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Full Footer (Matching Index Page) -->
+  <footer class="site-footer" style="background: #050508; color: #ffffff; padding: 80px 24px 40px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div class="footer-photo-credit-text" style="color: #888888; font-size: 13px; margin-bottom: 40px;">
+        Sve fotografije na ovoj web stranici je producirao Algor studio.
+      </div>
+
+      <div class="footer-card-top" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; margin-bottom: 60px;">
+        <div class="footer-logo-col" style="max-width: 360px;">
+          <a href="index.html" class="footer-logo" style="text-decoration: none;" aria-label="Algor studio Početna">
+            <img src="logo_white_transparent.png" alt="Algor studio" class="footer-brand-logo-img">
+          </a>
+          <p class="footer-tagline" style="color: #a0a0ab; font-size: 14px; line-height: 1.6;">Marketing agencija, video produkcija i AI automatizacije za brzorastuće brendove.</p>
+        </div>
+
+        <div class="footer-links-grid" style="display: flex; gap: 60px; flex-wrap: wrap;">
+          <div class="footer-link-group">
+            <h4 style="color: #ffffff; font-size: 15px; margin-bottom: 16px;">Istraži</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+              <li><a href="index.html#about" style="color: #a0a0ab; text-decoration: none;">O nama</a></li>
+              <li><a href="index.html#marketing" style="color: #a0a0ab; text-decoration: none;">Usluge</a></li>
+              <li><a href="index.html#portfolio" style="color: #a0a0ab; text-decoration: none;">Projekti</a></li>
+              <li><a href="index.html#process" style="color: #a0a0ab; text-decoration: none;">Proces</a></li>
+              <li><a href="index.html#pricing" style="color: #a0a0ab; text-decoration: none;">Cjenik</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-link-group">
+            <h4 style="color: #ffffff; font-size: 15px; margin-bottom: 16px;">Društvene mreže</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+              <li><a href="https://www.instagram.com/algor_studio?igsi=cGo4b3VvenlwNnp4&amp;utm_source=qr" target="_blank" rel="noopener noreferrer" style="color: #a0a0ab; text-decoration: none;">Instagram</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-link-group">
+            <h4 style="color: #ffffff; font-size: 15px; margin-bottom: 16px;">Pravno</h4>
+            <ul style="list-style: none; padding: 0; margin: 0; line-height: 2.2;">
+              <li><a href="politika-privatnosti.html" style="color: #a0a0ab; text-decoration: none;">Politika privatnosti</a></li>
+              <li><a href="uvjeti-koristenja.html" style="color: #a0a0ab; text-decoration: none;">Uvjeti korištenja</a></li>
+              <li><a href="kolacici.html" style="color: #a0a0ab; text-decoration: none;">Politika kolačića</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-card-bottom" style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 30px; display: flex; justify-content: space-between; color: #8e95a5; font-size: 13.5px;">
+        <div>©2026 Algor studio. Sva prava pridržana.</div>
+        <div>Izradio <strong style="color: #ffffff; font-weight: 700;">Algor Studio</strong></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=70.0.0"></script>
+</body>
+</html>

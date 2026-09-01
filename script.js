@@ -372,51 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Click delegation for ALL package cards and CTA buttons across the website
-  document.addEventListener('click', (e) => {
-    const cardEl = e.target.closest('.price-card, .luxury-card');
-    const ctaBtn = e.target.closest('.package-cta-btn, .ig-ad-cta-banner, .price-cta, .select-pkg-btn, .custom-ai-link, .ultra-nav-cta, .mesh-primary-btn, .btn-lime, .btn-primary, .hero-cta-btn, .luxury-btn-dark, .luxury-btn-glow, .figma-cta-btn');
-
-    if (cardEl || ctaBtn) {
-      const targetBtn = ctaBtn || e.target.closest('button, a');
-      if (targetBtn && (targetBtn.type === 'submit' || targetBtn.closest('form') || targetBtn.id === 'sheet-close-btn' || targetBtn.id === 'sheet-success-close-btn' || targetBtn.classList.contains('sheet-close-btn'))) {
-        return;
-      }
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      let title = 'Upit & Savjetovanje';
-      let priceText = 'Besplatan Audit';
-
-      const targetCard = cardEl || (ctaBtn ? ctaBtn.closest('.price-card, .bento-ref-card, .fit-card') : null);
-
-      if (ctaBtn && ctaBtn.classList.contains('figma-cta-btn')) {
-        title = 'Izrada Web Stranice';
-        priceText = 'Besplatna Procjena';
-      } else if (ctaBtn && ctaBtn.classList.contains('ig-ad-cta-banner')) {
-        title = 'Ciljani Instagram Oglas';
-        priceText = 'Lokacijska Produkcija & Ads';
-      } else if (ctaBtn && ctaBtn.classList.contains('custom-ai-link')) {
-        title = 'Procjena Projekta / Redizajn';
-        priceText = 'Custom Rješenje';
-      } else if (targetCard) {
-        const titleEl = targetCard.querySelector('h3');
-        const priceValEl = targetCard.querySelector('.price-val, .price-amount');
-        const pricePerEl = targetCard.querySelector('.price-per');
-        if (titleEl) title = titleEl.textContent.trim();
-        if (priceValEl) {
-          const per = pricePerEl ? pricePerEl.textContent.trim() : 'jednokratno';
-          priceText = `${priceValEl.textContent.trim()} € (${per})`;
-        } else {
-          priceText = 'Po dogovoru';
-        }
-      }
-
-      openMobileSheet(title, priceText);
-      return false;
-    }
-  });
+  // All CTA buttons now navigate directly to kontakt.html (No popup modals)
 
   // Multi-step Appointment Booking System
   let cachedContactData = {};
@@ -595,10 +551,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const sheetCalendarSkipBtn = document.getElementById('sheet-calendar-skip-btn');
+  if (sheetCalendarSkipBtn) {
+    sheetCalendarSkipBtn.addEventListener('click', () => {
+      sendInquiryToBackend({
+        ...cachedContactData,
+        calendarSlot: 'Termin nije odabran (Preskočeno)'
+      });
+
+      if (sheetCalendarStep) sheetCalendarStep.style.display = 'none';
+      if (sheetSuccessBox) {
+        sheetSuccessBox.style.display = 'flex';
+        const msg = document.getElementById('sheet-success-desc');
+        if (msg) {
+          msg.innerHTML = `Hvala vam, <strong>${clientName}</strong>!<br>Vaš upit za <strong>${selectedPackageFull}</strong> je uspješno poslan.<br><br>Kontaktirat ćemo vas u najkraćem roku na email <strong>${clientEmail}</strong>.`;
+        }
+      }
+    });
+  }
+
   function detectInquirySource() {
     const path = window.location.pathname.toLowerCase();
     if (path.includes('izrada-web-stranica')) return 'Izrada Web Stranica';
     if (path.includes('karijere')) return 'Karijere';
+    if (path.includes('kontakt')) return 'Kontakt Stranica';
     return 'Marketing & AI (Naslovna)';
   }
 
@@ -921,7 +897,438 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  // 12. Dedicated Contact Page Booking Flow (kontakt.html)
+  const contactFormStep1 = document.getElementById('contact-page-form-step-1');
+  const contactFormStep2 = document.getElementById('contact-page-form-step-2');
+  const contactStepSuccess = document.getElementById('contact-page-step-success');
+
+  if (contactFormStep1 && contactFormStep2) {
+    let contactPageData = {};
+    let selectedMeetingType = 'Sastanak uživo';
+    let selectedContactSlot = '';
+    let selectedCalendarDateStr = '';
+
+    // URL Query Parameter for selected package (e.g. ?paket=pro)
+    const urlParams = new URLSearchParams(window.location.search);
+    const pkgParam = urlParams.get('paket');
+    let selectedPackageName = 'Besplatan Audit';
+    let formPackageLabel = 'Besplatan Audit (Konzultacije)';
+
+    if (pkgParam) {
+      const p = pkgParam.toLowerCase();
+      if (p.includes('start')) {
+        selectedPackageName = 'Paket Start';
+        formPackageLabel = 'Paket Start (690 €/mj.)';
+      } else if (p.includes('pro') || p.includes('plus')) {
+        selectedPackageName = 'Paket Pro';
+        formPackageLabel = 'Paket Pro (1.250 €/mj.)';
+      } else if (p.includes('ultra') || p.includes('ai')) {
+        selectedPackageName = 'Paket Ultra';
+        formPackageLabel = 'Paket Ultra (2.150 €/mj.)';
+      } else if (p.includes('landing') || p.includes('web-start') || p.includes('490')) {
+        selectedPackageName = 'Izrada weba';
+        formPackageLabel = 'Landing Stranica (od 490 €)';
+      } else if (p.includes('business') || p.includes('web-business') || p.includes('web-pro') || p.includes('990')) {
+        selectedPackageName = 'Izrada weba';
+        formPackageLabel = 'Business Web (od 990 €)';
+      } else if (p.includes('custom') || p.includes('web-custom') || p.includes('shop') || p.includes('1850')) {
+        selectedPackageName = 'Izrada weba';
+        formPackageLabel = 'Custom Web Aplikacija (od 1.850 €)';
+      }
+    }
+
+    const formPkgName = document.getElementById('form-pkg-name');
+    if (formPkgName) {
+      formPkgName.textContent = formPackageLabel;
+    }
+
+    const stepInd1 = document.getElementById('step-ind-1');
+    const stepInd2 = document.getElementById('step-ind-2');
+    const typeCardLive = document.getElementById('type-card-live');
+    const typeCardMeet = document.getElementById('type-card-meet');
+    const contactDateInput = document.getElementById('contact-date');
+    const contactSlotsWrap = document.getElementById('contact-time-slots-wrap');
+    const contactBtnBack = document.getElementById('contact-btn-back');
+    const contactBtnConfirm = document.getElementById('contact-btn-confirm');
+    const contactSuccessSummary = document.getElementById('contact-success-summary');
+
+    // Calendar Elements
+    const calMonthTitle = document.getElementById('cal-month-title');
+    const calDaysGrid = document.getElementById('cal-days-grid');
+    const calPrevMonthBtn = document.getElementById('cal-prev-month');
+    const calNextMonthBtn = document.getElementById('cal-next-month');
+    const calSelectedBadge = document.getElementById('cal-selected-badge');
+    const calSelectedBadgeText = document.getElementById('cal-selected-badge-text');
+
+    const monthNamesHr = [
+      'Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj',
+      'Srpanj', 'Kolovoz', 'Rujan', 'Listopad', 'Studeni', 'Prosinac'
+    ];
+
+    let currentCalDate = new Date();
+    let calViewYear = currentCalDate.getFullYear();
+    let calViewMonth = currentCalDate.getMonth();
+
+    const contactSlotsList = [
+      '09:00 - 09:45',
+      '09:45 - 10:30',
+      '10:30 - 11:15',
+      '11:15 - 12:00',
+      '12:00 - 12:45',
+      '12:45 - 13:30',
+      '13:30 - 14:15',
+      '14:15 - 15:00',
+      '15:00 - 15:45',
+      '15:45 - 16:30'
+    ];
+
+    // Handle Meeting Type click
+    if (typeCardLive && typeCardMeet) {
+      typeCardLive.addEventListener('click', () => {
+        typeCardLive.classList.add('selected');
+        typeCardMeet.classList.remove('selected');
+        selectedMeetingType = 'Sastanak uživo';
+      });
+
+      typeCardMeet.addEventListener('click', () => {
+        typeCardMeet.classList.add('selected');
+        typeCardLive.classList.remove('selected');
+        selectedMeetingType = 'Google Meet poziv';
+      });
+    }
+
+    function renderCalendar() {
+      if (!calDaysGrid || !calMonthTitle) return;
+
+      calMonthTitle.textContent = `${monthNamesHr[calViewMonth]} ${calViewYear}.`;
+
+      // Disable prev button if view is current month or earlier
+      const realToday = new Date();
+      const isPastMonth = (calViewYear < realToday.getFullYear()) || 
+                          (calViewYear === realToday.getFullYear() && calViewMonth <= realToday.getMonth());
+      if (calPrevMonthBtn) {
+        calPrevMonthBtn.disabled = isPastMonth;
+      }
+
+      calDaysGrid.innerHTML = '';
+
+      // First day of month (0=Sun, 1=Mon, ..., 6=Sat)
+      const firstDayObj = new Date(calViewYear, calViewMonth, 1);
+      let startingDayIndex = firstDayObj.getDay();
+      startingDayIndex = (startingDayIndex === 0) ? 6 : startingDayIndex - 1;
+
+      const daysInMonth = new Date(calViewYear, calViewMonth + 1, 0).getDate();
+
+      // Empty padding cells before month start
+      for (let i = 0; i < startingDayIndex; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'cal-day-cell cal-day-empty';
+        calDaysGrid.appendChild(emptyCell);
+      }
+
+      const todayZero = new Date(realToday.getFullYear(), realToday.getMonth(), realToday.getDate());
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cellDate = new Date(calViewYear, calViewMonth, day);
+        const dayOfWeek = cellDate.getDay();
+        const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+        const isPast = (cellDate < todayZero);
+
+        const dayStr = `${calViewYear}-${String(calViewMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+        const cell = document.createElement('div');
+        cell.className = 'cal-day-cell';
+        cell.textContent = day;
+
+        if (isPast) {
+          cell.classList.add('cal-day-past');
+        } else if (isWeekend) {
+          cell.classList.add('cal-day-weekend');
+          cell.title = 'Vikend (Neradni dan)';
+        } else {
+          cell.classList.add('cal-day-active');
+          if (dayStr === selectedCalendarDateStr) {
+            cell.classList.add('cal-day-selected');
+          }
+
+          cell.addEventListener('click', () => {
+            selectedCalendarDateStr = dayStr;
+            if (contactDateInput) {
+              contactDateInput.value = dayStr;
+            }
+
+            const formatted = cellDate.toLocaleDateString('hr-HR', {
+              weekday: 'long',
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            });
+
+            if (calSelectedBadge && calSelectedBadgeText) {
+              calSelectedBadgeText.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+              calSelectedBadge.style.display = 'inline-flex';
+            }
+
+            renderCalendar();
+            checkContactValidity();
+          });
+        }
+
+        calDaysGrid.appendChild(cell);
+      }
+    }
+
+    if (calPrevMonthBtn) {
+      calPrevMonthBtn.addEventListener('click', () => {
+        calViewMonth--;
+        if (calViewMonth < 0) {
+          calViewMonth = 11;
+          calViewYear--;
+        }
+        renderCalendar();
+      });
+    }
+
+    if (calNextMonthBtn) {
+      calNextMonthBtn.addEventListener('click', () => {
+        calViewMonth++;
+        if (calViewMonth > 11) {
+          calViewMonth = 0;
+          calViewYear++;
+        }
+        renderCalendar();
+      });
+    }
+
+    function renderContactSlots() {
+      if (!contactSlotsWrap) return;
+      contactSlotsWrap.innerHTML = '';
+
+      contactSlotsList.forEach(slot => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'contact-slot-btn';
+        btn.textContent = slot;
+
+        if (slot === selectedContactSlot) {
+          btn.classList.add('selected');
+        }
+
+        btn.addEventListener('click', () => {
+          contactSlotsWrap.querySelectorAll('.contact-slot-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          selectedContactSlot = slot;
+          checkContactValidity();
+        });
+
+        contactSlotsWrap.appendChild(btn);
+      });
+    }
+
+    function checkContactValidity() {
+      if (contactBtnConfirm) {
+        if (contactDateInput && contactDateInput.value && selectedContactSlot) {
+          contactBtnConfirm.removeAttribute('disabled');
+        } else {
+          contactBtnConfirm.setAttribute('disabled', 'true');
+        }
+      }
+    }
+
+    // Step 1 Submit -> Advance to Step 2
+    contactFormStep1.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nameVal = document.getElementById('contact-name').value.trim();
+      const compVal = document.getElementById('contact-company').value.trim();
+      const emailVal = document.getElementById('contact-email').value.trim();
+      const phoneInput = document.getElementById('contact-phone');
+      const phoneVal = phoneInput ? phoneInput.value.trim() : '';
+
+      contactPageData = {
+        name: nameVal,
+        company: compVal,
+        email: emailVal,
+        phone: phoneVal
+      };
+
+      contactFormStep1.style.display = 'none';
+      contactFormStep2.style.display = 'block';
+
+      if (stepInd1) stepInd1.classList.remove('active');
+      if (stepInd2) stepInd2.classList.add('active');
+
+      // Find initial next working day (skip weekend)
+      const now = new Date();
+      let initDate = new Date();
+      if (initDate.getDay() === 0) {
+        initDate.setDate(initDate.getDate() + 1); // Sunday -> Monday
+      } else if (initDate.getDay() === 6) {
+        initDate.setDate(initDate.getDate() + 2); // Saturday -> Monday
+      }
+
+      calViewYear = initDate.getFullYear();
+      calViewMonth = initDate.getMonth();
+
+      selectedCalendarDateStr = `${calViewYear}-${String(calViewMonth + 1).padStart(2, '0')}-${String(initDate.getDate()).padStart(2, '0')}`;
+      if (contactDateInput) {
+        contactDateInput.value = selectedCalendarDateStr;
+      }
+
+      const formatted = initDate.toLocaleDateString('hr-HR', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      if (calSelectedBadge && calSelectedBadgeText) {
+        calSelectedBadgeText.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+        calSelectedBadge.style.display = 'inline-flex';
+      }
+
+      selectedContactSlot = '';
+      renderCalendar();
+      renderContactSlots();
+      checkContactValidity();
+    });
+
+    // Back button
+    if (contactBtnBack) {
+      contactBtnBack.addEventListener('click', () => {
+        contactFormStep2.style.display = 'none';
+        contactFormStep1.style.display = 'block';
+        if (stepInd1) stepInd1.classList.add('active');
+        if (stepInd2) stepInd2.classList.remove('active');
+      });
+    }
+
+    // Confirm & Submit
+    if (contactBtnConfirm) {
+      contactBtnConfirm.addEventListener('click', async () => {
+        if (!contactDateInput || !contactDateInput.value || !selectedContactSlot) {
+          alert('Molimo odaberite datum i vrijeme termina.');
+          return;
+        }
+
+        contactBtnConfirm.disabled = true;
+        contactBtnConfirm.innerHTML = '<span>Rezerviram...</span>';
+
+        const dateVal = contactDateInput.value;
+        let formattedDate = dateVal;
+        try {
+          const parts = dateVal.split('-');
+          if (parts.length === 3) {
+            const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+            formattedDate = d.toLocaleDateString('hr-HR', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            });
+          }
+        } catch (e) {
+          console.error('Date format error:', e);
+        }
+
+        const appointmentDetails = `${selectedMeetingType} • ${formattedDate} u ${selectedContactSlot}`;
+
+        try {
+          await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: contactPageData.name || 'Klijent',
+              company: contactPageData.company || '',
+              email: contactPageData.email || '',
+              phone: contactPageData.phone || '',
+              package: selectedPackageName,
+              calendarSlot: appointmentDetails,
+              source: 'Kontakt stranica',
+              device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
+            })
+          });
+        } catch (err) {
+          console.log('Inquiry submit note:', err);
+        }
+
+        // Hide Step 2 & Steps Bar, Display Step 3 Success
+        const stepsBar = document.querySelector('.booking-steps-bar');
+        if (stepsBar) stepsBar.style.display = 'none';
+
+        contactFormStep2.style.display = 'none';
+        if (contactStepSuccess) {
+          contactStepSuccess.style.display = 'block';
+          if (contactSuccessSummary) {
+            contactSuccessSummary.innerHTML = `
+              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vaše rezervacije:</div>
+              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${contactPageData.name || ''}</div>
+              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
+              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
+              ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
+              <div style="margin-bottom: 6px;">📦 <strong>Paket:</strong> ${selectedPackageName}</div>
+              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
+                📅 ${appointmentDetails}
+              </div>
+            `;
+          }
+          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
+
+    // Skip Date Selection Button
+    const contactBtnSkip = document.getElementById('contact-btn-skip');
+    if (contactBtnSkip) {
+      contactBtnSkip.addEventListener('click', async () => {
+        contactBtnSkip.disabled = true;
+        if (contactBtnConfirm) contactBtnConfirm.disabled = true;
+
+        try {
+          await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: contactPageData.name || 'Klijent',
+              company: contactPageData.company || '',
+              email: contactPageData.email || '',
+              phone: contactPageData.phone || '',
+              package: selectedPackageName,
+              calendarSlot: 'Termin nije odabran (Preskočeno)',
+              source: 'Kontakt stranica',
+              device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
+            })
+          });
+        } catch (err) {
+          console.log('Inquiry submit note:', err);
+        }
+
+        const stepsBar = document.querySelector('.booking-steps-bar');
+        if (stepsBar) stepsBar.style.display = 'none';
+
+        contactFormStep2.style.display = 'none';
+        if (contactStepSuccess) {
+          contactStepSuccess.style.display = 'block';
+          if (contactSuccessSummary) {
+            contactSuccessSummary.innerHTML = `
+              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vašeg upita:</div>
+              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${contactPageData.name || ''}</div>
+              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
+              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
+              ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
+              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
+                📦 <strong>Usluga:</strong> ${selectedPackageName}
+              </div>
+            `;
+          }
+          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }
+  }
+
   initCookieConsent();
 
 });
+
 

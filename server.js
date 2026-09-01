@@ -80,12 +80,12 @@ function getEstimatedDealValue(pkg) {
 }
 
 function normalizeNotionPackage(pkg) {
-  if (!pkg) return 'Izrada weba';
+  if (!pkg) return 'Besplatan Audit';
   const p = pkg.toLowerCase();
   if (p.includes('start') || p.includes('690')) return 'Paket Start';
   if (p.includes('plus') || p.includes('pro') || p.includes('1250') || p.includes('1.250')) return 'Paket Pro';
   if (p.includes('ultra') || p.includes('ai') || p.includes('2150') || p.includes('2.150')) return 'Paket Ultra';
-  if (p.includes('audit') || p.includes('savjetovanj')) return 'Besplatan Audit';
+  if (p.includes('audit') || p.includes('savjetovanj') || p.includes('kontakt') || p.includes('konzultacij') || p.includes('uvodni') || p.includes('razgovor') || p.includes('sastanak')) return 'Besplatan Audit';
   return 'Izrada weba';
 }
 
@@ -328,6 +328,10 @@ app.get('/admin/export-csv', (req, res) => {
 });
 
 
+
+app.get('/kontakt', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'kontakt.html'));
+});
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
