@@ -970,16 +970,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let calViewMonth = currentCalDate.getMonth();
 
     const contactSlotsList = [
-      '09:00 - 09:45',
-      '09:45 - 10:30',
-      '10:30 - 11:15',
-      '11:15 - 12:00',
-      '12:00 - 12:45',
-      '12:45 - 13:30',
-      '13:30 - 14:15',
-      '14:15 - 15:00',
-      '15:00 - 15:45',
-      '15:45 - 16:30'
+      '09:00',
+      '09:45',
+      '10:30',
+      '11:15',
+      '12:00',
+      '12:45',
+      '13:30',
+      '14:15',
+      '15:00',
+      '15:45'
     ];
 
     // Handle Meeting Type click
@@ -1231,7 +1231,7 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error('Date format error:', e);
         }
 
-        const appointmentDetails = `${selectedMeetingType} • ${formattedDate} u ${selectedContactSlot}`;
+        const appointmentDetails = `${selectedMeetingType} • ${formattedDate} u ${selectedContactSlot}h`;
 
         try {
           await fetch('/api/contact', {

@@ -128,16 +128,13 @@ function formatNotionAppointmentDate(dateStr, timeStr, fullText) {
   if (!year || !month || !day) return null;
 
   const timeSource = (timeStr || '') + ' ' + (fullText || '');
-  const timeMatch = timeSource.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);
+  const timeMatch = timeSource.match(/(\d{1,2}):(\d{2})/);
 
   if (timeMatch) {
     const sH = timeMatch[1].padStart(2, '0');
     const sM = timeMatch[2];
-    const eH = timeMatch[3].padStart(2, '0');
-    const eM = timeMatch[4];
     return {
-      start: `${year}-${month}-${day}T${sH}:${sM}:00+02:00`,
-      end: `${year}-${month}-${day}T${eH}:${eM}:00+02:00`
+      start: `${year}-${month}-${day}T${sH}:${sM}:00+02:00`
     };
   }
 
