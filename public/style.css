@@ -60,14 +60,14 @@ body {
   height: 24px;
   aspect-ratio: 1 / 1;
   box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.035);
-  transition: background-color 1.2s ease, box-shadow 1.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: background-color 0.8s ease, box-shadow 0.8s ease, border-color 0.8s ease;
 }
 
 .mesh-tile.glowing-lime {
-  background-color: rgba(41, 173, 255, 0.22) !important;
-  border-color: rgba(41, 173, 255, 0.45) !important;
-  box-shadow: inset 0 0 10px rgba(41, 173, 255, 0.35), 0 0 14px rgba(41, 173, 255, 0.25);
+  background-color: rgba(41, 173, 255, 0.32) !important;
+  border-color: rgba(41, 173, 255, 0.65) !important;
+  box-shadow: inset 0 0 8px rgba(41, 173, 255, 0.5), 0 0 16px rgba(41, 173, 255, 0.4) !important;
 }
 
 .hero-radial-glow {

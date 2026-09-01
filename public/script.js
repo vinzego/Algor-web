@@ -619,8 +619,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const buildPerfectSquareMesh = () => {
       meshContainer.innerHTML = '';
       const tileSize = 24; // 24px x 24px perfect square
-      const width = meshContainer.clientWidth || window.innerWidth;
-      const height = meshContainer.clientHeight || window.innerHeight;
+      const width = Math.max(meshContainer.clientWidth || 0, window.innerWidth || 0, 1200);
+      const height = Math.max(meshContainer.clientHeight || 0, window.innerHeight || 0, 800);
 
       const cols = Math.ceil(width / tileSize);
       const rows = Math.ceil(height / tileSize);
@@ -630,21 +630,24 @@ document.addEventListener('DOMContentLoaded', () => {
       meshContainer.style.gridTemplateColumns = `repeat(${cols}, ${tileSize}px)`;
       meshContainer.style.gridTemplateRows = `repeat(${rows}, ${tileSize}px)`;
 
+      const fragment = document.createDocumentFragment();
       for (let i = 0; i < totalTiles; i++) {
         const tile = document.createElement('div');
         tile.className = 'mesh-tile';
-        meshContainer.appendChild(tile);
+        fragment.appendChild(tile);
         tiles.push(tile);
       }
+      meshContainer.appendChild(fragment);
     };
 
     buildPerfectSquareMesh();
+    setTimeout(buildPerfectSquareMesh, 150);
     window.addEventListener('resize', buildPerfectSquareMesh);
 
-    // Function to trigger random glowing tiles in soft yellow
+    // Function to trigger random glowing tiles in neon/cyan
     const pulseRandomTiles = () => {
       if (!tiles.length) return;
-      const count = Math.floor(Math.random() * 12) + 16;
+      const count = Math.floor(Math.random() * 16) + 20;
       for (let i = 0; i < count; i++) {
         const randomIndex = Math.floor(Math.random() * totalTiles);
         const tile = tiles[randomIndex];
@@ -652,13 +655,13 @@ document.addEventListener('DOMContentLoaded', () => {
           tile.classList.add('glowing-lime');
           setTimeout(() => {
             tile.classList.remove('glowing-lime');
-          }, 1400 + Math.random() * 1200);
+          }, 1200 + Math.random() * 1000);
         }
       }
     };
 
     pulseRandomTiles();
-    setInterval(pulseRandomTiles, 900);
+    setInterval(pulseRandomTiles, 700);
   }
 
   // Live Clock Ticker for Hero Section (Zagreb / GMT+1)
@@ -740,11 +743,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealText = document.getElementById('about-reveal-text');
   if (revealText) {
     const words = revealText.querySelectorAll('.reveal-word');
-    window.addEventListener('scroll', () => {
+    
+    const updateRevealWords = () => {
       const rect = revealText.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
       
-      const start = windowHeight;
+      const start = windowHeight * 0.90;
       const end = windowHeight * 0.35;
       
       let globalProgress = 0;
@@ -752,12 +756,14 @@ document.addEventListener('DOMContentLoaded', () => {
         globalProgress = (start - rect.top) / (start - end);
       } else if (rect.top < end) {
         globalProgress = 1;
+      } else {
+        globalProgress = 0;
       }
       
       const totalWords = words.length;
       words.forEach((word, index) => {
         const wordStart = index / totalWords;
-        const wordEnd = (index + 1.2) / totalWords;
+        const wordEnd = (index + 1) / totalWords;
         
         let wordProgress = 0;
         if (globalProgress >= wordEnd) {
@@ -768,10 +774,16 @@ document.addEventListener('DOMContentLoaded', () => {
           wordProgress = (globalProgress - wordStart) / (wordEnd - wordStart);
         }
         
-        const opacity = 0.15 + (0.85 * wordProgress);
-        word.style.color = `rgba(18, 19, 22, ${opacity})`;
+        // Fades from light grey (rgba(15, 23, 42, 0.18)) to full black (rgba(15, 23, 42, 1.0))
+        const opacity = 0.18 + (0.82 * wordProgress);
+        word.style.color = `rgba(15, 23, 42, ${opacity})`;
       });
-    });
+    };
+
+    window.addEventListener('scroll', updateRevealWords, { passive: true });
+    window.addEventListener('resize', updateRevealWords, { passive: true });
+    updateRevealWords();
+    setTimeout(updateRevealWords, 150);
   }
 
   // 6. Process Section Sticky Active Step Observer
