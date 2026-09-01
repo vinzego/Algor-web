@@ -1,5 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
   
+  // 0. Ultra-Fast Instant Page Prefetcher (Prefetches kontakt.html on hover/touch intent for 0ms transition)
+  const prefetchTargetUrl = (url) => {
+    if (!url || document.querySelector(`link[rel="prefetch"][href="${url}"]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = url;
+    document.head.appendChild(link);
+  };
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(() => {
+      prefetchTargetUrl('kontakt.html');
+      prefetchTargetUrl('kontakt.html?paket=pro');
+      prefetchTargetUrl('kontakt.html?paket=start');
+    });
+  } else {
+    setTimeout(() => {
+      prefetchTargetUrl('kontakt.html');
+    }, 800);
+  }
+
+  document.addEventListener('mouseover', (e) => {
+    const a = e.target.closest('a[href*="kontakt"]');
+    if (a && a.href) prefetchTargetUrl(a.href);
+  }, { passive: true });
+
+  document.addEventListener('touchstart', (e) => {
+    const a = e.target.closest('a[href*="kontakt"]');
+    if (a && a.href) prefetchTargetUrl(a.href);
+  }, { passive: true });
+
   // Mobile Navigation Hamburger Toggle & Auto-Close Engine
   const mobileNavToggle = document.getElementById('mobile-nav-toggle');
   const ultraNavMenu = document.getElementById('ultra-nav-menu');

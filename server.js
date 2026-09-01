@@ -11,9 +11,19 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from 'public' directory, fallback to root if not found
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(__dirname));
+// Serve static files with instant cache for assets
+const staticOptions = {
+  maxAge: '2h',
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=7200');
+    }
+  }
+};
+app.use(express.static(path.join(__dirname, 'public'), staticOptions));
+app.use(express.static(__dirname, staticOptions));
 
 const CSV_FILE = path.join(__dirname, 'upiti.csv');
 
