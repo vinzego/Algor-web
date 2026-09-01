@@ -904,6 +904,18 @@ document.addEventListener('DOMContentLoaded', () => {
       device: data.device || detectUserDevice()
     };
 
+    if (typeof window.gtag === 'function') {
+      try {
+        window.gtag('event', 'generate_lead', {
+          event_category: 'Contact',
+          event_label: payload.package || payload.source || 'Lead',
+          value: 1
+        });
+      } catch (e) {
+        // ignore
+      }
+    }
+
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
