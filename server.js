@@ -354,7 +354,7 @@ async function sendClientConfirmationEmail(data) {
                 Pozdrav ${clientName},
               </h2>
               <p style="margin: 0 0 20px 0; font-size: 15px; line-height: 1.6; color: #475569;">
-                Hvala vam na javljanju! Vaš upit je uspješno zaprimljen u naš sustav. Naš tim će detaljno pregledati vaše zahtjeve i javiti vam se u najkraćem mogućem roku (unutar <strong>2 radna sata</strong>).
+                Hvala vam na javljanju! Vaš upit je uspješno zaprimljen u naš sustav. Osobno ću detaljno pregledati vaše zahtjeve i javiti vam se u najkraćem mogućem roku (unutar <strong>2 radna sata</strong>).
               </p>
 
               <!-- Summary Card -->

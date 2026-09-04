@@ -4636,6 +4636,183 @@ body {
     font-size: 12px;
     padding: 6px 10px;
   }
+/* -------------------------------------------------------------
+   Options Comparison Section (Value Anchoring 3-Column Grid)
+------------------------------------------------------------- */
+.options-comparison-section {
+  width: 100%;
+  max-width: 1360px;
+  margin: 30px auto 70px auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.options-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 40px;
+}
+
+.option-card {
+  border-radius: 24px;
+  padding: 38px 30px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.option-card-standard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.option-card-featured {
+  background: #090a0f;
+  border: 1px solid rgba(41, 173, 255, 0.4);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12), 0 0 24px rgba(41, 173, 255, 0.1);
+  color: #ffffff;
+  position: relative;
+}
+
+.option-card-top-tag {
+  margin-bottom: 16px;
+}
+
+.option-tag-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+}
+
+.tag-pill-winner {
+  background: rgba(41, 173, 255, 0.15);
+  color: #29ADFF;
+  border: 1px solid rgba(41, 173, 255, 0.4);
+}
+
+.option-card-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.4px;
+  margin: 0 0 10px 0;
+}
+
+.option-card-featured .option-card-title {
+  color: #ffffff;
+}
+
+.option-cost-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.option-cost-val {
+  font-size: 23px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.option-highlight-cost .option-cost-val {
+  color: #c9ff47;
+  font-size: 26px;
+}
+
+.option-cost-per {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.option-card-featured .option-cost-per {
+  color: #94a3b8;
+}
+
+.option-card-sub {
+  font-size: 13.5px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 24px 0;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.option-card-featured .option-card-sub {
+  color: #94a3b8;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.option-points-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-grow: 1;
+}
+
+.option-points-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.option-card-featured .option-points-list li {
+  color: #cbd5e1;
+}
+
+.point-x-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fee2e2;
+  color: #ef4444;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.point-check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(41, 173, 255, 0.2);
+  color: #29ADFF;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+@media (max-width: 992px) {
+  .options-comparison-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 /* -------------------------------------------------------------
