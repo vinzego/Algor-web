@@ -534,6 +534,18 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('Inquiry submit note:', err);
         }
 
+        const bookingSummaryData = {
+          name: contactPageData.name || '',
+          company: contactPageData.company || '',
+          email: contactPageData.email || '',
+          phone: contactPageData.phone || '',
+          package: selectedPackageName,
+          calendarSlot: appointmentDetails
+        };
+        try {
+          sessionStorage.setItem('algor_booking_summary', JSON.stringify(bookingSummaryData));
+        } catch (e) {}
+
         const stepsBar = document.querySelector('.booking-steps-bar');
         if (stepsBar) stepsBar.style.display = 'none';
 
@@ -555,6 +567,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
+
+        setTimeout(() => {
+          window.location.href = '/hvala';
+        }, 400);
       });
     }
 
@@ -563,6 +579,18 @@ document.addEventListener('DOMContentLoaded', () => {
       contactBtnSkip.addEventListener('click', async () => {
         contactBtnSkip.disabled = true;
         if (contactBtnConfirm) contactBtnConfirm.disabled = true;
+
+        const bookingSummaryData = {
+          name: contactPageData.name || '',
+          company: contactPageData.company || '',
+          email: contactPageData.email || '',
+          phone: contactPageData.phone || '',
+          package: selectedPackageName,
+          calendarSlot: 'Termin nije odabran (Preskočeno)'
+        };
+        try {
+          sessionStorage.setItem('algor_booking_summary', JSON.stringify(bookingSummaryData));
+        } catch (e) {}
 
         try {
           await fetch('/api/contact', {
@@ -603,6 +631,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
+
+        setTimeout(() => {
+          window.location.href = '/hvala';
+        }, 400);
       });
     }
 
@@ -951,10 +983,17 @@ document.addEventListener('DOMContentLoaded', () => {
         source: 'Podnožje (Footer Forma)'
       });
 
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Šaljem upit...</span>';
-      }
+      const bookingSummaryData = {
+        name: name,
+        company: company,
+        email: email,
+        phone: phone,
+        package: pkg,
+        calendarSlot: msg || 'Upit s podnožja'
+      };
+      try {
+        sessionStorage.setItem('algor_booking_summary', JSON.stringify(bookingSummaryData));
+      } catch (e) {}
 
       setTimeout(() => {
         if (submitBtn) {
@@ -962,11 +1001,8 @@ document.addEventListener('DOMContentLoaded', () => {
           submitBtn.innerHTML = '<span>Pošalji upit ➔</span>';
         }
         if (footerContactForm) footerContactForm.reset();
-        if (footerFormMessage) {
-          footerFormMessage.textContent = `Hvala vam, ${name}! Vaš upit je uspješno poslan. Kontaktirat ćemo vas unutar 2 sata.`;
-          footerFormMessage.style.display = 'inline-block';
-        }
-      }, 700);
+        window.location.href = '/hvala';
+      }, 500);
     });
   }
 

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hvala vam na upitu | Algor studio</title>
+  <meta name="description" content="Vaš upit i rezervacija termina su uspješno zaprimljeni. Algor studio tim će vas kontaktirati u najkraćem mogućem roku.">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18423241784"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18423241784');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=68.0.0">
+  <link rel="icon" type="image/png" href="favicon.png?v=68.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=68.0.0">
+  <link rel="preload" as="style" href="style.css?v=68.0.0">
+  <link rel="stylesheet" href="style.css?v=68.0.0" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=68.0.0"></noscript>
+
+  <style>
+    /* Thank You Page Luxury Dark Theme */
+    body {
+      background-color: #050508 !important;
+      color: #f1f5f9 !important;
+      font-family: 'Inter', sans-serif !important;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .thankyou-section {
+      position: relative;
+      padding: 140px 24px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .thankyou-card {
+      background: #0d0f14;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      padding: 56px 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thankyou-card::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(41, 173, 255, 0.15) 0%, rgba(201, 255, 71, 0.08) 50%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .thankyou-badge-wrap {
+      margin-bottom: 20px;
+    }
+
+    .thankyou-check-circle {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #29ADFF, #c9ff47);
+      color: #050508;
+      font-size: 38px;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 25px rgba(41, 173, 255, 0.35);
+      animation: pulsePop 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    }
+
+    @keyframes pulsePop {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .thankyou-title {
+      font-size: clamp(30px, 4.2vw, 44px);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -1.2px;
+      line-height: 1.2;
+      margin: 0 0 16px 0;
+    }
+
+    .thankyou-desc {
+      font-size: clamp(15px, 1.8vw, 17px);
+      color: #94a3b8;
+      line-height: 1.65;
+      margin: 0 auto 36px;
+      max-width: 680px;
+    }
+
+    .thankyou-summary-box {
+      background: #151821;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin: 0 auto 36px;
+      text-align: left;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    .summary-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .summary-header-title {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 15px;
+    }
+
+    .summary-status-pill {
+      background: rgba(41, 173, 255, 0.15);
+      color: #29ADFF;
+      border: 1px solid rgba(41, 173, 255, 0.3);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'Geist Mono', monospace;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .summary-item-label {
+      color: #64748b;
+      font-size: 12.5px;
+      margin-bottom: 2px;
+    }
+
+    .summary-item-value {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    .summary-appointment-highlight {
+      grid-column: 1 / -1;
+      background: rgba(41, 173, 255, 0.08);
+      border: 1px dashed rgba(41, 173, 255, 0.25);
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-top: 6px;
+      color: #29ADFF;
+      font-weight: 700;
+    }
+
+    /* What Happens Next Steps */
+    .thankyou-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) {
+      .thankyou-steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .thankyou-step-card {
+      background: #111318;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .step-card-num {
+      font-family: 'Geist Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #29ADFF;
+      margin-bottom: 8px;
+    }
+
+    .step-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .step-card-text {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Actions Stack */
+    .thankyou-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .btn-ty-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: #000000;
+      color: #ffffff !important;
+      border: 1px solid #222;
+      border-radius: 9999px;
+      padding: 8px 8px 8px 24px;
+      font-size: 14.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-ty-primary:hover {
+      background: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-ty-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1 !important;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-ty-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .btn-ty-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #29ADFF;
+      color: #0c0d0e;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 16px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-ty-primary:hover .btn-ty-circle {
+      background: #c9ff47;
+      transform: rotate(45deg);
+    }
+
+    @media (max-width: 600px) {
+      .thankyou-section {
+        padding: 120px 16px 60px;
+      }
+      .thankyou-card {
+        padding: 36px 20px;
+        border-radius: 20px;
+      }
+      .thankyou-actions {
+        flex-direction: column;
+      }
+      .btn-ty-primary, .btn-ty-secondary {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Glass Navbar -->
+  <header class="ultra-navbar">
+    <!-- Brand Logo -->
+    <a href="/" class="ultra-brand-logo" aria-label="Algor studio Početna">
+      <img src="logo_black_transparent.png" alt="Algor studio" class="navbar-brand-logo-img">
+    </a>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Otvori izbornik">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <!-- Pill Nav Menu (Desktop & Mobile Drawer) -->
+    <nav class="ultra-nav-menu" id="ultra-nav-menu">
+      <div class="mobile-nav-links-grid">
+        <a href="/#about" class="ultra-nav-link">O nama</a>
+        <a href="/#marketing" class="ultra-nav-link">Usluge</a>
+        <a href="/izrada-web-stranica" class="ultra-nav-link">Izrada Weba</a>
+        <a href="/#portfolio" class="ultra-nav-link">Projekti</a>
+        <a href="/#process" class="ultra-nav-link">Proces</a>
+        <a href="/#pricing" class="ultra-nav-link">Cijene</a>
+        <a href="/kontakt" class="ultra-nav-link">Kontakt</a>
+      </div>
+
+      <div class="mobile-nav-email-box">
+        <a href="mailto:info@algor.studio" class="mobile-nav-email-link">✉️ info@algor.studio</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Thank You Layout -->
+  <main class="thankyou-section">
+    
+    <div class="thankyou-card">
+      <div class="thankyou-badge-wrap">
+        <span class="section-badge">// UPIT ZAPRIMLJEN</span>
+      </div>
+
+      <div class="thankyou-check-circle">✓</div>
+      
+      <h1 class="thankyou-title">Zahvaljujemo na ukazanom povjerenju!</h1>
+      
+      <p class="thankyou-desc">
+        Vaš upit i detalji rezervacije su uspješno zaprimljeni. Naš tim će detaljno pregledati vaše podatke i kontaktirati vas u najkraćem mogućem roku (unutar 2 sata).
+      </p>
+
+      <!-- Dynamic Summary Card -->
+      <div class="thankyou-summary-box" id="thankyou-summary-box">
+        <div class="summary-header-row">
+          <span class="summary-header-title">📋 Sažetak Vašeg upita</span>
+          <span class="summary-status-pill">STATUS: ZAPRIMLJENO</span>
+        </div>
+        <div class="summary-grid" id="summary-grid-content">
+          <div>
+            <div class="summary-item-label">Status obrade:</div>
+            <div class="summary-item-value" style="color: #10b981;">✓ Uspješno poslano u bazu</div>
+          </div>
+          <div>
+            <div class="summary-item-label">Vrijeme odgovora:</div>
+            <div class="summary-item-value">Unutar 2 radna sata</div>
+          </div>
+          <div>
+            <div class="summary-item-label">Način komunikacije:</div>
+            <div class="summary-item-value">Email / WhatsApp / Poziv</div>
+          </div>
+          <div>
+            <div class="summary-item-label">Potvrda na email:</div>
+            <div class="summary-item-value">Poslana na vašu adresu</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- What Happens Next 3-Step Grid -->
+      <div class="thankyou-steps-grid">
+        <div class="thankyou-step-card">
+          <div class="step-card-num">KORAK 01</div>
+          <div class="step-card-title">Pregled podataka</div>
+          <p class="step-card-text">Analiziramo vašu tvrtku, profil i trenutne marketinške kanale.</p>
+        </div>
+        <div class="thankyou-step-card">
+          <div class="step-card-num">KORAK 02</div>
+          <div class="step-card-title">Strateški kontakt</div>
+          <p class="step-card-text">Javljamo se s potvrdom termina i pripremljenim konkretnim savjetima.</p>
+        </div>
+        <div class="thankyou-step-card">
+          <div class="step-card-num">KORAK 03</div>
+          <div class="step-card-title">Jasna ponuda</div>
+          <p class="step-card-text">Bez obveza definiramo plan realizacije i točan povrat investicije.</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="thankyou-actions">
+        <a href="/" class="btn-ty-primary">
+          <span>Povratak na naslovnu stranicu</span>
+          <span class="btn-ty-circle">↗</span>
+        </a>
+        <a href="/izrada-web-stranica" class="btn-ty-secondary">
+          <span>🌐 Pogledajte izradu web stranica</span>
+        </a>
+        <a href="https://wa.me/385994119934" target="_blank" rel="noopener noreferrer" class="btn-ty-secondary">
+          <span>💬 Brzi WhatsApp upit</span>
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Identical Global Brand Footer -->
+  <div class="footer-card-wrapper">
+    <footer class="brand-footer-card">
+      
+      <!-- Photo Production Credit Text -->
+      <div class="footer-photo-credit-text">
+        Sve fotografije na ovoj web stranici je producirao Algor studio.
+      </div>
+
+      <!-- Top Row: Branding and Links -->
+      <div class="footer-card-top">
+        
+        <!-- Left Column: Logo & Tagline -->
+        <div class="footer-logo-col">
+          <a href="/" class="footer-logo" style="text-decoration: none;" aria-label="Algor studio Početna">
+            <img src="logo_white_transparent.png" alt="Algor studio" class="footer-brand-logo-img">
+          </a>
+          <p class="footer-tagline">Marketing agencija, video produkcija i AI automatizacije za brzorastuće brendove.</p>
+        </div>
+        
+        <!-- Right Columns: Links -->
+        <div class="footer-links-grid">
+          <div class="footer-link-group">
+            <h4>Istraži</h4>
+            <ul>
+              <li><a href="/#about">O nama</a></li>
+              <li><a href="/#marketing">Usluge</a></li>
+              <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
+              <li><a href="/#portfolio">Projekti</a></li>
+              <li><a href="/#process">Proces</a></li>
+              <li><a href="/#pricing">Cjenik</a></li>
+              <li><a href="/karijere">Karijere</a></li>
+              <li><a href="/kontakt">Kontakt</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-link-group">
+            <h4>Društvene mreže</h4>
+            <ul>
+              <li><a href="https://www.instagram.com/algor_studio?igsi=cGo4b3VvenlwNnp4&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-link-group">
+            <h4>Pravno</h4>
+            <ul>
+              <li><a href="/politika-privatnosti">Politika privatnosti</a></li>
+              <li><a href="/uvjeti-koristenja">Uvjeti korištenja</a></li>
+              <li><a href="/kolacici">Politika kolačića</a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Bottom Row: Copyright and Maker -->
+      <div class="footer-card-bottom">
+        <div class="footer-copy-text">
+          ©2026 Algor studio. Sva prava pridržana.
+        </div>
+        <div class="footer-credit">
+          Izradio <span class="footer-credit-brand">Algor Studio</span>
+        </div>
+      </div>
+      
+    </footer>
+  </div>
+
+  <script>
+    // Read and render booking summary if passed from contact form
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const raw = sessionStorage.getItem('algor_booking_summary');
+        if (raw) {
+          const data = JSON.parse(raw);
+          const grid = document.getElementById('summary-grid-content');
+          if (grid && (data.name || data.calendarSlot || data.package)) {
+            let html = '';
+            if (data.name) {
+              html += `<div><div class="summary-item-label">Ime i prezime:</div><div class="summary-item-value">👤 ${data.name}</div></div>`;
+            }
+            if (data.company) {
+              html += `<div><div class="summary-item-label">Tvrtka / Brend:</div><div class="summary-item-value">🏢 ${data.company}</div></div>`;
+            }
+            if (data.email) {
+              html += `<div><div class="summary-item-label">Email adresa:</div><div class="summary-item-value">✉️ ${data.email}</div></div>`;
+            }
+            if (data.package) {
+              html += `<div><div class="summary-item-label">Odabrani paket:</div><div class="summary-item-value">📦 ${data.package}</div></div>`;
+            }
+            if (data.calendarSlot && !data.calendarSlot.includes('Preskočeno')) {
+              html += `<div class="summary-appointment-highlight">📅 Odabrani termin: <strong>${data.calendarSlot}</strong></div>`;
+            }
+            grid.innerHTML = html;
+          }
+        }
+      } catch (e) {
+        // ignore
+      }
+    });
+  </script>
+
+  <script defer src="script.js?v=68.0.0"></script>
+</body>
+</html>

@@ -64,6 +64,13 @@ app.get(['/kolacici', '/kolacici.html'], (req, res) => {
   res.sendFile(path.join(publicDir, 'kolacici.html'));
 });
 
+app.get(['/hvala', '/hvala.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/hvala');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'hvala.html'));
+});
+
 app.get(['/', '/index.html'], (req, res) => {
   if (req.path === '/index.html') return res.redirect(301, '/');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
