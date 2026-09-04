@@ -4673,10 +4673,10 @@ body {
 }
 
 .option-card-featured {
-  background: #090a0f;
-  border: 1px solid rgba(41, 173, 255, 0.4);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12), 0 0 24px rgba(41, 173, 255, 0.1);
-  color: #ffffff;
+  background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);
+  border: 2px solid #2563eb;
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04);
+  color: #0f172a;
   position: relative;
 }
 
@@ -4698,9 +4698,9 @@ body {
 }
 
 .tag-pill-winner {
-  background: rgba(41, 173, 255, 0.15);
-  color: #29ADFF;
-  border: 1px solid rgba(41, 173, 255, 0.4);
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
 }
 
 .option-card-title {
@@ -4712,7 +4712,7 @@ body {
 }
 
 .option-card-featured .option-card-title {
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .option-cost-wrap {
@@ -4730,7 +4730,7 @@ body {
 }
 
 .option-highlight-cost .option-cost-val {
-  color: #c9ff47;
+  color: #2563eb;
   font-size: 26px;
 }
 
@@ -4740,7 +4740,7 @@ body {
 }
 
 .option-card-featured .option-cost-per {
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .option-card-sub {
@@ -4753,8 +4753,8 @@ body {
 }
 
 .option-card-featured .option-card-sub {
-  color: #94a3b8;
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+  color: #475569;
+  border-bottom-color: #e2e8f0;
 }
 
 .option-points-list {
@@ -4777,7 +4777,7 @@ body {
 }
 
 .option-card-featured .option-points-list li {
-  color: #cbd5e1;
+  color: #334155;
 }
 
 .point-x-icon {
@@ -4802,8 +4802,8 @@ body {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: rgba(41, 173, 255, 0.2);
-  color: #29ADFF;
+  background: #dbeafe;
+  color: #2563eb;
   font-size: 11px;
   font-weight: 800;
   flex-shrink: 0;
