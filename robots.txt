@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /hvala
+Disallow: /hvala.html
+Disallow: /api/
+
+Sitemap: https://algor.studio/sitemap.xml

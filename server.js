@@ -19,8 +19,22 @@ app.use(compression({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Pre-warmed fast paths for HTML pages
+// Pre-warmed fast paths for HTML pages and SEO assets
 const publicDir = path.join(__dirname, 'public');
+
+app.get('/robots.txt', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  const file = fs.existsSync(path.join(publicDir, 'robots.txt')) ? path.join(publicDir, 'robots.txt') : path.join(__dirname, 'robots.txt');
+  res.sendFile(file);
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  const file = fs.existsSync(path.join(publicDir, 'sitemap.xml')) ? path.join(publicDir, 'sitemap.xml') : path.join(__dirname, 'sitemap.xml');
+  res.sendFile(file);
+});
 
 app.get(['/kontakt', '/kontakt.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/kontakt');
