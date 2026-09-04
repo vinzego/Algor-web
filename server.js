@@ -145,9 +145,9 @@ function saveInquiryToCSV(data) {
 function getEstimatedDealValue(pkg) {
   if (!pkg) return 0;
   const p = pkg.toLowerCase();
-  if (p.includes('start') || p.includes('690')) return 690;
-  if (p.includes('pro') || p.includes('plus') || p.includes('1250') || p.includes('1.250')) return 1250;
-  if (p.includes('ultra') || p.includes('ai') || p.includes('2150') || p.includes('2.150')) return 2150;
+  if (p.includes('start') || p.includes('590')) return 590;
+  if (p.includes('pro') || p.includes('plus') || p.includes('890')) return 890;
+  if (p.includes('ultra') || p.includes('ai') || p.includes('1550') || p.includes('1.550')) return 1550;
   if (p.includes('490')) return 490;
   if (p.includes('990')) return 990;
   if (p.includes('1850') || p.includes('1.850') || p.includes('1,850')) return 1850;
@@ -159,9 +159,9 @@ function getEstimatedDealValue(pkg) {
 function normalizeNotionPackage(pkg) {
   if (!pkg) return 'Besplatan Audit';
   const p = pkg.toLowerCase();
-  if (p.includes('start') || p.includes('690')) return 'Paket Start';
-  if (p.includes('plus') || p.includes('pro') || p.includes('1250') || p.includes('1.250')) return 'Paket Pro';
-  if (p.includes('ultra') || p.includes('ai') || p.includes('2150') || p.includes('2.150')) return 'Paket Ultra';
+  if (p.includes('start') || p.includes('590')) return 'Paket Start';
+  if (p.includes('plus') || p.includes('pro') || p.includes('890')) return 'Paket Pro';
+  if (p.includes('ultra') || p.includes('ai') || p.includes('1550') || p.includes('1.550')) return 'Paket Ultra';
   if (p.includes('audit') || p.includes('savjetovanj') || p.includes('kontakt') || p.includes('konzultacij') || p.includes('uvodni') || p.includes('razgovor') || p.includes('sastanak')) return 'Besplatan Audit';
   return 'Izrada weba';
 }

@@ -206,13 +206,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const p = pkgParam.toLowerCase();
       if (p.includes('start')) {
         selectedPackageName = 'Paket Start';
-        formPackageLabel = 'Paket Start (690 €/mj.)';
+        formPackageLabel = 'Paket Start (590 €/mj.)';
       } else if (p.includes('pro') || p.includes('plus')) {
         selectedPackageName = 'Paket Pro';
-        formPackageLabel = 'Paket Pro (1.250 €/mj.)';
+        formPackageLabel = 'Paket Pro (890 €/mj.)';
       } else if (p.includes('ultra') || p.includes('ai')) {
         selectedPackageName = 'Paket Ultra';
-        formPackageLabel = 'Paket Ultra (2.150 €/mj.)';
+        formPackageLabel = 'Paket Ultra (1.550 €/mj.)';
       } else if (p.includes('landing') || p.includes('web-start') || p.includes('490')) {
         selectedPackageName = 'Izrada weba';
         formPackageLabel = 'Landing Stranica (od 490 €)';
@@ -717,9 +717,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const pricePlus = document.getElementById('price-combined');
   const priceExtra = document.getElementById('price-ai');
 
-  if (priceStart) priceStart.textContent = '690';
-  if (pricePlus) pricePlus.textContent = '1,250';
-  if (priceExtra) priceExtra.textContent = '2,150';
+  if (priceStart) priceStart.textContent = '590';
+  if (pricePlus) pricePlus.textContent = '890';
+  if (priceExtra) priceExtra.textContent = '1.550';
 
   // 2. Active AI Flow Stepper Animation
   const flowSteps = document.querySelectorAll('.flow-steps .flow-step');

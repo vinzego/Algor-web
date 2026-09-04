@@ -92,7 +92,7 @@ Dokumentacija dizajna, boja, tipografije, komponenti, pravila i arhitekture koda
 
 ### D. Cjenik & Paketi (`#pricing`)
 - **Sekcijski bedž:** `// 03 PAKETI`
-- **3 Paketa suradnje:** *Start* (690 €), *Pro* (1.250 €), *Ultra* (2.150 €).
+- **3 Paketa suradnje:** *Start* (590 €), *Pro* (890 €), *Ultra* (1.550 €).
 - **CTA gumbi na paketima:** `Započni suradnju` (otvara interaktivni booking/kontakt modal).
 - **Pro & Ultra paketi:** Uključuju **Live Dashboard** za praćenje rezultata kampanja u realnom vremenu i **WhatsApp podršku 24/5**.
 - **Ultra paket:** Uključuje *4 napredne Meta & Google Ads kampanje + 16 objava*.
