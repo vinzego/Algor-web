@@ -10,14 +10,36 @@ const compression = require('compression');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Security: Hide Express technology fingerprint
+app.disable('x-powered-by');
+
+// Security: Enforce essential HTTP security headers
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  next();
+});
+
+// Security: Block unauthorized access to hidden files, environment files, logs and data
+app.use((req, res, next) => {
+  const p = req.path.toLowerCase();
+  if (p.includes('/.') || p.endsWith('.env') || p.endsWith('.csv') || p.endsWith('.log') || p.startsWith('/data')) {
+    return res.status(404).send('Not Found');
+  }
+  next();
+});
+
 // Enable gzip/deflate compression for all requests (cuts payload by ~80%)
 app.use(compression({
   threshold: 1024,
   level: 6
 }));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // Pre-warmed fast paths for HTML pages and SEO assets
 const publicDir = path.join(__dirname, 'public');
@@ -25,14 +47,14 @@ const publicDir = path.join(__dirname, 'public');
 app.get('/robots.txt', (req, res) => {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=86400');
-  const file = fs.existsSync(path.join(publicDir, 'robots.txt')) ? path.join(publicDir, 'robots.txt') : path.join(__dirname, 'robots.txt');
+  const file = path.join(publicDir, 'robots.txt');
   res.sendFile(file);
 });
 
 app.get('/sitemap.xml', (req, res) => {
   res.setHeader('Content-Type', 'application/xml; charset=utf-8');
   res.setHeader('Cache-Control', 'public, max-age=86400');
-  const file = fs.existsSync(path.join(publicDir, 'sitemap.xml')) ? path.join(publicDir, 'sitemap.xml') : path.join(__dirname, 'sitemap.xml');
+  const file = path.join(publicDir, 'sitemap.xml');
   res.sendFile(file);
 });
 
@@ -92,7 +114,7 @@ app.get(['/', '/index.html'], (req, res) => {
   res.sendFile(path.join(publicDir, 'index.html'));
 });
 
-// Serve static files with instant cache for assets
+// Serve only public static files with instant cache for assets
 const staticOptions = {
   maxAge: '2h',
   setHeaders: (res, filePath) => {
@@ -104,9 +126,8 @@ const staticOptions = {
   }
 };
 app.use(express.static(publicDir, staticOptions));
-app.use(express.static(__dirname, staticOptions));
 
-const CSV_FILE = path.join(__dirname, 'upiti.csv');
+const CSV_FILE = path.join(__dirname, 'data', 'upiti.csv');
 
 // Initialize Notion Client if credentials exist
 let notion = null;
@@ -130,6 +151,11 @@ if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
 
 // Helper function to append to CSV with UTF-8 BOM for Microsoft Excel compatibility
 function saveInquiryToCSV(data) {
+  const dataDir = path.dirname(CSV_FILE);
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true, mode: 0o700 });
+  }
+
   const fileExists = fs.existsSync(CSV_FILE);
   const header = 'Datum i Vrijeme,Ime i Prezime,Tvrtka ili Web,E-mail,Mobitel,Odabrani Paket,Vrijednost (€),Izvor Stranica,Uređaj,Termin u Kalendaru\n';
   
@@ -438,28 +464,117 @@ async function sendClientConfirmationEmail(data) {
   });
 }
 
-// API endpoint to submit inquiries
+// In-memory rate limiting map for form submissions (IP -> { count, resetAt })
+const rateLimitMap = new Map();
+function isRateLimited(ip) {
+  const now = Date.now();
+  const windowMs = 10 * 60 * 1000; // 10 minutes window
+  const maxAttempts = 5;
+  
+  const record = rateLimitMap.get(ip) || { count: 0, resetAt: now + windowMs };
+  if (now > record.resetAt) {
+    record.count = 1;
+    record.resetAt = now + windowMs;
+  } else {
+    record.count += 1;
+  }
+  rateLimitMap.set(ip, record);
+  return record.count > maxAttempts;
+}
+
+// Clean up stale rate limit entries every 30 minutes
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, record] of rateLimitMap.entries()) {
+    if (now > record.resetAt) {
+      rateLimitMap.delete(ip);
+    }
+  }
+}, 30 * 60 * 1000);
+
+// API endpoint to submit inquiries with rate-limiting, sanitization, and spam filters
 app.post('/api/contact', async (req, res) => {
   try {
-    const { name, company, email, phone, package: pkg, appointmentDate, appointmentTime, meetingType, calendarSlot, source, device } = req.body;
-    const estimatedValue = getEstimatedDealValue(pkg);
+    const clientIp = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress || 'unknown';
     
-    // 1. Save to CSV backup
-    saveInquiryToCSV({ name, company, email, phone, package: pkg, calendarSlot, source, device, estimatedValue });
+    // 0. Rate limiting protection (max 5 submissions per 10 min per IP)
+    if (isRateLimited(clientIp)) {
+      return res.status(429).json({ success: false, error: 'Previše poslanih upita u kratkom vremenu. Molimo pričekajte nekoliko minuta.' });
+    }
+
+    const { name, company, email, phone, package: pkg, appointmentDate, appointmentTime, meetingType, calendarSlot, source, device, hp } = req.body;
+    
+    // Honeypot check (anti-bot trap)
+    if (hp) {
+      return res.json({ success: true, message: 'Upit je uspješno zaprimljen.' });
+    }
+
+    // Input sanitization & validation
+    const sanitize = (str, maxLen = 200) => (str || '').toString().trim().slice(0, maxLen);
+    const cleanName = sanitize(name, 100);
+    const cleanCompany = sanitize(company, 100);
+    const cleanEmail = sanitize(email, 120);
+    const cleanPhone = sanitize(phone, 50);
+    const cleanPkg = sanitize(pkg, 100);
+    const cleanCalendarSlot = sanitize(calendarSlot, 500);
+    const cleanSource = sanitize(source, 100) || 'Web Stranica';
+    const cleanDevice = sanitize(device, 50) || 'Desktop';
+    const cleanAppDate = sanitize(appointmentDate, 50);
+    const cleanAppTime = sanitize(appointmentTime, 50);
+    const cleanMeetingType = sanitize(meetingType, 50);
+
+    if (!cleanName && !cleanEmail && !cleanPhone) {
+      return res.status(400).json({ success: false, error: 'Molimo unesite kontakt podatke.' });
+    }
+
+    const estimatedValue = getEstimatedDealValue(cleanPkg);
+    
+    // 1. Save to private CSV backup (outside public web directory)
+    saveInquiryToCSV({
+      name: cleanName,
+      company: cleanCompany,
+      email: cleanEmail,
+      phone: cleanPhone,
+      package: cleanPkg,
+      calendarSlot: cleanCalendarSlot,
+      source: cleanSource,
+      device: cleanDevice,
+      estimatedValue
+    });
 
     // 2. Save directly to Notion database
     try {
-      await saveInquiryToNotion({ name, company, email, phone, package: pkg, appointmentDate, appointmentTime, meetingType, calendarSlot, source, device, estimatedValue });
-      console.log(`✓ Upit uspješno poslan u Notion [Algor upiti]: ${name} | ${pkg} (${estimatedValue} €) | ${source} | ${device}`);
+      await saveInquiryToNotion({
+        name: cleanName,
+        company: cleanCompany,
+        email: cleanEmail,
+        phone: cleanPhone,
+        package: cleanPkg,
+        appointmentDate: cleanAppDate,
+        appointmentTime: cleanAppTime,
+        meetingType: cleanMeetingType,
+        calendarSlot: cleanCalendarSlot,
+        source: cleanSource,
+        device: cleanDevice,
+        estimatedValue
+      });
+      console.log(`✓ Upit uspješno poslan u Notion [Algor upiti]: ${cleanName} | ${cleanPkg} (${estimatedValue} €) | ${cleanSource} | ${cleanDevice}`);
     } catch (notionErr) {
       console.error('Greška pri spremanju u Notion:', notionErr.message);
     }
 
     // 3. Automatically send client confirmation email
     try {
-      if (email) {
-        await sendClientConfirmationEmail({ name, company, email, phone, package: pkg, calendarSlot });
-        console.log(`✓ Automatski potvrdni email poslan klijentu: ${email}`);
+      if (cleanEmail) {
+        await sendClientConfirmationEmail({
+          name: cleanName,
+          company: cleanCompany,
+          email: cleanEmail,
+          phone: cleanPhone,
+          package: cleanPkg,
+          calendarSlot: cleanCalendarSlot
+        });
+        console.log(`✓ Automatski potvrdni email poslan klijentu: ${cleanEmail}`);
       }
     } catch (emailErr) {
       console.error('Greška pri slanju potvrdnog emaila:', emailErr.message);
@@ -472,8 +587,16 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Admin endpoint to download CSV file directly
+// Admin endpoint to download CSV file with secret authentication key protection
 app.get('/admin/export-csv', (req, res) => {
+  const authHeader = req.headers['authorization'] || '';
+  const token = req.query.key || (authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '');
+  const expectedSecret = process.env.ADMIN_SECRET_KEY;
+  
+  if (!expectedSecret || token !== expectedSecret) {
+    return res.status(403).send('Pristup odbijen. Potreban je valjani administratorski ključ.');
+  }
+  
   if (fs.existsSync(CSV_FILE)) {
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
     res.setHeader('Content-Disposition', 'attachment; filename="upiti.csv"');

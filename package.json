@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js",
-    "sync-seo": "node sync-seo.js"
+    "dev": "node server.js"
   },
   "dependencies": {
     "@notionhq/client": "^5.25.2",
