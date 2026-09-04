@@ -712,14 +712,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateHeroTime, 10000);
   }
 
-  // 1. Static Package Pricing Engine (Fixed Higher Prices with AI included)
-  const priceStart = document.getElementById('price-marketing');
-  const pricePlus = document.getElementById('price-combined');
-  const priceExtra = document.getElementById('price-ai');
-
-  if (priceStart) priceStart.textContent = '590';
-  if (pricePlus) pricePlus.textContent = '890';
-  if (priceExtra) priceExtra.textContent = '1.550';
 
   // 2. Active AI Flow Stepper Animation
   const flowSteps = document.querySelectorAll('.flow-steps .flow-step');
