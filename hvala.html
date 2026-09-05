@@ -50,12 +50,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=86.0.0">
-  <link rel="icon" type="image/png" href="favicon.png?v=86.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=86.0.0">
-  <link rel="preload" as="style" href="style.css?v=86.0.0">
-  <link rel="stylesheet" href="style.css?v=86.0.0" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=86.0.0"></noscript>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=87.0.0">
+  <link rel="icon" type="image/png" href="favicon.png?v=87.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=87.0.0">
+  <link rel="preload" as="style" href="style.css?v=87.0.0">
+  <link rel="stylesheet" href="style.css?v=87.0.0" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=87.0.0"></noscript>
 
   <style>
     /* Thank You Page Luxury Dark Theme */
@@ -531,6 +531,19 @@
   <script>
     // Read and render booking summary if passed from contact form
     document.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.gtag === 'function') {
+        try {
+          window.gtag('event', 'conversion', {
+            'send_to': 'AW-18423241784'
+          });
+          window.gtag('event', 'generate_lead', {
+            'event_category': 'Engagement',
+            'event_label': 'Thank You Page View',
+            'value': 1
+          });
+        } catch (e) {}
+      }
+
       try {
         const raw = sessionStorage.getItem('algor_booking_summary');
         if (raw) {
@@ -562,6 +575,6 @@
     });
   </script>
 
-  <script defer src="script.js?v=86.0.0"></script>
+  <script defer src="script.js?v=87.0.0"></script>
 </body>
 </html>

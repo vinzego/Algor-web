@@ -512,6 +512,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const appointmentDetails = `${selectedMeetingType} • ${formattedDate} u ${selectedContactSlot}h`;
 
+        if (typeof window.gtag === 'function') {
+          try {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'Contact',
+              event_label: selectedPackageName || 'Sastanak / Upit',
+              value: 1
+            });
+          } catch (e) {}
+        }
+
         try {
           await fetch('/api/contact', {
             method: 'POST',
@@ -591,6 +601,16 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
           sessionStorage.setItem('algor_booking_summary', JSON.stringify(bookingSummaryData));
         } catch (e) {}
+
+        if (typeof window.gtag === 'function') {
+          try {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'Contact',
+              event_label: selectedPackageName || 'Upit bez termina',
+              value: 1
+            });
+          } catch (e) {}
+        }
 
         try {
           await fetch('/api/contact', {
