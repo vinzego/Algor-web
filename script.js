@@ -63,20 +63,121 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================
-  // Cookiebot Integration & Cookie Preferences Trigger
+  // Algor Studio Custom GDPR Cookie Consent Engine & Google Consent Mode v2
   // ========================================================
   const initCookieConsent = () => {
-    // Cookiebot automatically injects and manages the GDPR consent dialog.
-    // Connect any footer links or buttons to open Cookiebot settings on demand.
+    let banner = document.getElementById('algor-cookie-banner');
+    if (!banner) {
+      banner = document.createElement('div');
+      banner.id = 'algor-cookie-banner';
+      banner.className = 'algor-cookie-banner';
+      banner.setAttribute('role', 'dialog');
+      banner.setAttribute('aria-modal', 'true');
+      banner.setAttribute('aria-label', 'Postavke kolačića i privatnost');
+      
+      banner.innerHTML = `
+        <div class="cookie-banner-inner">
+          <div class="cookie-banner-content">
+            <div class="cookie-banner-badge">
+              <span class="cookie-icon">🍪</span>
+              <span>Privatnost &amp; Kolačići</span>
+            </div>
+            <p class="cookie-banner-text">
+              Ova web stranica koristi kolačiće i srodne tehnologije za optimizaciju performansi, analitiku posjećenosti i unaprjeđenje korisničkog iskustva. Klikom na „Prihvati sve” pristajete na obradu podataka u navedene svrhe. Saznajte više u našoj <a href="/kolacici" class="cookie-link">Politici kolačića</a>.
+            </p>
+          </div>
+          <div class="cookie-banner-actions">
+            <button type="button" id="cookie-btn-accept" class="cookie-btn cookie-btn-accept">Prihvati sve</button>
+            <button type="button" id="cookie-btn-necessary" class="cookie-btn cookie-btn-necessary">Samo nužni</button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(banner);
+    }
+
+    const setCookie = (name, value, days) => {
+      let expires = "";
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+    };
+
+    const getCookie = (name) => {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    };
+
+    const applyConsent = (type) => {
+      localStorage.setItem('algor_cookie_consent', type);
+      setCookie('algor_cookie_consent', type, 365);
+      window.dispatchEvent(new CustomEvent('algorCookieConsent', { detail: { consent: type } }));
+      if (typeof window.gtag === 'function') {
+        if (type === 'all') {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'granted',
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+          });
+        } else {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        }
+      }
+    };
+
+    const showBanner = () => {
+      setTimeout(() => {
+        banner.classList.add('visible');
+      }, 600);
+    };
+
+    const hideBanner = () => {
+      banner.classList.remove('visible');
+    };
+
+    const consent = localStorage.getItem('algor_cookie_consent') || getCookie('algor_cookie_consent');
+    if (!consent) {
+      showBanner();
+    } else {
+      applyConsent(consent);
+    }
+
+    const btnAccept = document.getElementById('cookie-btn-accept');
+    const btnNecessary = document.getElementById('cookie-btn-necessary');
+
+    if (btnAccept) {
+      btnAccept.addEventListener('click', () => {
+        applyConsent('all');
+        hideBanner();
+      });
+    }
+
+    if (btnNecessary) {
+      btnNecessary.addEventListener('click', () => {
+        applyConsent('necessary');
+        hideBanner();
+      });
+    }
+
     const triggerLinks = document.querySelectorAll('a[href="#cookie-settings"], .open-cookie-banner');
     triggerLinks.forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        if (typeof window.Cookiebot !== 'undefined' && typeof window.Cookiebot.renew === 'function') {
-          window.Cookiebot.renew();
-        } else if (typeof window.CookieConsent !== 'undefined' && typeof window.CookieConsent.renew === 'function') {
-          window.CookieConsent.renew();
-        }
+        showBanner();
       });
     });
   };
