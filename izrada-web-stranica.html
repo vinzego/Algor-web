@@ -1063,248 +1063,114 @@
     }
 
     /* =========================================================
-       CONTINUOUS HAND-DRAWN ROADMAP LINE THROUGH ALL CARDS
+       PROCESS SECTION (KAKO RADIMO - CLEAN 2x2 MODERN GRID)
        ========================================================= */
-    .zigzag-process-container {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
+    .web-process-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
       width: 100%;
-      max-width: 1120px;
-      margin: 60px auto 0 auto;
+      max-width: 1200px;
+      margin: 48px auto 0 auto;
       box-sizing: border-box;
-      position: relative;
     }
 
-    .process-drawn-line-svg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      overflow: visible;
-    }
-
-    .zigzag-step-row {
-      display: flex;
-      width: 100%;
-      position: relative;
-      z-index: 2;
-    }
-
-    .zigzag-step-row.align-left {
-      justify-content: flex-start;
-    }
-
-    .zigzag-step-row.align-right {
-      justify-content: flex-end;
-    }
-
-    .zigzag-card {
-      width: 54%;
+    .web-process-card {
       background: #ffffff;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 28px;
-      padding: 38px 40px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e2e8f0;
+      border-radius: 22px;
+      padding: 36px 32px;
       display: flex;
       flex-direction: column;
       gap: 16px;
-      box-sizing: border-box;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       position: relative;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+      box-sizing: border-box;
     }
 
-    .zigzag-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 24px 60px rgba(41, 173, 255, 0.12);
-      border-color: rgba(41, 173, 255, 0.6);
+    .web-process-card:hover {
+      transform: translateY(-4px);
+      border-color: #0284c7;
+      box-shadow: 0 16px 40px rgba(2, 132, 199, 0.08);
     }
 
-    /* Korak 01: Brand Blue #29ADFF */
-    .zigzag-blue-card {
-      background: #29ADFF !important;
-      border: 1.5px solid rgba(0, 0, 0, 0.1) !important;
-      color: #06070a !important;
-      box-shadow: 0 16px 45px rgba(41, 173, 255, 0.35), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
-    }
-
-    .zigzag-blue-card h4 {
-      color: #06070a !important;
-      font-weight: 850 !important;
-    }
-
-    .zigzag-blue-card p {
-      color: #082136 !important;
-      font-weight: 500 !important;
-    }
-
-    .zigzag-blue-card .zigzag-step-badge {
-      background: #ffffff !important;
-      color: #0284c7 !important;
-      border-color: rgba(0, 0, 0, 0.12) !important;
-    }
-
-    .zigzag-blue-card .zigzag-mini-tag {
-      background: rgba(255, 255, 255, 0.5) !important;
-      color: #06070a !important;
-      border: 1px solid rgba(255, 255, 255, 0.7) !important;
-      font-weight: 700 !important;
-      backdrop-filter: blur(4px);
-    }
-
-    .zigzag-blue-card .card-line-anchor-node {
-      background: #06070a !important;
-      border-color: #ffffff !important;
-    }
-
-    /* Korak 02: Warm Golden Yellow #FFD166 */
-    .zigzag-yellow-card {
-      background: #FFD166 !important;
-      border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
-      color: #1a1000 !important;
-      box-shadow: 0 16px 45px rgba(255, 209, 102, 0.3), 0 4px 12px rgba(0, 0, 0, 0.04) !important;
-    }
-
-    .zigzag-yellow-card h4 {
-      color: #1a1000 !important;
-      font-weight: 850 !important;
-    }
-
-    .zigzag-yellow-card p {
-      color: #3b2800 !important;
-      font-weight: 500 !important;
-    }
-
-    .zigzag-yellow-card .zigzag-step-badge {
-      background: #ffffff !important;
-      color: #1a1000 !important;
-      border-color: rgba(0, 0, 0, 0.15) !important;
-    }
-
-    .zigzag-yellow-card .zigzag-mini-tag {
-      background: rgba(0, 0, 0, 0.08) !important;
-      color: #1a1000 !important;
-      border: 1px solid rgba(0, 0, 0, 0.12) !important;
-      font-weight: 700 !important;
-    }
-
-    .zigzag-yellow-card .card-line-anchor-node {
-      background: #1a1000 !important;
-      border-color: #ffd166 !important;
-    }
-
-    /* Korak 03: Obsidian Black #0D1017 */
-    .zigzag-black-card {
-      background: radial-gradient(circle at 85% 20%, rgba(41, 173, 255, 0.16) 0%, transparent 60%), #0D1017 !important;
-      border: 1.5px solid rgba(41, 173, 255, 0.38) !important;
-      color: #ffffff !important;
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.35) !important;
-    }
-
-    .zigzag-black-card h4 {
-      color: #ffffff !important;
-      font-weight: 850 !important;
-    }
-
-    .zigzag-black-card p {
-      color: #cbd5e1 !important;
-    }
-
-    .zigzag-black-card .zigzag-step-badge {
-      background: rgba(41, 173, 255, 0.16) !important;
-      color: #29ADFF !important;
-      border-color: rgba(41, 173, 255, 0.4) !important;
-    }
-
-    .zigzag-black-card .zigzag-mini-tag {
-      background: rgba(255, 255, 255, 0.08) !important;
-      color: #cbd5e1 !important;
-      border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    }
-
-    .zigzag-black-card .card-line-anchor-node {
-      background: #0f172a !important;
-      border-color: #29ADFF !important;
-    }
-
-    .card-line-anchor-node {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: #0f172a;
-      border: 3.5px solid #29ADFF;
-      box-shadow: 0 0 0 6px rgba(41, 173, 255, 0.2), 0 4px 10px rgba(0, 0, 0, 0.2);
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 3;
-    }
-
-    .zigzag-step-row.align-left .card-line-anchor-node {
-      right: -12px;
-    }
-
-    .zigzag-step-row.align-right .card-line-anchor-node {
-      left: -12px;
-    }
-
-    .zigzag-card-header {
+    .web-process-card-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 4px;
     }
 
-    .zigzag-step-badge {
-      font-family: "Geist Mono", monospace;
-      font-size: 12px;
-      font-weight: 800;
-      color: #29ADFF;
-      background: rgba(41, 173, 255, 0.1);
-      border: 1px solid rgba(41, 173, 255, 0.3);
-      padding: 6px 14px;
-      border-radius: 999px;
+    .web-process-step-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #0284c7;
+      background: rgba(2, 132, 199, 0.08);
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      padding: 4px 12px;
+      border-radius: 999px;
     }
 
-    .zigzag-step-icon {
-      font-size: 26px;
+    .web-process-step-pill .step-dot {
+      font-size: 8px;
+      color: #0284c7;
     }
 
-    .zigzag-card h4 {
-      font-size: 22px;
+    .web-process-icon {
+      font-size: 24px;
+      line-height: 1;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+    }
+
+    .web-process-title {
+      font-size: 21px;
       font-weight: 800;
       color: #0f172a;
+      letter-spacing: -0.5px;
       margin: 0;
-      letter-spacing: -0.4px;
+      line-height: 1.25;
     }
 
-    .zigzag-card p {
-      font-size: 14.5px;
-      color: #64748b;
+    .web-process-desc {
+      font-size: 15px;
+      color: #475569;
       line-height: 1.6;
       margin: 0;
+      flex-grow: 1;
     }
 
-    .zigzag-card-tags {
+    .web-process-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 4px;
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px solid #f1f5f9;
     }
 
-    .zigzag-mini-tag {
-      font-family: "Geist Mono", monospace;
+    .web-process-tag {
+      font-family: 'Geist Mono', monospace;
       font-size: 11.5px;
       font-weight: 600;
       background: #f8fafc;
-      color: #475569;
+      color: #334155;
       border: 1px solid #e2e8f0;
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 6px;
     }
 
@@ -1489,61 +1355,14 @@
         border-radius: 24px !important;
         box-sizing: border-box !important;
       }
-      .zigzag-process-container {
-        gap: 52px;
-        position: relative;
-        padding-left: 0;
-        margin: 40px auto 0 auto;
+      .web-process-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        margin-top: 32px !important;
       }
-      .zigzag-process-container::before {
-        display: none !important;
-      }
-      .process-drawn-line-svg {
-        display: block !important;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1 !important;
-        overflow: visible;
-      }
-      .zigzag-step-row {
-        width: 100%;
-        display: flex;
-        position: relative;
-        z-index: 2 !important;
-      }
-      .zigzag-step-row.align-left {
-        justify-content: flex-start !important;
-      }
-      .zigzag-step-row.align-right {
-        justify-content: flex-end !important;
-      }
-      .zigzag-card {
-        width: 80% !important;
-        padding: 28px 20px;
-        position: relative;
-        z-index: 2 !important;
-      }
-      .card-line-anchor-node {
-        display: block !important;
-        position: absolute;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        z-index: 3 !important;
-      }
-      .zigzag-step-row.align-left .card-line-anchor-node {
-        right: -11px !important;
-        left: auto !important;
-      }
-      .zigzag-step-row.align-right .card-line-anchor-node {
-        left: -11px !important;
-        right: auto !important;
+      .web-process-card {
+        padding: 26px 20px !important;
+        border-radius: 18px !important;
       }
       .standards-grid-8col {
         grid-template-columns: 1fr;
@@ -2101,109 +1920,89 @@
       <span class="section-badge">// KAKO RADIMO</span>
       <h2 class="info-title">Jednostavan proces od ideje do lansiranja</h2>
       <p class="info-subtitle">
-        Kontinuirani proces rada koji prolazi kroz 4 ključne faze – bez prekida i kašnjenja.
+        Jasno strukturiran proces rada u 4 ključne faze – transparentno, profesionalno i bez kašnjenja.
       </p>
     </div>
 
-    <div class="zigzag-process-container">
+    <div class="web-process-grid">
       
-      <!-- Continuous Flowing SVG Line Directly Connecting All Anchor Dots -->
-      <svg id="processConnectingSvg" class="process-drawn-line-svg" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="drawnLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#29ADFF" stop-opacity="0.9" />
-            <stop offset="50%" stop-color="#0284c7" stop-opacity="0.95" />
-            <stop offset="100%" stop-color="#29ADFF" stop-opacity="0.9" />
-          </linearGradient>
-          <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3.5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        
-        <!-- Dynamic Curved Path Connecting Dot 1 -> Dot 2 -> Dot 3 -> Dot 4 -->
-        <path id="processConnectingPath" 
-              d="M 540,110 C 780,110 700,260 460,370 C 220,480 300,630 540,630 C 780,630 700,780 460,890"
-              fill="none" 
-              stroke="url(#drawnLineGrad)" 
-              stroke-width="3.5" 
-              stroke-dasharray="10 8" 
-              stroke-linecap="round"
-              filter="url(#glowEffect)" />
-      </svg>
-
-      <!-- KORAK 01: LIJEVO (Brand Blue #29ADFF) -->
-      <div class="zigzag-step-row align-left">
-        <div class="zigzag-card zigzag-blue-card">
-          <span class="card-line-anchor-node"></span>
-          <div class="zigzag-card-header">
-            <span class="zigzag-step-badge"><span>●</span> KORAK 01</span>
-            <span class="zigzag-step-icon">🎯</span>
+      <!-- FAZA 01 -->
+      <div class="web-process-card">
+        <div class="web-process-card-top">
+          <div class="web-process-step-pill">
+            <span class="step-dot">●</span>
+            <span>FAZA 01</span>
           </div>
-          <h4>01. Strategija &amp; Arhitektura</h4>
-          <p>Analiziramo vašu branšu, ciljanu publiku i definiramo jasnu strukturu stranice koja vodi posjetitelja do upita ili kupnje. Kreiramo wireframe skicu prije dizajna.</p>
-          <div class="zigzag-card-tags">
-            <span class="zigzag-mini-tag">Analiza konkurencije</span>
-            <span class="zigzag-mini-tag">Wireframe arhitektura</span>
-            <span class="zigzag-mini-tag">Plan konverzije</span>
-          </div>
+          <div class="web-process-icon">🎯</div>
+        </div>
+        <h3 class="web-process-title">01. Strategija &amp; Arhitektura</h3>
+        <p class="web-process-desc">
+          Analiziramo vašu branšu, ciljanu publiku i definiramo jasnu strukturu stranice koja vodi posjetitelja do upita ili kupnje. Kreiramo wireframe skicu prije početka dizajna.
+        </p>
+        <div class="web-process-tags">
+          <span class="web-process-tag">Analiza konkurencije</span>
+          <span class="web-process-tag">Wireframe arhitektura</span>
+          <span class="web-process-tag">Plan konverzije</span>
         </div>
       </div>
 
-      <!-- KORAK 02: DESNO (Warm Golden Yellow #FFD166) -->
-      <div class="zigzag-step-row align-right">
-        <div class="zigzag-card zigzag-yellow-card">
-          <span class="card-line-anchor-node"></span>
-          <div class="zigzag-card-header">
-            <span class="zigzag-step-badge"><span>●</span> KORAK 02</span>
-            <span class="zigzag-step-icon">🎨</span>
+      <!-- FAZA 02 -->
+      <div class="web-process-card">
+        <div class="web-process-card-top">
+          <div class="web-process-step-pill">
+            <span class="step-dot">●</span>
+            <span>FAZA 02</span>
           </div>
-          <h4>02. UI / UX Vizual &amp; Prototip</h4>
-          <p>Kreiramo moderan, estetski i pregledan vizualni identitet weba prilagođen vašem brendu s fokusom na savršeno mobilno iskustvo i privlačne interakcije.</p>
-          <div class="zigzag-card-tags">
-            <span class="zigzag-mini-tag">Figma / Dizajn sustav</span>
-            <span class="zigzag-mini-tag">Mobile-First UI</span>
-            <span class="zigzag-mini-tag">Odobrenje klijenta</span>
-          </div>
+          <div class="web-process-icon">🎨</div>
+        </div>
+        <h3 class="web-process-title">02. UI / UX Vizual &amp; Prototip</h3>
+        <p class="web-process-desc">
+          Kreiramo moderan, estetski i pregledan vizualni identitet weba prilagođen vašem brendu s fokusom na savršeno mobilno iskustvo i privlačne interakcije.
+        </p>
+        <div class="web-process-tags">
+          <span class="web-process-tag">Figma dizajn</span>
+          <span class="web-process-tag">Mobile-First UI</span>
+          <span class="web-process-tag">Odobrenje klijenta</span>
         </div>
       </div>
 
-      <!-- KORAK 03: LIJEVO (Obsidian Black #0D1017) -->
-      <div class="zigzag-step-row align-left">
-        <div class="zigzag-card zigzag-black-card">
-          <span class="card-line-anchor-node"></span>
-          <div class="zigzag-card-header">
-            <span class="zigzag-step-badge"><span>●</span> KORAK 03</span>
-            <span class="zigzag-step-icon">⚡</span>
+      <!-- FAZA 03 -->
+      <div class="web-process-card">
+        <div class="web-process-card-top">
+          <div class="web-process-step-pill">
+            <span class="step-dot">●</span>
+            <span>FAZA 03</span>
           </div>
-          <h4>03. Custom Razvoj &amp; Optimizacija Brzine</h4>
-          <p>Programiramo stranicu, optimiziramo sve slike i video materijale (WebP/AVIF), implementiramo brzi kod i testiramo brzinu učitavanja na svim uređajima.</p>
-          <div class="zigzag-card-tags">
-            <span class="zigzag-mini-tag">Čisti HTML/CSS/JS</span>
-            <span class="zigzag-mini-tag">PageSpeed 95+ test</span>
-            <span class="zigzag-mini-tag">Responzivno testiranje</span>
-          </div>
+          <div class="web-process-icon">⚡</div>
+        </div>
+        <h3 class="web-process-title">03. Custom Razvoj &amp; Optimizacija</h3>
+        <p class="web-process-desc">
+          Programiramo stranicu, optimiziramo sve slike i video materijale (WebP/AVIF), implementiramo brzi kod i testiramo brzinu učitavanja na svim uređajima.
+        </p>
+        <div class="web-process-tags">
+          <span class="web-process-tag">Čisti HTML/CSS/JS</span>
+          <span class="web-process-tag">PageSpeed 95+</span>
+          <span class="web-process-tag">Responzivno testiranje</span>
         </div>
       </div>
 
-      <!-- KORAK 04: DESNO -->
-      <div class="zigzag-step-row align-right">
-        <div class="zigzag-card">
-          <span class="card-line-anchor-node"></span>
-          <div class="zigzag-card-header">
-            <span class="zigzag-step-badge"><span>●</span> KORAK 04</span>
-            <span class="zigzag-step-icon">🚀</span>
+      <!-- FAZA 04 -->
+      <div class="web-process-card">
+        <div class="web-process-card-top">
+          <div class="web-process-step-pill">
+            <span class="step-dot">●</span>
+            <span>FAZA 04</span>
           </div>
-          <h4>04. Lansiranje, SEO &amp; Prijava na Google</h4>
-          <p>Povezujemo vašu domenu, aktiviramo SSL sigurnosni certifikat, prijavljujemo sitemap na Google Search Console i predajemo vam sve administrativne pristupe.</p>
-          <div class="zigzag-card-tags">
-            <span class="zigzag-mini-tag">Google Search Console</span>
-            <span class="zigzag-mini-tag">SSL Sigurnost</span>
-            <span class="zigzag-mini-tag">Podrška 30-60 dana</span>
-          </div>
+          <div class="web-process-icon">🚀</div>
+        </div>
+        <h3 class="web-process-title">04. Lansiranje, SEO &amp; Prijava</h3>
+        <p class="web-process-desc">
+          Povezujemo vašu domenu, aktiviramo SSL sigurnosni certifikat, prijavljujemo sitemap na Google Search Console i predajemo vam sve administrativne pristupe.
+        </p>
+        <div class="web-process-tags">
+          <span class="web-process-tag">Google Search Console</span>
+          <span class="web-process-tag">SSL Sigurnost</span>
+          <span class="web-process-tag">Podrška 30 dana</span>
         </div>
       </div>
 
