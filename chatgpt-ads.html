@@ -742,118 +742,204 @@
     }
 
     /* FAQ Details Disclosure Styling */
-    .faq-wrapper-dark {
+    /* =========================================================
+       DARK BOTTOM WRAPPER: FAQ & CTA (Matching Footer #050508)
+       ========================================================= */
+    .chatgpt-dark-bottom-wrapper {
+      width: 100%;
+      background-color: #050508 !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 90px 0 20px 0;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .chatgpt-dark-inner-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      box-sizing: border-box;
+    }
+
+    .chatgpt-dark-faq-section {
+      padding-bottom: 70px;
+    }
+
+    .chatgpt-dark-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(41, 173, 255, 0.16);
+      color: #29ADFF;
+      border: 1px solid rgba(41, 173, 255, 0.4);
+      border-radius: 999px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .chatgpt-dark-heading {
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 850;
+      color: #ffffff !important;
+      letter-spacing: -1.2px;
+      line-height: 1.15;
+      margin: 0 0 16px 0;
+    }
+
+    .chatgpt-dark-subtext {
+      font-size: 16.5px;
+      color: #94a3b8 !important;
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 700px;
+    }
+
+    .faq-dark-accordion-group {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
       max-width: 860px;
-      margin: 0 auto 80px auto;
+      margin: 0 auto;
     }
 
-    #chatgpt-faq,
-    .chatgpt-faq-section {
-      background-color: transparent !important;
-      background: transparent !important;
-    }
-
-    #chatgpt-faq .section-main-heading,
-    .chatgpt-faq-section .section-main-heading {
-      color: #0f172a !important;
-    }
-
-    .faq-dark-disclosure {
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin-bottom: 14px;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-    }
-
-    .faq-dark-disclosure[open] {
-      border-color: #0284c7 !important;
-      background: #ffffff !important;
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);
-    }
-
-    .faq-dark-disclosure summary {
-      font-size: 17px;
-      font-weight: 700;
-      color: #0f172a !important;
+    .chatgpt-dark-disclosure {
+      background: rgba(255, 255, 255, 0.035) !important;
+      border: 1px solid rgba(255, 255, 255, 0.09) !important;
+      border-radius: 16px !important;
+      padding: 22px 26px !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
       cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .chatgpt-dark-disclosure:hover,
+    .chatgpt-dark-disclosure[open] {
+      background: rgba(41, 173, 255, 0.065) !important;
+      border-color: rgba(41, 173, 255, 0.55) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(41, 173, 255, 0.12) !important;
+    }
+
+    .chatgpt-dark-summary {
+      font-weight: 750 !important;
+      font-size: 17.5px !important;
+      color: #ffffff !important;
+      letter-spacing: -0.3px;
+      outline: none;
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      user-select: none;
     }
 
-    .faq-dark-disclosure summary::-webkit-details-marker {
+    .chatgpt-dark-summary::-webkit-details-marker {
       display: none;
     }
 
-    .faq-dark-disclosure summary::after {
+    .chatgpt-dark-summary::after {
       content: "+";
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 400;
-      color: #64748b !important;
-      transition: transform 0.2s ease;
+      color: #29ADFF;
+      transition: transform 0.25s ease;
     }
 
-    .faq-dark-disclosure[open] summary::after {
+    .chatgpt-dark-disclosure[open] .chatgpt-dark-summary::after {
       content: "−";
-      color: #0284c7 !important;
+      transform: rotate(180deg);
     }
 
-    .faq-dark-disclosure p {
-      font-size: 15px;
-      color: #475569 !important;
-      line-height: 1.65;
-      margin: 14px 0 0 0;
-      padding-top: 14px;
-      border-top: 1px solid #f1f5f9 !important;
+    .chatgpt-dark-answer {
+      font-size: 15px !important;
+      color: #cbd5e1 !important;
+      line-height: 1.65 !important;
+      margin: 16px 0 0 0 !important;
+      padding-top: 14px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     }
 
-    /* Big Conversion Call-to-Action Card (Light Theme matching rest of page) */
-    .final-cta-luxury-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+    .chatgpt-dark-answer strong {
+      color: #ffffff !important;
+      font-weight: 700;
+    }
+
+    /* Final CTA Dark Card */
+    .chatgpt-dark-cta-section {
+      padding: 20px 0 60px 0;
+    }
+
+    .final-cta-dark-card {
+      background: radial-gradient(circle at top center, rgba(41, 173, 255, 0.1) 0%, rgba(13, 15, 20, 0.98) 70%), #0d0f14;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 28px;
-      padding: 64px 32px;
+      padding: 68px 36px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-      margin-bottom: 90px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(41, 173, 255, 0.12);
+      max-width: 960px;
+      margin: 0 auto;
     }
 
-    .cta-card-glow {
+    .cta-dark-glow {
       position: absolute;
-      top: -50px;
+      top: -60px;
       left: 50%;
       transform: translateX(-50%);
-      width: 450px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(41, 173, 255, 0.12) 0%, rgba(16, 185, 129, 0.06) 50%, transparent 70%);
-      filter: blur(60px);
+      width: 550px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(41, 173, 255, 0.25) 0%, rgba(16, 185, 129, 0.12) 45%, transparent 70%);
+      filter: blur(75px);
       pointer-events: none;
     }
 
-    .cta-card-title {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800;
-      color: #0f172a;
+    .cta-dark-title {
+      font-size: clamp(30px, 4.5vw, 46px);
+      font-weight: 850;
+      color: #ffffff;
       letter-spacing: -1.2px;
       margin: 0 0 16px 0;
       position: relative;
       z-index: 1;
     }
 
-    .cta-card-subtitle {
+    .cta-dark-subtitle {
       font-size: 17px;
-      color: #475569;
-      max-width: 650px;
-      margin: 0 auto 32px auto;
-      line-height: 1.6;
+      color: #94a3b8;
+      max-width: 680px;
+      margin: 0 auto 36px auto;
+      line-height: 1.65;
       position: relative;
       z-index: 1;
+    }
+
+    .btn-chatgpt-primary-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: #ffffff;
+      color: #050508;
+      font-weight: 800;
+      font-size: 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15), 0 0 25px rgba(41, 173, 255, 0.25);
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-chatgpt-primary-dark:hover {
+      transform: translateY(-2px);
+      background: #29ADFF;
+      color: #ffffff;
+      box-shadow: 0 15px 40px rgba(41, 173, 255, 0.4);
     }
 
     /* Responsive Queries */
@@ -1222,62 +1308,76 @@
       </div>
     </section>
 
+  </main>
+
+  <!-- DARK BOTTOM ZONE (FAQ + CTA + FOOTER in matching #050508) -->
+  <div class="chatgpt-dark-bottom-wrapper">
+    
     <!-- 8. SECTION: FAQ ACCORDION -->
-    <section id="chatgpt-faq" class="content-block-section chatgpt-faq-section">
-      <div class="section-head-center">
-        <span class="section-badge-mono">// 05 ČESTA PITANJA</span>
-        <h2 class="section-main-heading">Sve što trebate znati o ChatGPT oglašavanju</h2>
-      </div>
+    <section id="chatgpt-faq" class="chatgpt-dark-faq-section">
+      <div class="chatgpt-dark-inner-container">
+        <div class="section-head-center">
+          <span class="chatgpt-dark-badge">// 05 ČESTA PITANJA</span>
+          <h2 class="chatgpt-dark-heading">Sve što trebate znati o ChatGPT oglašavanju</h2>
+          <p class="chatgpt-dark-subtext">
+            Odgovori na ključna pitanja o novom kanalu akvizicije, publici i postavljanju kampanja.
+          </p>
+        </div>
 
-      <div class="faq-wrapper-dark">
-        <details class="faq-dark-disclosure" name="chatgpt-faq" open>
-          <summary>Kada je ChatGPT Ads službeno lansiran u Europi?</summary>
-          <p>OpenAI je službeno proširio mogućnost oglašavanja i sponzoriranih rezultata u ChatGPT-u na europsko tržište u <strong>kolovozu 2026. godine</strong>. To znači da tvrtke u Hrvatskoj i EU sada mogu precizno ciljati lokalnu i međunarodnu publiku unutar AI razgovora.</p>
-        </details>
+        <div class="faq-dark-accordion-group">
+          <details class="chatgpt-dark-disclosure" name="chatgpt-faq" open>
+            <summary class="chatgpt-dark-summary">Kada je ChatGPT Ads službeno lansiran u Europi?</summary>
+            <p class="chatgpt-dark-answer">OpenAI je službeno proširio mogućnost oglašavanja i sponzoriranih rezultata u ChatGPT-u na europsko tržište u <strong>kolovozu 2026. godine</strong>. To znači da tvrtke u Hrvatskoj i EU sada mogu precizno ciljati lokalnu i međunarodnu publiku unutar AI razgovora.</p>
+          </details>
 
-        <details class="faq-dark-disclosure" name="chatgpt-faq">
-          <summary>Po čemu se ChatGPT Ads razlikuje od klasičnih Google oglasa?</summary>
-          <p>Dok Google Ads prikazuje niz sponzoriranih linkova koje korisnik mora sam otvarati i uspoređivati, ChatGPT pruža <strong>direktan i kontekstualno sintetiziran odgovor</strong>. Korisnici percipiraju preporuku s puno višim stupnjem povjerenja, što rezultira većom stopom konverzije.</p>
-        </details>
+          <details class="chatgpt-dark-disclosure" name="chatgpt-faq">
+            <summary class="chatgpt-dark-summary">Po čemu se ChatGPT Ads razlikuje od klasičnih Google oglasa?</summary>
+            <p class="chatgpt-dark-answer">Dok Google Ads prikazuje niz sponzoriranih linkova koje korisnik mora sam otvarati i uspoređivati, ChatGPT pruža <strong>direktan i kontekstualno sintetiziran odgovor</strong>. Korisnici percipiraju preporuku s puno višim stupnjem povjerenja, što rezultira većom stopom konverzije.</p>
+          </details>
 
-        <details class="faq-dark-disclosure" name="chatgpt-faq">
-          <summary>Tko sve vidi oglase na ChatGPT-u?</summary>
-          <p>Oglasi se prikazuju korisnicima na Free i Go planovima pretraživanja kada njihov upit ima jasnu namjeru kupnje, usporedbe ili traženja usluge. OpenAI striktno štiti privatnost korisnika – sadržaj privatnih razgovora se ne dijeli s oglašivačima.</p>
-        </details>
+          <details class="chatgpt-dark-disclosure" name="chatgpt-faq">
+            <summary class="chatgpt-dark-summary">Tko sve vidi oglase na ChatGPT-u?</summary>
+            <p class="chatgpt-dark-answer">Oglasi se prikazuju korisnicima na Free i Go planovima pretraživanja kada njihov upit ima jasnu namjeru kupnje, usporedbe ili traženja usluge. OpenAI striktno štiti privatnost korisnika – sadržaj privatnih razgovora se ne dijeli s oglašivačima.</p>
+          </details>
 
-        <details class="faq-dark-disclosure" name="chatgpt-faq">
-          <summary>Je li ChatGPT Ads dio vaših standardnih paketa?</summary>
-          <p>Da! ChatGPT &amp; AI Search oglašavanje standardno je ugrađeno u naš <strong>Pro paket (890 €/mj.)</strong> i <strong>Ultra paket (1.390 €/mj.)</strong> uz Meta i Google Ads, foto/video produkciju i AI booking asistente.</p>
-        </details>
+          <details class="chatgpt-dark-disclosure" name="chatgpt-faq">
+            <summary class="chatgpt-dark-summary">Je li ChatGPT Ads dio vaših standardnih paketa?</summary>
+            <p class="chatgpt-dark-answer">Da! ChatGPT &amp; AI Search oglašavanje standardno je ugrađeno u naš <strong>Pro paket (890 €/mj.)</strong> i <strong>Ultra paket (1.390 €/mj.)</strong> uz Meta i Google Ads, foto/video produkciju i AI booking asistente.</p>
+          </details>
 
-        <details class="faq-dark-disclosure" name="chatgpt-faq">
-          <summary>Kako se mjeri uspjeh ChatGPT Ads kampanja?</summary>
-          <p>Pratimo točan broj posjetitelja s ChatGPT-a, stopu konverzije na landing stranici, broj prikupljenih upita te stvarni povrat ulaganja (ROAS) kroz naš centralni analitički sustav.</p>
-        </details>
+          <details class="chatgpt-dark-disclosure" name="chatgpt-faq">
+            <summary class="chatgpt-dark-summary">Kako se mjeri uspjeh ChatGPT Ads kampanja?</summary>
+            <p class="chatgpt-dark-answer">Pratimo točan broj posjetitelja s ChatGPT-a, stopu konverzije na landing stranici, broj prikupljenih upita te stvarni povrat ulaganja (ROAS) kroz naš centralni analitički sustav.</p>
+          </details>
 
-        <details class="faq-dark-disclosure" name="chatgpt-faq">
-          <summary>Koliko brzo možemo pokrenuti prvu kampanju?</summary>
-          <p>Nakon uvodnog razgovora i odobrenja strategije, postavke kampanje, mapiranje upita i usklađivanje landing stranice obično su spremni za lansiranje unutar 7 radnih dana.</p>
-        </details>
+          <details class="chatgpt-dark-disclosure" name="chatgpt-faq">
+            <summary class="chatgpt-dark-summary">Koliko brzo možemo pokrenuti prvu kampanju?</summary>
+            <p class="chatgpt-dark-answer">Nakon uvodnog razgovora i odobrenja strategije, postavke kampanje, mapiranje upita i usklađivanje landing stranice obično su spremni za lansiranje unutar 7 radnih dana.</p>
+          </details>
+        </div>
       </div>
     </section>
 
     <!-- 9. SECTION: FINAL CONVERSION CTA -->
-    <div class="final-cta-luxury-card">
-      <div class="cta-card-glow"></div>
-      <h2 class="cta-card-title">Iskoristite prednost prvih na tržištu</h2>
-      <p class="cta-card-subtitle">
-        Osigurajte prepoznatljivost vašeg brenda u AI pretragama prije nego što vaša konkurencija shvati potencijal nove platforme.
-      </p>
-      <div class="chatgpt-cta-btns" style="margin-bottom: 0;">
-        <a href="/kontakt?usluga=chatgpt-ads" class="btn-chatgpt-primary">
-          <span>Zakažite besplatni audit</span>
-          <span>↗</span>
-        </a>
+    <section class="chatgpt-dark-cta-section">
+      <div class="chatgpt-dark-inner-container">
+        <div class="final-cta-dark-card">
+          <div class="cta-dark-glow"></div>
+          <h2 class="cta-dark-title">Iskoristite prednost prvih na tržištu</h2>
+          <p class="cta-dark-subtitle">
+            Osigurajte prepoznatljivost vašeg brenda u AI pretragama prije nego što vaša konkurencija shvati potencijal nove platforme.
+          </p>
+          <div class="chatgpt-cta-btns" style="margin-bottom: 0;">
+            <a href="/kontakt?usluga=chatgpt-ads" class="btn-chatgpt-primary-dark">
+              <span>Zakažite besplatni audit</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </main>
+  </div>
 
   <!-- 10. FOOTER (Edge to Edge Full Width) -->
   <div class="footer-card-wrapper">
