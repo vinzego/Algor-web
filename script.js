@@ -841,13 +841,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const processCards = document.querySelectorAll('#process [data-step-card]');
   const processIndicators = document.querySelectorAll('#process [data-step]');
   if (processCards.length > 0 && processIndicators.length > 0) {
-    window.addEventListener('scroll', () => {
-      const windowCenter = window.innerHeight / 2;
+    const updateProcessStep = () => {
+      const windowCenter = window.innerHeight * 0.45;
       let activeStep = '1';
       
       processCards.forEach(card => {
         const rect = card.getBoundingClientRect();
-        if (rect.top <= windowCenter && rect.bottom >= 100) {
+        if (rect.top <= windowCenter && rect.bottom >= 80) {
           activeStep = card.getAttribute('data-step-card');
         }
       });
@@ -859,7 +859,11 @@ document.addEventListener('DOMContentLoaded', () => {
           ind.classList.remove('active');
         }
       });
-    });
+    };
+
+    window.addEventListener('scroll', updateProcessStep, { passive: true });
+    updateProcessStep();
+    setTimeout(updateProcessStep, 200);
 
     // Indicator Click to Scroll
     processIndicators.forEach(ind => {
