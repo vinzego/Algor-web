@@ -209,17 +209,17 @@ document.addEventListener('DOMContentLoaded', () => {
         formPackageLabel = 'Paket Start (590 €/mj.)';
       } else if (p.includes('pro') || p.includes('plus')) {
         selectedPackageName = 'Paket Pro';
-        formPackageLabel = 'Paket Pro (890 €/mj.)';
+        formPackageLabel = 'Paket Pro (990 €/mj.)';
       } else if (p.includes('ultra') || p.includes('ai')) {
         selectedPackageName = 'Paket Ultra';
-        formPackageLabel = 'Paket Ultra (1.550 €/mj.)';
+        formPackageLabel = 'Paket Ultra (1.490 €/mj.)';
       } else if (p.includes('landing') || p.includes('web-start') || p.includes('490')) {
         selectedPackageName = 'Izrada weba';
         formPackageLabel = 'Landing Stranica (od 490 €)';
-      } else if (p.includes('business') || p.includes('web-business') || p.includes('web-pro') || p.includes('990')) {
+      } else if (p.includes('business') || p.includes('web-business') || p.includes('web-pro')) {
         selectedPackageName = 'Izrada weba';
         formPackageLabel = 'Business Web (od 990 €)';
-      } else if (p.includes('custom') || p.includes('web-custom') || p.includes('shop') || p.includes('1850')) {
+      } else if (p.includes('custom') || p.includes('web-custom') || p.includes('shop') || p.includes('1850') || p.includes('1.850')) {
         selectedPackageName = 'Izrada weba';
         formPackageLabel = 'Custom Web Aplikacija (od 1.850 €)';
       }
