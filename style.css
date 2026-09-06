@@ -1937,6 +1937,70 @@ body {
   max-width: 440px;
 }
 
+.about-lead-content {
+  margin-top: 24px;
+  margin-bottom: 36px;
+  max-width: 780px;
+}
+
+.about-lead-p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0 0 14px 0;
+}
+
+.about-lead-p strong {
+  color: #0f172a;
+}
+
+.about-lead-highlight {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 22px 0 14px 0;
+  letter-spacing: -0.4px;
+}
+
+.about-system-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.about-system-list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 15.5px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.about-system-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 800;
+  color: #0284c7;
+}
+
+.about-system-list li strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.about-lead-tagline {
+  font-size: 17.5px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 20px 0 0 0;
+  letter-spacing: -0.3px;
+}
+
 /* Stats Cards Grid Layout */
 .stats-grid {
   display: grid;
