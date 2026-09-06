@@ -206,14 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const p = pkgParam.toLowerCase();
       if (p.includes('start')) {
         selectedPackageName = 'Paket Start';
-        formPackageLabel = 'Paket Start (590 €/mj.)';
+        formPackageLabel = 'Paket Start (490 €/mj.)';
       } else if (p.includes('pro') || p.includes('plus')) {
         selectedPackageName = 'Paket Pro';
-        formPackageLabel = 'Paket Pro (990 €/mj.)';
+        formPackageLabel = 'Paket Pro (890 €/mj.)';
       } else if (p.includes('ultra') || p.includes('ai')) {
         selectedPackageName = 'Paket Ultra';
-        formPackageLabel = 'Paket Ultra (1.490 €/mj.)';
-      } else if (p.includes('landing') || p.includes('web-start') || p.includes('490')) {
+        formPackageLabel = 'Paket Ultra (1.390 €/mj.)';
+      } else if (p.includes('landing') || p.includes('web-start')) {
         selectedPackageName = 'Izrada weba';
         formPackageLabel = 'Landing Stranica (od 490 €)';
       } else if (p.includes('business') || p.includes('web-business') || p.includes('web-pro')) {
