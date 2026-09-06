@@ -747,9 +747,20 @@
       margin: 0 auto 80px auto;
     }
 
+    #chatgpt-faq,
+    .chatgpt-faq-section {
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+
+    #chatgpt-faq .section-main-heading,
+    .chatgpt-faq-section .section-main-heading {
+      color: #0f172a !important;
+    }
+
     .faq-dark-disclosure {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
       border-radius: 14px;
       padding: 20px 24px;
       margin-bottom: 14px;
@@ -758,14 +769,15 @@
     }
 
     .faq-dark-disclosure[open] {
-      border-color: #0284c7;
+      border-color: #0284c7 !important;
+      background: #ffffff !important;
       box-shadow: 0 4px 15px rgba(2, 132, 199, 0.08);
     }
 
     .faq-dark-disclosure summary {
       font-size: 17px;
       font-weight: 700;
-      color: #0f172a;
+      color: #0f172a !important;
       cursor: pointer;
       list-style: none;
       display: flex;
@@ -781,34 +793,34 @@
       content: "+";
       font-size: 20px;
       font-weight: 400;
-      color: #64748b;
+      color: #64748b !important;
       transition: transform 0.2s ease;
     }
 
     .faq-dark-disclosure[open] summary::after {
       content: "−";
-      color: #0284c7;
+      color: #0284c7 !important;
     }
 
     .faq-dark-disclosure p {
       font-size: 15px;
-      color: #475569;
+      color: #475569 !important;
       line-height: 1.65;
       margin: 14px 0 0 0;
       padding-top: 14px;
-      border-top: 1px solid #f1f5f9;
+      border-top: 1px solid #f1f5f9 !important;
     }
 
-    /* Big Conversion Call-to-Action Card */
+    /* Big Conversion Call-to-Action Card (Light Theme matching rest of page) */
     .final-cta-luxury-card {
-      background: #0f172a;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 28px;
       padding: 64px 32px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
       margin-bottom: 90px;
     }
 
@@ -817,9 +829,9 @@
       top: -50px;
       left: 50%;
       transform: translateX(-50%);
-      width: 400px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(41, 173, 255, 0.3) 0%, transparent 70%);
+      width: 450px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(41, 173, 255, 0.12) 0%, rgba(16, 185, 129, 0.06) 50%, transparent 70%);
       filter: blur(60px);
       pointer-events: none;
     }
@@ -827,7 +839,7 @@
     .cta-card-title {
       font-size: clamp(28px, 4vw, 44px);
       font-weight: 800;
-      color: #ffffff;
+      color: #0f172a;
       letter-spacing: -1.2px;
       margin: 0 0 16px 0;
       position: relative;
@@ -836,7 +848,7 @@
 
     .cta-card-subtitle {
       font-size: 17px;
-      color: #94a3b8;
+      color: #475569;
       max-width: 650px;
       margin: 0 auto 32px auto;
       line-height: 1.6;
@@ -904,7 +916,7 @@
         <a href="/izrada-web-stranica" class="ultra-nav-link">Izrada Weba</a>
         <a href="/chatgpt-ads" class="ultra-nav-link active" style="color: #29ADFF; font-weight: 700;">ChatGPT Ads</a>
         <a href="/#pricing" class="ultra-nav-link">Cijene</a>
-        <a href="/#faq" class="ultra-nav-link">FAQ</a>
+        <a href="#chatgpt-faq" class="ultra-nav-link">FAQ</a>
         <a href="/kontakt" class="ultra-nav-link">Kontakt</a>
       </div>
 
@@ -1211,7 +1223,7 @@
     </section>
 
     <!-- 8. SECTION: FAQ ACCORDION -->
-    <section id="faq" class="content-block-section">
+    <section id="chatgpt-faq" class="content-block-section chatgpt-faq-section">
       <div class="section-head-center">
         <span class="section-badge-mono">// 05 ČESTA PITANJA</span>
         <h2 class="section-main-heading">Sve što trebate znati o ChatGPT oglašavanju</h2>
@@ -1265,68 +1277,68 @@
       </div>
     </div>
 
-    <!-- 10. FOOTER -->
-    <div class="footer-card-wrapper">
-      <footer class="brand-footer-card">
-        <div class="footer-photo-credit-text">
-          Sve fotografije i sustave akvizicije na ovoj web stranici je producirao Algor studio.
-        </div>
-
-        <div class="footer-card-top">
-          <div class="footer-logo-col">
-            <a href="/" class="footer-logo" style="text-decoration: none;" aria-label="Algor studio Početna">
-              <img src="logo_white_transparent.png" alt="Algor studio" class="footer-brand-logo-img">
-            </a>
-            <p class="footer-tagline">Algor Studio — Akvizicija novih klijenata, od prvog klika do rezerviranog termina.</p>
-          </div>
-
-          <div class="footer-links-grid">
-            <div class="footer-link-group">
-              <h4>Istraži</h4>
-              <ul>
-                <li><a href="/#about">O nama</a></li>
-                <li><a href="/#marketing">Usluge</a></li>
-                <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
-                <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
-                <li><a href="/#portfolio">Projekti</a></li>
-                <li><a href="/#process">Proces</a></li>
-                <li><a href="/#pricing">Cjenik</a></li>
-                <li><a href="/karijere">Karijere</a></li>
-                <li><a href="/kontakt">Kontakt</a></li>
-              </ul>
-            </div>
-
-            <div class="footer-link-group">
-              <h4>Društvene mreže</h4>
-              <ul>
-                <li><a href="https://www.instagram.com/algor_studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              </ul>
-            </div>
-
-            <div class="footer-link-group">
-              <h4>Pravno</h4>
-              <ul>
-                <li><a href="/politika-privatnosti">Politika privatnosti</a></li>
-                <li><a href="/uvjeti-koristenja">Uvjeti korištenja</a></li>
-                <li><a href="/kolacici">Politika kolačića</a></li>
-                <li><a href="#cookie-settings" class="open-cookie-banner">Postavke kolačića</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-card-bottom">
-          <div class="footer-copy-text">
-            ©2026 Algor studio. Sva prava pridržana.
-          </div>
-          <div class="footer-credit">
-            Izradio <span class="footer-credit-brand">Algor Studio</span>
-          </div>
-        </div>
-      </footer>
-    </div>
-
   </main>
+
+  <!-- 10. FOOTER (Edge to Edge Full Width) -->
+  <div class="footer-card-wrapper">
+    <footer class="brand-footer-card">
+      <div class="footer-photo-credit-text">
+        Sve fotografije i sustave akvizicije na ovoj web stranici je producirao Algor studio.
+      </div>
+
+      <div class="footer-card-top">
+        <div class="footer-logo-col">
+          <a href="/" class="footer-logo" style="text-decoration: none;" aria-label="Algor studio Početna">
+            <img src="logo_white_transparent.png" alt="Algor studio" class="footer-brand-logo-img">
+          </a>
+          <p class="footer-tagline">Algor Studio — Akvizicija novih klijenata, od prvog klika do rezerviranog termina.</p>
+        </div>
+
+        <div class="footer-links-grid">
+          <div class="footer-link-group">
+            <h4>Istraži</h4>
+            <ul>
+              <li><a href="/#about">O nama</a></li>
+              <li><a href="/#marketing">Usluge</a></li>
+              <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
+              <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
+              <li><a href="/#portfolio">Projekti</a></li>
+              <li><a href="/#process">Proces</a></li>
+              <li><a href="/#pricing">Cjenik</a></li>
+              <li><a href="/karijere">Karijere</a></li>
+              <li><a href="/kontakt">Kontakt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-link-group">
+            <h4>Društvene mreže</h4>
+            <ul>
+              <li><a href="https://www.instagram.com/algor_studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-link-group">
+            <h4>Pravno</h4>
+            <ul>
+              <li><a href="/politika-privatnosti">Politika privatnosti</a></li>
+              <li><a href="/uvjeti-koristenja">Uvjeti korištenja</a></li>
+              <li><a href="/kolacici">Politika kolačića</a></li>
+              <li><a href="#cookie-settings" class="open-cookie-banner">Postavke kolačića</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-card-bottom">
+        <div class="footer-copy-text">
+          ©2026 Algor studio. Sva prava pridržana.
+        </div>
+        <div class="footer-credit">
+          Izradio <span class="footer-credit-brand">Algor Studio</span>
+        </div>
+      </div>
+    </footer>
+  </div>
 
   <script defer src="script.js?v=103.0.0"></script>
 </body>
