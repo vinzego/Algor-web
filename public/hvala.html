@@ -50,18 +50,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=90.0.0">
-  <link rel="icon" type="image/png" href="favicon.png?v=90.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=90.0.0">
-  <link rel="preload" as="style" href="style.css?v=90.0.0">
-  <link rel="stylesheet" href="style.css?v=90.0.0" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=90.0.0"></noscript>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=91.0.0">
+  <link rel="icon" type="image/png" href="favicon.png?v=91.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=91.0.0">
+  <link rel="preload" as="style" href="style.css?v=91.0.0">
+  <link rel="stylesheet" href="style.css?v=91.0.0" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=91.0.0"></noscript>
 
   <style>
-    /* Thank You Page Light / Gray Theme matching Homepage */
+    /* Thank You Page Luxury Dark Theme */
     body {
-      background-color: #f5f5f5 !important;
-      color: #0f172a !important;
+      background-color: #050508 !important;
+      color: #f1f5f9 !important;
       font-family: 'Inter', sans-serif !important;
       margin: 0;
       padding: 0;
@@ -77,13 +77,25 @@
     }
 
     .thankyou-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
+      background: #0d0f14;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 28px;
       padding: 56px 40px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       position: relative;
       overflow: hidden;
+    }
+
+    .thankyou-card::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(41, 173, 255, 0.15) 0%, rgba(201, 255, 71, 0.08) 50%, transparent 70%);
+      pointer-events: none;
     }
 
     .thankyou-badge-wrap {
@@ -94,7 +106,7 @@
       width: 76px;
       height: 76px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #0284c7, #29ADFF);
+      background: linear-gradient(135deg, #29ADFF, #0077c8);
       color: #ffffff;
       font-size: 36px;
       font-weight: 900;
@@ -102,7 +114,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 24px;
-      box-shadow: 0 8px 25px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 0 35px rgba(41, 173, 255, 0.4);
       animation: pulsePop 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
     }
 
@@ -114,7 +126,7 @@
     .thankyou-title {
       font-size: clamp(28px, 4vw, 40px);
       font-weight: 800;
-      color: #0f172a;
+      color: #ffffff;
       letter-spacing: -1.2px;
       line-height: 1.25;
       margin: 0 0 16px 0;
@@ -122,43 +134,43 @@
 
     .thankyou-desc {
       font-size: clamp(15px, 1.8vw, 16.5px);
-      color: #475569;
+      color: #94a3b8;
       line-height: 1.65;
       margin: 0 auto 36px;
       max-width: 640px;
     }
 
     .thankyou-summary-box {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
+      background: #151821;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 18px;
       padding: 24px 28px;
       margin: 0 auto 36px;
       text-align: left;
       font-size: 14.5px;
       line-height: 1.7;
-      color: #334155;
+      color: #cbd5e1;
     }
 
     .summary-header-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding-bottom: 12px;
       margin-bottom: 14px;
     }
 
     .summary-header-title {
       font-weight: 700;
-      color: #0f172a;
+      color: #ffffff;
       font-size: 15px;
     }
 
     .summary-status-pill {
-      background: rgba(2, 132, 199, 0.08);
-      color: #0284c7;
-      border: 1px solid rgba(2, 132, 199, 0.2);
+      background: rgba(41, 173, 255, 0.15);
+      color: #29ADFF;
+      border: 1px solid rgba(41, 173, 255, 0.3);
       padding: 3px 10px;
       border-radius: 9999px;
       font-size: 12px;
@@ -185,18 +197,18 @@
     }
 
     .summary-item-value {
-      color: #0f172a;
+      color: #f1f5f9;
       font-weight: 600;
     }
 
     .summary-appointment-highlight {
       grid-column: 1 / -1;
-      background: rgba(2, 132, 199, 0.06);
-      border: 1px dashed rgba(2, 132, 199, 0.3);
+      background: rgba(41, 173, 255, 0.08);
+      border: 1px dashed rgba(41, 173, 255, 0.25);
       border-radius: 10px;
       padding: 10px 14px;
       margin-top: 6px;
-      color: #0284c7;
+      color: #29ADFF;
       font-weight: 700;
     }
 
@@ -213,22 +225,24 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      background: #0f172a;
-      color: #ffffff !important;
-      border: 1px solid #0f172a;
+      background: #ffffff;
+      color: #050508 !important;
+      border: 1px solid #ffffff;
       border-radius: 9999px;
       padding: 8px 8px 8px 24px;
       font-size: 14.5px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       transition: all 0.25s ease;
-      box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
     }
 
     .btn-ty-primary:hover {
-      background: #1e293b;
+      background: #29ADFF;
+      color: #ffffff !important;
+      border-color: #29ADFF;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 8px 25px rgba(41, 173, 255, 0.35);
     }
 
     .btn-ty-secondary {
@@ -236,9 +250,9 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: #ffffff;
-      color: #334155 !important;
-      border: 1px solid #cbd5e1;
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1 !important;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 9999px;
       padding: 12px 24px;
       font-size: 14px;
@@ -248,9 +262,9 @@
     }
 
     .btn-ty-secondary:hover {
-      background: #f8fafc;
-      color: #0f172a !important;
-      border-color: #94a3b8;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff !important;
+      border-color: rgba(255, 255, 255, 0.25);
       transform: translateY(-2px);
     }
 
@@ -258,7 +272,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: #29ADFF;
+      background: #050508;
       color: #ffffff;
       display: inline-flex;
       align-items: center;
@@ -269,7 +283,8 @@
     }
 
     .btn-ty-primary:hover .btn-ty-circle {
-      background: #0284c7;
+      background: #ffffff;
+      color: #050508;
       transform: rotate(45deg);
     }
 
@@ -349,7 +364,7 @@
         <div class="summary-grid" id="summary-grid-content">
           <div>
             <div class="summary-item-label">Status obrade:</div>
-            <div class="summary-item-value" style="color: #059669;">✓ Zaprimljeno u sustavu</div>
+            <div class="summary-item-value" style="color: #10b981;">✓ Zaprimljeno u sustavu</div>
           </div>
           <div>
             <div class="summary-item-label">Vrijeme odgovora:</div>
@@ -476,7 +491,7 @@
           const grid = document.getElementById('summary-grid-content');
           if (grid && (data.name || data.calendarSlot || data.package)) {
             let html = `
-              <div><div class="summary-item-label">Status obrade:</div><div class="summary-item-value" style="color: #059669;">✓ Zaprimljeno u sustavu</div></div>
+              <div><div class="summary-item-label">Status obrade:</div><div class="summary-item-value" style="color: #10b981;">✓ Zaprimljeno u sustavu</div></div>
               <div><div class="summary-item-label">Vrijeme odgovora:</div><div class="summary-item-value">Unutar 24 sata</div></div>
             `;
             if (data.name) {
@@ -503,6 +518,6 @@
     });
   </script>
 
-  <script defer src="script.js?v=90.0.0"></script>
+  <script defer src="script.js?v=91.0.0"></script>
 </body>
 </html>
