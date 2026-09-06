@@ -50,12 +50,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=91.0.0">
-  <link rel="icon" type="image/png" href="favicon.png?v=91.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=91.0.0">
-  <link rel="preload" as="style" href="style.css?v=91.0.0">
-  <link rel="stylesheet" href="style.css?v=91.0.0" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=91.0.0"></noscript>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=92.0.0">
+  <link rel="icon" type="image/png" href="favicon.png?v=92.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=92.0.0">
+  <link rel="preload" as="style" href="style.css?v=92.0.0">
+  <link rel="stylesheet" href="style.css?v=92.0.0" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=92.0.0"></noscript>
 
   <style>
     /* Thank You Page Luxury Dark Theme */
@@ -367,6 +367,10 @@
             <div class="summary-item-value" style="color: #10b981;">✓ Zaprimljeno u sustavu</div>
           </div>
           <div>
+            <div class="summary-item-label">Odabrani paket / usluga:</div>
+            <div class="summary-item-value" id="summary-package-val" style="color: #29ADFF; font-weight: 700;">📦 Besplatan uvodni razgovor (Konzultacije)</div>
+          </div>
+          <div>
             <div class="summary-item-label">Vrijeme odgovora:</div>
             <div class="summary-item-value">Unutar 24 sata</div>
           </div>
@@ -485,32 +489,62 @@
       }
 
       try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const pkgQuery = urlParams.get('paket') || urlParams.get('package') || urlParams.get('usluga');
+        let pkgFromQuery = '';
+        if (pkgQuery) {
+          const p = pkgQuery.toLowerCase();
+          if (p.includes('start')) pkgFromQuery = 'Paket Start (590 €/mj.)';
+          else if (p.includes('pro') || p.includes('plus')) pkgFromQuery = 'Paket Pro (890 €/mj.)';
+          else if (p.includes('ultra') || p.includes('ai')) pkgFromQuery = 'Paket Ultra (1.550 €/mj.)';
+          else if (p.includes('landing') || p.includes('web-start') || p.includes('490')) pkgFromQuery = 'Landing Stranica (od 490 €)';
+          else if (p.includes('business') || p.includes('web-business') || p.includes('web-pro') || p.includes('990')) pkgFromQuery = 'Business Web (od 990 €)';
+          else if (p.includes('custom') || p.includes('web-custom') || p.includes('shop') || p.includes('1850')) pkgFromQuery = 'Custom Web Aplikacija (od 1.850 €)';
+          else pkgFromQuery = pkgQuery;
+        }
+
         const raw = sessionStorage.getItem('algor_booking_summary');
-        if (raw) {
-          const data = JSON.parse(raw);
-          const grid = document.getElementById('summary-grid-content');
-          if (grid && (data.name || data.calendarSlot || data.package)) {
-            let html = `
-              <div><div class="summary-item-label">Status obrade:</div><div class="summary-item-value" style="color: #10b981;">✓ Zaprimljeno u sustavu</div></div>
-              <div><div class="summary-item-label">Vrijeme odgovora:</div><div class="summary-item-value">Unutar 24 sata</div></div>
-            `;
-            if (data.name) {
-              html += `<div><div class="summary-item-label">Ime i prezime:</div><div class="summary-item-value">👤 ${data.name}</div></div>`;
-            }
-            if (data.company) {
-              html += `<div><div class="summary-item-label">Tvrtka / Brend:</div><div class="summary-item-value">🏢 ${data.company}</div></div>`;
-            }
-            if (data.email) {
-              html += `<div><div class="summary-item-label">Email adresa:</div><div class="summary-item-value">✉️ ${data.email}</div></div>`;
-            }
-            if (data.package) {
-              html += `<div><div class="summary-item-label">Odabrani paket:</div><div class="summary-item-value">📦 ${data.package}</div></div>`;
-            }
-            if (data.calendarSlot && !data.calendarSlot.includes('Preskočeno')) {
-              html += `<div class="summary-appointment-highlight">📅 Odabrani termin: <strong>${data.calendarSlot}</strong></div>`;
-            }
-            grid.innerHTML = html;
+        const data = raw ? JSON.parse(raw) : {};
+        const selectedPkg = data.package || pkgFromQuery || 'Besplatan uvodni razgovor (Konzultacije)';
+        const grid = document.getElementById('summary-grid-content');
+
+        if (grid) {
+          let html = `
+            <div>
+              <div class="summary-item-label">Status obrade:</div>
+              <div class="summary-item-value" style="color: #10b981;">✓ Zaprimljeno u sustavu</div>
+            </div>
+            <div>
+              <div class="summary-item-label">Odabrani paket / usluga:</div>
+              <div class="summary-item-value" style="color: #29ADFF; font-weight: 700;">📦 ${selectedPkg}</div>
+            </div>
+            <div>
+              <div class="summary-item-label">Vrijeme odgovora:</div>
+              <div class="summary-item-value">Unutar 24 sata</div>
+            </div>
+            <div>
+              <div class="summary-item-label">Način komunikacije:</div>
+              <div class="summary-item-value">E-mail / Poziv / WhatsApp</div>
+            </div>
+          `;
+
+          if (data.name) {
+            html += `<div><div class="summary-item-label">Ime i prezime:</div><div class="summary-item-value">👤 ${data.name}</div></div>`;
           }
+          if (data.company) {
+            html += `<div><div class="summary-item-label">Tvrtka / Brend:</div><div class="summary-item-value">🏢 ${data.company}</div></div>`;
+          }
+          if (data.email) {
+            html += `<div><div class="summary-item-label">Email adresa:</div><div class="summary-item-value">✉️ ${data.email}</div></div>`;
+          }
+          if (data.phone) {
+            html += `<div><div class="summary-item-label">Broj mobitela:</div><div class="summary-item-value">📞 ${data.phone}</div></div>`;
+          }
+          if (data.calendarSlot && !data.calendarSlot.includes('Preskočeno') && !data.calendarSlot.includes('nije odabran')) {
+            html += `<div class="summary-appointment-highlight">📅 Odabrani termin: <strong>${data.calendarSlot}</strong></div>`;
+          }
+
+          grid.innerHTML = html;
         }
       } catch (e) {
         // ignore
@@ -518,6 +552,6 @@
     });
   </script>
 
-  <script defer src="script.js?v=91.0.0"></script>
+  <script defer src="script.js?v=92.0.0"></script>
 </body>
 </html>

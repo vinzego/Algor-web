@@ -549,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
           company: contactPageData.company || '',
           email: contactPageData.email || '',
           phone: contactPageData.phone || '',
-          package: selectedPackageName,
+          package: formPackageLabel || selectedPackageName || 'Besplatan Audit (Konzultacije)',
           calendarSlot: appointmentDetails
         };
         try {
@@ -569,7 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
               <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
               ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
-              <div style="margin-bottom: 6px;">📦 <strong>Paket:</strong> ${selectedPackageName}</div>
+              <div style="margin-bottom: 6px;">📦 <strong>Paket / Usluga:</strong> ${formPackageLabel || selectedPackageName}</div>
               <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
                 📅 ${appointmentDetails}
               </div>
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
           company: contactPageData.company || '',
           email: contactPageData.email || '',
           phone: contactPageData.phone || '',
-          package: selectedPackageName,
+          package: formPackageLabel || selectedPackageName || 'Besplatan Audit (Konzultacije)',
           calendarSlot: 'Termin nije odabran (Preskočeno)'
         };
         try {
