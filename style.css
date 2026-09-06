@@ -7154,6 +7154,33 @@ body {
 .stack-card-3 .feat-check { background: #10b981 !important; color: #ffffff !important; }
 .stack-card-4 .feat-check { background: #10b981 !important; color: #ffffff !important; }
 
+.stack-card-tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 20px !important;
+  font-family: 'Geist Mono', monospace !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px !important;
+}
+
+.stack-card-1 .stack-card-tags,
+.stack-card-3 .stack-card-tags {
+  color: #475569 !important;
+}
+
+.stack-card-2 .stack-card-tags,
+.stack-card-4 .stack-card-tags {
+  color: #cbd5e1 !important;
+}
+
+.tag-sep {
+  opacity: 0.4 !important;
+  font-weight: 800 !important;
+}
+
 /* -------------------------------------------------------------
    CARD 01 GRAPHIC: Rotating Orbit Carousel (Google, Meta, FB, IG)
    ------------------------------------------------------------- */
