@@ -50,12 +50,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=102.0.0">
-  <link rel="icon" type="image/png" href="favicon.png?v=102.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=102.0.0">
-  <link rel="preload" as="style" href="style.css?v=102.0.0">
-  <link rel="stylesheet" href="style.css?v=102.0.0" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=102.0.0"></noscript>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=103.0.0">
+  <link rel="icon" type="image/png" href="favicon.png?v=103.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=103.0.0">
+  <link rel="preload" as="style" href="style.css?v=103.0.0">
+  <link rel="stylesheet" href="style.css?v=103.0.0" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.css?v=103.0.0"></noscript>
 
   <style>
     /* Thank You Page Luxury Dark Theme */
@@ -431,6 +431,7 @@
               <li><a href="/#about">O nama</a></li>
               <li><a href="/#marketing">Usluge</a></li>
               <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
+                <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
               <li><a href="/#portfolio">Projekti</a></li>
               <li><a href="/#process">Proces</a></li>
               <li><a href="/#pricing">Cjenik</a></li>
@@ -494,7 +495,8 @@
         let pkgFromQuery = '';
         if (pkgQuery) {
           const p = pkgQuery.toLowerCase();
-          if (p.includes('start')) pkgFromQuery = 'Paket Start (490 €/mj.)';
+          if (p.includes('chatgpt') || p.includes('searchgpt') || p.includes('openai')) pkgFromQuery = 'ChatGPT Ads & AI Search';
+          else if (p.includes('start')) pkgFromQuery = 'Paket Start (490 €/mj.)';
           else if (p.includes('pro') || p.includes('plus')) pkgFromQuery = 'Paket Pro (890 €/mj.)';
           else if (p.includes('ultra') || p.includes('ai')) pkgFromQuery = 'Paket Ultra (1.390 €/mj.)';
           else if (p.includes('landing') || p.includes('web-start')) pkgFromQuery = 'Landing Stranica (od 490 €)';
@@ -552,6 +554,6 @@
     });
   </script>
 
-  <script defer src="script.js?v=102.0.0"></script>
+  <script defer src="script.js?v=103.0.0"></script>
 </body>
 </html>

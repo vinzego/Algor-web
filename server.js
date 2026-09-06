@@ -72,6 +72,13 @@ app.get(['/izrada-web-stranica', '/izrada-web-stranica.html'], (req, res) => {
   res.sendFile(path.join(publicDir, 'izrada-web-stranica.html'));
 });
 
+app.get(['/chatgpt-ads', '/chatgpt-ads.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/chatgpt-ads');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.sendFile(path.join(publicDir, 'chatgpt-ads.html'));
+});
+
 app.get(['/karijere', '/karijere.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/karijere');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
@@ -188,7 +195,7 @@ function getEstimatedDealValue(pkg) {
   if (p.includes('ultra') || p.includes('1390') || p.includes('1.390') || p.includes('1490') || p.includes('1.490') || p.includes('1550') || p.includes('1.550')) return 1390;
   if (p.includes('custom') || p.includes('shop') || p.includes('1850') || p.includes('1.850') || p.includes('1,850')) return 1850;
   if (p.includes('business') || p.includes('web-pro') || (p.includes('990') && !p.includes('pro'))) return 990;
-  if (p.includes('pro') || p.includes('plus') || p.includes('890') || p.includes('990')) return 890;
+  if (p.includes('pro') || p.includes('plus') || p.includes('890') || p.includes('990') || p.includes('chatgpt') || p.includes('searchgpt')) return 890;
   if (p.includes('start') || p.includes('landing') || p.includes('590') || p.includes('490')) return 490;
   if (p.includes('instagram') || p.includes('oglas')) return 500;
   if (p.includes('audit')) return 0;
@@ -198,6 +205,7 @@ function getEstimatedDealValue(pkg) {
 function normalizeNotionPackage(pkg) {
   if (!pkg) return 'Besplatan Audit';
   const p = pkg.toLowerCase();
+  if (p.includes('chatgpt') || p.includes('searchgpt') || p.includes('openai')) return 'ChatGPT Ads';
   if (p.includes('start') || p.includes('490') || p.includes('590')) return 'Paket Start';
   if (p.includes('ultra') || p.includes('1390') || p.includes('1.390') || p.includes('1490') || p.includes('1.490') || p.includes('1550') || p.includes('1.550')) return 'Paket Ultra';
   if (p.includes('plus') || p.includes('pro') || p.includes('890') || p.includes('990')) return 'Paket Pro';

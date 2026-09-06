@@ -198,13 +198,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedCalendarDateStr = '';
 
     const urlParams = new URLSearchParams(window.location.search);
-    const pkgParam = urlParams.get('paket');
+    const pkgParam = urlParams.get('paket') || urlParams.get('usluga') || urlParams.get('service');
     let selectedPackageName = 'Besplatan Audit';
     let formPackageLabel = 'Besplatan Audit (Konzultacije)';
 
     if (pkgParam) {
       const p = pkgParam.toLowerCase();
-      if (p.includes('start')) {
+      if (p.includes('chatgpt') || p.includes('searchgpt') || p.includes('openai')) {
+        selectedPackageName = 'ChatGPT Ads';
+        formPackageLabel = 'ChatGPT Ads & AI Search';
+      } else if (p.includes('start')) {
         selectedPackageName = 'Paket Start';
         formPackageLabel = 'Paket Start (490 €/mj.)';
       } else if (p.includes('pro') || p.includes('plus')) {
