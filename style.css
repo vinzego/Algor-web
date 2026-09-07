@@ -1950,30 +1950,17 @@ body {
 }
 
 .about-lead-content {
-  margin-top: 18px;
-  margin-bottom: 32px;
-  max-width: 920px;
+  margin-top: 16px;
+  margin-bottom: 28px;
+  max-width: 960px;
 }
 
 .about-lead-p {
   font-size: 19px;
+  font-weight: 450;
   color: #334155;
   line-height: 1.6;
-  letter-spacing: -0.25px;
-  margin: 0 0 14px 0;
-}
-
-.about-lead-p strong {
-  color: #0f172a;
-  font-weight: 750;
-}
-
-.about-lead-tagline {
-  font-size: 20px;
-  font-weight: 800;
-  color: #0f172a;
-  line-height: 1.5;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.2px;
   margin: 0;
 }
 
