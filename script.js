@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const p = pkgParam.toLowerCase();
       if (p.includes('chatgpt') || p.includes('searchgpt') || p.includes('openai')) {
         selectedPackageName = 'ChatGPT Ads';
-        formPackageLabel = 'ChatGPT Ads & AI Search';
+        formPackageLabel = 'ChatGPT Ads & AI Search (400 €/mj.)';
       } else if (p.includes('start')) {
         selectedPackageName = 'Paket Start';
         formPackageLabel = 'Paket Start (490 €/mj.)';

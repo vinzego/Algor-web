@@ -195,7 +195,7 @@ function getEstimatedDealValue(pkg) {
   if (p.includes('ultra') || p.includes('1390') || p.includes('1.390') || p.includes('1490') || p.includes('1.490') || p.includes('1550') || p.includes('1.550')) return 1390;
   if (p.includes('custom') || p.includes('shop') || p.includes('1850') || p.includes('1.850') || p.includes('1,850')) return 1850;
   if (p.includes('business') || p.includes('web-pro') || (p.includes('990') && !p.includes('pro'))) return 990;
-  if (p.includes('chatgpt') || p.includes('searchgpt')) return 450;
+  if (p.includes('chatgpt') || p.includes('searchgpt')) return 400;
   if (p.includes('pro') || p.includes('plus') || p.includes('890') || p.includes('990')) return 890;
   if (p.includes('start') || p.includes('landing') || p.includes('490') || p.includes('590')) return 490;
   if (p.includes('instagram') || p.includes('oglas')) return 500;
