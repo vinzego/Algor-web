@@ -840,8 +840,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!words.length) return;
 
         const rect = revealContainer.getBoundingClientRect();
-        const isProcessStatement = (revealContainer.id === 'process-statement-reveal' || revealContainer.classList.contains('ecosystem-reveal-title') || revealContainer.classList.contains('process-reveal-title'));
-        const start = windowHeight * 0.88;
+        // Start fading in when the top of the container reaches 90% of viewport
+        // Finish fading in when the container reaches 30% of viewport
+        const start = windowHeight * 0.90;
         const end = windowHeight * 0.30;
         
         let globalProgress = 0;
@@ -855,8 +856,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const totalWords = words.length;
         words.forEach((word, index) => {
+          // Spread words across the progression range
           const wordStart = index / totalWords;
-          const wordEnd = (index + 1) / totalWords;
+          const wordEnd = Math.min(1, (index + 1.15) / totalWords);
           
           let wordProgress = 0;
           if (globalProgress >= wordEnd) {
@@ -867,17 +869,19 @@ document.addEventListener('DOMContentLoaded', () => {
             wordProgress = (globalProgress - wordStart) / (wordEnd - wordStart);
           }
           
-          // Fades from light grey (rgba(15, 23, 42, 0.15)) to full black (rgba(15, 23, 42, 1.0))
-          const opacity = 0.15 + (0.85 * wordProgress);
-          word.style.color = `rgba(15, 23, 42, ${opacity})`;
+          // Fades from muted light grey (rgba(11, 11, 12, 0.15)) to full solid black/obsidian (rgba(11, 11, 12, 1.0))
+          const opacity = (0.15 + (0.85 * wordProgress)).toFixed(3);
+          word.style.setProperty('color', `rgba(11, 11, 12, ${opacity})`, 'important');
         });
       });
     };
 
     window.addEventListener('scroll', updateRevealWords, { passive: true });
     window.addEventListener('resize', updateRevealWords, { passive: true });
+    window.addEventListener('orientationchange', updateRevealWords, { passive: true });
     updateRevealWords();
-    setTimeout(updateRevealWords, 150);
+    setTimeout(updateRevealWords, 100);
+    setTimeout(updateRevealWords, 400);
   }
 
   // 6. Process Section Sticky Active Step Observer

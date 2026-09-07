@@ -216,34 +216,201 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=104.0.0">
   <link rel="icon" type="image/png" href="favicon.png?v=104.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=104.0.0">
-  <!-- Google Fonts: Inter for UI & Geist Mono for technical markings -->
+  <!-- Fonts: Switzer from Fontshare, Inter & Geist Mono from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=109.0.0">
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=132.0.0">
   <style>
-    /* Critical About Bento Grid Styles (Cache-proof) */
+    /* =============================================================
+       OVERTAKE HIGH-END DESIGN SYSTEM (Direct Token Overrides)
+       ============================================================= */
+    :root {
+      --canvas-dark: #0b0b0c;
+      --surface-dark: #161616;
+      --surface-dark-subtle: #171718;
+      --canvas-light: #f5f5f5;
+      --canvas-light-warm: #f5f5f5;
+      --surface-light: #ffffff;
+      --surface-light-card: #ffffff;
+      --border-dark: rgba(255, 255, 255, 0.1);
+      --border-dark-subtle: rgba(255, 255, 255, 0.06);
+      --border-dark-hover: rgba(255, 255, 255, 0.22);
+      --border-light: #e2e8f0;
+      --border-light-subtle: #eaeaea;
+      --accent-lime: #9efc65;
+      --accent-lime-hover: #8ee854;
+      --accent-lime-glow: rgba(158, 252, 101, 0.28);
+      --accent-blue: #29ADFF;
+      --accent-lavender: #ffbcfc;
+      --accent-yellow: #fde589;
+      --accent-orange: #ff742e;
+      --text-primary-dark: #ffffff;
+      --text-muted-dark: #b7bcbc;
+      --text-subtle-dark: #8b8b8b;
+      --text-primary-light: #0b0b0c;
+      --text-muted-light: #6a6e6e;
+      --text-subtle-light: #8b8b8b;
+      --font-base: 'Switzer', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: 'Switzer', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+      --radius-card: 28px;
+      --radius-inner: 20px;
+      --radius-pill: 999px;
+    }
+
+    body {
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      font-family: var(--font-base) !important;
+      font-size: 15.5px !important;
+      line-height: 1.6 !important;
+      -webkit-font-smoothing: antialiased !important;
+    }
+
+    /* Standardized Section Headers (Overtake Spacing & Typography) */
+    .section-badge {
+      display: inline-block !important;
+      font-family: var(--font-mono) !important;
+      font-size: 12.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      color: var(--text-muted-light, #6a6e6e) !important;
+      margin-bottom: 14px !important;
+    }
+    .dark-combined-container .section-badge,
+    #why-algor .section-badge,
+    #pricing .section-badge {
+      color: var(--text-muted-dark, #b7bcbc) !important;
+    }
+
+    .info-header,
+    .info-header.align-center {
+      text-align: center !important;
+      max-width: 840px !important;
+      margin: 0 auto 40px auto !important;
+      padding: 0 24px !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+    }
+    .info-header > * {
+      text-align: center !important;
+    }
+    .scroll-reveal-text,
+    #about-reveal-text {
+      text-align: center !important;
+      justify-content: center !important;
+      margin: 0 auto 14px auto !important;
+      width: 100% !important;
+      display: block !important;
+    }
+    .info-title {
+      font-family: var(--font-heading) !important;
+      font-size: clamp(30px, 4.2vw, 48px) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.035em !important;
+      line-height: 1.12 !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      margin: 0 0 14px 0 !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+    .dark-combined-container .info-title,
+    #why-algor .info-title,
+    #pricing .info-title {
+      color: #ffffff !important;
+    }
+    .info-subtitle {
+      font-family: var(--font-base) !important;
+      font-size: 15.5px !important;
+      line-height: 1.6 !important;
+      color: var(--text-muted-light, #6a6e6e) !important;
+      max-width: 650px !important;
+      margin-top: 12px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      font-weight: 450 !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+    .dark-combined-container .info-subtitle,
+    #why-algor .info-subtitle,
+    #pricing .info-subtitle {
+      color: var(--text-muted-dark, #b7bcbc) !important;
+    }
+
+    /* Standard Section Wrapper (24px padding, 1540px max-width) */
+    .plain-section {
+      width: 100% !important;
+      max-width: 1540px !important;
+      margin: 0 auto !important;
+      padding: 80px 24px !important;
+      box-sizing: border-box !important;
+    }
+    .plain-section > * {
+      max-width: 1540px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Section 01: About Section (Clean Seamless Section - No Card Box) */
+    #about,
+    #about.plain-section {
+      width: 100% !important;
+      max-width: 1540px !important;
+      margin: 0 auto !important;
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      background: var(--canvas-light, #f5f5f5) !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      overflow: visible !important;
+      padding: 90px 24px 60px 24px !important;
+      box-sizing: border-box !important;
+    }
+    .info-section-card.no-card-box {
+      width: calc(100% - 32px) !important;
+      max-width: 1540px !important;
+      margin: 16px auto !important;
+      background-color: var(--canvas-light, #f0f0f0) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03) !important;
+      border-radius: 32px !important;
+      overflow: hidden !important;
+      padding: 80px 32px 60px 32px !important;
+    }
     .stats-grid {
       display: grid !important;
       grid-template-columns: repeat(3, 1fr) !important;
-      gap: 20px !important;
+      gap: 24px !important;
       align-items: stretch !important;
-      max-width: 1240px !important;
+      max-width: 100% !important;
       margin: 0 auto !important;
       width: 100% !important;
     }
     .stat-card {
-      border-radius: 20px !important;
-      height: 280px !important;
-      min-height: 280px !important;
-      max-height: 280px !important;
+      border-radius: var(--radius-card, 28px) !important;
+      height: 350px !important;
+      min-height: 350px !important;
+      max-height: 350px !important;
       box-sizing: border-box !important;
     }
     .stat-card.image-card-only {
       padding: 0 !important;
       overflow: hidden !important;
       position: relative !important;
-      background-color: #0f172a !important;
+      background-color: var(--canvas-dark, #0b0b0c) !important;
+      height: 350px !important;
+      min-height: 350px !important;
+      max-height: 350px !important;
+      border-radius: var(--radius-card, 28px) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
     }
     .stat-card.image-card-only img.card-full-img {
       position: absolute !important;
@@ -252,29 +419,29 @@
       width: 100% !important;
       height: 100% !important;
       object-fit: cover !important;
-      object-position: center 20% !important;
-      border-radius: 20px !important;
+      object-position: center 25% !important;
+      border-radius: var(--radius-card, 28px) !important;
     }
     .stat-card.tech-orbit-card {
-      background: #f8fafc !important;
-      border: 1px solid #e2e8f0 !important;
-      border-radius: 20px !important;
-      padding: 12px !important;
+      background: var(--surface-light, #ffffff) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      border-radius: var(--radius-card, 28px) !important;
+      padding: 16px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       position: relative !important;
       overflow: hidden !important;
-      height: 280px !important;
-      min-height: 280px !important;
-      max-height: 280px !important;
-      box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04) !important;
+      height: 350px !important;
+      min-height: 350px !important;
+      max-height: 350px !important;
+      box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.03) !important;
       box-sizing: border-box !important;
     }
     .tech-orbit-container {
       position: relative !important;
-      width: 240px !important;
-      height: 240px !important;
+      width: 300px !important;
+      height: 300px !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -285,10 +452,10 @@
       top: 50% !important;
       left: 50% !important;
       transform: translate(-50%, -50%) !important;
-      width: 96px !important;
-      height: 96px !important;
+      width: 120px !important;
+      height: 120px !important;
       border-radius: 50% !important;
-      border: 1px solid rgba(15, 23, 42, 0.06) !important;
+      border: 1px solid rgba(11, 11, 12, 0.06) !important;
       pointer-events: none !important;
     }
     .tech-orbit-hub {
@@ -296,72 +463,64 @@
       top: 50% !important;
       left: 50% !important;
       transform: translate(-50%, -50%) !important;
-      width: 48px !important;
-      height: 48px !important;
+      width: 56px !important;
+      height: 56px !important;
       border-radius: 50% !important;
-      background: #ffffff !important;
-      border: 1.5px solid #e2e8f0 !important;
+      background: var(--surface-light, #ffffff) !important;
+      border: 1.5px solid var(--border-light, #e2e8f0) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
       z-index: 2 !important;
       pointer-events: none !important;
     }
     .hub-pulse-dot {
-      width: 10px !important;
-      height: 10px !important;
+      width: 12px !important;
+      height: 12px !important;
       border-radius: 50% !important;
-      background: #29ADFF !important;
-      box-shadow: 0 0 10px #29ADFF !important;
+      background: var(--accent-lime, #9efc65) !important;
+      box-shadow: 0 0 12px var(--accent-lime, #9efc65) !important;
       animation: hubPulse 2s ease-in-out infinite !important;
     }
     @keyframes hubPulse {
       0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 8px rgba(41, 173, 255, 0.6);
+        box-shadow: 0 0 8px rgba(158, 252, 101, 0.6);
       }
       50% {
         transform: scale(1.3);
-        box-shadow: 0 0 16px rgba(41, 173, 255, 0.95);
+        box-shadow: 0 0 16px rgba(158, 252, 101, 0.95);
       }
     }
     @keyframes techOrbitRotate {
-      0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-      }
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-      }
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
     @keyframes techOrbitCounterRotate {
-      0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-      }
-      100% {
-        transform: translate(-50%, -50%) rotate(-360deg);
-      }
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(-360deg); }
     }
     .tech-orbit-track {
       position: absolute !important;
       top: 50% !important;
       left: 50% !important;
-      width: 176px !important;
-      height: 176px !important;
+      width: 220px !important;
+      height: 220px !important;
       border-radius: 50% !important;
-      border: 1.5px dashed rgba(148, 163, 184, 0.45) !important;
+      border: 1.5px dashed rgba(148, 163, 184, 0.4) !important;
       animation: techOrbitRotate 22s linear infinite !important;
       transform-origin: center center !important;
       pointer-events: auto !important;
     }
     .tech-orbit-item {
       position: absolute !important;
-      width: 42px !important;
-      height: 42px !important;
+      width: 48px !important;
+      height: 48px !important;
       border-radius: 50% !important;
-      background: #ffffff !important;
-      border: 1px solid #e2e8f0 !important;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+      background: var(--surface-light, #ffffff) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      box-shadow: 0 4px 14px rgba(11, 11, 12, 0.06) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
@@ -369,53 +528,1525 @@
       transform-origin: center center !important;
       z-index: 3 !important;
       box-sizing: border-box !important;
-      transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease !important;
       cursor: pointer !important;
     }
     .tech-orbit-item:hover {
-      box-shadow: 0 6px 18px rgba(41, 173, 255, 0.35) !important;
-      border-color: #29ADFF !important;
+      box-shadow: 0 6px 20px rgba(158, 252, 101, 0.35) !important;
+      border-color: var(--accent-lime, #9efc65) !important;
+      transform: scale(1.1) !important;
     }
-    .tech-orbit-item.orbit-node-google, .orbit-node-google { top: 0% !important; bottom: auto !important; left: 50% !important; right: auto !important; }
-    .tech-orbit-item.orbit-node-chatgpt, .orbit-node-chatgpt { top: 25% !important; bottom: auto !important; left: 93.3% !important; right: auto !important; }
-    .tech-orbit-item.orbit-node-python, .orbit-node-python { top: 75% !important; bottom: auto !important; left: 93.3% !important; right: auto !important; }
-    .tech-orbit-item.orbit-node-meta, .orbit-node-meta { top: 100% !important; bottom: auto !important; left: 50% !important; right: auto !important; }
-    .tech-orbit-item.orbit-node-instagram, .orbit-node-instagram { top: 75% !important; bottom: auto !important; left: 6.7% !important; right: auto !important; }
-    .tech-orbit-item.orbit-node-ga4, .orbit-node-ga4 { top: 25% !important; bottom: auto !important; left: 6.7% !important; right: auto !important; }
+    .tech-orbit-item.orbit-node-google { top: 0% !important; bottom: auto !important; left: 50% !important; right: auto !important; }
+    .tech-orbit-item.orbit-node-chatgpt { top: 25% !important; bottom: auto !important; left: 93.3% !important; right: auto !important; }
+    .tech-orbit-item.orbit-node-python { top: 75% !important; bottom: auto !important; left: 93.3% !important; right: auto !important; }
+    .tech-orbit-item.orbit-node-meta { top: 100% !important; bottom: auto !important; left: 50% !important; right: auto !important; }
+    .tech-orbit-item.orbit-node-instagram { top: 75% !important; bottom: auto !important; left: 6.7% !important; right: auto !important; }
+    .tech-orbit-item.orbit-node-ga4 { top: 25% !important; bottom: auto !important; left: 6.7% !important; right: auto !important; }
     .orbit-logo-svg {
-      width: 22px !important;
-      height: 22px !important;
-      min-width: 22px !important;
-      max-width: 22px !important;
+      width: 25px !important;
+      height: 25px !important;
+      min-width: 25px !important;
+      max-width: 25px !important;
       display: block !important;
     }
     .about-lead-content {
-      margin-top: 16px !important;
-      margin-bottom: 28px !important;
-      max-width: 960px !important;
+      margin: 0 auto !important;
+      max-width: 1040px !important;
+      text-align: center !important;
+      width: 100% !important;
     }
-    .about-lead-p {
+    .about-lead-p,
+    #about-reveal-text.about-lead-p {
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: clamp(24px, 3.2vw, 36px) !important;
+      font-weight: 700 !important;
+      line-height: 1.35 !important;
+      letter-spacing: -0.03em !important;
+      margin: 0 auto !important;
+      text-align: center !important;
+      max-width: 1040px !important;
+      display: block !important;
+    }
+    .about-lead-p .reveal-word,
+    .reveal-word {
+      display: inline-block !important;
+      margin-right: 0.22em !important;
+      color: rgba(11, 11, 12, 0.18);
+      transition: color 0.08s ease-out !important;
+      will-change: color !important;
+    }
+    .stat-card.testimonial-card {
+      background-color: var(--surface-light, #ffffff) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      border-radius: var(--radius-card, 28px) !important;
+      padding: 36px 32px !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 350px !important;
+      min-height: 350px !important;
+      max-height: 350px !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+    }
+
+    /* Bento Metric Cards (Row 2 of Stats Grid) */
+    .bento-metric-card {
+      padding: 36px 32px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      height: 350px !important;
+      min-height: 350px !important;
+      max-height: 350px !important;
+      border-radius: var(--radius-card, 28px) !important;
+      box-sizing: border-box !important;
+      transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    }
+    .bento-metric-card:hover {
+      transform: translateY(-3px) !important;
+    }
+    .stat-card-white {
+      background-color: var(--surface-light, #ffffff) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+    }
+    .stat-card-white:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
+    }
+    .stat-card-lime {
+      background-color: var(--accent-lime, #9efc65) !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 4px 20px rgba(158, 252, 101, 0.2) !important;
+    }
+    .stat-card-lime:hover {
+      box-shadow: 0 8px 28px rgba(158, 252, 101, 0.35) !important;
+    }
+    .stat-card-dark {
+      background-color: var(--surface-dark, #161616) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+    .stat-card-dark:hover {
+      border-color: rgba(158, 252, 101, 0.3) !important;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35) !important;
+    }
+    .bento-card-top {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      width: 100% !important;
+    }
+    .stat-pill-tag {
+      font-family: var(--font-mono, monospace) !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      padding: 5px 12px !important;
+      border-radius: 999px !important;
+      background: rgba(11, 11, 12, 0.05) !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      display: inline-block !important;
+    }
+    .stat-pill-tag.stat-pill-dark {
+      background: rgba(11, 11, 12, 0.12) !important;
+      color: #0b0b0c !important;
+    }
+    .stat-pill-tag.stat-pill-lime {
+      background: rgba(158, 252, 101, 0.12) !important;
+      color: var(--accent-lime, #9efc65) !important;
+      border: 1px solid rgba(158, 252, 101, 0.25) !important;
+    }
+    .bento-card-middle {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+      margin: auto 0 !important;
+    }
+    .bento-big-num {
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: 52px !important;
+      font-weight: 800 !important;
+      line-height: 1.0 !important;
+      letter-spacing: -0.04em !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+    }
+    .bento-big-num.bento-num-dark {
+      color: #0b0b0c !important;
+    }
+    .bento-card-title {
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
       font-size: 19px !important;
-      font-weight: 450 !important;
-      line-height: 1.6 !important;
-      color: #334155 !important;
-      letter-spacing: -0.2px !important;
+      font-weight: 750 !important;
+      letter-spacing: -0.025em !important;
+      line-height: 1.25 !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
       margin: 0 !important;
     }
-    @media (hover: hover) {
-      .stat-card.tech-orbit-card:hover .tech-orbit-track,
-      .stat-card.tech-orbit-card:hover .tech-orbit-item {
-        animation-play-state: paused !important;
+    .bento-card-desc {
+      font-family: var(--font-base, sans-serif) !important;
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+      color: var(--text-muted-light, #6a6e6e) !important;
+      margin: 0 !important;
+    }
+    .bento-sub-tags {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 6px !important;
+      padding-top: 14px !important;
+      border-top: 1px solid var(--border-light, #e2e8f0) !important;
+      margin-top: auto !important;
+    }
+    .stat-card-lime .bento-sub-tags {
+      border-top-color: rgba(11, 11, 12, 0.12) !important;
+    }
+    .stat-card-dark .bento-sub-tags {
+      border-top-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    .bento-sub-pill {
+      font-family: var(--font-base, sans-serif) !important;
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+      background: #f1f5f9 !important;
+      color: #334155 !important;
+    }
+    .bento-sub-pill.bento-sub-pill-dark {
+      background: rgba(11, 11, 12, 0.12) !important;
+      color: #0b0b0c !important;
+      font-weight: 700 !important;
+    }
+    .bento-sub-pill.bento-sub-pill-glass {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: #cbd5e1 !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* 4-Column Minimalist Metrics Row */
+    .about-metrics-row {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 36px !important;
+      width: 100% !important;
+      margin-top: 48px !important;
+      margin-bottom: 36px !important;
+      box-sizing: border-box !important;
+    }
+    .about-metric-item {
+      display: flex !important;
+      flex-direction: column !important;
+      text-align: left !important;
+    }
+    .metric-top-val {
+      font-family: var(--font-base) !important;
+      font-size: 58px !important;
+      font-weight: 800 !important;
+      line-height: 1.05 !important;
+      letter-spacing: -0.04em !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      min-height: 62px !important;
+      display: flex !important;
+      align-items: flex-end !important;
+    }
+    .metric-top-val.is-text-val {
+      font-size: 38px !important;
+      letter-spacing: -0.03em !important;
+      font-weight: 800 !important;
+    }
+    .metric-divider {
+      width: 100% !important;
+      border-bottom: 1.5px dashed #cbd5e1 !important;
+      margin: 18px 0 16px 0 !important;
+    }
+    .metric-item-title {
+      font-family: var(--font-base) !important;
+      font-size: 18.5px !important;
+      font-weight: 750 !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      letter-spacing: -0.02em !important;
+      margin: 0 0 8px 0 !important;
+      line-height: 1.25 !important;
+    }
+    .metric-item-desc {
+      font-family: var(--font-base) !important;
+      font-size: 14.5px !important;
+      font-weight: 450 !important;
+      color: var(--text-muted-light, #6a6e6e) !important;
+      line-height: 1.5 !important;
+      letter-spacing: -0.15px !important;
+      margin: 0 !important;
+    }
+    .about-galleries-stack {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      margin-top: 36px !important;
+      margin-bottom: -20px !important;
+      margin-left: -32px !important;
+      margin-right: -32px !important;
+      width: calc(100% + 64px) !important;
+    }
+    .faq-gallery-stack {
+      width: calc(100% + 48px) !important;
+      margin-left: -24px !important;
+      margin-right: -24px !important;
+      margin-top: 60px !important;
+      margin-bottom: -40px !important;
+      display: flex !important;
+      flex-direction: column !important;
+    }
+    .footer-gallery-marquee {
+      background-color: transparent !important;
+      padding: 8px 0 !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
+      mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent) !important;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent) !important;
+    }
+    .gallery-img-box {
+      width: 440px !important;
+      height: 330px !important;
+      border-radius: var(--radius-card, 28px) !important;
+      overflow: hidden !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Section 02: Stacking Process Cards (Bento Style) */
+    .stacking-cards-container {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+      width: 100% !important;
+      max-width: 1540px !important;
+      margin: 0 auto !important;
+    }
+    .stack-card-item {
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: var(--radius-card, 28px) !important;
+      padding: 40px 36px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+      box-sizing: border-box !important;
+    }
+    .stack-card-1,
+    .stack-card-2,
+    .stack-card-3,
+    .stack-card-4,
+    .stack-card-5 {
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    }
+    .stack-num-pill {
+      font-family: var(--font-mono) !important;
+      font-size: 11.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      background: #0b0b0c !important;
+      color: #ffffff !important;
+      border-radius: var(--radius-pill, 999px) !important;
+      padding: 6px 14px !important;
+      display: inline-block !important;
+      margin-bottom: 18px !important;
+      border: none !important;
+    }
+    .stack-card-title,
+    .stack-card-1 .stack-card-title,
+    .stack-card-2 .stack-card-title,
+    .stack-card-3 .stack-card-title,
+    .stack-card-4 .stack-card-title,
+    .stack-card-5 .stack-card-title {
+      font-family: var(--font-heading) !important;
+      font-size: 26px !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.03em !important;
+      color: #0b0b0c !important;
+      margin-bottom: 12px !important;
+      line-height: 1.25 !important;
+    }
+    .stack-card-desc,
+    .stack-card-1 .stack-card-desc,
+    .stack-card-2 .stack-card-desc,
+    .stack-card-3 .stack-card-desc,
+    .stack-card-4 .stack-card-desc,
+    .stack-card-5 .stack-card-desc {
+      font-size: 15.5px !important;
+      color: #475569 !important;
+      line-height: 1.6 !important;
+      margin-bottom: 22px !important;
+      font-weight: 450 !important;
+    }
+    .stack-card-tags,
+    .stack-card-tags span,
+    .stack-card-1 .stack-card-tags,
+    .stack-card-2 .stack-card-tags,
+    .stack-card-3 .stack-card-tags,
+    .stack-card-4 .stack-card-tags,
+    .stack-card-5 .stack-card-tags {
+      font-family: var(--font-mono) !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      color: #475569 !important;
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+      align-items: center !important;
+    }
+    .tag-sep {
+      color: #94a3b8 !important;
+      opacity: 0.8 !important;
+      font-weight: 800 !important;
+    }
+    .stack-feature-list {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+    .stack-feature-list li {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      font-size: 14.5px !important;
+      font-weight: 600 !important;
+      color: #0b0b0c !important;
+    }
+
+    /* Section 03: Before vs After Overtake Comparison */
+    #before-after.ba-dark-section,
+    .ba-dark-section {
+      background-color: var(--canvas-dark, #0b0b0c) !important;
+      color: #ffffff !important;
+      padding: 95px 24px 85px 24px !important;
+      position: relative !important;
+    }
+    .ba-overtake-wrapper {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 36px !important;
+      max-width: 1040px !important;
+      margin: 0 auto !important;
+      position: relative !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .ba-vs-circle {
+      position: absolute !important;
+      left: 50% !important;
+      top: 31px !important;
+      transform: translate(-50%, -50%) !important;
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 50% !important;
+      background: #161616 !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: var(--font-mono, monospace) !important;
+      font-size: 13px !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      letter-spacing: 0.05em !important;
+      z-index: 10 !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6) !important;
+    }
+    .ba-overtake-col {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+    }
+    .ba-col-header {
+      border-radius: 16px !important;
+      padding: 18px 24px !important;
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: 18px !important;
+      font-weight: 700 !important;
+      text-align: center !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      margin-bottom: 28px !important;
+      box-sizing: border-box !important;
+    }
+    .ba-header-dark {
+      background-color: var(--surface-dark, #161616) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      color: #ffffff !important;
+    }
+    .ba-header-lime {
+      background-color: var(--accent-lime, #9efc65) !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      color: #0b0b0c !important;
+      font-weight: 850 !important;
+      box-shadow: 0 4px 20px rgba(158, 252, 101, 0.25) !important;
+    }
+    .ba-items-list {
+      list-style: none !important;
+      padding: 0 8px !important;
+      margin: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 20px !important;
+    }
+    .ba-item {
+      display: flex !important;
+      align-items: flex-start !important;
+      gap: 14px !important;
+      font-family: var(--font-base, sans-serif) !important;
+      font-size: 15.5px !important;
+      line-height: 1.5 !important;
+    }
+    .ba-col-left .ba-item-text {
+      color: var(--text-muted-dark, #94a3b8) !important;
+      font-weight: 450 !important;
+    }
+    .ba-col-right .ba-item-text {
+      color: #ffffff !important;
+      font-weight: 550 !important;
+    }
+    .ba-icon-cross {
+      color: #8b8b8b !important;
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      margin-top: 1px !important;
+      min-width: 16px !important;
+    }
+    .ba-icon-check {
+      color: var(--accent-lime, #9efc65) !important;
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      margin-top: 1px !important;
+      min-width: 16px !important;
+    }
+
+    /* Founder Quote Card */
+    .ba-founder-card {
+      max-width: 820px !important;
+      margin: 54px auto 0 auto !important;
+      background: var(--surface-dark, #161616) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      border-radius: var(--radius-card, 28px) !important;
+      padding: 24px 28px !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 26px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+      box-sizing: border-box !important;
+    }
+    .ba-founder-avatar {
+      width: 130px !important;
+      height: 130px !important;
+      min-width: 130px !important;
+      border-radius: 20px !important;
+      object-fit: cover !important;
+      object-position: center 20% !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      background: #0b0b0c !important;
+    }
+    .ba-founder-content {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+    .ba-founder-quote {
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: 16.5px !important;
+      line-height: 1.5 !important;
+      color: #ffffff !important;
+      font-weight: 550 !important;
+      letter-spacing: -0.015em !important;
+      margin: 0 !important;
+    }
+    .ba-founder-meta {
+      font-size: 14.5px !important;
+      color: var(--text-muted-dark, #b7bcbc) !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+    .ba-founder-name {
+      color: #ffffff !important;
+      font-weight: 750 !important;
+    }
+    .ba-founder-sep {
+      color: rgba(255, 255, 255, 0.3) !important;
+    }
+    .ba-founder-title {
+      color: var(--text-muted-dark, #94a3b8) !important;
+    }
+
+    @media (max-width: 768px) {
+      .ba-overtake-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      .ba-vs-circle {
+        display: none !important;
+      }
+      .ba-founder-card {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 24px 20px !important;
+        gap: 18px !important;
+      }
+      .ba-founder-avatar {
+        width: 110px !important;
+        height: 110px !important;
+        min-width: 110px !important;
+        margin: 0 auto !important;
+      }
+      .ba-founder-meta {
+        justify-content: center !important;
       }
     }
+
+    /* Section 04: Portfolio */
+    .portfolio-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 24px !important;
+      width: 100% !important;
+      max-width: 1540px !important;
+      margin: 0 auto !important;
+    }
+    .portfolio-item-card {
+      background-color: var(--surface-light, #ffffff) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      border-radius: var(--radius-card, 28px) !important;
+      padding: 38px 32px !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+      box-sizing: border-box !important;
+    }
+    .portfolio-item-card:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.06) !important;
+    }
+    .port-metric-box {
+      background: #f8fafc !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      border-radius: 18px !important;
+      padding: 16px 20px !important;
+    }
+    .port-metric-box .metric-num {
+      font-family: var(--font-base) !important;
+      font-size: 32px !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.03em !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+    }
+
+    /* Section 05: Testimonials - Extra Large Modern Aesthetic */
+    .portfolio-section-wrapper,
+    .testimonials-section-wrapper,
+    .faq-section-wrapper {
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      background: var(--canvas-light, #f5f5f5) !important;
+      width: 100% !important;
+    }
+    #testimonials,
+    #testimonials.plain-section {
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      background: var(--canvas-light, #f5f5f5) !important;
+      padding: 70px 0 70px 0 !important;
+    }
+    .testimonials-score-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      background-color: #ffffff !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      padding: 10px 24px !important;
+      border-radius: 999px !important;
+      margin: 24px auto 0 auto !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03) !important;
+    }
+    .testimonials-score-badge .score-text {
+      font-size: 15.5px !important;
+      color: #475569 !important;
+    }
+    .testimonials-score-badge .score-text strong {
+      color: #0b0b0c !important;
+      font-weight: 800 !important;
+      font-size: 16.5px !important;
+    }
+    .testimonials-ticker-container {
+      overflow: hidden !important;
+      width: 100% !important;
+      position: relative !important;
+      display: flex !important;
+      padding: 30px 0 !important;
+      margin-top: 50px !important;
+      mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent) !important;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent) !important;
+    }
+    .testimonials-ticker-track {
+      display: flex !important;
+      width: max-content !important;
+      gap: 36px !important;
+      animation: scroll 60s linear infinite !important;
+    }
+    .testimonials-ticker-container:hover .testimonials-ticker-track {
+      animation-play-state: paused !important;
+    }
+    .testimonials-logos-row {
+      display: flex !important;
+      gap: 36px !important;
+      flex-shrink: 0 !important;
+    }
+    .client-quote-card.ticker-card {
+      background: linear-gradient(165deg, #ffffff 0%, #f7f9fc 100%) !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      border-radius: 32px !important;
+      padding: 46px 40px !important;
+      width: 600px !important;
+      min-height: 360px !important;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .client-quote-card.ticker-card:nth-child(odd) {
+      transform: rotate(-1.5deg) translateY(4px) !important;
+    }
+    .client-quote-card.ticker-card:nth-child(even) {
+      transform: rotate(1.5deg) translateY(-4px) !important;
+    }
+    .client-quote-card.ticker-card:nth-child(3n) {
+      transform: rotate(-1.2deg) translateY(2px) !important;
+    }
+    .client-quote-card.ticker-card:nth-child(4n) {
+      transform: rotate(1.8deg) translateY(-3px) !important;
+    }
+    .client-quote-card.ticker-card .card-top-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      margin-bottom: 8px !important;
+      width: 100% !important;
+    }
+    .client-quote-card.ticker-card .client-rating {
+      color: #f59e0b !important;
+      font-size: 24px !important;
+      letter-spacing: 4px !important;
+      line-height: 1 !important;
+    }
+    .client-quote-card.ticker-card .verified-tag {
+      font-size: 13.5px !important;
+      font-weight: 700 !important;
+      color: #059669 !important;
+      background-color: rgba(16, 185, 129, 0.09) !important;
+      padding: 7px 16px !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(16, 185, 129, 0.18) !important;
+    }
+    .client-quote-card.ticker-card .client-text {
+      font-size: 24px !important;
+      line-height: 1.45 !important;
+      color: #0b0b0c !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.025em !important;
+      font-style: normal !important;
+      margin: 18px 0 28px 0 !important;
+      flex-grow: 1 !important;
+    }
+    .client-quote-card.ticker-card .client-author-box {
+      display: flex !important;
+      align-items: center !important;
+      gap: 18px !important;
+      margin-top: auto !important;
+      padding-top: 22px !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.07) !important;
+      width: 100% !important;
+    }
+    .client-quote-card.ticker-card .author-avatar {
+      width: 58px !important;
+      height: 58px !important;
+      border-radius: 50% !important;
+      background-color: #121316 !important;
+      color: #ffffff !important;
+      font-size: 19px !important;
+      font-weight: 800 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      letter-spacing: 0.5px !important;
+      flex-shrink: 0 !important;
+    }
+    .client-quote-card.ticker-card .author-avatar.avatar-purple {
+      background-color: #6366f1 !important;
+      color: #ffffff !important;
+    }
+    .client-quote-card.ticker-card .author-avatar.avatar-blue {
+      background-color: #0284c7 !important;
+      color: #ffffff !important;
+    }
+    .client-quote-card.ticker-card .author-avatar.avatar-green {
+      background-color: #059669 !important;
+      color: #ffffff !important;
+    }
+    .client-quote-card.ticker-card .author-avatar.avatar-orange {
+      background-color: #ea580c !important;
+      color: #ffffff !important;
+    }
+    .client-quote-card.ticker-card .client-author-info {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+    }
+    .client-quote-card.ticker-card .client-author-info strong {
+      font-size: 19px !important;
+      font-weight: 800 !important;
+      color: #0b0b0c !important;
+      letter-spacing: -0.015em !important;
+      line-height: 1.2 !important;
+    }
+    .client-quote-card.ticker-card .client-author-info span {
+      font-size: 15px !important;
+      color: #64748b !important;
+      font-weight: 500 !important;
+      line-height: 1.2 !important;
+    }
+    .client-quote-card.ticker-card:hover {
+      background: linear-gradient(155deg, #111318 0%, #08090b 100%) !important;
+      border-color: rgba(255, 255, 255, 0.18) !important;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35) !important;
+      transform: rotate(0deg) translateY(-10px) scale(1.02) !important;
+    }
+    .client-quote-card.ticker-card:hover .client-text {
+      color: #ffffff !important;
+    }
+    .client-quote-card.ticker-card:hover .client-author-box {
+      border-top-color: rgba(255, 255, 255, 0.12) !important;
+    }
+    .client-quote-card.ticker-card:hover .author-avatar {
+      background-color: #ffffff !important;
+      color: #0b0c0e !important;
+    }
+    .client-quote-card.ticker-card:hover .client-author-info strong {
+      color: #ffffff !important;
+    }
+    .client-quote-card.ticker-card:hover .client-author-info span {
+      color: #94a3b8 !important;
+    }
+    .client-quote-card.ticker-card:hover .verified-tag {
+      color: #34d399 !important;
+      background-color: rgba(52, 211, 153, 0.15) !important;
+      border-color: rgba(52, 211, 153, 0.3) !important;
+    }
+
     @media (max-width: 900px) {
+      .client-quote-card.ticker-card {
+        width: 340px !important;
+        min-height: 280px !important;
+        padding: 28px 22px !important;
+        border-radius: 22px !important;
+      }
+      .client-quote-card.ticker-card .client-text {
+        font-size: 17px !important;
+        line-height: 1.45 !important;
+        margin: 12px 0 20px 0 !important;
+      }
+      .client-quote-card.ticker-card .author-avatar {
+        width: 46px !important;
+        height: 46px !important;
+        font-size: 15px !important;
+      }
+      .client-quote-card.ticker-card .client-author-info strong {
+        font-size: 16px !important;
+      }
+      .client-quote-card.ticker-card .client-author-info span {
+        font-size: 13.5px !important;
+      }
+      .client-quote-card.ticker-card .client-rating {
+        font-size: 19px !important;
+      }
+      .client-quote-card.ticker-card .verified-tag {
+        font-size: 12px !important;
+        padding: 5px 12px !important;
+      }
+    }
+
+    /* Section 06: Process Steps */
+    #process,
+    #process.process-sticky-section,
+    #process.plain-section {
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      background: var(--canvas-light, #f5f5f5) !important;
+      width: 100% !important;
+      max-width: 1540px !important;
+      margin: 0 auto !important;
+      padding: 80px 24px !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      box-sizing: border-box !important;
+    }
+    .vertical-step-card {
+      background-color: var(--surface-light, #ffffff) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      border-radius: var(--radius-card, 28px) !important;
+      padding: 36px 30px !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03) !important;
+    }
+    .step-num-badge {
+      font-family: var(--font-mono) !important;
+      font-size: 20px !important;
+      font-weight: 800 !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+    }
+
+    /* Text Marquee */
+    .text-marquee-container {
+      padding: 24px 0 !important;
+      background: transparent !important;
+      overflow: hidden !important;
+    }
+    .text-marquee-row span {
+      font-family: var(--font-heading) !important;
+      font-size: clamp(32px, 4vw, 54px) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.03em !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+    }
+
+    /* Unified Dark Obsidian Section (Paketi) */
+    .pricing-section-wrapper {
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      width: 100% !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .dark-combined-container {
+      position: relative !important;
+      z-index: 10 !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      border-radius: 48px 48px 0 0 !important;
+      background-color: var(--canvas-dark, #0b0b0c) !important;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px) !important;
+      background-size: 36px 36px !important;
+      color: #ffffff !important;
+      border: none !important;
+      padding: 90px 0 90px 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0 !important;
+      box-shadow: none !important;
+    }
+    #why-algor.why-algor-section,
+    .why-algor-section {
+      width: 100% !important;
+      max-width: 1540px !important;
+      margin: 0 auto !important;
+      padding: 0 24px !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+    #why-algor .info-title {
+      color: #ffffff !important;
+      font-size: clamp(32px, 4.5vw, 54px) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.035em !important;
+    }
+    .why-algor-grid {
+      display: grid !important;
+      grid-template-columns: 1.42fr 1fr 1fr !important;
+      gap: 24px !important;
+      margin-top: 40px !important;
+      width: 100% !important;
+      max-width: 1540px !important;
+      align-items: stretch !important;
+    }
+    .why-stat-card {
+      border-radius: var(--radius-card, 28px) !important;
+      padding: 40px 34px !important;
+      min-height: 320px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      box-sizing: border-box !important;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease !important;
+    }
+    .why-stat-card:hover {
+      transform: translateY(-6px) !important;
+    }
+    .why-stat-top {
+      display: flex !important;
+      align-items: flex-start !important;
+      line-height: 1 !important;
+      font-family: var(--font-base) !important;
+    }
+    .why-stat-val {
+      font-size: 72px !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.04em !important;
+      line-height: 0.9 !important;
+    }
+    .why-stat-unit {
+      font-size: 28px !important;
+      font-weight: 750 !important;
+      letter-spacing: -0.02em !important;
+      line-height: 1 !important;
+      margin-left: 6px !important;
+      margin-top: 4px !important;
+    }
+    .why-stat-desc {
+      font-family: var(--font-base) !important;
+      font-size: 15.5px !important;
+      line-height: 1.55 !important;
+      font-weight: 450 !important;
+      letter-spacing: -0.15px !important;
+      margin: 28px 0 0 0 !important;
+    }
+    .why-stat-desc strong {
+      display: block !important;
+      font-size: 17px !important;
+      font-weight: 750 !important;
+      margin-bottom: 4px !important;
+      letter-spacing: -0.2px !important;
+    }
+    .why-card-lime {
+      background-color: var(--accent-lime, #9efc65) !important;
+      color: var(--canvas-dark, #0b0b0c) !important;
+      box-shadow: 0 12px 36px var(--accent-lime-glow, rgba(158, 252, 101, 0.25)) !important;
+    }
+    .why-card-lime .why-stat-val,
+    .why-card-lime .why-stat-unit,
+    .why-card-lime .why-stat-desc,
+    .why-card-lime .why-stat-desc strong {
+      color: var(--canvas-dark, #0b0b0c) !important;
+    }
+    .why-card-white {
+      background-color: var(--surface-light, #ffffff) !important;
+      color: var(--canvas-dark, #0b0b0c) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+    }
+    .why-card-white .why-stat-val,
+    .why-card-white .why-stat-unit,
+    .why-card-white .why-stat-desc strong {
+      color: var(--canvas-dark, #0b0b0c) !important;
+    }
+    .why-card-white .why-stat-desc {
+      color: var(--text-muted-light, #6a6e6e) !important;
+    }
+    .why-card-dark {
+      background: var(--surface-dark, #161616) !important;
+      color: #ffffff !important;
+      border: 1px solid var(--border-dark, rgba(255, 255, 255, 0.12)) !important;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1) !important;
+    }
+    .why-card-dark .why-stat-val,
+    .why-card-dark .why-stat-unit,
+    .why-card-dark .why-stat-desc strong {
+      color: #ffffff !important;
+    }
+    .why-card-dark .why-stat-desc {
+      color: var(--text-muted-dark, #b7bcbc) !important;
+    }
+
+    /* Section 08: Luxury Pricing Cards */
+    #pricing {
+      position: relative !important;
+      z-index: 10 !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      max-width: 1540px !important;
+      margin: 0 auto !important;
+      color: #ffffff !important;
+      border: none !important;
+      padding: 0 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 40px !important;
+      box-shadow: none !important;
+      box-sizing: border-box !important;
+    }
+    .luxury-pricing-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px !important;
+      width: 100% !important;
+      max-width: 1540px !important;
+      margin-top: 20px !important;
+    }
+    #pricing .price-card.luxury-card,
+    .price-card.luxury-card {
+      background: var(--surface-dark, #161616) !important;
+      border: 1px solid var(--border-dark, rgba(255, 255, 255, 0.1)) !important;
+      padding: 42px 34px !important;
+      border-radius: var(--radius-card, 28px) !important;
+      color: #ffffff !important;
+    }
+    .price-card.luxury-card.popular-card-lux {
+      border: 1.5px solid var(--accent-lime, #9efc65) !important;
+      box-shadow: 0 0 35px var(--accent-lime-glow, rgba(158, 252, 101, 0.18)), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    }
+    .ref-tag-mono {
+      font-family: var(--font-mono) !important;
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.06em !important;
+    }
+    .ref-tag-mono.tag-popular {
+      background: var(--accent-lime, #9efc65) !important;
+      color: var(--canvas-dark, #0b0b0c) !important;
+      padding: 6px 14px !important;
+      border-radius: var(--radius-pill, 999px) !important;
+    }
+
+    /* Section 08: FAQ Disclosures */
+    #faq,
+    #faq.plain-section {
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      background: var(--canvas-light, #f5f5f5) !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      padding: 80px 24px !important;
+      border: none !important;
+    }
+    #faq .info-header {
+      text-align: center !important;
+      max-width: 840px !important;
+      margin: 0 auto 40px auto !important;
+    }
+    #faq .section-badge {
+      color: var(--text-muted-light, #6a6e6e) !important;
+      background: transparent !important;
+      border: none !important;
+    }
+    #faq .info-title {
+      color: var(--text-primary-light, #0b0b0c) !important;
+      font-size: clamp(30px, 4.2vw, 48px) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.035em !important;
+      line-height: 1.12 !important;
+      margin-bottom: 14px !important;
+    }
+    #faq .info-subtitle {
+      color: #64748b !important;
+      font-size: 16px !important;
+      line-height: 1.6 !important;
+      max-width: 780px !important;
+      margin: 0 auto !important;
+    }
+    .faq-single-column {
+      width: 100% !important;
+      max-width: 920px !important;
+      margin: 0 auto !important;
+    }
+    .accordion-group {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+    #faq .disclosure,
+    .disclosure {
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 20px !important;
+      padding: 22px 28px !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02) !important;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+      margin-bottom: 16px !important;
+    }
+    #faq .disclosure:hover,
+    #faq .disclosure[open],
+    .disclosure[open] {
+      background: #ffffff !important;
+      border-color: #0b0b0c !important;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.05) !important;
+    }
+    #faq .disclosure summary,
+    .disclosure summary {
+      font-family: var(--font-heading) !important;
+      font-size: 17.5px !important;
+      font-weight: 750 !important;
+      color: #0b0b0c !important;
+      cursor: pointer !important;
+      letter-spacing: -0.02em !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      list-style: none !important;
+    }
+    #faq .disclosure summary::-webkit-details-marker,
+    .disclosure summary::-webkit-details-marker {
+      display: none !important;
+    }
+    #faq .disclosure summary::after,
+    .disclosure summary::after {
+      content: '+' !important;
+      font-size: 22px !important;
+      font-weight: 500 !important;
+      color: #64748b !important;
+      transition: transform 0.2s ease !important;
+    }
+    #faq .disclosure[open] summary::after,
+    .disclosure[open] summary::after {
+      content: '−' !important;
+      transform: rotate(180deg) !important;
+      color: #0b0b0c !important;
+    }
+    #faq .disclosure p,
+    .disclosure p {
+      font-size: 15px !important;
+      line-height: 1.65 !important;
+      color: #475569 !important;
+      margin-top: 14px !important;
+      padding-top: 0 !important;
+    }
+
+    /* Section 09: Full-Width Black Luxury Footer & Contact */
+    .footer-hero-and-card-section {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      background-color: var(--canvas-dark, #0b0b0c) !important;
+      background: var(--canvas-dark, #0b0b0c) !important;
+      color: #ffffff !important;
+      padding: 100px 0 0 0 !important;
+      box-sizing: border-box !important;
+      border: none !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .footer-conversion-area {
+      max-width: 900px !important;
+      margin: 0 auto 30px auto !important;
+      padding: 0 24px !important;
+      text-align: center !important;
+      box-sizing: border-box !important;
+    }
+    .footer-conversion-area .section-badge {
+      display: inline-block !important;
+      font-family: var(--font-mono, monospace) !important;
+      font-size: 12.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      color: var(--accent-lime, #9efc65) !important;
+      background: rgba(158, 252, 101, 0.1) !important;
+      border: 1px solid rgba(158, 252, 101, 0.25) !important;
+      border-radius: var(--radius-pill, 999px) !important;
+      padding: 6px 14px !important;
+      margin-bottom: 20px !important;
+    }
+    .footer-conv-title,
+    .footer-conversion-area .info-title {
+      font-family: var(--font-heading) !important;
+      font-size: clamp(30px, 4.2vw, 48px) !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.035em !important;
+      line-height: 1.12 !important;
+      color: #ffffff !important;
+      margin: 0 0 16px 0 !important;
+      text-align: center !important;
+    }
+    .footer-conv-subtitle,
+    .footer-conversion-area .info-subtitle {
+      font-family: var(--font-base) !important;
+      font-size: 16px !important;
+      line-height: 1.6 !important;
+      color: #94a3b8 !important;
+      margin: 0 auto 40px auto !important;
+      max-width: 680px !important;
+      text-align: center !important;
+    }
+    .footer-form-grid-box {
+      background: #141416 !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      border-radius: var(--radius-card, 28px) !important;
+      padding: 36px !important;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
+      box-sizing: border-box !important;
+    }
+    .footer-inputs-top-row {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 16px !important;
+      margin-bottom: 16px !important;
+    }
+    .footer-form-field input,
+    .footer-textarea-row textarea {
+      width: 100% !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      border-radius: var(--radius-sm, 14px) !important;
+      padding: 14px 18px !important;
+      font-family: var(--font-base) !important;
+      font-size: 15px !important;
+      color: #ffffff !important;
+      background-color: #0b0b0c !important;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
+      box-sizing: border-box !important;
+    }
+    .footer-form-field input::placeholder,
+    .footer-textarea-row textarea::placeholder {
+      color: #71717a !important;
+      font-weight: 500 !important;
+    }
+    .footer-form-field input:focus,
+    .footer-textarea-row textarea:focus {
+      outline: none !important;
+      background-color: #111114 !important;
+      border-color: var(--accent-lime, #9efc65) !important;
+      box-shadow: 0 0 0 3px rgba(158, 252, 101, 0.15) !important;
+    }
+    .footer-submit-row {
+      display: flex !important;
+      justify-content: flex-end !important;
+      margin-top: 8px !important;
+    }
+    .footer-form-submit-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      background: var(--accent-lime, #9efc65) !important;
+      color: var(--canvas-dark, #0b0b0c) !important;
+      font-family: var(--font-base) !important;
+      font-size: 15.5px !important;
+      font-weight: 750 !important;
+      padding: 14px 32px !important;
+      border-radius: var(--radius-pill, 999px) !important;
+      border: none !important;
+      cursor: pointer !important;
+      box-shadow: 0 0 25px rgba(158, 252, 101, 0.25) !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+    }
+    .footer-form-submit-btn:hover {
+      background: #8ee854 !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 0 35px rgba(158, 252, 101, 0.4) !important;
+    }
+    .footer-form-submit-btn .btn-arrow-circle {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 26px !important;
+      height: 26px !important;
+      border-radius: 50% !important;
+      background: rgba(11, 11, 12, 0.15) !important;
+      color: #0b0b0c !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+    }
+    .footer-gallery-stack {
+      width: 100% !important;
+      margin: 40px 0 60px 0 !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      overflow: hidden !important;
+    }
+    .footer-gallery-marquee {
+      background-color: transparent !important;
+      padding: 12px 0 !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
+      mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent) !important;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent) !important;
+    }
+    .footer-gallery-stack .gallery-img-box {
+      width: 440px !important;
+      height: 330px !important;
+      border-radius: var(--radius-card, 28px) !important;
+      overflow: hidden !important;
+      flex-shrink: 0 !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .footer-card-wrapper {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background-color: var(--canvas-dark, #0b0b0c) !important;
+      background: var(--canvas-dark, #0b0b0c) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .brand-footer-card {
+      width: 100% !important;
+      max-width: 1440px !important;
+      background-color: transparent !important;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      color: #ffffff !important;
+      padding: 60px 32px 40px 32px !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+      box-shadow: none !important;
+    }
+    .footer-photo-credit-text {
+      text-align: center !important;
+      font-size: 12.5px !important;
+      font-weight: 500 !important;
+      color: #71717a !important;
+      letter-spacing: 0.3px !important;
+      margin-bottom: 24px !important;
+      width: 100% !important;
+    }
+    .footer-card-top {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      flex-wrap: wrap !important;
+      gap: 40px !important;
+      padding-bottom: 40px !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .footer-card-bottom {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      padding-top: 24px !important;
+      color: #71717a !important;
+      font-size: 13.5px !important;
+      flex-wrap: wrap !important;
+      gap: 16px !important;
+    }
+    .footer-credit-brand {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .dark-combined-container {
+        gap: 60px !important;
+        padding: 70px 0 70px 0 !important;
+      }
+      .why-algor-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      .luxury-pricing-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 650px !important;
+        gap: 20px !important;
+      }
+      .why-stat-card {
+        min-height: 280px !important;
+        padding: 34px 28px !important;
+      }
       .stats-grid {
         grid-template-columns: 1fr !important;
-        max-width: 480px !important;
+        max-width: 100% !important;
       }
-      .about-lead-p {
-        font-size: 16.5px !important;
-        line-height: 1.55 !important;
+      .stat-card {
+        height: 320px !important;
+        min-height: 320px !important;
+        max-height: 320px !important;
+      }
+      .about-metrics-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 32px 20px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-single-column-mesh {
+        width: calc(100% - 20px) !important;
+        margin: 10px auto !important;
+        padding: 80px 20px 24px 20px !important;
+        border-radius: 24px !important;
+      }
+      #about,
+      #about.plain-section {
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 50px 16px 40px 16px !important;
+        border-radius: 0 !important;
+      }
+      .info-section-card.no-card-box {
+        width: calc(100% - 20px) !important;
+        margin: 10px auto !important;
+        padding: 40px 16px 48px 16px !important;
+        border-radius: 24px !important;
+      }
+      .about-lead-p,
+      #about-reveal-text.about-lead-p {
+        font-size: clamp(19px, 5vw, 24px) !important;
+        line-height: 1.38 !important;
+        letter-spacing: -0.02em !important;
+      }
+      .about-lead-p .reveal-word {
+        margin-right: 0.16em !important;
+      }
+      .plain-section {
+        padding: 50px 16px !important;
+      }
+      .dark-combined-container {
+        border-radius: 36px 36px 0 0 !important;
+        padding: 50px 0 50px 0 !important;
+        gap: 48px !important;
+      }
+      #pricing,
+      #why-algor.why-algor-section,
+      .why-algor-section {
+        margin: 0 !important;
+        padding: 0 16px !important;
+      }
+      .before-after-container,
+      .portfolio-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      .ba-card,
+      .portfolio-item-card {
+        padding: 24px 20px !important;
+        border-radius: 24px !important;
+      }
+      #pricing .price-card.luxury-card,
+      .price-card.luxury-card {
+        padding: 28px 20px !important;
+        border-radius: 24px !important;
+      }
+      .footer-hero-and-card-section {
+        padding: 50px 16px 20px 16px !important;
+      }
+      .footer-form-grid-box {
+        padding: 22px 18px !important;
+        border-radius: 20px !important;
+      }
+      .footer-inputs-top-row {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+      .about-galleries-stack {
+        margin-left: -16px !important;
+        margin-right: -16px !important;
+        width: calc(100% + 32px) !important;
+      }
+      .gallery-img-box {
+        width: 300px !important;
+        height: 225px !important;
+        border-radius: 20px !important;
       }
     }
   </style>
@@ -538,75 +2169,104 @@
   </main>
 
   <!-- 2. ABOUT & STATS SECTION (Clean Blended Background) -->
-  <section id="about" class="info-section-card no-card-box">
-    <div class="info-header">
-      <span class="section-badge">// O NAMA & PRISTUP SURADNJI</span>
-      <h2 class="info-title scroll-reveal-text" id="about-reveal-text">
-        <span class="reveal-word">Jedan</span>
-        <span class="reveal-word">sustav.</span>
-        <span class="reveal-word">Jedan</span>
-        <span class="reveal-word">partner.</span>
-        <span class="reveal-word">Jedan</span>
-        <span class="reveal-word">cilj.</span>
-      </h2>
-      <div class="about-lead-content">
-        <p class="about-lead-p">
-          Umjesto koordinacije fotografa, web developera i agencije za oglase — Algor objedinjuje cijeli sustav akvizicije na jednom mjestu: od produkcije sadržaja i profitabilnih kampanja do konverzijskih landing stranica i AI automatizacije. Vi vodite poslovanje. Algor vodi sustav akvizicije.
+  <section id="about" class="plain-section">
+    <div class="info-header align-center" style="max-width: 1040px !important; margin: 0 auto 48px auto !important;">
+      <span class="section-badge" style="margin-bottom: 24px !important;">// 01 O NAMA</span>
+      <div class="about-lead-content" style="max-width: 1040px !important;">
+        <p class="about-lead-p scroll-reveal-text" id="about-reveal-text">
+          <span class="reveal-word">Umjesto</span>
+          <span class="reveal-word">koordinacije</span>
+          <span class="reveal-word">fotografa,</span>
+          <span class="reveal-word">web</span>
+          <span class="reveal-word">developera</span>
+          <span class="reveal-word">i</span>
+          <span class="reveal-word">agencije</span>
+          <span class="reveal-word">za</span>
+          <span class="reveal-word">oglase</span>
+          <span class="reveal-word">—</span>
+          <span class="reveal-word">Algor</span>
+          <span class="reveal-word">objedinjuje</span>
+          <span class="reveal-word">cijeli</span>
+          <span class="reveal-word">sustav</span>
+          <span class="reveal-word">akvizicije</span>
+          <span class="reveal-word">na</span>
+          <span class="reveal-word">jednom</span>
+          <span class="reveal-word">mjestu:</span>
+          <span class="reveal-word">od</span>
+          <span class="reveal-word">produkcije</span>
+          <span class="reveal-word">sadržaja</span>
+          <span class="reveal-word">i</span>
+          <span class="reveal-word">profitabilnih</span>
+          <span class="reveal-word">kampanja</span>
+          <span class="reveal-word">do</span>
+          <span class="reveal-word">konverzijskih</span>
+          <span class="reveal-word">landing</span>
+          <span class="reveal-word">stranica</span>
+          <span class="reveal-word">i</span>
+          <span class="reveal-word">AI</span>
+          <span class="reveal-word">automatizacije.</span>
+          <span class="reveal-word">Vi</span>
+          <span class="reveal-word">vodite</span>
+          <span class="reveal-word">poslovanje.</span>
+          <span class="reveal-word">Algor</span>
+          <span class="reveal-word">vodi</span>
+          <span class="reveal-word">sustav</span>
+          <span class="reveal-word">akvizicije.</span>
         </p>
       </div>
     </div>
 
     <!-- Cards Grid (3 Balanced Compact Bento Cards) -->
-    <div class="stats-grid" style="display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; align-items: stretch !important; max-width: 1240px !important; margin: 0 auto !important; width: 100% !important;">
+    <div class="stats-grid">
       
       <!-- Card 1: Foto & Video Image Card -->
-      <div class="stat-card image-card-only" style="height: 280px !important; min-height: 280px !important; max-height: 280px !important; border-radius: 20px !important; overflow: hidden !important; position: relative !important; padding: 0 !important; background-color: #0f172a !important; box-sizing: border-box !important;">
-        <img src="about_person.jpg" alt="Algor Studio Tim" class="card-full-img" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center 20% !important; display: block !important; border-radius: 20px !important;" />
+      <div class="stat-card image-card-only">
+        <img src="about_person.jpg" alt="Algor Studio Tim" class="card-full-img" />
       </div>
 
       <!-- Card 2: Tech Ecosystem Orbit Card (Rotating 6 Logos in Circle, No Text, Equal Size) -->
-      <div class="stat-card tech-orbit-card" style="background: #f8fafc !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 4px 16px -2px rgba(0,0,0,0.04) !important; border-radius: 20px !important; padding: 12px !important; display: flex !important; align-items: center !important; justify-content: center !important; position: relative !important; overflow: hidden !important; height: 280px !important; min-height: 280px !important; max-height: 280px !important; box-sizing: border-box !important;">
-        <div class="tech-orbit-container" style="position: relative !important; width: 240px !important; height: 240px !important; display: flex !important; align-items: center !important; justify-content: center !important; margin: auto !important;">
+      <div class="stat-card tech-orbit-card">
+        <div class="tech-orbit-container">
           
           <!-- Static Inner Ring -->
-          <div class="tech-orbit-ring ring-inner" style="position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 96px !important; height: 96px !important; border-radius: 50% !important; border: 1px solid rgba(15,23,42,0.06) !important; pointer-events: none !important;"></div>
+          <div class="tech-orbit-ring ring-inner"></div>
           
           <!-- Stationary Center Core -->
-          <div class="tech-orbit-hub" style="position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 48px !important; height: 48px !important; border-radius: 50% !important; background: #ffffff !important; border: 1.5px solid #e2e8f0 !important; display: flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 4px 14px rgba(0,0,0,0.06) !important; z-index: 2 !important;">
-            <div class="hub-pulse-dot" style="width: 10px !important; height: 10px !important; border-radius: 50% !important; background: #29ADFF !important; box-shadow: 0 0 10px #29ADFF !important;"></div>
+          <div class="tech-orbit-hub">
+            <div class="hub-pulse-dot"></div>
           </div>
 
           <!-- Rotating Track with 6 Equal-Sized Logo Badges (No Text) -->
-          <div class="tech-orbit-track" style="position: absolute !important; top: 50% !important; left: 50% !important; width: 176px !important; height: 176px !important; border-radius: 50% !important; border: 1.5px dashed rgba(148, 163, 184, 0.45) !important;">
+          <div class="tech-orbit-track">
             
             <!-- 1. Google (Top / 0°) -->
-            <div class="tech-orbit-item orbit-node-google" title="Google" style="position: absolute !important; top: 0% !important; bottom: auto !important; left: 50% !important; right: auto !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; background: #ffffff !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 4px 12px rgba(15,23,42,0.08) !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; box-sizing: border-box !important;">
-              <svg width="22" height="22" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 22px !important; height: 22px !important; min-width: 22px !important; max-width: 22px !important; display: block !important;"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.3 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.17 0 9.97 0 12s.46 3.83 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.7 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+            <div class="tech-orbit-item orbit-node-google" title="Google">
+              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.3 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.17 0 9.97 0 12s.46 3.83 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.7 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
             </div>
 
             <!-- 2. ChatGPT (60°) -->
-            <div class="tech-orbit-item orbit-node-chatgpt" title="ChatGPT" style="position: absolute !important; top: 25% !important; bottom: auto !important; left: 93.3% !important; right: auto !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; background: #ffffff !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 4px 12px rgba(15,23,42,0.08) !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; box-sizing: border-box !important;">
-              <svg width="22" height="22" viewBox="0 0 24 24" class="orbit-logo-svg" fill="#10A37F" style="width: 22px !important; height: 22px !important; min-width: 22px !important; max-width: 22px !important; display: block !important;"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829l2.02-1.1638a.0804.0804 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.402-.686zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L8.909 9.2297V6.8974a.0662.0662 0 0 1 .0331-.0615L13.843 3.99a4.5045 4.5045 0 0 1 6.6078 4.7383zm-7.974 4.1539l-2.6592-1.536 2.6592-1.536 2.6592 1.536-2.6592 1.536z"/></svg>
+            <div class="tech-orbit-item orbit-node-chatgpt" title="ChatGPT">
+              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg" fill="#10A37F"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829l2.02-1.1638a.0804.0804 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.402-.686zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L8.909 9.2297V6.8974a.0662.0662 0 0 1 .0331-.0615L13.843 3.99a4.5045 4.5045 0 0 1 6.6078 4.7383zm-7.974 4.1539l-2.6592-1.536 2.6592-1.536 2.6592 1.536-2.6592 1.536z"/></svg>
             </div>
 
             <!-- 3. Python (120°) -->
-            <div class="tech-orbit-item orbit-node-python" title="Python" style="position: absolute !important; top: 75% !important; bottom: auto !important; left: 93.3% !important; right: auto !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; background: #ffffff !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 4px 12px rgba(15,23,42,0.08) !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; box-sizing: border-box !important;">
-              <svg width="22" height="22" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 22px !important; height: 22px !important; min-width: 22px !important; max-width: 22px !important; display: block !important;"><path fill="#3776AB" d="M11.91 0c-1.8 0-3.41.16-4.66.44-3.69.83-3.89 2.56-3.89 5.72v4.21h7.79v1.08H3.36c-3.16 0-4.9 1.83-5.36 5.51-.54 4.22.42 7.04 4.02 7.04h2.58v-3.66c0-2.69 2.31-5.02 5.09-5.02h7.74v-4.6c0-3.4-2.82-5.72-5.52-5.72zm-2.22 1.76a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36z"/><path fill="#FFD438" d="M12.09 24c1.8 0 3.41-.16 4.66-.44 3.69-.83 3.89-2.56 3.89-5.72v-4.21h-7.79v-1.08h7.79c3.16 0 4.9-1.83 5.36-5.51.54-4.22-.42-7.04-4.02-7.04h-2.58v3.66c0 2.69-2.31 5.02-5.09 5.02H6.57v4.6c0 3.4 2.82 5.72 5.52 5.72zm2.22-1.76a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 0 2.36z"/></svg>
+            <div class="tech-orbit-item orbit-node-python" title="Python">
+              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#3776AB" d="M11.91 0c-1.8 0-3.41.16-4.66.44-3.69.83-3.89 2.56-3.89 5.72v4.21h7.79v1.08H3.36c-3.16 0-4.9 1.83-5.36 5.51-.54 4.22.42 7.04 4.02 7.04h2.58v-3.66c0-2.69 2.31-5.02 5.09-5.02h7.74v-4.6c0-3.4-2.82-5.72-5.52-5.72zm-2.22 1.76a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36z"/><path fill="#FFD438" d="M12.09 24c1.8 0 3.41-.16 4.66-.44 3.69-.83 3.89-2.56 3.89-5.72v-4.21h-7.79v-1.08h7.79c3.16 0 4.9-1.83 5.36-5.51.54-4.22-.42-7.04-4.02-7.04h-2.58v3.66c0 2.69-2.31 5.02-5.09 5.02H6.57v4.6c0 3.4 2.82 5.72 5.52 5.72zm2.22-1.76a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 0 2.36z"/></svg>
             </div>
 
             <!-- 4. Meta (180°) -->
-            <div class="tech-orbit-item orbit-node-meta" title="Meta" style="position: absolute !important; top: 100% !important; bottom: auto !important; left: 50% !important; right: auto !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; background: #ffffff !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 4px 12px rgba(15,23,42,0.08) !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; box-sizing: border-box !important;">
-              <svg width="22" height="22" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 22px !important; height: 22px !important; min-width: 22px !important; max-width: 22px !important; display: block !important;"><linearGradient id="metaGradOrbitCard" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0064e0"/><stop offset="100%" stop-color="#007dfc"/></linearGradient><path fill="url(#metaGradOrbitCard)" d="M16.48 4.04c-1.84 0-3.32.96-4.48 2.65-1.16-1.69-2.64-2.65-4.48-2.65C4.24 4.04 2 6.43 2 9.87c0 4.19 3.63 7.82 8.65 11.75l1.35 1.05 1.35-1.05C18.37 17.69 22 14.06 22 9.87c0-3.44-2.24-5.83-5.52-5.83zm-4.48 15.2c-4.14-3.35-7-6.32-7-9.37 0-2.21 1.34-3.83 3.48-3.83 0 3.05-2.86 6.02-7 9.37z"/></svg>
+            <div class="tech-orbit-item orbit-node-meta" title="Meta">
+              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><linearGradient id="metaGradOrbitCard" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0064e0"/><stop offset="100%" stop-color="#007dfc"/></linearGradient><path fill="url(#metaGradOrbitCard)" d="M16.48 4.04c-1.84 0-3.32.96-4.48 2.65-1.16-1.69-2.64-2.65-4.48-2.65C4.24 4.04 2 6.43 2 9.87c0 4.19 3.63 7.82 8.65 11.75l1.35 1.05 1.35-1.05C18.37 17.69 22 14.06 22 9.87c0-3.44-2.24-5.83-5.52-5.83zm-4.48 15.2c-4.14-3.35-7-6.32-7-9.37 0-2.21 1.34-3.83 3.48-3.83 0 3.05-2.86 6.02-7 9.37z"/></svg>
             </div>
 
             <!-- 5. Instagram (240°) -->
-            <div class="tech-orbit-item orbit-node-instagram" title="Instagram" style="position: absolute !important; top: 75% !important; bottom: auto !important; left: 6.7% !important; right: auto !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; background: #ffffff !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 4px 12px rgba(15,23,42,0.08) !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; box-sizing: border-box !important;">
-              <svg width="22" height="22" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 22px !important; height: 22px !important; min-width: 22px !important; max-width: 22px !important; display: block !important;"><radialGradient id="igGradOrbitCard" cx="0.2" cy="1" r="1.2"><stop offset="0%" stop-color="#ffd521"/><stop offset="25%" stop-color="#f50000"/><stop offset="50%" stop-color="#b900b4"/><stop offset="100%" stop-color="#4c64d8"/></radialGradient><rect width="24" height="24" rx="6" fill="url(#igGradOrbitCard)"/><path fill="#ffffff" fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+            <div class="tech-orbit-item orbit-node-instagram" title="Instagram">
+              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><radialGradient id="igGradOrbitCard" cx="0.2" cy="1" r="1.2"><stop offset="0%" stop-color="#ffd521"/><stop offset="25%" stop-color="#f50000"/><stop offset="50%" stop-color="#b900b4"/><stop offset="100%" stop-color="#4c64d8"/></radialGradient><rect width="24" height="24" rx="6" fill="url(#igGradOrbitCard)"/><path fill="#ffffff" fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
             </div>
 
             <!-- 6. GA4 (300°) -->
-            <div class="tech-orbit-item orbit-node-ga4" title="Google Analytics 4" style="position: absolute !important; top: 25% !important; bottom: auto !important; left: 6.7% !important; right: auto !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; background: #ffffff !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 4px 12px rgba(15,23,42,0.08) !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; box-sizing: border-box !important;">
-              <svg width="22" height="22" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 22px !important; height: 22px !important; min-width: 22px !important; max-width: 22px !important; display: block !important;"><path fill="#F9AB00" d="M12.87 21.67a3.4 3.4 0 0 0 3.4-3.4V5.73a3.4 3.4 0 1 0-6.8 0v12.54a3.4 3.4 0 0 0 3.4 3.4z"/><path fill="#E37400" d="M19.67 21.67a3.4 3.4 0 0 0 3.4-3.4v-6.2a3.4 3.4 0 1 0-6.8 0v6.2a3.4 3.4 0 0 0 3.4 3.4z"/><circle fill="#E37400" cx="4.33" cy="18.27" r="3.4"/></svg>
+            <div class="tech-orbit-item orbit-node-ga4" title="Google Analytics 4">
+              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#F9AB00" d="M12.87 21.67a3.4 3.4 0 0 0 3.4-3.4V5.73a3.4 3.4 0 1 0-6.8 0v12.54a3.4 3.4 0 0 0 3.4 3.4z"/><path fill="#E37400" d="M19.67 21.67a3.4 3.4 0 0 0 3.4-3.4v-6.2a3.4 3.4 0 1 0-6.8 0v6.2a3.4 3.4 0 0 0 3.4 3.4z"/><circle fill="#E37400" cx="4.33" cy="18.27" r="3.4"/></svg>
             </div>
 
           </div>
@@ -614,24 +2274,90 @@
       </div>
 
       <!-- Card 3: Testimonial Card (Enlarged) -->
-      <div class="stat-card testimonial-card" style="background-color: #ffffff !important; border: 1px solid #e2e8f0 !important; border-radius: 20px !important; padding: 26px 24px !important; color: #0f172a !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; height: 280px !important; min-height: 280px !important; max-height: 280px !important; box-shadow: 0 4px 16px rgba(0,0,0,0.04) !important; box-sizing: border-box !important;">
+      <div class="stat-card testimonial-card">
         <div class="testimonial-header" style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
           <div class="quote-mark-icon" style="color: #94a3b8 !important; display: flex !important; align-items: center !important;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="width: 24px !important; height: 24px !important; display: block !important;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="width: 28px !important; height: 28px !important; display: block !important;">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
             </svg>
           </div>
           <div class="testimonial-logo">
-            <span style="font-weight: 850 !important; font-size: 14px !important; color: #0f172a !important; letter-spacing: 0.6px !important;">ADMIRAL</span>
+            <span style="font-weight: 850 !important; font-size: 15px !important; color: var(--text-primary-light, #0b0b0c) !important; letter-spacing: 0.8px !important;">ADMIRAL</span>
           </div>
         </div>
         
-        <p class="testimonial-text" style="font-size: 16.5px !important; line-height: 1.5 !important; font-weight: 600 !important; color: #1e293b !important; letter-spacing: -0.2px !important; margin: 12px 0 auto 0 !important;">
+        <p class="testimonial-text" style="font-size: 16.5px !important; line-height: 1.5 !important; font-weight: 600 !important; color: var(--text-primary-light, #0b0b0c) !important; letter-spacing: -0.2px !important; margin: 12px 0 auto 0 !important;">
           "Algor nije samo napravio projekt, već postao dugotrajni partner za naše poslovanje."
         </p>
         
-        <div class="testimonial-citation" style="font-size: 13.5px !important; color: #64748b !important; font-weight: 700 !important; display: flex !important; align-items: center !important; gap: 6px !important; margin-top: auto !important; padding-top: 12px !important; border-top: 1px solid #f1f5f9 !important;">
-          <span class="cit-bullet" style="color: #29ADFF !important; font-size: 15px !important;">•</span> Martina P., Admiral
+        <div class="testimonial-citation" style="font-size: 13.5px !important; color: var(--text-muted-light, #6a6e6e) !important; font-weight: 700 !important; display: flex !important; align-items: center !important; gap: 6px !important; margin-top: auto !important; padding-top: 12px !important; border-top: 1px solid var(--border-light, #e2e8f0) !important;">
+          <span class="cit-bullet" style="color: var(--accent-lime, #9efc65) !important; font-size: 15px !important;">•</span> Martina P., Admiral
+        </div>
+      </div>
+
+      <!-- Card 4: 30+ Završenih projekata -->
+      <div class="stat-card bento-metric-card stat-card-white">
+        <div class="bento-card-top">
+          <span class="stat-pill-tag">// 30+ PROJEKATA</span>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary-light, #0b0b0c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="bento-card-middle">
+          <div class="bento-big-num">30+</div>
+          <h3 class="bento-card-title">Završenih projekata</h3>
+          <p class="bento-card-desc">Uspješno realizirani projekti i marketinške kampanje s mjerljivim povratom ulaganja.</p>
+        </div>
+        
+        <div class="bento-sub-tags">
+          <span class="bento-sub-pill">Restorani</span>
+          <span class="bento-sub-pill">Hoteli</span>
+          <span class="bento-sub-pill">Poliklinike</span>
+          <span class="bento-sub-pill">Lokalne usluge</span>
+        </div>
+      </div>
+
+      <!-- Card 5: 2024 godine započet sa radom (Overtake Signature Lime) -->
+      <div class="stat-card bento-metric-card stat-card-lime">
+        <div class="bento-card-top">
+          <span class="stat-pill-tag stat-pill-dark">// OD 2024. GODINE</span>
+          <div style="font-family: var(--font-mono, monospace); font-size: 11px; font-weight: 700; color: rgba(11, 11, 12, 0.7); letter-spacing: 0.05em;">
+            ZAGREB, HR
+          </div>
+        </div>
+        
+        <div class="bento-card-middle">
+          <div class="bento-big-num bento-num-dark">2024.</div>
+          <h3 class="bento-card-title" style="color: #0b0b0c !important;">Započet rad s fokusom na rast</h3>
+          <p class="bento-card-desc" style="color: rgba(11, 11, 12, 0.75) !important;">Od prvog dana posvećeni spajanju 4K video produkcije na terenu, preciznih oglasa i AI automatizacije.</p>
+        </div>
+        
+        <div class="bento-sub-tags">
+          <span class="bento-sub-pill bento-sub-pill-dark">⚡ Nova generacija marketinga</span>
+        </div>
+      </div>
+
+      <!-- Card 6: All-in-one cjelovit sustav (Obsidian Dark) -->
+      <div class="stat-card bento-metric-card stat-card-dark">
+        <div class="bento-card-top">
+          <span class="stat-pill-tag stat-pill-lime">// ALL-IN-ONE</span>
+          <div class="card-status-dot green" style="background-color: var(--accent-lime, #9efc65) !important; box-shadow: 0 0 10px var(--accent-lime, #9efc65) !important;"></div>
+        </div>
+        
+        <div class="bento-card-middle">
+          <div class="bento-big-num" style="color: #ffffff !important; font-size: 42px !important; letter-spacing: -0.03em !important;">All-in-one</div>
+          <h3 class="bento-card-title" style="color: #ffffff !important;">Cjeloviti sustav akvizicije</h3>
+          <p class="bento-card-desc" style="color: var(--text-muted-dark, #b7bcbc) !important;">Objedinjen cijeli proces: produkcija sadržaja, Meta i Google oglasi, landing stranice i 24/7 AI lead asistenti.</p>
+        </div>
+        
+        <div class="bento-sub-tags">
+          <span class="bento-sub-pill bento-sub-pill-glass">4K Sadržaj</span>
+          <span class="bento-sub-pill bento-sub-pill-glass">Meta/Google</span>
+          <span class="bento-sub-pill bento-sub-pill-glass">AI Asistenti</span>
         </div>
       </div>
 
@@ -641,12 +2367,12 @@
   <!-- 3. STACKING PROCESS CARDS SECTION (Proces u 4 koraka) -->
   <section id="marketing" class="plain-section process-stack-section">
     <div class="info-header align-center">
-      <span class="section-badge">// MARKETING AGENCIJA ZAGREB • PROCES RASTA</span>
+      <span class="section-badge">// 02 SUSTAV AKVIZICIJE & USLUGE</span>
       <h2 class="info-title">
         Kako pretvaramo publiku s društvenih mreža u stalne klijente
       </h2>
       <p class="info-subtitle">
-        Spajamo vođenje društvenih mreža, profitabilne oglase i AI marketing u jedinstven sustav koji donosi mjerljive rezultate.
+        Spajamo produkciju sadržaja, profitabilne oglase, brze landing stranice i AI automatizaciju u jedinstven sustav koji donosi mjerljive rezultate.
       </p>
     </div>
 
@@ -657,14 +2383,16 @@
         <div class="stack-card-inner">
           <div class="stack-card-left">
             <div class="stack-num-pill">01 — ATTRACT</div>
-            <h3 class="stack-card-title">Privucite pažnju</h3>
-            <p class="stack-card-desc">Profesionalni foto i video sadržaj + Meta i Google Ads koji dovode relevantnu publiku.</p>
+            <h3 class="stack-card-title">Privucite pažnju relevantnih kupaca</h3>
+            <p class="stack-card-desc">1x mjesečno snimanje profesionalnog foto i video sadržaja na vašoj lokaciji + ciljani Meta i Google oglasi koji dovode stvarne kupce.</p>
             <div class="stack-card-tags">
-              <span>Sadržaj</span>
+              <span>Foto &amp; Video Produkcija</span>
               <span class="tag-sep">·</span>
               <span>Meta Ads</span>
               <span class="tag-sep">·</span>
               <span>Google Ads</span>
+              <span class="tag-sep">·</span>
+              <span>ChatGPT Ads</span>
             </div>
           </div>
           <div class="stack-card-right">
@@ -702,12 +2430,14 @@
         <div class="stack-card-inner">
           <div class="stack-card-left">
             <div class="stack-num-pill">02 — CONVERT</div>
-            <h3 class="stack-card-title">Pretvorite posjetitelje u upite</h3>
-            <p class="stack-card-desc">Landing stranice napravljene oko jednog cilja: poziv, poruka, upit ili rezervacija.</p>
+            <h3 class="stack-card-title">Pretvorite posjetitelje u konkretne upite</h3>
+            <p class="stack-card-desc">Brze prodajne landing stranice s učitavanjem ispod 1 sekunde, optimizirane isključivo za konverziju (poziv, poruka, upit ili booking).</p>
             <div class="stack-card-tags">
-              <span>Landing Pages</span>
+              <span>0.7s Brzina</span>
               <span class="tag-sep">·</span>
-              <span>CRO</span>
+              <span>Mobile-First</span>
+              <span class="tag-sep">·</span>
+              <span>CRO Optimizacija</span>
               <span class="tag-sep">·</span>
               <span>Analitika</span>
             </div>
@@ -745,14 +2475,14 @@
         <div class="stack-card-inner">
           <div class="stack-card-left">
             <div class="stack-num-pill">03 — AUTOMATE</div>
-            <h3 class="stack-card-title">Odgovorite odmah</h3>
-            <p class="stack-card-desc">AI asistent odgovara na upite, kvalificira leadove, šalje podsjetnike i može pomoći pri rezervaciji termina.</p>
+            <h3 class="stack-card-title">Odgovorite u sekundi i zakažite termin</h3>
+            <p class="stack-card-desc">AI asistent 24/7 automatski kvalificira leadove, odgovara na upite na WhatsAppu i webu te usklađuje slobodne termine u vaš Google kalendar.</p>
             <div class="stack-card-tags">
-              <span>AI</span>
+              <span>24/7 AI Asistent</span>
               <span class="tag-sep">·</span>
               <span>WhatsApp</span>
               <span class="tag-sep">·</span>
-              <span>Booking</span>
+              <span>Google Kalendar</span>
               <span class="tag-sep">·</span>
               <span>Follow-up</span>
             </div>
@@ -796,16 +2526,16 @@
         <div class="stack-card-inner">
           <div class="stack-card-left">
             <div class="stack-num-pill">04 — SCALE</div>
-            <h3 class="stack-card-title">Znajte što donosi novac</h3>
-            <p class="stack-card-desc">CRM i analitika povezuju oglašavanje s leadovima, terminima i prodajom.</p>
+            <h3 class="stack-card-title">Pratite točan povrat svakog uloženog eura</h3>
+            <p class="stack-card-desc">Centralizirana CRM baza povezuje svaki oglas s ostvarenim upitima i prodajom, uz transparentne mjesečne izvještaje bez kompliciranog žargona.</p>
             <div class="stack-card-tags">
-              <span>CRM</span>
+              <span>CRM Baza</span>
               <span class="tag-sep">·</span>
-              <span>Analitika</span>
+              <span>Praćenje CAC &amp; ROAS</span>
               <span class="tag-sep">·</span>
-              <span>CAC</span>
+              <span>Mjesečni Izvještaj</span>
               <span class="tag-sep">·</span>
-              <span>ROAS</span>
+              <span>Optimizacija</span>
             </div>
           </div>
           <div class="stack-card-right">
@@ -841,17 +2571,17 @@
       <div class="stack-card-item stack-card-5" style="--stack-index: 5;">
         <div class="stack-card-inner">
           <div class="stack-card-left">
-            <div class="stack-num-pill" style="background: rgba(41, 173, 255, 0.15); color: #29ADFF; border: 1px solid rgba(41, 173, 255, 0.3);">BESPLATNO</div>
-            <h3 class="stack-card-title" style="color: #29ADFF;">Zatražite besplatne poslovne konzultacije</h3>
-            <p class="stack-card-desc">Dogovorite kratki, 15-minutni razgovor bez obveza. Postavite pitanja, dobijte konkretan marketinški savjet i jasnu ponudu skrojenu za vašu tvrtku.</p>
+            <div class="stack-num-pill" style="background: rgba(158, 252, 101, 0.2); color: #0b0b0c; border: 1px solid rgba(158, 252, 101, 0.4);">BESPLATNO</div>
+            <h3 class="stack-card-title" style="color: var(--text-primary-light, #0b0b0c);">Zatražite besplatne 15-minutne konzultacije</h3>
+            <p class="stack-card-desc">Dogovorite kratki strateški razgovor bez ikakvih obveza. Analiziramo vaša trenutna uska grla i predlažemo točan plan akvizicije za vaše poslovanje.</p>
             <ul class="stack-feature-list">
-              <li><span class="feat-check" style="color: #29ADFF;">✓</span> 15 minuta trajanje poziva</li>
-              <li><span class="feat-check" style="color: #29ADFF;">✓</span> 100% besplatno i bez ikakvih obveza</li>
-              <li><span class="feat-check" style="color: #29ADFF;">✓</span> Konkretne marketing preporuke</li>
+              <li><span class="feat-check" style="color: var(--accent-lime, #9efc65);">✓</span> 15 minuta trajanje poziva</li>
+              <li><span class="feat-check" style="color: var(--accent-lime, #9efc65);">✓</span> 100% besplatno i bez ikakvih obveza</li>
+              <li><span class="feat-check" style="color: var(--accent-lime, #9efc65);">✓</span> Konkretne marketing preporuke</li>
             </ul>
           </div>
           <div class="stack-card-right" style="display: flex; align-items: center; justify-content: center;">
-            <a href="/kontakt" class="mesh-primary-btn btn-pill-dark package-cta-btn" style="padding: 20px 40px; font-size: 1.1rem; width: 80%; justify-content: center; text-decoration: none;">
+            <a href="/kontakt" class="mesh-primary-btn btn-pill-dark package-cta-btn" style="padding: 16px 36px; font-size: 15px; width: auto; justify-content: center; text-decoration: none;">
               <span>Dogovori sastanak</span>
               <span class="btn-arrow-circle">↗</span>
             </a>
@@ -862,114 +2592,124 @@
     </div>
   </section>
 
-  <!-- BEFORE vs AFTER COMPARISON SECTION -->
-  <section id="before-after" class="plain-section">
+  <!-- 4. BEFORE vs AFTER COMPARISON SECTION (Overtake Model Comparison & Founder Quote) -->
+  <section id="before-after" class="plain-section ba-dark-section">
     <div class="info-header align-center">
-      <span class="section-badge">// USPOREDBA MODELA</span>
-      <h2 class="info-title">
+      <span class="section-badge" style="color: var(--accent-lime, #9efc65) !important; background: rgba(158, 252, 101, 0.1) !important; border-color: rgba(158, 252, 101, 0.25) !important;">// 03 USPOREDBA MODELA</span>
+      <h2 class="info-title" style="color: #ffffff !important;">
         Razlika koju osjetite od prvog tjedna suradnje
       </h2>
-      <p class="info-subtitle">
-        Pogledajte kako izgleda poslovanje bez usklađenog sustava u odnosu na cjelovit model Algor studija.
+      <p class="info-subtitle" style="color: var(--text-muted-dark, #b7bcbc) !important;">
+        Pogledajte kako izgleda poslovanje s tipičnom agencijom u odnosu na cjelovit sustav Algor Studija.
       </p>
     </div>
 
-    <div class="before-after-container">
-      <!-- Left: Before -->
-      <div class="ba-card ba-before">
-        <div class="ba-card-header">
-          <span class="ba-badge badge-red">❌ Klasični pristup (Samostalno / Razjedinjene usluge)</span>
+    <!-- Comparison Grid with VS Badge -->
+    <div class="ba-overtake-wrapper">
+      
+      <!-- Central VS Circle Badge -->
+      <div class="ba-vs-circle">VS</div>
+
+      <!-- Left: Tipična marketing agencija -->
+      <div class="ba-overtake-col ba-col-left">
+        <div class="ba-col-header ba-header-dark">
+          <span>Tipična marketing agencija</span>
         </div>
-        <ul class="ba-list">
-          <li>
-            <span class="ba-icon icon-red">✕</span>
-            <div>
-              <strong>Snimanje bez prodajnih scenarija</strong>
-              <p>Vizuali i video materijali koji izgledaju sporedno i ne potiču posjetitelje na akciju ili rezervaciju.</p>
-            </div>
+        <ul class="ba-items-list">
+          <li class="ba-item">
+            <span class="ba-icon-cross">✕</span>
+            <span class="ba-item-text">Juniori vode račun nakon što prodajni tim završi ugovaranje</span>
           </li>
-          <li>
-            <span class="ba-icon icon-red">✕</span>
-            <div>
-              <strong>Trošenje budžeta na oglase bez konverzije</strong>
-              <p>Kampanje koje generiraju samo "klikove", ali ne donose stvarne kupce niti točan uvid u povrat investicije.</p>
-            </div>
+          <li class="ba-item">
+            <span class="ba-icon-cross">✕</span>
+            <span class="ba-item-text">Mjesečni izvještaji puni dosegâ i impresija bez stvarnog prihoda</span>
           </li>
-          <li>
-            <span class="ba-icon icon-red">✕</span>
-            <div>
-              <strong>Ručno zakazivanje i gubljenje vremena</strong>
-              <p>Zaprimanje poziva, stalno dopisivanje i ručni unosi u kalendar uz česte zaboravljene termine klijenata.</p>
-            </div>
+          <li class="ba-item">
+            <span class="ba-icon-cross">✕</span>
+            <span class="ba-item-text">Foto/video produkcija i oglašavanje rade u odvojenim silosima</span>
+          </li>
+          <li class="ba-item">
+            <span class="ba-icon-cross">✕</span>
+            <span class="ba-item-text">Dugi ugovorni retainer vezovi, spora provjera stvarne isplativosti</span>
           </li>
         </ul>
       </div>
 
-      <!-- Right: After -->
-      <div class="ba-card ba-after">
-        <div class="ba-card-header">
-          <span class="ba-badge badge-green">✓ S Algor studijom (Cjelovit Marketing & AI Sustav)</span>
+      <!-- Right: Algor Studio® -->
+      <div class="ba-overtake-col ba-col-right">
+        <div class="ba-col-header ba-header-lime">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: block;">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <span>Algor Studio®</span>
         </div>
-        <ul class="ba-list">
-          <li>
-            <span class="ba-icon icon-green">✓</span>
-            <div>
-              <strong>Foto & Video produkcija na lokaciji</strong>
-              <p>Profesionalni sadržaj snimljen na vašoj lokaciji s unaprijed odobrenim prodajnim scenarijima.</p>
-            </div>
+        <ul class="ba-items-list">
+          <li class="ba-item">
+            <span class="ba-icon-check">✓</span>
+            <span class="ba-item-text">Iskusni stručnjaci vode vaš sustav akvizicije od prvog dana</span>
           </li>
-          <li>
-            <span class="ba-icon icon-green">✓</span>
-            <div>
-              <strong>Meta & Google Ads uz mjesečni izvještaj</strong>
-              <p>Optimizirane kampanje usmjerene na stvarne kupce uz potpunu transparentnost troškova i rezultata.</p>
-            </div>
+          <li class="ba-item">
+            <span class="ba-icon-check">✓</span>
+            <span class="ba-item-text">Izvještavanje izravno vezano za profit, stvarne upite i ROAS</span>
           </li>
-          <li>
-            <span class="ba-icon icon-green">✓</span>
-            <div>
-              <strong>Auto-Booking u kalendar + podsjetnici</strong>
-              <p>Kupac sam odabere slobodan termin, a automatski podsjetnik smanjuje nedolaske klijenata za do 85%.</p>
-            </div>
+          <li class="ba-item">
+            <span class="ba-icon-check">✓</span>
+            <span class="ba-item-text">Produkcija sadržaja i oglašavanje funkcioniraju kao jedan ciklus</span>
+          </li>
+          <li class="ba-item">
+            <span class="ba-icon-check">✓</span>
+            <span class="ba-item-text">Jasni 90-dnevni sprintovi — brza provjera rezultata ili prekidamo</span>
           </li>
         </ul>
       </div>
+
     </div>
+
+    <!-- Bottom Founder Quote Card -->
+    <div class="ba-founder-card">
+      <img src="about_person.jpg" alt="Vinko Grgić" class="ba-founder-avatar" />
+      <div class="ba-founder-content">
+        <p class="ba-founder-quote">
+          “Najbolji marketing nije onaj koji najglasnije obećava. To je onaj marketing koji dokazuje svoju stvarnu vrijednost svakim mjerljivim rezultatom.”
+        </p>
+        <div class="ba-founder-meta">
+          <strong class="ba-founder-name">Vinko Grgić</strong>
+          <span class="ba-founder-sep">•</span>
+          <span class="ba-founder-title">Osnivač &amp; Voditelj</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Gallery Marquee (Photos from field production) -->
+    <div class="about-galleries-stack footer-galleries-stack" style="margin-top: 56px !important; width: 100% !important;">
+      <div class="gallery-marquee-container footer-gallery-marquee">
+        <div class="gallery-marquee-track">
+          <!-- First Set of Images -->
+          <div class="gallery-marquee-row">
+            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
+          </div>
+          <!-- Second Set of Images (Duplicate for seamless loop) -->
+          <div class="gallery-marquee-row" aria-hidden="true">
+            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
+            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
-
-  <!-- Large Text Marquee (Looping Animation "Projekti i kampanje") -->
-  <div class="portfolio-section-wrapper">
-    <div class="text-marquee-container portfolio-marquee-container">
-    <div class="text-marquee-track">
-      <!-- First Row Set -->
-      <div class="text-marquee-row">
-        <span>Projekti i kampanje</span>
-        <svg class="marquee-spinner" viewBox="0 0 100 100" fill="none"><g transform="translate(50 50)"><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(30)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(60)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(90)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(120)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(150)" /></g></svg>
-        <span>Projekti i kampanje</span>
-        <svg class="marquee-spinner" viewBox="0 0 100 100" fill="none"><g transform="translate(50 50)"><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(30)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(60)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(90)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(120)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(150)" /></g></svg>
-        <span>Projekti i kampanje</span>
-        <svg class="marquee-spinner" viewBox="0 0 100 100" fill="none"><g transform="translate(50 50)"><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(30)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(60)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(90)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(120)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(150)" /></g></svg>
-        <span>Projekti i kampanje</span>
-        <svg class="marquee-spinner" viewBox="0 0 100 100" fill="none"><g transform="translate(50 50)"><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(30)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(60)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(90)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(120)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(150)" /></g></svg>
-      </div>
-      <!-- Second Row Set (Duplicate for seamless loop) -->
-      <div class="text-marquee-row" aria-hidden="true">
-        <span>Projekti i kampanje</span>
-        <svg class="marquee-spinner" viewBox="0 0 100 100" fill="none"><g transform="translate(50 50)"><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(30)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(60)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(90)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(120)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(150)" /></g></svg>
-        <span>Projekti i kampanje</span>
-        <svg class="marquee-spinner" viewBox="0 0 100 100" fill="none"><g transform="translate(50 50)"><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(30)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(60)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(90)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(120)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(150)" /></g></svg>
-        <span>Projekti i kampanje</span>
-        <svg class="marquee-spinner" viewBox="0 0 100 100" fill="none"><g transform="translate(50 50)"><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(30)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(60)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(90)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(120)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(150)" /></g></svg>
-        <span>Projekti i kampanje</span>
-        <svg class="marquee-spinner" viewBox="0 0 100 100" fill="none"><g transform="translate(50 50)"><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(30)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(60)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(90)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(120)" /><line x1="0" y1="-30" x2="0" y2="30" stroke="currentColor" stroke-width="8" stroke-linecap="round" transform="rotate(150)" /></g></svg>
-      </div>
-    </div>
-  </div>
 
   <!-- 4.5 PORTFOLIO & CASE STUDIES SECTION (Plain Gray Background) -->
   <section id="portfolio" class="plain-section">
-    <div class="info-header">
-      <span class="section-badge">// 03 PROJEKTI U PRAKSI</span>
+    <div class="info-header align-center">
+      <span class="section-badge">// 04 PROJEKTI U PRAKSI</span>
       <h2 class="info-title">
         Konkretni rezultati ostvareni za klijente
       </h2>
@@ -1084,19 +2824,19 @@
       </div>
 
       <!-- Project 4: CTA Card -->
-      <div class="portfolio-item-card port-cta-card" style="border: 2px dashed #29ADFF; background-color: rgba(41, 173, 255, 0.02);">
+      <div class="portfolio-item-card port-cta-card" style="border: 1.5px solid var(--accent-lime, #9efc65); background-color: var(--surface-light, #ffffff); box-shadow: 0 10px 30px var(--accent-lime-glow, rgba(158, 252, 101, 0.15));">
         <div class="port-client-logo-row">
           <div class="client-brand-logo">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon-svg" style="color: #29ADFF;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon-svg" style="color: var(--text-primary-light, #0b0b0c);">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
-            <span class="brand-name-text" style="color: #29ADFF;">ALGOR STUDIO</span>
+            <span class="brand-name-text" style="color: var(--text-primary-light, #0b0b0c);">ALGOR STUDIO</span>
           </div>
           <span class="port-status">// Besplatno</span>
         </div>
 
         <div class="port-card-header">
-          <span class="port-tag" style="background: rgba(41, 173, 255, 0.1); color: #29ADFF; border: 1px solid rgba(41, 173, 255, 0.2);">15-min Konzultacije</span>
+          <span class="port-tag" style="background: rgba(158, 252, 101, 0.2); color: #0b0b0c; border: 1px solid rgba(158, 252, 101, 0.4);">15-min Konzultacije</span>
         </div>
 
         <div class="port-body">
@@ -1130,8 +2870,8 @@
   <!-- 4.6 TESTIMONIALS SECTION (Full-Width White Background) -->
   <div class="testimonials-section-wrapper">
   <section id="testimonials" class="plain-section">
-    <div class="info-header">
-      <span class="section-badge">// DOJMOVI KLIJENATA & PARTNERA</span>
+    <div class="info-header align-center">
+      <span class="section-badge">// 05 ISKUSTVA KLIJENATA</span>
       <h2 class="info-title">
         Iskustva klijenata u suradnji s Algor studijom
       </h2>
@@ -1227,7 +2967,7 @@
               <div class="client-rating">★★★★★</div>
               <span class="verified-tag">✓ Verificiran Klijent</span>
             </div>
-            <p class="client-text">"Dobila sam odličan materijal i marketing, presretna sam uspjehom svojih profila."</p>
+            <p class="client-text">"Dobila sam odličan materijal i marketing, presretna sam uspjehom platforme."</p>
             <div class="client-author-box">
               <div class="author-avatar">DD</div>
               <div class="client-author-info">
@@ -1292,20 +3032,22 @@
   </section>
   </div>
 
-  <!-- 4.7 PROCES SURADNJE (Sticky 2-Column Section Card) -->
-  <section id="process" class="info-section-card no-card-box process-sticky-section">
+  <!-- 4.7 PROCES SURADNJE (Sticky 2-Column Section) -->
+  <section id="process" class="plain-section process-sticky-section">
+    <div class="info-header align-center">
+      <span class="section-badge">// 06 KORACI DO LANSIRANJA</span>
+      <h2 class="info-title">
+        Kako počinjemo suradnju
+      </h2>
+      <p class="info-subtitle">
+        Jasno strukturiran proces bez onboarding stresa. Brza i transparentna realizacija bez potrebe za vašim tehničkim znanjem niti gubljenjem vremena.
+      </p>
+    </div>
+
     <div class="process-sticky-container">
       
-      <!-- Left Column: Sticky Header & Subtitle -->
+      <!-- Left Column: Sticky Step Indicators -->
       <div class="process-sticky-left">
-        <span class="section-badge">// PROCES SURADNJE</span>
-        <h2 class="info-title">
-          Kako počinjemo suradnju
-        </h2>
-        <p class="info-subtitle">
-          Jasno strukturiran proces bez onboarding stresa. Brza i transparentna realizacija bez potrebe za vašim tehničkim znanjem niti gubljenjem vremena.
-        </p>
-
         <!-- Step Indicator List -->
         <div class="process-left-indicator">
           <div class="proc-ind-item active" data-step="1">
@@ -1371,215 +3113,159 @@
     </div>
   </section>
 
-  <!-- 4.8 ZAŠTO ALGOR (Why Choose Us Section) -->
-  <section id="why-algor" class="plain-section why-algor-section">
-    <div class="info-header align-center">
-      <span class="section-badge">// ZAŠTO ALGOR</span>
-      <h2 class="info-title">
-        Zašto Algor?
-      </h2>
-    </div>
-
-    <div class="why-algor-grid">
-      
-      <!-- Feature 1: Jedan odgovoran partner -->
-      <div class="why-card">
-        <div class="why-card-icon-wrap">
-          <span class="why-card-num">01</span>
-          <span class="why-card-icon">🤝</span>
-        </div>
-        <h3 class="why-card-title">Jedan odgovoran partner</h3>
-        <p class="why-card-desc">Ne koordinirate fotografa, marketinšku agenciju i web developera.</p>
-      </div>
-
-      <!-- Feature 2: Content koji služi prodaji -->
-      <div class="why-card">
-        <div class="why-card-icon-wrap">
-          <span class="why-card-num">02</span>
-          <span class="why-card-icon">🎯</span>
-        </div>
-        <h3 class="why-card-title">Content koji služi prodaji</h3>
-        <p class="why-card-desc">Ne stvaramo sadržaj samo da profil izgleda aktivno. Sadržaj gradimo tako da podržava akviziciju.</p>
-      </div>
-
-      <!-- Feature 3: Marketing + tehnologija -->
-      <div class="why-card">
-        <div class="why-card-icon-wrap">
-          <span class="why-card-num">03</span>
-          <span class="why-card-icon">⚡</span>
-        </div>
-        <h3 class="why-card-title">Marketing + tehnologija</h3>
-        <p class="why-card-desc">Oglasi, landing stranice, CRM i AI rade kao jedan sustav.</p>
-      </div>
-
-      <!-- Feature 4: Mjerljivi rezultati -->
-      <div class="why-card">
-        <div class="why-card-icon-wrap">
-          <span class="why-card-num">04</span>
-          <span class="why-card-icon">📈</span>
-        </div>
-        <h3 class="why-card-title">Mjerljivi rezultati</h3>
-        <p class="why-card-desc">Pratimo leadove, cijenu po leadu, rezervacije i povrat ulaganja — ne samo lajkove i reach.</p>
-      </div>
-
-      <!-- Feature 5: Direktna komunikacija -->
-      <div class="why-card">
-        <div class="why-card-icon-wrap">
-          <span class="why-card-num">05</span>
-          <span class="why-card-icon">💬</span>
-        </div>
-        <h3 class="why-card-title">Direktna komunikacija</h3>
-        <p class="why-card-desc">Radite izravno s osobom koja vodi vaš projekt. Bez nepotrebnog sloja account managera.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 5. INTERACTIVE PRICING SECTION (Full-Width Luxury Obsidian Theme with Rounded Corners) -->
+  <!-- 5. UNIFIED DARK OBSIDIAN SECTION (Paketi s mrežnom pozadinom) -->
   <div class="pricing-section-wrapper">
-    <section id="pricing" class="full-width-pricing-section white-pricing-section">
-    <div class="info-header align-center">
-      <span class="section-badge">// 03 PAKETI</span>
-      <h2 class="info-title">
-        Transparentne investicije za brzi i stabilan rast
-      </h2>
-      <p class="info-subtitle text-muted">
-        Odaberite paket prema veličini vašeg poslovanja. Svi planovi uključuju kompletnu uslugu i AI automatizacije bez skrivenih troškova.
-      </p>
-    </div>
-
-    <!-- 3 Pricing Cards Grid (Luxury Obsidian Theme) -->
-    <div class="pricing-grid luxury-pricing-grid">
+    <div class="dark-combined-container">
       
-      <!-- Card 1: Start Paket -->
-      <div class="price-card luxury-card">
-        <div class="card-top-tag-row">
-          <span class="ref-tag-mono">SADRŽAJ &amp; META OGLASI</span>
+      <!-- 5.1 INTERACTIVE PRICING SECTION (Paketi) -->
+      <section id="pricing" class="full-width-pricing-section white-pricing-section">
+        <div class="info-header align-center">
+          <span class="section-badge">// 07 PAKETI &amp; INVESTICIJA</span>
+          <h2 class="info-title">
+            Transparentne investicije za brzi i stabilan rast
+          </h2>
+          <p class="info-subtitle text-muted">
+            Odaberite paket prema veličini vašeg poslovanja. Svi planovi uključuju kompletnu uslugu i AI automatizacije bez skrivenih troškova.
+          </p>
         </div>
-        <div class="price-header-lux">
-          <h3>Start</h3>
-          <div class="price-amount-wrap">
-            <span class="currency-sign">€</span>
-            <span class="price-val" id="price-marketing">490</span>
-            <span class="price-per">/mjesečno</span>
+
+        <!-- 3 Pricing Cards Grid (Luxury Obsidian Theme) -->
+        <div class="pricing-grid luxury-pricing-grid">
+          
+          <!-- Card 1: Start Paket -->
+          <div class="price-card luxury-card">
+            <div class="card-top-tag-row">
+              <span class="ref-tag-mono">SADRŽAJ &amp; META OGLASI</span>
+            </div>
+            <div class="price-header-lux">
+              <h3>Start</h3>
+              <div class="price-amount-wrap">
+                <span class="currency-sign">€</span>
+                <span class="price-val" id="price-marketing">490</span>
+                <span class="price-per">/mjesečno</span>
+              </div>
+            </div>
+
+            <!-- Unified Package Features -->
+            <ul class="luxury-features-list">
+              <li><span class="check-icon-circle">✓</span> <span><strong>1x Mjesečni foto/video sprint:</strong> Do 6 ciljanih kratkih formata (Reels/TikTok) + profesionalne fotografije</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Meta Ads oglašavanje:</strong> Postavljanje i vođenje kampanja (Instagram &amp; Facebook)</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>AI asistent za brze odgovore:</strong> Automatski odgovori na osnovne upite 24/7</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Mjesečni izvještaj:</strong> Transparentan pregled dosega i broja upita</span></li>
+            </ul>
+
+            <div class="card-bottom-action-area">
+              <div class="sprint-time-divider">
+                <span>Mjesečna suradnja</span>
+              </div>
+              <a href="/kontakt?paket=start" class="luxury-btn-dark btn-pill-dark" style="text-decoration: none; width: 100%; justify-content: center; box-sizing: border-box;">
+                <span>Započni suradnju</span>
+                <span class="btn-arrow-circle">↗</span>
+              </a>
+              <span class="guarantee-text">Uključena tehnička podrška</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Pro Paket (Popular / Featured) -->
+          <div class="price-card luxury-card popular-card-lux">
+            <div class="card-top-tag-row">
+              <span class="ref-tag-mono tag-popular">★ NAJPOPULARNIJI // SUSTAV AKVIZICIJE</span>
+            </div>
+            <div class="price-header-lux">
+              <h3>Pro</h3>
+              <div class="price-amount-wrap">
+                <span class="currency-sign">€</span>
+                <span class="price-val" id="price-combined">890</span>
+                <span class="price-per">/mjesečno</span>
+              </div>
+            </div>
+
+            <!-- Unified Package Features -->
+            <ul class="luxury-features-list">
+              <li><span class="check-icon-circle">✓</span> <span><strong>1x Mjesečni foto/video sprint:</strong> 8–10 visoko-konvertirajućih video oglasa + profesionalne fotografije</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Meta Ads kampanje:</strong> Akvizicija novih kupaca + retargeting lijevak</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Google Search Ads:</strong> Ciljanje kupaca koji aktivno traže vašu uslugu</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>ChatGPT &amp; AI Search oglasi:</strong> Pozicioniranje vašeg brenda u AI pretragama</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Konverzijska landing stranica:</strong> Web stranica s jednim jasnim ciljem (upit / poziv)</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>AI Lead Asistent &amp; Booking:</strong> Kvalifikacija upita i automatska rezervacija termina</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Mjesečna optimizacija:</strong> Stalno poboljšanje rezultata i strateški izvještaj</span></li>
+            </ul>
+
+            <div class="card-bottom-action-area">
+              <div class="sprint-time-divider">
+                <span>Mjesečna suradnja</span>
+              </div>
+              <a href="/kontakt?paket=pro" class="luxury-btn-glow btn-pill-lime" style="text-decoration: none; width: 100%; justify-content: center; box-sizing: border-box;">
+                <span>Započni suradnju</span>
+                <span class="btn-arrow-circle">↗</span>
+              </a>
+              <span class="guarantee-text">Glavni paket rasta • Stalna optimizacija</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Ultra Paket -->
+          <div class="price-card luxury-card">
+            <div class="card-top-tag-row">
+              <span class="ref-tag-mono">SKALIRANJE &amp; AUTOMATIZACIJA</span>
+            </div>
+            <div class="price-header-lux">
+              <h3>Ultra</h3>
+              <div class="price-amount-wrap">
+                <span class="currency-sign">€</span>
+                <span class="price-val" id="price-ai">1.390</span>
+                <span class="price-per">/mjesečno</span>
+              </div>
+            </div>
+
+            <!-- Unified Package Features -->
+            <ul class="luxury-features-list">
+              <li><span class="check-icon-circle">✓</span> <span><strong>Sve uključeno u Pro paketu:</strong> Cjelovita baza sustava akvizicije</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Proširena video produkcija:</strong> Do 12 premium video formata i proširena foto biblioteka</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Full-Funnel Oglasi (Meta + Google + ChatGPT):</strong> Skaliranje dosega i napredni lijevak</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Centralni CRM sustav:</strong> Baza svih leadova s praćenjem troška i povrata (CAC &amp; ROAS)</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>WhatsApp &amp; Follow-up automatizacija:</strong> Automatski podsjetnici i reaktivacija starih kupaca</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>CRO optimizacija:</strong> Stalno testiranje za maksimalnu stopu konverzije</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>Prioritetna 1-na-1 podrška:</strong> Direktna strateška koordinacija</span></li>
+            </ul>
+
+            <div class="card-bottom-action-area">
+              <div class="sprint-time-divider">
+                <span>Mjesečna suradnja</span>
+              </div>
+              <a href="/kontakt?paket=ultra" class="luxury-btn-dark btn-pill-dark" style="text-decoration: none; width: 100%; justify-content: center; box-sizing: border-box;">
+                <span>Započni suradnju</span>
+                <span class="btn-arrow-circle">↗</span>
+              </a>
+              <span class="guarantee-text">Prioritetna podrška i maksimalna automatizacija</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- High-Trust B2B Selling Bar -->
+        <div class="pricing-trust-bar">
+          <div class="trust-item">
+            <span class="trust-icon">📊</span>
+            <span>Mjesečni izvještaj uključen u sve pakete</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🎯</span>
+            <span>Stalna optimizacija i fokus na rast</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🤝</span>
+            <span>Direktna komunikacija i osobna podrška</span>
           </div>
         </div>
 
-        <!-- Unified Package Features -->
-        <ul class="luxury-features-list">
-          <li><span class="check-icon-circle">✓</span> <span><strong>1x Mjesečni foto/video sprint:</strong> Do 6 ciljanih kratkih formata (Reels/TikTok) + profesionalne fotografije</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Meta Ads oglašavanje:</strong> Postavljanje i vođenje kampanja (Instagram &amp; Facebook)</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>AI asistent za brze odgovore:</strong> Automatski odgovori na osnovne upite 24/7</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Mjesečni izvještaj:</strong> Transparentan pregled dosega i broja upita</span></li>
-        </ul>
-
-        <div class="card-bottom-action-area">
-          <div class="sprint-time-divider">
-            <span>Mjesečna suradnja</span>
-          </div>
-          <a href="/kontakt?paket=start" class="luxury-btn-dark" style="text-decoration: none;">
-            <span>Započni suradnju</span>
-          </a>
-          <span class="guarantee-text">Uključena tehnička podrška</span>
+        <!-- Custom AI Offer Link Banner -->
+        <div class="custom-ai-offer-banner">
+          <p>Trebate isključivo AI automatizaciju poslovnih procesa? <a href="/kontakt?paket=ultra" class="custom-ai-link" style="text-decoration: none;">Zatražite ponudu ➔</a></p>
         </div>
-      </div>
-
-      <!-- Card 2: Pro Paket (Popular / Featured) -->
-      <div class="price-card luxury-card popular-card-lux">
-        <div class="card-top-tag-row">
-          <span class="ref-tag-mono tag-popular">★ NAJPOPULARNIJI // SUSTAV AKVIZICIJE</span>
-        </div>
-        <div class="price-header-lux">
-          <h3>Pro</h3>
-          <div class="price-amount-wrap">
-            <span class="currency-sign">€</span>
-            <span class="price-val" id="price-combined">890</span>
-            <span class="price-per">/mjesečno</span>
-          </div>
-        </div>
-
-        <!-- Unified Package Features -->
-        <ul class="luxury-features-list">
-          <li><span class="check-icon-circle">✓</span> <span><strong>1x Mjesečni foto/video sprint:</strong> 8–10 visoko-konvertirajućih video oglasa + profesionalne fotografije</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Meta Ads kampanje:</strong> Akvizicija novih kupaca + retargeting lijevak</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Google Search Ads:</strong> Ciljanje kupaca koji aktivno traže vašu uslugu</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>ChatGPT &amp; AI Search oglasi:</strong> Pozicioniranje vašeg brenda u AI pretragama</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Konverzijska landing stranica:</strong> Web stranica s jednim jasnim ciljem (upit / poziv)</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>AI Lead Asistent &amp; Booking:</strong> Kvalifikacija upita i automatska rezervacija termina</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Mjesečna optimizacija:</strong> Stalno poboljšanje rezultata i strateški izvještaj</span></li>
-        </ul>
-
-        <div class="card-bottom-action-area">
-          <div class="sprint-time-divider">
-            <span>Mjesečna suradnja</span>
-          </div>
-          <a href="/kontakt?paket=pro" class="luxury-btn-glow" style="text-decoration: none;">
-            <span>Započni suradnju</span>
-          </a>
-          <span class="guarantee-text">Glavni paket rasta • Stalna optimizacija</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Ultra Paket -->
-      <div class="price-card luxury-card">
-        <div class="card-top-tag-row">
-          <span class="ref-tag-mono">SKALIRANJE &amp; AUTOMATIZACIJA</span>
-        </div>
-        <div class="price-header-lux">
-          <h3>Ultra</h3>
-          <div class="price-amount-wrap">
-            <span class="currency-sign">€</span>
-            <span class="price-val" id="price-ai">1.390</span>
-            <span class="price-per">/mjesečno</span>
-          </div>
-        </div>
-
-        <!-- Unified Package Features -->
-        <ul class="luxury-features-list">
-          <li><span class="check-icon-circle">✓</span> <span><strong>Sve uključeno u Pro paketu:</strong> Cjelovita baza sustava akvizicije</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Proširena video produkcija:</strong> Do 12 premium video formata i proširena foto biblioteka</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Full-Funnel Oglasi (Meta + Google + ChatGPT):</strong> Skaliranje dosega i napredni lijevak</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Centralni CRM sustav:</strong> Baza svih leadova s praćenjem troška i povrata (CAC &amp; ROAS)</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>WhatsApp &amp; Follow-up automatizacija:</strong> Automatski podsjetnici i reaktivacija starih kupaca</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>CRO optimizacija:</strong> Stalno testiranje za maksimalnu stopu konverzije</span></li>
-          <li><span class="check-icon-circle">✓</span> <span><strong>Prioritetna 1-na-1 podrška:</strong> Direktna strateška koordinacija</span></li>
-        </ul>
-
-        <div class="card-bottom-action-area">
-          <div class="sprint-time-divider">
-            <span>Mjesečna suradnja</span>
-          </div>
-          <a href="/kontakt?paket=ultra" class="luxury-btn-dark" style="text-decoration: none;">
-            <span>Započni suradnju</span>
-          </a>
-          <span class="guarantee-text">Prioritetna podrška i maksimalna automatizacija</span>
-        </div>
-      </div>
+      </section>
 
     </div>
-
-    <!-- High-Trust B2B Selling Bar -->
-    <div class="pricing-trust-bar">
-      <div class="trust-item">
-        <span class="trust-icon">📊</span>
-        <span>Mjesečni izvještaj uključen u sve pakete</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">🎯</span>
-        <span>Stalna optimizacija i fokus na rast</span>
-      </div>
-      <div class="trust-item">
-        <span class="trust-icon">🤝</span>
-        <span>Direktna komunikacija i osobna podrška</span>
-      </div>
-    </div>
-
-    <!-- Custom AI Offer Link Banner -->
-    <div class="custom-ai-offer-banner">
-      <p>Trebate isključivo AI automatizaciju poslovnih procesa? <a href="/kontakt?paket=ultra" class="custom-ai-link" style="text-decoration: none;">Zatražite ponudu ➔</a></p>
-    </div>
-  </section>
-</div>
+  </div>
 
   <!-- Large Text Marquee (Looping Animation "Pitanja i odgovori") -->
   <div class="faq-section-wrapper">
@@ -1613,7 +3299,7 @@
   <!-- 6. FAQ SECTION (Plain Gray Background) -->
   <section id="faq" class="plain-section">
     <div class="info-header align-center">
-      <span class="section-badge">// ČESTO POSTAVLJANA PITANJA</span>
+      <span class="section-badge">// 08 ČESTA PITANJA</span>
       <h2 class="info-title">
         Odgovori na vaša pitanja i dvojbe oko investicije i suradnje
       </h2>
@@ -1673,20 +3359,24 @@
         </details>
       </div>
     </div>
+
   </section>
   </div>
 
-  <!-- New Standalone Footer Section (Contact Form -> Dual Galleries -> Footer Card) -->
+  <!-- New Standalone Full-Width Black Footer Section (Section 09 + Contact Form -> Gallery Marquee -> Footer Links) -->
   <section class="footer-hero-and-card-section">
     
-    <!-- Conversion Block (Soft Light Neon Background - Contact Form) -->
+    <!-- Conversion Block (Section 09 - Contact Form) -->
     <div class="footer-conversion-area">
-      <h2 class="footer-conv-title">
-        Prestanite trošiti proračun na marketing koji ne konvertira
-      </h2>
-      <p class="footer-conv-subtitle">
-        Izgradimo prodajni sustav koji pretvara posjetitelje u kvalificirane leadove, telefonske pozive i stvarni profit.
-      </p>
+      <div class="info-header align-center" style="margin-bottom: 32px;">
+        <span class="section-badge">// 09 ZAPOČNITE SURADNJU</span>
+        <h2 class="info-title">
+          Prestanite trošiti proračun na marketing koji ne konvertira
+        </h2>
+        <p class="info-subtitle">
+          Izgradimo prodajni sustav koji pretvara posjetitelje u kvalificirane leadove, telefonske pozive i stvarni profit.
+        </p>
+      </div>
       
       <!-- Modern Footer Contact Form with Message Window -->
       <form id="footerContactForm" class="footer-contact-form">
@@ -1718,32 +3408,8 @@
       </form>
     </div>
 
-    <!-- Footer Dual Stacked Image Galleries (Top: Right to Left, Bottom: Left to Right) -->
-    <div class="footer-galleries-stack">
-      
-      <!-- Gallery 1 (Top: Scrolls Right to Left) -->
-      <div class="gallery-marquee-container footer-gallery-marquee">
-        <div class="gallery-marquee-track">
-          <!-- First Set of Images -->
-          <div class="gallery-marquee-row">
-            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
-          </div>
-          <!-- Second Set of Images (Duplicate for seamless loop) -->
-          <div class="gallery-marquee-row" aria-hidden="true">
-            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Gallery 2 (Bottom: Scrolls Left to Right) -->
+    <!-- Image Gallery Marquee below Contact Form -->
+    <div class="footer-gallery-stack">
       <div class="gallery-marquee-container footer-gallery-marquee">
         <div class="gallery-marquee-track gallery-track-reverse">
           <!-- First Set of Images -->
@@ -1764,7 +3430,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- Bottom Part: Black Card (Nested) -->
@@ -1838,6 +3503,6 @@
     </div>
   </section>
 
-  <script defer src="script.js?v=104.0.0"></script>
+  <script defer src="script.js?v=125.0.0"></script>
 </body>
 </html>
