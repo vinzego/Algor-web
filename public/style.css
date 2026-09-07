@@ -2028,12 +2028,12 @@ body {
   border-radius: 20px !important;
 }
 
-/* Card 2: Tech Ecosystem Orbit Card (Google, ChatGPT, Python, Meta, Instagram, GA4) */
+/* Card 2: Tech Ecosystem Orbit Card (Rotating 6 Logos in Circle, No Text, Equal Size) */
 .stat-card.tech-orbit-card {
-  background: #eaecf0 !important;
+  background: #f8fafc !important;
   color: #121316 !important;
-  border: 1px solid #d0d5dd !important;
-  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04) !important;
   border-radius: 20px !important;
   padding: 12px !important;
   display: flex !important;
@@ -2041,156 +2041,170 @@ body {
   justify-content: center !important;
   position: relative !important;
   overflow: hidden !important;
-  height: 270px !important;
-  min-height: 270px !important;
-  max-height: 270px !important;
+  height: 280px !important;
+  min-height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
 }
 
 .tech-orbit-container {
   position: relative;
-  width: 246px;
-  height: 246px;
+  width: 240px;
+  height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
 }
 
-.tech-orbit-ring {
+.tech-orbit-ring.ring-inner {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
+  border: 1px solid rgba(15, 23, 42, 0.06);
   pointer-events: none;
 }
 
-.tech-orbit-ring.ring-outer {
-  width: 176px;
-  height: 176px;
-  border: 1.5px dashed rgba(15, 23, 42, 0.16);
-  animation: orbitSpinSlow 60s linear infinite;
-}
-
-.tech-orbit-ring.ring-inner {
-  width: 106px;
-  height: 106px;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-}
-
 .tech-orbit-hub {
-  width: 52px;
-  height: 52px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #ffffff;
-  border: 1.5px solid #cbd5e1;
+  border: 1.5px solid #e2e8f0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
   z-index: 2;
+  pointer-events: none;
 }
 
 .hub-pulse-dot {
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #29ADFF;
-  box-shadow: 0 0 8px #29ADFF;
+  box-shadow: 0 0 10px #29ADFF;
   animation: hubPulse 2s ease-in-out infinite;
 }
 
-.hub-label {
-  font-size: 7.5px;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-  color: #64748b;
-  font-family: 'Geist Mono', monospace;
-  text-transform: uppercase;
+@keyframes hubPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px rgba(41, 173, 255, 0.6);
+  }
+  50% {
+    transform: scale(1.3);
+    box-shadow: 0 0 16px rgba(41, 173, 255, 0.95);
+  }
+}
+
+@keyframes techOrbitRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes techOrbitCounterRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+.tech-orbit-track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(148, 163, 184, 0.45);
+  animation: techOrbitRotate 22s linear infinite;
+  transform-origin: center center;
+  pointer-events: auto;
 }
 
 .tech-orbit-item {
   position: absolute;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: #ffffff;
-  border: 1px solid #d0d5dd;
-  padding: 4px 10px;
-  border-radius: 999px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  justify-content: center;
+  animation: techOrbitCounterRotate 22s linear infinite;
+  transform-origin: center center;
   z-index: 3;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
-  user-select: none;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
 }
 
 .tech-orbit-item:hover {
-  transform: translate(-50%, -50%) scale(1.08) !important;
-  box-shadow: 0 6px 18px rgba(41, 173, 255, 0.25);
+  box-shadow: 0 6px 18px rgba(41, 173, 255, 0.35);
   border-color: #29ADFF;
 }
 
 .item-google {
-  top: calc(50% - 88px);
+  top: 0%;
   left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .item-chatgpt {
-  top: calc(50% - 44px);
-  left: calc(50% + 76px);
-  transform: translate(-50%, -50%);
+  top: 25%;
+  left: 93.3%;
 }
 
 .item-python {
-  top: calc(50% + 44px);
-  left: calc(50% + 76px);
-  transform: translate(-50%, -50%);
+  top: 75%;
+  left: 93.3%;
 }
 
 .item-meta {
-  top: calc(50% + 88px);
+  top: 100%;
   left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .item-instagram {
-  top: calc(50% + 44px);
-  left: calc(50% - 76px);
-  transform: translate(-50%, -50%);
+  top: 75%;
+  left: 6.7%;
 }
 
 .item-ga4 {
-  top: calc(50% - 44px);
-  left: calc(50% - 76px);
-  transform: translate(-50%, -50%);
-}
-
-.tech-logo-icon {
-  width: 15px;
-  height: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  top: 25%;
+  left: 6.7%;
 }
 
 .orbit-logo-svg {
-  width: 100%;
-  height: 100%;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  max-width: 22px;
   display: block;
 }
 
-.tech-logo-name {
-  font-size: 11.5px;
-  font-weight: 750;
-  color: #0f172a;
-  letter-spacing: -0.2px;
-  white-space: nowrap;
-}
-
-@keyframes hubPulse {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.35); opacity: 1; }
+@media (hover: hover) {
+  .stat-card.tech-orbit-card:hover .tech-orbit-track,
+  .stat-card.tech-orbit-card:hover .tech-orbit-item {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes orbitSpinSlow {
