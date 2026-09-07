@@ -950,6 +950,221 @@
       box-shadow: 0 15px 40px rgba(41, 173, 255, 0.4);
     }
 
+    /* 5. PRICING SECTION STYLES */
+    .chatgpt-pricing-section {
+      padding: 40px 0 80px 0;
+    }
+
+    .chatgpt-single-pricing-card {
+      background: #0d1017;
+      border: 1.5px solid rgba(41, 173, 255, 0.45);
+      border-radius: 28px;
+      padding: 48px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 0 40px rgba(41, 173, 255, 0.12);
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1040px;
+      margin: 0 auto;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .pricing-card-glow-bg {
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(41, 173, 255, 0.2) 0%, rgba(16, 185, 129, 0.08) 50%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
+    .pricing-card-left {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-plan-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Geist Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #29ADFF;
+      background: rgba(41, 173, 255, 0.12);
+      border: 1px solid rgba(41, 173, 255, 0.35);
+      padding: 5px 14px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+
+    .pricing-plan-title {
+      font-size: 32px;
+      font-weight: 850;
+      color: #ffffff;
+      letter-spacing: -0.8px;
+      margin: 0 0 10px 0;
+    }
+
+    .pricing-plan-desc {
+      font-size: 15px;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    }
+
+    .pricing-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .pricing-price-val {
+      font-size: 56px;
+      font-weight: 850;
+      color: #ffffff;
+      line-height: 1;
+      letter-spacing: -1.5px;
+    }
+
+    .pricing-price-period {
+      font-size: 16px;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+
+    .pricing-setup-fee-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 7px 16px;
+      border-radius: 12px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+
+    .pricing-setup-fee-pill strong {
+      color: #38bdf8;
+    }
+
+    .pricing-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: #29ADFF;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 15.5px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 25px rgba(41, 173, 255, 0.35);
+    }
+
+    .pricing-cta-btn:hover {
+      background: #0ea5e9;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(41, 173, 255, 0.5);
+    }
+
+    .pricing-guarantee-note {
+      font-size: 12.5px;
+      color: #64748b;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pricing-card-right {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 30px 26px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing-right-header {
+      font-family: 'Geist Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pricing-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pricing-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feature-icon-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(41, 173, 255, 0.15);
+      border: 1px solid rgba(41, 173, 255, 0.4);
+      color: #29ADFF;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-text-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .feature-title {
+      font-size: 14.5px;
+      font-weight: 750;
+      color: #ffffff;
+      line-height: 1.35;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.45;
+    }
+
     /* Responsive Queries */
     @media (max-width: 900px) {
       .chatgpt-highlights-bar {
@@ -959,6 +1174,14 @@
       .audience-cards-grid,
       .benefits-bento-grid {
         grid-template-columns: 1fr;
+      }
+      .chatgpt-single-pricing-card {
+        grid-template-columns: 1fr;
+        padding: 32px 22px;
+        gap: 28px;
+      }
+      .pricing-price-val {
+        font-size: 44px;
       }
       .process-step-row {
         grid-template-columns: 1fr;
@@ -1009,7 +1232,7 @@
         <a href="/#marketing" class="ultra-nav-link">Usluge</a>
         <a href="/izrada-web-stranica" class="ultra-nav-link">Izrada Weba</a>
         <a href="/chatgpt-ads" class="ultra-nav-link active" style="color: #29ADFF; font-weight: 700;">ChatGPT Ads</a>
-        <a href="/#pricing" class="ultra-nav-link">Cijene</a>
+        <a href="#pricing" class="ultra-nav-link">Cijene</a>
         <a href="#chatgpt-faq" class="ultra-nav-link">FAQ</a>
         <a href="/kontakt" class="ultra-nav-link">Kontakt</a>
       </div>
@@ -1316,16 +1539,129 @@
       </div>
     </section>
 
+    <!-- 8. SECTION: CJENIK / INVESTICIJA -->
+    <section id="pricing" class="content-block-section chatgpt-pricing-section">
+      <div class="section-head-center">
+        <span class="section-badge-mono">// 05 INVESTICIJA</span>
+        <h2 class="section-main-heading">Transparentna cijena ChatGPT oglašavanja</h2>
+        <p class="section-subtext">
+          Fokusirani paket vođenja AI Search kampanja s uključenom tjednom optimizacijom i CRO preporukama.
+        </p>
+      </div>
+
+      <div class="chatgpt-single-pricing-card">
+        <div class="pricing-card-glow-bg"></div>
+
+        <!-- Left Column: Price & Value Proposition -->
+        <div class="pricing-card-left">
+          <div class="pricing-plan-badge">
+            <span>★</span>
+            <span>CHATGPT ADS PAKET</span>
+          </div>
+
+          <h3 class="pricing-plan-title">ChatGPT Growth</h3>
+          <p class="pricing-plan-desc">
+            Kompletno vođenje, targetiranje i optimizacija sponzoriranih rezultata na ChatGPT-u i OpenAI Search platformi.
+          </p>
+
+          <div class="pricing-price-wrap">
+            <span class="pricing-price-val">€590</span>
+            <span class="pricing-price-period">/ mj.</span>
+          </div>
+
+          <div class="pricing-setup-fee-pill">
+            <span style="color: #29ADFF; font-weight: 700;">+</span>
+            <span><strong>€300</strong> setup</span>
+          </div>
+
+          <div class="pricing-cta-wrap">
+            <a href="/kontakt?usluga=chatgpt-ads" class="pricing-cta-btn">
+              <span>Započnite kampanju</span>
+              <span>↗</span>
+            </a>
+            <div class="pricing-guarantee-note">
+              <span style="color: #10b981;">✓</span>
+              <span>Tjedna optimizacija • Bez skrivenih troškova</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: 7 Features List -->
+        <div class="pricing-card-right">
+          <div class="pricing-right-header">UKLJUČENO U PAKET</div>
+          
+          <ul class="pricing-features-list">
+            <li class="pricing-feature-item">
+              <span class="feature-icon-circle">✓</span>
+              <div class="feature-text-block">
+                <span class="feature-title">1 ChatGPT Ads campaign</span>
+                <span class="feature-desc">Strateško pozicioniranje i postavljanje fokusirane AI kampanje</span>
+              </div>
+            </li>
+
+            <li class="pricing-feature-item">
+              <span class="feature-icon-circle">✓</span>
+              <div class="feature-text-block">
+                <span class="feature-title">Do 5 ad varijacija mjesečno</span>
+                <span class="feature-desc">A/B testiranje prompt odgovora i kontekstualnih formata</span>
+              </div>
+            </li>
+
+            <li class="pricing-feature-item">
+              <span class="feature-icon-circle">✓</span>
+              <div class="feature-text-block">
+                <span class="feature-title">Tjedna optimizacija</span>
+                <span class="feature-desc">Kontinuirano prilagođavanje ponuda, ciljanja i algoritamskih signala</span>
+              </div>
+            </li>
+
+            <li class="pricing-feature-item">
+              <span class="feature-icon-circle">✓</span>
+              <div class="feature-text-block">
+                <span class="feature-title">Targeting</span>
+                <span class="feature-desc">Precizno AI mapiranje korisničkih pitanja i visoke namjere kupnje</span>
+              </div>
+            </li>
+
+            <li class="pricing-feature-item">
+              <span class="feature-icon-circle">✓</span>
+              <div class="feature-text-block">
+                <span class="feature-title">Conversion tracking</span>
+                <span class="feature-desc">Mjerenje svakog klika, poziva, posjete i ostvarenog upita</span>
+              </div>
+            </li>
+
+            <li class="pricing-feature-item">
+              <span class="feature-icon-circle">✓</span>
+              <div class="feature-text-block">
+                <span class="feature-title">CRO preporuke</span>
+                <span class="feature-desc">Optimizacija odredišne landing stranice za maksimalnu stopu konverzije</span>
+              </div>
+            </li>
+
+            <li class="pricing-feature-item">
+              <span class="feature-icon-circle">✓</span>
+              <div class="feature-text-block">
+                <span class="feature-title">Mjesečni izvještaj</span>
+                <span class="feature-desc">Jasna metrika, povrat ulaganja (ROAS) i analiza performansi</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- DARK BOTTOM ZONE (FAQ + CTA + FOOTER in matching #050508) -->
   <div class="chatgpt-dark-bottom-wrapper">
     
-    <!-- 8. SECTION: FAQ ACCORDION -->
+    <!-- 9. SECTION: FAQ ACCORDION -->
     <section id="chatgpt-faq" class="chatgpt-dark-faq-section">
       <div class="chatgpt-dark-inner-container">
         <div class="section-head-center">
-          <span class="chatgpt-dark-badge">// 05 ČESTA PITANJA</span>
+          <span class="chatgpt-dark-badge">// 06 ČESTA PITANJA</span>
           <h2 class="chatgpt-dark-heading">Sve što trebate znati o ChatGPT oglašavanju</h2>
           <p class="chatgpt-dark-subtext">
             Odgovori na ključna pitanja o novom kanalu akvizicije, publici i postavljanju kampanja.
@@ -1350,7 +1686,7 @@
 
           <details class="chatgpt-dark-disclosure" name="chatgpt-faq">
             <summary class="chatgpt-dark-summary">Je li ChatGPT Ads dio vaših standardnih paketa?</summary>
-            <p class="chatgpt-dark-answer">Da! ChatGPT &amp; AI Search oglašavanje standardno je ugrađeno u naš <strong>Pro paket (890 €/mj.)</strong> i <strong>Ultra paket (1.390 €/mj.)</strong> uz Meta i Google Ads, foto/video produkciju i AI booking asistente.</p>
+            <p class="chatgpt-dark-answer">Da! Nudimo ga kao fokusirani samostalni paket od <strong>590 €/mj.</strong> (+ 300 € setup), a također je standardno integriran u naš <strong>Pro paket (890 €/mj.)</strong> i <strong>Ultra paket (1.390 €/mj.)</strong> uz Meta i Google Ads, foto/video produkciju i AI booking asistente.</p>
           </details>
 
           <details class="chatgpt-dark-disclosure" name="chatgpt-faq">
