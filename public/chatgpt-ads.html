@@ -756,8 +756,8 @@
     .chatgpt-dark-bottom-wrapper {
       width: 100%;
       background-color: #050508 !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 90px 0 20px 0;
+      border-top: none !important;
+      padding: 0 0 20px 0;
       box-sizing: border-box;
       position: relative;
     }
@@ -950,219 +950,21 @@
       box-shadow: 0 15px 40px rgba(41, 173, 255, 0.4);
     }
 
-    /* 5. PRICING SECTION STYLES */
-    .chatgpt-pricing-section {
-      padding: 40px 0 80px 0;
+    /* 5. PRICING SECTION CUSTOM GRID */
+    .chatgpt-pricing-single-wrap {
+      width: 100% !important;
+      max-width: 860px !important;
+      margin: 20px auto 0 auto !important;
     }
 
-    .chatgpt-single-pricing-card {
-      background: #0d1017;
-      border: 1.5px solid rgba(41, 173, 255, 0.45);
-      border-radius: 28px;
-      padding: 48px;
-      position: relative;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 0 40px rgba(41, 173, 255, 0.12);
-      display: grid;
-      grid-template-columns: 1fr 1.15fr;
-      gap: 48px;
-      align-items: center;
-      max-width: 1040px;
-      margin: 0 auto;
-      overflow: hidden;
-      box-sizing: border-box;
+    .chatgpt-features-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 16px 28px !important;
     }
 
-    .pricing-card-glow-bg {
-      position: absolute;
-      top: -60px;
-      left: -60px;
-      width: 380px;
-      height: 380px;
-      background: radial-gradient(circle, rgba(41, 173, 255, 0.2) 0%, rgba(16, 185, 129, 0.08) 50%, transparent 70%);
-      filter: blur(60px);
-      pointer-events: none;
-    }
-
-    .pricing-card-left {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pricing-plan-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Geist Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: #29ADFF;
-      background: rgba(41, 173, 255, 0.12);
-      border: 1px solid rgba(41, 173, 255, 0.35);
-      padding: 5px 14px;
-      border-radius: 999px;
-      width: fit-content;
-      margin-bottom: 16px;
-    }
-
-    .pricing-plan-title {
-      font-size: 32px;
-      font-weight: 850;
-      color: #ffffff;
-      letter-spacing: -0.8px;
-      margin: 0 0 10px 0;
-    }
-
-    .pricing-plan-desc {
-      font-size: 15px;
-      color: #94a3b8;
-      line-height: 1.6;
-      margin: 0 0 24px 0;
-    }
-
-    .pricing-price-wrap {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-
-    .pricing-price-val {
-      font-size: 56px;
-      font-weight: 850;
-      color: #ffffff;
-      line-height: 1;
-      letter-spacing: -1.5px;
-    }
-
-    .pricing-price-period {
-      font-size: 16px;
-      font-weight: 600;
-      color: #94a3b8;
-    }
-
-    .pricing-setup-fee-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #e2e8f0;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 7px 16px;
-      border-radius: 12px;
-      margin-bottom: 28px;
-      width: fit-content;
-    }
-
-    .pricing-setup-fee-pill strong {
-      color: #38bdf8;
-    }
-
-    .pricing-cta-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px 32px;
-      background: #29ADFF;
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 15.5px;
-      border-radius: 999px;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 8px 25px rgba(41, 173, 255, 0.35);
-    }
-
-    .pricing-cta-btn:hover {
-      background: #0ea5e9;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(41, 173, 255, 0.5);
-    }
-
-    .pricing-guarantee-note {
-      font-size: 12.5px;
-      color: #64748b;
-      margin-top: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pricing-card-right {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      padding: 30px 26px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .pricing-right-header {
-      font-family: 'Geist Mono', monospace;
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: #94a3b8;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .pricing-features-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .pricing-feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .feature-icon-circle {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(41, 173, 255, 0.15);
-      border: 1px solid rgba(41, 173, 255, 0.4);
-      color: #29ADFF;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 800;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .feature-text-block {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .feature-title {
-      font-size: 14.5px;
-      font-weight: 750;
-      color: #ffffff;
-      line-height: 1.35;
-    }
-
-    .feature-desc {
-      font-size: 13px;
-      color: #94a3b8;
-      line-height: 1.45;
+    .chatgpt-features-grid .grid-full-span {
+      grid-column: 1 / -1 !important;
     }
 
     /* Responsive Queries */
@@ -1175,13 +977,9 @@
       .benefits-bento-grid {
         grid-template-columns: 1fr;
       }
-      .chatgpt-single-pricing-card {
-        grid-template-columns: 1fr;
-        padding: 32px 22px;
-        gap: 28px;
-      }
-      .pricing-price-val {
-        font-size: 44px;
+      .chatgpt-features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
       }
       .process-step-row {
         grid-template-columns: 1fr;
@@ -1539,125 +1337,87 @@
       </div>
     </section>
 
-    <!-- 8. SECTION: CJENIK / INVESTICIJA -->
-    <section id="pricing" class="content-block-section chatgpt-pricing-section">
-      <div class="section-head-center">
-        <span class="section-badge-mono">// 05 INVESTICIJA</span>
-        <h2 class="section-main-heading">Transparentna cijena ChatGPT oglašavanja</h2>
-        <p class="section-subtext">
+  </main>
+
+  <!-- 5. INTERACTIVE PRICING SECTION (Full-Width Luxury Obsidian Theme with Rounded Corners) -->
+  <div class="pricing-section-wrapper">
+    <section id="pricing" class="full-width-pricing-section white-pricing-section">
+      <div class="info-header align-center">
+        <span class="section-badge">// 05 INVESTICIJA</span>
+        <h2 class="info-title">
+          Transparentna cijena ChatGPT oglašavanja
+        </h2>
+        <p class="info-subtitle text-muted">
           Fokusirani paket vođenja AI Search kampanja s uključenom tjednom optimizacijom i CRO preporukama.
         </p>
       </div>
 
-      <div class="chatgpt-single-pricing-card">
-        <div class="pricing-card-glow-bg"></div>
-
-        <!-- Left Column: Price & Value Proposition -->
-        <div class="pricing-card-left">
-          <div class="pricing-plan-badge">
-            <span>★</span>
-            <span>CHATGPT ADS PAKET</span>
+      <div class="pricing-grid luxury-pricing-grid chatgpt-pricing-single-wrap" style="grid-template-columns: 1fr;">
+        
+        <!-- ChatGPT Ads Luxury Card -->
+        <div class="price-card luxury-card popular-card-lux" style="min-height: auto; padding: 48px 40px;">
+          <div class="card-top-tag-row">
+            <span class="ref-tag-mono tag-popular">★ CHATGPT ADS // AI SEARCH</span>
           </div>
 
-          <h3 class="pricing-plan-title">ChatGPT Growth</h3>
-          <p class="pricing-plan-desc">
-            Kompletno vođenje, targetiranje i optimizacija sponzoriranih rezultata na ChatGPT-u i OpenAI Search platformi.
-          </p>
-
-          <div class="pricing-price-wrap">
-            <span class="pricing-price-val">€590</span>
-            <span class="pricing-price-period">/ mj.</span>
-          </div>
-
-          <div class="pricing-setup-fee-pill">
-            <span style="color: #29ADFF; font-weight: 700;">+</span>
-            <span><strong>€300</strong> setup</span>
-          </div>
-
-          <div class="pricing-cta-wrap">
-            <a href="/kontakt?usluga=chatgpt-ads" class="pricing-cta-btn">
-              <span>Započnite kampanju</span>
-              <span>↗</span>
-            </a>
-            <div class="pricing-guarantee-note">
-              <span style="color: #10b981;">✓</span>
-              <span>Tjedna optimizacija • Bez skrivenih troškova</span>
+          <div class="price-header-lux" style="margin-bottom: 24px;">
+            <h3 style="font-size: 32px; font-weight: 700; color: #ffffff; margin-bottom: 8px;">ChatGPT Growth</h3>
+            <div class="price-amount-wrap" style="display: flex; align-items: baseline; gap: 6px;">
+              <span class="currency-sign" style="font-size: 32px; font-weight: 700; color: #ffffff;">€</span>
+              <span class="price-val" style="font-size: 64px; font-weight: 800; color: #ffffff; letter-spacing: -2px;">590</span>
+              <span class="price-per" style="font-size: 16px; color: #a1a1aa;">/ mjesečno</span>
+            </div>
+            <div style="margin-top: 14px; display: inline-flex; align-items: center; gap: 6px; background: rgba(41, 173, 255, 0.14); border: 1px solid rgba(41, 173, 255, 0.4); border-radius: 999px; padding: 6px 16px; font-size: 13.5px; color: #e2e8f0; font-family: 'Geist Mono', monospace;">
+              <span style="color: #29ADFF; font-weight: 800;">+</span> <span><strong style="color: #38bdf8;">300 €</strong> jednokratni setup</span>
             </div>
           </div>
-        </div>
 
-        <!-- Right Column: 7 Features List -->
-        <div class="pricing-card-right">
-          <div class="pricing-right-header">UKLJUČENO U PAKET</div>
-          
-          <ul class="pricing-features-list">
-            <li class="pricing-feature-item">
-              <span class="feature-icon-circle">✓</span>
-              <div class="feature-text-block">
-                <span class="feature-title">1 ChatGPT Ads campaign</span>
-                <span class="feature-desc">Strateško pozicioniranje i postavljanje fokusirane AI kampanje</span>
-              </div>
-            </li>
-
-            <li class="pricing-feature-item">
-              <span class="feature-icon-circle">✓</span>
-              <div class="feature-text-block">
-                <span class="feature-title">Do 5 ad varijacija mjesečno</span>
-                <span class="feature-desc">A/B testiranje prompt odgovora i kontekstualnih formata</span>
-              </div>
-            </li>
-
-            <li class="pricing-feature-item">
-              <span class="feature-icon-circle">✓</span>
-              <div class="feature-text-block">
-                <span class="feature-title">Tjedna optimizacija</span>
-                <span class="feature-desc">Kontinuirano prilagođavanje ponuda, ciljanja i algoritamskih signala</span>
-              </div>
-            </li>
-
-            <li class="pricing-feature-item">
-              <span class="feature-icon-circle">✓</span>
-              <div class="feature-text-block">
-                <span class="feature-title">Targeting</span>
-                <span class="feature-desc">Precizno AI mapiranje korisničkih pitanja i visoke namjere kupnje</span>
-              </div>
-            </li>
-
-            <li class="pricing-feature-item">
-              <span class="feature-icon-circle">✓</span>
-              <div class="feature-text-block">
-                <span class="feature-title">Conversion tracking</span>
-                <span class="feature-desc">Mjerenje svakog klika, poziva, posjete i ostvarenog upita</span>
-              </div>
-            </li>
-
-            <li class="pricing-feature-item">
-              <span class="feature-icon-circle">✓</span>
-              <div class="feature-text-block">
-                <span class="feature-title">CRO preporuke</span>
-                <span class="feature-desc">Optimizacija odredišne landing stranice za maksimalnu stopu konverzije</span>
-              </div>
-            </li>
-
-            <li class="pricing-feature-item">
-              <span class="feature-icon-circle">✓</span>
-              <div class="feature-text-block">
-                <span class="feature-title">Mjesečni izvještaj</span>
-                <span class="feature-desc">Jasna metrika, povrat ulaganja (ROAS) i analiza performansi</span>
-              </div>
-            </li>
+          <!-- Feature List -->
+          <ul class="luxury-features-list chatgpt-features-grid" style="margin-bottom: 36px;">
+            <li><span class="check-icon-circle">✓</span> <span><strong>1 ChatGPT Ads campaign:</strong> Postavljanje i vođenje fokusirane AI kampanje</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Do 5 ad varijacija mjesečno:</strong> A/B testiranje prompt odgovora</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Tjedna optimizacija:</strong> Stalno podešavanje ciljanja i signala</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Targeting:</strong> Precizno mapiranje korisničkih promptova i namjere</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>Conversion tracking:</strong> Mjerenje svih posjeta, klikova i upita</span></li>
+            <li><span class="check-icon-circle">✓</span> <span><strong>CRO preporuke:</strong> Optimizacija stranice za maksimalne konverzije</span></li>
+            <li class="grid-full-span"><span class="check-icon-circle">✓</span> <span><strong>Mjesečni izvještaj:</strong> Detaljna analiza rezultata, doseg i ROAS</span></li>
           </ul>
+
+          <div class="card-bottom-action-area">
+            <div class="sprint-time-divider">
+              <span>Mjesečna suradnja • Tjedna optimizacija</span>
+            </div>
+            <a href="/kontakt?usluga=chatgpt-ads" class="luxury-btn-glow package-cta-btn" style="text-decoration: none; text-align: center; font-size: 16px; padding: 18px 32px; border-radius: 999px; width: 100%;">
+              <span>Započni suradnju ↗</span>
+            </a>
+            <span class="guarantee-text" style="color: #888888; font-size: 13px;">Uključena tehnička podrška • Bez skrivenih troškova</span>
+          </div>
         </div>
 
       </div>
-    </section>
 
-  </main>
+      <!-- Trust Bar -->
+      <div class="pricing-trust-bar">
+        <div class="trust-item">
+          <span class="trust-icon">⚡</span>
+          <span>Direktan plasman u ChatGPT pretrage</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🛡️</span>
+          <span>Fiksna cijena bez skrivenih troškova</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon">🎯</span>
+          <span>Tjedna optimizacija i analitika</span>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- DARK BOTTOM ZONE (FAQ + CTA + FOOTER in matching #050508) -->
   <div class="chatgpt-dark-bottom-wrapper">
     
-    <!-- 9. SECTION: FAQ ACCORDION -->
+    <!-- 6. SECTION: FAQ ACCORDION -->
     <section id="chatgpt-faq" class="chatgpt-dark-faq-section">
       <div class="chatgpt-dark-inner-container">
         <div class="section-head-center">
