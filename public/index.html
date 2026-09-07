@@ -220,7 +220,167 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=104.0.0">
+  <link rel="stylesheet" href="style.css?v=105.0.0">
+  <style>
+    /* Critical About Bento Grid Styles (Cache-proof) */
+    .stats-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 20px !important;
+      align-items: stretch !important;
+      max-width: 1240px !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+    }
+    .stat-card {
+      border-radius: 20px !important;
+      height: 280px !important;
+      min-height: 280px !important;
+      max-height: 280px !important;
+      box-sizing: border-box !important;
+    }
+    .stat-card.image-card-only {
+      padding: 0 !important;
+      overflow: hidden !important;
+      position: relative !important;
+      background-color: #0f172a !important;
+    }
+    .stat-card.image-card-only img.card-full-img {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 20% !important;
+      border-radius: 20px !important;
+    }
+    .stat-card.tech-orbit-card {
+      background: #eaecf0 !important;
+      border: 1px solid #d0d5dd !important;
+      border-radius: 20px !important;
+      padding: 12px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    .tech-orbit-container {
+      position: relative !important;
+      width: 246px !important;
+      height: 246px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: auto !important;
+    }
+    .tech-orbit-ring {
+      position: absolute !important;
+      border-radius: 50% !important;
+      pointer-events: none !important;
+    }
+    .tech-orbit-ring.ring-outer {
+      width: 176px !important;
+      height: 176px !important;
+      border: 1.5px dashed rgba(15, 23, 42, 0.16) !important;
+      animation: orbitSpinSlow 60s linear infinite !important;
+    }
+    .tech-orbit-ring.ring-inner {
+      width: 106px !important;
+      height: 106px !important;
+      border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    }
+    .tech-orbit-hub {
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 50% !important;
+      background: #ffffff !important;
+      border: 1.5px solid #cbd5e1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 2px !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+      z-index: 2 !important;
+      position: absolute !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+    }
+    .hub-pulse-dot {
+      width: 7px !important;
+      height: 7px !important;
+      border-radius: 50% !important;
+      background: #29ADFF !important;
+      box-shadow: 0 0 8px #29ADFF !important;
+      animation: hubPulse 2s ease-in-out infinite !important;
+    }
+    .hub-label {
+      font-size: 7.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.6px !important;
+      color: #64748b !important;
+      font-family: 'Geist Mono', monospace !important;
+      text-transform: uppercase !important;
+    }
+    .tech-orbit-item {
+      position: absolute !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      background: #ffffff !important;
+      border: 1px solid #d0d5dd !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06) !important;
+      z-index: 3 !important;
+      transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+      user-select: none !important;
+    }
+    .tech-orbit-item:hover {
+      transform: translate(-50%, -50%) scale(1.08) !important;
+      box-shadow: 0 6px 18px rgba(41, 173, 255, 0.25) !important;
+      border-color: #29ADFF !important;
+    }
+    .item-google { top: calc(50% - 88px) !important; left: 50% !important; transform: translate(-50%, -50%) !important; }
+    .item-chatgpt { top: calc(50% - 44px) !important; left: calc(50% + 76px) !important; transform: translate(-50%, -50%) !important; }
+    .item-python { top: calc(50% + 44px) !important; left: calc(50% + 76px) !important; transform: translate(-50%, -50%) !important; }
+    .item-meta { top: calc(50% + 88px) !important; left: 50% !important; transform: translate(-50%, -50%) !important; }
+    .item-instagram { top: calc(50% + 44px) !important; left: calc(50% - 76px) !important; transform: translate(-50%, -50%) !important; }
+    .item-ga4 { top: calc(50% - 44px) !important; left: calc(50% - 76px) !important; transform: translate(-50%, -50%) !important; }
+    .tech-logo-icon {
+      width: 16px !important;
+      height: 16px !important;
+      min-width: 16px !important;
+      max-width: 16px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+    }
+    .orbit-logo-svg {
+      width: 16px !important;
+      height: 16px !important;
+      min-width: 16px !important;
+      max-width: 16px !important;
+      display: block !important;
+    }
+    .tech-logo-name {
+      font-size: 11.5px !important;
+      font-weight: 750 !important;
+      color: #0f172a !important;
+      letter-spacing: -0.2px !important;
+      white-space: nowrap !important;
+    }
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 480px !important;
+      }
+    }
+  </style>
   <link rel="prefetch" href="/kontakt">
   <link rel="prefetch" href="/kontakt?paket=pro">
   <link rel="prefetch" href="/kontakt?paket=start">
@@ -361,96 +521,95 @@
       </div>
     </div>
 
-    <!-- Cards Grid -->
-    <!-- Cards Grid (3 Expanded Cards) -->
-    <div class="stats-grid">
+    <!-- Cards Grid (3 Balanced Compact Bento Cards) -->
+    <div class="stats-grid" style="display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; align-items: stretch !important; max-width: 1240px !important; margin: 0 auto !important; width: 100% !important;">
       
       <!-- Card 1: Foto & Video Image Card -->
-      <div class="stat-card image-card-only">
-        <img src="about_person.jpg" alt="Algor Studio Tim" class="card-full-img" />
+      <div class="stat-card image-card-only" style="height: 280px !important; min-height: 280px !important; max-height: 280px !important; border-radius: 20px !important; overflow: hidden !important; position: relative !important; padding: 0 !important; background-color: #0f172a !important; box-sizing: border-box !important;">
+        <img src="about_person.jpg" alt="Algor Studio Tim" class="card-full-img" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center 20% !important; display: block !important; border-radius: 20px !important;" />
       </div>
 
       <!-- Card 2: Tech Ecosystem Orbit Card (Google, ChatGPT, Python, Meta, Instagram, GA4 in a Circle) -->
-      <div class="stat-card tech-orbit-card">
-        <div class="tech-orbit-container">
-          <div class="tech-orbit-ring ring-outer"></div>
-          <div class="tech-orbit-ring ring-inner"></div>
+      <div class="stat-card tech-orbit-card" style="background: #eaecf0 !important; border: 1px solid #d0d5dd !important; box-shadow: 0 4px 16px -2px rgba(0,0,0,0.05) !important; border-radius: 20px !important; padding: 12px !important; display: flex !important; align-items: center !important; justify-content: center !important; position: relative !important; overflow: hidden !important; height: 280px !important; min-height: 280px !important; max-height: 280px !important; box-sizing: border-box !important;">
+        <div class="tech-orbit-container" style="position: relative !important; width: 246px !important; height: 246px !important; display: flex !important; align-items: center !important; justify-content: center !important; margin: auto !important;">
+          <div class="tech-orbit-ring ring-outer" style="position: absolute !important; width: 176px !important; height: 176px !important; border-radius: 50% !important; border: 1.5px dashed rgba(15,23,42,0.16) !important; pointer-events: none !important;"></div>
+          <div class="tech-orbit-ring ring-inner" style="position: absolute !important; width: 106px !important; height: 106px !important; border-radius: 50% !important; border: 1px solid rgba(15,23,42,0.08) !important; pointer-events: none !important;"></div>
           
           <!-- Central Hub -->
-          <div class="tech-orbit-hub">
-            <div class="hub-pulse-dot"></div>
-            <span class="hub-label">TECH STACK</span>
+          <div class="tech-orbit-hub" style="position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 52px !important; height: 52px !important; border-radius: 50% !important; background: #ffffff !important; border: 1.5px solid #cbd5e1 !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; gap: 2px !important; box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important; z-index: 2 !important;">
+            <div class="hub-pulse-dot" style="width: 7px !important; height: 7px !important; border-radius: 50% !important; background: #29ADFF !important; box-shadow: 0 0 8px #29ADFF !important;"></div>
+            <span class="hub-label" style="font-size: 7.5px !important; font-weight: 800 !important; letter-spacing: 0.6px !important; color: #64748b !important; font-family: 'Geist Mono', monospace !important; text-transform: uppercase !important;">TECH STACK</span>
           </div>
 
           <!-- 1. Google (Top / 0°) -->
-          <div class="tech-orbit-item item-google">
-            <div class="tech-logo-icon">
-              <svg viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.3 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.17 0 9.97 0 12s.46 3.83 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.7 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+          <div class="tech-orbit-item item-google" style="position: absolute !important; top: calc(50% - 88px) !important; left: 50% !important; transform: translate(-50%, -50%) !important; display: flex !important; align-items: center !important; gap: 6px !important; background: #ffffff !important; border: 1px solid #d0d5dd !important; padding: 4px 10px !important; border-radius: 999px !important; box-shadow: 0 3px 10px rgba(0,0,0,0.06) !important; z-index: 3 !important;">
+            <div class="tech-logo-icon" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;">
+              <svg width="16" height="16" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: block !important;"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.3 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.17 0 9.97 0 12s.46 3.83 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.7 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
             </div>
-            <span class="tech-logo-name">Google</span>
+            <span class="tech-logo-name" style="font-size: 11.5px !important; font-weight: 750 !important; color: #0f172a !important; letter-spacing: -0.2px !important; white-space: nowrap !important;">Google</span>
           </div>
 
           <!-- 2. ChatGPT (60°) -->
-          <div class="tech-orbit-item item-chatgpt">
-            <div class="tech-logo-icon">
-              <svg viewBox="0 0 24 24" class="orbit-logo-svg" fill="#10A37F"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829l2.02-1.1638a.0804.0804 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.402-.686zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L8.909 9.2297V6.8974a.0662.0662 0 0 1 .0331-.0615L13.843 3.99a4.5045 4.5045 0 0 1 6.6078 4.7383zm-7.974 4.1539l-2.6592-1.536 2.6592-1.536 2.6592 1.536-2.6592 1.536z"/></svg>
+          <div class="tech-orbit-item item-chatgpt" style="position: absolute !important; top: calc(50% - 44px) !important; left: calc(50% + 76px) !important; transform: translate(-50%, -50%) !important; display: flex !important; align-items: center !important; gap: 6px !important; background: #ffffff !important; border: 1px solid #d0d5dd !important; padding: 4px 10px !important; border-radius: 999px !important; box-shadow: 0 3px 10px rgba(0,0,0,0.06) !important; z-index: 3 !important;">
+            <div class="tech-logo-icon" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;">
+              <svg width="16" height="16" viewBox="0 0 24 24" class="orbit-logo-svg" fill="#10A37F" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: block !important;"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829l2.02-1.1638a.0804.0804 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.402-.686zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L8.909 9.2297V6.8974a.0662.0662 0 0 1 .0331-.0615L13.843 3.99a4.5045 4.5045 0 0 1 6.6078 4.7383zm-7.974 4.1539l-2.6592-1.536 2.6592-1.536 2.6592 1.536-2.6592 1.536z"/></svg>
             </div>
-            <span class="tech-logo-name">ChatGPT</span>
+            <span class="tech-logo-name" style="font-size: 11.5px !important; font-weight: 750 !important; color: #0f172a !important; letter-spacing: -0.2px !important; white-space: nowrap !important;">ChatGPT</span>
           </div>
 
           <!-- 3. Python (120°) -->
-          <div class="tech-orbit-item item-python">
-            <div class="tech-logo-icon">
-              <svg viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#3776AB" d="M11.91 0c-1.8 0-3.41.16-4.66.44-3.69.83-3.89 2.56-3.89 5.72v4.21h7.79v1.08H3.36c-3.16 0-4.9 1.83-5.36 5.51-.54 4.22.42 7.04 4.02 7.04h2.58v-3.66c0-2.69 2.31-5.02 5.09-5.02h7.74v-4.6c0-3.4-2.82-5.72-5.52-5.72zm-2.22 1.76a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36z"/><path fill="#FFD438" d="M12.09 24c1.8 0 3.41-.16 4.66-.44 3.69-.83 3.89-2.56 3.89-5.72v-4.21h-7.79v-1.08h7.79c3.16 0 4.9-1.83 5.36-5.51.54-4.22-.42-7.04-4.02-7.04h-2.58v3.66c0 2.69-2.31 5.02-5.09 5.02H6.57v4.6c0 3.4 2.82 5.72 5.52 5.72zm2.22-1.76a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 0 2.36z"/></svg>
+          <div class="tech-orbit-item item-python" style="position: absolute !important; top: calc(50% + 44px) !important; left: calc(50% + 76px) !important; transform: translate(-50%, -50%) !important; display: flex !important; align-items: center !important; gap: 6px !important; background: #ffffff !important; border: 1px solid #d0d5dd !important; padding: 4px 10px !important; border-radius: 999px !important; box-shadow: 0 3px 10px rgba(0,0,0,0.06) !important; z-index: 3 !important;">
+            <div class="tech-logo-icon" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;">
+              <svg width="16" height="16" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: block !important;"><path fill="#3776AB" d="M11.91 0c-1.8 0-3.41.16-4.66.44-3.69.83-3.89 2.56-3.89 5.72v4.21h7.79v1.08H3.36c-3.16 0-4.9 1.83-5.36 5.51-.54 4.22.42 7.04 4.02 7.04h2.58v-3.66c0-2.69 2.31-5.02 5.09-5.02h7.74v-4.6c0-3.4-2.82-5.72-5.52-5.72zm-2.22 1.76a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36z"/><path fill="#FFD438" d="M12.09 24c1.8 0 3.41-.16 4.66-.44 3.69-.83 3.89-2.56 3.89-5.72v-4.21h-7.79v-1.08h7.79c3.16 0 4.9-1.83 5.36-5.51.54-4.22-.42-7.04-4.02-7.04h-2.58v3.66c0 2.69-2.31 5.02-5.09 5.02H6.57v4.6c0 3.4 2.82 5.72 5.52 5.72zm2.22-1.76a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 0 2.36z"/></svg>
             </div>
-            <span class="tech-logo-name">Python</span>
+            <span class="tech-logo-name" style="font-size: 11.5px !important; font-weight: 750 !important; color: #0f172a !important; letter-spacing: -0.2px !important; white-space: nowrap !important;">Python</span>
           </div>
 
           <!-- 4. Meta (180°) -->
-          <div class="tech-orbit-item item-meta">
-            <div class="tech-logo-icon">
-              <svg viewBox="0 0 24 24" class="orbit-logo-svg"><linearGradient id="metaGradOrbitCard" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0064e0"/><stop offset="100%" stop-color="#007dfc"/></linearGradient><path fill="url(#metaGradOrbitCard)" d="M16.48 4.04c-1.84 0-3.32.96-4.48 2.65-1.16-1.69-2.64-2.65-4.48-2.65C4.24 4.04 2 6.43 2 9.87c0 4.19 3.63 7.82 8.65 11.75l1.35 1.05 1.35-1.05C18.37 17.69 22 14.06 22 9.87c0-3.44-2.24-5.83-5.52-5.83zm-4.48 15.2c-4.14-3.35-7-6.32-7-9.37 0-2.21 1.34-3.83 3.48-3.83 0 3.05-2.86 6.02-7 9.37z"/></svg>
+          <div class="tech-orbit-item item-meta" style="position: absolute !important; top: calc(50% + 88px) !important; left: 50% !important; transform: translate(-50%, -50%) !important; display: flex !important; align-items: center !important; gap: 6px !important; background: #ffffff !important; border: 1px solid #d0d5dd !important; padding: 4px 10px !important; border-radius: 999px !important; box-shadow: 0 3px 10px rgba(0,0,0,0.06) !important; z-index: 3 !important;">
+            <div class="tech-logo-icon" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;">
+              <svg width="16" height="16" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: block !important;"><linearGradient id="metaGradOrbitCard" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0064e0"/><stop offset="100%" stop-color="#007dfc"/></linearGradient><path fill="url(#metaGradOrbitCard)" d="M16.48 4.04c-1.84 0-3.32.96-4.48 2.65-1.16-1.69-2.64-2.65-4.48-2.65C4.24 4.04 2 6.43 2 9.87c0 4.19 3.63 7.82 8.65 11.75l1.35 1.05 1.35-1.05C18.37 17.69 22 14.06 22 9.87c0-3.44-2.24-5.83-5.52-5.83zm-4.48 15.2c-4.14-3.35-7-6.32-7-9.37 0-2.21 1.34-3.83 3.48-3.83 0 3.05-2.86 6.02-7 9.37z"/></svg>
             </div>
-            <span class="tech-logo-name">Meta</span>
+            <span class="tech-logo-name" style="font-size: 11.5px !important; font-weight: 750 !important; color: #0f172a !important; letter-spacing: -0.2px !important; white-space: nowrap !important;">Meta</span>
           </div>
 
           <!-- 5. Instagram (240°) -->
-          <div class="tech-orbit-item item-instagram">
-            <div class="tech-logo-icon">
-              <svg viewBox="0 0 24 24" class="orbit-logo-svg"><radialGradient id="igGradOrbitCard" cx="0.2" cy="1" r="1.2"><stop offset="0%" stop-color="#ffd521"/><stop offset="25%" stop-color="#f50000"/><stop offset="50%" stop-color="#b900b4"/><stop offset="100%" stop-color="#4c64d8"/></radialGradient><rect width="24" height="24" rx="6" fill="url(#igGradOrbitCard)"/><path fill="#ffffff" fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+          <div class="tech-orbit-item item-instagram" style="position: absolute !important; top: calc(50% + 44px) !important; left: calc(50% - 76px) !important; transform: translate(-50%, -50%) !important; display: flex !important; align-items: center !important; gap: 6px !important; background: #ffffff !important; border: 1px solid #d0d5dd !important; padding: 4px 10px !important; border-radius: 999px !important; box-shadow: 0 3px 10px rgba(0,0,0,0.06) !important; z-index: 3 !important;">
+            <div class="tech-logo-icon" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;">
+              <svg width="16" height="16" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: block !important;"><radialGradient id="igGradOrbitCard" cx="0.2" cy="1" r="1.2"><stop offset="0%" stop-color="#ffd521"/><stop offset="25%" stop-color="#f50000"/><stop offset="50%" stop-color="#b900b4"/><stop offset="100%" stop-color="#4c64d8"/></radialGradient><rect width="24" height="24" rx="6" fill="url(#igGradOrbitCard)"/><path fill="#ffffff" fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
             </div>
-            <span class="tech-logo-name">Instagram</span>
+            <span class="tech-logo-name" style="font-size: 11.5px !important; font-weight: 750 !important; color: #0f172a !important; letter-spacing: -0.2px !important; white-space: nowrap !important;">Instagram</span>
           </div>
 
           <!-- 6. GA4 (300°) -->
-          <div class="tech-orbit-item item-ga4">
-            <div class="tech-logo-icon">
-              <svg viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#F9AB00" d="M12.87 21.67a3.4 3.4 0 0 0 3.4-3.4V5.73a3.4 3.4 0 1 0-6.8 0v12.54a3.4 3.4 0 0 0 3.4 3.4z"/><path fill="#E37400" d="M19.67 21.67a3.4 3.4 0 0 0 3.4-3.4v-6.2a3.4 3.4 0 1 0-6.8 0v6.2a3.4 3.4 0 0 0 3.4 3.4z"/><circle fill="#E37400" cx="4.33" cy="18.27" r="3.4"/></svg>
+          <div class="tech-orbit-item item-ga4" style="position: absolute !important; top: calc(50% - 44px) !important; left: calc(50% - 76px) !important; transform: translate(-50%, -50%) !important; display: flex !important; align-items: center !important; gap: 6px !important; background: #ffffff !important; border: 1px solid #d0d5dd !important; padding: 4px 10px !important; border-radius: 999px !important; box-shadow: 0 3px 10px rgba(0,0,0,0.06) !important; z-index: 3 !important;">
+            <div class="tech-logo-icon" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important;">
+              <svg width="16" height="16" viewBox="0 0 24 24" class="orbit-logo-svg" style="width: 16px !important; height: 16px !important; min-width: 16px !important; max-width: 16px !important; display: block !important;"><path fill="#F9AB00" d="M12.87 21.67a3.4 3.4 0 0 0 3.4-3.4V5.73a3.4 3.4 0 1 0-6.8 0v12.54a3.4 3.4 0 0 0 3.4 3.4z"/><path fill="#E37400" d="M19.67 21.67a3.4 3.4 0 0 0 3.4-3.4v-6.2a3.4 3.4 0 1 0-6.8 0v6.2a3.4 3.4 0 0 0 3.4 3.4z"/><circle fill="#E37400" cx="4.33" cy="18.27" r="3.4"/></svg>
             </div>
-            <span class="tech-logo-name">GA4</span>
+            <span class="tech-logo-name" style="font-size: 11.5px !important; font-weight: 750 !important; color: #0f172a !important; letter-spacing: -0.2px !important; white-space: nowrap !important;">GA4</span>
           </div>
         </div>
       </div>
 
       <!-- Card 3: Testimonial Card (Enlarged) -->
-      <div class="stat-card testimonial-card">
-        <div class="testimonial-header">
-          <div class="quote-mark-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+      <div class="stat-card testimonial-card" style="background-color: #ffffff !important; border: 1px solid #e2e8f0 !important; border-radius: 20px !important; padding: 26px 24px !important; color: #0f172a !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; height: 280px !important; min-height: 280px !important; max-height: 280px !important; box-shadow: 0 4px 16px rgba(0,0,0,0.04) !important; box-sizing: border-box !important;">
+        <div class="testimonial-header" style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
+          <div class="quote-mark-icon" style="color: #94a3b8 !important; display: flex !important; align-items: center !important;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="width: 24px !important; height: 24px !important; display: block !important;">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
             </svg>
           </div>
           <div class="testimonial-logo">
-            <span style="font-weight: 850; font-size: 15px; color: #0f172a; letter-spacing: 0.8px;">ADMIRAL</span>
+            <span style="font-weight: 850 !important; font-size: 14px !important; color: #0f172a !important; letter-spacing: 0.6px !important;">ADMIRAL</span>
           </div>
         </div>
         
-        <p class="testimonial-text">
+        <p class="testimonial-text" style="font-size: 16.5px !important; line-height: 1.5 !important; font-weight: 600 !important; color: #1e293b !important; letter-spacing: -0.2px !important; margin: 12px 0 auto 0 !important;">
           "Algor nije samo napravio projekt, već postao dugotrajni partner za naše poslovanje."
         </p>
         
-        <div class="testimonial-citation">
-          <span class="cit-bullet">•</span> Martina P., Admiral
+        <div class="testimonial-citation" style="font-size: 13.5px !important; color: #64748b !important; font-weight: 700 !important; display: flex !important; align-items: center !important; gap: 6px !important; margin-top: auto !important; padding-top: 12px !important; border-top: 1px solid #f1f5f9 !important;">
+          <span class="cit-bullet" style="color: #29ADFF !important; font-size: 15px !important;">•</span> Martina P., Admiral
         </div>
       </div>
 
