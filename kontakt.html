@@ -139,23 +139,28 @@
       max-width: 680px;
     }
 
-    /* Main 2-Column Grid */
-    .contact-layout-grid {
+    /* Main Centered Stack */
+    .contact-layout-stack {
       position: relative;
       z-index: 1;
-      display: grid;
-      grid-template-columns: 1fr 1.35fr;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 40px;
-      align-items: start;
-      margin-bottom: 90px;
+      max-width: 740px;
+      margin: 0 auto 90px auto;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    /* Left Info Card */
+    /* Info Card ("Što možete očekivati na pozivu?") Below Form */
     .contact-info-panel {
+      width: 100%;
       background: #111318;
       border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 24px;
       padding: 36px 32px;
+      box-sizing: border-box;
     }
 
     .info-panel-title {
@@ -229,13 +234,15 @@
       color: #60c5ff;
     }
 
-    /* Right Interactive Booking Box */
+    /* Centered Interactive Booking Box */
     .contact-card-box {
+      width: 100%;
       background: #ffffff;
       color: #0f172a;
       border-radius: 28px;
-      padding: 40px 36px;
+      padding: 44px 38px;
       box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      box-sizing: border-box;
     }
 
     /* Selected Package Inside Form Banner */
@@ -620,6 +627,90 @@
     }
 
     /* Action Buttons */
+    /* GDPR Consent Box */
+    .form-consent-unit {
+      margin: 8px 0 24px 0;
+    }
+
+    .consent-checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .consent-checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: #29ADFF;
+      flex-shrink: 0;
+    }
+
+    .consent-text {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .consent-text a {
+      color: #0284c7;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .consent-text a:hover {
+      color: #0369a1;
+    }
+
+    .consent-text span.req {
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    /* Step 1 Two Action Buttons Row */
+    .form-step1-btns-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .btn-contact-direct-inquiry {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 16px 22px;
+      background: #0f172a;
+      color: #ffffff;
+      border: 1.5px solid #334155;
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-contact-direct-inquiry:hover:not(:disabled) {
+      background: #1e293b;
+      border-color: #29ADFF;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(41, 173, 255, 0.25);
+    }
+
+    .btn-contact-direct-inquiry:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     .btn-step-row {
       display: flex;
       gap: 14px;
@@ -632,23 +723,24 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 15px 24px;
-      background: #0f172a;
+      padding: 16px 22px;
+      background: linear-gradient(135deg, #29ADFF 0%, #0077ff 100%);
       color: #ffffff;
       border: none;
-      border-radius: 999px;
+      border-radius: 14px;
       font-family: inherit;
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
       box-sizing: border-box;
+      box-shadow: 0 8px 24px rgba(41, 173, 255, 0.35);
     }
 
     .btn-contact-primary:hover:not(:disabled) {
-      background: #1e293b;
       transform: translateY(-1px);
-      box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.3);
+      box-shadow: 0 12px 30px rgba(41, 173, 255, 0.5);
+      background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
     }
 
     .btn-contact-primary:disabled {
@@ -664,7 +756,7 @@
       background: transparent;
       color: #1e293b;
       border: 1.5px solid #cbd5e1;
-      border-radius: 999px;
+      border-radius: 14px;
       font-family: inherit;
       font-size: 14.5px;
       font-weight: 700;
@@ -726,15 +818,18 @@
     }
 
     @media (max-width: 960px) {
-      .contact-layout-grid {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
       .contact-card-box {
-        padding: 32px 24px;
+        padding: 34px 22px;
       }
       .contact-hero-section {
         padding: 130px 20px 60px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .form-step1-btns-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
     }
 
@@ -851,36 +946,10 @@
       </p>
     </header>
 
-    <!-- Contact & Booking Grid -->
-    <section class="contact-layout-grid">
-      
-      <!-- Left: Value & Details Panel -->
-      <div class="contact-info-panel">
-        <h2 class="info-panel-title">Što možete očekivati na pozivu?</h2>
-        <p class="info-panel-desc">Kratak, fokusiran i koristan 15-minutni uvodni razgovor prilagođen Vašoj industriji i ciljevima.</p>
+    <!-- Main Centered Contact & Booking Stack -->
+    <section class="contact-layout-stack">
 
-        <ul class="info-perks-list">
-          <li class="info-perk-item">
-            <span class="info-perk-icon">✓</span>
-            <div><strong>Konkretna analiza:</strong> Pregledat ćemo Vaše trenutno stanje i marketing prisutnost.</div>
-          </li>
-          <li class="info-perk-item">
-            <span class="info-perk-icon">✓</span>
-            <div><strong>Jasne preporuke:</strong> Prijedlog modela suradnje i alata koji donose najbrži povrat investicije.</div>
-          </li>
-          <li class="info-perk-item">
-            <span class="info-perk-icon">✓</span>
-            <div><strong>100% bez obveza:</strong> Razgovor služi za upoznavanje i procjenu bez ikakvog pritiska na kupnju.</div>
-          </li>
-        </ul>
-
-        <div class="contact-direct-box">
-          <div style="font-size: 13px; color: #94a3b8;">Imate hitan upit ili specifično pitanje?</div>
-          <a href="mailto:info@algor.studio" class="contact-direct-link">✉️ info@algor.studio</a>
-        </div>
-      </div>
-
-      <!-- Right: Multi-Step Interactive Form Box -->
+      <!-- Top: Multi-Step Interactive Form Box -->
       <div class="contact-card-box">
         
         <!-- Selected Package Inside Form Banner -->
@@ -932,10 +1001,26 @@
             </div>
           </div>
 
-          <button type="submit" class="btn-contact-primary">
-            <span>Nastavi na odabir termina</span>
-            <span>↗</span>
-          </button>
+          <!-- GDPR Data Processing Consent Checkbox -->
+          <div class="form-consent-unit">
+            <label class="consent-checkbox-label">
+              <input type="checkbox" id="contact-consent" required />
+              <span class="consent-text">
+                Prihvaćam obradu osobnih podataka u svrhu odgovora na upit u skladu s <a href="/politika-privatnosti" target="_blank" rel="noopener">Politikom privatnosti</a>. <span class="req">*</span>
+              </span>
+            </label>
+          </div>
+
+          <!-- Step 1 Action Buttons (Pošalji upit & Želim sastanak) -->
+          <div class="form-step1-btns-row">
+            <button type="button" class="btn-contact-direct-inquiry" id="btn-direct-inquiry">
+              <span>✉️ Pošalji upit</span>
+            </button>
+            <button type="submit" class="btn-contact-primary" id="btn-to-meeting">
+              <span>📅 Želim sastanak</span>
+              <span>↗</span>
+            </button>
+          </div>
         </form>
 
         <!-- STEP 2: Meeting Type, Date & Time Picker -->
@@ -1005,11 +1090,6 @@
               <span>↗</span>
             </button>
           </div>
-          <div style="text-align: center; margin-top: 14px;">
-            <button type="button" id="contact-btn-skip" style="background: none; border: none; color: #64748b; font-size: 13.5px; font-weight: 600; text-decoration: underline; cursor: pointer; padding: 6px 12px; transition: color 0.2s;">
-              Preskoči odabir termina i odmah pošalji upit →
-            </button>
-          </div>
         </div>
 
         <!-- STEP 3: Success State -->
@@ -1030,6 +1110,32 @@
           </a>
         </div>
 
+      </div>
+
+      <!-- Bottom: Value & Expectations Panel Below Form -->
+      <div class="contact-info-panel">
+        <h2 class="info-panel-title">Što možete očekivati na pozivu?</h2>
+        <p class="info-panel-desc">Kratak, fokusiran i koristan 15-minutni uvodni razgovor prilagođen Vašoj industriji i ciljevima.</p>
+
+        <ul class="info-perks-list">
+          <li class="info-perk-item">
+            <span class="info-perk-icon">✓</span>
+            <div><strong>Konkretna analiza:</strong> Pregledat ćemo Vaše trenutno stanje i marketing prisutnost.</div>
+          </li>
+          <li class="info-perk-item">
+            <span class="info-perk-icon">✓</span>
+            <div><strong>Jasne preporuke:</strong> Prijedlog modela suradnje i alata koji donose najbrži povrat investicije.</div>
+          </li>
+          <li class="info-perk-item">
+            <span class="info-perk-icon">✓</span>
+            <div><strong>100% bez obveza:</strong> Razgovor služi za upoznavanje i procjenu bez ikakvog pritiska na kupnju.</div>
+          </li>
+        </ul>
+
+        <div class="contact-direct-box">
+          <div style="font-size: 13px; color: #94a3b8;">Imate hitan upit ili specifično pitanje?</div>
+          <a href="mailto:info@algor.studio" class="contact-direct-link">✉️ info@algor.studio</a>
+        </div>
       </div>
 
     </section>

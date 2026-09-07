@@ -421,21 +421,138 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    const btnDirectInquiry = document.getElementById('btn-direct-inquiry');
+    const btnToMeeting = document.getElementById('btn-to-meeting');
+
+    function getAndValidateStep1() {
+      const nameEl = document.getElementById('contact-name');
+      const compEl = document.getElementById('contact-company');
+      const emailEl = document.getElementById('contact-email');
+      const phoneEl = document.getElementById('contact-phone');
+      const consentEl = document.getElementById('contact-consent');
+
+      if (!nameEl || !nameEl.value.trim()) {
+        if (nameEl) {
+          nameEl.focus();
+          nameEl.reportValidity();
+        }
+        return null;
+      }
+      if (!compEl || !compEl.value.trim()) {
+        if (compEl) {
+          compEl.focus();
+          compEl.reportValidity();
+        }
+        return null;
+      }
+      if (!emailEl || !emailEl.value.trim() || !emailEl.checkValidity()) {
+        if (emailEl) {
+          emailEl.focus();
+          emailEl.reportValidity();
+        }
+        return null;
+      }
+      if (consentEl && !consentEl.checked) {
+        consentEl.focus();
+        consentEl.reportValidity();
+        return null;
+      }
+
+      return {
+        name: nameEl.value.trim(),
+        company: compEl.value.trim(),
+        email: emailEl.value.trim(),
+        phone: phoneEl ? phoneEl.value.trim() : ''
+      };
+    }
+
+    if (btnDirectInquiry) {
+      btnDirectInquiry.addEventListener('click', async () => {
+        const data = getAndValidateStep1();
+        if (!data) return;
+
+        btnDirectInquiry.disabled = true;
+        if (btnToMeeting) btnToMeeting.disabled = true;
+        btnDirectInquiry.innerHTML = '<span>✉️ Šaljem upit...</span>';
+
+        contactPageData = data;
+
+        const bookingSummaryData = {
+          name: data.name,
+          company: data.company,
+          email: data.email,
+          phone: data.phone,
+          package: formPackageLabel || selectedPackageName || 'Besplatan Audit (Konzultacije)',
+          calendarSlot: 'Direktan upit (Klijent se javio porukom)'
+        };
+        try {
+          sessionStorage.setItem('algor_booking_summary', JSON.stringify(bookingSummaryData));
+        } catch (e) {}
+
+        if (typeof window.gtag === 'function') {
+          try {
+            window.gtag('event', 'generate_lead', {
+              event_category: 'Contact',
+              event_label: selectedPackageName ? `${selectedPackageName} (Direktan upit)` : 'Direktan upit',
+              value: 1
+            });
+          } catch (e) {}
+        }
+
+        try {
+          await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: data.name,
+              company: data.company,
+              email: data.email,
+              phone: data.phone,
+              package: selectedPackageName,
+              meetingType: 'Direktan upit (bez zakazanog termina)',
+              calendarSlot: 'Direktan upit (Klijent se javio porukom)',
+              source: 'Kontakt stranica (Direktan upit)',
+              device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
+            })
+          });
+        } catch (err) {
+          console.log('Direct inquiry submit note:', err);
+        }
+
+        const stepsBar = document.querySelector('.booking-steps-bar');
+        if (stepsBar) stepsBar.style.display = 'none';
+
+        contactFormStep1.style.display = 'none';
+        if (contactStepSuccess) {
+          contactStepSuccess.style.display = 'block';
+          if (contactSuccessSummary) {
+            contactSuccessSummary.innerHTML = `
+              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vašeg upita:</div>
+              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${data.name}</div>
+              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${data.company}</div>
+              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${data.email}</div>
+              ${data.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${data.phone}</div>` : ''}
+              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
+                📦 <strong>Usluga / Model:</strong> ${formPackageLabel || selectedPackageName}
+              </div>
+            `;
+          }
+          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        setTimeout(() => {
+          window.location.href = '/hvala';
+        }, 400);
+      });
+    }
+
     contactFormStep1.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const nameVal = document.getElementById('contact-name').value.trim();
-      const compVal = document.getElementById('contact-company').value.trim();
-      const emailVal = document.getElementById('contact-email').value.trim();
-      const phoneInput = document.getElementById('contact-phone');
-      const phoneVal = phoneInput ? phoneInput.value.trim() : '';
+      const data = getAndValidateStep1();
+      if (!data) return;
 
-      contactPageData = {
-        name: nameVal,
-        company: compVal,
-        email: emailVal,
-        phone: phoneVal
-      };
+      contactPageData = data;
 
       contactFormStep1.style.display = 'none';
       contactFormStep2.style.display = 'block';
@@ -539,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
               appointmentTime: selectedContactSlot,
               meetingType: selectedMeetingType,
               calendarSlot: appointmentDetails,
-              source: 'Kontakt stranica',
+              source: 'Kontakt stranica (Zakazani sastanak)',
               device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
             })
           });
@@ -575,80 +692,6 @@ document.addEventListener('DOMContentLoaded', () => {
               <div style="margin-bottom: 6px;">📦 <strong>Paket / Usluga:</strong> ${formPackageLabel || selectedPackageName}</div>
               <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
                 📅 ${appointmentDetails}
-              </div>
-            `;
-          }
-          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        setTimeout(() => {
-          window.location.href = '/hvala';
-        }, 400);
-      });
-    }
-
-    const contactBtnSkip = document.getElementById('contact-btn-skip');
-    if (contactBtnSkip) {
-      contactBtnSkip.addEventListener('click', async () => {
-        contactBtnSkip.disabled = true;
-        if (contactBtnConfirm) contactBtnConfirm.disabled = true;
-
-        const bookingSummaryData = {
-          name: contactPageData.name || '',
-          company: contactPageData.company || '',
-          email: contactPageData.email || '',
-          phone: contactPageData.phone || '',
-          package: formPackageLabel || selectedPackageName || 'Besplatan Audit (Konzultacije)',
-          calendarSlot: 'Termin nije odabran (Preskočeno)'
-        };
-        try {
-          sessionStorage.setItem('algor_booking_summary', JSON.stringify(bookingSummaryData));
-        } catch (e) {}
-
-        if (typeof window.gtag === 'function') {
-          try {
-            window.gtag('event', 'generate_lead', {
-              event_category: 'Contact',
-              event_label: selectedPackageName || 'Upit bez termina',
-              value: 1
-            });
-          } catch (e) {}
-        }
-
-        try {
-          await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: contactPageData.name || 'Klijent',
-              company: contactPageData.company || '',
-              email: contactPageData.email || '',
-              phone: contactPageData.phone || '',
-              package: selectedPackageName,
-              calendarSlot: 'Termin nije odabran (Preskočeno)',
-              source: 'Kontakt stranica',
-              device: (window.innerWidth <= 768) ? 'Mobitel' : 'Desktop'
-            })
-          });
-        } catch (err) {
-          console.log('Inquiry submit note:', err);
-        }
-
-        const stepsBar = document.querySelector('.booking-steps-bar');
-        if (stepsBar) stepsBar.style.display = 'none';
-
-        contactFormStep2.style.display = 'none';
-        if (contactStepSuccess) {
-          contactStepSuccess.style.display = 'block';
-          if (contactSuccessSummary) {
-            contactSuccessSummary.innerHTML = `
-              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vašeg upita:</div>
-              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${contactPageData.name || ''}</div>
-              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
-              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
-              ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
-              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
-                📦 <strong>Usluga:</strong> ${selectedPackageName}
               </div>
             `;
           }
