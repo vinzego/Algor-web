@@ -1,10 +1,31 @@
 RewriteEngine On
 
-# 1. Redirect external .html requests to clean URLs
+# 1. Enforce HTTPS if SSL is available
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. Redirect external .html requests to clean URLs
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NC,L,R=301]
 
-# 2. Rewrite clean URLs internally to .html files
+# 3. Rewrite clean URLs internally to .html files
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.*)$ $1.html [L]
+
+# 4. HTTP Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# 5. Block direct web access to sensitive environment, log, data and script files
+<FilesMatch "(^\.|\.env|\.csv|\.log|\.json|\.md|package\.json|server\.js)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>

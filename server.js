@@ -20,6 +20,8 @@ app.use((req, res, next) => {
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
   next();
 });
 
@@ -167,7 +169,14 @@ function saveInquiryToCSV(data) {
   const header = 'Datum i Vrijeme,Ime i Prezime,Tvrtka ili Web,E-mail,Mobitel,Odabrani Paket,Vrijednost (€),Izvor Stranica,Uređaj,Termin u Kalendaru\n';
   
   const timestamp = new Date().toLocaleString('hr-HR', { timeZone: 'Europe/Zagreb' });
-  const escapeCsv = (str) => `"${(str || '').toString().replace(/"/g, '""')}"`;
+  const escapeCsv = (val) => {
+    let str = (val || '').toString();
+    // Neutralize Formula Injection (CWE-1236) if value starts with =, +, -, @, tab, or CR
+    if (/^[=+\-@\t\r]/.test(str)) {
+      str = "'" + str;
+    }
+    return `"${str.replace(/"/g, '""')}"`;
+  };
   
   const row = [
     escapeCsv(timestamp),
@@ -533,6 +542,12 @@ app.post('/api/contact', async (req, res) => {
 
     if (!cleanName && !cleanEmail && !cleanPhone) {
       return res.status(400).json({ success: false, error: 'Molimo unesite kontakt podatke.' });
+    }
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (cleanEmail && !emailRegex.test(cleanEmail)) {
+      return res.status(400).json({ success: false, error: 'Molimo unesite ispravnu e-mail adresu.' });
     }
 
     const estimatedValue = getEstimatedDealValue(cleanPkg);

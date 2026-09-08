@@ -713,12 +713,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (meshContainer) {
     let tiles = [];
     let totalTiles = 0;
+    let resizeTimer = null;
 
     const buildPerfectSquareMesh = () => {
       meshContainer.innerHTML = '';
       const tileSize = 24; // 24px x 24px perfect square
-      const width = Math.max(meshContainer.clientWidth || 0, window.innerWidth || 0, 1200);
-      const height = Math.max(meshContainer.clientHeight || 0, window.innerHeight || 0, 800);
+      const width = meshContainer.clientWidth || window.innerWidth || 360;
+      const height = meshContainer.clientHeight || window.innerHeight || 600;
 
       const cols = Math.ceil(width / tileSize);
       const rows = Math.ceil(height / tileSize);
@@ -740,26 +741,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     buildPerfectSquareMesh();
     setTimeout(buildPerfectSquareMesh, 150);
-    window.addEventListener('resize', buildPerfectSquareMesh);
+    
+    // Debounced resize handler for orientation change / resize
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(buildPerfectSquareMesh, 120);
+    }, { passive: true });
 
-    // Function to trigger random glowing tiles in neon/cyan
+    // Function to trigger random glowing tiles in unified single light blue shade
     const pulseRandomTiles = () => {
       if (!tiles.length) return;
-      const count = Math.floor(Math.random() * 16) + 20;
+      const isMobile = window.innerWidth <= 768;
+      const count = isMobile
+        ? Math.floor(Math.random() * 15) + 20  // 20-35 tiles on mobile (battery-friendly)
+        : Math.floor(Math.random() * 35) + 55; // 55-90 tiles on desktop
+
       for (let i = 0; i < count; i++) {
         const randomIndex = Math.floor(Math.random() * totalTiles);
         const tile = tiles[randomIndex];
         if (tile) {
-          tile.classList.add('glowing-lime');
+          tile.classList.add('glowing-blue');
           setTimeout(() => {
-            tile.classList.remove('glowing-lime');
-          }, 1200 + Math.random() * 1000);
+            tile.classList.remove('glowing-blue', 'glowing-cyan', 'glowing-royal-blue', 'glowing-lime', 'glowing-indigo', 'glowing-light-blue');
+          }, 1400 + Math.random() * 1200);
         }
       }
     };
 
     pulseRandomTiles();
-    setInterval(pulseRandomTiles, 700);
+    setInterval(pulseRandomTiles, 400);
   }
 
   // Live Clock Ticker for Hero Section (Zagreb / GMT+1)
@@ -1018,7 +1028,7 @@ document.addEventListener('DOMContentLoaded', () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
-    }).catch(err => console.log('Inquiry sync error:', err));
+    }).catch(() => {});
   }
 
   // 11. Footer Inline Contact Form Submission
@@ -1037,6 +1047,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const pkg = pkgInput ? pkgInput.value : 'Upit s podnožja';
       const msgInput = document.getElementById('footerMessage');
       const msg = msgInput ? msgInput.value : '';
+      const hpInput = document.getElementById('footerHp');
+      const hp = hpInput ? hpInput.value : '';
       const submitBtn = footerContactForm.querySelector('.footer-form-submit-btn');
 
       sendInquiryToBackend({
@@ -1046,7 +1058,8 @@ document.addEventListener('DOMContentLoaded', () => {
         phone: phone,
         package: pkg,
         calendarSlot: msg || 'Upit s podnožja',
-        source: 'Podnožje (Footer Forma)'
+        source: 'Podnožje (Footer Forma)',
+        hp: hp
       });
 
       const bookingSummaryData = {

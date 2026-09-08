@@ -221,7 +221,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=132.0.0">
+  <link rel="stylesheet" href="style.css?v=150.0.0">
   <style>
     /* =============================================================
        OVERTAKE HIGH-END DESIGN SYSTEM (Direct Token Overrides)
@@ -239,25 +239,24 @@
       --border-dark-hover: rgba(255, 255, 255, 0.22);
       --border-light: #e2e8f0;
       --border-light-subtle: #eaeaea;
-      --accent-lime: #9efc65;
-      --accent-lime-hover: #8ee854;
-      --accent-lime-glow: rgba(158, 252, 101, 0.28);
-      --accent-blue: #29ADFF;
-      --accent-lavender: #ffbcfc;
-      --accent-yellow: #fde589;
-      --accent-orange: #ff742e;
-      --text-primary-dark: #ffffff;
-      --text-muted-dark: #b7bcbc;
-      --text-subtle-dark: #8b8b8b;
-      --text-primary-light: #0b0b0c;
-      --text-muted-light: #6a6e6e;
-      --text-subtle-light: #8b8b8b;
-      --font-base: 'Switzer', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-heading: 'Switzer', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, monospace;
-      --radius-card: 28px;
-      --radius-inner: 20px;
-      --radius-pill: 999px;
+      --accent-blue: #0066FF;
+      --accent-blue-hover: #0052CC;
+      --accent-blue-glow: rgba(0, 102, 255, 0.28);
+      --accent-blue-light: #38bdf8;
+      --accent-lime: #0066FF !important;
+      --accent-lime-hover: #0052CC !important;
+      --accent-lime-glow: rgba(0, 102, 255, 0.28) !important;
+      --canvas-light: #f5f5f5 !important;
+      --surface-light: #ffffff !important;
+      --text-primary-light: #0b0b0c !important;
+      --text-muted-light: #6a6e6e !important;
+      --border-light: #e2e8f0 !important;
+      --border-focus: #0066FF !important;
+      --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      --font-heading: 'Switzer', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      --font-mono: 'Geist Mono', monospace !important;
+      --radius-pill: 9999px !important;
+      --radius-card: 28px !important;
     }
 
     body {
@@ -267,6 +266,13 @@
       font-size: 15.5px !important;
       line-height: 1.6 !important;
       -webkit-font-smoothing: antialiased !important;
+    }
+
+    .hero-about-stack-wrapper {
+      position: relative !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     /* Standardized Section Headers (Overtake Spacing & Typography) */
@@ -479,18 +485,18 @@
       width: 12px !important;
       height: 12px !important;
       border-radius: 50% !important;
-      background: var(--accent-lime, #9efc65) !important;
-      box-shadow: 0 0 12px var(--accent-lime, #9efc65) !important;
+      background: var(--accent-blue, #0066FF) !important;
+      box-shadow: 0 0 12px var(--accent-blue, #0066FF) !important;
       animation: hubPulse 2s ease-in-out infinite !important;
     }
     @keyframes hubPulse {
       0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 8px rgba(158, 252, 101, 0.6);
+        box-shadow: 0 0 8px rgba(0, 102, 255, 0.6);
       }
       50% {
         transform: scale(1.3);
-        box-shadow: 0 0 16px rgba(158, 252, 101, 0.95);
+        box-shadow: 0 0 16px rgba(0, 102, 255, 0.95);
       }
     }
     @keyframes techOrbitRotate {
@@ -532,8 +538,8 @@
       cursor: pointer !important;
     }
     .tech-orbit-item:hover {
-      box-shadow: 0 6px 20px rgba(158, 252, 101, 0.35) !important;
-      border-color: var(--accent-lime, #9efc65) !important;
+      box-shadow: 0 6px 20px rgba(0, 102, 255, 0.35) !important;
+      border-color: var(--accent-blue, #0066FF) !important;
       transform: scale(1.1) !important;
     }
     .tech-orbit-item.orbit-node-google { top: 0% !important; bottom: auto !important; left: 50% !important; right: auto !important; }
@@ -615,12 +621,18 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
     }
     .stat-card-lime {
-      background-color: var(--accent-lime, #9efc65) !important;
-      border: 1px solid rgba(0, 0, 0, 0.08) !important;
-      box-shadow: 0 4px 20px rgba(158, 252, 101, 0.2) !important;
+      background-color: var(--accent-blue, #0066FF) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      box-shadow: 0 4px 20px rgba(0, 102, 255, 0.25) !important;
+      color: #ffffff !important;
     }
     .stat-card-lime:hover {
-      box-shadow: 0 8px 28px rgba(158, 252, 101, 0.35) !important;
+      box-shadow: 0 8px 28px rgba(0, 102, 255, 0.4) !important;
+    }
+    .stat-card-lime .bento-big-num,
+    .stat-card-lime .bento-card-title,
+    .stat-card-lime .bento-card-desc {
+      color: #ffffff !important;
     }
     .stat-card-dark {
       background-color: var(--surface-dark, #161616) !important;
@@ -628,7 +640,7 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
     }
     .stat-card-dark:hover {
-      border-color: rgba(158, 252, 101, 0.3) !important;
+      border-color: rgba(0, 102, 255, 0.35) !important;
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35) !important;
     }
     .bento-card-top {
@@ -654,9 +666,9 @@
       color: #0b0b0c !important;
     }
     .stat-pill-tag.stat-pill-lime {
-      background: rgba(158, 252, 101, 0.12) !important;
-      color: var(--accent-lime, #9efc65) !important;
-      border: 1px solid rgba(158, 252, 101, 0.25) !important;
+      background: rgba(0, 102, 255, 0.1) !important;
+      color: var(--accent-blue, #0066FF) !important;
+      border: 1px solid rgba(0, 102, 255, 0.25) !important;
     }
     .bento-card-middle {
       display: flex !important;
@@ -981,11 +993,11 @@
       color: #ffffff !important;
     }
     .ba-header-lime {
-      background-color: var(--accent-lime, #9efc65) !important;
-      border: 1px solid rgba(0, 0, 0, 0.08) !important;
-      color: #0b0b0c !important;
+      background-color: var(--accent-blue, #0066FF) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
       font-weight: 850 !important;
-      box-shadow: 0 4px 20px rgba(158, 252, 101, 0.25) !important;
+      box-shadow: 0 4px 20px rgba(0, 102, 255, 0.25) !important;
     }
     .ba-items-list {
       list-style: none !important;
@@ -1019,7 +1031,7 @@
       min-width: 16px !important;
     }
     .ba-icon-check {
-      color: var(--accent-lime, #9efc65) !important;
+      color: var(--accent-blue, #0066FF) !important;
       font-size: 16px !important;
       font-weight: 800 !important;
       margin-top: 1px !important;
@@ -1406,7 +1418,8 @@
       font-family: var(--font-mono) !important;
       font-size: 20px !important;
       font-weight: 800 !important;
-      color: var(--text-primary-light, #0b0b0c) !important;
+      color: #ffffff !important;
+      background-color: #0b0b0c !important;
     }
 
     /* Text Marquee */
@@ -1530,15 +1543,17 @@
       letter-spacing: -0.2px !important;
     }
     .why-card-lime {
-      background-color: var(--accent-lime, #9efc65) !important;
-      color: var(--canvas-dark, #0b0b0c) !important;
-      box-shadow: 0 12px 36px var(--accent-lime-glow, rgba(158, 252, 101, 0.25)) !important;
+      background-color: var(--accent-blue, #0066FF) !important;
+      color: #ffffff !important;
+      box-shadow: 0 12px 36px var(--accent-blue-glow, rgba(0, 102, 255, 0.28)) !important;
     }
     .why-card-lime .why-stat-val,
     .why-card-lime .why-stat-unit,
-    .why-card-lime .why-stat-desc,
     .why-card-lime .why-stat-desc strong {
-      color: var(--canvas-dark, #0b0b0c) !important;
+      color: #ffffff !important;
+    }
+    .why-card-lime .why-stat-desc {
+      color: rgba(255, 255, 255, 0.9) !important;
     }
     .why-card-white {
       background-color: var(--surface-light, #ffffff) !important;
@@ -1604,8 +1619,8 @@
       color: #ffffff !important;
     }
     .price-card.luxury-card.popular-card-lux {
-      border: 1.5px solid var(--accent-lime, #9efc65) !important;
-      box-shadow: 0 0 35px var(--accent-lime-glow, rgba(158, 252, 101, 0.18)), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+      border: 1.5px solid var(--accent-blue, #0066FF) !important;
+      box-shadow: 0 0 35px var(--accent-blue-glow, rgba(0, 102, 255, 0.25)), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
     }
     .ref-tag-mono {
       font-family: var(--font-mono) !important;
@@ -1614,8 +1629,8 @@
       letter-spacing: 0.06em !important;
     }
     .ref-tag-mono.tag-popular {
-      background: var(--accent-lime, #9efc65) !important;
-      color: var(--canvas-dark, #0b0b0c) !important;
+      background: var(--accent-blue, #0066FF) !important;
+      color: #ffffff !important;
       padding: 6px 14px !important;
       border-radius: var(--radius-pill, 999px) !important;
     }
@@ -1750,9 +1765,9 @@
       font-weight: 700 !important;
       letter-spacing: 0.08em !important;
       text-transform: uppercase !important;
-      color: var(--accent-lime, #9efc65) !important;
-      background: rgba(158, 252, 101, 0.1) !important;
-      border: 1px solid rgba(158, 252, 101, 0.25) !important;
+      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
       border-radius: var(--radius-pill, 999px) !important;
       padding: 6px 14px !important;
       margin-bottom: 20px !important;
@@ -1814,8 +1829,8 @@
     .footer-textarea-row textarea:focus {
       outline: none !important;
       background-color: #111114 !important;
-      border-color: var(--accent-lime, #9efc65) !important;
-      box-shadow: 0 0 0 3px rgba(158, 252, 101, 0.15) !important;
+      border-color: var(--accent-blue, #0066FF) !important;
+      box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2) !important;
     }
     .footer-submit-row {
       display: flex !important;
@@ -1826,35 +1841,57 @@
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 10px !important;
-      background: var(--accent-lime, #9efc65) !important;
-      color: var(--canvas-dark, #0b0b0c) !important;
+      gap: 12px !important;
+      background: var(--accent-blue, #0066FF) !important;
+      color: #ffffff !important;
       font-family: var(--font-base) !important;
-      font-size: 15.5px !important;
+      font-size: 15px !important;
       font-weight: 750 !important;
       padding: 14px 32px !important;
-      border-radius: var(--radius-pill, 999px) !important;
-      border: none !important;
+      border-radius: var(--radius-pill, 9999px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
       cursor: pointer !important;
-      box-shadow: 0 0 25px rgba(158, 252, 101, 0.25) !important;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+      box-shadow: 0 8px 24px var(--accent-blue-glow, rgba(0, 102, 255, 0.28)) !important;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background-color 0.2s ease !important;
     }
     .footer-form-submit-btn:hover {
-      background: #8ee854 !important;
+      background: var(--accent-blue-hover, #0052CC) !important;
       transform: translateY(-2px) !important;
-      box-shadow: 0 0 35px rgba(158, 252, 101, 0.4) !important;
+      box-shadow: 0 14px 32px rgba(0, 102, 255, 0.45) !important;
     }
     .footer-form-submit-btn .btn-arrow-circle {
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
-      width: 26px !important;
-      height: 26px !important;
+      width: 28px !important;
+      height: 28px !important;
+      min-width: 28px !important;
+      min-height: 28px !important;
       border-radius: 50% !important;
-      background: rgba(11, 11, 12, 0.15) !important;
-      color: #0b0b0c !important;
+      background: #ffffff !important;
+      color: var(--accent-blue, #0066FF) !important;
       font-size: 14px !important;
-      font-weight: 700 !important;
+      font-weight: 800 !important;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease !important;
+    }
+    .footer-form-submit-btn:hover .btn-arrow-circle {
+      transform: rotate(45deg) scale(1.08) !important;
+      background: #0b0b0c !important;
+      color: #ffffff !important;
+    }
+    .footer-form-msg {
+      margin-top: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      padding: 10px 20px;
+      background-color: rgba(0, 102, 255, 0.15);
+      border: 1px solid rgba(0, 102, 255, 0.35);
+      border-radius: 9999px;
+      display: none !important;
+    }
+    .footer-form-msg:not(:empty) {
+      display: inline-block !important;
     }
     .footer-gallery-stack {
       width: 100% !important;
@@ -2030,13 +2067,38 @@
       .footer-hero-and-card-section {
         padding: 50px 16px 20px 16px !important;
       }
+      .footer-conversion-area {
+        padding: 0 8px !important;
+      }
       .footer-form-grid-box {
-        padding: 22px 18px !important;
-        border-radius: 20px !important;
+        padding: 24px 18px !important;
+        border-radius: 24px !important;
+        gap: 14px !important;
       }
       .footer-inputs-top-row {
         grid-template-columns: 1fr !important;
-        gap: 12px !important;
+        gap: 14px !important;
+        margin-bottom: 0 !important;
+      }
+      .footer-form-field input,
+      .footer-textarea-row textarea {
+        font-size: 16px !important; /* Prevents auto-zoom on iOS */
+        padding: 15px 16px !important;
+        border-radius: 14px !important;
+      }
+      .footer-textarea-row textarea {
+        min-height: 110px !important;
+      }
+      .footer-submit-row {
+        width: 100% !important;
+        margin-top: 6px !important;
+      }
+      .footer-form-submit-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 16px 24px !important;
+        font-size: 15.5px !important;
+        border-radius: 9999px !important;
       }
       .about-galleries-stack {
         margin-left: -16px !important;
@@ -2049,6 +2111,529 @@
         border-radius: 20px !important;
       }
     }
+
+    /* =============================================================
+       ABOUT LUXURY BENTO GRID DESIGN & TRUST BAR
+       ============================================================= */
+    .hero-single-column-mesh {
+      position: sticky !important;
+      top: 16px !important;
+      z-index: 1 !important;
+    }
+
+    /* Blue Glowing Mesh Grid Tiles (Single Light Blue Shade) */
+    .mesh-tile.glowing-blue,
+    .mesh-tile.glowing-cyan,
+    .mesh-tile.glowing-royal-blue,
+    .mesh-tile.glowing-lime,
+    .mesh-tile.glowing-light-blue {
+      background-color: rgba(56, 189, 248, 0.38) !important;
+      border-color: rgba(56, 189, 248, 0.85) !important;
+      box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.55), 0 0 18px rgba(56, 189, 248, 0.48) !important;
+    }
+
+    .hero-radial-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 70%);
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Luxury Trust Marquee Bar (Above About Text) */
+    .about-trust-bar {
+      display: flex !important;
+      align-items: center !important;
+      gap: 28px !important;
+      width: 100% !important;
+      max-width: 1360px !important;
+      margin: 0 auto 50px auto !important;
+      padding-bottom: 32px !important;
+      border-bottom: 1px solid var(--border-light, #e2e8f0) !important;
+      box-sizing: border-box !important;
+    }
+
+    .about-trust-label {
+      flex-shrink: 0 !important;
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      line-height: 1.35 !important;
+      color: var(--text-muted-light, #475569) !important;
+      max-width: 220px !important;
+      letter-spacing: -0.01em !important;
+      text-align: left !important;
+    }
+
+    .about-trust-divider {
+      width: 1px !important;
+      height: 38px !important;
+      background: var(--border-light, #e2e8f0) !important;
+      flex-shrink: 0 !important;
+    }
+
+    .about-trust-marquee {
+      flex: 1 !important;
+      overflow: hidden !important;
+      display: flex !important;
+      position: relative !important;
+      mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%) !important;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%) !important;
+    }
+
+    .about-marquee-track {
+      display: flex !important;
+      align-items: center !important;
+      gap: 56px !important;
+      animation: aboutMarqueeScroll 25s linear infinite !important;
+      white-space: nowrap !important;
+      padding-right: 56px !important;
+      flex-shrink: 0 !important;
+    }
+
+    .about-trust-marquee:hover .about-marquee-track {
+      animation-play-state: paused !important;
+    }
+
+    @keyframes aboutMarqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .about-marquee-logo {
+      height: 34px !important;
+      width: auto !important;
+      max-width: 130px !important;
+      object-fit: contain !important;
+      mix-blend-mode: multiply !important;
+      filter: grayscale(100%) contrast(1.1) brightness(0.2) !important;
+      opacity: 0.72 !important;
+      transition: opacity 0.25s ease, filter 0.25s ease, transform 0.25s ease !important;
+      display: inline-block !important;
+      flex-shrink: 0 !important;
+      cursor: pointer !important;
+    }
+
+    .about-marquee-logo:hover {
+      opacity: 1 !important;
+      filter: grayscale(0%) contrast(1) brightness(1) !important;
+      transform: scale(1.06) !important;
+    }
+
+    .about-marquee-logo.logo-supernova {
+      height: 24px !important;
+    }
+
+    #about,
+    #about.plain-section,
+    #about.about-bento-section,
+    .about-bento-section {
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      padding: 36px 40px 70px 40px !important;
+      box-sizing: border-box !important;
+      position: relative !important;
+      z-index: 10 !important;
+      width: calc(100% - 32px) !important;
+      max-width: 1540px !important;
+      margin: 0 auto !important;
+      border-top-left-radius: 40px !important;
+      border-top-right-radius: 40px !important;
+      border-bottom-left-radius: 32px !important;
+      border-bottom-right-radius: 32px !important;
+      border: 1.5px solid #cbd5e1 !important;
+      box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.09), 0 4px 24px rgba(0, 0, 0, 0.03) !important;
+      overflow: hidden !important;
+      scroll-margin-top: 100px !important;
+    }
+
+    #about .info-header {
+      text-align: left !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      max-width: 1360px !important;
+      margin: 0 auto 40px auto !important;
+      padding: 0 !important;
+    }
+
+    #about .info-header > * {
+      text-align: left !important;
+    }
+
+    #about .section-badge {
+      text-align: left !important;
+      align-self: flex-start !important;
+      margin-bottom: 20px !important;
+      display: inline-block !important;
+    }
+
+    #about .about-lead-content {
+      text-align: left !important;
+      margin: 0 !important;
+      max-width: 1160px !important;
+      width: 100% !important;
+    }
+
+    #about-reveal-text.about-lead-p,
+    #about .about-lead-p {
+      text-align: left !important;
+      margin: 0 !important;
+      max-width: 1160px !important;
+      display: block !important;
+    }
+
+    .about-bento-grid {
+      display: grid !important;
+      grid-template-columns: 1.45fr 1fr !important;
+      gap: 16px !important;
+      max-width: 1360px !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      align-items: stretch !important;
+    }
+
+    .bento-box {
+      background: var(--surface-light, #ffffff) !important;
+      border: 1px solid var(--border-light, #e2e8f0) !important;
+      border-radius: var(--radius-card, 28px) !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
+      box-sizing: border-box !important;
+      position: relative !important;
+      overflow: hidden !important;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      padding: 28px !important;
+      min-height: 440px !important;
+    }
+
+    .bento-box:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.08) !important;
+      border-color: rgba(0, 102, 255, 0.4) !important;
+    }
+
+    .bento-card-header-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      margin-bottom: 12px !important;
+    }
+
+    .bento-mini-badge {
+      font-family: var(--font-mono, monospace) !important;
+      font-size: 11px !important;
+      font-weight: 750 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      color: var(--text-muted-light, #6a6e6e) !important;
+    }
+
+    .bento-live-indicator {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      font-family: var(--font-mono, monospace) !important;
+      font-size: 10.5px !important;
+      font-weight: 750 !important;
+      letter-spacing: 0.05em !important;
+      color: #0b0b0c !important;
+      background: rgba(11, 11, 12, 0.05) !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+    }
+
+    .live-pulse-dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: var(--accent-blue, #0066FF) !important;
+      box-shadow: 0 0 8px var(--accent-blue, #0066FF) !important;
+      display: inline-block !important;
+      animation: liveDotPulse 2s ease-in-out infinite !important;
+    }
+
+    .live-pulse-dot.dot-lime {
+      background: var(--accent-blue, #0066FF) !important;
+      box-shadow: 0 0 8px rgba(0, 102, 255, 0.7) !important;
+    }
+
+    @keyframes liveDotPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.7; }
+    }
+
+    /* Card 1: Combined 3-Stats Card */
+    .bento-card-stats-combined {
+      background: #ffffff !important;
+    }
+
+    .bento-triple-stats-row {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 14px !important;
+      margin: auto 0 !important;
+      width: 100% !important;
+      padding: 16px 0 !important;
+    }
+
+    .bento-triple-stat-cell {
+      background: #f8fafc !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 20px !important;
+      padding: 24px 18px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      text-align: left !important;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease !important;
+    }
+
+    .bento-triple-stat-cell:hover {
+      transform: translateY(-2px) !important;
+      border-color: rgba(0, 102, 255, 0.5) !important;
+      background: #ffffff !important;
+    }
+
+    .bento-triple-stat-cell .bento-metric-num {
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: 38px !important;
+      font-weight: 850 !important;
+      line-height: 1.05 !important;
+      letter-spacing: -0.04em !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      margin-bottom: 8px !important;
+    }
+
+    .bento-num-accent {
+      color: var(--accent-blue, #0066FF) !important;
+      font-weight: 700 !important;
+    }
+
+    .bento-triple-stat-cell .bento-metric-title {
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: 15px !important;
+      font-weight: 750 !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      line-height: 1.25 !important;
+      margin-bottom: 4px !important;
+    }
+
+    .bento-triple-stat-cell .bento-metric-sub {
+      font-family: var(--font-base, sans-serif) !important;
+      font-size: 12px !important;
+      line-height: 1.4 !important;
+      color: var(--text-muted-light, #6a6e6e) !important;
+    }
+
+    .bento-card-footer-caption {
+      margin-top: 8px !important;
+      padding-top: 14px !important;
+      border-top: 1px solid var(--border-light, #e2e8f0) !important;
+    }
+
+    .bento-card-footer-caption p {
+      font-family: var(--font-base, sans-serif) !important;
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+      color: var(--text-muted-light, #6a6e6e) !important;
+      margin: 0 !important;
+      text-align: left !important;
+    }
+
+    /* Card 2: Review Card */
+    .bento-card-review {
+      background: #ffffff !important;
+    }
+
+    .bento-proven-pill {
+      font-family: var(--font-mono, monospace) !important;
+      font-size: 10.5px !important;
+      font-weight: 750 !important;
+      letter-spacing: 0.05em !important;
+      color: #ffffff !important;
+      background: var(--accent-blue, #0066FF) !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+    }
+
+    .bento-proven-pill.bento-pill-gold {
+      background: rgba(245, 158, 11, 0.12) !important;
+      color: #d97706 !important;
+      border: 1px solid rgba(245, 158, 11, 0.25) !important;
+    }
+
+    .bento-review-content {
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      margin: 16px 0 !important;
+    }
+
+    .bento-stars-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      margin-bottom: 12px !important;
+    }
+
+    .bento-star {
+      color: #f59e0b !important;
+      font-size: 18px !important;
+      line-height: 1 !important;
+    }
+
+    .bento-review-quote {
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: 17px !important;
+      font-weight: 650 !important;
+      line-height: 1.45 !important;
+      letter-spacing: -0.015em !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      margin: 0 !important;
+    }
+
+    .bento-review-footer {
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+      padding-top: 16px !important;
+      border-top: 1px solid var(--border-light, #e2e8f0) !important;
+      margin-top: auto !important;
+    }
+
+    .bento-client-avatar {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 50% !important;
+      background: #0b0b0c !important;
+      color: var(--accent-blue, #0066FF) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-weight: 800 !important;
+      font-size: 14px !important;
+      letter-spacing: 0.05em !important;
+      flex-shrink: 0 !important;
+    }
+
+    .bento-client-details {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2px !important;
+    }
+
+    .bento-client-name {
+      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-size: 15px !important;
+      font-weight: 750 !important;
+      color: var(--text-primary-light, #0b0b0c) !important;
+      letter-spacing: -0.01em !important;
+    }
+
+    .bento-client-org {
+      font-family: var(--font-base, sans-serif) !important;
+      font-size: 13px !important;
+      color: var(--text-muted-light, #6a6e6e) !important;
+      font-weight: 600 !important;
+    }
+
+    .bento-verified-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      font-family: var(--font-mono, monospace) !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      color: #10b981 !important;
+      margin-top: 2px !important;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .about-bento-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .bento-box {
+        min-height: auto !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .about-trust-bar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+        margin-bottom: 36px !important;
+        padding-bottom: 24px !important;
+      }
+      .about-trust-divider {
+        display: none !important;
+      }
+      .about-trust-label {
+        max-width: 100% !important;
+        font-size: 13px !important;
+      }
+      .about-marquee-track {
+        gap: 36px !important;
+        padding-right: 36px !important;
+      }
+      .about-marquee-logo {
+        height: 28px !important;
+      }
+      .about-marquee-logo.logo-supernova {
+        height: 20px !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .bento-triple-stats-row {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-single-column-mesh {
+        width: calc(100% - 20px) !important;
+        margin: 10px auto !important;
+        border-radius: 24px !important;
+        top: 10px !important;
+      }
+      #about,
+      #about.plain-section,
+      #about.about-bento-section,
+      .about-bento-section {
+        width: calc(100% - 20px) !important;
+        margin: 0 auto !important;
+        border-top-left-radius: 28px !important;
+        border-top-right-radius: 28px !important;
+        border-bottom-left-radius: 20px !important;
+        border-bottom-right-radius: 20px !important;
+        border-radius: 28px 28px 20px 20px !important;
+        padding: 24px 16px 40px 16px !important;
+      }
+      .about-bento-grid {
+        gap: 14px !important;
+      }
+      .bento-box {
+        padding: 20px !important;
+      }
+    }
   </style>
   <link rel="prefetch" href="/kontakt">
   <link rel="prefetch" href="/kontakt?paket=pro">
@@ -2056,6 +2641,9 @@
   <link rel="prefetch" href="/kontakt?paket=ultra">
 </head>
 <body>
+
+  <!-- HERO + ABOUT STACKING WRAPPER (Hero stays sticky only while About slides over) -->
+  <div class="hero-about-stack-wrapper">
 
   <!-- 1. REDESIGNED SINGLE-COLUMN ANIMATED GLOWING MESH GRID HERO SECTION -->
   <main class="hero-card hero-single-column-mesh">
@@ -2102,7 +2690,7 @@
       <!-- Eyebrow Pill Badge -->
       <div class="mesh-eyebrow-pill">
         <span class="eyebrow-spark">⚡</span>
-        <span class="eyebrow-txt">Marketing Agencija Zagreb • Vođenje Društvenih Mreža &amp; AI Marketing</span>
+        <span class="eyebrow-txt">Marketing Agencija Zagreb</span>
       </div>
 
       <!-- Main Centered Headline -->
@@ -2144,36 +2732,41 @@
 
     </div>
 
-    <!-- Bottom Footer Trust Logo Bar -->
-    <div class="hero-trust-logo-bar">
-      <div class="hero-ticker-track">
-        <div class="ticker-logos-row">
-          <img src="supernova.png" alt="Supernova" class="ticker-logo-img logo-supernova">
-          <img src="admiral.png" alt="Admiral" class="ticker-logo-img">
-          <img src="admiral_hotel.png" alt="Admiral Hotel" class="ticker-logo-img">
-          <img src="family_park.png" alt="Family Park" class="ticker-logo-img">
-          <img src="taurus_transparent.png" alt="Taurus Restaurant" class="ticker-logo-img">
-          <img src="eschengarten.png" alt="Eschengarten" class="ticker-logo-img">
-        </div>
-        <div class="ticker-logos-row" aria-hidden="true">
-          <img src="supernova.png" alt="Supernova" class="ticker-logo-img logo-supernova">
-          <img src="admiral.png" alt="Admiral" class="ticker-logo-img">
-          <img src="admiral_hotel.png" alt="Admiral Hotel" class="ticker-logo-img">
-          <img src="family_park.png" alt="Family Park" class="ticker-logo-img">
-          <img src="taurus_transparent.png" alt="Taurus Restaurant" class="ticker-logo-img">
-          <img src="eschengarten.png" alt="Eschengarten" class="ticker-logo-img">
+  </main>
+
+  <!-- 2. ABOUT & STATS SECTION (Clean Blended Background - 3 Bento Cards) -->
+  <section id="about" class="plain-section about-bento-section">
+
+    <!-- Luxury Trust Marquee Bar (Placed Above Text) -->
+    <div class="about-trust-bar">
+      <div class="about-trust-label">
+        Povjerenje vodećih tvrtki i rastućih brendova
+      </div>
+      <div class="about-trust-divider"></div>
+      <div class="about-trust-marquee">
+        <div class="about-marquee-track">
+          <!-- Set 1 -->
+          <img src="supernova.png" alt="Supernova" class="about-marquee-logo logo-supernova" loading="lazy">
+          <img src="admiral.png" alt="Admiral" class="about-marquee-logo" loading="lazy">
+          <img src="admiral_hotel.png" alt="Admiral Hotel" class="about-marquee-logo" loading="lazy">
+          <img src="family_park.png" alt="Family Park" class="about-marquee-logo" loading="lazy">
+          <img src="taurus_transparent.png" alt="Taurus Restaurant" class="about-marquee-logo" loading="lazy">
+          <img src="eschengarten.png" alt="Eschengarten" class="about-marquee-logo" loading="lazy">
+          <!-- Set 2 (Duplicate for Seamless Infinite Loop) -->
+          <img src="supernova.png" alt="Supernova" class="about-marquee-logo logo-supernova" loading="lazy" aria-hidden="true">
+          <img src="admiral.png" alt="Admiral" class="about-marquee-logo" loading="lazy" aria-hidden="true">
+          <img src="admiral_hotel.png" alt="Admiral Hotel" class="about-marquee-logo" loading="lazy" aria-hidden="true">
+          <img src="family_park.png" alt="Family Park" class="about-marquee-logo" loading="lazy" aria-hidden="true">
+          <img src="taurus_transparent.png" alt="Taurus Restaurant" class="about-marquee-logo" loading="lazy" aria-hidden="true">
+          <img src="eschengarten.png" alt="Eschengarten" class="about-marquee-logo" loading="lazy" aria-hidden="true">
         </div>
       </div>
     </div>
 
-  </main>
-
-  <!-- 2. ABOUT & STATS SECTION (Clean Blended Background) -->
-  <section id="about" class="plain-section">
-    <div class="info-header align-center" style="max-width: 1040px !important; margin: 0 auto 48px auto !important;">
-      <span class="section-badge" style="margin-bottom: 24px !important;">// 01 O NAMA</span>
-      <div class="about-lead-content" style="max-width: 1040px !important;">
-        <p class="about-lead-p scroll-reveal-text" id="about-reveal-text">
+    <div class="info-header" style="max-width: 1360px !important; margin: 0 auto 40px auto !important; text-align: left !important; align-items: flex-start !important; padding: 0 !important;">
+      <span class="section-badge" style="margin-bottom: 20px !important; text-align: left !important; align-self: flex-start !important;">// 01 O NAMA</span>
+      <div class="about-lead-content" style="max-width: 1160px !important; text-align: left !important; margin: 0 !important;">
+        <p class="about-lead-p scroll-reveal-text" id="about-reveal-text" style="text-align: left !important; margin: 0 !important;">
           <span class="reveal-word">Umjesto</span>
           <span class="reveal-word">koordinacije</span>
           <span class="reveal-word">fotografa,</span>
@@ -2216,160 +2809,89 @@
       </div>
     </div>
 
-    <!-- Cards Grid (3 Balanced Compact Bento Cards) -->
-    <div class="stats-grid">
+    <!-- Luxury Bento Grid (3 Cards with Compact Gap) -->
+    <div class="about-bento-grid">
       
-      <!-- Card 1: Foto & Video Image Card -->
-      <div class="stat-card image-card-only">
-        <img src="about_person.jpg" alt="Algor Studio Tim" class="card-full-img" />
-      </div>
+      <!-- Card 1: Combined Tech, AI & Metrics (3 Stats Side-by-Side) -->
+      <div class="bento-box bento-card-stats-combined">
+        <div class="bento-card-header-row">
+          <span class="bento-mini-badge">// TECH, AI & REZULTATI</span>
+          <div class="bento-live-indicator">
+            <span class="live-pulse-dot dot-lime"></span>
+            <span>MJERLJIV RAST</span>
+          </div>
+        </div>
 
-      <!-- Card 2: Tech Ecosystem Orbit Card (Rotating 6 Logos in Circle, No Text, Equal Size) -->
-      <div class="stat-card tech-orbit-card">
-        <div class="tech-orbit-container">
-          
-          <!-- Static Inner Ring -->
-          <div class="tech-orbit-ring ring-inner"></div>
-          
-          <!-- Stationary Center Core -->
-          <div class="tech-orbit-hub">
-            <div class="hub-pulse-dot"></div>
+        <div class="bento-triple-stats-row">
+          <div class="bento-triple-stat-cell">
+            <div class="bento-metric-num">30<span class="bento-num-accent">+</span></div>
+            <div class="bento-metric-title">Projekata</div>
+            <div class="bento-metric-sub">Uspješno realiziranih kampanja i sustava</div>
           </div>
 
-          <!-- Rotating Track with 6 Equal-Sized Logo Badges (No Text) -->
-          <div class="tech-orbit-track">
-            
-            <!-- 1. Google (Top / 0°) -->
-            <div class="tech-orbit-item orbit-node-google" title="Google">
-              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.3 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.17 0 9.97 0 12s.46 3.83 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.7 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
-            </div>
-
-            <!-- 2. ChatGPT (60°) -->
-            <div class="tech-orbit-item orbit-node-chatgpt" title="ChatGPT">
-              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg" fill="#10A37F"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829l2.02-1.1638a.0804.0804 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.402-.686zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L8.909 9.2297V6.8974a.0662.0662 0 0 1 .0331-.0615L13.843 3.99a4.5045 4.5045 0 0 1 6.6078 4.7383zm-7.974 4.1539l-2.6592-1.536 2.6592-1.536 2.6592 1.536-2.6592 1.536z"/></svg>
-            </div>
-
-            <!-- 3. Python (120°) -->
-            <div class="tech-orbit-item orbit-node-python" title="Python">
-              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#3776AB" d="M11.91 0c-1.8 0-3.41.16-4.66.44-3.69.83-3.89 2.56-3.89 5.72v4.21h7.79v1.08H3.36c-3.16 0-4.9 1.83-5.36 5.51-.54 4.22.42 7.04 4.02 7.04h2.58v-3.66c0-2.69 2.31-5.02 5.09-5.02h7.74v-4.6c0-3.4-2.82-5.72-5.52-5.72zm-2.22 1.76a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36z"/><path fill="#FFD438" d="M12.09 24c1.8 0 3.41-.16 4.66-.44 3.69-.83 3.89-2.56 3.89-5.72v-4.21h-7.79v-1.08h7.79c3.16 0 4.9-1.83 5.36-5.51.54-4.22-.42-7.04-4.02-7.04h-2.58v3.66c0 2.69-2.31 5.02-5.09 5.02H6.57v4.6c0 3.4 2.82 5.72 5.52 5.72zm2.22-1.76a1.18 1.18 0 1 1 0-2.36 1.18 1.18 0 0 1 0 2.36z"/></svg>
-            </div>
-
-            <!-- 4. Meta (180°) -->
-            <div class="tech-orbit-item orbit-node-meta" title="Meta">
-              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><linearGradient id="metaGradOrbitCard" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0064e0"/><stop offset="100%" stop-color="#007dfc"/></linearGradient><path fill="url(#metaGradOrbitCard)" d="M16.48 4.04c-1.84 0-3.32.96-4.48 2.65-1.16-1.69-2.64-2.65-4.48-2.65C4.24 4.04 2 6.43 2 9.87c0 4.19 3.63 7.82 8.65 11.75l1.35 1.05 1.35-1.05C18.37 17.69 22 14.06 22 9.87c0-3.44-2.24-5.83-5.52-5.83zm-4.48 15.2c-4.14-3.35-7-6.32-7-9.37 0-2.21 1.34-3.83 3.48-3.83 0 3.05-2.86 6.02-7 9.37z"/></svg>
-            </div>
-
-            <!-- 5. Instagram (240°) -->
-            <div class="tech-orbit-item orbit-node-instagram" title="Instagram">
-              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><radialGradient id="igGradOrbitCard" cx="0.2" cy="1" r="1.2"><stop offset="0%" stop-color="#ffd521"/><stop offset="25%" stop-color="#f50000"/><stop offset="50%" stop-color="#b900b4"/><stop offset="100%" stop-color="#4c64d8"/></radialGradient><rect width="24" height="24" rx="6" fill="url(#igGradOrbitCard)"/><path fill="#ffffff" fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
-            </div>
-
-            <!-- 6. GA4 (300°) -->
-            <div class="tech-orbit-item orbit-node-ga4" title="Google Analytics 4">
-              <svg width="25" height="25" viewBox="0 0 24 24" class="orbit-logo-svg"><path fill="#F9AB00" d="M12.87 21.67a3.4 3.4 0 0 0 3.4-3.4V5.73a3.4 3.4 0 1 0-6.8 0v12.54a3.4 3.4 0 0 0 3.4 3.4z"/><path fill="#E37400" d="M19.67 21.67a3.4 3.4 0 0 0 3.4-3.4v-6.2a3.4 3.4 0 1 0-6.8 0v6.2a3.4 3.4 0 0 0 3.4 3.4z"/><circle fill="#E37400" cx="4.33" cy="18.27" r="3.4"/></svg>
-            </div>
-
+          <div class="bento-triple-stat-cell">
+            <div class="bento-metric-num">2024.</div>
+            <div class="bento-metric-title">Započeli s radom</div>
+            <div class="bento-metric-sub">Moderna tehnologija, AI i mjerljiv rast</div>
           </div>
+
+          <div class="bento-triple-stat-cell">
+            <div class="bento-metric-num">10<span class="bento-num-accent">+</span></div>
+            <div class="bento-metric-title">Alata</div>
+            <div class="bento-metric-sub">Meta, Google, AI & napredna analitika</div>
+          </div>
+        </div>
+
+        <div class="bento-card-footer-caption">
+          <p>Povezujemo najnaprednije tehnologije i AI alate u cjelovit sustav akvizicije klijenata.</p>
         </div>
       </div>
 
-      <!-- Card 3: Testimonial Card (Enlarged) -->
-      <div class="stat-card testimonial-card">
-        <div class="testimonial-header" style="display: flex !important; justify-content: space-between !important; align-items: center !important;">
-          <div class="quote-mark-icon" style="color: #94a3b8 !important; display: flex !important; align-items: center !important;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="width: 28px !important; height: 28px !important; display: block !important;">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-            </svg>
-          </div>
-          <div class="testimonial-logo">
-            <span style="font-weight: 850 !important; font-size: 15px !important; color: var(--text-primary-light, #0b0b0c) !important; letter-spacing: 0.8px !important;">ADMIRAL</span>
-          </div>
+      <!-- Card 2: Verified Client Endorsement / Admiral -->
+      <div class="bento-box bento-card-review">
+        <div class="bento-card-header-row">
+          <span class="bento-mini-badge">// RECENZIJA KLIJENTA</span>
+          <span class="bento-proven-pill bento-pill-gold">5.0 IZVRSNOST</span>
         </div>
-        
-        <p class="testimonial-text" style="font-size: 16.5px !important; line-height: 1.5 !important; font-weight: 600 !important; color: var(--text-primary-light, #0b0b0c) !important; letter-spacing: -0.2px !important; margin: 12px 0 auto 0 !important;">
-          "Algor nije samo napravio projekt, već postao dugotrajni partner za naše poslovanje."
-        </p>
-        
-        <div class="testimonial-citation" style="font-size: 13.5px !important; color: var(--text-muted-light, #6a6e6e) !important; font-weight: 700 !important; display: flex !important; align-items: center !important; gap: 6px !important; margin-top: auto !important; padding-top: 12px !important; border-top: 1px solid var(--border-light, #e2e8f0) !important;">
-          <span class="cit-bullet" style="color: var(--accent-lime, #9efc65) !important; font-size: 15px !important;">•</span> Martina P., Admiral
-        </div>
-      </div>
 
-      <!-- Card 4: 30+ Završenih projekata -->
-      <div class="stat-card bento-metric-card stat-card-white">
-        <div class="bento-card-top">
-          <span class="stat-pill-tag">// 30+ PROJEKATA</span>
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary-light, #0b0b0c)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
+        <div class="bento-review-content">
+          <div class="bento-stars-row">
+            <span class="bento-star">★</span>
+            <span class="bento-star">★</span>
+            <span class="bento-star">★</span>
+            <span class="bento-star">★</span>
+            <span class="bento-star">★</span>
           </div>
+          <blockquote class="bento-review-quote">
+            "Algor nije samo napravio projekt, već postao dugotrajni strateški partner za cjelokupni rast našeg poslovanja."
+          </blockquote>
         </div>
-        
-        <div class="bento-card-middle">
-          <div class="bento-big-num">30+</div>
-          <h3 class="bento-card-title">Završenih projekata</h3>
-          <p class="bento-card-desc">Uspješno realizirani projekti i marketinške kampanje s mjerljivim povratom ulaganja.</p>
-        </div>
-        
-        <div class="bento-sub-tags">
-          <span class="bento-sub-pill">Restorani</span>
-          <span class="bento-sub-pill">Hoteli</span>
-          <span class="bento-sub-pill">Poliklinike</span>
-          <span class="bento-sub-pill">Lokalne usluge</span>
-        </div>
-      </div>
 
-      <!-- Card 5: 2024 godine započet sa radom (Overtake Signature Lime) -->
-      <div class="stat-card bento-metric-card stat-card-lime">
-        <div class="bento-card-top">
-          <span class="stat-pill-tag stat-pill-dark">// OD 2024. GODINE</span>
-          <div style="font-family: var(--font-mono, monospace); font-size: 11px; font-weight: 700; color: rgba(11, 11, 12, 0.7); letter-spacing: 0.05em;">
-            ZAGREB, HR
+        <div class="bento-review-footer">
+          <div class="bento-client-avatar">
+            <span class="bento-client-initials">MP</span>
           </div>
-        </div>
-        
-        <div class="bento-card-middle">
-          <div class="bento-big-num bento-num-dark">2024.</div>
-          <h3 class="bento-card-title" style="color: #0b0b0c !important;">Započet rad s fokusom na rast</h3>
-          <p class="bento-card-desc" style="color: rgba(11, 11, 12, 0.75) !important;">Od prvog dana posvećeni spajanju 4K video produkcije na terenu, preciznih oglasa i AI automatizacije.</p>
-        </div>
-        
-        <div class="bento-sub-tags">
-          <span class="bento-sub-pill bento-sub-pill-dark">⚡ Nova generacija marketinga</span>
-        </div>
-      </div>
-
-      <!-- Card 6: All-in-one cjelovit sustav (Obsidian Dark) -->
-      <div class="stat-card bento-metric-card stat-card-dark">
-        <div class="bento-card-top">
-          <span class="stat-pill-tag stat-pill-lime">// ALL-IN-ONE</span>
-          <div class="card-status-dot green" style="background-color: var(--accent-lime, #9efc65) !important; box-shadow: 0 0 10px var(--accent-lime, #9efc65) !important;"></div>
-        </div>
-        
-        <div class="bento-card-middle">
-          <div class="bento-big-num" style="color: #ffffff !important; font-size: 42px !important; letter-spacing: -0.03em !important;">All-in-one</div>
-          <h3 class="bento-card-title" style="color: #ffffff !important;">Cjeloviti sustav akvizicije</h3>
-          <p class="bento-card-desc" style="color: var(--text-muted-dark, #b7bcbc) !important;">Objedinjen cijeli proces: produkcija sadržaja, Meta i Google oglasi, landing stranice i 24/7 AI lead asistenti.</p>
-        </div>
-        
-        <div class="bento-sub-tags">
-          <span class="bento-sub-pill bento-sub-pill-glass">4K Sadržaj</span>
-          <span class="bento-sub-pill bento-sub-pill-glass">Meta/Google</span>
-          <span class="bento-sub-pill bento-sub-pill-glass">AI Asistenti</span>
+          <div class="bento-client-details">
+            <div class="bento-client-name">Martina P.</div>
+            <div class="bento-client-org">Admiral Hotel & Casino</div>
+            <div class="bento-verified-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span>Verificirani klijent</span>
+            </div>
+          </div>
         </div>
       </div>
 
     </div>
   </section>
+  </div><!-- /.hero-about-stack-wrapper -->
 
   <!-- 3. STACKING PROCESS CARDS SECTION (Proces u 4 koraka) -->
   <section id="marketing" class="plain-section process-stack-section">
     <div class="info-header align-center">
       <span class="section-badge">// 02 SUSTAV AKVIZICIJE & USLUGE</span>
       <h2 class="info-title">
-        Kako pretvaramo publiku s društvenih mreža u stalne klijente
+        Kako pretvaramo publiku u stalne klijente
       </h2>
       <p class="info-subtitle">
         Spajamo produkciju sadržaja, profitabilne oglase, brze landing stranice i AI automatizaciju u jedinstven sustav koji donosi mjerljive rezultate.
@@ -2396,28 +2918,30 @@
             </div>
           </div>
           <div class="stack-card-right">
-            <div class="stack-orbit-visual">
-              <div class="stack-orbit-ring"></div>
-              <div class="stack-orbit-center">
-                <span class="center-cam-icon">🎬</span>
-                <span class="center-cam-label">PRODUKCIJA</span>
-              </div>
-              <div class="stack-orbit-spinner">
-                <div class="orbit-badge badge-google">
-                  <svg viewBox="0 0 24 24" class="orbit-svg"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.3 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.17 0 9.97 0 12s.46 3.83 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.7 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
-                  <span>Google</span>
+            <div class="stack-visual-card">
+              <div class="stack-orbit-visual">
+                <div class="stack-orbit-ring"></div>
+                <div class="stack-orbit-center">
+                  <span class="center-cam-icon">🎬</span>
+                  <span class="center-cam-label">PRODUKCIJA</span>
                 </div>
-                <div class="orbit-badge badge-meta">
-                  <svg viewBox="0 0 24 24" class="orbit-svg"><linearGradient id="metaGradStack" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0064e0"/><stop offset="100%" stop-color="#007dfc"/></linearGradient><path fill="url(#metaGradStack)" d="M16.48 4.04c-1.84 0-3.32.96-4.48 2.65-1.16-1.69-2.64-2.65-4.48-2.65C4.24 4.04 2 6.43 2 9.87c0 4.19 3.63 7.82 8.65 11.75l1.35 1.05 1.35-1.05C18.37 17.69 22 14.06 22 9.87c0-3.44-2.24-5.83-5.52-5.83zm-4.48 15.2c-4.14-3.35-7-6.32-7-9.37 0-2.21 1.34-3.83 3.48-3.83 0 3.05-2.86 6.02-7 9.37z"/></svg>
-                  <span>Meta</span>
-                </div>
-                <div class="orbit-badge badge-fb">
-                  <svg viewBox="0 0 24 24" class="orbit-svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                  <span>Facebook</span>
-                </div>
-                <div class="orbit-badge badge-ig">
-                  <svg viewBox="0 0 24 24" class="orbit-svg"><radialGradient id="igGradStack" cx="0.2" cy="1" r="1.2"><stop offset="0%" stop-color="#ffd521"/><stop offset="25%" stop-color="#f50000"/><stop offset="50%" stop-color="#b900b4"/><stop offset="100%" stop-color="#4c64d8"/></radialGradient><rect width="24" height="24" rx="6" fill="url(#igGradStack)"/><path fill="#ffffff" fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
-                  <span>Instagram</span>
+                <div class="stack-orbit-spinner">
+                  <div class="orbit-badge badge-google">
+                    <svg viewBox="0 0 24 24" class="orbit-svg"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.3 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.17 0 9.97 0 12s.46 3.83 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.7 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+                    <span>Google</span>
+                  </div>
+                  <div class="orbit-badge badge-meta">
+                    <svg viewBox="0 0 24 24" class="orbit-svg"><linearGradient id="metaGradStack" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0064e0"/><stop offset="100%" stop-color="#007dfc"/></linearGradient><path fill="url(#metaGradStack)" d="M16.48 4.04c-1.84 0-3.32.96-4.48 2.65-1.16-1.69-2.64-2.65-4.48-2.65C4.24 4.04 2 6.43 2 9.87c0 4.19 3.63 7.82 8.65 11.75l1.35 1.05 1.35-1.05C18.37 17.69 22 14.06 22 9.87c0-3.44-2.24-5.83-5.52-5.83zm-4.48 15.2c-4.14-3.35-7-6.32-7-9.37 0-2.21 1.34-3.83 3.48-3.83 0 3.05-2.86 6.02-7 9.37z"/></svg>
+                    <span>Meta</span>
+                  </div>
+                  <div class="orbit-badge badge-fb">
+                    <svg viewBox="0 0 24 24" class="orbit-svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    <span>Facebook</span>
+                  </div>
+                  <div class="orbit-badge badge-ig">
+                    <svg viewBox="0 0 24 24" class="orbit-svg"><radialGradient id="igGradStack" cx="0.2" cy="1" r="1.2"><stop offset="0%" stop-color="#ffd521"/><stop offset="25%" stop-color="#f50000"/><stop offset="50%" stop-color="#b900b4"/><stop offset="100%" stop-color="#4c64d8"/></radialGradient><rect width="24" height="24" rx="6" fill="url(#igGradStack)"/><path fill="#ffffff" fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+                    <span>Instagram</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2443,27 +2967,29 @@
             </div>
           </div>
           <div class="stack-card-right">
-            <div class="stack-mobile-preview-box">
-              <div class="stack-phone-shell">
-                <div class="stack-phone-notch"></div>
-                <div class="stack-phone-screen">
-                  <div class="phone-screen-header">
-                    <span class="ps-badge">⚡ 0.7s brzina</span>
-                    <span class="ps-url">algor.studio/ponuda</span>
-                  </div>
-                  <div class="phone-screen-hero">
-                    <div class="ps-title-line"></div>
-                    <div class="ps-desc-line"></div>
-                    <div class="ps-img-placeholder">
-                      <span class="ps-play-dot">▶</span>
+            <div class="stack-visual-card">
+              <div class="stack-mobile-preview-box">
+                <div class="stack-phone-shell">
+                  <div class="stack-phone-notch"></div>
+                  <div class="stack-phone-screen">
+                    <div class="phone-screen-header">
+                      <span class="ps-badge">⚡ 0.7s brzina</span>
+                      <span class="ps-url">algor.studio/ponuda</span>
                     </div>
-                    <div class="ps-cta-btn">ZATRAŽI PONUDU ↗</div>
+                    <div class="phone-screen-hero">
+                      <div class="ps-title-line"></div>
+                      <div class="ps-desc-line"></div>
+                      <div class="ps-img-placeholder">
+                        <span class="ps-play-dot">▶</span>
+                      </div>
+                      <div class="ps-cta-btn">ZATRAŽI PONUDU ↗</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="stack-float-stat">
-                <span class="stat-dot-green">●</span>
-                <span>Konverzija: <strong>8.6%</strong></span>
+                <div class="stack-float-stat">
+                  <span class="stat-dot-green">●</span>
+                  <span>Konverzija: <strong>8.6%</strong></span>
+                </div>
               </div>
             </div>
           </div>
@@ -2488,32 +3014,34 @@
             </div>
           </div>
           <div class="stack-card-right">
-            <div class="stack-flow-diagram">
-              <div class="flow-step-node node-inquiry">
-                <div class="node-icon-box">💬</div>
-                <div class="node-info">
-                  <strong>Novi Upit</strong>
-                  <span>WhatsApp / Web</span>
+            <div class="stack-visual-card">
+              <div class="stack-flow-diagram">
+                <div class="flow-step-node node-inquiry">
+                  <div class="node-icon-box">💬</div>
+                  <div class="node-info">
+                    <strong>Novi Upit</strong>
+                    <span>WhatsApp / Web</span>
+                  </div>
                 </div>
-              </div>
-              <div class="flow-arrow-line">
-                <span class="flow-pulse-particle"></span>
-              </div>
-              <div class="flow-step-node node-ai">
-                <div class="node-icon-box">🤖</div>
-                <div class="node-info">
-                  <strong>AI Obrada</strong>
-                  <span>Provjera termina</span>
+                <div class="flow-arrow-line">
+                  <span class="flow-pulse-particle"></span>
                 </div>
-              </div>
-              <div class="flow-arrow-line">
-                <span class="flow-pulse-particle"></span>
-              </div>
-              <div class="flow-step-node node-confirmed">
-                <div class="node-icon-box">📅</div>
-                <div class="node-info">
-                  <strong>Potvrđen Termin</strong>
-                  <span>Upisano u kalendar</span>
+                <div class="flow-step-node node-ai">
+                  <div class="node-icon-box">🤖</div>
+                  <div class="node-info">
+                    <strong>AI Obrada</strong>
+                    <span>Provjera termina</span>
+                  </div>
+                </div>
+                <div class="flow-arrow-line">
+                  <span class="flow-pulse-particle"></span>
+                </div>
+                <div class="flow-step-node node-confirmed">
+                  <div class="node-icon-box">📅</div>
+                  <div class="node-info">
+                    <strong>Potvrđen Termin</strong>
+                    <span>Upisano u kalendar</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2539,28 +3067,30 @@
             </div>
           </div>
           <div class="stack-card-right">
-            <div class="stack-crm-dashboard">
-              <div class="stack-dashboard-top">
-                <div class="stack-dash-metric">
-                  <span class="dash-lbl">UKUPAN ROAS</span>
-                  <span class="dash-val">+340%</span>
+            <div class="stack-visual-card">
+              <div class="stack-crm-dashboard">
+                <div class="stack-dashboard-top">
+                  <div class="stack-dash-metric">
+                    <span class="dash-lbl">UKUPAN ROAS</span>
+                    <span class="dash-val">+340%</span>
+                  </div>
+                  <div class="stack-dash-metric">
+                    <span class="dash-lbl">NOVI KUPCI</span>
+                    <span class="dash-val">128</span>
+                  </div>
                 </div>
-                <div class="stack-dash-metric">
-                  <span class="dash-lbl">NOVI KUPCI</span>
-                  <span class="dash-val">128</span>
+                <div class="stack-dash-notification">
+                  <span class="dash-notif-icon">🔔</span>
+                  <div class="dash-notif-text">
+                    <strong>Novi klijent ugovorio termin</strong>
+                    <span>Marko P. • Potvrđeno 20:00h</span>
+                  </div>
+                  <span class="dash-notif-time">prije 1m</span>
                 </div>
-              </div>
-              <div class="stack-dash-notification">
-                <span class="dash-notif-icon">🔔</span>
-                <div class="dash-notif-text">
-                  <strong>Novi klijent ugovorio termin</strong>
-                  <span>Marko P. • Potvrđeno 20:00h</span>
+                <div class="stack-dash-live-pill">
+                  <span class="dash-live-dot">●</span>
+                  <span>CRM Baza: 1.482 sinkronizirana kontakta</span>
                 </div>
-                <span class="dash-notif-time">prije 1m</span>
-              </div>
-              <div class="stack-dash-live-pill">
-                <span class="dash-live-dot">●</span>
-                <span>CRM Baza: 1.482 sinkronizirana kontakta</span>
               </div>
             </div>
           </div>
@@ -2571,20 +3101,25 @@
       <div class="stack-card-item stack-card-5" style="--stack-index: 5;">
         <div class="stack-card-inner">
           <div class="stack-card-left">
-            <div class="stack-num-pill" style="background: rgba(158, 252, 101, 0.2); color: #0b0b0c; border: 1px solid rgba(158, 252, 101, 0.4);">BESPLATNO</div>
+            <div class="stack-num-pill" style="background: rgba(0, 102, 255, 0.12); color: var(--accent-blue, #0066FF); border: 1px solid rgba(0, 102, 255, 0.3);">BESPLATNO</div>
             <h3 class="stack-card-title" style="color: var(--text-primary-light, #0b0b0c);">Zatražite besplatne 15-minutne konzultacije</h3>
             <p class="stack-card-desc">Dogovorite kratki strateški razgovor bez ikakvih obveza. Analiziramo vaša trenutna uska grla i predlažemo točan plan akvizicije za vaše poslovanje.</p>
             <ul class="stack-feature-list">
-              <li><span class="feat-check" style="color: var(--accent-lime, #9efc65);">✓</span> 15 minuta trajanje poziva</li>
-              <li><span class="feat-check" style="color: var(--accent-lime, #9efc65);">✓</span> 100% besplatno i bez ikakvih obveza</li>
-              <li><span class="feat-check" style="color: var(--accent-lime, #9efc65);">✓</span> Konkretne marketing preporuke</li>
+              <li><span class="feat-check" style="color: var(--accent-blue, #0066FF);">✓</span> 15 minuta trajanje poziva</li>
+              <li><span class="feat-check" style="color: var(--accent-blue, #0066FF);">✓</span> 100% besplatno i bez ikakvih obveza</li>
+              <li><span class="feat-check" style="color: var(--accent-blue, #0066FF);">✓</span> Konkretne marketing preporuke</li>
             </ul>
           </div>
           <div class="stack-card-right" style="display: flex; align-items: center; justify-content: center;">
-            <a href="/kontakt" class="mesh-primary-btn btn-pill-dark package-cta-btn" style="padding: 16px 36px; font-size: 15px; width: auto; justify-content: center; text-decoration: none;">
-              <span>Dogovori sastanak</span>
-              <span class="btn-arrow-circle">↗</span>
-            </a>
+            <div class="stack-visual-card stack-cta-visual-card">
+              <div class="stack-cta-inner-box">
+                <a href="/kontakt" class="mesh-primary-btn btn-pill-dark package-cta-btn" style="padding: 16px 36px; font-size: 15px; width: auto; justify-content: center; text-decoration: none;">
+                  <span>Dogovori sastanak</span>
+                  <span class="btn-arrow-circle">↗</span>
+                </a>
+                <span class="stack-cta-caption">🔒 100% besplatno • 15 minuta</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2595,7 +3130,7 @@
   <!-- 4. BEFORE vs AFTER COMPARISON SECTION (Overtake Model Comparison & Founder Quote) -->
   <section id="before-after" class="plain-section ba-dark-section">
     <div class="info-header align-center">
-      <span class="section-badge" style="color: var(--accent-lime, #9efc65) !important; background: rgba(158, 252, 101, 0.1) !important; border-color: rgba(158, 252, 101, 0.25) !important;">// 03 USPOREDBA MODELA</span>
+      <span class="section-badge" style="color: #ffffff !important; background: rgba(255, 255, 255, 0.08) !important; border-color: rgba(255, 255, 255, 0.2) !important;">// 03 USPOREDBA MODELA</span>
       <h2 class="info-title" style="color: #ffffff !important;">
         Razlika koju osjetite od prvog tjedna suradnje
       </h2>
@@ -2630,7 +3165,7 @@
           </li>
           <li class="ba-item">
             <span class="ba-icon-cross">✕</span>
-            <span class="ba-item-text">Dugi ugovorni retainer vezovi, spora provjera stvarne isplativosti</span>
+            <span class="ba-item-text">Zastarjele metode i spori manualni procesi bez primjene modernih AI alata</span>
           </li>
         </ul>
       </div>
@@ -2646,19 +3181,19 @@
         <ul class="ba-items-list">
           <li class="ba-item">
             <span class="ba-icon-check">✓</span>
-            <span class="ba-item-text">Iskusni stručnjaci vode vaš sustav akvizicije od prvog dana</span>
+            <span class="ba-item-text">Izravno strateško vođenje bez posrednika, account managera i juniora</span>
           </li>
           <li class="ba-item">
             <span class="ba-icon-check">✓</span>
-            <span class="ba-item-text">Izvještavanje izravno vezano za profit, stvarne upite i ROAS</span>
+            <span class="ba-item-text">Izvještavanje usmjereno na profit, stvarne upite i mjerljiv povrat (ROAS)</span>
           </li>
           <li class="ba-item">
             <span class="ba-icon-check">✓</span>
-            <span class="ba-item-text">Produkcija sadržaja i oglašavanje funkcioniraju kao jedan ciklus</span>
+            <span class="ba-item-text">Cjelovit sustav — foto/video produkcija, oglašavanje i web u jednom toku</span>
           </li>
           <li class="ba-item">
             <span class="ba-icon-check">✓</span>
-            <span class="ba-item-text">Jasni 90-dnevni sprintovi — brza provjera rezultata ili prekidamo</span>
+            <span class="ba-item-text">Najnovije tehnologije i alati za bolje kampanje, precizno ciljanje i povećanje dosega</span>
           </li>
         </ul>
       </div>
@@ -2824,7 +3359,7 @@
       </div>
 
       <!-- Project 4: CTA Card -->
-      <div class="portfolio-item-card port-cta-card" style="border: 1.5px solid var(--accent-lime, #9efc65); background-color: var(--surface-light, #ffffff); box-shadow: 0 10px 30px var(--accent-lime-glow, rgba(158, 252, 101, 0.15));">
+      <div class="portfolio-item-card port-cta-card" style="border: 1.5px solid var(--accent-blue, #0066FF); background-color: var(--surface-light, #ffffff); box-shadow: 0 10px 30px var(--accent-blue-glow, rgba(0, 102, 255, 0.15));">
         <div class="port-client-logo-row">
           <div class="client-brand-logo">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon-svg" style="color: var(--text-primary-light, #0b0b0c);">
@@ -2836,7 +3371,7 @@
         </div>
 
         <div class="port-card-header">
-          <span class="port-tag" style="background: rgba(158, 252, 101, 0.2); color: #0b0b0c; border: 1px solid rgba(158, 252, 101, 0.4);">15-min Konzultacije</span>
+          <span class="port-tag" style="background: rgba(0, 102, 255, 0.1); color: var(--accent-blue, #0066FF); border: 1px solid rgba(0, 102, 255, 0.25);">15-min Konzultacije</span>
         </div>
 
         <div class="port-body">
@@ -3195,7 +3730,7 @@
               <div class="sprint-time-divider">
                 <span>Mjesečna suradnja</span>
               </div>
-              <a href="/kontakt?paket=pro" class="luxury-btn-glow btn-pill-lime" style="text-decoration: none; width: 100%; justify-content: center; box-sizing: border-box;">
+              <a href="/kontakt?paket=pro" class="luxury-btn-glow btn-pill-blue" style="text-decoration: none; width: 100%; justify-content: center; box-sizing: border-box;">
                 <span>Započni suradnju</span>
                 <span class="btn-arrow-circle">↗</span>
               </a>
@@ -3380,6 +3915,8 @@
       
       <!-- Modern Footer Contact Form with Message Window -->
       <form id="footerContactForm" class="footer-contact-form">
+        <!-- Anti-spam honeypot -->
+        <input type="text" name="hp" id="footerHp" class="sr-only-hp" tabindex="-1" autocomplete="off" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;" />
         <div class="footer-form-grid-box">
           <div class="footer-inputs-top-row">
             <div class="footer-form-field">
@@ -3398,7 +3935,7 @@
           </div>
 
           <div class="footer-submit-row">
-            <button type="submit" class="footer-form-submit-btn btn-pill-dark">
+            <button type="submit" class="footer-form-submit-btn btn-pill-blue">
               <span>Pošalji upit</span>
               <span class="btn-arrow-circle">↗</span>
             </button>
@@ -3503,6 +4040,6 @@
     </div>
   </section>
 
-  <script defer src="script.js?v=125.0.0"></script>
+  <script defer src="script.js?v=130.0.0"></script>
 </body>
 </html>
