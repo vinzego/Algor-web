@@ -221,7 +221,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800,900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=150.0.0">
+  <link rel="stylesheet" href="style.css?v=162.0.0">
   <style>
     /* =============================================================
        OVERTAKE HIGH-END DESIGN SYSTEM (Direct Token Overrides)
@@ -253,10 +253,22 @@
       --border-light: #e2e8f0 !important;
       --border-focus: #0066FF !important;
       --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-      --font-heading: 'Switzer', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+      --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
       --font-mono: 'Geist Mono', monospace !important;
       --radius-pill: 9999px !important;
       --radius-card: 28px !important;
+    }
+
+    .title-muted {
+      color: #71717a !important;
+      font-weight: inherit !important;
+    }
+
+    .dark-combined-container .title-muted,
+    .ba-dark-section .title-muted,
+    .footer-hero-and-card-section .title-muted,
+    .dark-theme .title-muted {
+      color: #71717a !important;
     }
 
     body {
@@ -929,18 +941,64 @@
       color: #0b0b0c !important;
     }
 
-    /* Section 03: Before vs After Overtake Comparison */
+    /* Section 02: Before vs After Overtake Comparison (Contained Large Luxury Black Card) */
+    .ba-section-wrapper,
+    #before-after.ba-section-wrapper,
     #before-after.ba-dark-section,
-    .ba-dark-section {
-      background-color: var(--canvas-dark, #0b0b0c) !important;
-      color: #ffffff !important;
-      padding: 95px 24px 85px 24px !important;
+    #before-after {
+      background-color: var(--canvas-light, #f5f5f5) !important;
+      background: var(--canvas-light, #f5f5f5) !important;
+      padding: 50px 24px 70px 24px !important;
       position: relative !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .ba-big-black-card,
+    .ba-dark-card {
+      width: 100% !important;
+      max-width: 1360px !important;
+      margin: 0 auto !important;
+      background-color: #0b0b0c !important;
+      background: #0b0b0c !important;
+      color: #ffffff !important;
+      border-radius: 36px !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.35) !important;
+      padding: 72px 40px 60px 40px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+    .ba-big-black-card .info-header {
+      margin-bottom: 48px !important;
+    }
+    .ba-big-black-card .info-title,
+    #before-after .info-title,
+    .ba-dark-section .info-title {
+      color: #ffffff !important;
+    }
+    .ba-big-black-card .title-muted {
+      color: #71717a !important;
+    }
+    .ba-big-black-card .info-subtitle,
+    #before-after .info-subtitle,
+    .ba-dark-section .info-subtitle {
+      color: var(--text-muted-dark, #b7bcbc) !important;
+    }
+    .ba-big-black-card .section-badge,
+    #before-after .section-badge,
+    .ba-dark-section .section-badge {
+      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(255, 255, 255, 0.2) !important;
     }
     .ba-overtake-wrapper {
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
-      gap: 36px !important;
+      gap: 32px !important;
       max-width: 1040px !important;
       margin: 0 auto !important;
       position: relative !important;
@@ -972,19 +1030,31 @@
       display: flex !important;
       flex-direction: column !important;
       width: 100% !important;
+      border-radius: 24px !important;
+      padding: 24px !important;
+      box-sizing: border-box !important;
+    }
+    .ba-col-left {
+      background: rgba(255, 255, 255, 0.02) !important;
+      border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    }
+    .ba-col-right {
+      background: rgba(0, 102, 255, 0.03) !important;
+      border: 1px solid rgba(0, 102, 255, 0.22) !important;
+      box-shadow: 0 0 30px rgba(0, 102, 255, 0.06) !important;
     }
     .ba-col-header {
       border-radius: 16px !important;
-      padding: 18px 24px !important;
-      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
-      font-size: 18px !important;
+      padding: 16px 20px !important;
+      font-family: var(--font-heading, 'Inter', sans-serif) !important;
+      font-size: 17px !important;
       font-weight: 700 !important;
       text-align: center !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 8px !important;
-      margin-bottom: 28px !important;
+      margin-bottom: 24px !important;
       box-sizing: border-box !important;
     }
     .ba-header-dark {
@@ -1041,7 +1111,7 @@
     /* Founder Quote Card */
     .ba-founder-card {
       max-width: 820px !important;
-      margin: 54px auto 0 auto !important;
+      margin: 48px auto 0 auto !important;
       background: var(--surface-dark, #161616) !important;
       border: 1px solid rgba(255, 255, 255, 0.1) !important;
       border-radius: var(--radius-card, 28px) !important;
@@ -1068,7 +1138,7 @@
       gap: 12px !important;
     }
     .ba-founder-quote {
-      font-family: var(--font-heading, 'Switzer', sans-serif) !important;
+      font-family: var(--font-heading, 'Inter', sans-serif) !important;
       font-size: 16.5px !important;
       line-height: 1.5 !important;
       color: #ffffff !important;
@@ -1095,9 +1165,19 @@
     }
 
     @media (max-width: 768px) {
+      .ba-section-wrapper,
+      #before-after.ba-section-wrapper,
+      #before-after {
+        padding: 30px 12px 40px 12px !important;
+      }
+      .ba-big-black-card,
+      .ba-dark-card {
+        padding: 36px 16px 28px 16px !important;
+        border-radius: 24px !important;
+      }
       .ba-overtake-wrapper {
         grid-template-columns: 1fr !important;
-        gap: 32px !important;
+        gap: 20px !important;
       }
       .ba-vs-circle {
         display: none !important;
@@ -1116,6 +1196,11 @@
       }
       .ba-founder-meta {
         justify-content: center !important;
+      }
+      .ba-big-black-card .footer-galleries-stack {
+        margin-left: -16px !important;
+        margin-right: -16px !important;
+        width: calc(100% + 32px) !important;
       }
     }
 
@@ -1401,7 +1486,7 @@
       width: 100% !important;
       max-width: 1540px !important;
       margin: 0 auto !important;
-      padding: 80px 24px !important;
+      padding: 80px 28px !important;
       border: none !important;
       border-radius: 0 !important;
       box-shadow: none !important;
@@ -2154,7 +2239,8 @@
       max-width: 1360px !important;
       margin: 0 auto 50px auto !important;
       padding-bottom: 32px !important;
-      border-bottom: 1px solid var(--border-light, #e2e8f0) !important;
+      border: none !important;
+      border-bottom: none !important;
       box-sizing: border-box !important;
     }
 
@@ -2171,9 +2257,10 @@
     }
 
     .about-trust-divider {
-      width: 1px !important;
-      height: 38px !important;
-      background: var(--border-light, #e2e8f0) !important;
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      background: transparent !important;
       flex-shrink: 0 !important;
     }
 
@@ -2249,10 +2336,17 @@
       border-top-right-radius: 40px !important;
       border-bottom-left-radius: 32px !important;
       border-bottom-right-radius: 32px !important;
-      border: 1.5px solid #cbd5e1 !important;
+      border: none !important;
       box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.09), 0 4px 24px rgba(0, 0, 0, 0.03) !important;
       overflow: hidden !important;
       scroll-margin-top: 100px !important;
+    }
+
+    #about,
+    #about *,
+    #about::before,
+    #about::after {
+      border-color: transparent !important;
     }
 
     #about .info-header {
@@ -2273,6 +2367,7 @@
       align-self: flex-start !important;
       margin-bottom: 20px !important;
       display: inline-block !important;
+      border: none !important;
     }
 
     #about .about-lead-content {
@@ -2303,13 +2398,13 @@
 
     .bento-box {
       background: var(--surface-light, #ffffff) !important;
-      border: 1px solid var(--border-light, #e2e8f0) !important;
+      border: none !important;
       border-radius: var(--radius-card, 28px) !important;
       box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
       box-sizing: border-box !important;
       position: relative !important;
       overflow: hidden !important;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+      transition: transform 0.25s ease, box-shadow 0.25s ease !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: space-between !important;
@@ -2320,7 +2415,8 @@
     .bento-box:hover {
       transform: translateY(-3px) !important;
       box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.08) !important;
-      border-color: rgba(0, 102, 255, 0.4) !important;
+      border: none !important;
+      border-color: transparent !important;
     }
 
     .bento-card-header-row {
@@ -2352,6 +2448,7 @@
       background: rgba(11, 11, 12, 0.05) !important;
       padding: 4px 10px !important;
       border-radius: 999px !important;
+      border: none !important;
     }
 
     .live-pulse-dot {
@@ -2390,19 +2487,20 @@
 
     .bento-triple-stat-cell {
       background: #f8fafc !important;
-      border: 1px solid #e2e8f0 !important;
+      border: none !important;
       border-radius: 20px !important;
       padding: 24px 18px !important;
       display: flex !important;
       flex-direction: column !important;
       justify-content: center !important;
       text-align: left !important;
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease !important;
+      transition: transform 0.2s ease, background 0.2s ease !important;
     }
 
     .bento-triple-stat-cell:hover {
       transform: translateY(-2px) !important;
-      border-color: rgba(0, 102, 255, 0.5) !important;
+      border: none !important;
+      border-color: transparent !important;
       background: #ffffff !important;
     }
 
@@ -2440,7 +2538,8 @@
     .bento-card-footer-caption {
       margin-top: 8px !important;
       padding-top: 14px !important;
-      border-top: 1px solid var(--border-light, #e2e8f0) !important;
+      border: none !important;
+      border-top: none !important;
     }
 
     .bento-card-footer-caption p {
@@ -2466,12 +2565,13 @@
       background: var(--accent-blue, #0066FF) !important;
       padding: 4px 10px !important;
       border-radius: 999px !important;
+      border: none !important;
     }
 
     .bento-proven-pill.bento-pill-gold {
       background: rgba(245, 158, 11, 0.12) !important;
       color: #d97706 !important;
-      border: 1px solid rgba(245, 158, 11, 0.25) !important;
+      border: none !important;
     }
 
     .bento-review-content {
@@ -2510,7 +2610,8 @@
       align-items: center !important;
       gap: 14px !important;
       padding-top: 16px !important;
-      border-top: 1px solid var(--border-light, #e2e8f0) !important;
+      border: none !important;
+      border-top: none !important;
       margin-top: auto !important;
     }
 
@@ -2669,7 +2770,7 @@
       <nav class="ultra-nav-menu" id="ultra-nav-menu">
         <div class="mobile-nav-links-grid">
           <a href="#about" class="ultra-nav-link">O nama</a>
-          <a href="#marketing" class="ultra-nav-link">Usluge</a>
+          <a href="#before-after" class="ultra-nav-link">Usporedba</a>
           <a href="#portfolio" class="ultra-nav-link">Projekti</a>
           <a href="#process" class="ultra-nav-link">Proces</a>
           <a href="#pricing" class="ultra-nav-link">Cijene</a>
@@ -2747,14 +2848,12 @@
         <div class="about-marquee-track">
           <!-- Set 1 -->
           <img src="supernova.png" alt="Supernova" class="about-marquee-logo logo-supernova" loading="lazy">
-          <img src="admiral.png" alt="Admiral" class="about-marquee-logo" loading="lazy">
           <img src="admiral_hotel.png" alt="Admiral Hotel" class="about-marquee-logo" loading="lazy">
           <img src="family_park.png" alt="Family Park" class="about-marquee-logo" loading="lazy">
           <img src="taurus_transparent.png" alt="Taurus Restaurant" class="about-marquee-logo" loading="lazy">
           <img src="eschengarten.png" alt="Eschengarten" class="about-marquee-logo" loading="lazy">
           <!-- Set 2 (Duplicate for Seamless Infinite Loop) -->
           <img src="supernova.png" alt="Supernova" class="about-marquee-logo logo-supernova" loading="lazy" aria-hidden="true">
-          <img src="admiral.png" alt="Admiral" class="about-marquee-logo" loading="lazy" aria-hidden="true">
           <img src="admiral_hotel.png" alt="Admiral Hotel" class="about-marquee-logo" loading="lazy" aria-hidden="true">
           <img src="family_park.png" alt="Family Park" class="about-marquee-logo" loading="lazy" aria-hidden="true">
           <img src="taurus_transparent.png" alt="Taurus Restaurant" class="about-marquee-logo" loading="lazy" aria-hidden="true">
@@ -2881,244 +2980,115 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
   </div><!-- /.hero-about-stack-wrapper -->
 
-  <!-- 3. STACKING PROCESS CARDS SECTION (Proces u 4 koraka) -->
-  <section id="marketing" class="plain-section process-stack-section">
-    <div class="info-header align-center">
-      <span class="section-badge">// 02 SUSTAV AKVIZICIJE & USLUGE</span>
-      <h2 class="info-title">
-        Kako pretvaramo publiku u stalne klijente
-      </h2>
-      <p class="info-subtitle">
-        Spajamo produkciju sadržaja, profitabilne oglase, brze landing stranice i AI automatizaciju u jedinstven sustav koji donosi mjerljive rezultate.
-      </p>
-    </div>
+  <!-- 2. SECTION 02: USPOREDBA MODELA (Dark Comparison Section in One Big Black Card) -->
+  <section id="before-after" class="ba-section-wrapper">
+    <div class="ba-big-black-card">
+      <div class="info-header align-center">
+        <span class="section-badge">// 02 USPOREDBA MODELA</span>
+        <h2 class="info-title">
+          Razlika koju osjetite <span class="title-muted">od prvog tjedna</span>
+        </h2>
+      </div>
 
-    <div class="stacking-cards-container">
-      
-      <!-- KARTICA 01: ATTRACT -->
-      <div class="stack-card-item stack-card-1" style="--stack-index: 1;">
-        <div class="stack-card-inner">
-          <div class="stack-card-left">
-            <div class="stack-num-pill">01 — ATTRACT</div>
-            <h3 class="stack-card-title">Privucite pažnju relevantnih kupaca</h3>
-            <p class="stack-card-desc">1x mjesečno snimanje profesionalnog foto i video sadržaja na vašoj lokaciji + ciljani Meta i Google oglasi koji dovode stvarne kupce.</p>
-            <div class="stack-card-tags">
-              <span>Foto &amp; Video Produkcija</span>
-              <span class="tag-sep">·</span>
-              <span>Meta Ads</span>
-              <span class="tag-sep">·</span>
-              <span>Google Ads</span>
-              <span class="tag-sep">·</span>
-              <span>ChatGPT Ads</span>
-            </div>
+      <!-- Comparison Grid with VS Badge -->
+      <div class="ba-overtake-wrapper">
+        
+        <!-- Central VS Circle Badge -->
+        <div class="ba-vs-circle">VS</div>
+
+        <!-- Left: Tipična marketing agencija -->
+        <div class="ba-overtake-col ba-col-left">
+          <div class="ba-col-header ba-header-dark">
+            <span>Tipična marketing agencija</span>
           </div>
-          <div class="stack-card-right">
-            <div class="stack-visual-card">
-              <div class="stack-orbit-visual">
-                <div class="stack-orbit-ring"></div>
-                <div class="stack-orbit-center">
-                  <span class="center-cam-icon">🎬</span>
-                  <span class="center-cam-label">PRODUKCIJA</span>
-                </div>
-                <div class="stack-orbit-spinner">
-                  <div class="orbit-badge badge-google">
-                    <svg viewBox="0 0 24 24" class="orbit-svg"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.26 21.3 7.36 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.17 0 9.97 0 12s.46 3.83 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.36 0 3.26 2.7 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
-                    <span>Google</span>
-                  </div>
-                  <div class="orbit-badge badge-meta">
-                    <svg viewBox="0 0 24 24" class="orbit-svg"><linearGradient id="metaGradStack" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0064e0"/><stop offset="100%" stop-color="#007dfc"/></linearGradient><path fill="url(#metaGradStack)" d="M16.48 4.04c-1.84 0-3.32.96-4.48 2.65-1.16-1.69-2.64-2.65-4.48-2.65C4.24 4.04 2 6.43 2 9.87c0 4.19 3.63 7.82 8.65 11.75l1.35 1.05 1.35-1.05C18.37 17.69 22 14.06 22 9.87c0-3.44-2.24-5.83-5.52-5.83zm-4.48 15.2c-4.14-3.35-7-6.32-7-9.37 0-2.21 1.34-3.83 3.48-3.83 0 3.05-2.86 6.02-7 9.37z"/></svg>
-                    <span>Meta</span>
-                  </div>
-                  <div class="orbit-badge badge-fb">
-                    <svg viewBox="0 0 24 24" class="orbit-svg"><path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    <span>Facebook</span>
-                  </div>
-                  <div class="orbit-badge badge-ig">
-                    <svg viewBox="0 0 24 24" class="orbit-svg"><radialGradient id="igGradStack" cx="0.2" cy="1" r="1.2"><stop offset="0%" stop-color="#ffd521"/><stop offset="25%" stop-color="#f50000"/><stop offset="50%" stop-color="#b900b4"/><stop offset="100%" stop-color="#4c64d8"/></radialGradient><rect width="24" height="24" rx="6" fill="url(#igGradStack)"/><path fill="#ffffff" fill-rule="evenodd" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.25-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
-                    <span>Instagram</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <ul class="ba-items-list">
+            <li class="ba-item">
+              <span class="ba-icon-cross">✕</span>
+              <span class="ba-item-text">Delegiranje posla neiskusnim juniorima</span>
+            </li>
+            <li class="ba-item">
+              <span class="ba-icon-cross">✕</span>
+              <span class="ba-item-text">Metrike lajkova</span>
+            </li>
+            <li class="ba-item">
+              <span class="ba-icon-cross">✕</span>
+              <span class="ba-item-text">Odvojena foto/video produkcija i oglasi</span>
+            </li>
+            <li class="ba-item">
+              <span class="ba-icon-cross">✕</span>
+              <span class="ba-item-text">Spori manualni procesi bez automatizacije</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Algor Studio® -->
+        <div class="ba-overtake-col ba-col-right">
+          <div class="ba-col-header ba-header-lime">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: block;">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            <span>Algor Studio®</span>
+          </div>
+          <ul class="ba-items-list">
+            <li class="ba-item">
+              <span class="ba-icon-check">✓</span>
+              <span class="ba-item-text">Izravno strateško vođenje bez posrednika</span>
+            </li>
+            <li class="ba-item">
+              <span class="ba-icon-check">✓</span>
+              <span class="ba-item-text">Fokus na mjerljiv profit, upite i ROAS</span>
+            </li>
+            <li class="ba-item">
+              <span class="ba-icon-check">✓</span>
+              <span class="ba-item-text">Cjelovit sustav: produkcija, oglasi i web</span>
+            </li>
+            <li class="ba-item">
+              <span class="ba-icon-check">✓</span>
+              <span class="ba-item-text">AI automatizacija i precizno ciljanje</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Founder Quote Card -->
+      <div class="ba-founder-card">
+        <img src="about_person.jpg" alt="Vinko Grgić" class="ba-founder-avatar" />
+        <div class="ba-founder-content">
+          <p class="ba-founder-quote">
+            “Najbolji marketing nije onaj koji najglasnije obećava. To je onaj marketing koji dokazuje svoju stvarnu vrijednost svakim mjerljivim rezultatom.”
+          </p>
+          <div class="ba-founder-meta">
+            <strong class="ba-founder-name">Vinko Grgić</strong>
+            <span class="ba-founder-sep">•</span>
+            <span class="ba-founder-title">Osnivač &amp; Voditelj</span>
           </div>
         </div>
       </div>
 
-      <!-- KARTICA 02: CONVERT -->
-      <div class="stack-card-item stack-card-2" style="--stack-index: 2;">
-        <div class="stack-card-inner">
-          <div class="stack-card-left">
-            <div class="stack-num-pill">02 — CONVERT</div>
-            <h3 class="stack-card-title">Pretvorite posjetitelje u konkretne upite</h3>
-            <p class="stack-card-desc">Brze prodajne landing stranice s učitavanjem ispod 1 sekunde, optimizirane isključivo za konverziju (poziv, poruka, upit ili booking).</p>
-            <div class="stack-card-tags">
-              <span>0.7s Brzina</span>
-              <span class="tag-sep">·</span>
-              <span>Mobile-First</span>
-              <span class="tag-sep">·</span>
-              <span>CRO Optimizacija</span>
-              <span class="tag-sep">·</span>
-              <span>Analitika</span>
+      <!-- Image Gallery Marquee (Photos from field production) -->
+      <div class="about-galleries-stack footer-galleries-stack" style="margin-top: 56px !important; width: 100% !important;">
+        <div class="gallery-marquee-container footer-gallery-marquee">
+          <div class="gallery-marquee-track">
+            <!-- First Set of Images -->
+            <div class="gallery-marquee-row">
+              <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
+              <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
+              <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
+              <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
+              <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
             </div>
-          </div>
-          <div class="stack-card-right">
-            <div class="stack-visual-card">
-              <div class="stack-mobile-preview-box">
-                <div class="stack-phone-shell">
-                  <div class="stack-phone-notch"></div>
-                  <div class="stack-phone-screen">
-                    <div class="phone-screen-header">
-                      <span class="ps-badge">⚡ 0.7s brzina</span>
-                      <span class="ps-url">algor.studio/ponuda</span>
-                    </div>
-                    <div class="phone-screen-hero">
-                      <div class="ps-title-line"></div>
-                      <div class="ps-desc-line"></div>
-                      <div class="ps-img-placeholder">
-                        <span class="ps-play-dot">▶</span>
-                      </div>
-                      <div class="ps-cta-btn">ZATRAŽI PONUDU ↗</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="stack-float-stat">
-                  <span class="stat-dot-green">●</span>
-                  <span>Konverzija: <strong>8.6%</strong></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- KARTICA 03: AUTOMATE -->
-      <div class="stack-card-item stack-card-3" style="--stack-index: 3;">
-        <div class="stack-card-inner">
-          <div class="stack-card-left">
-            <div class="stack-num-pill">03 — AUTOMATE</div>
-            <h3 class="stack-card-title">Odgovorite u sekundi i zakažite termin</h3>
-            <p class="stack-card-desc">AI asistent 24/7 automatski kvalificira leadove, odgovara na upite na WhatsAppu i webu te usklađuje slobodne termine u vaš Google kalendar.</p>
-            <div class="stack-card-tags">
-              <span>24/7 AI Asistent</span>
-              <span class="tag-sep">·</span>
-              <span>WhatsApp</span>
-              <span class="tag-sep">·</span>
-              <span>Google Kalendar</span>
-              <span class="tag-sep">·</span>
-              <span>Follow-up</span>
-            </div>
-          </div>
-          <div class="stack-card-right">
-            <div class="stack-visual-card">
-              <div class="stack-flow-diagram">
-                <div class="flow-step-node node-inquiry">
-                  <div class="node-icon-box">💬</div>
-                  <div class="node-info">
-                    <strong>Novi Upit</strong>
-                    <span>WhatsApp / Web</span>
-                  </div>
-                </div>
-                <div class="flow-arrow-line">
-                  <span class="flow-pulse-particle"></span>
-                </div>
-                <div class="flow-step-node node-ai">
-                  <div class="node-icon-box">🤖</div>
-                  <div class="node-info">
-                    <strong>AI Obrada</strong>
-                    <span>Provjera termina</span>
-                  </div>
-                </div>
-                <div class="flow-arrow-line">
-                  <span class="flow-pulse-particle"></span>
-                </div>
-                <div class="flow-step-node node-confirmed">
-                  <div class="node-icon-box">📅</div>
-                  <div class="node-info">
-                    <strong>Potvrđen Termin</strong>
-                    <span>Upisano u kalendar</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- KARTICA 04: SCALE -->
-      <div class="stack-card-item stack-card-4" style="--stack-index: 4;">
-        <div class="stack-card-inner">
-          <div class="stack-card-left">
-            <div class="stack-num-pill">04 — SCALE</div>
-            <h3 class="stack-card-title">Pratite točan povrat svakog uloženog eura</h3>
-            <p class="stack-card-desc">Centralizirana CRM baza povezuje svaki oglas s ostvarenim upitima i prodajom, uz transparentne mjesečne izvještaje bez kompliciranog žargona.</p>
-            <div class="stack-card-tags">
-              <span>CRM Baza</span>
-              <span class="tag-sep">·</span>
-              <span>Praćenje CAC &amp; ROAS</span>
-              <span class="tag-sep">·</span>
-              <span>Mjesečni Izvještaj</span>
-              <span class="tag-sep">·</span>
-              <span>Optimizacija</span>
-            </div>
-          </div>
-          <div class="stack-card-right">
-            <div class="stack-visual-card">
-              <div class="stack-crm-dashboard">
-                <div class="stack-dashboard-top">
-                  <div class="stack-dash-metric">
-                    <span class="dash-lbl">UKUPAN ROAS</span>
-                    <span class="dash-val">+340%</span>
-                  </div>
-                  <div class="stack-dash-metric">
-                    <span class="dash-lbl">NOVI KUPCI</span>
-                    <span class="dash-val">128</span>
-                  </div>
-                </div>
-                <div class="stack-dash-notification">
-                  <span class="dash-notif-icon">🔔</span>
-                  <div class="dash-notif-text">
-                    <strong>Novi klijent ugovorio termin</strong>
-                    <span>Marko P. • Potvrđeno 20:00h</span>
-                  </div>
-                  <span class="dash-notif-time">prije 1m</span>
-                </div>
-                <div class="stack-dash-live-pill">
-                  <span class="dash-live-dot">●</span>
-                  <span>CRM Baza: 1.482 sinkronizirana kontakta</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- KARTICA 05: CTA Kartica (15-min besplatne konzultacije) -->
-      <div class="stack-card-item stack-card-5" style="--stack-index: 5;">
-        <div class="stack-card-inner">
-          <div class="stack-card-left">
-            <div class="stack-num-pill" style="background: rgba(0, 102, 255, 0.12); color: var(--accent-blue, #0066FF); border: 1px solid rgba(0, 102, 255, 0.3);">BESPLATNO</div>
-            <h3 class="stack-card-title" style="color: var(--text-primary-light, #0b0b0c);">Zatražite besplatne 15-minutne konzultacije</h3>
-            <p class="stack-card-desc">Dogovorite kratki strateški razgovor bez ikakvih obveza. Analiziramo vaša trenutna uska grla i predlažemo točan plan akvizicije za vaše poslovanje.</p>
-            <ul class="stack-feature-list">
-              <li><span class="feat-check" style="color: var(--accent-blue, #0066FF);">✓</span> 15 minuta trajanje poziva</li>
-              <li><span class="feat-check" style="color: var(--accent-blue, #0066FF);">✓</span> 100% besplatno i bez ikakvih obveza</li>
-              <li><span class="feat-check" style="color: var(--accent-blue, #0066FF);">✓</span> Konkretne marketing preporuke</li>
-            </ul>
-          </div>
-          <div class="stack-card-right" style="display: flex; align-items: center; justify-content: center;">
-            <div class="stack-visual-card stack-cta-visual-card">
-              <div class="stack-cta-inner-box">
-                <a href="/kontakt" class="mesh-primary-btn btn-pill-dark package-cta-btn" style="padding: 16px 36px; font-size: 15px; width: auto; justify-content: center; text-decoration: none;">
-                  <span>Dogovori sastanak</span>
-                  <span class="btn-arrow-circle">↗</span>
-                </a>
-                <span class="stack-cta-caption">🔒 100% besplatno • 15 minuta</span>
-              </div>
+            <!-- Second Set of Images (Duplicate for seamless loop) -->
+            <div class="gallery-marquee-row" aria-hidden="true">
+              <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
+              <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
+              <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
+              <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
+              <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
             </div>
           </div>
         </div>
@@ -3127,126 +3097,12 @@
     </div>
   </section>
 
-  <!-- 4. BEFORE vs AFTER COMPARISON SECTION (Overtake Model Comparison & Founder Quote) -->
-  <section id="before-after" class="plain-section ba-dark-section">
-    <div class="info-header align-center">
-      <span class="section-badge" style="color: #ffffff !important; background: rgba(255, 255, 255, 0.08) !important; border-color: rgba(255, 255, 255, 0.2) !important;">// 03 USPOREDBA MODELA</span>
-      <h2 class="info-title" style="color: #ffffff !important;">
-        Razlika koju osjetite od prvog tjedna suradnje
-      </h2>
-      <p class="info-subtitle" style="color: var(--text-muted-dark, #b7bcbc) !important;">
-        Pogledajte kako izgleda poslovanje s tipičnom agencijom u odnosu na cjelovit sustav Algor Studija.
-      </p>
-    </div>
-
-    <!-- Comparison Grid with VS Badge -->
-    <div class="ba-overtake-wrapper">
-      
-      <!-- Central VS Circle Badge -->
-      <div class="ba-vs-circle">VS</div>
-
-      <!-- Left: Tipična marketing agencija -->
-      <div class="ba-overtake-col ba-col-left">
-        <div class="ba-col-header ba-header-dark">
-          <span>Tipična marketing agencija</span>
-        </div>
-        <ul class="ba-items-list">
-          <li class="ba-item">
-            <span class="ba-icon-cross">✕</span>
-            <span class="ba-item-text">Juniori vode račun nakon što prodajni tim završi ugovaranje</span>
-          </li>
-          <li class="ba-item">
-            <span class="ba-icon-cross">✕</span>
-            <span class="ba-item-text">Mjesečni izvještaji puni dosegâ i impresija bez stvarnog prihoda</span>
-          </li>
-          <li class="ba-item">
-            <span class="ba-icon-cross">✕</span>
-            <span class="ba-item-text">Foto/video produkcija i oglašavanje rade u odvojenim silosima</span>
-          </li>
-          <li class="ba-item">
-            <span class="ba-icon-cross">✕</span>
-            <span class="ba-item-text">Zastarjele metode i spori manualni procesi bez primjene modernih AI alata</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Right: Algor Studio® -->
-      <div class="ba-overtake-col ba-col-right">
-        <div class="ba-col-header ba-header-lime">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display: block;">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-          <span>Algor Studio®</span>
-        </div>
-        <ul class="ba-items-list">
-          <li class="ba-item">
-            <span class="ba-icon-check">✓</span>
-            <span class="ba-item-text">Izravno strateško vođenje bez posrednika, account managera i juniora</span>
-          </li>
-          <li class="ba-item">
-            <span class="ba-icon-check">✓</span>
-            <span class="ba-item-text">Izvještavanje usmjereno na profit, stvarne upite i mjerljiv povrat (ROAS)</span>
-          </li>
-          <li class="ba-item">
-            <span class="ba-icon-check">✓</span>
-            <span class="ba-item-text">Cjelovit sustav — foto/video produkcija, oglašavanje i web u jednom toku</span>
-          </li>
-          <li class="ba-item">
-            <span class="ba-icon-check">✓</span>
-            <span class="ba-item-text">Najnovije tehnologije i alati za bolje kampanje, precizno ciljanje i povećanje dosega</span>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Bottom Founder Quote Card -->
-    <div class="ba-founder-card">
-      <img src="about_person.jpg" alt="Vinko Grgić" class="ba-founder-avatar" />
-      <div class="ba-founder-content">
-        <p class="ba-founder-quote">
-          “Najbolji marketing nije onaj koji najglasnije obećava. To je onaj marketing koji dokazuje svoju stvarnu vrijednost svakim mjerljivim rezultatom.”
-        </p>
-        <div class="ba-founder-meta">
-          <strong class="ba-founder-name">Vinko Grgić</strong>
-          <span class="ba-founder-sep">•</span>
-          <span class="ba-founder-title">Osnivač &amp; Voditelj</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Image Gallery Marquee (Photos from field production) -->
-    <div class="about-galleries-stack footer-galleries-stack" style="margin-top: 56px !important; width: 100% !important;">
-      <div class="gallery-marquee-container footer-gallery-marquee">
-        <div class="gallery-marquee-track">
-          <!-- First Set of Images -->
-          <div class="gallery-marquee-row">
-            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
-          </div>
-          <!-- Second Set of Images (Duplicate for seamless loop) -->
-          <div class="gallery-marquee-row" aria-hidden="true">
-            <div class="gallery-img-box"><img src="gallery_1.jpg" alt="Foto produkcija Algor studio 1" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_2.jpg" alt="Foto produkcija Algor studio 2" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_3.jpg" alt="Foto produkcija Algor studio 3" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="gallery_4.jpg" alt="Foto produkcija Algor studio 4" loading="lazy" decoding="async" width="440" height="330"></div>
-            <div class="gallery-img-box"><img src="about_person.jpg" alt="Foto produkcija Algor studio 5" loading="lazy" decoding="async" width="440" height="330"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- 4.5 PORTFOLIO & CASE STUDIES SECTION (Plain Gray Background) -->
+  <!-- 3. SECTION 03: PORTFOLIO & CASE STUDIES SECTION (Plain Gray Background) -->
   <section id="portfolio" class="plain-section">
     <div class="info-header align-center">
-      <span class="section-badge">// 04 PROJEKTI U PRAKSI</span>
+      <span class="section-badge">// 03 PROJEKTI U PRAKSI</span>
       <h2 class="info-title">
-        Konkretni rezultati ostvareni za klijente
+        Konkretni rezultati <span class="title-muted">ostvareni za klijente</span>
       </h2>
       <p class="info-subtitle">
         Pregled kako AI rješenja i marketinške kampanje u izvedbi Algor studija izgledaju u svakodnevnom radu i kakve rezultate donose.
@@ -3258,6 +3114,7 @@
       
       <!-- Project 1: Admiral -->
       <div class="portfolio-item-card">
+        <img src="admiral_hotel.png" alt="" class="port-card-watermark-logo" loading="lazy" aria-hidden="true">
         <div class="port-client-logo-row">
           <div class="client-brand-logo">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon-svg">
@@ -3291,6 +3148,7 @@
 
       <!-- Project 2: Eschengarten -->
       <div class="portfolio-item-card">
+        <img src="eschengarten.png" alt="" class="port-card-watermark-logo" loading="lazy" aria-hidden="true">
         <div class="port-client-logo-row">
           <div class="client-brand-logo">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon-svg">
@@ -3326,6 +3184,7 @@
 
       <!-- Project 3: FamilyPark -->
       <div class="portfolio-item-card">
+        <img src="family_park.png" alt="" class="port-card-watermark-logo" loading="lazy" aria-hidden="true">
         <div class="port-client-logo-row">
           <div class="client-brand-logo">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon-svg">
@@ -3360,6 +3219,7 @@
 
       <!-- Project 4: CTA Card -->
       <div class="portfolio-item-card port-cta-card" style="border: 1.5px solid var(--accent-blue, #0066FF); background-color: var(--surface-light, #ffffff); box-shadow: 0 10px 30px var(--accent-blue-glow, rgba(0, 102, 255, 0.15));">
+        <img src="logo_black_transparent.png" alt="" class="port-card-watermark-logo" loading="lazy" aria-hidden="true">
         <div class="port-client-logo-row">
           <div class="client-brand-logo">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="brand-icon-svg" style="color: var(--text-primary-light, #0b0b0c);">
@@ -3402,13 +3262,13 @@
   </section>
   </div>
 
-  <!-- 4.6 TESTIMONIALS SECTION (Full-Width White Background) -->
+  <!-- 4. SECTION 04: TESTIMONIALS SECTION (Full-Width White Background) -->
   <div class="testimonials-section-wrapper">
   <section id="testimonials" class="plain-section">
     <div class="info-header align-center">
-      <span class="section-badge">// 05 ISKUSTVA KLIJENATA</span>
+      <span class="section-badge">// 04 ISKUSTVA KLIJENATA</span>
       <h2 class="info-title">
-        Iskustva klijenata u suradnji s Algor studijom
+        Što naši klijenti <span class="title-muted">kažu o nama</span>
       </h2>
       <p class="info-subtitle">
         Mjerljiv poslovni rast klijenata i stabilan povrat ulaganja u marketing temelj su svake suradnje.
@@ -3567,12 +3427,12 @@
   </section>
   </div>
 
-  <!-- 4.7 PROCES SURADNJE (Sticky 2-Column Section) -->
+  <!-- 5. SECTION 05: PROCES SURADNJE (Sticky 2-Column Section) -->
   <section id="process" class="plain-section process-sticky-section">
     <div class="info-header align-center">
-      <span class="section-badge">// 06 KORACI DO LANSIRANJA</span>
+      <span class="section-badge">// 05 KORACI DO LANSIRANJA</span>
       <h2 class="info-title">
-        Kako počinjemo suradnju
+        Kako počinjemo <span class="title-muted">suradnju</span>
       </h2>
       <p class="info-subtitle">
         Jasno strukturiran proces bez onboarding stresa. Brza i transparentna realizacija bez potrebe za vašim tehničkim znanjem niti gubljenjem vremena.
@@ -3652,12 +3512,12 @@
   <div class="pricing-section-wrapper">
     <div class="dark-combined-container">
       
-      <!-- 5.1 INTERACTIVE PRICING SECTION (Paketi) -->
+      <!-- 6. SECTION 06: INTERACTIVE PRICING SECTION (Paketi) -->
       <section id="pricing" class="full-width-pricing-section white-pricing-section">
         <div class="info-header align-center">
-          <span class="section-badge">// 07 PAKETI &amp; INVESTICIJA</span>
+          <span class="section-badge">// 06 PAKETI &amp; INVESTICIJA</span>
           <h2 class="info-title">
-            Transparentne investicije za brzi i stabilan rast
+            Transparentne investicije <span class="title-muted">za stabilan rast</span>
           </h2>
           <p class="info-subtitle text-muted">
             Odaberite paket prema veličini vašeg poslovanja. Svi planovi uključuju kompletnu uslugu i AI automatizacije bez skrivenih troškova.
@@ -3683,7 +3543,7 @@
 
             <!-- Unified Package Features -->
             <ul class="luxury-features-list">
-              <li><span class="check-icon-circle">✓</span> <span><strong>1x Mjesečni foto/video sprint:</strong> Do 6 ciljanih kratkih formata (Reels/TikTok) + profesionalne fotografije</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>1x Mjesečna foto/video produkcija:</strong> Do 6 ciljanih kratkih formata (Reels/TikTok) + profesionalne fotografije</span></li>
               <li><span class="check-icon-circle">✓</span> <span><strong>Meta Ads oglašavanje:</strong> Postavljanje i vođenje kampanja (Instagram &amp; Facebook)</span></li>
               <li><span class="check-icon-circle">✓</span> <span><strong>AI asistent za brze odgovore:</strong> Automatski odgovori na osnovne upite 24/7</span></li>
               <li><span class="check-icon-circle">✓</span> <span><strong>Mjesečni izvještaj:</strong> Transparentan pregled dosega i broja upita</span></li>
@@ -3717,7 +3577,7 @@
 
             <!-- Unified Package Features -->
             <ul class="luxury-features-list">
-              <li><span class="check-icon-circle">✓</span> <span><strong>1x Mjesečni foto/video sprint:</strong> 8–10 visoko-konvertirajućih video oglasa + profesionalne fotografije</span></li>
+              <li><span class="check-icon-circle">✓</span> <span><strong>1x Mjesečna foto/video produkcija:</strong> 8–10 visoko-konvertirajućih video oglasa + profesionalne fotografije</span></li>
               <li><span class="check-icon-circle">✓</span> <span><strong>Meta Ads kampanje:</strong> Akvizicija novih kupaca + retargeting lijevak</span></li>
               <li><span class="check-icon-circle">✓</span> <span><strong>Google Search Ads:</strong> Ciljanje kupaca koji aktivno traže vašu uslugu</span></li>
               <li><span class="check-icon-circle">✓</span> <span><strong>ChatGPT &amp; AI Search oglasi:</strong> Pozicioniranje vašeg brenda u AI pretragama</span></li>
@@ -3831,12 +3691,12 @@
     </div>
   </div>
 
-  <!-- 6. FAQ SECTION (Plain Gray Background) -->
+  <!-- 7. SECTION 07: FAQ SECTION (Plain Gray Background) -->
   <section id="faq" class="plain-section">
     <div class="info-header align-center">
-      <span class="section-badge">// 08 ČESTA PITANJA</span>
+      <span class="section-badge">// 07 ČESTA PITANJA</span>
       <h2 class="info-title">
-        Odgovori na vaša pitanja i dvojbe oko investicije i suradnje
+        Česta pitanja <span class="title-muted">i odgovori</span>
       </h2>
       <p class="info-subtitle">
         Transparentnost je na prvom mjestu. Ovdje su odgovori na najčešća pitanja budućih klijenata i partnera.
@@ -3847,7 +3707,7 @@
       <div class="accordion-group">
         <!-- FAQ 1: Pro paket & Sustav akvizicije -->
         <details class="disclosure" name="faq-group" open>
-          <summary>Što sve uključuje sustav akvizicije u sklopu Pro paketa?</summary>
+          <summary>Što sve uključuje sustav akvizicije u sklopu Pro paketu?</summary>
           <p>Pro paket uključuje cjelovit sustav za privlačenje novih klijenata: profesionalno snimanje foto i video sadržaja na vašoj lokaciji (8–10 video oglasa), vođenje Meta i Google Search kampanja, pozicioniranje kroz ChatGPT &amp; AI Search oglase, izradu konverzijske landing stranice te 24/7 AI lead asistenta za automatsko zakazivanje termina.</p>
         </details>
 
@@ -3898,15 +3758,15 @@
   </section>
   </div>
 
-  <!-- New Standalone Full-Width Black Footer Section (Section 09 + Contact Form -> Gallery Marquee -> Footer Links) -->
+  <!-- 8. SECTION 08: ZAPOČNITE SURADNJU (Full-Width Black Footer Section) -->
   <section class="footer-hero-and-card-section">
     
-    <!-- Conversion Block (Section 09 - Contact Form) -->
+    <!-- Conversion Block (Section 08 - Contact Form) -->
     <div class="footer-conversion-area">
       <div class="info-header align-center" style="margin-bottom: 32px;">
-        <span class="section-badge">// 09 ZAPOČNITE SURADNJU</span>
+        <span class="section-badge">// 08 ZAPOČNITE SURADNJU</span>
         <h2 class="info-title">
-          Prestanite trošiti proračun na marketing koji ne konvertira
+          Prestanite trošiti proračun <span class="title-muted">na marketing koji ne konvertira</span>
         </h2>
         <p class="info-subtitle">
           Izgradimo prodajni sustav koji pretvara posjetitelje u kvalificirane leadove, telefonske pozive i stvarni profit.
@@ -3995,7 +3855,7 @@
               <h4>Istraži</h4>
               <ul>
                 <li><a href="#about">O nama</a></li>
-                <li><a href="#marketing">Usluge</a></li>
+                <li><a href="#before-after">Usporedba</a></li>
                 <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
                 <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
                 <li><a href="#portfolio">Projekti</a></li>

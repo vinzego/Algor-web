@@ -291,9 +291,6 @@ async function saveInquiryToNotion(data) {
     'Ime i prezime': {
       title: [{ text: { content: data.name || 'Novi upit' } }]
     },
-    'Email': {
-      email: data.email || null
-    },
     'Tvrtka/web': {
       rich_text: [{ text: { content: data.company || '-' } }]
     },
@@ -317,13 +314,19 @@ async function saveInquiryToNotion(data) {
     }
   };
 
-  if (data.phone) {
+  if (data.email && data.email.trim()) {
+    properties['Email'] = {
+      email: data.email.trim()
+    };
+  }
+
+  if (data.phone && data.phone.trim()) {
     properties['Mobitel'] = {
       phone_number: data.phone.trim()
     };
   }
 
-  if (data.calendarSlot) {
+  if (data.calendarSlot && data.calendarSlot.trim()) {
     properties['Termin sastanka'] = {
       rich_text: [{ text: { content: data.calendarSlot.trim() } }]
     };
@@ -368,7 +371,12 @@ async function saveInquiryToNotion(data) {
 
 // Helper function to send an automated confirmation email to the client
 async function sendClientConfirmationEmail(data) {
-  if (!mailTransporter || !data.email) return;
+  if (!mailTransporter || !data.email) {
+    if (!mailTransporter) {
+      console.warn('SMTP transporter not initialized (SMTP_HOST/SMTP_USER/SMTP_PASS missing). Confirmation email skipped.');
+    }
+    return;
+  }
 
   const clientName = data.name || 'poštovani';
   const pkg = data.package || 'Izrada Weba & Digitalna Rješenja';
@@ -377,6 +385,20 @@ async function sendClientConfirmationEmail(data) {
   const note = data.calendarSlot && data.calendarSlot !== 'Nije odabrano' && data.calendarSlot !== 'Upit s podnožja'
     ? data.calendarSlot
     : 'Besplatna procjena projekta i savjetovanje';
+
+  // Prepare logo attachment
+  const logoPath = path.join(__dirname, 'logo_white_transparent.png');
+  const publicLogoPath = path.join(__dirname, 'public', 'logo_white_transparent.png');
+  const actualLogoPath = fs.existsSync(logoPath) ? logoPath : (fs.existsSync(publicLogoPath) ? publicLogoPath : null);
+
+  const attachments = [];
+  if (actualLogoPath) {
+    attachments.push({
+      filename: 'logo.png',
+      path: actualLogoPath,
+      cid: 'algorlogo'
+    });
+  }
 
   const htmlContent = `
 <!DOCTYPE html>
@@ -392,13 +414,13 @@ async function sendClientConfirmationEmail(data) {
       <td align="center">
         <table width="100%" max-width="600" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; background-color: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;">
           
-          <!-- Header Banner -->
+          <!-- Header Banner with Official Algor Logo -->
           <tr>
-            <td style="background-color: #050508; padding: 36px 32px; text-align: center; border-bottom: 2px solid #29ADFF;">
-              <h1 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff;">
-                ALGOR<span style="color: #29ADFF;">STUDIO</span>
-              </h1>
-              <p style="margin: 8px 0 0 0; font-size: 13px; color: #94a3b8; letter-spacing: 1px; text-transform: uppercase;">
+            <td style="background-color: #050508; padding: 36px 32px; text-align: center; border-bottom: 2px solid #0066FF;">
+              <a href="https://algor.studio" target="_blank" style="text-decoration: none; display: inline-block;">
+                <img src="${actualLogoPath ? 'cid:algorlogo' : 'https://algor.studio/logo_white_transparent.png'}" alt="Algor Studio" width="170" style="display: block; margin: 0 auto; max-width: 170px; height: auto; border: 0;" />
+              </a>
+              <p style="margin: 12px 0 0 0; font-size: 12px; color: #94a3b8; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;">
                 Digitalna Agencija &bull; Web &bull; Marketing &bull; AI
               </p>
             </td>
@@ -457,7 +479,7 @@ async function sendClientConfirmationEmail(data) {
           <tr>
             <td style="background-color: #050508; padding: 24px 32px; text-align: center; border-top: 1px solid rgba(255,255,255,0.08);">
               <p style="margin: 0; font-size: 13px; color: #94a3b8;">
-                <strong>Algor Studio</strong> &bull; <a href="https://algor.studio" style="color: #29ADFF; text-decoration: none;">algor.studio</a> &bull; <a href="mailto:info@algor.studio" style="color: #29ADFF; text-decoration: none;">info@algor.studio</a>
+                <strong>Algor Studio</strong> &bull; <a href="https://algor.studio" style="color: #0066FF; text-decoration: none;">algor.studio</a> &bull; <a href="mailto:info@algor.studio" style="color: #0066FF; text-decoration: none;">info@algor.studio</a>
               </p>
               <p style="margin: 8px 0 0 0; font-size: 11.5px; color: #64748b;">
                 Ovaj email je automatska potvrda zaprimanja vašeg upita.
@@ -476,8 +498,9 @@ async function sendClientConfirmationEmail(data) {
   await mailTransporter.sendMail({
     from: '"Algor Studio" <info@algor.studio>',
     to: data.email,
-    subject: `Potvrda zaprimanja upita: ${pkg} | Algor Studio`,
-    html: htmlContent
+    subject: `Potvrda primitka upita: ${pkg} | Algor Studio`,
+    html: htmlContent,
+    attachments
   });
 }
 

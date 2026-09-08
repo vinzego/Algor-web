@@ -934,42 +934,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Marketing Section Sticky Active Step Observer
-  const mktCards = document.querySelectorAll('#marketing [data-mkt-card]');
-  const mktIndicators = document.querySelectorAll('#marketing [data-mkt-step]');
-  if (mktCards.length > 0 && mktIndicators.length > 0) {
-    window.addEventListener('scroll', () => {
-      const windowCenter = window.innerHeight / 2;
-      let activeStep = '1';
-      
-      mktCards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top <= windowCenter && rect.bottom >= 100) {
-          activeStep = card.getAttribute('data-mkt-card');
-        }
-      });
-      
-      mktIndicators.forEach(ind => {
-        if (ind.getAttribute('data-mkt-step') === activeStep) {
-          ind.classList.add('active');
-        } else {
-          ind.classList.remove('active');
-        }
-      });
-    });
-
-    // Indicator Click to Scroll
-    mktIndicators.forEach(ind => {
-      ind.addEventListener('click', () => {
-        const step = ind.getAttribute('data-mkt-step');
-        const targetCard = document.querySelector(`#marketing [data-mkt-card="${step}"]`);
-        if (targetCard) {
-          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
-    });
-  }
-
   // 8. AI Automations Card Scroll Pop-Up Reveal (Re-animates every time on scroll)
   const aiSection = document.getElementById('ai-automations');
   if (aiSection) {
