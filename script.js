@@ -1504,3 +1504,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// Mobile process cards: tap a card to reveal its description and deliverable.
+document.addEventListener('DOMContentLoaded', () => {
+  const processCards = Array.from(document.querySelectorAll('.process-card-item'));
+  const mobileQuery = window.matchMedia('(max-width: 640px)');
+  if (!processCards.length) return;
+
+  const setExpanded = (activeCard) => {
+    processCards.forEach((card) => {
+      const isActive = card === activeCard && !card.classList.contains('is-expanded');
+      card.classList.toggle('is-expanded', isActive);
+      card.setAttribute('aria-expanded', String(isActive));
+    });
+  };
+
+  processCards.forEach((card) => {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-expanded', 'false');
+    card.addEventListener('click', () => {
+      if (mobileQuery.matches) setExpanded(card);
+    });
+    card.addEventListener('keydown', (event) => {
+      if (mobileQuery.matches && (event.key === 'Enter' || event.key === ' ')) {
+        event.preventDefault();
+        setExpanded(card);
+      }
+    });
+  });
+
+  mobileQuery.addEventListener('change', () => {
+    if (!mobileQuery.matches) {
+      processCards.forEach((card) => {
+        card.classList.remove('is-expanded');
+        card.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+});

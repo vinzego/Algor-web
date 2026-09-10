@@ -990,6 +990,10 @@
       background-color: #f7f7f8;
     }
 
+    #usporedba {
+      padding-bottom: 100px;
+    }
+
     .wide-black-card-container {
       width: 100%;
       max-width: 1540px;
@@ -1220,6 +1224,41 @@
       margin: 60px auto 80px auto;
       padding: 0 24px;
       box-sizing: border-box;
+    }
+
+    .projects-marquee {
+      width: 100vw;
+      max-width: none;
+      margin-left: calc(50% - 50vw);
+      overflow: hidden;
+      margin: 18px 0 28px;
+      color: #09090b;
+      font-family: "Inter", sans-serif;
+      line-height: 0.9;
+      white-space: nowrap;
+    }
+
+    .projects-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: projects-marquee-scroll 14s linear infinite;
+      will-change: transform;
+    }
+
+    .projects-marquee-text {
+      padding: 0 0.24em 0.12em 0;
+      font-size: clamp(72px, 14vw, 180px);
+      font-weight: 800;
+      letter-spacing: -0.07em;
+    }
+
+    @keyframes projects-marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .projects-marquee-track { animation: none; }
     }
 
     .projects-grid-modern {
@@ -1519,7 +1558,7 @@
 
     /* Card 04 — Light Sky / Cyan Blue (Solid, no gradient) */
     .process-card-item:nth-child(4) {
-      background-color: #5CB6E6;
+      background-color: #75EAFA;
       background-image: none;
       border: 1px solid rgba(255, 255, 255, 0.35);
       box-shadow: 0 14px 36px rgba(92, 182, 230, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
@@ -1637,6 +1676,46 @@
       .process-card-item {
         padding: 24px 18px;
         border-radius: 18px;
+        min-height: 0;
+        cursor: pointer;
+      }
+      .process-card-item .process-card-top { margin-bottom: 14px; }
+      .process-card-item .process-card-top::after {
+        content: '+';
+        display: inline-grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        margin-left: auto;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1;
+      }
+      .process-card-item.is-expanded .process-card-top::after { content: '−'; }
+      .process-card-item .process-card-body { flex-grow: 0; margin-bottom: 0; }
+      .process-card-item .process-card-body h3 { margin-bottom: 0; }
+      .process-card-item .process-card-body p {
+        max-height: 0;
+        margin: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease, margin 0.3s ease, opacity 0.2s ease;
+      }
+      .process-card-item .process-card-bottom { display: none; }
+      .process-card-item.is-expanded .process-card-body p {
+        max-height: 220px;
+        margin-top: 12px;
+        opacity: 1;
+      }
+      .process-card-item.is-expanded .process-card-bottom {
+        display: block;
+        margin-top: 18px;
+      }
+      .process-card-item:focus-visible {
+        outline: 3px solid #38bdf8;
+        outline-offset: 3px;
       }
       .process-card-item:nth-child(1) { transform: rotate(-1deg); }
       .process-card-item:nth-child(2) { transform: rotate(1deg); }
@@ -2225,6 +2304,36 @@
       margin: 0 auto 50px auto;
     }
 
+    .faq-marquee {
+      width: 100vw;
+      max-width: none;
+      margin-left: calc(50% - 50vw);
+      overflow: hidden;
+      margin: 18px 0 24px;
+      color: #09090b;
+      font-family: "Inter", sans-serif;
+      line-height: 0.9;
+      white-space: nowrap;
+    }
+
+    .faq-marquee-track {
+      display: flex;
+      width: max-content;
+      animation: projects-marquee-scroll 14s linear infinite;
+      will-change: transform;
+    }
+
+    .faq-marquee-text {
+      padding: 0 0.2em 0.12em 0;
+      font-size: clamp(56px, 11vw, 130px);
+      font-weight: 800;
+      letter-spacing: -0.07em;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .faq-marquee-track { animation: none; }
+    }
+
     .faq-dark-badge {
       display: inline-flex;
       align-items: center;
@@ -2263,31 +2372,31 @@
     .faq-dark-accordion-group {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 0;
       max-width: 860px;
       margin: 0 auto;
+      border-top: 1px solid #d4d4d8;
     }
 
     .faq-dark-disclosure {
-      background: #ffffff !important;
-      border: 1px solid rgba(0, 0, 0, 0.04) !important;
-      border-radius: 20px !important;
-      padding: 22px 28px !important;
-      transition: all 0.2s ease !important;
+      background: transparent !important;
+      border: none !important;
+      border-bottom: 1px solid #d4d4d8 !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      transition: none !important;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+      box-shadow: none !important;
     }
 
     .faq-dark-disclosure:hover {
-      background: #ffffff !important;
-      border-color: rgba(0, 0, 0, 0.08) !important;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+      background: transparent !important;
+      box-shadow: none !important;
     }
 
     .faq-dark-disclosure[open] {
-      background: #ffffff !important;
-      border-color: rgba(0, 0, 0, 0.05) !important;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+      background: transparent !important;
+      box-shadow: none !important;
     }
 
     .faq-dark-summary {
@@ -2300,15 +2409,15 @@
       align-items: center;
       gap: 20px;
       user-select: none;
+      padding: 22px 0;
     }
 
     .faq-dark-summary::-webkit-details-marker { display: none; }
 
     .faq-icon-indicator {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #000000 !important;
+      width: 24px;
+      height: 24px;
+      background: transparent !important;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2321,7 +2430,7 @@
     .faq-icon-indicator::after {
       content: "";
       position: absolute;
-      background-color: #ffffff;
+      background-color: #71717a;
       border-radius: 1px;
       transition: transform 0.25s ease, opacity 0.2s ease;
     }
@@ -2342,7 +2451,7 @@
     }
 
     .faq-dark-answer {
-      margin-top: 12px;
+      margin: 0 0 22px;
       font-size: 15px !important;
       line-height: 1.65 !important;
       color: #64748b !important;
@@ -2877,6 +2986,9 @@
       .wide-black-card-section {
         padding: 20px 10px 36px 10px !important;
       }
+      #usporedba {
+        padding-bottom: 66px !important;
+      }
       .wide-black-card-container {
         padding: 40px 14px 32px 14px !important;
         border-radius: 20px !important;
@@ -2936,6 +3048,9 @@
         margin: 36px auto 45px auto !important;
         padding: 0 14px !important;
       }
+      #projekti {
+        margin-bottom: 70px !important;
+      }
       .about-section-heading {
         font-size: 26px !important;
         line-height: 1.2 !important;
@@ -2992,14 +3107,37 @@
       }
       .testimonials-ticker-container {
         margin-top: 22px !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        mask-image: none !important;
+        -webkit-mask-image: none !important;
+      }
+      .testimonials-ticker-track {
+        display: block !important;
+        width: 100% !important;
+        animation: none !important;
+      }
+      .testimonials-logos-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        width: 100% !important;
+      }
+      .testimonials-logos-row[aria-hidden="true"],
+      .testimonials-logos-row:first-child .client-quote-card:nth-child(3) {
+        display: none !important;
       }
       .client-quote-card.ticker-card {
-        width: 270px !important;
-        min-width: 270px !important;
-        padding: 18px 14px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        padding: 20px 18px !important;
         border-radius: 16px !important;
-        margin-right: 12px !important;
+        margin: 0 !important;
       }
+      .testimonials-logos-row:first-child .client-quote-card:nth-child(2) { order: 1; }
+      .testimonials-logos-row:first-child .client-quote-card:nth-child(4) { order: 2; }
+      .testimonials-logos-row:first-child .client-quote-card:nth-child(1) { order: 3; }
       .client-quote-card .client-text {
         font-size: 13px !important;
         line-height: 1.5 !important;
@@ -3076,7 +3214,7 @@
 
       /* FAQ Section */
       .faq-dark-fullwidth-section {
-        padding: 44px 14px 54px 14px !important;
+        padding: 44px 22px 54px 22px !important;
       }
       .faq-dark-title {
         font-size: 24px !important;
@@ -3088,13 +3226,13 @@
       }
       .faq-dark-accordion-group {
         margin-top: 22px !important;
-        gap: 10px !important;
+        gap: 0 !important;
       }
       .faq-dark-disclosure {
-        border-radius: 14px !important;
+        border-radius: 0 !important;
       }
       .faq-dark-summary {
-        padding: 16px 14px !important;
+        padding: 18px 0 !important;
         font-size: 14.5px !important;
         min-height: 48px !important;
       }
@@ -4173,7 +4311,7 @@
 
     /* Dark Theme FAQ Section */
     .faq-dark-fullwidth-section {
-      background-color: #f7f7f8 !important;
+      background-color: transparent !important;
       border-top: none !important;
     }
     .faq-dark-badge {
@@ -4189,25 +4327,26 @@
       opacity: 1;
     }
     .faq-dark-disclosure {
-      background: #ffffff !important;
-      border: 1px solid rgba(0, 0, 0, 0.08) !important;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+      background: transparent !important;
+      border: none !important;
+      border-bottom: 1px solid #d4d4d8 !important;
+      box-shadow: none !important;
     }
     .faq-dark-disclosure:hover,
     .faq-dark-disclosure[open] {
-      background: #ffffff !important;
-      border-color: rgba(0, 0, 0, 0.15) !important;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+      background: transparent !important;
+      border-color: #d4d4d8 !important;
+      box-shadow: none !important;
     }
     .faq-dark-summary {
       color: #09090b !important;
     }
     .faq-icon-indicator {
-      background: rgba(0, 0, 0, 0.08) !important;
+      background: transparent !important;
     }
     .faq-icon-indicator::before,
     .faq-icon-indicator::after {
-      background-color: #09090b !important;
+      background-color: #71717a !important;
     }
     .faq-dark-answer {
       color: #3f3f46 !important;
@@ -4580,6 +4719,14 @@
         <span class="tech-badge-dot"></span>
         <span>// 03 PROJEKTI &amp; REZULTATI U PRAKSI</span>
       </div>
+      <div class="projects-marquee" aria-label="Projekti">
+        <div class="projects-marquee-track" aria-hidden="true">
+          <span class="projects-marquee-text">Projekti</span>
+          <span class="projects-marquee-text">Projekti</span>
+          <span class="projects-marquee-text">Projekti</span>
+          <span class="projects-marquee-text">Projekti</span>
+        </div>
+      </div>
       <h2 class="about-section-heading">
         Konkretni rezultati ostvareni za klijente
       </h2>
@@ -4897,9 +5044,6 @@
         <h2 class="about-section-heading">
           Od prve strategije do mjerljivog rasta
         </h2>
-        <p class="about-section-lead">
-          Jednostavan i transparentan proces u 4 koraka. Postavljamo cjelovit sustav akvizicije kupaca po principu ključ u ruke.
-        </p>
       </div>
 
       <div class="process-cards-grid">
@@ -4911,7 +5055,7 @@
             <span class="process-step-icon">🎯</span>
           </div>
           <div class="process-card-body">
-            <h3>1. Audit &amp; Strategija</h3>
+            <h3>1. Strategija</h3>
             <p>Dubinska analiza vašeg tržišta, konkurencije i ponude. Definiramo ciljanu publiku, kreiramo kampanje i scenarije za snimanje.</p>
           </div>
           <div class="process-card-bottom">
@@ -4931,7 +5075,7 @@
             <span class="process-step-icon">🎬</span>
           </div>
           <div class="process-card-body">
-            <h3>2. 4K Video Produkcija</h3>
+            <h3>2. Produkcija sadržaja</h3>
             <p>Dolazak na vašu lokaciju, snimanje sadržaja (video + fotografije)</p>
           </div>
           <div class="process-card-bottom">
@@ -4951,7 +5095,7 @@
             <span class="process-step-icon">🚀</span>
           </div>
           <div class="process-card-body">
-            <h3>3. Oglasi &amp; AI Postavke</h3>
+            <h3>3. Oglasi</h3>
             <p>Objava Meta i Google Ads kampanja te implementacija AI infrastrukture u vaše poslovanje.</p>
           </div>
           <div class="process-card-bottom">
@@ -5249,12 +5393,17 @@
   <section id="faq" class="faq-dark-fullwidth-section">
     <div class="faq-dark-header">
       <div class="faq-dark-badge">// 07 ČESTO POSTAVLJANA PITANJA</div>
+      <div class="faq-marquee" aria-label="Pitanja i odgovori">
+        <div class="faq-marquee-track" aria-hidden="true">
+          <span class="faq-marquee-text">Pitanja i odgovori</span>
+          <span class="faq-marquee-text">Pitanja i odgovori</span>
+          <span class="faq-marquee-text">Pitanja i odgovori</span>
+          <span class="faq-marquee-text">Pitanja i odgovori</span>
+        </div>
+      </div>
       <h2 class="faq-dark-title">
         Sve što trebate znati o suradnji s Algor studiom
       </h2>
-      <p class="faq-dark-subtitle">
-        Jasni odgovori na ključna pitanja o cjelovitom sustavu akvizicije, snimanju na lokaciji, oglasima i garanciji.
-      </p>
     </div>
 
     <div class="faq-dark-accordion-group">
@@ -5507,6 +5656,6 @@
       </div>
       
     </footer>
-  <script src="script.js?v=230.0.0" defer></script>
+  <script src="script.js?v=231.0.0" defer></script>
 </body>
 </html>
