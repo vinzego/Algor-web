@@ -53,13 +53,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=104.0.0">
   <link rel="icon" type="image/png" href="favicon.png?v=104.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=104.0.0">
-  <link rel="preload" as="style" href="style.css?v=104.0.0">
-  <link rel="stylesheet" href="style.css?v=104.0.0" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=104.0.0"></noscript>
+  <link rel="stylesheet" href="style.css?v=230.0.0">
 
   <style>
     /* Thank You Page Luxury Dark Theme */
-    body {
+    html, body {
       background-color: #050508 !important;
       color: #f1f5f9 !important;
       font-family: 'Inter', sans-serif !important;
@@ -94,7 +92,7 @@
       transform: translateX(-50%);
       width: 320px;
       height: 320px;
-      background: radial-gradient(circle, rgba(41, 173, 255, 0.15) 0%, rgba(201, 255, 71, 0.08) 50%, transparent 70%);
+      background: radial-gradient(circle, rgba(92, 182, 230, 0.15) 0%, rgba(201, 255, 71, 0.08) 50%, transparent 70%);
       pointer-events: none;
     }
 
@@ -106,7 +104,7 @@
       width: 76px;
       height: 76px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #29ADFF, #0077c8);
+      background: linear-gradient(135deg, #5CB6E6, #0077c8);
       color: #ffffff;
       font-size: 36px;
       font-weight: 900;
@@ -114,7 +112,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 24px;
-      box-shadow: 0 0 35px rgba(41, 173, 255, 0.4);
+      box-shadow: 0 0 35px rgba(92, 182, 230, 0.4);
       animation: pulsePop 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
     }
 
@@ -168,9 +166,9 @@
     }
 
     .summary-status-pill {
-      background: rgba(41, 173, 255, 0.15);
-      color: #29ADFF;
-      border: 1px solid rgba(41, 173, 255, 0.3);
+      background: rgba(92, 182, 230, 0.15);
+      color: #5CB6E6;
+      border: 1px solid rgba(92, 182, 230, 0.3);
       padding: 3px 10px;
       border-radius: 9999px;
       font-size: 12px;
@@ -203,12 +201,12 @@
 
     .summary-appointment-highlight {
       grid-column: 1 / -1;
-      background: rgba(41, 173, 255, 0.08);
-      border: 1px dashed rgba(41, 173, 255, 0.25);
+      background: rgba(92, 182, 230, 0.08);
+      border: 1px dashed rgba(92, 182, 230, 0.25);
       border-radius: 10px;
       padding: 10px 14px;
       margin-top: 6px;
-      color: #29ADFF;
+      color: #5CB6E6;
       font-weight: 700;
     }
 
@@ -238,11 +236,11 @@
     }
 
     .btn-ty-primary:hover {
-      background: #29ADFF;
+      background: #5CB6E6;
       color: #ffffff !important;
-      border-color: #29ADFF;
+      border-color: #5CB6E6;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(41, 173, 255, 0.35);
+      box-shadow: 0 8px 25px rgba(92, 182, 230, 0.35);
     }
 
     .btn-ty-secondary {
@@ -304,39 +302,80 @@
         box-sizing: border-box;
       }
     }
-  </style>
+
+</style>
 </head>
 <body>
 
-  <!-- Floating Glass Navbar -->
-  <header class="ultra-navbar">
-    <!-- Brand Logo -->
-    <a href="/" class="ultra-brand-logo" aria-label="Algor studio Početna">
-      <img src="logo_black_transparent.png" alt="Algor studio" class="navbar-brand-logo-img">
-    </a>
+  <!-- Floating Capsule Navbar with Frosted Glass & Seamless Mobile Expansion -->
+  <header class="floating-capsule-navbar" id="main-capsule-navbar">
+    <!-- Frosted Glass Shell Layer -->
+    <div class="nav-glass-backdrop"></div>
 
-    <!-- Mobile Hamburger Toggle Button -->
-    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Otvori izbornik">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
+    <!-- Capsule Content Layer -->
+    <div class="nav-pill-content">
+      <div class="nav-mobile-top-bar">
+        <!-- Brand Logo -->
+        <a href="/" class="nav-brand-link" aria-label="Algor Studio Početna">
+          <img src="logo_white_transparent.png" alt="Algor Studio" class="nav-brand-img">
+        </a>
 
-    <!-- Pill Nav Menu (Desktop & Mobile Drawer) -->
-    <nav class="ultra-nav-menu" id="ultra-nav-menu">
-      <div class="mobile-nav-links-grid">
-        <a href="/#about" class="ultra-nav-link">O nama</a>
-        <a href="/#before-after" class="ultra-nav-link">Usporedba</a>
-        <a href="/izrada-web-stranica" class="ultra-nav-link">Izrada Weba</a>
-        <a href="/#portfolio" class="ultra-nav-link">Projekti</a>
-        <a href="/#process" class="ultra-nav-link">Proces</a>
-        <a href="/#pricing" class="ultra-nav-link">Cijene</a>
-        <a href="/kontakt" class="ultra-nav-link">Kontakt</a>
+        <!-- Desktop Nav Links -->
+        <nav aria-label="Glavna navigacija">
+          <ul class="nav-links-list">
+            <li class="nav-link-item"><a href="/#about">O nama</a></li>
+            <li class="nav-link-item"><a href="/izrada-web-stranica">Web Stranice</a></li>
+            <li class="nav-link-item"><a href="/chatgpt-ads">ChatGPT Ads</a></li>
+            <li class="nav-link-item"><a href="/#projekti">Projekti</a></li>
+            <li class="nav-link-item"><a href="/#proces">Proces</a></li>
+            <li class="nav-link-item"><a href="/#pricing">Cjenik</a></li>
+            <li class="nav-link-item"><a href="/#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right Action Items: Email + Contact Button + Mobile Toggle -->
+        <div class="nav-actions-group">
+          <a href="mailto:info@algor.studio" class="nav-email-pill" title="Pošaljite email na info@algor.studio">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@algor.studio</span>
+          </a>
+
+          <a href="/kontakt" class="nav-cta-pill">
+            <span>Kontakt</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+
+          <!-- Mobile Burger Button -->
+          <button type="button" class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Otvori navigacijski izbornik" aria-expanded="false">
+            <svg class="nav-burger-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            <svg class="nav-burger-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div class="mobile-nav-email-box">
-        <a href="mailto:info@algor.studio" class="mobile-nav-email-link">✉️ info@algor.studio</a>
+      <!-- Mobile Dropdown Panel (Seamlessly inside the expanding capsule) -->
+      <div class="nav-mobile-menu" id="nav-mobile-menu">
+        <ul class="nav-mobile-links">
+          <li><a href="/#about">O nama</a></li>
+          <li><a href="/izrada-web-stranica">Web Stranice</a></li>
+          <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
+          <li><a href="/#projekti">Projekti</a></li>
+          <li><a href="/#proces">Proces</a></li>
+          <li><a href="/#pricing">Cjenik</a></li>
+          <li><a href="/#faq">Česta pitanja</a></li>
+        </ul>
+        <div class="nav-mobile-divider"></div>
+        <div class="nav-mobile-bottom-actions">
+          <a href="mailto:info@algor.studio" class="nav-mobile-email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@algor.studio</span>
+          </a>
+          <a href="/kontakt" class="nav-mobile-cta">
+            <span>Zatražite ponudu &rarr;</span>
+          </a>
+        </div>
       </div>
-    </nav>
+    </div>
   </header>
 
   <!-- Main Thank You Layout -->
@@ -368,7 +407,7 @@
           </div>
           <div>
             <div class="summary-item-label">Odabrani paket / usluga:</div>
-            <div class="summary-item-value" id="summary-package-val" style="color: #29ADFF; font-weight: 700;">📦 Besplatan uvodni razgovor (Konzultacije)</div>
+            <div class="summary-item-value" id="summary-package-val" style="color: #5CB6E6; font-weight: 700;">📦 Besplatan uvodni razgovor (Konzultacije)</div>
           </div>
           <div>
             <div class="summary-item-label">Vrijeme odgovora:</div>
@@ -425,7 +464,7 @@
         
         <!-- Right Columns: Links -->
         <div class="footer-links-grid">
-          <div class="footer-link-group">
+          <div class="footer-link-group footer-link-group-istrazi">
             <h4>Istraži</h4>
             <ul>
               <li><a href="/#about">O nama</a></li>
@@ -440,14 +479,14 @@
             </ul>
           </div>
           
-          <div class="footer-link-group">
+          <div class="footer-link-group footer-link-group-social">
             <h4>Društvene mreže</h4>
             <ul>
               <li><a href="https://www.instagram.com/algor_studio?igsi=cGo4b3VvenlwNnp4&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             </ul>
           </div>
 
-          <div class="footer-link-group">
+          <div class="footer-link-group footer-link-group-pravno">
             <h4>Pravno</h4>
             <ul>
               <li><a href="/politika-privatnosti">Politika privatnosti</a></li>
@@ -518,7 +557,7 @@
             </div>
             <div>
               <div class="summary-item-label">Odabrani paket / usluga:</div>
-              <div class="summary-item-value" style="color: #29ADFF; font-weight: 700;">📦 ${selectedPkg}</div>
+              <div class="summary-item-value" style="color: #5CB6E6; font-weight: 700;">📦 ${selectedPkg}</div>
             </div>
             <div>
               <div class="summary-item-label">Vrijeme odgovora:</div>
@@ -554,6 +593,6 @@
     });
   </script>
 
-  <script defer src="script.js?v=104.0.0"></script>
+  <script defer src="script.js?v=230.0.0"></script>
 </body>
 </html>

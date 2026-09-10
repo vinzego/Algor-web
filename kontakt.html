@@ -87,12 +87,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=104.0.0">
   <link rel="icon" type="image/png" href="favicon.png?v=104.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=104.0.0">
-  <link rel="preload" as="style" href="style.css?v=104.0.0">
-  <link rel="stylesheet" href="style.css?v=104.0.0" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.css?v=104.0.0"></noscript>
+  <link rel="stylesheet" href="style.css?v=230.0.0">
   <style>
     /* Contact Page Luxury Theme */
-    body {
+    html, body {
       background-color: #050508 !important;
       color: #f1f5f9 !important;
       font-family: 'Inter', sans-serif !important;
@@ -139,52 +137,79 @@
       max-width: 680px;
     }
 
-    /* Main Centered Stack */
+    /* Main Contact Layout: 2-Column Side-by-Side on Desktop */
     .contact-layout-stack {
       position: relative;
       z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-      max-width: 740px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: start;
+      gap: 36px;
+      max-width: 1120px;
       margin: 0 auto 90px auto;
       width: 100%;
       box-sizing: border-box;
     }
 
-    /* Info Card ("Što možete očekivati na pozivu?") Below Form */
+    /* Centered Interactive Booking Box (Left Column) - UNIFORM LOCKED HEIGHT ACROSS ALL 3 STEPS */
+    .contact-card-box {
+      width: 100%;
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 28px;
+      padding: 34px 34px 34px 34px;
+      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      box-sizing: border-box;
+      height: 700px;
+      min-height: 700px;
+      max-height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+
+    /* Info Card ("Što možete očekivati na pozivu?") Beside Form (Right Column) */
     .contact-info-panel {
       width: 100%;
       background: #111318;
       border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 24px;
-      padding: 36px 32px;
+      border-radius: 28px;
+      padding: 34px 32px;
       box-sizing: border-box;
+      position: sticky;
+      top: 100px;
+      height: 700px;
+      min-height: 700px;
+      max-height: 700px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .info-panel-title {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 22px;
+      font-weight: 800;
       color: #ffffff;
       margin: 0 0 12px 0;
       letter-spacing: -0.4px;
+      line-height: 1.25;
     }
 
     .info-panel-desc {
       font-size: 14.5px;
       color: #94a3b8;
       line-height: 1.6;
-      margin: 0 0 28px 0;
+      margin: 0 0 24px 0;
     }
 
     .info-perks-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 32px 0;
+      margin: 0 0 24px 0;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
 
     .info-perk-item {
@@ -193,7 +218,7 @@
       gap: 14px;
       font-size: 14.5px;
       color: #cbd5e1;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .info-perk-icon {
@@ -203,30 +228,30 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(41, 173, 255, 0.15);
-      color: #29ADFF;
+      background: rgba(92, 182, 230, 0.15);
+      color: #5CB6E6;
       font-size: 13px;
       font-weight: bold;
       flex-shrink: 0;
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
     .contact-direct-box {
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 24px;
+      padding-top: 22px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
     }
 
     .contact-direct-link {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: #29ADFF;
+      color: #5CB6E6;
       text-decoration: none;
-      font-size: 14.5px;
-      font-weight: 600;
+      font-size: 15px;
+      font-weight: 700;
       transition: color 0.2s;
     }
 
@@ -234,35 +259,25 @@
       color: #60c5ff;
     }
 
-    /* Centered Interactive Booking Box */
-    .contact-card-box {
-      width: 100%;
-      background: #ffffff;
-      color: #0f172a;
-      border-radius: 28px;
-      padding: 44px 38px;
-      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
-      box-sizing: border-box;
-    }
-
     /* Selected Package Inside Form Banner */
     .form-selected-pkg-banner {
       display: flex;
       align-items: center;
       gap: 12px;
-      background: linear-gradient(135deg, rgba(41, 173, 255, 0.08) 0%, rgba(2, 132, 199, 0.03) 100%);
-      border: 1.5px solid rgba(41, 173, 255, 0.28);
+      background: linear-gradient(135deg, rgba(92, 182, 230, 0.08) 0%, rgba(2, 132, 199, 0.03) 100%);
+      border: 1.5px solid rgba(92, 182, 230, 0.28);
       border-radius: 14px;
-      padding: 12px 16px;
-      margin-bottom: 24px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      flex-shrink: 0;
     }
 
     .pkg-banner-icon {
       font-size: 18px;
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border-radius: 10px;
-      background: rgba(41, 173, 255, 0.15);
+      background: rgba(92, 182, 230, 0.15);
       color: #0284c7;
       display: flex;
       align-items: center;
@@ -273,7 +288,7 @@
     .pkg-banner-info {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1px;
     }
 
     .pkg-banner-sub {
@@ -286,7 +301,7 @@
     }
 
     .pkg-banner-title {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.2px;
@@ -297,15 +312,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
+      margin-bottom: 22px;
       position: relative;
+      flex-shrink: 0;
     }
 
     .booking-step-indicator {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 13.5px;
+      gap: 8px;
+      font-size: 13px;
       font-weight: 700;
       color: #94a3b8;
     }
@@ -315,15 +331,15 @@
     }
 
     .step-num-circle {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background: #e2e8f0;
       color: #64748b;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
     }
 
@@ -336,39 +352,53 @@
       flex: 1;
       height: 2px;
       background: #e2e8f0;
-      margin: 0 16px;
+      margin: 0 12px;
     }
 
     /* Form Fields */
+    /* Form Steps Layout - ALL 3 STEPS FILL CONTAINER HEIGHT IDENTICALLY */
+    #contact-page-form-step-1,
+    #contact-page-form-step-2,
+    #contact-page-form-step-3 {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
     .contact-form-title {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 800;
       color: #0f172a;
-      margin: 0 0 6px 0;
+      margin: 0 0 4px 0;
       letter-spacing: -0.4px;
     }
 
     .contact-form-subtitle {
-      font-size: 14px;
+      font-size: 13.5px;
       color: #64748b;
-      margin: 0 0 24px 0;
+      margin: 0 0 16px 0;
+      line-height: 1.45;
     }
 
     .form-inputs-group {
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      margin-bottom: 28px;
+      gap: 12px;
+      margin-bottom: auto;
     }
 
     .form-field-unit {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .form-field-unit label {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: #1e293b;
     }
@@ -380,18 +410,18 @@
     .form-field-unit label span.opt {
       font-weight: 400;
       color: #94a3b8;
-      font-size: 12.5px;
+      font-size: 12px;
     }
 
     .form-field-unit input,
     .form-field-unit select {
       width: 100%;
       box-sizing: border-box;
-      padding: 13px 16px;
-      border-radius: 12px;
+      padding: 11px 14px;
+      border-radius: 11px;
       border: 1.5px solid #cbd5e1;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14.5px;
       color: #0f172a;
       background: #f8fafc;
       transition: all 0.2s ease;
@@ -399,29 +429,29 @@
     }
 
     .form-field-unit input:focus {
-      border-color: #29ADFF;
+      border-color: #5CB6E6;
       background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(41, 173, 255, 0.15);
+      box-shadow: 0 0 0 3px rgba(92, 182, 230, 0.15);
     }
 
-    /* Meeting Type Selector (Live vs Google Meet) */
+    /* Meeting Type Selector (Live vs Google Meet) - Compact */
     .meeting-type-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 4px;
+      gap: 10px;
+      margin-top: 2px;
     }
 
     .meeting-type-card {
       border: 2px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 16px 14px;
+      border-radius: 12px;
+      padding: 10px 12px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 10px;
+      gap: 8px;
       background: #f8fafc;
       transition: all 0.2s ease;
       user-select: none;
@@ -433,40 +463,40 @@
     }
 
     .meeting-type-card.selected {
-      border-color: #29ADFF;
-      background: rgba(41, 173, 255, 0.08);
-      box-shadow: 0 4px 14px rgba(41, 173, 255, 0.15);
+      border-color: #5CB6E6;
+      background: rgba(92, 182, 230, 0.08);
+      box-shadow: 0 4px 14px rgba(92, 182, 230, 0.15);
     }
 
     .meeting-type-icon {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .meeting-type-name {
-      font-size: 14.5px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #0f172a;
     }
 
-    /* Custom Modern Calendar Widget */
+    /* Custom Modern Calendar Widget - Compact & Clean */
     .custom-calendar-widget {
       background: #f8fafc;
       border: 1.5px solid #e2e8f0;
-      border-radius: 18px;
-      padding: 18px;
-      margin-top: 6px;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-top: 2px;
     }
 
     .calendar-nav-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
-      padding: 0 4px;
+      margin-bottom: 10px;
+      padding: 0 2px;
     }
 
     .cal-month-title {
-      font-size: 15.5px;
+      font-size: 14px;
       font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.3px;
@@ -474,13 +504,13 @@
     }
 
     .cal-nav-btn {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       border: 1px solid #cbd5e1;
       background: #ffffff;
       color: #1e293b;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
       display: flex;
       align-items: center;
@@ -503,12 +533,12 @@
     .cal-weekdays-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 6px;
+      gap: 4px;
       text-align: center;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: #64748b;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       text-transform: uppercase;
     }
 
@@ -519,16 +549,16 @@
     .cal-days-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 6px;
+      gap: 4px;
     }
 
     .cal-day-cell {
-      aspect-ratio: 1;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 10px;
-      font-size: 13.5px;
+      border-radius: 8px;
+      font-size: 12.5px;
       font-weight: 600;
       border: 1px solid transparent;
       transition: all 0.18s ease;
@@ -549,17 +579,17 @@
 
     .cal-day-cell.cal-day-active:hover {
       background: #f0f9ff;
-      border-color: #29ADFF;
+      border-color: #5CB6E6;
       color: #0284c7;
       transform: scale(1.04);
     }
 
     .cal-day-cell.cal-day-selected {
-      background: #29ADFF !important;
-      border-color: #29ADFF !important;
+      background: #5CB6E6 !important;
+      border-color: #5CB6E6 !important;
       color: #ffffff !important;
       font-weight: 800 !important;
-      box-shadow: 0 4px 12px rgba(41, 173, 255, 0.35);
+      box-shadow: 0 4px 12px rgba(92, 182, 230, 0.35);
     }
 
     .cal-day-cell.cal-day-weekend {
@@ -583,7 +613,7 @@
       font-size: 13px;
       font-weight: 600;
       color: #0369a1;
-      background: rgba(41, 173, 255, 0.1);
+      background: rgba(92, 182, 230, 0.1);
       padding: 6px 12px;
       border-radius: 8px;
       display: inline-flex;
@@ -591,21 +621,72 @@
       gap: 6px;
     }
 
-    /* Time Slots Grid */
+    /* Selected Date Summary Pill (Step 3) */
+    .selected-date-summary-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f0f9ff;
+      border: 1.5px solid rgba(92, 182, 230, 0.35);
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+    }
+
+    .summary-pill-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .summary-pill-left span:first-child {
+      font-size: 20px;
+    }
+
+    .summary-pill-left div {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .summary-pill-left strong {
+      font-size: 13.5px;
+      color: #0f172a;
+      font-weight: 800;
+    }
+
+    .summary-pill-left span:last-child {
+      font-size: 12px;
+      color: #0284c7;
+      font-weight: 600;
+    }
+
+    .summary-pill-change-btn {
+      background: transparent;
+      border: none;
+      color: #0284c7;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 4px 6px;
+    }
+
+    /* Time Slots Grid - Compact */
     .contact-time-slots-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
-      gap: 8px;
-      margin-top: 6px;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
     }
 
     .contact-slot-btn {
-      padding: 10px 6px;
-      border-radius: 10px;
+      padding: 12px 8px;
+      border-radius: 12px;
       border: 1.5px solid #cbd5e1;
       background: #ffffff;
       color: #1e293b;
-      font-size: 13.5px;
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       text-align: center;
@@ -614,45 +695,45 @@
     }
 
     .contact-slot-btn:hover {
-      border-color: #29ADFF;
+      border-color: #5CB6E6;
       color: #0f172a;
       background: #f0f9ff;
     }
 
     .contact-slot-btn.selected {
-      background: #29ADFF !important;
+      background: #5CB6E6 !important;
       color: #ffffff !important;
-      border-color: #29ADFF !important;
-      box-shadow: 0 4px 12px rgba(41, 173, 255, 0.35);
+      border-color: #5CB6E6 !important;
+      box-shadow: 0 4px 12px rgba(92, 182, 230, 0.35);
     }
 
     /* Action Buttons */
     /* GDPR Consent Box */
     .form-consent-unit {
-      margin: 8px 0 24px 0;
+      margin: 4px 0 16px 0;
     }
 
     .consent-checkbox-label {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
       user-select: none;
     }
 
     .consent-checkbox-label input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
+      width: 17px;
+      height: 17px;
       margin-top: 2px;
       cursor: pointer;
-      accent-color: #29ADFF;
+      accent-color: #5CB6E6;
       flex-shrink: 0;
     }
 
     .consent-text {
-      font-size: 13.5px;
+      font-size: 13px;
       color: #64748b;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     .consent-text a {
@@ -675,8 +756,9 @@
     .form-step1-btns-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 8px;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 8px;
     }
 
     .btn-contact-direct-inquiry {
@@ -686,13 +768,13 @@
       gap: 8px;
       width: 100%;
       box-sizing: border-box;
-      padding: 16px 22px;
+      padding: 14px 18px;
       background: #0f172a;
       color: #ffffff;
       border: 1.5px solid #334155;
-      border-radius: 14px;
+      border-radius: 12px;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.25s ease;
@@ -701,9 +783,9 @@
 
     .btn-contact-direct-inquiry:hover:not(:disabled) {
       background: #1e293b;
-      border-color: #29ADFF;
+      border-color: #5CB6E6;
       transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(41, 173, 255, 0.25);
+      box-shadow: 0 6px 18px rgba(92, 182, 230, 0.25);
     }
 
     .btn-contact-direct-inquiry:disabled {
@@ -713,8 +795,9 @@
 
     .btn-step-row {
       display: flex;
-      gap: 14px;
-      margin-top: 8px;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 8px;
     }
 
     .btn-contact-primary {
@@ -723,23 +806,23 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 16px 22px;
-      background: linear-gradient(135deg, #29ADFF 0%, #0077ff 100%);
+      padding: 14px 18px;
+      background: linear-gradient(135deg, #5CB6E6 0%, #0077ff 100%);
       color: #ffffff;
       border: none;
-      border-radius: 14px;
+      border-radius: 12px;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.25s ease;
       box-sizing: border-box;
-      box-shadow: 0 8px 24px rgba(41, 173, 255, 0.35);
+      box-shadow: 0 6px 20px rgba(92, 182, 230, 0.35);
     }
 
     .btn-contact-primary:hover:not(:disabled) {
       transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(41, 173, 255, 0.5);
+      box-shadow: 0 10px 26px rgba(92, 182, 230, 0.5);
       background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
     }
 
@@ -752,13 +835,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 15px 22px;
+      padding: 13px 20px;
       background: transparent;
       color: #1e293b;
       border: 1.5px solid #cbd5e1;
-      border-radius: 14px;
+      border-radius: 12px;
       font-family: inherit;
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -772,49 +855,66 @@
     /* Step 3 Success Card */
     .contact-success-state {
       text-align: center;
-      padding: 24px 12px;
+      padding: 18px 8px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      box-sizing: border-box;
     }
 
     .success-check-circle {
-      width: 68px;
-      height: 68px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: #10b981;
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 900;
-      margin: 0 auto 20px;
-      box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.4);
+      margin: 0 auto 16px;
+      box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.35);
     }
 
     .success-heading {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 800;
       color: #0f172a;
-      margin: 0 0 12px 0;
-      letter-spacing: -0.5px;
+      margin: 0 0 8px 0;
+      letter-spacing: -0.4px;
     }
 
     .success-message-text {
-      font-size: 15px;
-      color: #475569;
-      line-height: 1.6;
-      margin: 0 0 24px 0;
+      font-size: 14.5px;
+      color: #64748b;
+      line-height: 1.5;
+      margin: 0 0 20px 0;
     }
 
     .success-summary-card {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
+      background: #f7f7f8;
+      border: 1.5px solid #e2e8f0;
       border-radius: 16px;
-      padding: 20px;
+      padding: 18px 20px;
       text-align: left;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       font-size: 14px;
-      color: #1e293b;
-      line-height: 1.65;
+      color: #0f172a;
+      line-height: 1.6;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    @media (max-width: 1024px) {
+      .contact-layout-stack {
+        grid-template-columns: 1fr;
+        max-width: 720px;
+        gap: 32px;
+      }
+      .contact-info-panel {
+        position: static;
+      }
     }
 
     @media (max-width: 960px) {
@@ -826,111 +926,455 @@
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      /* Normal natural scrolling on mobile */
+      html, body {
+        height: auto !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        position: static !important;
+        width: 100% !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+
+
+
+      /* Hero Section with comfortable padding */
+      .contact-hero-section {
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        padding: 100px 16px 40px !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+      }
+
+      /* Header visible and readable on mobile */
+      .contact-header {
+        display: block !important;
+        text-align: center !important;
+        margin: 0 auto 32px !important;
+        max-width: 100% !important;
+        padding: 0 4px !important;
+      }
+      .contact-title {
+        font-size: 32px !important;
+        letter-spacing: -1px !important;
+        margin-bottom: 14px !important;
+        line-height: 1.18 !important;
+      }
+      .contact-desc {
+        font-size: 15.5px !important;
+        line-height: 1.6 !important;
+        color: #94a3b8 !important;
+      }
+
+      /* Layout stack - single column on mobile */
+      .contact-layout-stack {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 28px !important;
+        max-width: 100% !important;
+        margin: 0 auto 40px auto !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      /* Contact Card - Natural Comfortable Height with no clipping */
+      .contact-card-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 24px 20px !important;
+        border-radius: 24px !important;
+        background: #ffffff !important;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
+        box-sizing: border-box !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        display: block !important;
+      }
+
+      /* Selected Package Banner */
+      .form-selected-pkg-banner {
+        display: flex !important;
+        padding: 10px 12px !important;
+        margin-bottom: 18px !important;
+        border-radius: 12px !important;
+      }
+      .pkg-banner-icon {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 16px !important;
+      }
+      .pkg-banner-title {
+        font-size: 13.5px !important;
+      }
+
+      /* Steps Progress Bar */
+      .booking-steps-bar {
+        margin-bottom: 20px !important;
+      }
+      .booking-step-indicator {
+        font-size: 12px !important;
+        gap: 6px !important;
+      }
+      .step-num-circle {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 11.5px !important;
+      }
+      .step-divider-line {
+        margin: 0 8px !important;
+      }
+
+      /* Form Headings */
+      .contact-form-title {
+        font-size: 18px !important;
+        font-weight: 800 !important;
+        margin: 0 0 4px 0 !important;
+      }
+      .contact-form-subtitle {
+        font-size: 12.5px !important;
+        line-height: 1.4 !important;
+        margin: 0 0 18px 0 !important;
+      }
+
+      /* Inputs Group */
+      .form-inputs-group {
+        gap: 14px !important;
+        margin-bottom: 18px !important;
+      }
+      .form-field-unit {
+        gap: 4px !important;
+      }
+      .form-field-unit label {
+        font-size: 13px !important;
+      }
+      .form-field-unit input {
+        font-size: 16px !important; /* Prevents iOS zoom */
+        padding: 12px 14px !important;
+        border-radius: 11px !important;
+      }
+
+      /* Consent Unit */
+      .form-consent-unit {
+        margin: 6px 0 20px 0 !important;
+      }
+      .consent-text {
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+      }
+
+      /* Action Buttons */
       .form-step1-btns-row {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        margin-top: 8px !important;
+      }
+      .btn-contact-direct-inquiry,
+      .btn-contact-primary,
+      .btn-contact-secondary {
+        padding: 13px 14px !important;
+        font-size: 13.5px !important;
+        border-radius: 12px !important;
+        min-height: 44px !important;
+      }
+
+      /* Meeting Type Cards on mobile */
+      .meeting-type-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+      }
+      .meeting-type-card {
+        padding: 12px 10px !important;
+        border-radius: 12px !important;
+      }
+      .meeting-type-icon {
+        font-size: 18px !important;
+      }
+      .meeting-type-name {
+        font-size: 13px !important;
+      }
+
+      /* Calendar on mobile */
+      .custom-calendar-widget {
+        padding: 14px !important;
+        border-radius: 16px !important;
+      }
+      .cal-month-title {
+        font-size: 15px !important;
+      }
+      .cal-nav-btn {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 13px !important;
+      }
+      .cal-weekdays-grid {
+        font-size: 11.5px !important;
+        gap: 4px !important;
+        margin-bottom: 8px !important;
+      }
+      .cal-days-grid {
+        gap: 4px !important;
+      }
+      .cal-day-cell {
+        height: 38px !important;
+        font-size: 13.5px !important;
+        border-radius: 8px !important;
+      }
+
+      /* Time Slots on mobile */
+      .contact-time-slots-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+      }
+      .contact-slot-btn {
+        padding: 11px 6px !important;
+        font-size: 13.5px !important;
+        border-radius: 10px !important;
+      }
+
+      /* Step Navigation Buttons */
+      .btn-step-row {
+        display: flex !important;
+        gap: 10px !important;
+        margin-top: 18px !important;
+      }
+      #contact-btn-back-to-1,
+      #contact-btn-back-to-2 {
+        flex: 0 0 85px !important;
+      }
+
+      /* Info Panel & Footer visible naturally below form on mobile */
+      .contact-info-panel {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        padding: 28px 20px !important;
+        border-radius: 24px !important;
+        position: static !important;
+      }
+      .info-panel-title {
+        font-size: 19px !important;
+        margin-bottom: 10px !important;
+      }
+      .info-panel-desc {
+        font-size: 13.5px !important;
+        margin-bottom: 20px !important;
+      }
+      .info-perks-list {
+        gap: 14px !important;
+        margin-bottom: 22px !important;
+      }
+      .info-perk-item {
+        font-size: 13.5px !important;
+      }
+
+      .footer-card-wrapper {
+        display: block !important;
       }
     }
 
-    /* Critical Ultra Navbar Styles for Instant Paint */
-    .ultra-navbar {
-      position: fixed !important;
-      top: 24px !important;
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-      width: auto !important;
-      max-width: 95vw !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 36px !important;
-      background: rgba(246, 246, 248, 0.92) !important;
-      backdrop-filter: blur(28px) saturate(180%) !important;
-      -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
-      border: 1px solid rgba(255, 255, 255, 0.95) !important;
-      border-radius: 40px !important;
-      padding: 10px 30px !important;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.9) !important;
-      z-index: 100000 !important;
+    /* Disable sticky hover states on mobile/touch */
+    @media (hover: none), (pointer: coarse) {
+      .btn-contact-primary:hover,
+      .btn-contact-direct-inquiry:hover,
+      .btn-contact-secondary:hover,
+      .meeting-type-card:hover,
+      .contact-slot-btn:hover,
+      .cal-day-cell:hover {
+        transform: none !important;
+        box-shadow: none !important;
+      }
+      .btn-contact-primary:hover {
+        background: linear-gradient(135deg, #5CB6E6 0%, #0077ff 100%) !important;
+      }
+      .btn-contact-direct-inquiry:hover {
+        background: #0f172a !important;
+        border-color: #334155 !important;
+      }
+    }
+
+
+
+    /* Pure Black Full-Width Edge-to-Edge Footer (Kontakt page only) */
+    .footer-card-wrapper {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      background: #000000 !important;
+      border: none !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .footer-card-wrapper .brand-footer-card,
+    .brand-footer-card {
+      width: 100% !important;
+      max-width: 1240px !important;
       margin: 0 auto !important;
-    }
-    .ultra-brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .navbar-brand-logo-img { height: 32px; width: auto; display: block; object-fit: contain; }
-    .ultra-nav-menu { display: flex !important; align-items: center !important; gap: 28px !important; background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
-    .mobile-nav-links-grid { display: flex; align-items: center; gap: 28px; white-space: nowrap !important; }
-    .ultra-nav-link { color: #334155 !important; font-weight: 700 !important; font-size: 14.5px !important; text-decoration: none !important; transition: all 0.25s ease !important; white-space: nowrap !important; }
-    .ultra-nav-link:hover { color: #000000 !important; transform: translateY(-1px) !important; }
-    .mobile-nav-toggle { display: none; background: transparent; border: none; cursor: pointer; padding: 8px; z-index: 100001; }
-    .mobile-nav-email-box { display: none !important; }
-
-    @media (max-width: 900px) {
-      .ultra-navbar { width: calc(100% - 32px) !important; max-width: 100% !important; justify-content: space-between !important; padding: 12px 20px !important; border-radius: 20px !important; top: 16px !important; }
-      .mobile-nav-toggle { display: flex !important; flex-direction: column; justify-content: center; gap: 5px; width: 34px; height: 34px; }
-      .hamburger-bar { width: 22px; height: 2px; background: #0f172a; border-radius: 2px; transition: all 0.3s ease; }
-      .mobile-nav-toggle.open .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .mobile-nav-toggle.open .hamburger-bar:nth-child(2) { opacity: 0; }
-      .mobile-nav-toggle.open .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-      .ultra-nav-menu { display: none !important; position: absolute; top: calc(100% + 10px); left: 0; width: 100%; background: #ffffff !important; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px !important; box-shadow: 0 20px 40px rgba(0,0,0,0.15); flex-direction: column; gap: 16px; }
-      .ultra-nav-menu.open { display: flex !important; }
-      .mobile-nav-links-grid { flex-direction: column; align-items: flex-start; gap: 14px; width: 100%; }
-      .ultra-nav-link { font-size: 16px !important; color: #0f172a !important; padding: 8px 0; width: 100%; border-bottom: 1px solid #f1f5f9; }
-      .mobile-nav-email-box { display: block !important; margin-top: 10px; }
-      .mobile-nav-email-link { color: #29ADFF; font-weight: 700; text-decoration: none; font-size: 14px; }
+      background: #000000 !important;
+      border-radius: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 70px 24px 44px !important;
+      color: #ffffff;
+      box-sizing: border-box !important;
     }
 
-    /* Critical Footer Styles */
-    .footer-card-wrapper { max-width: 1240px; margin: 0 auto; padding: 0 24px 60px; box-sizing: border-box; }
-    .brand-footer-card { background: #0f172a; border-radius: 28px; padding: 60px 48px 40px; color: #ffffff; }
-    .footer-photo-credit-text { font-size: 13px; color: #64748b; margin-bottom: 28px; font-weight: 500; }
-    .footer-card-top { display: flex; justify-content: space-between; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; }
-    .footer-logo-col { max-width: 320px; }
+    .footer-brand-logo-img {
+      height: 38px !important;
+      width: auto !important;
+      display: block;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+
+    .footer-photo-credit-text { font-size: 13px; color: #64748b; margin-bottom: 28px; font-weight: 500; border: none !important; padding-bottom: 0 !important; }
+    .footer-card-top { display: flex; justify-content: space-between; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; border: none !important; padding-bottom: 0 !important; }
+    .footer-logo-col { max-width: 340px; }
     .footer-tagline { color: #94a3b8; font-size: 14.5px; line-height: 1.6; margin-top: 14px; }
     .footer-links-grid { display: flex; gap: 60px; flex-wrap: wrap; }
     .footer-link-group h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-bottom: 18px; }
     .footer-link-group ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
     .footer-link-group a { color: #cbd5e1; text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .footer-link-group a:hover { color: #29ADFF; }
-    .footer-card-bottom { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px; font-size: 13.5px; color: #64748b; }
+    .footer-link-group a:hover { color: #5CB6E6; }
+    .footer-card-bottom { display: flex; align-items: center; justify-content: space-between; border: none !important; padding-top: 30px; font-size: 13.5px; color: #64748b; }
     .footer-credit-brand { color: #ffffff; font-weight: 700; }
+
     @media (max-width: 800px) {
-      .footer-card-top { flex-direction: column; gap: 32px; }
-      .footer-links-grid { gap: 32px; }
-      .brand-footer-card { padding: 40px 24px 30px; }
-      .footer-card-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-card-wrapper {
+        padding: 0 !important;
+        background: #000000 !important;
+        border: none !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      }
+      .footer-card-wrapper .brand-footer-card,
+      .brand-footer-card {
+        padding: 48px 20px 32px !important;
+        background: #000000 !important;
+        border-radius: 0 !important;
+        border: none !important;
+      }
+      .footer-brand-logo-img {
+        height: 32px !important;
+      }
+      .footer-card-top { 
+        flex-direction: column !important; 
+        gap: 32px !important; 
+        border: none !important; 
+        padding-bottom: 0 !important; 
+      }
+      .footer-links-grid { 
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        column-gap: 24px !important;
+        row-gap: 28px !important;
+      }
+      .footer-link-group-istrazi {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+      }
+      .footer-link-group-pravno {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+      }
+      .footer-link-group-social {
+        grid-column: 1 / -1 !important;
+        grid-row: 2 !important;
+      }
+      .footer-card-bottom { 
+        flex-direction: column !important; 
+        gap: 12px !important; 
+        text-align: center !important; 
+        border: none !important; 
+      }
     }
-  </style>
+
+</style>
 </head>
 <body>
 
-  <!-- Floating Glass Navbar -->
-  <header class="ultra-navbar">
-    <!-- Brand Logo -->
-    <a href="/" class="ultra-brand-logo" aria-label="Algor studio Početna">
-      <img src="logo_black_transparent.png" alt="Algor studio" class="navbar-brand-logo-img">
-    </a>
+  <!-- Floating Capsule Navbar with Frosted Glass & Seamless Mobile Expansion -->
+  <header class="floating-capsule-navbar" id="main-capsule-navbar">
+    <!-- Frosted Glass Shell Layer -->
+    <div class="nav-glass-backdrop"></div>
 
-    <!-- Mobile Hamburger Toggle Button -->
-    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Otvori izbornik">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
+    <!-- Capsule Content Layer -->
+    <div class="nav-pill-content">
+      <div class="nav-mobile-top-bar">
+        <!-- Brand Logo -->
+        <a href="/" class="nav-brand-link" aria-label="Algor Studio Početna">
+          <img src="logo_white_transparent.png" alt="Algor Studio" class="nav-brand-img">
+        </a>
 
-    <!-- Pill Nav Menu (Desktop & Mobile Drawer) -->
-    <nav class="ultra-nav-menu" id="ultra-nav-menu">
-      <div class="mobile-nav-links-grid">
-        <a href="/#about" class="ultra-nav-link">O nama</a>
-        <a href="/#before-after" class="ultra-nav-link">Usporedba</a>
-        <a href="/#portfolio" class="ultra-nav-link">Projekti</a>
-        <a href="/#process" class="ultra-nav-link">Proces</a>
-        <a href="/#pricing" class="ultra-nav-link">Cijene</a>
-        <a href="/#faq" class="ultra-nav-link">FAQ</a>
+        <!-- Desktop Nav Links -->
+        <nav aria-label="Glavna navigacija">
+          <ul class="nav-links-list">
+            <li class="nav-link-item"><a href="/#about">O nama</a></li>
+            <li class="nav-link-item"><a href="/izrada-web-stranica">Web Stranice</a></li>
+            <li class="nav-link-item"><a href="/chatgpt-ads">ChatGPT Ads</a></li>
+            <li class="nav-link-item"><a href="/#projekti">Projekti</a></li>
+            <li class="nav-link-item"><a href="/#proces">Proces</a></li>
+            <li class="nav-link-item"><a href="/#pricing">Cjenik</a></li>
+            <li class="nav-link-item"><a href="/#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right Action Items: Email + Contact Button + Mobile Toggle -->
+        <div class="nav-actions-group">
+          <a href="mailto:info@algor.studio" class="nav-email-pill" title="Pošaljite email na info@algor.studio">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@algor.studio</span>
+          </a>
+
+          <a href="/kontakt" class="nav-cta-pill">
+            <span>Kontakt</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+
+          <!-- Mobile Burger Button -->
+          <button type="button" class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Otvori navigacijski izbornik" aria-expanded="false">
+            <svg class="nav-burger-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            <svg class="nav-burger-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div class="mobile-nav-email-box">
-        <a href="mailto:info@algor.studio" class="mobile-nav-email-link">✉️ info@algor.studio</a>
+      <!-- Mobile Dropdown Panel (Seamlessly inside the expanding capsule) -->
+      <div class="nav-mobile-menu" id="nav-mobile-menu">
+        <ul class="nav-mobile-links">
+          <li><a href="/#about">O nama</a></li>
+          <li><a href="/izrada-web-stranica">Web Stranice</a></li>
+          <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
+          <li><a href="/#projekti">Projekti</a></li>
+          <li><a href="/#proces">Proces</a></li>
+          <li><a href="/#pricing">Cjenik</a></li>
+          <li><a href="/#faq">Česta pitanja</a></li>
+        </ul>
+        <div class="nav-mobile-divider"></div>
+        <div class="nav-mobile-bottom-actions">
+          <a href="mailto:info@algor.studio" class="nav-mobile-email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@algor.studio</span>
+          </a>
+          <a href="/kontakt" class="nav-mobile-cta">
+            <span>Zatražite ponudu &rarr;</span>
+          </a>
+        </div>
       </div>
-    </nav>
+    </div>
   </header>
 
   <!-- Main Contact Layout -->
@@ -965,19 +1409,24 @@
         <div class="booking-steps-bar">
           <div class="booking-step-indicator active" id="step-ind-1">
             <span class="step-num-circle">1</span>
-            <span>Vaši podaci</span>
+            <span>Podaci</span>
           </div>
           <div class="step-divider-line"></div>
           <div class="booking-step-indicator" id="step-ind-2">
             <span class="step-num-circle">2</span>
-            <span>Odabir termina</span>
+            <span>Datum</span>
+          </div>
+          <div class="step-divider-line"></div>
+          <div class="booking-step-indicator" id="step-ind-3">
+            <span class="step-num-circle">3</span>
+            <span>Vrijeme</span>
           </div>
         </div>
 
         <!-- STEP 1: Basic Information -->
         <form id="contact-page-form-step-1">
           <h3 class="contact-form-title">Unesite osnovne podatke</h3>
-          <p class="contact-form-subtitle">Sve je obavezno ispuniti osim broja mobitela.</p>
+          <p class="contact-form-subtitle">Ispunite kratke podatke i u idućem koraku odaberite želite li sastanak uživo ili Google Meet poziv te željeni datum i sat.</p>
 
           <div class="form-inputs-group">
             <div class="form-field-unit">
@@ -1016,22 +1465,21 @@
             <button type="button" class="btn-contact-direct-inquiry" id="btn-direct-inquiry">
               <span>✉️ Pošalji upit</span>
             </button>
-            <button type="submit" class="btn-contact-primary" id="btn-to-meeting">
-              <span>📅 Želim sastanak</span>
+            <button type="button" class="btn-contact-primary" id="btn-to-meeting">
+              <span>📅 Odaberi termin</span>
               <span>↗</span>
             </button>
           </div>
         </form>
 
-        <!-- STEP 2: Meeting Type, Date & Time Picker -->
+        <!-- STEP 2: Meeting Type & Calendar Date Picker -->
         <div id="contact-page-form-step-2" style="display: none;">
-          <h3 class="contact-form-title">Odaberite vrstu i termin sastanka</h3>
-          <p class="contact-form-subtitle">Odaberite način održavanja sastanka, radni dan i vrijeme.</p>
+          <h3 class="contact-form-title">Odaberite način i datum</h3>
 
           <div class="form-inputs-group">
             <!-- 1. Meeting Type (Live vs Google Meet) -->
             <div class="form-field-unit">
-              <label>1. Način održavanja sastanka <span class="req">*</span></label>
+              <label>Način sastanka <span class="req">*</span></label>
               <div class="meeting-type-grid">
                 <div class="meeting-type-card selected" data-meeting="Sastanak uživo" id="type-card-live">
                   <span class="meeting-type-icon">🏢</span>
@@ -1046,7 +1494,7 @@
 
             <!-- 2. Interactive Calendar Date Picker (Mon-Fri) -->
             <div class="form-field-unit">
-              <label>2. Odaberite datum (Pon - Pet) <span class="req">*</span></label>
+              <label>Odaberite datum (Pon - Pet) <span class="req">*</span></label>
               <div class="custom-calendar-widget" id="custom-calendar-widget">
                 <div class="calendar-nav-bar">
                   <button type="button" class="cal-nav-btn" id="cal-prev-month" aria-label="Prethodni mjesec">←</button>
@@ -1065,16 +1513,37 @@
                 <div class="cal-days-grid" id="cal-days-grid">
                   <!-- Dynamically populated via JS -->
                 </div>
-                <div class="cal-selected-badge" id="cal-selected-badge" style="display: none;">
-                  <span>📅</span> <span id="cal-selected-badge-text">Odabrani datum</span>
-                </div>
                 <input type="hidden" id="contact-date" required />
               </div>
             </div>
+          </div>
 
-            <!-- 3. Time Slots (45-min intervali) -->
+          <div class="btn-step-row">
+            <button type="button" class="btn-contact-secondary" id="contact-btn-back-to-1">
+              <span>Nazad</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Time Slot Picker & Confirmation -->
+        <div id="contact-page-form-step-3" style="display: none;">
+          <h3 class="contact-form-title">Odaberite vrijeme sastanka</h3>
+          
+          <!-- Summary bar of selected meeting type & date -->
+          <div class="selected-date-summary-pill" id="selected-date-summary-pill">
+            <div class="summary-pill-left">
+              <span id="summary-pill-meeting-icon">🏢</span>
+              <div>
+                <strong id="summary-pill-date-text">Odabrani datum</strong>
+                <span id="summary-pill-type-text">Sastanak uživo (45 min)</span>
+              </div>
+            </div>
+            <button type="button" class="summary-pill-change-btn" id="btn-change-date">Promijeni</button>
+          </div>
+
+          <div class="form-inputs-group">
             <div class="form-field-unit">
-              <label>3. Odaberite vrijeme termina <span class="req">*</span></label>
+              <label>Dostupni termini za odabrani dan: <span class="req">*</span></label>
               <div id="contact-time-slots-wrap" class="contact-time-slots-grid">
                 <!-- Dynamically populated via JS -->
               </div>
@@ -1082,7 +1551,7 @@
           </div>
 
           <div class="btn-step-row">
-            <button type="button" class="btn-contact-secondary" id="contact-btn-back">
+            <button type="button" class="btn-contact-secondary" id="contact-btn-back-to-2">
               <span>Nazad</span>
             </button>
             <button type="button" class="btn-contact-primary" id="contact-btn-confirm" disabled>
@@ -1095,19 +1564,24 @@
         <!-- STEP 3: Success State -->
         <div id="contact-page-step-success" class="contact-success-state" style="display: none;">
           <div class="success-check-circle">✓</div>
-          <h3 class="success-heading">Sastanak je uspješno zakazan!</h3>
-          <p class="success-message-text">
-            Hvala vam! Vaš zahtjev za terminom je zaprimljen i potvrđen.
+          <h3 class="success-heading" id="contact-success-title">Upit je uspješno poslan!</h3>
+          <p class="success-message-text" id="contact-success-desc">
+            Hvala vam! Vaš upit je zaprimljen. Javit ćemo vam se u najkraćem mogućem roku (unutar 24h).
           </p>
 
           <div class="success-summary-card" id="contact-success-summary">
             <!-- Dynamic summary text -->
           </div>
 
-          <a href="/" class="btn-contact-primary" style="text-decoration: none;">
-            <span>Povratak na naslovnu stranicu</span>
-            <span>↗</span>
-          </a>
+          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+            <a href="/" class="btn-contact-primary" style="text-decoration: none; padding: 12px 24px;">
+              <span>Povratak na naslovnu</span>
+              <span>↗</span>
+            </a>
+            <button type="button" id="btn-new-inquiry" class="btn-contact-secondary" style="padding: 12px 24px; cursor: pointer;">
+              <span>Pošalji novi upit</span>
+            </button>
+          </div>
         </div>
 
       </div>
@@ -1164,29 +1638,25 @@
         
         <!-- Right Columns: Links -->
         <div class="footer-links-grid">
-          <div class="footer-link-group">
+          <div class="footer-link-group footer-link-group-istrazi">
             <h4>Istraži</h4>
             <ul>
-              <li><a href="/#about">O nama</a></li>
-              <li><a href="/#before-after">Usporedba</a></li>
-              <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
-                <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
-              <li><a href="/#portfolio">Projekti</a></li>
-              <li><a href="/#process">Proces</a></li>
               <li><a href="/#pricing">Cjenik</a></li>
+              <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
+              <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
               <li><a href="/karijere">Karijere</a></li>
               <li><a href="/kontakt">Kontakt</a></li>
             </ul>
           </div>
           
-          <div class="footer-link-group">
+          <div class="footer-link-group footer-link-group-social">
             <h4>Društvene mreže</h4>
             <ul>
               <li><a href="https://www.instagram.com/algor_studio?igsi=cGo4b3VvenlwNnp4&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             </ul>
           </div>
 
-          <div class="footer-link-group">
+          <div class="footer-link-group footer-link-group-pravno">
             <h4>Pravno</h4>
             <ul>
               <li><a href="/politika-privatnosti">Politika privatnosti</a></li>
@@ -1212,6 +1682,6 @@
     </footer>
   </div>
 
-  <script defer src="script.js?v=104.0.0"></script>
+  <script defer src="script.js?v=230.0.0"></script>
 </body>
 </html>

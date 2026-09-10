@@ -60,9 +60,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=104.0.0">
   <link rel="icon" type="image/png" href="favicon.png?v=104.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=104.0.0">
-  <link rel="stylesheet" href="style.css?v=104.0.0">
+  <link rel="stylesheet" href="style.css?v=230.0.0">
   <style>
-    body { background-color: #f1f5f9 !important; color: #0f172a !important; font-family: 'Inter', sans-serif !important; margin: 0; padding: 0; }
+    body { background-color: #f7f7f8 !important; color: #0f172a !important; font-family: 'Inter', sans-serif !important; margin: 0; padding: 0; }
     .legal-page-wrapper { max-width: 900px; margin: 130px auto 80px; padding: 0 24px; }
     .legal-card-box { background: #ffffff !important; border: 1px solid #cbd5e1 !important; border-radius: 12px !important; padding: 56px 48px !important; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important; }
     .legal-tag-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.5px; }
@@ -94,42 +94,477 @@
     .legal-back-btn { display: inline-flex; align-items: center; gap: 8px; color: #475569; font-weight: 600; text-decoration: none; margin-bottom: 24px; font-size: 13.5px; transition: color 0.2s ease; }
     .legal-back-btn:hover { color: #0f172a; }
 
+    /* Edge-to-Edge Flat Fullwidth Footer */
+    .edge-to-edge-footer {
+      width: 100vw !important;
+      position: relative !important;
+      left: 50% !important;
+      right: 50% !important;
+      margin-left: -50vw !important;
+      margin-right: -50vw !important;
+      margin-bottom: 0 !important;
+      margin-top: 60px !important;
+      background: #08090d !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+      padding: 60px 0 40px 0 !important;
+      box-sizing: border-box !important;
+    }
+    .edge-to-edge-footer .footer-inner-container {
+      max-width: 1360px !important;
+      margin: 0 auto !important;
+      padding: 0 32px !important;
+      box-sizing: border-box !important;
+    }
+    .edge-to-edge-footer .brand-footer-card {
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+    }
+    .edge-to-edge-footer .footer-card-top {
+      display: grid !important;
+      grid-template-columns: 1.2fr 2.8fr !important;
+      gap: 48px !important;
+      padding-bottom: 40px !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    }
+    .edge-to-edge-footer .footer-links-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 32px !important;
+    }
+
+    @media (max-width: 900px) {
+      .edge-to-edge-footer .footer-card-top { grid-template-columns: 1fr !important; }
+      .edge-to-edge-footer .footer-links-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
     @media (max-width: 768px) {
       .legal-card-box { padding: 32px 20px !important; border-radius: 12px !important; }
       .legal-page-wrapper { margin-top: 100px; padding: 0 16px; }
     }
-  </style>
+    @media (max-width: 600px) {
+      .edge-to-edge-footer { padding: 40px 0 30px 0 !important; }
+      .edge-to-edge-footer .footer-inner-container { padding: 0 20px !important; }
+      .edge-to-edge-footer .footer-links-grid { grid-template-columns: 1fr !important; }
+    }
+  
+
+/* =========================================================
+   GLOBAL FROSTED GLASS PILL NAVBAR (Standard across entire website)
+   ========================================================= */
+.floating-capsule-navbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1160px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Frosted Glass Shell */
+.nav-glass-backdrop {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 18px 38px -10px rgba(0, 0, 0, 0.12), 0 1px 0 rgba(255, 255, 255, 0.95) inset, 0 0 0 1px rgba(0, 0, 0, 0.05);
+  pointer-events: auto;
+}
+
+/* Content Layer */
+.nav-pill-content {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 12px 8px 22px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Top Row Container (horizontal on desktop) */
+.nav-mobile-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+/* Brand Logo */
+.nav-brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  padding: 2px 0;
+}
+.nav-brand-img {
+  height: 28px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0);
+}
+
+/* Desktop Nav Links */
+.nav-links-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-link-item {
+  margin: 0;
+}
+.nav-link-item a {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0b0f17;
+  text-decoration: none;
+  border-radius: 9999px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+.nav-link-item a:hover {
+  opacity: 0.65;
+}
+
+/* Right Actions */
+.nav-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Email Pill Link */
+.nav-email-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 14px;
+  font-family: 'Geist Mono', monospace, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0b0f17;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.nav-email-pill:hover {
+  opacity: 0.75;
+}
+.nav-email-pill svg {
+  color: #0b0f17;
+  stroke: #0b0f17;
+}
+
+/* Contact CTA Pill Button */
+.nav-cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 18px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #0b0f17;
+  border: 1px solid #0b0f17;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-cta-pill:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+.nav-cta-pill svg {
+  transition: transform 0.2s ease;
+}
+.nav-cta-pill:hover svg {
+  transform: translateX(2px);
+}
+
+/* Mobile Hamburger Button */
+.nav-mobile-toggle {
+  display: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #0b0f17;
+  transition: opacity 0.2s ease;
+}
+.nav-mobile-toggle:hover {
+  opacity: 0.7;
+}
+.nav-mobile-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+.nav-burger-icon-close {
+  display: none;
+}
+.nav-mobile-toggle.is-active .nav-burger-icon-open {
+  display: none;
+}
+.nav-mobile-toggle.is-active .nav-burger-icon-close {
+  display: block;
+}
+
+/* Mobile Dropdown Menu (Clean Vertical Expansion) */
+.nav-mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 6px 14px 6px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+.nav-mobile-menu.is-open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+.nav-mobile-menu .nav-mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.nav-mobile-menu .nav-mobile-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  text-decoration: none;
+  color: #0b0f17;
+  background: transparent;
+  border: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.nav-mobile-menu .nav-mobile-links a:hover,
+.nav-mobile-menu .nav-mobile-links a:active {
+  background: transparent;
+  color: #000000;
+  opacity: 0.65;
+  transform: translateX(4px);
+}
+.nav-mobile-divider {
+  height: 1px;
+  margin: 4px 0;
+  background: rgba(0, 0, 0, 0.08);
+}
+.nav-mobile-bottom-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.nav-mobile-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  font-family: 'Geist Mono', monospace, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #0b0f17;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease;
+}
+.nav-mobile-email:hover,
+.nav-mobile-email:active {
+  background: rgba(0, 0, 0, 0.08);
+}
+.nav-mobile-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px;
+  font-size: 16.5px;
+  font-weight: 700;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #ffffff;
+  background: #0b0f17;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-mobile-cta:hover,
+.nav-mobile-cta:active {
+  opacity: 0.9;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1060px) {
+  .nav-email-pill {
+    display: none;
+  }
+}
+
+@media (max-width: 880px) {
+  .nav-links-list {
+    display: none;
+  }
+  .nav-mobile-toggle {
+    display: inline-flex;
+  }
+  .floating-capsule-navbar {
+    top: 14px;
+    left: 5vw;
+    right: 5vw;
+    width: 90vw;
+    max-width: 90vw;
+    transform: none;
+  }
+  .nav-glass-backdrop {
+    border-radius: 24px !important;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+  .nav-pill-content {
+    padding: 8px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    box-sizing: border-box;
+  }
+  .nav-mobile-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 42px;
+  }
+  /* When expanded: Strict clean Rounded Rectangle */
+  .floating-capsule-navbar.is-expanded .nav-glass-backdrop {
+    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+  .floating-capsule-navbar.is-expanded .nav-pill-content {
+    padding: 10px 14px 18px 14px;
+  }
+}
+
+</style>
 </head>
 <body>
 
-  <!-- Floating Glass Navbar (EXACT MATCH WITH LANDING PAGE) -->
-  <header class="ultra-navbar">
-    <!-- Brand Logo -->
-    <a href="/" class="ultra-brand-logo" aria-label="Algor studio Početna">
-      <img src="logo_black_transparent.png" alt="Algor studio" class="navbar-brand-logo-img">
-    </a>
+  <!-- Floating Capsule Navbar with Frosted Glass & Seamless Mobile Expansion -->
+  <header class="floating-capsule-navbar" id="main-capsule-navbar">
+    <!-- Frosted Glass Shell Layer -->
+    <div class="nav-glass-backdrop"></div>
 
-    <!-- Mobile Hamburger Toggle Button -->
-    <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Otvori izbornik">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
+    <!-- Capsule Content Layer -->
+    <div class="nav-pill-content">
+      <div class="nav-mobile-top-bar">
+        <!-- Brand Logo -->
+        <a href="/" class="nav-brand-link" aria-label="Algor Studio Početna">
+          <img src="logo_white_transparent.png" alt="Algor Studio" class="nav-brand-img">
+        </a>
 
-    <!-- Pill Nav Menu (Desktop & Mobile Drawer) -->
-    <nav class="ultra-nav-menu" id="ultra-nav-menu">
-      <div class="mobile-nav-links-grid">
-        <a href="/#about" class="ultra-nav-link">O nama</a>
-        <a href="/#before-after" class="ultra-nav-link">Usporedba</a>
-        <a href="/#portfolio" class="ultra-nav-link">Projekti</a>
-        <a href="/#process" class="ultra-nav-link">Proces</a>
-        <a href="/#pricing" class="ultra-nav-link">Cijene</a>
-        <a href="/#faq" class="ultra-nav-link">FAQ</a>
+        <!-- Desktop Nav Links -->
+        <nav aria-label="Glavna navigacija">
+          <ul class="nav-links-list">
+            <li class="nav-link-item"><a href="/#about">O nama</a></li>
+            <li class="nav-link-item"><a href="/izrada-web-stranica">Web Stranice</a></li>
+            <li class="nav-link-item"><a href="/chatgpt-ads">ChatGPT Ads</a></li>
+            <li class="nav-link-item"><a href="/#projekti">Projekti</a></li>
+            <li class="nav-link-item"><a href="/#proces">Proces</a></li>
+            <li class="nav-link-item"><a href="/#pricing">Cjenik</a></li>
+            <li class="nav-link-item"><a href="/#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right Action Items: Email + Contact Button + Mobile Toggle -->
+        <div class="nav-actions-group">
+          <a href="mailto:info@algor.studio" class="nav-email-pill" title="Pošaljite email na info@algor.studio">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@algor.studio</span>
+          </a>
+
+          <a href="/kontakt" class="nav-cta-pill">
+            <span>Kontakt</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+
+          <!-- Mobile Burger Button -->
+          <button type="button" class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Otvori navigacijski izbornik" aria-expanded="false">
+            <svg class="nav-burger-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            <svg class="nav-burger-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
       </div>
 
-      <div class="mobile-nav-email-box">
-        <a href="mailto:info@algor.studio" class="mobile-nav-email-link">✉️ info@algor.studio</a>
+      <!-- Mobile Dropdown Panel (Seamlessly inside the expanding capsule) -->
+      <div class="nav-mobile-menu" id="nav-mobile-menu">
+        <ul class="nav-mobile-links">
+          <li><a href="/#about">O nama</a></li>
+          <li><a href="/izrada-web-stranica">Web Stranice</a></li>
+          <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
+          <li><a href="/#projekti">Projekti</a></li>
+          <li><a href="/#proces">Proces</a></li>
+          <li><a href="/#pricing">Cjenik</a></li>
+          <li><a href="/#faq">Česta pitanja</a></li>
+        </ul>
+        <div class="nav-mobile-divider"></div>
+        <div class="nav-mobile-bottom-actions">
+          <a href="mailto:info@algor.studio" class="nav-mobile-email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@algor.studio</span>
+          </a>
+          <a href="/kontakt" class="nav-mobile-cta">
+            <span>Zatražite ponudu &rarr;</span>
+          </a>
+        </div>
       </div>
-    </nav>
+    </div>
   </header>
 
   <!-- Legal Main Content -->
@@ -194,76 +629,89 @@
     </div>
   </main>
 
-  <!-- Identical Global Brand Footer -->
-  <div class="footer-card-wrapper">
-    <footer class="brand-footer-card">
-      
-      <!-- Photo Production Credit Text -->
-      <div class="footer-photo-credit-text">
-        Sve fotografije na ovoj web stranici je producirao Algor studio.
-      </div>
-
-      <!-- Top Row: Branding and Links -->
-      <div class="footer-card-top">
+  <!-- Flat Edge-to-Edge Fullwidth Footer -->
+  <div class="edge-to-edge-footer">
+    <div class="footer-inner-container">
+      <footer class="brand-footer-card">
         
-        <!-- Left Column: Logo & Tagline -->
-        <div class="footer-logo-col">
-          <a href="/" class="footer-logo" style="text-decoration: none;" aria-label="Algor studio Početna">
-            <img src="logo_white_transparent.png" alt="Algor studio" class="footer-brand-logo-img">
-          </a>
-          <p class="footer-tagline">Algor Studio — Akvizicija novih klijenata, od prvog klika do rezerviranog termina.</p>
+        <!-- Photo Production Credit Text -->
+        <div class="footer-photo-credit-text">
+          Sve fotografije na ovoj web stranici je producirao Algor studio.
         </div>
-        
-        <!-- Right Columns: Links -->
-        <div class="footer-links-grid">
-          <div class="footer-link-group">
-            <h4>Istraži</h4>
-            <ul>
-              <li><a href="/#about">O nama</a></li>
-              <li><a href="/#before-after">Usporedba</a></li>
-              <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
-                <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
-              <li><a href="/#portfolio">Projekti</a></li>
-              <li><a href="/#process">Proces</a></li>
-              <li><a href="/#pricing">Cjenik</a></li>
-              <li><a href="/karijere">Karijere</a></li>
-              <li><a href="/kontakt">Kontakt</a></li>
-            </ul>
+
+        <!-- Top Row: Branding and Links -->
+        <div class="footer-card-top">
+          
+          <!-- Left Column: Logo & Tagline -->
+          <div class="footer-logo-col">
+            <a href="/" class="footer-logo-link" style="text-decoration: none;" aria-label="Algor studio Početna">
+              <img src="logo_white_transparent.png" alt="Algor studio" class="footer-brand-logo-img">
+            </a>
+            <p class="footer-tagline">Algor Studio — Akvizicija novih klijenata, od prvog klika do rezerviranog termina.</p>
           </div>
           
-          <div class="footer-link-group">
-            <h4>Društvene mreže</h4>
-            <ul>
-              <li><a href="https://www.instagram.com/algor_studio?igsi=cGo4b3VvenlwNnp4&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            </ul>
-          </div>
+          <!-- Right Columns: Links -->
+          <div class="footer-links-grid">
+            <div class="footer-link-group">
+              <h4>Usluge</h4>
+              <ul>
+                <li><a href="/#pricing">Marketing Paketi</a></li>
+                <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
+                <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
+                <li><a href="/kontakt">Besplatan Audit</a></li>
+              </ul>
+            </div>
+            
+            <div class="footer-link-group">
+              <h4>Agencija</h4>
+              <ul>
+                <li><a href="/#about">O nama</a></li>
+                <li><a href="/#usporedba">Usporedba</a></li>
+                <li><a href="/#projekti">Projekti</a></li>
+                <li><a href="/#recenzije">Recenzije</a></li>
+                <li><a href="/#proces">Proces</a></li>
+                <li><a href="/#pricing">Cjenik</a></li>
+                <li><a href="/#faq">Česta pitanja</a></li>
+                <li><a href="/karijere">Karijere</a></li>
+                <li><a href="/kontakt">Kontakt</a></li>
+              </ul>
+            </div>
 
-          <div class="footer-link-group">
-            <h4>Pravno</h4>
-            <ul>
-              <li><a href="/politika-privatnosti">Politika privatnosti</a></li>
-              <li><a href="/uvjeti-koristenja">Uvjeti korištenja</a></li>
-              <li><a href="/kolacici">Politika kolačića</a></li>
+            <div class="footer-link-group">
+              <h4>Društvene mreže</h4>
+              <ul>
+                <li><a href="https://www.instagram.com/algor_studio?igsi=cGo4b3VvenlwNnp4&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="mailto:info@algor.studio">info@algor.studio</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-link-group">
+              <h4>Pravno</h4>
+              <ul>
+                <li><a href="/politika-privatnosti">Politika privatnosti</a></li>
+                <li><a href="/uvjeti-koristenja">Uvjeti korištenja</a></li>
+                <li><a href="/kolacici">Politika kolačića</a></li>
                 <li><a href="#cookie-settings" class="open-cookie-banner">Postavke kolačića</a></li>
-            </ul>
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Bottom Row: Copyright and Maker -->
+        <div class="footer-card-bottom">
+          <div class="footer-copy-text">
+            © 2026 Algor studio. Sva prava pridržana. Zagreb, Hrvatska.
+          </div>
+          <div class="footer-credit">
+            Izradio <span class="footer-credit-brand">Algor Studio</span>
           </div>
         </div>
         
-      </div>
-      
-      <!-- Bottom Row: Copyright and Maker -->
-      <div class="footer-card-bottom">
-        <div class="footer-copy-text">
-          ©2026 Algor studio. Sva prava pridržana.
-        </div>
-        <div class="footer-credit">
-          Izradio <span class="footer-credit-brand">Algor Studio</span>
-        </div>
-      </div>
-      
-    </footer>
+      </footer>
+    </div>
   </div>
 
-  <script defer src="script.js?v=104.0.0"></script>
+  <script defer src="script.js?v=230.0.0"></script>
 </body>
 </html>

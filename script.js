@@ -31,37 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (a && a.href) prefetchTargetUrl(a.href);
   }, { passive: true });
 
-  // Mobile Navigation Hamburger Toggle & Auto-Close Engine
-  const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-  const ultraNavMenu = document.getElementById('ultra-nav-menu');
-  const ultraNavbar = document.querySelector('.ultra-navbar');
-
-  if (mobileNavToggle && ultraNavMenu) {
-    mobileNavToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      mobileNavToggle.classList.toggle('open');
-      ultraNavMenu.classList.toggle('open');
-      if (ultraNavbar) ultraNavbar.classList.toggle('expanded');
-    });
-
-    const navLinks = ultraNavMenu.querySelectorAll('.ultra-nav-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileNavToggle.classList.remove('open');
-        ultraNavMenu.classList.remove('open');
-        if (ultraNavbar) ultraNavbar.classList.remove('expanded');
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!ultraNavMenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
-        mobileNavToggle.classList.remove('open');
-        ultraNavMenu.classList.remove('open');
-        if (ultraNavbar) ultraNavbar.classList.remove('expanded');
-      }
-    });
-  }
-
   // ========================================================
   // Algor Studio Custom GDPR Cookie Consent Engine & Google Consent Mode v2
   // ========================================================
@@ -189,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========================================================
   const contactFormStep1 = document.getElementById('contact-page-form-step-1');
   const contactFormStep2 = document.getElementById('contact-page-form-step-2');
+  const contactFormStep3 = document.getElementById('contact-page-form-step-3');
   const contactStepSuccess = document.getElementById('contact-page-step-success');
 
   if (contactFormStep1 && contactFormStep2) {
@@ -196,11 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedMeetingType = 'Sastanak uživo';
     let selectedContactSlot = '';
     let selectedCalendarDateStr = '';
+    let selectedCalendarDateFormatted = '';
 
     const urlParams = new URLSearchParams(window.location.search);
     const pkgParam = urlParams.get('paket') || urlParams.get('usluga') || urlParams.get('service');
     let selectedPackageName = 'Besplatan Audit';
     let formPackageLabel = 'Besplatan Audit (Konzultacije)';
+
+    const snimanje = urlParams.get('snimanje') === 'da';
 
     if (pkgParam) {
       const p = pkgParam.toLowerCase();
@@ -208,14 +181,29 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedPackageName = 'ChatGPT Ads';
         formPackageLabel = 'ChatGPT Ads & AI Search (400 €/mj.)';
       } else if (p.includes('start')) {
-        selectedPackageName = 'Paket Start';
-        formPackageLabel = 'Paket Start (490 €/mj.)';
+        if (snimanje) {
+          selectedPackageName = 'Start + Snimanje sadržaja';
+          formPackageLabel = 'Start + Snimanje sadržaja (590 €/mj.)';
+        } else {
+          selectedPackageName = 'Start';
+          formPackageLabel = 'Start (400 €/mj.)';
+        }
       } else if (p.includes('pro') || p.includes('plus')) {
-        selectedPackageName = 'Paket Pro';
-        formPackageLabel = 'Paket Pro (890 €/mj.)';
+        if (snimanje) {
+          selectedPackageName = 'Pro + Snimanje sadržaja';
+          formPackageLabel = 'Pro + Snimanje sadržaja (990 €/mj.)';
+        } else {
+          selectedPackageName = 'Pro';
+          formPackageLabel = 'Pro (700 €/mj.)';
+        }
       } else if (p.includes('ultra') || p.includes('ai')) {
-        selectedPackageName = 'Paket Ultra';
-        formPackageLabel = 'Paket Ultra (1.390 €/mj.)';
+        if (snimanje) {
+          selectedPackageName = 'Ultra + Snimanje sadržaja';
+          formPackageLabel = 'Ultra + Snimanje sadržaja (1.490 €/mj.)';
+        } else {
+          selectedPackageName = 'Ultra';
+          formPackageLabel = 'Ultra (1.100 €/mj.)';
+        }
       } else if (p.includes('landing') || p.includes('web-start')) {
         selectedPackageName = 'Izrada weba';
         formPackageLabel = 'Landing Stranica (od 490 €)';
@@ -235,20 +223,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const stepInd1 = document.getElementById('step-ind-1');
     const stepInd2 = document.getElementById('step-ind-2');
+    const stepInd3 = document.getElementById('step-ind-3');
     const typeCardLive = document.getElementById('type-card-live');
     const typeCardMeet = document.getElementById('type-card-meet');
     const contactDateInput = document.getElementById('contact-date');
     const contactSlotsWrap = document.getElementById('contact-time-slots-wrap');
-    const contactBtnBack = document.getElementById('contact-btn-back');
+    const contactBtnBackTo1 = document.getElementById('contact-btn-back-to-1');
+    const contactBtnBackTo2 = document.getElementById('contact-btn-back-to-2');
+    const btnChangeDate = document.getElementById('btn-change-date');
     const contactBtnConfirm = document.getElementById('contact-btn-confirm');
     const contactSuccessSummary = document.getElementById('contact-success-summary');
+
+    const summaryPillMeetingIcon = document.getElementById('summary-pill-meeting-icon');
+    const summaryPillDateText = document.getElementById('summary-pill-date-text');
+    const summaryPillTypeText = document.getElementById('summary-pill-type-text');
 
     const calMonthTitle = document.getElementById('cal-month-title');
     const calDaysGrid = document.getElementById('cal-days-grid');
     const calPrevMonthBtn = document.getElementById('cal-prev-month');
     const calNextMonthBtn = document.getElementById('cal-next-month');
-    const calSelectedBadge = document.getElementById('cal-selected-badge');
-    const calSelectedBadgeText = document.getElementById('cal-selected-badge-text');
 
     const monthNamesHr = [
       'Siječanj', 'Veljača', 'Ožujak', 'Travanj', 'Svibanj', 'Lipanj',
@@ -325,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cell = document.createElement('div');
         cell.className = 'cal-day-cell';
         cell.textContent = day;
+        cell.dataset.date = dayStr;
 
         if (isPast) {
           cell.classList.add('cal-day-past');
@@ -337,7 +331,11 @@ document.addEventListener('DOMContentLoaded', () => {
             cell.classList.add('cal-day-selected');
           }
 
-          cell.addEventListener('click', () => {
+          const onDaySelect = (e) => {
+            if (e) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
             selectedCalendarDateStr = dayStr;
             if (contactDateInput) {
               contactDateInput.value = dayStr;
@@ -349,15 +347,17 @@ document.addEventListener('DOMContentLoaded', () => {
               month: 'long',
               year: 'numeric'
             });
-
-            if (calSelectedBadge && calSelectedBadgeText) {
-              calSelectedBadgeText.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
-              calSelectedBadge.style.display = 'inline-flex';
-            }
+            selectedCalendarDateFormatted = formatted.charAt(0).toUpperCase() + formatted.slice(1);
 
             renderCalendar();
-            checkContactValidity();
-          });
+
+            // Auto-advance to Step 3 (Time selection) with smooth transition
+            setTimeout(() => {
+              goToStep3();
+            }, 120);
+          };
+
+          cell.addEventListener('click', onDaySelect);
         }
 
         calDaysGrid.appendChild(cell);
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'contact-slot-btn';
-        btn.textContent = slot;
+        btn.textContent = `${slot} h`;
 
         if (slot === selectedContactSlot) {
           btn.classList.add('selected');
@@ -419,6 +419,59 @@ document.addEventListener('DOMContentLoaded', () => {
           contactBtnConfirm.setAttribute('disabled', 'true');
         }
       }
+    }
+
+    function goToStep3() {
+      if (!contactFormStep3) return;
+
+      contactFormStep1.style.display = 'none';
+      contactFormStep2.style.display = 'none';
+      contactFormStep3.style.display = 'flex';
+
+      const cardBox = document.querySelector('.contact-card-box');
+      if (cardBox) {
+        cardBox.scrollTop = 0;
+        if (window.innerWidth <= 768) {
+          cardBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      if (stepInd1) stepInd1.classList.remove('active');
+      if (stepInd2) stepInd2.classList.remove('active');
+      if (stepInd3) stepInd3.classList.add('active');
+
+      if (summaryPillDateText) {
+        summaryPillDateText.textContent = selectedCalendarDateFormatted || selectedCalendarDateStr;
+      }
+      if (summaryPillTypeText) {
+        summaryPillTypeText.textContent = `${selectedMeetingType} (45 min)`;
+      }
+      if (summaryPillMeetingIcon) {
+        summaryPillMeetingIcon.textContent = (selectedMeetingType === 'Google Meet poziv') ? '💻' : '🏢';
+      }
+
+      renderContactSlots();
+      checkContactValidity();
+    }
+
+    function goToStep2() {
+      contactFormStep1.style.display = 'none';
+      if (contactFormStep3) contactFormStep3.style.display = 'none';
+      contactFormStep2.style.display = 'flex';
+
+      const cardBox = document.querySelector('.contact-card-box');
+      if (cardBox) {
+        cardBox.scrollTop = 0;
+        if (window.innerWidth <= 768) {
+          cardBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      if (stepInd1) stepInd1.classList.remove('active');
+      if (stepInd2) stepInd2.classList.add('active');
+      if (stepInd3) stepInd3.classList.remove('active');
+
+      renderCalendar();
     }
 
     const btnDirectInquiry = document.getElementById('btn-direct-inquiry');
@@ -464,6 +517,110 @@ document.addEventListener('DOMContentLoaded', () => {
         email: emailEl.value.trim(),
         phone: phoneEl ? phoneEl.value.trim() : ''
       };
+    }
+
+    function showFormSuccess(summaryData) {
+      if (!summaryData) return;
+
+      const stepsBar = document.querySelector('.booking-steps-bar');
+      if (stepsBar) stepsBar.style.display = 'none';
+
+      contactFormStep1.style.display = 'none';
+      if (contactFormStep2) contactFormStep2.style.display = 'none';
+      if (contactFormStep3) contactFormStep3.style.display = 'none';
+
+      const pkgBanner = document.getElementById('form-selected-pkg-banner');
+      if (pkgBanner) pkgBanner.style.display = 'none';
+
+      if (contactStepSuccess) {
+        contactStepSuccess.style.display = 'block';
+
+        const successTitle = document.getElementById('contact-success-title') || contactStepSuccess.querySelector('.success-heading');
+        const successDesc = document.getElementById('contact-success-desc') || contactStepSuccess.querySelector('.success-message-text');
+
+        const isMeeting = summaryData.calendarSlot && !summaryData.calendarSlot.includes('Direktan upit') && !summaryData.calendarSlot.includes('Upit s podnožja');
+        if (successTitle) {
+          successTitle.textContent = isMeeting ? 'Sastanak je uspješno zakazan!' : 'Upit je uspješno poslan!';
+        }
+        if (successDesc) {
+          successDesc.textContent = isMeeting 
+            ? 'Hvala vam! Vaš zahtjev za terminom je zaprimljen i potvrđen.'
+            : 'Hvala vam! Vaš upit je zaprimljen. Javit ćemo vam se u najkraćem mogućem roku (unutar 24h).';
+        }
+
+        if (contactSuccessSummary) {
+          contactSuccessSummary.innerHTML = `
+            <div style="font-weight: 800; font-size: 14.5px; margin-bottom: 14px; color: #0284c7; display: flex; align-items: center; gap: 8px;">
+              <span>📋</span> Detalji zaprimljenog upita:
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-weight: 600;">Status obrade:</span>
+                <span style="color: #10b981; font-weight: 700;">✓ Zaprimljeno u sustavu</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-weight: 600;">Ime i prezime:</span>
+                <span style="color: #0f172a; font-weight: 700;">${summaryData.name || '-'}</span>
+              </div>
+              ${summaryData.company ? `
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-weight: 600;">Tvrtka / Web:</span>
+                <span style="color: #0f172a; font-weight: 700;">${summaryData.company}</span>
+              </div>` : ''}
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-weight: 600;">Email adresa:</span>
+                <span style="color: #0f172a; font-weight: 700;">${summaryData.email || '-'}</span>
+              </div>
+              ${summaryData.phone ? `
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-weight: 600;">Broj mobitela:</span>
+                <span style="color: #0f172a; font-weight: 700;">${summaryData.phone}</span>
+              </div>` : ''}
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0;">
+                <span style="color: #64748b; font-weight: 600;">Odabrana usluga:</span>
+                <span style="color: #0284c7; font-weight: 800;">${summaryData.package || 'Konzultacije'}</span>
+              </div>
+              ${isMeeting ? `
+              <div style="background: #f0f9ff; border: 1.5px dashed #bae6fd; border-radius: 10px; padding: 10px 14px; margin-top: 6px; color: #0284c7; font-weight: 700; font-size: 13.5px;">
+                📅 <strong>Odabrani termin:</strong> ${summaryData.calendarSlot}
+              </div>` : ''}
+            </div>
+          `;
+        }
+
+        // Update URL to /kontakt#hvala
+        if (window.location.hash !== '#hvala') {
+          try {
+            history.pushState(null, '', '/kontakt#hvala');
+          } catch (e) {
+            window.location.hash = 'hvala';
+          }
+        }
+
+        const cardBox = document.querySelector('.contact-card-box');
+        if (cardBox) {
+          cardBox.scrollTop = 0;
+          cardBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Google Ads Conversion tracking event
+        if (typeof window.gtag === 'function') {
+          try {
+            window.gtag('event', 'conversion', {
+              'send_to': 'AW-18423241784'
+            });
+          } catch (e) {}
+        }
+      }
+    }
+
+    if (contactFormStep1) {
+      contactFormStep1.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (btnDirectInquiry) btnDirectInquiry.click();
+      });
     }
 
     if (btnDirectInquiry) {
@@ -516,90 +673,51 @@ document.addEventListener('DOMContentLoaded', () => {
             })
           });
         } catch (err) {
-          console.log('Direct inquiry submit note:', err);
         }
 
-        const stepsBar = document.querySelector('.booking-steps-bar');
-        if (stepsBar) stepsBar.style.display = 'none';
-
-        contactFormStep1.style.display = 'none';
-        if (contactStepSuccess) {
-          contactStepSuccess.style.display = 'block';
-          if (contactSuccessSummary) {
-            contactSuccessSummary.innerHTML = `
-              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vašeg upita:</div>
-              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${data.name}</div>
-              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${data.company}</div>
-              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${data.email}</div>
-              ${data.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${data.phone}</div>` : ''}
-              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
-                📦 <strong>Usluga / Model:</strong> ${formPackageLabel || selectedPackageName}
-              </div>
-            `;
-          }
-          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        setTimeout(() => {
-          window.location.href = '/hvala';
-        }, 400);
+        showFormSuccess(bookingSummaryData);
       });
     }
 
-    contactFormStep1.addEventListener('submit', (e) => {
-      e.preventDefault();
+    if (btnToMeeting) {
+      btnToMeeting.addEventListener('click', () => {
+        const data = getAndValidateStep1();
+        if (!data) return;
 
-      const data = getAndValidateStep1();
-      if (!data) return;
-
-      contactPageData = data;
-
-      contactFormStep1.style.display = 'none';
-      contactFormStep2.style.display = 'block';
-
-      if (stepInd1) stepInd1.classList.remove('active');
-      if (stepInd2) stepInd2.classList.add('active');
-
-      const now = new Date();
-      let initDate = new Date();
-      if (initDate.getDay() === 0) {
-        initDate.setDate(initDate.getDate() + 1);
-      } else if (initDate.getDay() === 6) {
-        initDate.setDate(initDate.getDate() + 2);
-      }
-
-      calViewYear = initDate.getFullYear();
-      calViewMonth = initDate.getMonth();
-
-      selectedCalendarDateStr = `${calViewYear}-${String(calViewMonth + 1).padStart(2, '0')}-${String(initDate.getDate()).padStart(2, '0')}`;
-      if (contactDateInput) {
-        contactDateInput.value = selectedCalendarDateStr;
-      }
-
-      const formatted = initDate.toLocaleDateString('hr-HR', {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
+        contactPageData = data;
+        goToStep2();
       });
+    }
 
-      if (calSelectedBadge && calSelectedBadgeText) {
-        calSelectedBadgeText.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
-        calSelectedBadge.style.display = 'inline-flex';
-      }
-
-      selectedContactSlot = '';
-      renderCalendar();
-      renderContactSlots();
-      checkContactValidity();
-    });
-
-    if (contactBtnBack) {
-      contactBtnBack.addEventListener('click', () => {
+    if (contactBtnBackTo1) {
+      contactBtnBackTo1.addEventListener('click', () => {
         contactFormStep2.style.display = 'none';
+        if (contactFormStep3) contactFormStep3.style.display = 'none';
         contactFormStep1.style.display = 'block';
+
+        const cardBox = document.querySelector('.contact-card-box');
+        if (cardBox) cardBox.scrollTop = 0;
+
+        const pkgBanner = document.getElementById('form-selected-pkg-banner');
+        if (pkgBanner) {
+          pkgBanner.style.display = 'flex';
+        }
+
         if (stepInd1) stepInd1.classList.add('active');
         if (stepInd2) stepInd2.classList.remove('active');
+        if (stepInd3) stepInd3.classList.remove('active');
+      });
+    }
+
+    if (contactBtnBackTo2) {
+      contactBtnBackTo2.addEventListener('click', () => {
+        goToStep2();
+      });
+    }
+
+    if (btnChangeDate) {
+      btnChangeDate.addEventListener('click', () => {
+        goToStep2();
       });
     }
 
@@ -661,7 +779,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
           });
         } catch (err) {
-          console.log('Inquiry submit note:', err);
         }
 
         const bookingSummaryData = {
@@ -676,32 +793,31 @@ document.addEventListener('DOMContentLoaded', () => {
           sessionStorage.setItem('algor_booking_summary', JSON.stringify(bookingSummaryData));
         } catch (e) {}
 
-        const stepsBar = document.querySelector('.booking-steps-bar');
-        if (stepsBar) stepsBar.style.display = 'none';
-
-        contactFormStep2.style.display = 'none';
-        if (contactStepSuccess) {
-          contactStepSuccess.style.display = 'block';
-          if (contactSuccessSummary) {
-            contactSuccessSummary.innerHTML = `
-              <div style="font-weight: 800; font-size: 15px; margin-bottom: 12px; color: #0f172a;">📋 Detalji Vaše rezervacije:</div>
-              <div style="margin-bottom: 6px;">👤 <strong>Ime i prezime:</strong> ${contactPageData.name || ''}</div>
-              <div style="margin-bottom: 6px;">🏢 <strong>Tvrtka / Web:</strong> ${contactPageData.company || ''}</div>
-              <div style="margin-bottom: 6px;">✉️ <strong>Email:</strong> ${contactPageData.email || ''}</div>
-              ${contactPageData.phone ? `<div style="margin-bottom: 6px;">📞 <strong>Mobitel:</strong> ${contactPageData.phone}</div>` : ''}
-              <div style="margin-bottom: 6px;">📦 <strong>Paket / Usluga:</strong> ${formPackageLabel || selectedPackageName}</div>
-              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px dashed #cbd5e1; color: #0284c7; font-weight: 700; font-size: 14.5px;">
-                📅 ${appointmentDetails}
-              </div>
-            `;
-          }
-          contactStepSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-
-        setTimeout(() => {
-          window.location.href = '/hvala';
-        }, 400);
+        showFormSuccess(bookingSummaryData);
       });
+    }
+
+    const btnNewInquiry = document.getElementById('btn-new-inquiry');
+    if (btnNewInquiry) {
+      btnNewInquiry.addEventListener('click', () => {
+        try {
+          sessionStorage.removeItem('algor_booking_summary');
+          history.pushState(null, '', '/kontakt');
+        } catch (e) {
+          window.location.hash = '';
+        }
+        window.location.reload();
+      });
+    }
+
+    // Auto-display success state if loaded with #hvala hash and summary exists
+    if (window.location.hash === '#hvala') {
+      try {
+        const raw = sessionStorage.getItem('algor_booking_summary');
+        if (raw) {
+          showFormSuccess(JSON.parse(raw));
+        }
+      } catch (e) {}
     }
 
     // Early return so homepage-only scripts never execute on kontakt.html!
@@ -762,7 +878,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (tile) {
           tile.classList.add('glowing-blue');
           setTimeout(() => {
-            tile.classList.remove('glowing-blue', 'glowing-cyan', 'glowing-royal-blue', 'glowing-lime', 'glowing-indigo', 'glowing-light-blue');
+            tile.classList.remove('glowing-blue');
           }, 1400 + Math.random() * 1200);
         }
       }
@@ -997,14 +1113,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 11. Footer Inline Contact Form Submission
   const footerContactForm = document.getElementById('footerContactForm');
-  const footerFormMessage = document.getElementById('footerFormMessage');
-
+  
   if (footerContactForm) {
     footerContactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('footerName').value;
-      const company = document.getElementById('footerCompany').value;
-      const email = document.getElementById('footerEmail').value;
+      const footerNameEl = document.getElementById('footerName');
+      const footerCompanyEl = document.getElementById('footerCompany');
+      const footerEmailEl = document.getElementById('footerEmail');
+      const name = footerNameEl ? footerNameEl.value.trim() : '';
+      const company = footerCompanyEl ? footerCompanyEl.value.trim() : '';
+      const email = footerEmailEl ? footerEmailEl.value.trim() : '';
       const phoneInput = document.getElementById('footerPhone');
       const phone = phoneInput ? phoneInput.value : '';
       const pkgInput = document.getElementById('footerPackage');
@@ -1038,14 +1156,11 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('algor_booking_summary', JSON.stringify(bookingSummaryData));
       } catch (e) {}
 
-      setTimeout(() => {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<span>Pošalji upit ➔</span>';
-        }
-        if (footerContactForm) footerContactForm.reset();
-        window.location.href = '/hvala';
-      }, 500);
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Šaljem upit...</span>';
+      }
+      window.location.href = '/kontakt#hvala';
     });
   }
 
@@ -1082,7 +1197,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 13. Modern Smooth Scroll Reveal Observer
   const revealElements = document.querySelectorAll(
-    '.info-header, .ba-card, .fit-card, .price-card, .portfolio-item-card, .vertical-step-card, .disclosure, .footer-conversion-area, .bento-card, .stat-card'
+    '.info-header, .ba-card, .fit-card, .price-card, .portfolio-item-card, .vertical-step-card, .disclosure, .footer-conversion-area, .bento-card, .stat-card, .tech-step-card, .standard-feature-card'
   );
 
   revealElements.forEach((el) => {
@@ -1106,6 +1221,185 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  // 14. Real-time Scroll-Driven Typewriter Effect on Headings
+  const initScrollTypewriter = () => {
+    const headingSelectors = [
+      '.figma-h1-title',
+      '.tech-sticky-title',
+      '.framer-about-heading',
+      '.framer-compare-title',
+      '.about-section-heading',
+      '.info-title',
+      '.faq-dark-title',
+      '.framer-minimal-cta-title'
+    ];
+
+    const headings = document.querySelectorAll(headingSelectors.join(', '));
+    if (!headings.length) return;
+
+    const headingItems = [];
+
+    headings.forEach((heading) => {
+      // Helper to wrap characters in words and spans without breaking line breaks or spaces
+      const wrapChars = (node, isAccent = false) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent;
+          if (!text) return;
+          
+          // Split by whitespace while preserving tokens
+          const tokens = text.split(/(\s+)/);
+          const frag = document.createDocumentFragment();
+
+          tokens.forEach((token) => {
+            if (/^\s+$/.test(token)) {
+              frag.appendChild(document.createTextNode(token));
+            } else if (token.length > 0) {
+              const wordSpan = document.createElement('span');
+              wordSpan.className = 'typewriter-word';
+
+              for (let i = 0; i < token.length; i++) {
+                const charSpan = document.createElement('span');
+                charSpan.className = isAccent ? 'typewriter-char accent-char-typed' : 'typewriter-char';
+                charSpan.textContent = token[i];
+                wordSpan.appendChild(charSpan);
+              }
+              frag.appendChild(wordSpan);
+            }
+          });
+
+          node.parentNode.replaceChild(frag, node);
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.tagName.toLowerCase() === 'svg' || node.tagName.toLowerCase() === 'style' || node.tagName.toLowerCase() === 'script') {
+            return;
+          }
+          const hasAccent = isAccent || node.classList.contains('accent-char');
+          Array.from(node.childNodes).forEach(child => wrapChars(child, hasAccent));
+        }
+      };
+
+      wrapChars(heading);
+
+      const chars = heading.querySelectorAll('.typewriter-char');
+      if (chars.length > 0) {
+        headingItems.push({
+          el: heading,
+          chars: chars,
+          count: chars.length
+        });
+      }
+    });
+
+    // Real-time scroll calculate
+    let ticking = false;
+
+    const onScroll = () => {
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      headingItems.forEach((item) => {
+        const rect = item.el.getBoundingClientRect();
+        
+        // When top of heading enters from bottom of viewport to center
+        // Start typing when heading is at 92% of screen height, finish when it reaches ~35%
+        const startY = windowHeight * 0.92;
+        const endY = windowHeight * 0.35;
+
+        let progress = (startY - rect.top) / (startY - endY);
+        progress = Math.max(0, Math.min(1, progress));
+
+        const activeCount = Math.round(progress * item.count);
+
+        for (let i = 0; i < item.count; i++) {
+          if (i < activeCount) {
+            item.chars[i].classList.add('is-typed');
+          } else {
+            item.chars[i].classList.remove('is-typed');
+          }
+        }
+      });
+
+      ticking = false;
+    };
+
+    const requestTick = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', requestTick, { passive: true });
+    // Initial run
+    onScroll();
+  };
+
+  initScrollTypewriter();
+
+  // ========================================================
+  // Pricing Section "Snimanje sadržaja" Production Toggle
+  // ========================================================
+  const initPricingToggle = () => {
+    const prodToggle = document.getElementById('pricing-production-toggle');
+    const switchTrack = document.getElementById('pricing-switch-track');
+    const toggleBadge = prodToggle ? prodToggle.querySelector('.pricing-toggle-badge') : null;
+    const pricingCards = document.querySelectorAll('.framer-price-card[data-base-price]');
+
+    if (!prodToggle || !switchTrack || pricingCards.length === 0) return;
+
+    let isProductionOn = true;
+
+    const updatePrices = () => {
+      prodToggle.setAttribute('aria-checked', isProductionOn ? 'true' : 'false');
+      switchTrack.classList.toggle('active', isProductionOn);
+
+      if (toggleBadge) {
+        toggleBadge.textContent = isProductionOn ? 'UKLJUČENO' : 'ISKLJUČENO';
+        toggleBadge.style.background = isProductionOn ? 'rgba(2, 132, 199, 0.1)' : 'rgba(100, 116, 139, 0.1)';
+        toggleBadge.style.color = isProductionOn ? '#0284c7' : '#64748b';
+      }
+
+      pricingCards.forEach(card => {
+        const base = parseInt(card.dataset.basePrice, 10);
+        const addon = parseInt(card.dataset.addonPrice, 10);
+        const numEl = card.querySelector('.price-val-num');
+        const addonItem = card.querySelector('.feature-item-addon');
+        const ctaLink = card.querySelector('.framer-pill-btn');
+        const plan = card.dataset.plan;
+
+        if (numEl) {
+          numEl.textContent = isProductionOn ? (base + addon) : base;
+        }
+
+        if (addonItem) {
+          addonItem.classList.toggle('is-hidden', !isProductionOn);
+        }
+
+        if (ctaLink && plan) {
+          ctaLink.href = `/kontakt?paket=${plan}${isProductionOn ? '&snimanje=da' : ''}`;
+        }
+      });
+    };
+
+    prodToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      isProductionOn = !isProductionOn;
+      updatePrices();
+    });
+
+    prodToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        isProductionOn = !isProductionOn;
+        updatePrices();
+      }
+    });
+
+    // Run once to initialize link states
+    updatePrices();
+  };
+
+  initPricingToggle();
 });
 
 
@@ -1165,6 +1459,49 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(updateProcessSvgLine, 100);
   setTimeout(updateProcessSvgLine, 400);
   setTimeout(updateProcessSvgLine, 1000);
+
+  // Floating Capsule Navbar Mobile Menu Logic
+  const navToggleBtn = document.getElementById('nav-mobile-toggle');
+  const navMobileMenu = document.getElementById('nav-mobile-menu');
+  const mainCapsuleNavbar = document.getElementById('main-capsule-navbar');
+
+  if (navToggleBtn && navMobileMenu) {
+    const toggleNavMenu = (forceState) => {
+      const isOpen = typeof forceState === 'boolean' ? forceState : !navMobileMenu.classList.contains('is-open');
+      navMobileMenu.classList.toggle('is-open', isOpen);
+      navToggleBtn.classList.toggle('is-active', isOpen);
+      navToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (mainCapsuleNavbar) {
+        mainCapsuleNavbar.classList.toggle('is-expanded', isOpen);
+      }
+    };
+
+    navToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleNavMenu();
+    });
+
+    // Close when clicking any link inside mobile menu
+    navMobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggleNavMenu(false);
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!navMobileMenu.contains(e.target) && !navToggleBtn.contains(e.target)) {
+        toggleNavMenu(false);
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMobileMenu.classList.contains('is-open')) {
+        toggleNavMenu(false);
+      }
+    });
+  }
 });
 
 
