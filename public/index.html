@@ -2839,7 +2839,7 @@
       }
       .canvas-collab-tag.right-pos {
         right: 12px !important;
-        top: 38.5% !important;
+        top: 60% !important;
         transform: rotate(2.5deg) !important;
       }
 
@@ -3211,12 +3211,38 @@
       }
     }
 
+    @media (max-width: 640px) {
+      /* Slightly larger type across mobile layouts for easier reading. */
+      body.canvas-home-theme > section + section {
+        margin-top: 20px;
+      }
+      body.canvas-home-theme > #proces {
+        margin-top: 40px !important;
+      }
+      .figma-h1-title { font-size: clamp(37px, 11vw, 55px) !important; }
+      .figma-sub-headline { font-size: 19px !important; }
+      .framer-about-heading, .about-section-heading { font-size: 28px !important; }
+      .framer-about-lead, .about-section-lead, .framer-minimal-cta-sub { font-size: 16.5px !important; }
+      .framer-compare-title { font-size: 30px !important; }
+      .framer-pill-header { font-size: 15px !important; }
+      .framer-compare-list li, .framer-quote-card-text, .project-content-body p,
+      .testimonials-dark-block .info-subtitle, .client-quote-card .client-text,
+      .process-card-body p, .framer-price-desc, .framer-features-divider-list li,
+      .faq-dark-subtitle, .faq-dark-answer, .footer-tagline { font-size: 16px !important; }
+      .project-content-body h3, .process-card-body h3 { font-size: 19px !important; }
+      .testimonials-dark-block .info-title, .faq-dark-title { font-size: 26px !important; }
+      .framer-price-val { font-size: 30px !important; }
+      .faq-dark-summary { font-size: 15.5px !important; }
+      .framer-minimal-cta-title { font-size: clamp(30px, 8.5vw, 40px) !important; }
+      .footer-link-group a { font-size: 14.5px !important; }
+    }
+
     @media (max-width: 380px) {
       .figma-h1-title {
-        font-size: 30px !important;
+        font-size: 32px !important;
       }
       .figma-sub-headline {
-        font-size: 15.5px !important;
+        font-size: 17px !important;
       }
       .sticky-note-green,
       .sticky-note-yellow {
@@ -3238,7 +3264,7 @@
       }
       .canvas-collab-tag.right-pos {
         right: 8px !important;
-        top: 39% !important;
+        top: 60% !important;
       }
       .framer-minimal-cta-title {
         font-size: 25px !important;
@@ -4296,12 +4322,12 @@
     <!-- Floating Collaborator Tags / Cursors -->
     <div class="canvas-collab-tag left-pos">
       <span class="collab-avatar-img">VG</span>
-      <span>Vinko (Strategija & Marketing)</span>
+      <span>Strategija i Marketing</span>
     </div>
 
     <div class="canvas-collab-tag right-pos">
       <span class="collab-avatar-img">AI</span>
-      <span>Algor (Automatizacija & Ads)</span>
+      <span>ChatGPT Ads</span>
     </div>
 
     <!-- Floating Playful Canvas Stickers -->
@@ -4328,7 +4354,7 @@
           <span class="f-handle tr"></span>
           <span class="f-handle bl"></span>
           <span class="f-handle br"></span>
-          <h1 class="figma-h1-title">MARKETING <span class="accent-char">&amp; AI</span></h1>
+          <h1 class="figma-h1-title">Dobar marketing <span class="accent-char">zlata vrijedi</span></h1>
         </div>
       </div>
 
@@ -4339,7 +4365,7 @@
 
       <!-- Dual Call to Action Buttons -->
       <div class="hero-cta-button-group">
-        <a href="/kontakt?paket=pro" class="framer-pill-btn framer-pill-btn-black">
+        <a href="/kontakt?paket=audit" class="framer-pill-btn framer-pill-btn-white">
           <span>Dogovori besplatan audit</span>
           <span class="framer-btn-circle">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -4348,7 +4374,7 @@
             </svg>
           </span>
         </a>
-        <a href="#pricing" class="framer-pill-btn framer-pill-btn-white">
+        <a href="#pricing" class="framer-pill-btn framer-pill-btn-black">
           <span>Pogledaj marketing pakete</span>
           <span class="framer-btn-circle">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -4912,7 +4938,7 @@
           </div>
           <div class="process-card-body">
             <h3>1. Audit &amp; Strategija</h3>
-            <p>Dubinska analiza vašeg tržišta, konkurencije i ponude. Definiramo ciljanu publiku, kreiramo neodoljivu ponudu i pripremamo detaljne scenarije za snimanje.</p>
+            <p>Dubinska analiza vašeg tržišta, konkurencije i ponude. Definiramo ciljanu publiku, kreiramo kampanje i scenarije za snimanje.</p>
           </div>
           <div class="process-card-bottom">
             <div class="process-deliverable-badge">
@@ -4932,7 +4958,7 @@
           </div>
           <div class="process-card-body">
             <h3>2. 4K Video Produkcija</h3>
-            <p>Dolazimo na vašu lokaciju s profesionalnom opremom. Snimamo i montiramo dinamične video formate (Reels, TikTok, Shorts) koji privlače pažnju i grade povjerenje.</p>
+            <p>Dolazak na vašu lokaciju, snimanje sadržaja (video + fotografije)</p>
           </div>
           <div class="process-card-bottom">
             <div class="process-deliverable-badge">
@@ -4952,7 +4978,7 @@
           </div>
           <div class="process-card-body">
             <h3>3. Oglasi &amp; AI Postavke</h3>
-            <p>Lansiramo precizno ciljane Meta i Google kampanje te implementiramo 24/7 AI asistenta koji instantno odgovara na upite i automatski puni vaš kalendar.</p>
+            <p>Objava Meta i Google Ads kampanja te implementacija AI infrastrukture u vaše poslovanje.</p>
           </div>
           <div class="process-card-bottom">
             <div class="process-deliverable-badge">
@@ -4972,7 +4998,7 @@
           </div>
           <div class="process-card-body">
             <h3>4. Optimizacija</h3>
-            <p>Kontinuirano testiramo nove kreative, optimiziramo trošak po upitu (CAC) i povećavamo povrat ulaganja (ROAS) za predvidljiv, dugoročan i stabilan rast.</p>
+            <p>Kontinuirano testiranje kreative, optimizacija troška po upitu (CAC) i povrat ulaganja (ROAS) za dugoročan i stabilan rast.</p>
           </div>
           <div class="process-card-bottom">
             <div class="process-deliverable-badge">

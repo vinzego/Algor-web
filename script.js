@@ -170,8 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const pkgParam = urlParams.get('paket') || urlParams.get('usluga') || urlParams.get('service');
-    let selectedPackageName = 'Besplatan Audit';
-    let formPackageLabel = 'Besplatan Audit (Konzultacije)';
+    let selectedPackageName = 'Besplatne konzultacije';
+    let formPackageLabel = 'Besplatne konzultacije';
 
     const snimanje = urlParams.get('snimanje') === 'da';
 
@@ -1503,5 +1503,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
 
