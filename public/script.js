@@ -1,40 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
-  // 0. Ultra-Fast Instant Page Prefetcher (Prefetches kontakt.html on hover/touch intent for 0ms transition)
-  const prefetchTargetUrl = (url) => {
-    if (!url || document.querySelector(`link[rel="prefetch"][href="${url}"]`)) return;
-    const link = document.createElement('link');
-    link.rel = 'prefetch';
-    link.href = url;
-    document.head.appendChild(link);
-  };
-
-  if ('requestIdleCallback' in window) {
-    window.requestIdleCallback(() => {
-      prefetchTargetUrl('/kontakt');
-      prefetchTargetUrl('/kontakt?paket=pro');
-      prefetchTargetUrl('/kontakt?paket=start');
-    });
-  } else {
-    setTimeout(() => {
-      prefetchTargetUrl('/kontakt');
-    }, 800);
-  }
-
-  document.addEventListener('mouseover', (e) => {
-    const a = e.target.closest('a[href*="kontakt"]');
-    if (a && a.href) prefetchTargetUrl(a.href);
-  }, { passive: true });
-
-  document.addEventListener('touchstart', (e) => {
-    const a = e.target.closest('a[href*="kontakt"]');
-    if (a && a.href) prefetchTargetUrl(a.href);
-  }, { passive: true });
-
   // ========================================================
   // Algor Studio Custom GDPR Cookie Consent Engine & Google Consent Mode v2
   // ========================================================
   const initCookieConsent = () => {
+    const loadGoogleTag = () => {
+      if (document.querySelector('script[data-algor-google-tag]')) return;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18423241784';
+      script.dataset.algorGoogleTag = 'true';
+      document.head.appendChild(script);
+    };
+
     let banner = document.getElementById('algor-cookie-banner');
     if (!banner) {
       banner = document.createElement('div');
@@ -97,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'ad_user_data': 'granted',
             'ad_personalization': 'granted'
           });
+          loadGoogleTag();
         } else {
           window.gtag('consent', 'update', {
             'analytics_storage': 'denied',

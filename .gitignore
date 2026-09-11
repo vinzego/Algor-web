@@ -3,7 +3,8 @@ node_modules/
 *.log
 .env
 .env.*
+!.env.example
 data/
 *.csv
 scratch/
-
+dist/

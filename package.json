@@ -4,14 +4,28 @@
   "description": "Algor Studio - Digitalni Marketing, Video Produkcija & AI Automatizacija",
   "main": "server.js",
   "scripts": {
+    "check": "node scripts/check.js && node --check server.js && node --check public/script.js",
+    "build": "node scripts/build.js",
+    "smoke": "node scripts/smoke.js",
     "start": "node server.js",
+    "start:prod": "NODE_ENV=production node server.js",
+    "audit": "npm audit --audit-level=high",
     "dev": "node server.js"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
-    "@notionhq/client": "^5.25.2",
+    "@notionhq/client": "^5.26.0",
     "compression": "^1.8.1",
     "dotenv": "^17.4.2",
-    "express": "^4.19.2",
-    "nodemailer": "^9.0.5"
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "nodemailer": "^10.0.3"
+  },
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.44.0"
   }
 }

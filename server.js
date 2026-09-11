@@ -1,7 +1,9 @@
-require('dotenv').config();
+require('dotenv').config({ quiet: true });
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const crypto = require('crypto');
+const helmet = require('helmet');
 const { Client } = require('@notionhq/client');
 const nodemailer = require('nodemailer');
 
@@ -9,26 +11,77 @@ const compression = require('compression');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const isProduction = process.env.NODE_ENV === 'production';
+const sourcePublicDir = path.join(__dirname, 'public');
+const builtPublicDir = path.join(__dirname, 'dist');
+const publicDir = isProduction && fs.existsSync(builtPublicDir) ? builtPublicDir : sourcePublicDir;
+
+if (isProduction && publicDir !== builtPublicDir) {
+  throw new Error('Production build not found. Run `npm run build` before deployment.');
+}
+if (isProduction && process.env.SAVE_LOCAL_CSV !== 'true'
+  && (!process.env.NOTION_TOKEN || !process.env.NOTION_DATABASE_ID)) {
+  throw new Error('No durable contact-form storage is configured. Configure Notion or explicitly enable SAVE_LOCAL_CSV.');
+}
+
+const trustProxy = process.env.TRUST_PROXY;
+if (trustProxy) {
+  app.set('trust proxy', /^\d+$/.test(trustProxy) ? Number(trustProxy) : trustProxy);
+}
+
+function getInlineScriptHashes(directory) {
+  const hashes = new Set();
+  for (const filename of fs.readdirSync(directory)) {
+    if (!filename.endsWith('.html')) continue;
+    const html = fs.readFileSync(path.join(directory, filename), 'utf8');
+    const scriptPattern = /<script\b(?![^>]*\bsrc\s*=)[^>]*>([\s\S]*?)<\/script>/gi;
+    let match;
+    while ((match = scriptPattern.exec(html)) !== null) {
+      const digest = crypto.createHash('sha256').update(match[1], 'utf8').digest('base64');
+      hashes.add(`'sha256-${digest}'`);
+    }
+  }
+  return [...hashes];
+}
+
+const inlineScriptHashes = getInlineScriptHashes(publicDir);
 
 // Security: Hide Express technology fingerprint
 app.disable('x-powered-by');
 
-// Security: Enforce essential HTTP security headers
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", ...inlineScriptHashes, 'https://www.googletagmanager.com'],
+      scriptSrcAttr: ["'none'"],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+      fontSrc: ["'self'", 'https://fonts.gstatic.com', 'data:'],
+      imgSrc: ["'self'", 'data:', 'https://algor.studio', 'https://www.google-analytics.com', 'https://www.googletagmanager.com', 'https://www.google.com', 'https://googleads.g.doubleclick.net'],
+      connectSrc: ["'self'", 'https://www.google-analytics.com', 'https://region1.google-analytics.com', 'https://www.googletagmanager.com', 'https://www.google.com', 'https://googleads.g.doubleclick.net'],
+      objectSrc: ["'none'"],
+      baseUri: ["'self'"],
+      formAction: ["'self'"],
+      frameAncestors: ["'none'"],
+      ...(isProduction ? { upgradeInsecureRequests: [] } : {})
+    }
+  },
+  crossOriginEmbedderPolicy: false,
+  frameguard: { action: 'deny' },
+  hsts: isProduction ? { maxAge: 31536000, includeSubDomains: true, preload: true } : false,
+  referrerPolicy: { policy: 'strict-origin-when-cross-origin' }
+}));
+
 app.use((req, res, next) => {
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
-  res.setHeader('X-XSS-Protection', '1; mode=block');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
-  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  res.setHeader('X-Permitted-Cross-Domain-Policies', 'none');
   next();
 });
 
 // Security: Block unauthorized access to hidden files, environment files, logs and data
 app.use((req, res, next) => {
   const p = req.path.toLowerCase();
-  if (p.includes('/.') || p.endsWith('.env') || p.endsWith('.csv') || p.endsWith('.log') || p.startsWith('/data')) {
+  if (p.includes('/.') || /\.(?:env|csv|log|md|map)$/i.test(p) || p.startsWith('/data') || p.endsWith('/server.js')) {
     return res.status(404).send('Not Found');
   }
   next();
@@ -40,22 +93,20 @@ app.use(compression({
   level: 6
 }));
 
-app.use(express.json({ limit: '1mb' }));
-app.use(express.urlencoded({ extended: true, limit: '1mb' }));
+app.use(express.json({ limit: '32kb', strict: true }));
+app.use(express.urlencoded({ extended: false, limit: '32kb', parameterLimit: 50 }));
 
 // Pre-warmed fast paths for HTML pages and SEO assets
-const publicDir = path.join(__dirname, 'public');
-
 app.get('/robots.txt', (req, res) => {
   res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
   const file = path.join(publicDir, 'robots.txt');
   res.sendFile(file);
 });
 
 app.get('/sitemap.xml', (req, res) => {
   res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=86400');
   const file = path.join(publicDir, 'sitemap.xml');
   res.sendFile(file);
 });
@@ -154,12 +205,13 @@ app.get(['/', '/index.html'], (req, res) => {
 
 // Serve only public static files with instant cache for assets
 const staticOptions = {
-  maxAge: '2h',
+  fallthrough: true,
+  index: false,
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+      res.setHeader('Cache-Control', 'no-cache');
     } else {
-      res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
+      res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
     }
   }
 };
@@ -170,7 +222,7 @@ const CSV_FILE = path.join(__dirname, 'data', 'upiti.csv');
 // Initialize Notion Client if credentials exist
 let notion = null;
 if (process.env.NOTION_TOKEN && process.env.NOTION_DATABASE_ID) {
-  notion = new Client({ auth: process.env.NOTION_TOKEN });
+  notion = new Client({ auth: process.env.NOTION_TOKEN, timeoutMs: 8000 });
 }
 
 // Initialize Nodemailer SMTP Transporter
@@ -183,9 +235,24 @@ if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS
-    }
+    },
+    connectionTimeout: 7000,
+    greetingTimeout: 7000,
+    socketTimeout: 10000,
+    disableFileAccess: true,
+    disableUrlAccess: true
   });
 }
+
+const confirmationLogoPath = path.join(sourcePublicDir, 'logo_white_transparent.png');
+const confirmationLogo = fs.existsSync(confirmationLogoPath) ? fs.readFileSync(confirmationLogoPath) : null;
+
+const escapeHtml = (value) => String(value ?? '')
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#39;');
 
 // Helper function to append to CSV with UTF-8 BOM for Microsoft Excel compatibility
 function saveInquiryToCSV(data) {
@@ -221,10 +288,11 @@ function saveInquiryToCSV(data) {
   ].join(',') + '\n';
 
   if (!fileExists) {
-    fs.writeFileSync(CSV_FILE, '\uFEFF' + header + row, 'utf8');
+    fs.writeFileSync(CSV_FILE, '\uFEFF' + header + row, { encoding: 'utf8', mode: 0o600 });
   } else {
     fs.appendFileSync(CSV_FILE, row, 'utf8');
   }
+  fs.chmodSync(CSV_FILE, 0o600);
 }
 
 function getEstimatedDealValue(pkg) {
@@ -407,27 +475,19 @@ async function sendClientConfirmationEmail(data) {
     return;
   }
 
-  const clientName = data.name || 'poštovani';
-  const pkg = data.package || 'Izrada Weba & Digitalna Rješenja';
-  const company = data.company || 'Nije navedeno';
-  const phone = data.phone || 'Nije naveden';
-  const note = data.calendarSlot && data.calendarSlot !== 'Nije odabrano' && data.calendarSlot !== 'Upit s podnožja'
+  const clientName = escapeHtml(data.name || 'poštovani');
+  const pkg = escapeHtml(data.package || 'Izrada Weba & Digitalna Rješenja');
+  const company = escapeHtml(data.company || 'Nije navedeno');
+  const phone = escapeHtml(data.phone || 'Nije naveden');
+  const note = escapeHtml(data.calendarSlot && data.calendarSlot !== 'Nije odabrano' && data.calendarSlot !== 'Upit s podnožja'
     ? data.calendarSlot
-    : 'Besplatna procjena projekta i savjetovanje';
+    : 'Besplatna procjena projekta i savjetovanje');
 
-  // Prepare logo attachment
-  const logoPath = path.join(__dirname, 'logo_white_transparent.png');
-  const publicLogoPath = path.join(__dirname, 'public', 'logo_white_transparent.png');
-  const actualLogoPath = fs.existsSync(logoPath) ? logoPath : (fs.existsSync(publicLogoPath) ? publicLogoPath : null);
-
-  const attachments = [];
-  if (actualLogoPath) {
-    attachments.push({
+  const attachments = confirmationLogo ? [{
       filename: 'logo.png',
-      path: actualLogoPath,
+      content: confirmationLogo,
       cid: 'algorlogo'
-    });
-  }
+    }] : [];
 
   const htmlContent = `
 <!DOCTYPE html>
@@ -447,7 +507,7 @@ async function sendClientConfirmationEmail(data) {
           <tr>
             <td style="background-color: #050508; padding: 36px 32px; text-align: center; border-bottom: 2px solid #0066FF;">
               <a href="https://algor.studio" target="_blank" style="text-decoration: none; display: inline-block;">
-                <img src="${actualLogoPath ? 'cid:algorlogo' : 'https://algor.studio/logo_white_transparent.png'}" alt="Algor Studio" width="170" style="display: block; margin: 0 auto; max-width: 170px; height: auto; border: 0;" />
+                <img src="${confirmationLogo ? 'cid:algorlogo' : 'https://algor.studio/logo_white_transparent.png'}" alt="Algor Studio" width="170" style="display: block; margin: 0 auto; max-width: 170px; height: auto; border: 0;" />
               </a>
               <p style="margin: 12px 0 0 0; font-size: 12px; color: #94a3b8; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600;">
                 Digitalna Agencija &bull; Web &bull; Marketing &bull; AI
@@ -525,7 +585,7 @@ async function sendClientConfirmationEmail(data) {
   `;
 
   await mailTransporter.sendMail({
-    from: '"Algor Studio" <info@algor.studio>',
+    from: process.env.SMTP_FROM || '"Algor Studio" <info@algor.studio>',
     to: data.email,
     subject: `Potvrda primitka upita: ${pkg} | Algor Studio`,
     html: htmlContent,
@@ -539,7 +599,12 @@ function isRateLimited(ip) {
   const now = Date.now();
   const windowMs = 10 * 60 * 1000; // 10 minutes window
   const maxAttempts = 5;
-  
+
+  if (rateLimitMap.size >= 10000 && !rateLimitMap.has(ip)) {
+    const oldestKey = rateLimitMap.keys().next().value;
+    rateLimitMap.delete(oldestKey);
+  }
+
   const record = rateLimitMap.get(ip) || { count: 0, resetAt: now + windowMs };
   if (now > record.resetAt) {
     record.count = 1;
@@ -552,7 +617,7 @@ function isRateLimited(ip) {
 }
 
 // Clean up stale rate limit entries every 30 minutes
-setInterval(() => {
+const rateLimitCleanup = setInterval(() => {
   const now = Date.now();
   for (const [ip, record] of rateLimitMap.entries()) {
     if (now > record.resetAt) {
@@ -560,12 +625,43 @@ setInterval(() => {
     }
   }
 }, 30 * 60 * 1000);
+rateLimitCleanup.unref();
+
+const allowedOrigins = new Set(['https://algor.studio', 'https://www.algor.studio']);
+if (process.env.SITE_ORIGIN) {
+  try {
+    allowedOrigins.add(new URL(process.env.SITE_ORIGIN).origin);
+  } catch {
+    console.warn('SITE_ORIGIN is invalid and was ignored.');
+  }
+}
+if (!isProduction) {
+  allowedOrigins.add(`http://localhost:${PORT}`);
+  allowedOrigins.add(`http://127.0.0.1:${PORT}`);
+}
+
+function safeTokenEqual(received, expected) {
+  if (typeof received !== 'string' || typeof expected !== 'string') return false;
+  const receivedBuffer = Buffer.from(received);
+  const expectedBuffer = Buffer.from(expected);
+  return receivedBuffer.length === expectedBuffer.length
+    && crypto.timingSafeEqual(receivedBuffer, expectedBuffer);
+}
 
 // API endpoint to submit inquiries with rate-limiting, sanitization, and spam filters
 app.post('/api/contact', async (req, res) => {
   try {
-    const clientIp = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress || 'unknown';
-    
+    res.setHeader('Cache-Control', 'no-store');
+    const origin = req.get('origin');
+    if (origin && !allowedOrigins.has(origin)) {
+      return res.status(403).json({ success: false, error: 'Zahtjev nije dopušten.' });
+    }
+    if (!req.is('application/json') && !req.is('application/x-www-form-urlencoded')) {
+      return res.status(415).json({ success: false, error: 'Nepodržan format zahtjeva.' });
+    }
+
+    const clientIp = req.ip || req.socket.remoteAddress || 'unknown';
+
     // 0. Rate limiting protection (max 5 submissions per 10 min per IP)
     if (isRateLimited(clientIp)) {
       return res.status(429).json({ success: false, error: 'Previše poslanih upita u kratkom vremenu. Molimo pričekajte nekoliko minuta.' });
@@ -579,15 +675,19 @@ app.post('/api/contact', async (req, res) => {
     }
 
     // Input sanitization & validation
-    const sanitize = (str, maxLen = 200) => (str || '').toString().trim().slice(0, maxLen);
+    const sanitize = (str, maxLen = 200) => String(str ?? '')
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+      .trim()
+      .slice(0, maxLen);
     const cleanName = sanitize(name, 100);
     const cleanCompany = sanitize(company, 100);
-    const cleanEmail = sanitize(email, 120);
+    const cleanEmail = sanitize(email, 254);
     const cleanPhone = sanitize(phone, 50);
     const cleanPkg = sanitize(pkg, 100);
     const cleanCalendarSlot = sanitize(calendarSlot, 500);
     const cleanSource = sanitize(source, 100) || 'Web Stranica';
-    const cleanDevice = sanitize(device, 50) || 'Desktop';
+    const submittedDevice = sanitize(device, 50);
+    const cleanDevice = ['Desktop', 'Tablet', 'Mobile'].includes(submittedDevice) ? submittedDevice : 'Desktop';
     const cleanAppDate = sanitize(appointmentDate, 50);
     const cleanAppTime = sanitize(appointmentTime, 50);
     const cleanMeetingType = sanitize(meetingType, 50);
@@ -602,24 +702,16 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ success: false, error: 'Molimo unesite ispravnu e-mail adresu.' });
     }
 
-    const estimatedValue = getEstimatedDealValue(cleanPkg);
-    
-    // 1. Save to private CSV backup (outside public web directory)
-    saveInquiryToCSV({
-      name: cleanName,
-      company: cleanCompany,
-      email: cleanEmail,
-      phone: cleanPhone,
-      package: cleanPkg,
-      calendarSlot: cleanCalendarSlot,
-      source: cleanSource,
-      device: cleanDevice,
-      estimatedValue
-    });
+    if (cleanAppDate && !/^\d{4}-\d{2}-\d{2}$/.test(cleanAppDate)) {
+      return res.status(400).json({ success: false, error: 'Datum termina nije ispravan.' });
+    }
+    if (cleanAppTime && !/^\d{2}:\d{2}$/.test(cleanAppTime)) {
+      return res.status(400).json({ success: false, error: 'Vrijeme termina nije ispravno.' });
+    }
 
-    // 2. Save directly to Notion database
-    try {
-      await saveInquiryToNotion({
+    const estimatedValue = getEstimatedDealValue(cleanPkg);
+
+    const inquiry = {
         name: cleanName,
         company: cleanCompany,
         email: cleanEmail,
@@ -632,32 +724,39 @@ app.post('/api/contact', async (req, res) => {
         source: cleanSource,
         device: cleanDevice,
         estimatedValue
-      });
-      console.log(`✓ Upit uspješno poslan u Notion [Algor upiti]: ${cleanName} | ${cleanPkg} (${estimatedValue} €) | ${cleanSource} | ${cleanDevice}`);
-    } catch (notionErr) {
-      console.error('Greška pri spremanju u Notion:', notionErr.message);
+    };
+
+    // Plaintext local backups are disabled by default to minimize retained personal data.
+    let storedLocally = false;
+    if (process.env.SAVE_LOCAL_CSV === 'true') {
+      saveInquiryToCSV(inquiry);
+      storedLocally = true;
     }
 
-    // 3. Automatically send client confirmation email
-    try {
-      if (cleanEmail) {
-        await sendClientConfirmationEmail({
-          name: cleanName,
-          company: cleanCompany,
-          email: cleanEmail,
-          phone: cleanPhone,
-          package: cleanPkg,
-          calendarSlot: cleanCalendarSlot
-        });
-        console.log(`✓ Automatski potvrdni email poslan klijentu: ${cleanEmail}`);
-      }
-    } catch (emailErr) {
-      console.error('Greška pri slanju potvrdnog emaila:', emailErr.message);
+    const [notionResult, emailResult] = await Promise.allSettled([
+      saveInquiryToNotion(inquiry),
+      cleanEmail ? sendClientConfirmationEmail(inquiry) : Promise.resolve()
+    ]);
+
+    if (notionResult.status === 'rejected') {
+      console.error('Notion save failed:', notionResult.reason?.name || 'Error');
+    } else if (notion) {
+      console.log('Contact inquiry stored in Notion.');
+    }
+    if (emailResult.status === 'rejected') {
+      console.error('Confirmation email failed:', emailResult.reason?.name || 'Error');
+    } else if (cleanEmail && mailTransporter) {
+      console.log('Contact confirmation email sent.');
     }
 
-    res.json({ success: true, message: 'Upit je uspješno spremljen u CSV, Notion i poslan je potvrdni email!' });
+    const storedInNotion = Boolean(notion) && notionResult.status === 'fulfilled';
+    if (!storedLocally && !storedInNotion) {
+      return res.status(503).json({ success: false, error: 'Upit trenutačno nije moguće spremiti. Pokušajte ponovno.' });
+    }
+
+    res.json({ success: true, message: 'Upit je uspješno zaprimljen.' });
   } catch (err) {
-    console.error('Greška pri spremanju upita:', err);
+    console.error('Contact request failed:', err?.name || 'Error');
     res.status(500).json({ success: false, error: 'Spremanje upita nije uspjelo.' });
   }
 });
@@ -665,18 +764,41 @@ app.post('/api/contact', async (req, res) => {
 // Admin endpoint to download CSV file with secret authentication key protection
 app.get('/admin/export-csv', (req, res) => {
   const authHeader = req.headers['authorization'] || '';
-  const token = req.query.key || (authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '');
+  const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
   const expectedSecret = process.env.ADMIN_SECRET_KEY;
-  
-  if (!expectedSecret || token !== expectedSecret) {
-    return res.status(403).send('Pristup odbijen. Potreban je valjani administratorski ključ.');
+
+  res.setHeader('Cache-Control', 'no-store');
+  if (!expectedSecret) {
+    return res.status(404).send('Not Found');
   }
-  
+  if (!safeTokenEqual(token, expectedSecret)) {
+    res.setHeader('WWW-Authenticate', 'Bearer');
+    return res.status(401).send('Pristup odbijen.');
+  }
+
   if (fs.existsSync(CSV_FILE)) {
     res.setHeader('Content-Type', 'text/csv; charset=utf-8');
     res.setHeader('Content-Disposition', 'attachment; filename="upiti.csv"');
     res.sendFile(CSV_FILE);
+  } else {
+    res.status(404).send('CSV zapis ne postoji.');
   }
+});
+
+app.use('/api', (req, res) => {
+  res.status(404).json({ success: false, error: 'API ruta ne postoji.' });
+});
+
+app.use((err, req, res, next) => {
+  if (!err) return next();
+  if (err.type === 'entity.too.large') {
+    return res.status(413).json({ success: false, error: 'Zahtjev je prevelik.' });
+  }
+  if (err instanceof SyntaxError && 'body' in err) {
+    return res.status(400).json({ success: false, error: 'Neispravan zahtjev.' });
+  }
+  console.error('Unhandled request error:', err?.name || 'Error');
+  return res.status(500).json({ success: false, error: 'Došlo je do pogreške.' });
 });
 
 // 404 Handler for all other unhandled GET routes
@@ -687,6 +809,13 @@ app.use((req, res) => {
   res.sendFile(path.join(publicDir, '404.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  const server = app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+  });
+  server.requestTimeout = 15000;
+  server.headersTimeout = 10000;
+  server.keepAliveTimeout = 5000;
+}
+
+module.exports = app;
