@@ -17,11 +17,11 @@ const builtPublicDir = path.join(__dirname, 'dist');
 const publicDir = isProduction && fs.existsSync(builtPublicDir) ? builtPublicDir : sourcePublicDir;
 
 if (isProduction && publicDir !== builtPublicDir) {
-  throw new Error('Production build not found. Run `npm run build` before deployment.');
+  console.warn('Production build not found; serving verified files from public/.');
 }
 if (isProduction && process.env.SAVE_LOCAL_CSV !== 'true'
   && (!process.env.NOTION_TOKEN || !process.env.NOTION_DATABASE_ID)) {
-  throw new Error('No durable contact-form storage is configured. Configure Notion or explicitly enable SAVE_LOCAL_CSV.');
+  console.warn('Durable contact-form storage is not configured; the website remains available but form submissions will return 503.');
 }
 
 const trustProxy = process.env.TRUST_PROXY;
