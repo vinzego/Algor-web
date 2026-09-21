@@ -1,7 +1,7 @@
 {
   "name": "algor-studio",
   "version": "1.0.0",
-  "description": "Algor Studio - Digitalni Marketing, Video Produkcija & AI Automatizacija",
+  "description": "Algor Studio - sadržaj, društvene mreže i oglasi",
   "main": "server.js",
   "scripts": {
     "check": "node scripts/check.js && node --check server.js && node --check public/script.js",

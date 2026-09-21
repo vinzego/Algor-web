@@ -458,7 +458,7 @@
           <a href="/" class="footer-logo" style="text-decoration: none;" aria-label="Algor studio Početna">
             <img src="logo_white_transparent.png" alt="Algor studio" class="footer-brand-logo-img">
           </a>
-          <p class="footer-tagline">Algor Studio — Akvizicija novih klijenata, od prvog klika do rezerviranog termina.</p>
+          <p class="footer-tagline">Algor Studio — sadržaj, oglasi i više pravih upita za vaše poslovanje.</p>
         </div>
         
         <!-- Right Columns: Links -->
@@ -530,13 +530,14 @@
       try {
         const urlParams = new URLSearchParams(window.location.search);
         const pkgQuery = urlParams.get('paket') || urlParams.get('package') || urlParams.get('usluga');
+        const hasSnimanje = urlParams.get('snimanje') === 'da';
         let pkgFromQuery = '';
         if (pkgQuery) {
           const p = pkgQuery.toLowerCase();
-          if (p.includes('chatgpt') || p.includes('searchgpt') || p.includes('openai')) pkgFromQuery = 'ChatGPT Ads & AI Search';
-          else if (p.includes('start')) pkgFromQuery = 'Paket Start (490 €/mj.)';
-          else if (p.includes('pro') || p.includes('plus')) pkgFromQuery = 'Paket Pro (890 €/mj.)';
-          else if (p.includes('ultra') || p.includes('ai')) pkgFromQuery = 'Paket Ultra (1.390 €/mj.)';
+          if (p.includes('chatgpt') || p.includes('searchgpt') || p.includes('openai')) pkgFromQuery = 'ChatGPT Ads';
+          else if (p.includes('start')) pkgFromQuery = hasSnimanje ? 'Paket Start + snimanje (590 €/mj.)' : 'Paket Start (400 €/mj.)';
+          else if (p.includes('pro') || p.includes('plus')) pkgFromQuery = hasSnimanje ? 'Paket Pro + snimanje (790 €/mj.)' : 'Paket Pro (590 €/mj.)';
+          else if (p.includes('ultra') || p.includes('ai')) pkgFromQuery = hasSnimanje ? 'Paket Ultra + snimanje (1.190 €/mj.)' : 'Paket Ultra (990 €/mj.)';
           else if (p.includes('landing') || p.includes('web-start')) pkgFromQuery = 'Landing Stranica (od 490 €)';
           else if (p.includes('business') || p.includes('web-business') || p.includes('web-pro')) pkgFromQuery = 'Business Web (od 990 €)';
           else if (p.includes('custom') || p.includes('web-custom') || p.includes('shop') || p.includes('1850') || p.includes('1.850')) pkgFromQuery = 'Custom Web Aplikacija (od 1.850 €)';

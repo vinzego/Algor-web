@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const p = pkgParam.toLowerCase();
       if (p.includes('chatgpt') || p.includes('searchgpt') || p.includes('openai')) {
         selectedPackageName = 'ChatGPT Ads';
-        formPackageLabel = 'ChatGPT Ads & AI Search (400 €/mj.)';
+        formPackageLabel = 'ChatGPT Ads (400 €/mj.)';
       } else if (p.includes('start')) {
         if (snimanje) {
           selectedPackageName = 'Start + Snimanje sadržaja';
@@ -169,18 +169,18 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (p.includes('pro') || p.includes('plus')) {
         if (snimanje) {
           selectedPackageName = 'Pro + Snimanje sadržaja';
-          formPackageLabel = 'Pro + Snimanje sadržaja (990 €/mj.)';
+          formPackageLabel = 'Pro + Snimanje sadržaja (790 €/mj.)';
         } else {
           selectedPackageName = 'Pro';
-          formPackageLabel = 'Pro (700 €/mj.)';
+          formPackageLabel = 'Pro (590 €/mj.)';
         }
       } else if (p.includes('ultra') || p.includes('ai')) {
         if (snimanje) {
           selectedPackageName = 'Ultra + Snimanje sadržaja';
-          formPackageLabel = 'Ultra + Snimanje sadržaja (1.490 €/mj.)';
+          formPackageLabel = 'Ultra + Snimanje sadržaja (1.190 €/mj.)';
         } else {
           selectedPackageName = 'Ultra';
-          formPackageLabel = 'Ultra (1.100 €/mj.)';
+          formPackageLabel = 'Ultra (990 €/mj.)';
         }
       } else if (p.includes('landing') || p.includes('web-start')) {
         selectedPackageName = 'Izrada weba';
@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
           company: data.company,
           email: data.email,
           phone: data.phone,
-          package: formPackageLabel || selectedPackageName || 'Besplatan Audit (Konzultacije)',
+          package: formPackageLabel || selectedPackageName || 'Uvodni razgovor',
           calendarSlot: 'Direktan upit (Klijent se javio porukom)'
         };
         try {
@@ -764,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
           company: contactPageData.company || '',
           email: contactPageData.email || '',
           phone: contactPageData.phone || '',
-          package: formPackageLabel || selectedPackageName || 'Besplatan Audit (Konzultacije)',
+          package: formPackageLabel || selectedPackageName || 'Uvodni razgovor',
           calendarSlot: appointmentDetails
         };
         try {
@@ -1054,7 +1054,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (path.includes('izrada-web-stranica')) return 'Izrada Web Stranica';
     if (path.includes('karijere')) return 'Karijere';
     if (path.includes('kontakt')) return 'Kontakt Stranica';
-    return 'Marketing & AI (Naslovna)';
+    return 'Marketing paketi (Naslovna)';
   }
 
   function detectUserDevice() {
@@ -1341,7 +1341,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const base = parseInt(card.dataset.basePrice, 10);
         const addon = parseInt(card.dataset.addonPrice, 10);
         const numEl = card.querySelector('.price-val-num');
-        const addonItem = card.querySelector('.feature-item-addon');
+        const addonItem = card.querySelector('.service-production');
+        const addonCopy = addonItem ? addonItem.querySelector('.service-copy') : null;
         const ctaLink = card.querySelector('.framer-pill-btn');
         const plan = card.dataset.plan;
 
@@ -1350,7 +1351,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (addonItem) {
-          addonItem.classList.toggle('is-hidden', !isProductionOn);
+          addonItem.classList.toggle('is-excluded', !isProductionOn);
+          if (addonCopy) {
+            addonCopy.textContent = isProductionOn
+              ? addonItem.dataset.included
+              : addonItem.dataset.excluded;
+          }
         }
 
         if (ctaLink && plan) {
