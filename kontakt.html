@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="hr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<!-- Google tag (gtag.js) & Google Consent Mode v2 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18423241784"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) & Google Consent Mode v2 -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -40,8 +40,9 @@
     gtag('config', 'AW-18423241784');
     gtag('config', 'G-XQW67LRFMV');
   </script>
+
   <title>Kontakt &amp; Rezervacija Termina | Algor studio</title>
-  <meta name="description" content="Zatražite besplatnu analizu i ponudu za digitalni marketing, video produkciju, izradu web stranice ili AI automatizaciju. Dogovorite termin u nekoliko klikova.">
+  <meta name="description" content="Dogovorite razgovor o vođenju društvenih mreža, snimanju sadržaja, oglasima ili izradi web-stranice. Odaberite termin u nekoliko klikova.">
   <meta name="keywords" content="kontakt algor studio, rezervacija termina, ponuda marketing, izrada weba upit, konzultacije marketing">
   <meta name="author" content="Algor Studio">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -51,7 +52,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://algor.studio/kontakt">
   <meta property="og:title" content="Kontakt &amp; Rezervacija Termina | Algor studio">
-  <meta property="og:description" content="Zatražite besplatnu analizu i ponudu za digitalni marketing, video produkciju, izradu web stranice ili AI automatizaciju.">
+  <meta property="og:description" content="Dogovorite razgovor o društvenim mrežama, snimanju sadržaja, oglasima ili izradi web-stranice.">
   <meta property="og:image" content="https://algor.studio/about_person.jpg">
   <meta property="og:locale" content="hr_HR">
   <meta property="og:site_name" content="Algor Studio">
@@ -60,7 +61,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://algor.studio/kontakt">
   <meta name="twitter:title" content="Kontakt &amp; Rezervacija Termina | Algor studio">
-  <meta name="twitter:description" content="Zatražite besplatnu analizu i ponudu za digitalni marketing, video produkciju, izradu web stranice ili AI automatizaciju.">
+  <meta name="twitter:description" content="Dogovorite razgovor o društvenim mrežama, snimanju sadržaja, oglasima ili izradi web-stranice.">
   <meta name="twitter:image" content="https://algor.studio/about_person.jpg">
 
   <!-- Structured Data: JSON-LD (ContactPage) -->
@@ -80,127 +81,427 @@
   }
   </script>
 
-  
-
+  <!-- Google Fonts: Caveat, Fragment Mono, Geist Mono & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Fragment+Mono:ital@0;1&family=Geist+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800;900;950&display=swap" rel="stylesheet">
+
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=104.0.0">
   <link rel="icon" type="image/png" href="favicon.png?v=104.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=104.0.0">
-  <link rel="stylesheet" href="style.css?v=230.0.0">
+
+  <!-- Base & Theme Stylesheets -->
+  <link rel="stylesheet" href="/style.css?v=301.0.0">
+  <link rel="stylesheet" href="/Algor-theme.css?v=301.0.0">
+
   <style>
-    /* Contact Page Luxury Theme */
+    /* ==========================================================================
+       CONTACT PAGE LIGHT EDITORIAL THEME (ALGOR STUDIO SYSTEM)
+       ========================================================================== */
     html, body {
-      background-color: #050508 !important;
-      color: #f1f5f9 !important;
-      font-family: 'Inter', sans-serif !important;
+      background-color: var(--c-light-bg, #f5f5f5) !important;
+      color: var(--c-text-dark, #020108) !important;
+      font-family: var(--font-sans), 'Inter', sans-serif !important;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
+      overflow-x: clip !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Light Gray Canvas Matching Homepage Exactly */
+    .contact-page-canvas {
+      position: relative;
+      background-color: var(--c-light-bg, #f5f5f5) !important;
+      min-height: 100vh;
     }
 
     .contact-hero-section {
       position: relative;
-      padding: 150px 24px 80px;
-      max-width: 1240px;
+      padding: clamp(140px, 16vh, 190px) var(--container-pad, clamp(16px, 3.5vw, 48px)) clamp(60px, 8vh, 90px);
+      max-width: var(--container-max, 1360px);
+      width: 100%;
       margin: 0 auto;
+      box-sizing: border-box;
+      z-index: 2;
     }
 
     .contact-header {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       text-align: center;
-      max-width: 840px;
-      margin: 0 auto 56px;
+      max-width: 960px;
+      margin: 0 auto clamp(40px, 5vw, 64px);
+    }
+
+    .contact-header .fb-eyebrow {
+      color: var(--c-text-muted, #808083);
+      justify-content: center;
+      margin-bottom: 20px;
+      font-family: var(--font-mono), monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
     }
 
     .contact-title {
-      font-size: clamp(34px, 4.5vw, 54px);
-      font-weight: 800;
-      color: #ffffff;
-      letter-spacing: -1.6px;
-      line-height: 1.15;
-      margin: 0 0 18px 0;
+      font-family: var(--font-sans), 'Inter', sans-serif;
+      font-size: clamp(36px, 5vw, 62px);
+      font-weight: 600;
+      color: var(--c-text-dark, #020108);
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      margin: 0 0 20px 0;
     }
 
-    .contact-title span {
-      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .contact-title .accent-script {
+      font-family: var(--font-script), 'Caveat', cursive;
+      color: var(--c-orange, #f65600);
+      font-weight: 600;
+      font-size: 1.18em;
+      display: inline-block;
+      transform: translateY(-2px);
+      margin-left: 4px;
     }
 
     .contact-desc {
-      font-size: clamp(15.5px, 1.8vw, 18px);
-      color: #94a3b8;
-      line-height: 1.65;
+      font-size: clamp(16px, 1.4vw, 19px);
+      color: #64748b;
+      line-height: 1.6;
       margin: 0 auto;
-      max-width: 680px;
+      max-width: 720px;
+      letter-spacing: -0.01em;
     }
 
     /* Main Contact Layout: 2-Column Side-by-Side on Desktop */
     .contact-layout-stack {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      align-items: start;
-      gap: 36px;
-      max-width: 1120px;
-      margin: 0 auto 90px auto;
+      align-items: stretch;
+      gap: 32px;
+      max-width: 100%;
+      margin: 0 auto clamp(60px, 8vw, 100px) auto;
       width: 100%;
       box-sizing: border-box;
     }
 
-    /* Centered Interactive Booking Box (Left Column) - UNIFORM LOCKED HEIGHT ACROSS ALL 3 STEPS */
+    /* Left Column: Apple-like Clean White Contact Card */
     .contact-card-box {
       width: 100%;
       background: #ffffff;
-      color: #0f172a;
+      color: var(--c-text-dark, #020108);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 28px;
-      padding: 34px 34px 34px 34px;
-      box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      padding: clamp(28px, 4vw, 42px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
       box-sizing: border-box;
-      height: 700px;
-      min-height: 700px;
-      max-height: 700px;
+      min-height: auto;
+      height: auto;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      overflow: hidden;
+      overflow: visible;
+      position: relative;
     }
 
-    /* Info Card ("Što možete očekivati na pozivu?") Beside Form (Right Column) */
+
+    /* Apple-like Form Header */
+    .apple-form-header {
+      margin-bottom: 24px;
+    }
+
+    .apple-form-title {
+      font-size: clamp(22px, 2.5vw, 28px);
+      font-weight: 600;
+      color: #1d1d1f;
+      letter-spacing: -0.03em;
+      margin: 0 0 6px 0;
+      line-height: 1.2;
+    }
+
+    .apple-form-subtitle {
+      font-size: 14.5px;
+      color: #86868b;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Service Selector Pills (Apple Segmented Style) */
+    .apple-service-section {
+      margin-bottom: 20px;
+    }
+
+    .apple-service-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1d1d1f;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .apple-service-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .apple-service-pill {
+      background: #f5f5f7;
+      color: #1d1d1f;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 980px;
+      padding: 8px 16px;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+
+    .apple-service-pill:hover {
+      background: #ebebec;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    .apple-service-pill.active {
+      background: #000000;
+      color: #ffffff;
+      border-color: #000000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Apple Form Inputs & Layout */
+    .apple-form-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .apple-input-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .apple-field-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .apple-field-wrap label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1d1d1f;
+      letter-spacing: -0.01em;
+    }
+
+    .apple-field-wrap label span.req {
+      color: #e11d48;
+      font-weight: 600;
+    }
+
+    .apple-field-wrap label span.opt {
+      font-weight: 400;
+      color: #86868b;
+      font-size: 12px;
+    }
+
+    .apple-input,
+    .apple-textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      font-family: inherit;
+      font-size: 15px;
+      color: #1d1d1f;
+      background: #f5f5f7;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      outline: none;
+    }
+
+    .apple-textarea {
+      resize: vertical;
+      min-height: 96px;
+      line-height: 1.5;
+    }
+
+    .apple-input::placeholder,
+    .apple-textarea::placeholder {
+      color: #86868b;
+      opacity: 0.9;
+    }
+
+    .apple-input:focus,
+    .apple-textarea:focus {
+      background: #ffffff;
+      border-color: #000000;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+    }
+
+    /* GDPR Consent Box */
+    .apple-consent-wrap {
+      margin: 4px 0 10px 0;
+    }
+
+    .apple-consent-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .apple-consent-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: #000000;
+      flex-shrink: 0;
+    }
+
+    .apple-consent-text {
+      font-size: 12.5px;
+      color: #6e6e73;
+      line-height: 1.45;
+    }
+
+    .apple-consent-text a {
+      color: #1d1d1f;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .apple-consent-text a:hover {
+      color: #000000;
+    }
+
+    /* Apple-like Black and White Buttons */
+    .apple-btn-black {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px 28px;
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid #000000;
+      border-radius: 980px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      user-select: none;
+    }
+
+    .apple-btn-black:hover:not(:disabled) {
+      background: #1d1d1f;
+      border-color: #1d1d1f;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    }
+
+    .apple-btn-black:active:not(:disabled) {
+      transform: scale(0.99);
+    }
+
+    .apple-btn-black:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .apple-btn-white {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 24px;
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 980px;
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .apple-btn-white:hover:not(:disabled) {
+      background: #000000;
+      color: #ffffff;
+      border-color: #000000;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+    }
+
+    .apple-btn-white:active:not(:disabled) {
+      transform: scale(0.99);
+    }
+
+    .btn-arrow {
+      font-size: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    .apple-btn-black:hover .btn-arrow,
+    .apple-btn-white:hover .btn-arrow {
+      transform: translateX(3px);
+    }
+
+    /* Right Column: Sleek Black Apple-like Value & Booking Sidebar Panel */
     .contact-info-panel {
       width: 100%;
-      background: #111318;
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 28px;
-      padding: 34px 32px;
+      padding: clamp(28px, 4vw, 42px);
       box-sizing: border-box;
       position: sticky;
       top: 100px;
-      height: 700px;
-      min-height: 700px;
-      max-height: 700px;
+      min-height: auto;
+      height: auto;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.12);
     }
 
     .info-panel-title {
-      font-size: 22px;
-      font-weight: 800;
+      font-size: clamp(22px, 2.5vw, 26px);
+      font-weight: 600;
       color: #ffffff;
-      margin: 0 0 12px 0;
-      letter-spacing: -0.4px;
-      line-height: 1.25;
+      margin: 0 0 8px 0;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
     }
 
     .info-panel-desc {
       font-size: 14.5px;
-      color: #94a3b8;
-      line-height: 1.6;
-      margin: 0 0 24px 0;
+      color: #a1a1a6;
+      line-height: 1.55;
+      margin: 0 0 22px 0;
     }
 
     .info-perks-list {
@@ -209,242 +510,185 @@
       margin: 0 0 24px 0;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 16px;
     }
 
     .info-perk-item {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
-      font-size: 14.5px;
-      color: #cbd5e1;
-      line-height: 1.55;
+      gap: 12px;
+      font-size: 14px;
+      color: #d1d1d6;
+      line-height: 1.5;
     }
 
     .info-perk-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      background: rgba(92, 182, 230, 0.15);
-      color: #5CB6E6;
-      font-size: 13px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-size: 12px;
       font-weight: bold;
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 1px;
+    }
+
+    .info-perk-item strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Side Booking Card Box (Dark Mode Internal Card) */
+    .apple-sidebar-booking-card {
+      background: #141418;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .apple-sidebar-booking-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .apple-sidebar-booking-desc {
+      font-size: 13.5px;
+      color: #a1a1a6;
+      line-height: 1.45;
+      margin: 0 0 6px 0;
     }
 
     .contact-direct-box {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 20px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .contact-direct-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      color: #5CB6E6;
+      gap: 8px;
+      color: #ffffff;
       text-decoration: none;
       font-size: 15px;
-      font-weight: 700;
-      transition: color 0.2s;
+      font-weight: 600;
+      transition: opacity 0.2s, color 0.2s;
     }
 
     .contact-direct-link:hover {
-      color: #60c5ff;
+      color: #f65600;
+      opacity: 0.9;
     }
 
-    /* Selected Package Inside Form Banner */
-    .form-selected-pkg-banner {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: linear-gradient(135deg, rgba(92, 182, 230, 0.08) 0%, rgba(2, 132, 199, 0.03) 100%);
-      border: 1.5px solid rgba(92, 182, 230, 0.28);
-      border-radius: 14px;
-      padding: 10px 14px;
-      margin-bottom: 20px;
-      flex-shrink: 0;
-    }
-
-    .pkg-banner-icon {
-      font-size: 18px;
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: rgba(92, 182, 230, 0.15);
-      color: #0284c7;
+    /* Modal Styles for Apple-like Booking Overlay */
+    .apple-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .pkg-banner-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
+    .apple-modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    .pkg-banner-sub {
-      font-size: 10.5px;
-      font-weight: 700;
-      color: #64748b;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-family: 'Geist Mono', monospace;
-    }
-
-    .pkg-banner-title {
-      font-size: 14px;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.2px;
-    }
-
-    /* Steps Progress Bar */
-    .booking-steps-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 22px;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .booking-step-indicator {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #94a3b8;
-    }
-
-    .booking-step-indicator.active {
-      color: #0f172a;
-    }
-
-    .step-num-circle {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: #e2e8f0;
-      color: #64748b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12.5px;
-      font-weight: 800;
-    }
-
-    .booking-step-indicator.active .step-num-circle {
-      background: #0f172a;
-      color: #ffffff;
-    }
-
-    .step-divider-line {
-      flex: 1;
-      height: 2px;
-      background: #e2e8f0;
-      margin: 0 12px;
-    }
-
-    /* Form Fields */
-    /* Form Steps Layout - ALL 3 STEPS FILL CONTAINER HEIGHT IDENTICALLY */
-    #contact-page-form-step-1,
-    #contact-page-form-step-2,
-    #contact-page-form-step-3 {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1;
-      height: 100%;
+    .apple-modal-window {
+      background: #ffffff;
+      border-radius: 28px;
       width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: clamp(24px, 4vw, 36px);
       box-sizing: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.3);
+      transform: scale(0.96) translateY(12px);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
     }
 
-    .contact-form-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 0 0 4px 0;
-      letter-spacing: -0.4px;
+    .apple-modal-overlay.open .apple-modal-window {
+      transform: scale(1) translateY(0);
     }
 
-    .contact-form-subtitle {
+    .apple-modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #f5f5f7;
+      border: none;
+      color: #1d1d1f;
+      font-size: 16px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .apple-modal-close-btn:hover {
+      background: #e5e5ea;
+      transform: scale(1.05);
+    }
+
+    .apple-modal-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1d1d1f;
+      letter-spacing: -0.03em;
+      margin: 0 0 6px 0;
+      padding-right: 32px;
+    }
+
+    .apple-modal-subtitle {
       font-size: 13.5px;
-      color: #64748b;
-      margin: 0 0 16px 0;
+      color: #86868b;
+      margin: 0 0 20px 0;
       line-height: 1.45;
     }
 
-    .form-inputs-group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: auto;
-    }
-
-    .form-field-unit {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .form-field-unit label {
-      font-size: 13px;
-      font-weight: 700;
-      color: #1e293b;
-    }
-
-    .form-field-unit label span.req {
-      color: #ef4444;
-    }
-
-    .form-field-unit label span.opt {
-      font-weight: 400;
-      color: #94a3b8;
-      font-size: 12px;
-    }
-
-    .form-field-unit input,
-    .form-field-unit select {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 11px 14px;
-      border-radius: 11px;
-      border: 1.5px solid #cbd5e1;
-      font-family: inherit;
-      font-size: 14.5px;
-      color: #0f172a;
-      background: #f8fafc;
-      transition: all 0.2s ease;
-      outline: none;
-    }
-
-    .form-field-unit input:focus {
-      border-color: #5CB6E6;
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(92, 182, 230, 0.15);
-    }
-
-    /* Meeting Type Selector (Live vs Google Meet) - Compact */
+    /* Modal Meeting Type Selector (Live vs Meet) */
     .meeting-type-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-top: 2px;
+      margin-bottom: 16px;
     }
 
     .meeting-type-card {
-      border: 2px solid #e2e8f0;
-      border-radius: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
       padding: 10px 12px;
       cursor: pointer;
       display: flex;
@@ -452,39 +696,44 @@
       justify-content: center;
       text-align: center;
       gap: 8px;
-      background: #f8fafc;
-      transition: all 0.2s ease;
+      background: #f5f5f7;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       user-select: none;
     }
 
     .meeting-type-card:hover {
-      border-color: #94a3b8;
-      background: #ffffff;
+      background: #ebebec;
+      border-color: rgba(0, 0, 0, 0.15);
     }
 
     .meeting-type-card.selected {
-      border-color: #5CB6E6;
-      background: rgba(92, 182, 230, 0.08);
-      box-shadow: 0 4px 14px rgba(92, 182, 230, 0.15);
+      border-color: #000000;
+      background: #000000;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    .meeting-type-card.selected .meeting-type-name {
+      color: #ffffff;
     }
 
     .meeting-type-icon {
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .meeting-type-name {
       font-size: 13.5px;
-      font-weight: 700;
-      color: #0f172a;
+      font-weight: 600;
+      color: #1d1d1f;
     }
 
-    /* Custom Modern Calendar Widget - Compact & Clean */
+    /* Apple Custom Calendar Widget */
     .custom-calendar-widget {
-      background: #f8fafc;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 14px;
-      padding: 12px 14px;
-      margin-top: 2px;
+      background: #f5f5f7;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
     }
 
     .calendar-nav-bar {
@@ -496,10 +745,10 @@
     }
 
     .cal-month-title {
-      font-size: 14px;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.3px;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: #1d1d1f;
+      letter-spacing: -0.01em;
       text-transform: capitalize;
     }
 
@@ -507,9 +756,9 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      border: 1px solid #cbd5e1;
+      border: 1px solid rgba(0, 0, 0, 0.08);
       background: #ffffff;
-      color: #1e293b;
+      color: #1d1d1f;
       font-size: 13px;
       font-weight: bold;
       display: flex;
@@ -520,13 +769,13 @@
     }
 
     .cal-nav-btn:hover:not(:disabled) {
-      background: #0f172a;
+      background: #000000;
+      border-color: #000000;
       color: #ffffff;
-      border-color: #0f172a;
     }
 
     .cal-nav-btn:disabled {
-      opacity: 0.3;
+      opacity: 0.25;
       cursor: not-allowed;
     }
 
@@ -536,14 +785,15 @@
       gap: 4px;
       text-align: center;
       font-size: 11px;
-      font-weight: 700;
-      color: #64748b;
-      margin-bottom: 6px;
+      font-weight: 600;
+      color: #86868b;
+      margin-bottom: 8px;
       text-transform: uppercase;
+      font-family: var(--font-mono), monospace;
     }
 
     .cal-weekend-hdr {
-      color: #94a3b8;
+      color: #c7c7cc;
     }
 
     .cal-days-grid {
@@ -553,13 +803,13 @@
     }
 
     .cal-day-cell {
-      height: 32px;
+      height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 600;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
       border: 1px solid transparent;
       transition: all 0.18s ease;
       user-select: none;
@@ -572,122 +822,57 @@
 
     .cal-day-cell.cal-day-active {
       background: #ffffff;
-      border-color: #e2e8f0;
-      color: #0f172a;
+      border-color: rgba(0, 0, 0, 0.06);
+      color: #1d1d1f;
       cursor: pointer;
     }
 
     .cal-day-cell.cal-day-active:hover {
-      background: #f0f9ff;
-      border-color: #5CB6E6;
-      color: #0284c7;
-      transform: scale(1.04);
+      background: #e5e5ea;
+      color: #000000;
+      transform: scale(1.05);
     }
 
     .cal-day-cell.cal-day-selected {
-      background: #5CB6E6 !important;
-      border-color: #5CB6E6 !important;
+      background: #000000 !important;
+      border-color: #000000 !important;
       color: #ffffff !important;
-      font-weight: 800 !important;
-      box-shadow: 0 4px 12px rgba(92, 182, 230, 0.35);
+      font-weight: 700 !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .cal-day-cell.cal-day-weekend {
-      background: #f1f5f9;
-      color: #cbd5e1;
+      background: transparent;
+      color: #c7c7cc;
       cursor: not-allowed;
       pointer-events: none;
-      opacity: 0.45;
+      opacity: 0.5;
     }
 
     .cal-day-cell.cal-day-past {
-      color: #cbd5e1;
+      color: #c7c7cc;
       background: transparent;
       cursor: not-allowed;
       pointer-events: none;
-      opacity: 0.35;
+      opacity: 0.4;
     }
 
-    .cal-selected-badge {
-      margin-top: 12px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #0369a1;
-      background: rgba(92, 182, 230, 0.1);
-      padding: 6px 12px;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Selected Date Summary Pill (Step 3) */
-    .selected-date-summary-pill {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #f0f9ff;
-      border: 1.5px solid rgba(92, 182, 230, 0.35);
-      border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 16px;
-    }
-
-    .summary-pill-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .summary-pill-left span:first-child {
-      font-size: 20px;
-    }
-
-    .summary-pill-left div {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-
-    .summary-pill-left strong {
-      font-size: 13.5px;
-      color: #0f172a;
-      font-weight: 800;
-    }
-
-    .summary-pill-left span:last-child {
-      font-size: 12px;
-      color: #0284c7;
-      font-weight: 600;
-    }
-
-    .summary-pill-change-btn {
-      background: transparent;
-      border: none;
-      color: #0284c7;
-      font-size: 12.5px;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: underline;
-      padding: 4px 6px;
-    }
-
-    /* Time Slots Grid - Compact */
+    /* Time Slots Grid */
     .contact-time-slots-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+      gap: 8px;
       margin-top: 8px;
     }
 
     .contact-slot-btn {
-      padding: 12px 8px;
+      padding: 11px 6px;
       border-radius: 12px;
-      border: 1.5px solid #cbd5e1;
+      border: 1px solid rgba(0, 0, 0, 0.1);
       background: #ffffff;
-      color: #1e293b;
-      font-size: 14px;
-      font-weight: 700;
+      color: #1d1d1f;
+      font-size: 13.5px;
+      font-weight: 500;
       cursor: pointer;
       text-align: center;
       transition: all 0.18s ease;
@@ -695,217 +880,300 @@
     }
 
     .contact-slot-btn:hover {
-      border-color: #5CB6E6;
-      color: #0f172a;
-      background: #f0f9ff;
+      border-color: #000000;
+      background: #f5f5f7;
     }
 
     .contact-slot-btn.selected {
-      background: #5CB6E6 !important;
+      background: #000000 !important;
       color: #ffffff !important;
-      border-color: #5CB6E6 !important;
-      box-shadow: 0 4px 12px rgba(92, 182, 230, 0.35);
+      border-color: #000000 !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    /* Action Buttons */
-    /* GDPR Consent Box */
-    .form-consent-unit {
-      margin: 4px 0 16px 0;
+
+
+
+    /* TESTIMONIALS (RECENZIJE) — HUGE WHITE BENTO CARD (EXACT HOMEPAGE SHOWCASE) */
+    .fb-testimonials-section {
+      background-color: #ffffff !important;
+      color: #020108 !important;
+      border: 1px solid rgba(0, 0, 0, 0.07) !important;
+      border-radius: clamp(28px, 3.5vw, 44px) !important;
+      max-width: 1600px !important;
+      width: 100% !important;
+      margin: clamp(40px, 6vw, 80px) auto clamp(60px, 8vw, 110px) auto !important;
+      padding: clamp(60px, 7vw, 100px) clamp(24px, 5vw, 64px) clamp(70px, 8vw, 110px) clamp(24px, 5vw, 64px) !important;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04) !important;
+      position: relative !important;
+      overflow: hidden !important;
+      scroll-margin-top: 100px !important;
+      box-sizing: border-box !important;
+    }
+    @media (max-width: 768px) {
+      .fb-testimonials-section {
+        width: 100% !important;
+        margin: 24px auto 60px auto !important;
+        border-radius: 24px !important;
+        padding: 44px 20px 60px 20px !important;
+      }
+    }
+    .fb-testimonials-section .fb-container {
+      max-width: 100% !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      overflow: visible !important;
+    }
+    .fb-testi-header {
+      text-align: left !important;
+      margin-bottom: clamp(36px, 4.5vw, 56px) !important;
+    }
+    .fb-testimonials-section .fb-eyebrow {
+      display: inline-flex !important;
+      align-items: center !important;
+      font-family: var(--font-mono), "Fragment Mono", monospace !important;
+      font-size: 12px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.14em !important;
+      text-transform: uppercase !important;
+      color: #f65600 !important;
+      line-height: 1 !important;
+      margin-bottom: 16px !important;
+    }
+    .fb-testimonials-section .fb-eyebrow .dot-indicator {
+      display: inline-block !important;
+      width: 7px !important;
+      height: 7px !important;
+      border-radius: 50% !important;
+      background-color: #f65600 !important;
+      margin-right: 8px !important;
+    }
+    .fb-testimonials-section .fb-section-title {
+      text-align: left !important;
+      font-family: var(--font-sans), 'Inter', -apple-system, sans-serif !important;
+      font-size: clamp(34px, 4.5vw, 56px) !important;
+      font-weight: 600 !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.035em !important;
+      color: #020108 !important;
+      margin: 0 !important;
+    }
+    .fb-testimonials-section .fb-section-title .accent-script {
+      font-family: 'Caveat', cursive, sans-serif !important;
+      color: #f65600 !important;
+      font-weight: 600 !important;
+      font-size: 1.18em !important;
+      display: inline-block !important;
+      transform: translateY(-2px) !important;
+      margin-left: 6px !important;
+    }
+    .fb-testi-marquee-wrap {
+      width: 100% !important;
+      left: 0 !important;
+      right: auto !important;
+      margin: 0 !important;
+      position: relative !important;
+      overflow: hidden !important;
+      user-select: none !important;
+      display: flex !important;
+      padding: 16px 0 28px 0 !important;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%) !important;
+      mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%) !important;
+    }
+    @media (max-width: 768px) {
+      .fb-testi-marquee-wrap {
+        width: 100% !important;
+        left: 0 !important;
+        right: auto !important;
+        margin: 0 !important;
+      }
+    }
+    .fb-testi-marquee-track {
+      display: flex !important;
+      gap: 24px !important;
+      width: max-content !important;
+      animation: fbTestiScroll 38s linear infinite !important;
+      will-change: transform !important;
+    }
+    .fb-testi-marquee-wrap:hover .fb-testi-marquee-track {
+      animation-play-state: paused !important;
+    }
+    @keyframes fbTestiScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .fb-testi-card {
+      width: 320px !important;
+      min-width: 320px !important;
+      max-width: 320px !important;
+      min-height: 380px !important;
+      background: #fbfbfb !important;
+      border: 1px solid rgba(2, 1, 8, 0.05) !important;
+      border-radius: 26px !important;
+      padding: 32px 30px 28px 30px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02) !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease !important;
+      user-select: none !important;
+    }
+    .fb-testi-card:hover {
+      transform: translateY(-6px) !important;
+      background: #ffffff !important;
+      border-color: rgba(246, 86, 0, 0.3) !important;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08) !important;
+    }
+    .fb-testi-card-top {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+    }
+    .fb-testi-avatar {
+      width: 54px !important;
+      height: 54px !important;
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      background: #e2e8f0 !important;
+      border: 2px solid #ffffff !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    }
+    .fb-testi-quote-icon {
+      font-family: 'Caveat', cursive, serif, sans-serif !important;
+      font-size: 40px !important;
+      line-height: 1 !important;
+      color: #f65600 !important;
+      font-weight: 600 !important;
+      opacity: 0.9 !important;
+    }
+    .fb-testi-quote {
+      font-size: 15.5px !important;
+      font-weight: 600 !important;
+      line-height: 1.48 !important;
+      letter-spacing: -0.02em !important;
+      color: #020108 !important;
+      margin: 24px 0 auto 0 !important;
+    }
+    .fb-testi-author {
+      font-family: var(--font-mono), "Fragment Mono", monospace !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      color: #94a3b8 !important;
+      text-transform: uppercase !important;
+      margin-top: 24px !important;
+      line-height: 1.35 !important;
     }
 
-    .consent-checkbox-label {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      cursor: pointer;
-      user-select: none;
+
+    /* FAQ Section on Kontakt Page */
+    .fb-contact-faq-section {
+      max-width: 100%;
+      margin: 0 auto clamp(60px, 8vw, 120px) auto;
+      padding: 0;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
     }
 
-    .consent-checkbox-label input[type="checkbox"] {
-      width: 17px;
-      height: 17px;
-      margin-top: 2px;
-      cursor: pointer;
-      accent-color: #5CB6E6;
-      flex-shrink: 0;
+    .fb-contact-faq-header {
+      text-align: left;
+      margin-bottom: clamp(32px, 4vw, 48px);
     }
 
-    .consent-text {
-      font-size: 13px;
-      color: #64748b;
-      line-height: 1.45;
+    .fb-contact-faq-header .fb-eyebrow {
+      color: var(--c-text-muted, #808083);
+      margin-bottom: 14px;
+      font-family: var(--font-mono), monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
     }
 
-    .consent-text a {
-      color: #0284c7;
-      text-decoration: underline;
+    .fb-contact-faq-title {
+      font-size: clamp(30px, 3.8vw, 44px);
       font-weight: 600;
-      transition: color 0.2s;
+      color: #020108;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      margin: 0;
     }
 
-    .consent-text a:hover {
-      color: #0369a1;
+    .fb-contact-faq-title .accent-script {
+      font-family: var(--font-script), 'Caveat', cursive;
+      color: #f65600;
+      font-weight: 600;
+      font-size: 1.18em;
+      display: inline-block;
+      transform: translateY(-2px);
+      margin-left: 4px;
     }
 
-    .consent-text span.req {
-      color: #ef4444;
-      font-weight: bold;
-    }
-
-    /* Step 1 Two Action Buttons Row */
-    .form-step1-btns-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: auto;
-      padding-top: 8px;
-    }
-
-    .btn-contact-direct-inquiry {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 14px 18px;
-      background: #0f172a;
-      color: #ffffff;
-      border: 1.5px solid #334155;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 14.5px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-contact-direct-inquiry:hover:not(:disabled) {
-      background: #1e293b;
-      border-color: #5CB6E6;
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgba(92, 182, 230, 0.25);
-    }
-
-    .btn-contact-direct-inquiry:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .btn-step-row {
-      display: flex;
-      gap: 12px;
-      margin-top: auto;
-      padding-top: 8px;
-    }
-
-    .btn-contact-primary {
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 18px;
-      background: linear-gradient(135deg, #5CB6E6 0%, #0077ff 100%);
-      color: #ffffff;
-      border: none;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 14.5px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      box-sizing: border-box;
-      box-shadow: 0 6px 20px rgba(92, 182, 230, 0.35);
-    }
-
-    .btn-contact-primary:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 26px rgba(92, 182, 230, 0.5);
-      background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
-    }
-
-    .btn-contact-primary:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .btn-contact-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 20px;
-      background: transparent;
-      color: #1e293b;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn-contact-secondary:hover {
-      background: #f1f5f9;
-      border-color: #94a3b8;
-    }
-
-    /* Step 3 Success Card */
-    .contact-success-state {
-      text-align: center;
-      padding: 18px 8px 12px;
+    .fb-faq-accordion-grid {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      box-sizing: border-box;
+      gap: 14px;
     }
 
-    .success-check-circle {
-      width: 64px;
-      height: 64px;
+    .fb-faq-item {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+      transition: border-color 0.25s ease;
+    }
+
+    .fb-faq-item:hover {
+      border-color: rgba(0, 0, 0, 0.16);
+    }
+
+    .fb-faq-summary {
+      padding: 22px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #020108;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      user-select: none;
+      list-style: none;
+    }
+
+    .fb-faq-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .fb-faq-icon {
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      background: #10b981;
-      color: #ffffff;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
-      font-weight: 900;
-      margin: 0 auto 16px;
-      box-shadow: 0 10px 24px -4px rgba(16, 185, 129, 0.35);
-    }
-
-    .success-heading {
-      font-size: 22px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 0 0 8px 0;
-      letter-spacing: -0.4px;
-    }
-
-    .success-message-text {
-      font-size: 14.5px;
-      color: #64748b;
-      line-height: 1.5;
-      margin: 0 0 20px 0;
-    }
-
-    .success-summary-card {
-      background: #f7f7f8;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 18px 20px;
-      text-align: left;
-      margin-bottom: 22px;
+      color: #f65600;
       font-size: 14px;
-      color: #0f172a;
-      line-height: 1.6;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      font-weight: bold;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
     }
 
+    details[open] .fb-faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .fb-faq-content {
+      padding: 0 24px 22px 24px;
+      font-size: 14.5px;
+      color: #475569;
+      line-height: 1.65;
+    }
+
+    /* Responsive Adaptations */
     @media (max-width: 1024px) {
       .contact-layout-stack {
         grid-template-columns: 1fr;
@@ -914,774 +1182,602 @@
       }
       .contact-info-panel {
         position: static;
-      }
-    }
-
-    @media (max-width: 960px) {
-      .contact-card-box {
-        padding: 34px 22px;
-      }
-      .contact-hero-section {
-        padding: 130px 20px 60px;
+        height: auto;
+        min-height: auto;
+        max-height: none;
       }
     }
 
     @media (max-width: 768px) {
-      /* Normal natural scrolling on mobile */
-      html, body {
-        height: auto !important;
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        position: static !important;
-        width: 100% !important;
-        -webkit-overflow-scrolling: touch !important;
-      }
-
-
-
-      /* Hero Section with comfortable padding */
       .contact-hero-section {
-        height: auto !important;
-        min-height: auto !important;
-        max-height: none !important;
-        padding: 100px 16px 40px !important;
-        margin: 0 auto !important;
-        width: 100% !important;
-        display: block !important;
-        box-sizing: border-box !important;
-        overflow: visible !important;
+        padding: 110px 16px 40px !important;
       }
-
-      /* Header visible and readable on mobile */
       .contact-header {
-        display: block !important;
-        text-align: center !important;
-        margin: 0 auto 32px !important;
-        max-width: 100% !important;
-        padding: 0 4px !important;
+        margin-bottom: 32px !important;
       }
       .contact-title {
         font-size: 32px !important;
-        letter-spacing: -1px !important;
-        margin-bottom: 14px !important;
-        line-height: 1.18 !important;
+        line-height: 1.15 !important;
       }
-      .contact-desc {
-        font-size: 15.5px !important;
-        line-height: 1.6 !important;
-        color: #94a3b8 !important;
-      }
-
-      /* Layout stack - single column on mobile */
-      .contact-layout-stack {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 28px !important;
-        max-width: 100% !important;
-        margin: 0 auto 40px auto !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-      }
-
-      /* Contact Card - Natural Comfortable Height with no clipping */
       .contact-card-box {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 24px 20px !important;
-        border-radius: 24px !important;
-        background: #ffffff !important;
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4) !important;
-        box-sizing: border-box !important;
         height: auto !important;
         min-height: auto !important;
         max-height: none !important;
-        overflow: visible !important;
-        display: block !important;
+        padding: 24px 18px !important;
+        border-radius: 24px !important;
       }
-
-      /* Selected Package Banner */
-      .form-selected-pkg-banner {
-        display: flex !important;
-        padding: 10px 12px !important;
-        margin-bottom: 18px !important;
-        border-radius: 12px !important;
+      .contact-info-panel {
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        padding: 26px 20px !important;
+        border-radius: 24px !important;
       }
-      .pkg-banner-icon {
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 16px !important;
-      }
-      .pkg-banner-title {
-        font-size: 13.5px !important;
-      }
-
-      /* Steps Progress Bar */
-      .booking-steps-bar {
-        margin-bottom: 20px !important;
-      }
-      .booking-step-indicator {
-        font-size: 12px !important;
-        gap: 6px !important;
-      }
-      .step-num-circle {
-        width: 24px !important;
-        height: 24px !important;
-        font-size: 11.5px !important;
-      }
-      .step-divider-line {
-        margin: 0 8px !important;
-      }
-
-      /* Form Headings */
-      .contact-form-title {
-        font-size: 18px !important;
-        font-weight: 800 !important;
-        margin: 0 0 4px 0 !important;
-      }
-      .contact-form-subtitle {
-        font-size: 12.5px !important;
-        line-height: 1.4 !important;
-        margin: 0 0 18px 0 !important;
-      }
-
-      /* Inputs Group */
-      .form-inputs-group {
-        gap: 14px !important;
-        margin-bottom: 18px !important;
-      }
-      .form-field-unit {
-        gap: 4px !important;
-      }
-      .form-field-unit label {
-        font-size: 13px !important;
-      }
-      .form-field-unit input {
-        font-size: 16px !important; /* Prevents iOS zoom */
-        padding: 12px 14px !important;
-        border-radius: 11px !important;
-      }
-
-      /* Consent Unit */
-      .form-consent-unit {
-        margin: 6px 0 20px 0 !important;
-      }
-      .consent-text {
-        font-size: 12px !important;
-        line-height: 1.4 !important;
-      }
-
-      /* Action Buttons */
-      .form-step1-btns-row {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 10px !important;
-        margin-top: 8px !important;
-      }
-      .btn-contact-direct-inquiry,
-      .btn-contact-primary,
-      .btn-contact-secondary {
-        padding: 13px 14px !important;
-        font-size: 13.5px !important;
-        border-radius: 12px !important;
-        min-height: 44px !important;
-      }
-
-      /* Meeting Type Cards on mobile */
       .meeting-type-grid {
-        display: grid !important;
         grid-template-columns: 1fr 1fr !important;
-        gap: 10px !important;
       }
-      .meeting-type-card {
-        padding: 12px 10px !important;
-        border-radius: 12px !important;
-      }
-      .meeting-type-icon {
-        font-size: 18px !important;
-      }
-      .meeting-type-name {
-        font-size: 13px !important;
-      }
-
-      /* Calendar on mobile */
       .custom-calendar-widget {
-        padding: 14px !important;
-        border-radius: 16px !important;
-      }
-      .cal-month-title {
-        font-size: 15px !important;
-      }
-      .cal-nav-btn {
-        width: 30px !important;
-        height: 30px !important;
-        font-size: 13px !important;
-      }
-      .cal-weekdays-grid {
-        font-size: 11.5px !important;
-        gap: 4px !important;
-        margin-bottom: 8px !important;
-      }
-      .cal-days-grid {
-        gap: 4px !important;
+        padding: 12px 10px !important;
       }
       .cal-day-cell {
-        height: 38px !important;
-        font-size: 13.5px !important;
-        border-radius: 8px !important;
+        height: 34px !important;
+        font-size: 13px !important;
       }
-
-      /* Time Slots on mobile */
       .contact-time-slots-grid {
-        display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 8px !important;
       }
       .contact-slot-btn {
         padding: 11px 6px !important;
-        font-size: 13.5px !important;
-        border-radius: 10px !important;
+        font-size: 13px !important;
       }
-
-      /* Step Navigation Buttons */
-      .btn-step-row {
-        display: flex !important;
-        gap: 10px !important;
-        margin-top: 18px !important;
-      }
-      #contact-btn-back-to-1,
-      #contact-btn-back-to-2 {
-        flex: 0 0 85px !important;
-      }
-
-      /* Info Panel & Footer visible naturally below form on mobile */
-      .contact-info-panel {
-        display: flex !important;
-        flex-direction: column !important;
-        height: auto !important;
-        min-height: auto !important;
-        max-height: none !important;
-        padding: 28px 20px !important;
-        border-radius: 24px !important;
-        position: static !important;
-      }
-      .info-panel-title {
-        font-size: 19px !important;
-        margin-bottom: 10px !important;
-      }
-      .info-panel-desc {
-        font-size: 13.5px !important;
-        margin-bottom: 20px !important;
-      }
-      .info-perks-list {
-        gap: 14px !important;
-        margin-bottom: 22px !important;
-      }
-      .info-perk-item {
-        font-size: 13.5px !important;
-      }
-
-      .footer-card-wrapper {
-        display: block !important;
-      }
-    }
-
-    /* Disable sticky hover states on mobile/touch */
-    @media (hover: none), (pointer: coarse) {
-      .btn-contact-primary:hover,
-      .btn-contact-direct-inquiry:hover,
-      .btn-contact-secondary:hover,
-      .meeting-type-card:hover,
-      .contact-slot-btn:hover,
-      .cal-day-cell:hover {
-        transform: none !important;
-        box-shadow: none !important;
-      }
-      .btn-contact-primary:hover {
-        background: linear-gradient(135deg, #5CB6E6 0%, #0077ff 100%) !important;
-      }
-      .btn-contact-direct-inquiry:hover {
-        background: #0f172a !important;
-        border-color: #334155 !important;
-      }
-    }
-
-
-
-    /* Pure Black Full-Width Edge-to-Edge Footer (Kontakt page only) */
-    .footer-card-wrapper {
-      width: 100% !important;
-      max-width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      box-sizing: border-box !important;
-      background: #000000 !important;
-      border: none !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-    }
-
-    .footer-card-wrapper .brand-footer-card,
-    .brand-footer-card {
-      width: 100% !important;
-      max-width: 1240px !important;
-      margin: 0 auto !important;
-      background: #000000 !important;
-      border-radius: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
-      padding: 70px 24px 44px !important;
-      color: #ffffff;
-      box-sizing: border-box !important;
-    }
-
-    .footer-brand-logo-img {
-      height: 38px !important;
-      width: auto !important;
-      display: block;
-      object-fit: contain;
-      margin-bottom: 16px;
-    }
-
-    .footer-photo-credit-text { font-size: 13px; color: #64748b; margin-bottom: 28px; font-weight: 500; border: none !important; padding-bottom: 0 !important; }
-    .footer-card-top { display: flex; justify-content: space-between; gap: 40px; margin-bottom: 50px; flex-wrap: wrap; border: none !important; padding-bottom: 0 !important; }
-    .footer-logo-col { max-width: 340px; }
-    .footer-tagline { color: #94a3b8; font-size: 14.5px; line-height: 1.6; margin-top: 14px; }
-    .footer-links-grid { display: flex; gap: 60px; flex-wrap: wrap; }
-    .footer-link-group h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-bottom: 18px; }
-    .footer-link-group ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
-    .footer-link-group a { color: #cbd5e1; text-decoration: none; font-size: 14px; transition: color 0.2s; }
-    .footer-link-group a:hover { color: #5CB6E6; }
-    .footer-card-bottom { display: flex; align-items: center; justify-content: space-between; border: none !important; padding-top: 30px; font-size: 13.5px; color: #64748b; }
-    .footer-credit-brand { color: #ffffff; font-weight: 700; }
-
-    @media (max-width: 800px) {
-      .footer-card-wrapper {
+      .fb-contact-faq-section {
         padding: 0 !important;
-        background: #000000 !important;
-        border: none !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-      }
-      .footer-card-wrapper .brand-footer-card,
-      .brand-footer-card {
-        padding: 48px 20px 32px !important;
-        background: #000000 !important;
-        border-radius: 0 !important;
-        border: none !important;
-      }
-      .footer-brand-logo-img {
-        height: 32px !important;
-      }
-      .footer-card-top { 
-        flex-direction: column !important; 
-        gap: 32px !important; 
-        border: none !important; 
-        padding-bottom: 0 !important; 
-      }
-      .footer-links-grid { 
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        column-gap: 24px !important;
-        row-gap: 28px !important;
-      }
-      .footer-link-group-istrazi {
-        grid-column: 1 !important;
-        grid-row: 1 !important;
-      }
-      .footer-link-group-pravno {
-        grid-column: 2 !important;
-        grid-row: 1 !important;
-      }
-      .footer-link-group-social {
-        grid-column: 1 / -1 !important;
-        grid-row: 2 !important;
-      }
-      .footer-card-bottom { 
-        flex-direction: column !important; 
-        gap: 12px !important; 
-        text-align: center !important; 
-        border: none !important; 
+        margin-bottom: 60px !important;
       }
     }
-
-</style>
+  </style>
 </head>
-<body>
+<body class="fabrik-theme">
 
-  <!-- Floating Capsule Navbar with Frosted Glass & Seamless Mobile Expansion -->
-  <header class="floating-capsule-navbar" id="main-capsule-navbar">
-    <!-- Frosted Glass Shell Layer -->
-    <div class="nav-glass-backdrop"></div>
+  <!-- =========================================================================
+       1. FLOATING CAPSULE NAVBAR (CANONICAL ALGOR STUDIO DESIGN)
+       ========================================================================= -->
+  <header class="fb-navbar-wrapper">
+    <nav class="fb-navbar" id="main-capsule-navbar" aria-label="Glavna navigacija">
+      <a href="/" class="fb-nav-brand" aria-label="Algor Studio Početna">
+        <img src="/logo_white_transparent.png" alt="Algor Studio logo">
+      </a>
 
-    <!-- Capsule Content Layer -->
-    <div class="nav-pill-content">
-      <div class="nav-mobile-top-bar">
-        <!-- Brand Logo -->
-        <a href="/" class="nav-brand-link" aria-label="Algor Studio Početna">
-          <img src="logo_white_transparent.png" alt="Algor Studio" class="nav-brand-img">
-        </a>
+      <ul class="fb-nav-links">
+        <li><a href="/#projekti"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span></span></a></li>
+        <li><a href="/#about"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span></span></a></li>
+        <li><a href="/#proces"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span></span></a></li>
+        <li><a href="/#cjenik"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span></span></span></a></li>
+        <li><a href="/#faq"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">F</span><span class="fb-roll-char" style="--i:1;">A</span><span class="fb-roll-char" style="--i:2;">Q</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">F</span><span class="fb-roll-char" style="--i:1;">A</span><span class="fb-roll-char" style="--i:2;">Q</span></span></span></a></li>
+      </ul>
 
-        <!-- Desktop Nav Links -->
-        <nav aria-label="Glavna navigacija">
-          <ul class="nav-links-list">
-            <li class="nav-link-item"><a href="/#about">O nama</a></li>
-            <li class="nav-link-item"><a href="/izrada-web-stranica">Web Stranice</a></li>
-            <li class="nav-link-item"><a href="/chatgpt-ads">ChatGPT Ads</a></li>
-            <li class="nav-link-item"><a href="/#projekti">Projekti</a></li>
-            <li class="nav-link-item"><a href="/#proces">Proces</a></li>
-            <li class="nav-link-item"><a href="/#pricing">Cjenik</a></li>
-            <li class="nav-link-item"><a href="/#faq">FAQ</a></li>
-          </ul>
-        </nav>
+      <div class="fb-nav-right">
+        <!-- Circular scroll progress indicator -->
+        <div class="fb-scroll-meter" id="fb-scroll-meter" aria-hidden="true" title="Postotak čitanja">
+          <svg viewBox="0 0 36 36">
+            <circle class="track" cx="18" cy="18" r="14" fill="none" stroke-width="2.5"></circle>
+            <circle class="fill" id="fb-scroll-circle" cx="18" cy="18" r="14" fill="none" stroke-width="2.5" stroke-dasharray="87.96" stroke-dashoffset="87.96" stroke-linecap="round"></circle>
+          </svg>
+          <span class="fb-scroll-text" id="fb-scroll-text">0%</span>
+        </div>
 
-        <!-- Right Action Items: Email + Contact Button + Mobile Toggle -->
-        <div class="nav-actions-group">
-          <a href="mailto:info@algor.studio" class="nav-email-pill" title="Pošaljite email na info@algor.studio">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <span>info@algor.studio</span>
-          </a>
+        <a href="/kontakt" class="fb-btn-primary"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">Z</span><span class="fb-roll-char" style="--i:1;">a</span><span class="fb-roll-char" style="--i:2;">k</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">ž</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">e</span><span class="fb-roll-char" style="--i:8;">&nbsp;</span><span class="fb-roll-char" style="--i:9;">p</span><span class="fb-roll-char" style="--i:10;">o</span><span class="fb-roll-char" style="--i:11;">z</span><span class="fb-roll-char" style="--i:12;">i</span><span class="fb-roll-char" style="--i:13;">v</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">Z</span><span class="fb-roll-char" style="--i:1;">a</span><span class="fb-roll-char" style="--i:2;">k</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">ž</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">e</span><span class="fb-roll-char" style="--i:8;">&nbsp;</span><span class="fb-roll-char" style="--i:9;">p</span><span class="fb-roll-char" style="--i:10;">o</span><span class="fb-roll-char" style="--i:11;">z</span><span class="fb-roll-char" style="--i:12;">i</span><span class="fb-roll-char" style="--i:13;">v</span></span></span></a>
 
-          <a href="/kontakt" class="nav-cta-pill">
-            <span>Kontakt</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
+        <button type="button" class="fb-nav-burger" id="fb-nav-burger" aria-label="Otvori navigacijski izbornik" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-          <!-- Mobile Burger Button -->
-          <button type="button" class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Otvori navigacijski izbornik" aria-expanded="false">
-            <svg class="nav-burger-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-            <svg class="nav-burger-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  <!-- Mobile Nav Overlay -->
+  <div class="fb-mobile-menu" id="fb-mobile-menu" aria-hidden="true">
+    <a href="/#projekti" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span></span></a>
+    <a href="/#about" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span></span></a>
+    <a href="/#proces" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span></span></a>
+    <a href="/#cjenik" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span></span></span></a>
+    <a href="/#faq" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">F</span><span class="fb-roll-char" style="--i:1;">A</span><span class="fb-roll-char" style="--i:2;">Q</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">F</span><span class="fb-roll-char" style="--i:1;">A</span><span class="fb-roll-char" style="--i:2;">Q</span></span></span></a>
+    <a href="/kontakt" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">K</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">K</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span></span></span></a>
+    <a href="/kontakt" class="fb-btn-primary" style="margin-top: 20px;"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">D</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">g</span><span class="fb-roll-char" style="--i:3;">o</span><span class="fb-roll-char" style="--i:4;">v</span><span class="fb-roll-char" style="--i:5;">o</span><span class="fb-roll-char" style="--i:6;">r</span><span class="fb-roll-char" style="--i:7;">i</span><span class="fb-roll-char" style="--i:8;">t</span><span class="fb-roll-char" style="--i:9;">e</span><span class="fb-roll-char" style="--i:10;">&nbsp;</span><span class="fb-roll-char" style="--i:11;">r</span><span class="fb-roll-char" style="--i:12;">a</span><span class="fb-roll-char" style="--i:13;">z</span><span class="fb-roll-char" style="--i:14;">g</span><span class="fb-roll-char" style="--i:15;">o</span><span class="fb-roll-char" style="--i:16;">v</span><span class="fb-roll-char" style="--i:17;">o</span><span class="fb-roll-char" style="--i:18;">r</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">D</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">g</span><span class="fb-roll-char" style="--i:3;">o</span><span class="fb-roll-char" style="--i:4;">v</span><span class="fb-roll-char" style="--i:5;">o</span><span class="fb-roll-char" style="--i:6;">r</span><span class="fb-roll-char" style="--i:7;">i</span><span class="fb-roll-char" style="--i:8;">t</span><span class="fb-roll-char" style="--i:9;">e</span><span class="fb-roll-char" style="--i:10;">&nbsp;</span><span class="fb-roll-char" style="--i:11;">r</span><span class="fb-roll-char" style="--i:12;">a</span><span class="fb-roll-char" style="--i:13;">z</span><span class="fb-roll-char" style="--i:14;">g</span><span class="fb-roll-char" style="--i:15;">o</span><span class="fb-roll-char" style="--i:16;">v</span><span class="fb-roll-char" style="--i:17;">o</span><span class="fb-roll-char" style="--i:18;">r</span></span></span></a>
+  </div>
+
+  <div class="contact-page-canvas">
+    <!-- Main Contact Hero & Booking Section -->
+    <main class="contact-hero-section">
+
+      <!-- Header Section -->
+      <header class="contact-header">
+        <div class="fb-eyebrow">
+          <span class="dot-indicator pulse" style="background: #f65600;"></span>
+          KONTAKT &bull; DOGOVORITE TERMIN ©2026
+        </div>
+        <h1 class="contact-title">
+          Stupite u kontakt &amp; <span class="accent-script">ugovorite termin.</span>
+        </h1>
+        <p class="contact-desc">
+          Ispunite kratke podatke i rezervirajte 15-minutni uvodni razgovor (uživo ili Google Meet) ili nam jednostavno pošaljite izravan upit.
+        </p>
+      </header>
+
+      <!-- Main 2-Column Contact & Booking Layout (Apple Minimalist Aesthetic) -->
+      <section class="contact-layout-stack">
+
+        <!-- Left: Apple-like Single-Step Contact Card -->
+        <div class="contact-card-box">
+          
+          <!-- Apple Form Header -->
+          <div class="apple-form-header">
+            <h2 class="apple-form-title">Pošaljite upit</h2>
+            <p class="apple-form-subtitle">Ispunite osnovne podatke o Vašem projektu. Odgovaramo s konkretnom analizom unutar 2 sata.</p>
+          </div>
+
+          <!-- Form Element -->
+          <form id="contact-page-form" class="apple-form-stack" novalidate>
+            
+            <!-- Service Selection Pills -->
+            <div class="apple-service-section">
+              <label class="apple-service-label">Zanima me usluga:</label>
+              <div class="apple-service-pills" id="apple-service-pills" role="group" aria-label="Odabir usluge">
+                <button type="button" class="apple-service-pill active" data-service="Izrada web stranica">Izrada web stranica</button>
+                <button type="button" class="apple-service-pill" data-service="Sadržaj &amp; Marketing">Sadržaj &amp; Marketing</button>
+                <button type="button" class="apple-service-pill" data-service="ChatGPT Ads">ChatGPT Ads</button>
+                <button type="button" class="apple-service-pill" data-service="Besplatne konzultacije">Konzultacije / Ostalo</button>
+              </div>
+              <input type="hidden" id="contact-service-input" value="Izrada web stranica">
+            </div>
+
+            <!-- Row 1: Name & Company -->
+            <div class="apple-input-grid-2">
+              <div class="apple-field-wrap">
+                <label for="contact-name">Ime i prezime <span class="req">*</span></label>
+                <input type="text" id="contact-name" class="apple-input" required placeholder="npr. Ivan Horvat" autocomplete="name">
+              </div>
+              <div class="apple-field-wrap">
+                <label for="contact-company">Tvrtka / Web <span class="req">*</span></label>
+                <input type="text" id="contact-company" class="apple-input" required placeholder="npr. Moja Tvrtka d.o.o." autocomplete="organization">
+              </div>
+            </div>
+
+            <!-- Row 2: Email & Phone -->
+            <div class="apple-input-grid-2">
+              <div class="apple-field-wrap">
+                <label for="contact-email">Email adresa <span class="req">*</span></label>
+                <input type="email" id="contact-email" class="apple-input" required placeholder="npr. ivan@tvrtka.hr" autocomplete="email">
+              </div>
+              <div class="apple-field-wrap">
+                <label for="contact-phone">Broj mobitela <span class="opt">(opcionalno)</span></label>
+                <input type="tel" id="contact-phone" class="apple-input" placeholder="npr. 091 234 5678" autocomplete="tel">
+              </div>
+            </div>
+
+            <!-- Row 3: Message / Project Description -->
+            <div class="apple-field-wrap">
+              <label for="contact-message">Poruka / Ukratko o projektu <span class="opt">(opcionalno)</span></label>
+              <textarea id="contact-message" class="apple-textarea" rows="3" placeholder="Opišite ukratko vaše ciljeve, rokove, trenutnu web stranicu ili specifične zahtjeve..."></textarea>
+            </div>
+
+            <!-- GDPR Data Processing Consent Checkbox -->
+            <div class="apple-consent-wrap">
+              <label class="apple-consent-label">
+                <input type="checkbox" id="contact-consent" required>
+                <span class="apple-consent-text">
+                  Prihvaćam obradu osobnih podataka u svrhu odgovora na upit u skladu s <a href="/politika-privatnosti" target="_blank" rel="noopener">Politikom privatnosti</a>. <span class="req">*</span>
+                </span>
+              </label>
+            </div>
+
+            <!-- Apple Black Submit Button -->
+            <div style="margin-top: 4px;">
+              <button type="submit" class="apple-btn-black" id="btn-submit-inquiry">
+                <span>Pošalji upit</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </form>
+
+        </div>
+
+        <!-- Right: Value & Expectations Sidebar Panel -->
+        <aside class="contact-info-panel" aria-label="Informacije o uvodnom pozivu i brza rezervacija">
+          <div>
+            <h2 class="info-panel-title">Uvodne konzultacije</h2>
+            <p class="info-panel-desc">Kratak, fokusiran i koristan 15-minutni uvodni razgovor prilagođen Vašoj industriji i poslovnim ciljevima.</p>
+
+            <ul class="info-perks-list">
+              <li class="info-perk-item">
+                <span class="info-perk-icon">✓</span>
+                <div><strong>Konkretna analiza:</strong> Pregledat ćemo Vaše trenutno stanje i marketing prisutnost na tržištu.</div>
+              </li>
+              <li class="info-perk-item">
+                <span class="info-perk-icon">✓</span>
+                <div><strong>Jasne preporuke:</strong> Prijedlog modela suradnje i digitalnih alata koji donose najbrži povrat investicije.</div>
+              </li>
+              <li class="info-perk-item">
+                <span class="info-perk-icon">✓</span>
+                <div><strong>100% bez obveza:</strong> Razgovor služi za procjenu mogućnosti i upoznavanje, bez pritiska na kupnju.</div>
+              </li>
+            </ul>
+
+            <!-- Side Booking Card for Calendar -->
+            <div class="apple-sidebar-booking-card">
+              <h3 class="apple-sidebar-booking-title"><span>🗓️</span> Želite video poziv odmah?</h3>
+              <p class="apple-sidebar-booking-desc">Odaberite datum i satnicu u našem kalendaru za direktne video konzultacije.</p>
+              <button type="button" class="apple-btn-white" id="btn-open-booking-sidebar">
+                <span>Rezervirajte termin</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="contact-direct-box">
+            <div style="font-size: 13px; color: #86868b; font-weight: 500;">Izravni kontakt:</div>
+            <a href="mailto:info@algor.studio" class="contact-direct-link">✉️ info@algor.studio</a>
+            <a href="tel:+385916151512" class="contact-direct-link">📞 +385 91 615 1512</a>
+            <div style="font-size: 12px; color: #86868b;">Prosječno vrijeme odgovora: unutar 2 sata radnim danom.</div>
+          </div>
+        </aside>
+
+      </section>
+
+      <!-- Apple Booking Modal Overlay -->
+      <div id="apple-booking-modal" class="apple-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-booking-title">
+        <div class="apple-modal-window">
+          <button type="button" class="apple-modal-close-btn" id="apple-modal-close-btn" aria-label="Zatvori prozor">✕</button>
+          
+          <h2 class="apple-modal-title" id="modal-booking-title">Rezervacija termina (15 min)</h2>
+          <p class="apple-modal-subtitle">Odaberite način sastanka, datum i željeno vrijeme za uvodne konzultacije.</p>
+
+          <!-- 1. Meeting Type (Live vs Google Meet) -->
+          <div class="meeting-type-grid">
+            <div class="meeting-type-card selected" data-meeting="Google Meet poziv" id="modal-type-card-meet">
+              <span class="meeting-type-icon">💻</span>
+              <span class="meeting-type-name">Google Meet</span>
+            </div>
+            <div class="meeting-type-card" data-meeting="Sastanak uživo" id="modal-type-card-live">
+              <span class="meeting-type-icon">🏢</span>
+              <span class="meeting-type-name">Sastanak uživo</span>
+            </div>
+          </div>
+
+          <!-- 2. Interactive Apple Calendar -->
+          <div class="custom-calendar-widget" id="custom-calendar-widget">
+            <div class="calendar-nav-bar">
+              <button type="button" class="cal-nav-btn" id="cal-prev-month" aria-label="Prethodni mjesec">←</button>
+              <div class="cal-month-title" id="cal-month-title">Rujan 2026.</div>
+              <button type="button" class="cal-nav-btn" id="cal-next-month" aria-label="Sljedeći mjesec">→</button>
+            </div>
+            <div class="cal-weekdays-grid">
+              <span>Pon</span>
+              <span>Uto</span>
+              <span>Sri</span>
+              <span>Čet</span>
+              <span>Pet</span>
+              <span class="cal-weekend-hdr">Sub</span>
+              <span class="cal-weekend-hdr">Ned</span>
+            </div>
+            <div class="cal-days-grid" id="cal-days-grid">
+              <!-- Dynamically populated via JS -->
+            </div>
+            <input type="hidden" id="modal-contact-date">
+          </div>
+
+          <!-- 3. Time Slots Grid -->
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; font-size: 13px; font-weight: 600; color: #1d1d1f; margin-bottom: 6px;">Dostupni termini:</label>
+            <div id="contact-time-slots-wrap" class="contact-time-slots-grid">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
+          <!-- 4. Quick Inputs in modal if not filled yet -->
+          <div class="apple-form-stack" id="modal-client-fields" style="margin-bottom: 20px;">
+            <div class="apple-field-wrap">
+              <label for="modal-client-name">Vaše ime i prezime <span class="req">*</span></label>
+              <input type="text" id="modal-client-name" class="apple-input" placeholder="npr. Ivan Horvat">
+            </div>
+            <div class="apple-input-grid-2">
+              <div class="apple-field-wrap">
+                <label for="modal-client-email">Email adresa <span class="req">*</span></label>
+                <input type="email" id="modal-client-email" class="apple-input" placeholder="npr. ivan@tvrtka.hr">
+              </div>
+              <div class="apple-field-wrap">
+                <label for="modal-client-phone">Broj mobitela</label>
+                <input type="tel" id="modal-client-phone" class="apple-input" placeholder="npr. 091 234 5678">
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Confirm Button (Apple Black) -->
+          <button type="button" class="apple-btn-black" id="modal-btn-confirm-booking" disabled>
+            <span>Potvrdi rezervaciju termina</span>
+            <span class="btn-arrow">→</span>
           </button>
         </div>
       </div>
 
-      <!-- Mobile Dropdown Panel (Seamlessly inside the expanding capsule) -->
-      <div class="nav-mobile-menu" id="nav-mobile-menu">
-        <ul class="nav-mobile-links">
-          <li><a href="/#about">O nama</a></li>
-          <li><a href="/izrada-web-stranica">Web Stranice</a></li>
-          <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
-          <li><a href="/#projekti">Projekti</a></li>
-          <li><a href="/#proces">Proces</a></li>
-          <li><a href="/#pricing">Cjenik</a></li>
-          <li><a href="/#faq">Česta pitanja</a></li>
-        </ul>
-        <div class="nav-mobile-divider"></div>
-        <div class="nav-mobile-bottom-actions">
-          <a href="mailto:info@algor.studio" class="nav-mobile-email">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <span>info@algor.studio</span>
-          </a>
-          <a href="/kontakt" class="nav-mobile-cta">
-            <span>Zatražite ponudu &rarr;</span>
-          </a>
+      <!-- =======================================================================
+           RECENZIJE KLIJENATA (TESTIMONIALS SECTION) — EXACT HOMEPAGE SHOWCASE
+           ======================================================================= -->
+      <section class="fb-testimonials-section" id="recenzije">
+        <div class="fb-container">
+          <div class="fb-section-header fb-testi-header">
+            <div class="fb-eyebrow">
+              <span class="dot-indicator pulse"></span>
+              RECENZIJE KLIJENATA
+            </div>
+            <h2 class="fb-section-title">
+              Iskustva onih koji nam <span class="accent-script">vjeruju.</span>
+            </h2>
+          </div>
+
+          <div class="fb-testi-marquee-wrap">
+            <div class="fb-testi-marquee-track">
+              <!-- Card 1: Danijela D. -->
+              <div class="fb-testi-card">
+                <div class="fb-testi-card-top">
+                  <img src="/about_person.jpg" alt="Danijela D." class="fb-testi-avatar" loading="lazy">
+                  <span class="fb-testi-quote-icon">”</span>
+                </div>
+                <p class="fb-testi-quote">
+                  “Dobila sam odličan materijal i marketing, presretna sam uspjehom svojih profila i novim klijentima.”
+                </p>
+                <div class="fb-testi-author">
+                  DANIJELA D., PLANEL DESIGN
+                </div>
+              </div>
+
+              <!-- Card 2: Martina P. -->
+              <div class="fb-testi-card">
+                <div class="fb-testi-card-top">
+                  <img src="/gallery_8.jpg" alt="Martina P." class="fb-testi-avatar" loading="lazy">
+                  <span class="fb-testi-quote-icon">”</span>
+                </div>
+                <p class="fb-testi-quote">
+                  “Algor nije samo napravio projekt, već postao dugotrajni partner za naše poslovanje i digitalni rast.”
+                </p>
+                <div class="fb-testi-author">
+                  MARTINA P., ADMIRAL
+                </div>
+              </div>
+
+              <!-- Card 3: Aleksandra S. -->
+              <div class="fb-testi-card">
+                <div class="fb-testi-card-top">
+                  <img src="/gallery_9.jpg" alt="Aleksandra S." class="fb-testi-avatar" loading="lazy">
+                  <span class="fb-testi-quote-icon">”</span>
+                </div>
+                <p class="fb-testi-quote">
+                  “Web kakav sam sanjala. Restoran se više ne mora sramiti, a gosti jednostavno rezerviraju stolove online.”
+                </p>
+                <div class="fb-testi-author">
+                  ALEKSANDRA S., ESCHENGARTEN
+                </div>
+              </div>
+
+              <!-- Card 4: Marko -->
+              <div class="fb-testi-card">
+                <div class="fb-testi-card-top">
+                  <img src="/gallery_6.jpg" alt="Marko" class="fb-testi-avatar" loading="lazy">
+                  <span class="fb-testi-quote-icon">”</span>
+                </div>
+                <p class="fb-testi-quote">
+                  “Prezadovoljni smo uspjehom naše kampanje i organskim dosegom video produkcije. Hvala još jednom!”
+                </p>
+                <div class="fb-testi-author">
+                  MARKO, FAMILY PARK
+                </div>
+              </div>
+
+              <!-- DUPLICATE SET FOR INFINITE SMOOTH LOOP -->
+              <!-- Card 1 Dupe -->
+              <div class="fb-testi-card" aria-hidden="true">
+                <div class="fb-testi-card-top">
+                  <img src="/about_person.jpg" alt="" class="fb-testi-avatar" loading="lazy">
+                  <span class="fb-testi-quote-icon">”</span>
+                </div>
+                <p class="fb-testi-quote">
+                  “Dobila sam odličan materijal i marketing, presretna sam uspjehom svojih profila i novim klijentima.”
+                </p>
+                <div class="fb-testi-author">
+                  DANIJELA D., PLANEL DESIGN
+                </div>
+              </div>
+
+              <!-- Card 2 Dupe -->
+              <div class="fb-testi-card" aria-hidden="true">
+                <div class="fb-testi-card-top">
+                  <img src="/gallery_8.jpg" alt="" class="fb-testi-avatar" loading="lazy">
+                  <span class="fb-testi-quote-icon">”</span>
+                </div>
+                <p class="fb-testi-quote">
+                  “Algor nije samo napravio projekt, već postao dugotrajni partner za naše poslovanje i digitalni rast.”
+                </p>
+                <div class="fb-testi-author">
+                  MARTINA P., ADMIRAL
+                </div>
+              </div>
+
+              <!-- Card 3 Dupe -->
+              <div class="fb-testi-card" aria-hidden="true">
+                <div class="fb-testi-card-top">
+                  <img src="/gallery_9.jpg" alt="" class="fb-testi-avatar" loading="lazy">
+                  <span class="fb-testi-quote-icon">”</span>
+                </div>
+                <p class="fb-testi-quote">
+                  “Web kakav sam sanjala. Restoran se više ne mora sramiti, a gosti jednostavno rezerviraju stolove online.”
+                </p>
+                <div class="fb-testi-author">
+                  ALEKSANDRA S., ESCHENGARTEN
+                </div>
+              </div>
+
+              <!-- Card 4 Dupe -->
+              <div class="fb-testi-card" aria-hidden="true">
+                <div class="fb-testi-card-top">
+                  <img src="/gallery_6.jpg" alt="" class="fb-testi-avatar" loading="lazy">
+                  <span class="fb-testi-quote-icon">”</span>
+                </div>
+                <p class="fb-testi-quote">
+                  “Prezadovoljni smo uspjehom naše kampanje i organskim dosegom video produkcije. Hvala još jednom!”
+                </p>
+                <div class="fb-testi-author">
+                  MARKO, FAMILY PARK
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: FAQ / Česta pitanja o ugovaranju -->
+      <section class="fb-contact-faq-section" aria-label="Česta pitanja o ugovaranju termina">
+        <div class="fb-contact-faq-header">
+          <div class="fb-eyebrow">
+            <span class="dot-indicator pulse" style="background: #f65600;"></span>
+            ČESTA PITANJA
+          </div>
+          <h2 class="fb-contact-faq-title">
+            Sve što trebate znati <span class="accent-script">prije poziva.</span>
+          </h2>
+        </div>
+
+        <div class="fb-faq-accordion-grid">
+          
+          <details class="fb-faq-item">
+            <summary class="fb-faq-summary">
+              <span>Je li uvodni razgovor u potpunosti besplatan?</span>
+              <span class="fb-faq-icon">+</span>
+            </summary>
+            <div class="fb-faq-content">
+              Da, uvodni 15-minutni razgovor je potpuno besplatan i neobvezujući. Cilj nam je razumjeti vaše poslovanje, izazove i ciljeve kako bismo procijenili možemo li vam osigurati mjerljive poslovne rezultate.
+            </div>
+          </details>
+
+          <details class="fb-faq-item">
+            <summary class="fb-faq-summary">
+              <span>Što trebam pripremiti prije sastanka?</span>
+              <span class="fb-faq-icon">+</span>
+            </summary>
+            <div class="fb-faq-content">
+              Dovoljno je da imate jasnu sliku o svojim ciljevima (npr. povećanje broja upita, osvježenje weba, vođenje društvenih mreža) i poveznicu na vašu web stranicu ili profile. Naš tim će prije poziva napraviti preliminarni pregled.
+            </div>
+          </details>
+
+          <details class="fb-faq-item">
+            <summary class="fb-faq-summary">
+              <span>Koliko brzo nakon poziva dobivamo službenu ponudu?</span>
+              <span class="fb-faq-icon">+</span>
+            </summary>
+            <div class="fb-faq-content">
+              Nakon što definiramo opseg i ciljeve, ponudu s detaljnim planom faza, rokovima i točnom investicijom šaljemo unutar 24 do 48 sati.
+            </div>
+          </details>
+
+          <details class="fb-faq-item">
+            <summary class="fb-faq-summary">
+              <span>Radite li s klijentima izvan Zagreba i Hrvatske?</span>
+              <span class="fb-faq-icon">+</span>
+            </summary>
+            <div class="fb-faq-content">
+              Apsolutno. Radimo s klijentima diljem Hrvatske i EU. Konzultacije i redovite koordinacije provodimo putem Google Meeta, a za potrebe video produkcije i snimanja sadržaja na lokaciji naš tim putuje na vašu adresu.
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- =========================================================================
+       15. CANONICAL BRAND FOOTER (DEEP OBSIDIAN BLACK & GIANT BRAND LOGO)
+       ========================================================================= -->
+  <footer class="fb-footer">
+    <div class="fb-container">
+      <div class="fb-footer-top">
+        <!-- Brand & status col -->
+        <div class="fb-footer-brand-col">
+          <p class="fb-footer-tagline">
+            Algor Studio — agencija za digitalni rast, video produkciju i visoko konvertirajuće oglasne sustave.
+          </p>
+          <p style="font-size: 13px; color: var(--c-dark-text-muted);">
+            Sve fotografije i videozapise na ovoj web stranici producirao je Algor Studio.
+          </p>
+        </div>
+
+        <!-- Links columns -->
+        <div class="fb-footer-links-grid">
+          <div class="fb-footer-col">
+            <h4>Usluge</h4>
+            <ul>
+              <li><a href="/#usluge"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">D</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">u</span><span class="fb-roll-char" style="--i:3;">š</span><span class="fb-roll-char" style="--i:4;">t</span><span class="fb-roll-char" style="--i:5;">v</span><span class="fb-roll-char" style="--i:6;">e</span><span class="fb-roll-char" style="--i:7;">n</span><span class="fb-roll-char" style="--i:8;">e</span><span class="fb-roll-char" style="--i:9;">&nbsp;</span><span class="fb-roll-char" style="--i:10;">m</span><span class="fb-roll-char" style="--i:11;">r</span><span class="fb-roll-char" style="--i:12;">e</span><span class="fb-roll-char" style="--i:13;">ž</span><span class="fb-roll-char" style="--i:14;">e</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">D</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">u</span><span class="fb-roll-char" style="--i:3;">š</span><span class="fb-roll-char" style="--i:4;">t</span><span class="fb-roll-char" style="--i:5;">v</span><span class="fb-roll-char" style="--i:6;">e</span><span class="fb-roll-char" style="--i:7;">n</span><span class="fb-roll-char" style="--i:8;">e</span><span class="fb-roll-char" style="--i:9;">&nbsp;</span><span class="fb-roll-char" style="--i:10;">m</span><span class="fb-roll-char" style="--i:11;">r</span><span class="fb-roll-char" style="--i:12;">e</span><span class="fb-roll-char" style="--i:13;">ž</span><span class="fb-roll-char" style="--i:14;">e</span></span></span></a></li>
+              <li><a href="/#usluge"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">M</span><span class="fb-roll-char" style="--i:1;">e</span><span class="fb-roll-char" style="--i:2;">t</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">&nbsp;</span><span class="fb-roll-char" style="--i:5;">&</span><span class="fb-roll-char" style="--i:6;">&nbsp;</span><span class="fb-roll-char" style="--i:7;">G</span><span class="fb-roll-char" style="--i:8;">o</span><span class="fb-roll-char" style="--i:9;">o</span><span class="fb-roll-char" style="--i:10;">g</span><span class="fb-roll-char" style="--i:11;">l</span><span class="fb-roll-char" style="--i:12;">e</span><span class="fb-roll-char" style="--i:13;">&nbsp;</span><span class="fb-roll-char" style="--i:14;">A</span><span class="fb-roll-char" style="--i:15;">d</span><span class="fb-roll-char" style="--i:16;">s</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">M</span><span class="fb-roll-char" style="--i:1;">e</span><span class="fb-roll-char" style="--i:2;">t</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">&nbsp;</span><span class="fb-roll-char" style="--i:5;">&</span><span class="fb-roll-char" style="--i:6;">&nbsp;</span><span class="fb-roll-char" style="--i:7;">G</span><span class="fb-roll-char" style="--i:8;">o</span><span class="fb-roll-char" style="--i:9;">o</span><span class="fb-roll-char" style="--i:10;">g</span><span class="fb-roll-char" style="--i:11;">l</span><span class="fb-roll-char" style="--i:12;">e</span><span class="fb-roll-char" style="--i:13;">&nbsp;</span><span class="fb-roll-char" style="--i:14;">A</span><span class="fb-roll-char" style="--i:15;">d</span><span class="fb-roll-char" style="--i:16;">s</span></span></span></a></li>
+              <li><a href="/izrada-web-stranica"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">I</span><span class="fb-roll-char" style="--i:1;">z</span><span class="fb-roll-char" style="--i:2;">r</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">d</span><span class="fb-roll-char" style="--i:5;">a</span><span class="fb-roll-char" style="--i:6;">&nbsp;</span><span class="fb-roll-char" style="--i:7;">w</span><span class="fb-roll-char" style="--i:8;">e</span><span class="fb-roll-char" style="--i:9;">b</span><span class="fb-roll-char" style="--i:10;">-</span><span class="fb-roll-char" style="--i:11;">s</span><span class="fb-roll-char" style="--i:12;">t</span><span class="fb-roll-char" style="--i:13;">r</span><span class="fb-roll-char" style="--i:14;">a</span><span class="fb-roll-char" style="--i:15;">n</span><span class="fb-roll-char" style="--i:16;">i</span><span class="fb-roll-char" style="--i:17;">c</span><span class="fb-roll-char" style="--i:18;">a</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">I</span><span class="fb-roll-char" style="--i:1;">z</span><span class="fb-roll-char" style="--i:2;">r</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">d</span><span class="fb-roll-char" style="--i:5;">a</span><span class="fb-roll-char" style="--i:6;">&nbsp;</span><span class="fb-roll-char" style="--i:7;">w</span><span class="fb-roll-char" style="--i:8;">e</span><span class="fb-roll-char" style="--i:9;">b</span><span class="fb-roll-char" style="--i:10;">-</span><span class="fb-roll-char" style="--i:11;">s</span><span class="fb-roll-char" style="--i:12;">t</span><span class="fb-roll-char" style="--i:13;">r</span><span class="fb-roll-char" style="--i:14;">a</span><span class="fb-roll-char" style="--i:15;">n</span><span class="fb-roll-char" style="--i:16;">i</span><span class="fb-roll-char" style="--i:17;">c</span><span class="fb-roll-char" style="--i:18;">a</span></span></span></a></li>
+              <li><a href="/chatgpt-ads"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">h</span><span class="fb-roll-char" style="--i:2;">a</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">G</span><span class="fb-roll-char" style="--i:5;">P</span><span class="fb-roll-char" style="--i:6;">T</span><span class="fb-roll-char" style="--i:7;">&nbsp;</span><span class="fb-roll-char" style="--i:8;">A</span><span class="fb-roll-char" style="--i:9;">d</span><span class="fb-roll-char" style="--i:10;">s</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">h</span><span class="fb-roll-char" style="--i:2;">a</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">G</span><span class="fb-roll-char" style="--i:5;">P</span><span class="fb-roll-char" style="--i:6;">T</span><span class="fb-roll-char" style="--i:7;">&nbsp;</span><span class="fb-roll-char" style="--i:8;">A</span><span class="fb-roll-char" style="--i:9;">d</span><span class="fb-roll-char" style="--i:10;">s</span></span></span></a></li>
+              <li><a href="/#cjenik"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">&nbsp;</span><span class="fb-roll-char" style="--i:7;">p</span><span class="fb-roll-char" style="--i:8;">a</span><span class="fb-roll-char" style="--i:9;">k</span><span class="fb-roll-char" style="--i:10;">e</span><span class="fb-roll-char" style="--i:11;">t</span><span class="fb-roll-char" style="--i:12;">a</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">&nbsp;</span><span class="fb-roll-char" style="--i:7;">p</span><span class="fb-roll-char" style="--i:8;">a</span><span class="fb-roll-char" style="--i:9;">k</span><span class="fb-roll-char" style="--i:10;">e</span><span class="fb-roll-char" style="--i:11;">t</span><span class="fb-roll-char" style="--i:12;">a</span></span></span></a></li>
+            </ul>
+          </div>
+
+          <div class="fb-footer-col">
+            <h4>Agencija</h4>
+            <ul>
+              <li><a href="/#about"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span></span></a></li>
+              <li><a href="/#projekti"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span></span></a></li>
+              <li><a href="/#proces"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span></span></a></li>
+              <li><a href="/#recenzije"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">R</span><span class="fb-roll-char" style="--i:1;">e</span><span class="fb-roll-char" style="--i:2;">c</span><span class="fb-roll-char" style="--i:3;">e</span><span class="fb-roll-char" style="--i:4;">n</span><span class="fb-roll-char" style="--i:5;">z</span><span class="fb-roll-char" style="--i:6;">i</span><span class="fb-roll-char" style="--i:7;">j</span><span class="fb-roll-char" style="--i:8;">e</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">R</span><span class="fb-roll-char" style="--i:1;">e</span><span class="fb-roll-char" style="--i:2;">c</span><span class="fb-roll-char" style="--i:3;">e</span><span class="fb-roll-char" style="--i:4;">n</span><span class="fb-roll-char" style="--i:5;">z</span><span class="fb-roll-char" style="--i:6;">i</span><span class="fb-roll-char" style="--i:7;">j</span><span class="fb-roll-char" style="--i:8;">e</span></span></span></a></li>
+              <li><a href="/#faq"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">Č</span><span class="fb-roll-char" style="--i:1;">e</span><span class="fb-roll-char" style="--i:2;">s</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">&nbsp;</span><span class="fb-roll-char" style="--i:6;">p</span><span class="fb-roll-char" style="--i:7;">i</span><span class="fb-roll-char" style="--i:8;">t</span><span class="fb-roll-char" style="--i:9;">a</span><span class="fb-roll-char" style="--i:10;">n</span><span class="fb-roll-char" style="--i:11;">j</span><span class="fb-roll-char" style="--i:12;">a</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">Č</span><span class="fb-roll-char" style="--i:1;">e</span><span class="fb-roll-char" style="--i:2;">s</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">&nbsp;</span><span class="fb-roll-char" style="--i:6;">p</span><span class="fb-roll-char" style="--i:7;">i</span><span class="fb-roll-char" style="--i:8;">t</span><span class="fb-roll-char" style="--i:9;">a</span><span class="fb-roll-char" style="--i:10;">n</span><span class="fb-roll-char" style="--i:11;">j</span><span class="fb-roll-char" style="--i:12;">a</span></span></span></a></li>
+              <li><a href="/karijere"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">K</span><span class="fb-roll-char" style="--i:1;">a</span><span class="fb-roll-char" style="--i:2;">r</span><span class="fb-roll-char" style="--i:3;">i</span><span class="fb-roll-char" style="--i:4;">j</span><span class="fb-roll-char" style="--i:5;">e</span><span class="fb-roll-char" style="--i:6;">r</span><span class="fb-roll-char" style="--i:7;">e</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">K</span><span class="fb-roll-char" style="--i:1;">a</span><span class="fb-roll-char" style="--i:2;">r</span><span class="fb-roll-char" style="--i:3;">i</span><span class="fb-roll-char" style="--i:4;">j</span><span class="fb-roll-char" style="--i:5;">e</span><span class="fb-roll-char" style="--i:6;">r</span><span class="fb-roll-char" style="--i:7;">e</span></span></span></a></li>
+            </ul>
+          </div>
+
+          <div class="fb-footer-col">
+            <h4>Kontakt</h4>
+            <ul>
+              <li><a href="mailto:info@algor.studio"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">i</span><span class="fb-roll-char" style="--i:1;">n</span><span class="fb-roll-char" style="--i:2;">f</span><span class="fb-roll-char" style="--i:3;">o</span><span class="fb-roll-char" style="--i:4;">@</span><span class="fb-roll-char" style="--i:5;">a</span><span class="fb-roll-char" style="--i:6;">l</span><span class="fb-roll-char" style="--i:7;">g</span><span class="fb-roll-char" style="--i:8;">o</span><span class="fb-roll-char" style="--i:9;">r</span><span class="fb-roll-char" style="--i:10;">.</span><span class="fb-roll-char" style="--i:11;">s</span><span class="fb-roll-char" style="--i:12;">t</span><span class="fb-roll-char" style="--i:13;">u</span><span class="fb-roll-char" style="--i:14;">d</span><span class="fb-roll-char" style="--i:15;">i</span><span class="fb-roll-char" style="--i:16;">o</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">i</span><span class="fb-roll-char" style="--i:1;">n</span><span class="fb-roll-char" style="--i:2;">f</span><span class="fb-roll-char" style="--i:3;">o</span><span class="fb-roll-char" style="--i:4;">@</span><span class="fb-roll-char" style="--i:5;">a</span><span class="fb-roll-char" style="--i:6;">l</span><span class="fb-roll-char" style="--i:7;">g</span><span class="fb-roll-char" style="--i:8;">o</span><span class="fb-roll-char" style="--i:9;">r</span><span class="fb-roll-char" style="--i:10;">.</span><span class="fb-roll-char" style="--i:11;">s</span><span class="fb-roll-char" style="--i:12;">t</span><span class="fb-roll-char" style="--i:13;">u</span><span class="fb-roll-char" style="--i:14;">d</span><span class="fb-roll-char" style="--i:15;">i</span><span class="fb-roll-char" style="--i:16;">o</span></span></span></a></li>
+              <li><a href="https://www.instagram.com/algor_studio" target="_blank" rel="noopener noreferrer"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">I</span><span class="fb-roll-char" style="--i:1;">n</span><span class="fb-roll-char" style="--i:2;">s</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">g</span><span class="fb-roll-char" style="--i:6;">r</span><span class="fb-roll-char" style="--i:7;">a</span><span class="fb-roll-char" style="--i:8;">m</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">I</span><span class="fb-roll-char" style="--i:1;">n</span><span class="fb-roll-char" style="--i:2;">s</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">g</span><span class="fb-roll-char" style="--i:6;">r</span><span class="fb-roll-char" style="--i:7;">a</span><span class="fb-roll-char" style="--i:8;">m</span></span></span></a></li>
+            </ul>
+          </div>
+
+          <div class="fb-footer-col">
+            <h4>Pravno</h4>
+            <ul>
+              <li><a href="/politika-privatnosti"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">i</span><span class="fb-roll-char" style="--i:3;">v</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">t</span><span class="fb-roll-char" style="--i:6;">n</span><span class="fb-roll-char" style="--i:7;">o</span><span class="fb-roll-char" style="--i:8;">s</span><span class="fb-roll-char" style="--i:9;">t</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">i</span><span class="fb-roll-char" style="--i:3;">v</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">t</span><span class="fb-roll-char" style="--i:6;">n</span><span class="fb-roll-char" style="--i:7;">o</span><span class="fb-roll-char" style="--i:8;">s</span><span class="fb-roll-char" style="--i:9;">t</span></span></span></a></li>
+              <li><a href="/uvjeti-koristenja"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">U</span><span class="fb-roll-char" style="--i:1;">v</span><span class="fb-roll-char" style="--i:2;">j</span><span class="fb-roll-char" style="--i:3;">e</span><span class="fb-roll-char" style="--i:4;">t</span><span class="fb-roll-char" style="--i:5;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">U</span><span class="fb-roll-char" style="--i:1;">v</span><span class="fb-roll-char" style="--i:2;">j</span><span class="fb-roll-char" style="--i:3;">e</span><span class="fb-roll-char" style="--i:4;">t</span><span class="fb-roll-char" style="--i:5;">i</span></span></span></a></li>
+              <li><a href="/kolacici"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">K</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">l</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">č</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">ć</span><span class="fb-roll-char" style="--i:7;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">K</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">l</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">č</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">ć</span><span class="fb-roll-char" style="--i:7;">i</span></span></span></a></li>
+              <li><a href="#cookie-settings" class="open-cookie-banner"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">s</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">v</span><span class="fb-roll-char" style="--i:6;">k</span><span class="fb-roll-char" style="--i:7;">e</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">s</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">v</span><span class="fb-roll-char" style="--i:6;">k</span><span class="fb-roll-char" style="--i:7;">e</span></span></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Giant Brand Logo Display across bottom -->
+      <div class="fb-footer-giant-brand">
+        <img src="/logo_white_transparent.png" alt="Algor Studio logo" class="fb-footer-giant-logo" loading="lazy">
+      </div>
+
+      <!-- Bottom legal strip -->
+      <div class="fb-footer-bottom">
+        <div>© 2026 Algor Studio. Sva prava pridržana. Zagreb, Hrvatska.</div>
+        <div class="fb-footer-legal-links">
+          <a href="/politika-privatnosti"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">l</span><span class="fb-roll-char" style="--i:3;">i</span><span class="fb-roll-char" style="--i:4;">t</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">k</span><span class="fb-roll-char" style="--i:7;">a</span><span class="fb-roll-char" style="--i:8;">&nbsp;</span><span class="fb-roll-char" style="--i:9;">p</span><span class="fb-roll-char" style="--i:10;">r</span><span class="fb-roll-char" style="--i:11;">i</span><span class="fb-roll-char" style="--i:12;">v</span><span class="fb-roll-char" style="--i:13;">a</span><span class="fb-roll-char" style="--i:14;">t</span><span class="fb-roll-char" style="--i:15;">n</span><span class="fb-roll-char" style="--i:16;">o</span><span class="fb-roll-char" style="--i:17;">s</span><span class="fb-roll-char" style="--i:18;">t</span><span class="fb-roll-char" style="--i:19;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">l</span><span class="fb-roll-char" style="--i:3;">i</span><span class="fb-roll-char" style="--i:4;">t</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">k</span><span class="fb-roll-char" style="--i:7;">a</span><span class="fb-roll-char" style="--i:8;">&nbsp;</span><span class="fb-roll-char" style="--i:9;">p</span><span class="fb-roll-char" style="--i:10;">r</span><span class="fb-roll-char" style="--i:11;">i</span><span class="fb-roll-char" style="--i:12;">v</span><span class="fb-roll-char" style="--i:13;">a</span><span class="fb-roll-char" style="--i:14;">t</span><span class="fb-roll-char" style="--i:15;">n</span><span class="fb-roll-char" style="--i:16;">o</span><span class="fb-roll-char" style="--i:17;">s</span><span class="fb-roll-char" style="--i:18;">t</span><span class="fb-roll-char" style="--i:19;">i</span></span></span></a>
+          <a href="/uvjeti-koristenja"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">U</span><span class="fb-roll-char" style="--i:1;">v</span><span class="fb-roll-char" style="--i:2;">j</span><span class="fb-roll-char" style="--i:3;">e</span><span class="fb-roll-char" style="--i:4;">t</span><span class="fb-roll-char" style="--i:5;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">U</span><span class="fb-roll-char" style="--i:1;">v</span><span class="fb-roll-char" style="--i:2;">j</span><span class="fb-roll-char" style="--i:3;">e</span><span class="fb-roll-char" style="--i:4;">t</span><span class="fb-roll-char" style="--i:5;">i</span></span></span></a>
+          <a href="/kolacici"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">K</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">l</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">č</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">ć</span><span class="fb-roll-char" style="--i:7;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">K</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">l</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">č</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">ć</span><span class="fb-roll-char" style="--i:7;">i</span></span></span></a>
+          <a href="#cookie-settings" class="open-cookie-banner"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">s</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">v</span><span class="fb-roll-char" style="--i:6;">k</span><span class="fb-roll-char" style="--i:7;">e</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">s</span><span class="fb-roll-char" style="--i:3;">t</span><span class="fb-roll-char" style="--i:4;">a</span><span class="fb-roll-char" style="--i:5;">v</span><span class="fb-roll-char" style="--i:6;">k</span><span class="fb-roll-char" style="--i:7;">e</span></span></span></a>
         </div>
       </div>
     </div>
-  </header>
+  </footer>
 
-  <!-- Main Contact Layout -->
-  <main class="contact-hero-section">
+  <!-- Fixed Bottom Frosted Glass Gradient Overlay -->
+  <div class="fb-bottom-glass-fade" aria-hidden="true"></div>
 
-    <!-- Header Section -->
-    <header class="contact-header">
-      <h1 class="contact-title">
-        <span>Stupite u kontakt &amp; ugovorite termin.</span>
-      </h1>
-      <p class="contact-desc">
-        Ispunite kratke podatke i u idućem koraku odaberite želite li sastanak uživo ili Google Meet poziv te željeni datum i sat.
-      </p>
-    </header>
-
-    <!-- Main Centered Contact & Booking Stack -->
-    <section class="contact-layout-stack">
-
-      <!-- Top: Multi-Step Interactive Form Box -->
-      <div class="contact-card-box">
-        
-        <!-- Selected Package Inside Form Banner -->
-        <div class="form-selected-pkg-banner" id="form-selected-pkg-banner">
-          <div class="pkg-banner-icon">⚡</div>
-          <div class="pkg-banner-info">
-            <span class="pkg-banner-sub">ODABRANI MODEL / USLUGA:</span>
-            <strong class="pkg-banner-title" id="form-pkg-name">Besplatne konzultacije</strong>
-          </div>
-        </div>
-
-        <!-- Steps Progress Indicator -->
-        <div class="booking-steps-bar">
-          <div class="booking-step-indicator active" id="step-ind-1">
-            <span class="step-num-circle">1</span>
-            <span>Podaci</span>
-          </div>
-          <div class="step-divider-line"></div>
-          <div class="booking-step-indicator" id="step-ind-2">
-            <span class="step-num-circle">2</span>
-            <span>Datum</span>
-          </div>
-          <div class="step-divider-line"></div>
-          <div class="booking-step-indicator" id="step-ind-3">
-            <span class="step-num-circle">3</span>
-            <span>Vrijeme</span>
-          </div>
-        </div>
-
-        <!-- STEP 1: Basic Information -->
-        <form id="contact-page-form-step-1">
-          <h3 class="contact-form-title">Unesite osnovne podatke</h3>
-          <p class="contact-form-subtitle">Ispunite kratke podatke i u idućem koraku odaberite želite li sastanak uživo ili Google Meet poziv te željeni datum i sat.</p>
-
-          <div class="form-inputs-group">
-            <div class="form-field-unit">
-              <label for="contact-name">Ime i prezime <span class="req">*</span></label>
-              <input type="text" id="contact-name" required placeholder="npr. Ivan Horvat" autocomplete="name" />
-            </div>
-
-            <div class="form-field-unit">
-              <label for="contact-company">Tvrtka / Web <span class="req">*</span></label>
-              <input type="text" id="contact-company" required placeholder="npr. Moja Tvrtka d.o.o." autocomplete="organization" />
-            </div>
-
-            <div class="form-field-unit">
-              <label for="contact-email">Email adresa <span class="req">*</span></label>
-              <input type="email" id="contact-email" required placeholder="npr. ivan@tvrtka.hr" autocomplete="email" />
-            </div>
-
-            <div class="form-field-unit">
-              <label for="contact-phone">Broj mobitela <span class="opt">(opcionalno)</span></label>
-              <input type="tel" id="contact-phone" placeholder="npr. 091 234 5678" autocomplete="tel" />
-            </div>
-          </div>
-
-          <!-- GDPR Data Processing Consent Checkbox -->
-          <div class="form-consent-unit">
-            <label class="consent-checkbox-label">
-              <input type="checkbox" id="contact-consent" required />
-              <span class="consent-text">
-                Prihvaćam obradu osobnih podataka u svrhu odgovora na upit u skladu s <a href="/politika-privatnosti" target="_blank" rel="noopener">Politikom privatnosti</a>. <span class="req">*</span>
-              </span>
-            </label>
-          </div>
-
-          <!-- Step 1 Action Buttons (Pošalji upit & Želim sastanak) -->
-          <div class="form-step1-btns-row">
-            <button type="button" class="btn-contact-direct-inquiry" id="btn-direct-inquiry">
-              <span>✉️ Pošalji upit</span>
-            </button>
-            <button type="button" class="btn-contact-primary" id="btn-to-meeting">
-              <span>📅 Odaberi termin</span>
-              <span>↗</span>
-            </button>
-          </div>
-        </form>
-
-        <!-- STEP 2: Meeting Type & Calendar Date Picker -->
-        <div id="contact-page-form-step-2" style="display: none;">
-          <h3 class="contact-form-title">Odaberite način i datum</h3>
-
-          <div class="form-inputs-group">
-            <!-- 1. Meeting Type (Live vs Google Meet) -->
-            <div class="form-field-unit">
-              <label>Način sastanka <span class="req">*</span></label>
-              <div class="meeting-type-grid">
-                <div class="meeting-type-card selected" data-meeting="Sastanak uživo" id="type-card-live">
-                  <span class="meeting-type-icon">🏢</span>
-                  <span class="meeting-type-name">Sastanak uživo</span>
-                </div>
-                <div class="meeting-type-card" data-meeting="Google Meet poziv" id="type-card-meet">
-                  <span class="meeting-type-icon">💻</span>
-                  <span class="meeting-type-name">Google Meet poziv</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. Interactive Calendar Date Picker (Mon-Fri) -->
-            <div class="form-field-unit">
-              <label>Odaberite datum (Pon - Pet) <span class="req">*</span></label>
-              <div class="custom-calendar-widget" id="custom-calendar-widget">
-                <div class="calendar-nav-bar">
-                  <button type="button" class="cal-nav-btn" id="cal-prev-month" aria-label="Prethodni mjesec">←</button>
-                  <div class="cal-month-title" id="cal-month-title">Rujan 2026.</div>
-                  <button type="button" class="cal-nav-btn" id="cal-next-month" aria-label="Sljedeći mjesec">→</button>
-                </div>
-                <div class="cal-weekdays-grid">
-                  <span>Pon</span>
-                  <span>Uto</span>
-                  <span>Sri</span>
-                  <span>Čet</span>
-                  <span>Pet</span>
-                  <span class="cal-weekend-hdr">Sub</span>
-                  <span class="cal-weekend-hdr">Ned</span>
-                </div>
-                <div class="cal-days-grid" id="cal-days-grid">
-                  <!-- Dynamically populated via JS -->
-                </div>
-                <input type="hidden" id="contact-date" required />
-              </div>
-            </div>
-          </div>
-
-          <div class="btn-step-row">
-            <button type="button" class="btn-contact-secondary" id="contact-btn-back-to-1">
-              <span>Nazad</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- STEP 3: Time Slot Picker & Confirmation -->
-        <div id="contact-page-form-step-3" style="display: none;">
-          <h3 class="contact-form-title">Odaberite vrijeme sastanka</h3>
-          
-          <!-- Summary bar of selected meeting type & date -->
-          <div class="selected-date-summary-pill" id="selected-date-summary-pill">
-            <div class="summary-pill-left">
-              <span id="summary-pill-meeting-icon">🏢</span>
-              <div>
-                <strong id="summary-pill-date-text">Odabrani datum</strong>
-                <span id="summary-pill-type-text">Sastanak uživo (45 min)</span>
-              </div>
-            </div>
-            <button type="button" class="summary-pill-change-btn" id="btn-change-date">Promijeni</button>
-          </div>
-
-          <div class="form-inputs-group">
-            <div class="form-field-unit">
-              <label>Dostupni termini za odabrani dan: <span class="req">*</span></label>
-              <div id="contact-time-slots-wrap" class="contact-time-slots-grid">
-                <!-- Dynamically populated via JS -->
-              </div>
-            </div>
-          </div>
-
-          <div class="btn-step-row">
-            <button type="button" class="btn-contact-secondary" id="contact-btn-back-to-2">
-              <span>Nazad</span>
-            </button>
-            <button type="button" class="btn-contact-primary" id="contact-btn-confirm" disabled>
-              <span>Potvrdi i rezerviraj termin</span>
-              <span>↗</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- STEP 3: Success State -->
-        <div id="contact-page-step-success" class="contact-success-state" style="display: none;">
-          <div class="success-check-circle">✓</div>
-          <h3 class="success-heading" id="contact-success-title">Upit je uspješno poslan!</h3>
-          <p class="success-message-text" id="contact-success-desc">
-            Hvala vam! Vaš upit je zaprimljen. Javit ćemo vam se u najkraćem mogućem roku (unutar 24h).
-          </p>
-
-          <div class="success-summary-card" id="contact-success-summary">
-            <!-- Dynamic summary text -->
-          </div>
-
-          <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
-            <a href="/" class="btn-contact-primary" style="text-decoration: none; padding: 12px 24px;">
-              <span>Povratak na naslovnu</span>
-              <span>↗</span>
-            </a>
-            <button type="button" id="btn-new-inquiry" class="btn-contact-secondary" style="padding: 12px 24px; cursor: pointer;">
-              <span>Pošalji novi upit</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Bottom: Value & Expectations Panel Below Form -->
-      <div class="contact-info-panel">
-        <h2 class="info-panel-title">Što možete očekivati na pozivu?</h2>
-        <p class="info-panel-desc">Kratak, fokusiran i koristan 15-minutni uvodni razgovor prilagođen Vašoj industriji i ciljevima.</p>
-
-        <ul class="info-perks-list">
-          <li class="info-perk-item">
-            <span class="info-perk-icon">✓</span>
-            <div><strong>Konkretna analiza:</strong> Pregledat ćemo Vaše trenutno stanje i marketing prisutnost.</div>
-          </li>
-          <li class="info-perk-item">
-            <span class="info-perk-icon">✓</span>
-            <div><strong>Jasne preporuke:</strong> Prijedlog modela suradnje i alata koji donose najbrži povrat investicije.</div>
-          </li>
-          <li class="info-perk-item">
-            <span class="info-perk-icon">✓</span>
-            <div><strong>100% bez obveza:</strong> Razgovor služi za upoznavanje i procjenu bez ikakvog pritiska na kupnju.</div>
-          </li>
-        </ul>
-
-        <div class="contact-direct-box">
-          <div style="font-size: 13px; color: #94a3b8;">Imate hitan upit ili specifično pitanje?</div>
-          <a href="mailto:info@algor.studio" class="contact-direct-link">✉️ info@algor.studio</a>
-        </div>
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- Identical Global Brand Footer -->
-  <div class="footer-card-wrapper">
-    <footer class="brand-footer-card">
-      
-      <!-- Photo Production Credit Text -->
-      <div class="footer-photo-credit-text">
-        Sve fotografije na ovoj web stranici je producirao Algor studio.
-      </div>
-
-      <!-- Top Row: Branding and Links -->
-      <div class="footer-card-top">
-        
-        <!-- Left Column: Logo & Tagline -->
-        <div class="footer-logo-col">
-          <a href="/" class="footer-logo" style="text-decoration: none;" aria-label="Algor studio Početna">
-            <img src="logo_white_transparent.png" alt="Algor studio" class="footer-brand-logo-img">
-          </a>
-          <p class="footer-tagline">Algor Studio — Akvizicija novih klijenata, od prvog klika do rezerviranog termina.</p>
-        </div>
-        
-        <!-- Right Columns: Links -->
-        <div class="footer-links-grid">
-          <div class="footer-link-group footer-link-group-istrazi">
-            <h4>Istraži</h4>
-            <ul>
-              <li><a href="/#pricing">Cjenik</a></li>
-              <li><a href="/izrada-web-stranica">Izrada Weba</a></li>
-              <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
-              <li><a href="/karijere">Karijere</a></li>
-              <li><a href="/kontakt">Kontakt</a></li>
-            </ul>
-          </div>
-          
-          <div class="footer-link-group footer-link-group-social">
-            <h4>Društvene mreže</h4>
-            <ul>
-              <li><a href="https://www.instagram.com/algor_studio?igsi=cGo4b3VvenlwNnp4&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            </ul>
-          </div>
-
-          <div class="footer-link-group footer-link-group-pravno">
-            <h4>Pravno</h4>
-            <ul>
-              <li><a href="/politika-privatnosti">Politika privatnosti</a></li>
-              <li><a href="/uvjeti-koristenja">Uvjeti korištenja</a></li>
-              <li><a href="/kolacici">Politika kolačića</a></li>
-                <li><a href="#cookie-settings" class="open-cookie-banner">Postavke kolačića</a></li>
-            </ul>
-          </div>
-        </div>
-        
-      </div>
-      
-      <!-- Bottom Row: Copyright and Maker -->
-      <div class="footer-card-bottom">
-        <div class="footer-copy-text">
-          ©2026 Algor studio. Sva prava pridržana.
-        </div>
-        <div class="footer-credit">
-          Izradio <span class="footer-credit-brand">Algor Studio</span>
-        </div>
-      </div>
-      
-    </footer>
-  </div>
-
-  <script defer src="script.js?v=230.0.0"></script>
+  <script defer src="/script.js?v=301.0.0"></script>
 </body>
 </html>

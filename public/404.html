@@ -50,7 +50,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=104.0.0">
   <link rel="icon" type="image/png" href="favicon.png?v=104.0.0">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=104.0.0">
-  <link rel="stylesheet" href="style.css?v=230.0.0">
+  <link rel="stylesheet" href="style.css?v=301.0.0">
+  <link rel="stylesheet" href="/Algor-theme.css?v=301.0.0">
 
   <style>
     body {
@@ -561,76 +562,52 @@
 </head>
 <body>
 
-  <!-- Floating Capsule Navbar with Frosted Glass & Seamless Mobile Expansion -->
-  <header class="floating-capsule-navbar" id="main-capsule-navbar">
-    <!-- Frosted Glass Shell Layer -->
-    <div class="nav-glass-backdrop"></div>
+  <!-- =========================================================================
+       1. FLOATING CAPSULE NAVBAR
+       ========================================================================= -->
+  <header class="fb-navbar-wrapper">
+    <nav class="fb-navbar" id="main-capsule-navbar" aria-label="Glavna navigacija">
+      <a href="/" class="fb-nav-brand" aria-label="Algor Studio Početna">
+        <img src="/logo_white_transparent.png" alt="Algor Studio logo">
+      </a>
 
-    <!-- Capsule Content Layer -->
-    <div class="nav-pill-content">
-      <div class="nav-mobile-top-bar">
-        <!-- Brand Logo -->
-        <a href="/" class="nav-brand-link" aria-label="Algor Studio Početna">
-          <img src="logo_white_transparent.png" alt="Algor Studio" class="nav-brand-img">
-        </a>
+      <ul class="fb-nav-links">
+        <li><a href="/#projekti"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span></span></a></li>
+        <li><a href="/#about"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span></span></a></li>
+        <li><a href="/#proces"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span></span></a></li>
+        <li><a href="/#cjenik"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span></span></span></a></li>
+        <li><a href="/#faq"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">F</span><span class="fb-roll-char" style="--i:1;">A</span><span class="fb-roll-char" style="--i:2;">Q</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">F</span><span class="fb-roll-char" style="--i:1;">A</span><span class="fb-roll-char" style="--i:2;">Q</span></span></span></a></li>
+      </ul>
 
-        <!-- Desktop Nav Links -->
-        <nav aria-label="Glavna navigacija">
-          <ul class="nav-links-list">
-            <li class="nav-link-item"><a href="/#about">O nama</a></li>
-            <li class="nav-link-item"><a href="/izrada-web-stranica">Web Stranice</a></li>
-            <li class="nav-link-item"><a href="/chatgpt-ads">ChatGPT Ads</a></li>
-            <li class="nav-link-item"><a href="/#projekti">Projekti</a></li>
-            <li class="nav-link-item"><a href="/#proces">Proces</a></li>
-            <li class="nav-link-item"><a href="/#pricing">Cjenik</a></li>
-            <li class="nav-link-item"><a href="/#faq">FAQ</a></li>
-          </ul>
-        </nav>
-
-        <!-- Right Action Items: Email + Contact Button + Mobile Toggle -->
-        <div class="nav-actions-group">
-          <a href="mailto:info@algor.studio" class="nav-email-pill" title="Pošaljite email na info@algor.studio">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <span>info@algor.studio</span>
-          </a>
-
-          <a href="/kontakt" class="nav-cta-pill">
-            <span>Kontakt</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </a>
-
-          <!-- Mobile Burger Button -->
-          <button type="button" class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Otvori navigacijski izbornik" aria-expanded="false">
-            <svg class="nav-burger-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-            <svg class="nav-burger-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-          </button>
+      <div class="fb-nav-right">
+        <!-- Circular scroll progress indicator -->
+        <div class="fb-scroll-meter" id="fb-scroll-meter" aria-hidden="true" title="Postotak čitanja">
+          <svg viewBox="0 0 36 36">
+            <circle class="track" cx="18" cy="18" r="14" fill="none" stroke-width="2.5"></circle>
+            <circle class="fill" id="fb-scroll-circle" cx="18" cy="18" r="14" fill="none" stroke-width="2.5" stroke-dasharray="87.96" stroke-dashoffset="87.96" stroke-linecap="round"></circle>
+          </svg>
+          <span class="fb-scroll-text" id="fb-scroll-text">0%</span>
         </div>
-      </div>
 
-      <!-- Mobile Dropdown Panel (Seamlessly inside the expanding capsule) -->
-      <div class="nav-mobile-menu" id="nav-mobile-menu">
-        <ul class="nav-mobile-links">
-          <li><a href="/#about">O nama</a></li>
-          <li><a href="/izrada-web-stranica">Web Stranice</a></li>
-          <li><a href="/chatgpt-ads">ChatGPT Ads</a></li>
-          <li><a href="/#projekti">Projekti</a></li>
-          <li><a href="/#proces">Proces</a></li>
-          <li><a href="/#pricing">Cjenik</a></li>
-          <li><a href="/#faq">Česta pitanja</a></li>
-        </ul>
-        <div class="nav-mobile-divider"></div>
-        <div class="nav-mobile-bottom-actions">
-          <a href="mailto:info@algor.studio" class="nav-mobile-email">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <span>info@algor.studio</span>
-          </a>
-          <a href="/kontakt" class="nav-mobile-cta">
-            <span>Zatražite ponudu &rarr;</span>
-          </a>
-        </div>
+        <a href="/kontakt" class="fb-btn-primary"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">Z</span><span class="fb-roll-char" style="--i:1;">a</span><span class="fb-roll-char" style="--i:2;">k</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">ž</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">e</span><span class="fb-roll-char" style="--i:8;">&nbsp;</span><span class="fb-roll-char" style="--i:9;">p</span><span class="fb-roll-char" style="--i:10;">o</span><span class="fb-roll-char" style="--i:11;">z</span><span class="fb-roll-char" style="--i:12;">i</span><span class="fb-roll-char" style="--i:13;">v</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">Z</span><span class="fb-roll-char" style="--i:1;">a</span><span class="fb-roll-char" style="--i:2;">k</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">ž</span><span class="fb-roll-char" style="--i:5;">i</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">e</span><span class="fb-roll-char" style="--i:8;">&nbsp;</span><span class="fb-roll-char" style="--i:9;">p</span><span class="fb-roll-char" style="--i:10;">o</span><span class="fb-roll-char" style="--i:11;">z</span><span class="fb-roll-char" style="--i:12;">i</span><span class="fb-roll-char" style="--i:13;">v</span></span></span></a>
+
+        <button type="button" class="fb-nav-burger" id="fb-nav-burger" aria-label="Otvori navigacijski izbornik" aria-expanded="false">
+          <span></span>
+          <span></span>
+        </button>
       </div>
-    </div>
+    </nav>
   </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="fb-mobile-menu" id="fb-mobile-menu" aria-hidden="true">
+    <a href="/#projekti" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">j</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">k</span><span class="fb-roll-char" style="--i:6;">t</span><span class="fb-roll-char" style="--i:7;">i</span></span></span></a>
+    <a href="/#about" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">O</span><span class="fb-roll-char" style="--i:1;">&nbsp;</span><span class="fb-roll-char" style="--i:2;">n</span><span class="fb-roll-char" style="--i:3;">a</span><span class="fb-roll-char" style="--i:4;">m</span><span class="fb-roll-char" style="--i:5;">a</span></span></span></a>
+    <a href="/#proces" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">P</span><span class="fb-roll-char" style="--i:1;">r</span><span class="fb-roll-char" style="--i:2;">o</span><span class="fb-roll-char" style="--i:3;">c</span><span class="fb-roll-char" style="--i:4;">e</span><span class="fb-roll-char" style="--i:5;">s</span></span></span></a>
+    <a href="/#cjenik" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">C</span><span class="fb-roll-char" style="--i:1;">j</span><span class="fb-roll-char" style="--i:2;">e</span><span class="fb-roll-char" style="--i:3;">n</span><span class="fb-roll-char" style="--i:4;">i</span><span class="fb-roll-char" style="--i:5;">k</span></span></span></a>
+    <a href="/#faq" class="fb-mobile-link"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">F</span><span class="fb-roll-char" style="--i:1;">A</span><span class="fb-roll-char" style="--i:2;">Q</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">F</span><span class="fb-roll-char" style="--i:1;">A</span><span class="fb-roll-char" style="--i:2;">Q</span></span></span></a>
+    <a href="/kontakt" class="fb-btn-primary" style="margin-top: 20px;"><span class="fb-roll-track"><span class="fb-roll-visible"><span class="fb-roll-char" style="--i:0;">D</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">g</span><span class="fb-roll-char" style="--i:3;">o</span><span class="fb-roll-char" style="--i:4;">v</span><span class="fb-roll-char" style="--i:5;">o</span><span class="fb-roll-char" style="--i:6;">r</span><span class="fb-roll-char" style="--i:7;">i</span><span class="fb-roll-char" style="--i:8;">t</span><span class="fb-roll-char" style="--i:9;">e</span><span class="fb-roll-char" style="--i:10;">&nbsp;</span><span class="fb-roll-char" style="--i:11;">r</span><span class="fb-roll-char" style="--i:12;">a</span><span class="fb-roll-char" style="--i:13;">z</span><span class="fb-roll-char" style="--i:14;">g</span><span class="fb-roll-char" style="--i:15;">o</span><span class="fb-roll-char" style="--i:16;">v</span><span class="fb-roll-char" style="--i:17;">o</span><span class="fb-roll-char" style="--i:18;">r</span></span><span class="fb-roll-hover" aria-hidden="true"><span class="fb-roll-char" style="--i:0;">D</span><span class="fb-roll-char" style="--i:1;">o</span><span class="fb-roll-char" style="--i:2;">g</span><span class="fb-roll-char" style="--i:3;">o</span><span class="fb-roll-char" style="--i:4;">v</span><span class="fb-roll-char" style="--i:5;">o</span><span class="fb-roll-char" style="--i:6;">r</span><span class="fb-roll-char" style="--i:7;">i</span><span class="fb-roll-char" style="--i:8;">t</span><span class="fb-roll-char" style="--i:9;">e</span><span class="fb-roll-char" style="--i:10;">&nbsp;</span><span class="fb-roll-char" style="--i:11;">r</span><span class="fb-roll-char" style="--i:12;">a</span><span class="fb-roll-char" style="--i:13;">z</span><span class="fb-roll-char" style="--i:14;">g</span><span class="fb-roll-char" style="--i:15;">o</span><span class="fb-roll-char" style="--i:16;">v</span><span class="fb-roll-char" style="--i:17;">o</span><span class="fb-roll-char" style="--i:18;">r</span></span></span></a>
+  </div>
 
   <!-- 404 Main Section -->
   <main class="error-hero-section">
@@ -749,5 +726,6 @@
     </div>
   </div>
 
+  <script defer src="/script.js?v=300.0.0"></script>
 </body>
 </html>

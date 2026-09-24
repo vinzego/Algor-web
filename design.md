@@ -1,6 +1,8 @@
 # Algor Studio — Sustav Dizajna & Specifikacija (Design System)
 
-Dokumentacija dizajna, boja, tipografije, komponenti, pravila i arhitekture koda za web stranicu **Algor Studio** (`algor.studio`).
+Službena dokumentacija dizajna, vizualnog identiteta, tipografije, boja, interakcija i arhitekture tema za web stranicu **Algor Studio** (`algor.studio`).
+
+Aktivna primarna tema početne stranice definirana je u datoteci **`Algor-theme.css`** (`public/Algor-theme.css`).
 
 ---
 
@@ -13,155 +15,159 @@ Dokumentacija dizajna, boja, tipografije, komponenti, pravila i arhitekture koda
 - **OIB:** 03419409491
 - **Službena e-mail adresa:** `info@algor.studio`
 - **Službena web stranica:** `https://algor.studio`
+- **Glavna odredišna stranica za upite i kontakt:** `/kontakt`
 - **Službeni logotipi:**
   - `logo_black_transparent.png` (Crni prozirni logotip za svijetle površine i plutajući navbar)
   - `logo_white_transparent.png` (Bijeli prozirni logotip za tamne površine i footer)
 - **Nadležni sud:** Stvarno nadležni sud u Zagrebu
-- **Ton komunikacije:** Objektivan, u 3. licu jednine (*"Algor studio producira...", "osigurana je podrška..."*), luksuzan, tehnološki napredan i usmjeren na mjerljive poslovne rezultate.
+- **Zlatno pravilo komunikacije:** **Isključivo treće lice jednine i procesni oblik** (*„Algor Studio producira...”, „osigurana je podrška...”, „cjelokupan proces odvija se...”*). Strogo je zabranjeno spominjanje „tima”, „naših stručnjaka” ili množine („mi radimo”). Ton je profesionalan, luksuzan, tehnološki napredan i usmjeren na mjerljive poslovne rezultate.
 
 ---
 
-## 2. Paleta Boja (Overtake & Algor Color Palette & Tokens)
+## 2. Paleta Boja & CSS Tokeni (`Algor-theme.css`)
 
-### Primarne pozadine & Površine (Overtake Dark & Light Canvas)
-- **Glavna tamna pozadina (`--canvas-dark`):** `#0B0B0C` *(Deep obsidian tamni canvas za hero, podnožje i tamne sekcije)*
-- **Tamna kartična površina (`--surface-dark`):** `#161616` / `#171718` s obrubom `rgba(255, 255, 255, 0.10)`
-- **Svijetla pozadina sekcija (`--canvas-light`):** `#F0F0F0` / `#EDEBE3` *(Čista, topla svjetla sekcijska površina)*
-- **Svijetla kartična površina (`--surface-light`):** `#FFFFFF` s obrubom `#E2E8F0` / `rgba(0, 0, 0, 0.08)`
-- **Kontejnerske kapsule & Bento:** `#161616` i `#FFFFFF` s radijusom `28px`
+### Glavne boje i akcenti:
+- **Algor Signature Orange (`--c-orange`):** `#f65600` *(Glavni energetski akcent: gumbi, bedževi, rukopisne riječi, proces rada blok, hover efekti)*
+- **Orange Hover (`--c-orange-hover`):** `#df4e00`
+- **Orange Soft Glow (`--c-orange-soft`):** `rgba(246, 86, 0, 0.1)`
 
-### Akcentne boje (Brand & Overtake Accents)
-- **Overtake Neonski Lime (`--accent-lime`):** `#9EFC65` *(Glavni visokonaponski akcent: istaknuti gumbi, 'Pro' paket sjaj, točke na bedževima, hover stanja)*
-- **Električno plava (Electric Neon Blue):** `#29ADFF` *(Sjaj, točka na logotipu, suptilni tech akcenti)*
-- **Smaragdno zelena (Emerald Green):** `#10B981` / `#059669` *(UGC/Model oznake, uspješne konverzije, potvrde)*
-- **Ljubičasti AI akcent:** `#7C3AED` / `#A855F7` *(AI automatizacije i agenti)*
-- **Amber / Zlatna:** `#F59E0B` *(Ocjene 4.9/5, zvjezdice)*
+### Tamne površine (Deep Obsidian Canvas & Cards):
+- **Glavna tamna boja (`--c-dark`):** `#020108`
+- **Tamna površina (`--c-dark-surface`):** `#0a0a0f`
+- **Tamna kartica (`--c-dark-card`):** `#121218`
+- **Hover tamne kartice (`--c-dark-card-hover`):** `#181822`
+- **Tamni obrub (`--c-dark-border`):** `rgba(255, 255, 255, 0.12)`
+- **Muted tekst na tamnom (`--c-dark-text-muted`):** `#8e8e93` / `#94a3b8`
 
-### Boje teksta i tipografije
-- **Glavni naslovi & istaknuti brend:** `#FFFFFF` (na tamnom) / `#0B0B0C` (na svijetlom)
-- **Primarni tekst na tamnom:** `#F1F5F9` / `#FFFFFF`
-- **Sekundarni opisi & podnaslovi:** `#94A3B8` / `#8E95A5` / `rgba(255, 255, 255, 0.65)`
-- **Muted & Metadata tekst:** `#64748B` / `#71717A`
-- **Tekst na svijetlim karticama:** `#0B0B0C` / `#1E1E24`
+### Svijetle površine (Clean Editorial Canvas & Cards):
+- **Glavna svijetla pozadina (`--c-light-bg`):** `#f5f5f5` / `#f8f9fa`
+- **Svijetla površina (`--c-light-surface`):** `#ffffff`
+- **Svijetla kartica (`--c-light-card`):** `#f9f9f9` / `#ffffff`
+- **Svijetli obrub (`--c-light-border`):** `rgba(0, 0, 0, 0.08)`
+- **Glavni tamni tekst (`--c-text-dark`):** `#020108`
+- **Prigušeni tekst (`--c-text-muted`):** `#808083` / `#64748b`
 
-### Obrubi, sjene i kartice (Borders & Radius)
-- **Standardni radijus kartica i kontejnera:** `28px` (Overtake signature border-radius)
-- **Radijus gumba (Pill Shape):** `999px` (Full Pill)
-- **Suptilni obrub kartica:** `1px solid rgba(255, 255, 255, 0.10)` (tamno) / `1px solid #E2E8F0` (svijetlo)
-- **Hover obrub (Lime/Glow):** `rgba(158, 252, 101, 0.35)`
-- **Ambijentalni radijalni sjaj:** `radial-gradient(circle, rgba(158, 252, 101, 0.12) 0%, rgba(41, 173, 255, 0.06) 50%, transparent 70%)`
-
----
-
-## 3. Tipografija (Typography System — Overtake Style)
-
-- **Glavni display i sans-serif font:** `'Switzer', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif`
-  - Fontshare URL: `https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800,900&display=swap`
-  - Težine: `400 (Regular)`, `500 (Medium)`, `600 (Semi-Bold)`, `700 (Bold)`, `800 (Extra-Bold)`, `900 (Black)`
-- **Monospace / Tehnički font:** `'Geist Mono', monospace`
-  - Težine: `400 (Regular)`, `600 (Semi-Bold)`, `700 (Bold)`
-  - Primjena: Sekcijski brojači (`// 01`, `// 02`), bedževi, statusni signali.
-
-### Skala naslova & Tipografska pravila:
-- **Hero H1:** `clamp(38px, 5.5vw, 68px)` | `letter-spacing: -0.04em; line-height: 1.05; font-weight: 800; font-family: 'Switzer', sans-serif;`
-- **Sekcijski H2:** `clamp(28px, 4.2vw, 48px)` | `letter-spacing: -0.035em; line-height: 1.1; font-weight: 800;`
-- **Kartični H3:** `20px – 26px` | `letter-spacing: -0.025em; font-weight: 700;`
-- **Glavni odlomci:** `15px – 16.5px` | `line-height: 1.6; color: #94A3B8;`
-- **Overtake Eyebrow Bedž:** `11.5px – 13px` | `'Geist Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;`
-- **Overtake Pill Gumb:** `font-weight: 700; border-radius: 999px; padding: 12px 24px;` s ugrađenim kružnim rotirajućim indikatorom strelice (`.btn-arrow-circle: ↗`).
+### Radijusi & Geometrija:
+- **Radijus gumba (Pill Shape):** `9999px` / `100px` (`--radius-pill`)
+- **Radijus kartica:** `24px` / `20px` (`--radius-card`)
+- **Maksimalna širina kontejnera:** `1360px` (`--container-max`)
+- **Bočni padding kontejnera:** `clamp(16px, 3.5vw, 48px)` (`--container-pad`)
 
 ---
 
-## 4. Standardizirani Razmaci i Padding Sustav (Spacing & Layout Rules)
+## 3. Tipografski Sustav (Typography System)
+
+Na cijeloj web stranici koristi se pažljivo usklađena kombinacija tri fonta:
+
+### A. Glavni Sans-Serif font (`--font-sans`) — **Inter**
+- **Definicija:** `'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`
+- **Gdje se koristi:** Svi glavni naslovi, tekst kartica, odlomci, gumbi i navigacija.
+- **Težine:** `400 (Regular)`, `500 (Medium)`, `600 (Semi-Bold)`, `700 (Bold)`.
+
+### B. Akcentni rukopisni font (`--font-script`) — **Caveat**
+- **Definicija:** `'Caveat', cursive, sans-serif`
+- **Gdje se koristi:** `.accent-script` klasa unutar naslova za isticanje ključnih emotivnih i strateških riječi (npr. *„pametnije”*, *„rezultate”*, *„jednostavno”*, *„vjeruju”*).
+- **Stil:** `font-weight: 600; font-size: 1.15em - 1.18em; transform: translateY(-2px); display: inline-block;`.
+
+### C. Monospace font (`--font-mono`) — **Fragment Mono / Geist Mono**
+- **Definicija:** `'Fragment Mono', 'Geist Mono', monospace`
+- **Gdje se koristi:** Oznake sekcija (`.fb-eyebrow`), bedževi faza procesa (`.fb-process-step-pill`), tehničke oznake i statusne točke.
+
+---
+
+## 4. Pravila Skaliranja i Poravnanja Naslova
 
 > [!IMPORTANT]
-> **ZLATNO PRAVILO PADDINGA (24PX DEFAULT)**:
-> Za izradu **svake sekcije, kontejnera i glavnog elementa**, defaultni bočni i vanjski padding **mora biti 24px** (`padding: ... 24px ...` ili `padding: 0 24px`).
+> **ZLATNO PRAVILO NASLOVA: LIJEVO PORAVNANJE I KOMPAKTNA ELEGANCIJA**
+> 1. Svi naslovi sekcija na web stranici (**Naši radovi, O nama, Proces rada, Cjenik, Recenzije, FAQ**) **poravnati su ulijevo (`text-align: left; margin: 0;`)**.
+> 2. Veličina svih glavnih sekcijskih naslova je ujednačena na **`clamp(34px, 4.5vw, 56px)`**.
+> 3. Debljina naslova je rafinirana na **`font-weight: 600`** (uklonjen je preteški 800 bold).
+> 4. Prored (line-height) je kompaktan: **`1.08`**.
+> 5. Razmak među slovima (tracking / letter-spacing) je: **`-0.035em`**.
 
-### Standardne postavke širine i razmaka:
-1. **Default bočni padding sekcija:** `24px` (npr. `padding: 60px 24px;` ili `padding: 80px 24px;`).
-   - Ovo sprječava pojavu neželjenog viška praznog prostora s lijeve i desne strane ekrana te omogućuje karticama i mrežama da iskoriste puni potencijal ekrana i budu maksimalno široke i pregledne.
-2. **Maksimalna širina kontejnera (`max-width`):** **`1540px`** za sve glavne sekcije (`.plain-section`, `#why-algor`, `#pricing`, `.stats-grid`, itd.).
-3. **Hero & About kartice pune širine:** `width: calc(100% - 32px); margin: 16px auto; border-radius: 32px;` s unutarnjim bočnim paddingom od `24px` do `48px`.
-4. **Standardni Gap unutar Gridova:** `gap: 24px` (ujednačeno na svim sekcijama s 3 ili 4 stupca).
-5. **Mobilni i tablet padding:**
-   - Na mobilnim uređajima (≤ 768px): bočni padding `16px` do `20px` uz `gap: 16px` do `20px`.
-
----
-
-## 5. Specifikacija Ključnih Sekcija & Komponenti
-
-### A. Navigacija (`.ultra-navbar`)
-- Plutajući stakleni otok (*floating glass pill*) s logotipom: `algor studio` (s električno plavom točkom).
-- Linkovi: *O nama, Usluge, Projekti, Proces, Cijene, FAQ*.
-- Direktni CTA kontakt: `✉️ info@algor.studio`.
-
-### B. Hero Sekcija
-- **Interaktivna mreža:** Dinamički 1:1 grid kvadrata s neonskim raspršivanjem miša (`#mesh-grid-container`).
-- **Social Proof Pill:** Avatari + `20+` klijenata | ⭐⭐⭐⭐⭐ `4.9/5` | *Marketing i AI podrška za restorane, hotele, poliklinike i lokalne usluge*.
-- **Ticker Logotipi klijenata:** Supernova, Admiral, Admiral Hotel, Family Park, Restoran Taurus, Eschengarten.
-
-### C. Sekcija "O nama" (`#about`)
-- Kontejner usklađen s Hero karticom: `width: calc(100% - 32px); border-radius: 32px;`.
-- **Bento 3 kartice:** Visina `350px`, radijus `24px`:
-  1. *Autentični foto/video sprint* (slika visoke kvalitete).
-  2. *AI tehnološka orbita* (animirani pulsirajući centar + 6 kružećih logotipa: Google, ChatGPT, Python, Meta, Instagram, GA4).
-  3. *Klijentska recenzija* (Admiral / Martina P.).
-- **Tekstualni uvod:** Jedinstven, ujednačen odlomak (font 19px, #334155).
-- **Minimalistički red metrika (4 stupca):** `30+` Zadovoljnih klijenata, `All-in-one` Kompletan sustav, `100%` Transparentno, `Ključ u ruke` Bez lutanja.
-- **Galerija slika 1:** Marquee traka fotografija s lokacija.
-
-### D. Sekcija "Zašto Algor" (`#why-algor`)
-- **Default padding & pozadina:** Integrirano unutar `.dark-combined-container` na crnoj mreži (`#050508`).
-- **3-Card Asimetrični Grid:** `grid-template-columns: 1.42fr 1fr 1fr; gap: 24px;`.
-  1. **Zelena kartica (Electric Lime `#bef264`, ~42% širine):** `1 Partner` — *Bez gubljenja vremena na koordinaciju fotografa, marketing agencije i programera — sve vodimo na jednom mjestu.*
-  2. **Bijela kartica (`#FFFFFF`, ~29% širine):** `100% Marketing + Tehnologija` — *Video produkcija, ciljani oglasi, brze landing stranice i AI automatizacije rade sinkronizirano.*
-  3. **Tamna Obsidian staklena kartica (`rgba(14, 14, 18, 0.65)`, ~29% širine):** `24/7 AI Sustav` — *Automatizacija bez pauze. Pametni asistenti kvalificiraju potencijalne klijente i automatski zakazuju termine u vaš kalendar 24/7.*
-
-### E. Cjenik & Paketi (`#pricing`)
-- **Default padding:** `padding: 90px 24px 80px 24px; max-width: 1540px;`.
-- **Sekcijski bedž:** `// 03 PAKETI`
-- **3 Proširena Paketa:** 
-  - *Start* (490 €/mj) — Sadržaj & Meta Oglasi
-  - *Pro* (890 €/mj) — ★ Najpopularniji // Sustav Akvizicije (Meta + Google + ChatGPT + Landing + AI Lead Asistent)
-  - *Ultra* (1.390 €/mj) — Skaliranje & Automatizacija (Full Funnel + CRM + WhatsApp)
-- **Kartice paketa:** Široki luksuzni tamni obsidian dizajn (`padding: 42px 34px; border-radius: 36px;`).
-- **Trust Bar:** Mjesečni izvještaj • Stalna optimizacija • Osobna podrška.
-
-### F. Česta Pitanja (`#faq`) & Galerija 2
-- 6 sveobuhvatnih pitanja i odgovora.
-- Ispod FAQ-a nalazi se druga marquee traka s fotografijama s terena.
-
-### G. Podnožje Stranice (Footer)
-- **Glavni CTA naslov:** *"Prestanite trošiti proračun na marketing koji ne konvertira"*
-- **Zasluge & Brend:** `Izradio Algor Studio`.
-- **Pravni linkovi:** Politika privatnosti, Uvjeti korištenja, Politika kolačića.
-
-### H. Baner za Kolačiće (GDPR Cookie Banner)
-- Plutajući *frosted glass* baner na dnu ekrana.
-- **Tehnička pohrana:** `localStorage.setItem('algor_cookie_consent', ...)` + HTTP kolačić `algor_cookie_consent` s trajanjem od 365 dana + Google Consent Mode v2 signalizacija.
-
-### I. Stranica Karijere (`karijere.html`)
-- Luksuzna tamna Bento tema (`#050508` s radijalnim plavim/zelenim ambijentalnim sjajem).
-- Kartice otvorenih pozicija:
-  - 📸 *Model za Foto & Video Kampanje (UGC)* — istaknuta uloga, zeleni smaragdni akcenti.
-  - 🎬 *Short-Form Video Editor (Reels & TikTok)* — remote/hibridni rad.
-  - 📩 *Otvorena Prijava* — za sve marketing i tehničke stručnjake.
-- Bento sekcija prednosti: *Vrhunska Produkcija*, *Agilnost & Jasnoća*, *Točnost & Poštovanje*.
+### Hijerarhija veličina:
+| Element | Veličina fonta | Težina | Prored | Razmak slova | Poravnanje |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Hero H1 Naslov** | `clamp(38px, 5.2vw, 68px)` | `600` | `1.05` | `-0.035em` | Centrirano / Lijevo |
+| **Glavni naslovi sekcija (H2)** | `clamp(34px, 4.5vw, 56px)` | `600` | `1.08` | `-0.035em` | **Lijevo (`text-align: left`)** |
+| **Izjava klijenata (Statement)** | `clamp(30px, 4vw, 50px)` | `600` | `1.10` | `-0.035em` | Lijevo |
+| **Naslovi kartica (H3)** | `clamp(22px, 2.2vw, 28px)` | `600` | `1.20` | `-0.030em` | Lijevo |
+| **Podnaslovi i lead tekst** | `clamp(16px, 1.3vw, 20px)` | `400 / 500` | `1.60` | `-0.015em` | Lijevo / Centrirano |
+| **Osnovni tekst (p)** | `15px – 16.5px` | `400` | `1.65` | `-0.010em` | Lijevo |
+| **Eyebrow oznake** | `11.5px – 12px` | `600 / 700` | `1.00` | `0.14em` | Lijevo (Monospace) |
 
 ---
 
-## 6. Pravne Stranice (Legal Compliance)
-- **Politika Privatnosti (`politika-privatnosti.html`):** Usklađena s GDPR (Uredba EU 2016/679) i Zakonom o provedbi GDPR (NN 42/2018), 11 strukturiranih sekcija.
-- **Uvjeti Korištenja (`uvjeti-koristenja.html`):** 9 pravnih članaka s točnim OIB-om, sjedištem obrta Vinzego i nadležnošću zagrebačkog suda.
-- **Politika Kolačića (`kolacici.html`):** Usklađena sa Zakonom o elektroničkim komunikacijama (NN 76/22).
+## 5. Ključni UI Elementi, Interakcije & Efekti
+
+### A. Fiksno progresivno zamagljeno staklo (`.fb-bottom-glass-fade`)
+- **Opis:** Fiksni stakleni sloj usidren na samom dnu ekrana (`position: fixed; bottom: 0; left: 0; right: 0; height: 110px; z-index: 9990; pointer-events: none;`).
+- **Efekt:** Koristi `backdrop-filter: blur(24px)` u kombinaciji s vertikalnim gradientom maske (`mask-image: linear-gradient(to top, black 25%, transparent 100%)`).
+- **Vizualni dojam:** Stvara osjećaj kao da sadržaj i slova prolaze iza zamagljenog stakla prije nego što se potpuno pojave na ekranu tijekom listanja.
+
+### B. Animacija teksta slovo-po-slovo (Roll Text Animation)
+- **Primjena:** Svi glavni gumbi (`.fb-btn-dark`, `.fb-btn-primary`, `.fb-btn-dark-outline`) i linkovi u navigaciji i podnožju.
+- **Mehanika:** Svako slovo obavijeno je u `.fb-roll-char` sa CSS varijablom `--i` (indeks slova).
+- **Hover:** Riječ se animira tako da slovo po slovo brzo izlazi odozdo (`translateY(-100%)` -> `translateY(0)` uz stagger delay `--i * 0.015s`).
+- **Unhover:** Pri odmicanju miša, tekst se glatko i brzo vraća u početni položaj u suprotnom smjeru.
+
+### C. Povezanost CTA gumba
+- Svi gumbi poziva na akciju na cijeloj stranici (*„Zakažite uvodni razgovor”*, *„Započnite suradnju”*, *„Odaberite paket”*) vode izravno na stranicu za rezervaciju i kontakt: **`/kontakt`**.
+
+### D. Navigacija (`.fb-navbar` & `.fb-mobile-menu`)
+- **Desktop (> 768px):** Minimalistički plutajući otok / kapsula (`border-radius: 100px`) s logotipom, linkovima, kružnim mjeračem čitanja i CTA gumbom.
+- **Mobilni uređaji (≤ 768px):** Fiksna, blago prozirna traka od ruba do ruba (`width: 100%`, `border-radius: 0`, `background: rgba(2, 1, 8, 0.85)`, `backdrop-filter: blur(20px)`):
+  - **Lijeva strana:** Logotip studija (`.fb-nav-brand`).
+  - **Desna strana:** Hamburger ikona (`.fb-nav-burger`) koja se pri otvaranju glatko transformira u križić (X).
+  - **Cijeli zaslon:** Klikom na hamburger otvara se elegantan full-screen izbornik (`.fb-mobile-menu`) s velikim navigacijskim poveznicama, Roll animacijama i glavnim CTA gumbom za ugovaranje sastanka.
+
+### E. Pročišćeno podnožje (Footer)
+- Između logotipa i navigacijskih stupaca u footeru uklonjene su teške sive linije razdvajanja za prozračan i čist editorial izgled.
 
 ---
 
-## 7. Pravila Sinhronizacije & Deploymenta
-- Sav statički sadržaj poslužuje Express poslužitelj iz mape `./public`.
-- **Obvezna naredba nakon svake izmjene datoteka:**
-  ```bash
-  cp index.html public/index.html && cp style.css public/style.css && cp script.js public/script.js && cp izrada-web-stranica.html public/izrada-web-stranica.html && cp karijere.html public/karijere.html && cp politika-privatnosti.html public/politika-privatnosti.html && cp kolacici.html public/kolacici.html && cp uvjeti-koristenja.html public/uvjeti-koristenja.html && cp design.md public/design.md
-  ```
-- **Git repozitorij:** `https://github.com/vinzego/Algor-web.git` (`main` grana).
+## 6. Struktura Sekcija Početne Stranice
+
+1. **Hero sekcija:** Video pozadina, statusni bedž, H1 naslov s Caveat akcentom, podnaslov i 2 CTA gumba.
+2. **Klijenti & Izjava o povjerenju:** Velika izjava o povjerenju (`.fb-clients-statement`) + beskonačna marquee traka s logotipima brendova (Supernova, Admiral, Family Park, Taurus, Eschengarten).
+3. **Naši radovi (`#radovi`):** Lijevo poravnat naslov, 3-stupčana mreža studija slučaja s videozapisima, tagovima i rezultatima.
+4. **O nama (`#o-nama`):** Lijevi editorial uvod s Caveat akcentom i 4-stupčana mreža ključnih statistika (*30+ Klijenata*, *4x Veći ROAS*, *100% Ključ u ruke*, *24/7 AI podrška*).
+5. **Proces rada (`#proces`):** Signature narančasti blok (`#f65600`) s ljepljivim lijevim stupcem i 4 kartice procesa rada (01 Analiza, 02 Produkcija, 03 Lansiranje, 04 Skaliranje).
+6. **Cjenik (`#cjenik`):** Lijevo poravnat naslov, lijevi toggle switch za mjesečni/godišnji prikaz, 3 paketa (*Start*, *Pro*, *Ultra*) te custom inquiry traka.
+7. **Recenzije klijenata (`#recenzije`):** Lijevo poravnata eyebrow oznaka i naslov + beskonačni marquee vrtuljak stvarnih kartica recenzija s avatarima i citatima.
+8. **Česta pitanja (`#faq`):** 2-stupčana sekcija s lijevim naslovom i interaktivnom harmonikom odgovora na najčešća pitanja s rotirajućim plus/križić ikonama.
+9. **CTA Banner na dnu:** Veliki pročišćeni poziv na akciju s Caveat akcentom i gumbom za ugovaranje suradnje.
+10. **Podnožje (Footer):** Pročišćeni footer s radnim vremenom, brzim linkovima, kontakt podacima i pravnim poveznicama.
+
+---
+
+## 8. Pravila Copywritinga & Ton Komunikacije (Copywriting Standards)
+
+> [!IMPORTANT]
+> **OBVEZNO PRAVILO PISANJA: ISKLJUČIVO TREĆE LICE (3RD PERSON) & PROCESNA PERSPEKTIVA**
+> 
+> 1. **Svi tekstovi na webu moraju biti pisani u 3. licu jednine ili bezličnom procesnom obliku:**
+>    - *Ispravno:* „Algor Studio preuzima kompletnu produkciju...”, „Prije dolaska na lokaciju priprema se plan...”, „Klijent dobiva tjedne izvještaje...”, „Usluga uključuje...”
+>    - *Zabranjeno:* „Mi radimo...”, „Naš tim...”, „Nudimo vam...”, „Naši stručnjaci će vam pomoći...”, „Mi snimamo...”.
+> 2. **Solopreneur agencijski model:**
+>    - Vlasnik vodi agenciju samostalno (bez internog tima zaposlenika).
+>    - **Nikada ne spominjati riječ „tim” niti stvarati lažni privid korporativnog odjela**, već predstavljati studio kao visoko efikasan, automatiziran i vrhunski opremljen studio partnerstvo sustav.
+> 3. **Obraćanje korisniku (CTA i pogodnosti):**
+>    - Direktni pozivi na akciju i naslovi smiju se izravno obraćati klijentu u 2. licu (npr. *„Dogovorite besplatan uvodni razgovor”*, *„Saznajte koji paket odgovara vašim ciljevima”*), no svi opisi načina rada, odgovori na pitanja i procesi moraju strogo ostati u 3. licu.
+> 4. **Ton glasa:**
+>    - Samouvjeren, jasan, minimalistički, tehnički precizan i usmjeren na povrat ulaganja (ROI) i mjerljive poslovne rezultate.
+
+---
+
+## 9. Arhitektura Datoteka & Pravila Sinhronizacije
+
+- **Glavni stylesheet teme:** `public/Algor-theme.css` (sinhroniziran u korijenu kao `Algor-theme.css`).
+- **Glavni HTML:** `public/index.html` (sinhroniziran u korijenu kao `index.html`).
+- **Build skripta:** `npm run build` (minifikacija i optimizacija u mapu `dist/`).
+- **Lokalni poslužitelj:** `server.js` na portu `3001`.
+
+```bash
+# Naredba za potpunu sinkronizaciju nakon izmjena:
+cp public/index.html index.html && cp public/Algor-theme.css Algor-theme.css
+```
+

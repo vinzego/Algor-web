@@ -5,11 +5,11 @@ process.env.NOTION_DATABASE_ID ||= 'smoke-test-database';
 const app = require('../server');
 
 const routes = [
-  '/', '/kontakt', '/izrada-web-stranica', '/chatgpt-ads', '/karijere',
+  '/', '/kontakt', '/kontakt/hvala', '/izrada-web-stranica', '/chatgpt-ads', '/karijere',
   '/politika-privatnosti', '/uvjeti-koristenja', '/kolacici',
   '/admiral-studija-slucaja', '/family-park-studija-slucaja',
   '/eschengarten-studija-slucaja', '/supernova-studija-slucaja', '/hvala',
-  '/robots.txt', '/sitemap.xml', '/style.css', '/script.js'
+  '/robots.txt', '/sitemap.xml', '/style.css', '/Algor-theme.css', '/script.js'
 ];
 
 async function smokeTest() {

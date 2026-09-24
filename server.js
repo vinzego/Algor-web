@@ -63,7 +63,7 @@ app.use(helmet({
       baseUri: ["'self'"],
       formAction: ["'self'"],
       frameAncestors: ["'none'"],
-      ...(isProduction ? { upgradeInsecureRequests: [] } : {})
+      upgradeInsecureRequests: isProduction ? [] : null
     }
   },
   crossOriginEmbedderPolicy: false,
@@ -112,107 +112,140 @@ app.get('/sitemap.xml', (req, res) => {
 });
 
 
+app.get(['/admin', '/admin.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/admin');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.sendFile(path.join(publicDir, 'admin.html'));
+});
+
 app.get(['/kontakt', '/kontakt.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/kontakt');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'kontakt.html'));
 });
 
 app.get(['/izrada-web-stranica', '/izrada-web-stranica.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/izrada-web-stranica');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'izrada-web-stranica.html'));
 });
 
 app.get(['/chatgpt-ads', '/chatgpt-ads.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/chatgpt-ads');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'chatgpt-ads.html'));
 });
 
 app.get(['/karijere', '/karijere.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/karijere');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'karijere.html'));
 });
 
 app.get(['/politika-privatnosti', '/politika-privatnosti.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/politika-privatnosti');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'politika-privatnosti.html'));
 });
 
 app.get(['/uvjeti-koristenja', '/uvjeti-koristenja.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/uvjeti-koristenja');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'uvjeti-koristenja.html'));
 });
 
 app.get(['/kolacici', '/kolacici.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/kolacici');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'kolacici.html'));
 });
 
 app.get(['/admiral-studija-slucaja', '/admiral-studija-slucaja.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/admiral-studija-slucaja');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'admiral-studija-slucaja.html'));
 });
 
 app.get(['/family-park-studija-slucaja', '/family-park-studija-slucaja.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/family-park-studija-slucaja');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'family-park-studija-slucaja.html'));
 });
 
 app.get(['/eschengarten-studija-slucaja', '/eschengarten-studija-slucaja.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/eschengarten-studija-slucaja');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'eschengarten-studija-slucaja.html'));
 });
 
 app.get(['/supernova-studija-slucaja', '/supernova-studija-slucaja.html'], (req, res) => {
   if (req.path.endsWith('.html')) return res.redirect(301, '/supernova-studija-slucaja');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'supernova-studija-slucaja.html'));
 });
 
-app.get(['/hvala', '/hvala.html'], (req, res) => {
-  if (req.path.endsWith('.html')) return res.redirect(301, '/hvala');
+app.get(['/kontakt/hvala', '/kontakt/hvala.html', '/hvala', '/hvala.html'], (req, res) => {
+  if (req.path.endsWith('.html')) return res.redirect(301, '/kontakt/hvala');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'hvala.html'));
 });
 
 app.get(['/', '/index.html'], (req, res) => {
   if (req.path === '/index.html') return res.redirect(301, '/');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=86400');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
   res.sendFile(path.join(publicDir, 'index.html'));
 });
 
-// Serve only public static files with instant cache for assets
+// Serve only public static files with no-cache revalidation
 const staticOptions = {
   fallthrough: true,
   index: false,
   setHeaders: (res, filePath) => {
-    if (filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'no-cache');
-    } else {
-      res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
-    }
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
   }
 };
 app.use(express.static(publicDir, staticOptions));
@@ -452,7 +485,7 @@ async function saveInquiryToNotion(data) {
           {
             type: 'text',
             text: {
-              content: `📋 Detalji upita s weba:\n• Ime i prezime: ${data.name || '-'}\n• Tvrtka / Web: ${data.company || '-'}\n• Email: ${data.email || '-'}\n• Mobitel: ${data.phone || '-'}\n• Odabrani paket: ${data.package || '-'}\n• Procijenjena vrijednost: ${estimatedValue} €\n• Izvor stranice: ${source}\n• Uređaj: ${device}\n• Napomena / poruka: ${data.calendarSlot || 'Nema napomene'}`
+              content: `📋 Detalji upita s weba:\n• Ime i prezime: ${data.name || '-'}\n• Tvrtka / Web: ${data.company || '-'}\n• Email: ${data.email || '-'}\n• Mobitel: ${data.phone || '-'}\n• Odabrani paket: ${data.package || '-'}\n• Procijenjena vrijednost: ${estimatedValue} €\n• Izvor stranice: ${source}\n• Uređaj: ${device}\n• Poruka klijenta: ${data.message || 'Nema poruke'}\n• Termin / napomena: ${data.calendarSlot || 'Nema napomene'}`
             }
           }
         ]
@@ -480,6 +513,7 @@ async function sendClientConfirmationEmail(data) {
   const pkg = escapeHtml(data.package || 'Izrada Weba & Digitalna Rješenja');
   const company = escapeHtml(data.company || 'Nije navedeno');
   const phone = escapeHtml(data.phone || 'Nije naveden');
+  const message = escapeHtml(data.message || '');
   const note = escapeHtml(data.calendarSlot && data.calendarSlot !== 'Nije odabrano' && data.calendarSlot !== 'Upit s podnožja'
     ? data.calendarSlot
     : 'Besplatna procjena projekta i savjetovanje');
@@ -550,6 +584,11 @@ async function sendClientConfirmationEmail(data) {
                         <td style="color: #64748b; font-weight: 600;">Kontakt telefon:</td>
                         <td style="color: #0f172a;">${phone}</td>
                       </tr>
+                      ${message ? `
+                      <tr>
+                        <td style="color: #64748b; font-weight: 600; vertical-align: top;">Vaša poruka:</td>
+                        <td style="color: #0f172a;">${message}</td>
+                      </tr>` : ''}
                       <tr>
                         <td style="color: #64748b; font-weight: 600;">Napomena / Detalji:</td>
                         <td style="color: #0f172a;">${note}</td>
@@ -668,7 +707,7 @@ app.post('/api/contact', async (req, res) => {
       return res.status(429).json({ success: false, error: 'Previše poslanih upita u kratkom vremenu. Molimo pričekajte nekoliko minuta.' });
     }
 
-    const { name, company, email, phone, package: pkg, appointmentDate, appointmentTime, meetingType, calendarSlot, source, device, hp } = req.body;
+    const { name, company, email, phone, message, package: pkg, appointmentDate, appointmentTime, meetingType, calendarSlot, source, device, hp } = req.body;
     
     // Honeypot check (anti-bot trap)
     if (hp) {
@@ -684,6 +723,7 @@ app.post('/api/contact', async (req, res) => {
     const cleanCompany = sanitize(company, 100);
     const cleanEmail = sanitize(email, 254);
     const cleanPhone = sanitize(phone, 50);
+    const cleanMessage = sanitize(message, 1500);
     const cleanPkg = sanitize(pkg, 100);
     const cleanCalendarSlot = sanitize(calendarSlot, 500);
     const cleanSource = sanitize(source, 100) || 'Web Stranica';
@@ -717,6 +757,7 @@ app.post('/api/contact', async (req, res) => {
         company: cleanCompany,
         email: cleanEmail,
         phone: cleanPhone,
+        message: cleanMessage,
         package: cleanPkg,
         appointmentDate: cleanAppDate,
         appointmentTime: cleanAppTime,
@@ -783,6 +824,135 @@ app.get('/admin/export-csv', (req, res) => {
     res.sendFile(CSV_FILE);
   } else {
     res.status(404).send('CSV zapis ne postoji.');
+  }
+});
+
+// ============================================================================
+// ADMIN CMS API & AUTHENTICATION
+// ============================================================================
+const CONTENT_FILE = path.join(__dirname, 'data', 'content.json');
+const adminSecret = process.env.ADMIN_SECRET || crypto.randomBytes(32).toString('hex');
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'algor2026!';
+
+function createAdminToken() {
+  const payload = JSON.stringify({ user: 'admin', exp: Date.now() + 7 * 24 * 60 * 60 * 1000 });
+  const b64 = Buffer.from(payload).toString('base64url');
+  const sig = crypto.createHmac('sha256', adminSecret).update(b64).digest('base64url');
+  return `${b64}.${sig}`;
+}
+
+function verifyAdminToken(token) {
+  if (!token || typeof token !== 'string') return false;
+  const parts = token.split('.');
+  if (parts.length !== 2) return false;
+  const [b64, sig] = parts;
+  const expectedSig = crypto.createHmac('sha256', adminSecret).update(b64).digest('base64url');
+  if (sig.length !== expectedSig.length) return false;
+  if (!crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expectedSig))) return false;
+  try {
+    const payload = JSON.parse(Buffer.from(b64, 'base64url').toString('utf8'));
+    if (payload.exp < Date.now()) return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function requireAdminAuth(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const bearerToken = authHeader && authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+  const cookieToken = req.headers.cookie ? (req.headers.cookie.match(/(?:^|;\s*)algor_admin_token=([^;]+)/) || [])[1] : null;
+  const token = bearerToken || cookieToken;
+  if (!token || !verifyAdminToken(token)) {
+    return res.status(401).json({ success: false, error: 'Neautoriziran pristup. Molimo prijavite se.' });
+  }
+  next();
+}
+
+// 1. Admin Login
+app.post('/api/admin/login', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  const { password } = req.body || {};
+  if (!password || typeof password !== 'string') {
+    return res.status(400).json({ success: false, error: 'Lozinka je obvezna.' });
+  }
+
+  const pwBuffer = Buffer.from(password);
+  const expectedBuffer = Buffer.from(ADMIN_PASSWORD);
+  const isMatch = pwBuffer.length === expectedBuffer.length && crypto.timingSafeEqual(pwBuffer, expectedBuffer);
+
+  if (!isMatch) {
+    return res.status(401).json({ success: false, error: 'Neispravna lozinka.' });
+  }
+
+  const token = createAdminToken();
+  res.setHeader('Set-Cookie', `algor_admin_token=${token}; Path=/; HttpOnly; SameSite=Strict; Max-Age=604800${isProduction ? '; Secure' : ''}`);
+  res.json({ success: true, token });
+});
+
+// 2. Check Auth
+app.get('/api/admin/check-auth', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  const cookieToken = req.headers.cookie ? (req.headers.cookie.match(/(?:^|;\s*)algor_admin_token=([^;]+)/) || [])[1] : null;
+  const authHeader = req.headers['authorization'];
+  const bearerToken = authHeader && authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+  const token = bearerToken || cookieToken;
+
+  if (token && verifyAdminToken(token)) {
+    return res.json({ success: true, authenticated: true });
+  }
+  res.status(401).json({ success: false, authenticated: false });
+});
+
+// 3. Logout
+app.post('/api/admin/logout', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Set-Cookie', `algor_admin_token=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${isProduction ? '; Secure' : ''}`);
+  res.json({ success: true });
+});
+
+// 4. Get Content
+app.get('/api/admin/content', requireAdminAuth, (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  try {
+    if (fs.existsSync(CONTENT_FILE)) {
+      const data = JSON.parse(fs.readFileSync(CONTENT_FILE, 'utf8'));
+      return res.json(data);
+    }
+    res.status(404).json({ success: false, error: 'Datoteka sa sadržajem ne postoji.' });
+  } catch (err) {
+    console.error('Failed to read content:', err?.message || 'Error');
+    res.status(500).json({ success: false, error: 'Greška pri čitanju sadržaja.' });
+  }
+});
+
+// 5. Save Content
+app.post('/api/admin/content', requireAdminAuth, (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  try {
+    const newContent = req.body;
+    if (!newContent || typeof newContent !== 'object') {
+      return res.status(400).json({ success: false, error: 'Neispravan format podataka.' });
+    }
+
+    const dataDir = path.dirname(CONTENT_FILE);
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true, mode: 0o700 });
+    }
+
+    fs.writeFileSync(CONTENT_FILE, JSON.stringify(newContent, null, 2), 'utf8');
+
+    try {
+      const { syncHtmlFromContent } = require('./scripts/sync-html');
+      syncHtmlFromContent(newContent);
+    } catch (syncErr) {
+      console.warn('HTML sync warning:', syncErr.message);
+    }
+
+    res.json({ success: true, message: 'Sadržaj je uspješno spremljen.' });
+  } catch (err) {
+    console.error('Failed to save content:', err?.message || 'Error');
+    res.status(500).json({ success: false, error: 'Greška pri spremanju sadržaja.' });
   }
 });
 

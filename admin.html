@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS Kontrolna Ploča | Algor Studio</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Fragment+Mono:ital@0;1&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <style>
+    :root {
+      --c-dark: #020108;
+      --c-dark-surface: #0a0a0f;
+      --c-dark-card: #121218;
+      --c-dark-card-hover: #181822;
+      --c-dark-border: rgba(255, 255, 255, 0.1);
+      --c-dark-border-focus: rgba(246, 86, 0, 0.6);
+      --c-orange: #f65600;
+      --c-orange-hover: #df4e00;
+      --c-text-main: #ffffff;
+      --c-text-muted: #94a3b8;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-script: 'Caveat', cursive, sans-serif;
+      --font-mono: 'Fragment Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--c-dark);
+      color: var(--c-text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ------------------------------------------------------------------------
+       1. LOGIN OVERLAY
+       ------------------------------------------------------------------------ */
+    .admin-login-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+      position: fixed;
+      inset: 0;
+      background: var(--c-dark);
+      z-index: 1000;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .admin-login-wrapper.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .admin-login-card {
+      background: var(--c-dark-card);
+      border: 1px solid var(--c-dark-border);
+      border-radius: 24px;
+      padding: clamp(32px, 5vw, 48px);
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+    .admin-login-logo {
+      height: 28px;
+      margin-bottom: 24px;
+    }
+    .admin-login-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+    .admin-login-subtitle {
+      font-size: 14px;
+      color: var(--c-text-muted);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .admin-form-group {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .admin-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--c-text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .admin-input-wrap {
+      position: relative;
+    }
+    .admin-input,
+    .admin-textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--c-dark-border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: #ffffff;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .admin-textarea {
+      min-height: 80px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    .admin-input:focus,
+    .admin-textarea:focus {
+      border-color: var(--c-orange);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow: 0 0 0 3px rgba(246, 86, 0, 0.15);
+    }
+
+    .admin-btn-primary {
+      width: 100%;
+      background: var(--c-orange);
+      color: #ffffff;
+      border: none;
+      border-radius: 100px;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+    .admin-btn-primary:hover {
+      background: var(--c-orange-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(246, 86, 0, 0.35);
+    }
+    .admin-btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .admin-login-error {
+      display: none;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+      font-size: 13px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .admin-login-error.is-visible {
+      display: block;
+    }
+
+    /* ------------------------------------------------------------------------
+       2. DASHBOARD SHELL
+       ------------------------------------------------------------------------ */
+    .admin-dashboard {
+      display: none;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .admin-dashboard.is-visible {
+      display: flex;
+    }
+
+    /* Top Bar */
+    .admin-header {
+      position: sticky;
+      top: 0;
+      background: rgba(2, 1, 8, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--c-dark-border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+    .admin-header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .admin-header-logo {
+      height: 22px;
+      display: block;
+    }
+    .admin-header-badge {
+      background: rgba(246, 86, 0, 0.12);
+      border: 1px solid rgba(246, 86, 0, 0.3);
+      color: var(--c-orange);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.06em;
+    }
+    .admin-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .admin-btn-outline {
+      background: transparent;
+      border: 1px solid var(--c-dark-border);
+      color: var(--c-text-muted);
+      border-radius: 100px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .admin-btn-outline:hover {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Main Container & Tabs */
+    .admin-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px 120px 24px;
+      flex: 1;
+    }
+
+    .admin-tabs-nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--c-dark-border);
+      padding-bottom: 12px;
+      margin-bottom: 32px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .admin-tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--c-text-muted);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .admin-tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .admin-tab-btn.is-active {
+      color: #ffffff;
+      background: var(--c-dark-card);
+      border-color: var(--c-dark-border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .admin-tab-btn.is-active .tab-icon {
+      color: var(--c-orange);
+    }
+
+    /* Tab Panes */
+    .admin-tab-pane {
+      display: none;
+    }
+    .admin-tab-pane.is-active {
+      display: block;
+    }
+
+    /* Content Cards / Form Sections */
+    .admin-section-card {
+      background: var(--c-dark-card);
+      border: 1px solid var(--c-dark-border);
+      border-radius: 20px;
+      padding: clamp(20px, 3vw, 32px);
+      margin-bottom: 24px;
+    }
+    .admin-section-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .admin-section-desc {
+      font-size: 13.5px;
+      color: var(--c-text-muted);
+      margin-bottom: 24px;
+    }
+
+    .admin-sub-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--c-dark-border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .admin-sub-card-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--c-orange);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .admin-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .admin-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .admin-grid-2, .admin-grid-3, .admin-grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* FAQ List Editor */
+    .admin-faq-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--c-dark-border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .admin-faq-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .admin-faq-number {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--c-orange);
+    }
+    .admin-btn-delete {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #ef4444;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .admin-btn-delete:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
+    .admin-btn-add {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed var(--c-dark-border);
+      color: var(--c-text-muted);
+      border-radius: 12px;
+      padding: 12px 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      margin-top: 8px;
+    }
+    .admin-btn-add:hover {
+      color: #ffffff;
+      border-color: var(--c-orange);
+      background: rgba(246, 86, 0, 0.05);
+    }
+
+    /* Fixed Bottom Action Bar */
+    .admin-floating-bar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(18, 18, 24, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--c-dark-border);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+      border-radius: 100px;
+      padding: 10px 16px 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 99;
+      width: calc(100% - 32px);
+      max-width: 600px;
+    }
+    .admin-save-status {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--c-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+    .admin-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      display: inline-block;
+    }
+    .admin-status-dot.is-unsaved {
+      background: #f59e0b;
+      box-shadow: 0 0 8px #f59e0b;
+    }
+
+    .admin-btn-save {
+      background: var(--c-orange);
+      color: #ffffff;
+      border: none;
+      border-radius: 100px;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .admin-btn-save:hover {
+      background: var(--c-orange-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(246, 86, 0, 0.4);
+    }
+    .admin-btn-save:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Toast Notification */
+    .admin-toast {
+      position: fixed;
+      top: 80px;
+      right: 24px;
+      background: #0f172a;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1001;
+      transform: translateY(-20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .admin-toast.is-active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .admin-toast.is-error {
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. LOGIN FORM OVERLAY
+       ========================================================================= -->
+  <div class="admin-login-wrapper" id="admin-login-wrapper">
+    <div class="admin-login-card">
+      <img src="/logo_white_transparent.png" alt="Algor Studio logo" class="admin-login-logo">
+      <h1 class="admin-login-title">CMS Kontrolna Ploča</h1>
+      <p class="admin-login-subtitle">Unesite administratorsku lozinku za uređivanje sadržaja stranica.</p>
+      
+      <div class="admin-login-error" id="admin-login-error"></div>
+
+      <form id="admin-login-form">
+        <div class="admin-form-group">
+          <label class="admin-label" for="admin-password-input">Lozinka</label>
+          <input type="password" id="admin-password-input" class="admin-input" placeholder="••••••••••••" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="admin-btn-primary" id="admin-login-btn">
+          <span>Prijavi se</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. DASHBOARD MAIN VIEW
+       ========================================================================= -->
+  <div class="admin-dashboard" id="admin-dashboard">
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="admin-header-left">
+        <img src="/logo_white_transparent.png" alt="Algor Studio" class="admin-header-logo">
+        <span class="admin-header-badge">CMS V1.0</span>
+      </div>
+      <div class="admin-header-right">
+        <a href="/" target="_blank" class="admin-btn-outline">
+          <span>Pregled weba</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+        <button type="button" class="admin-btn-outline" id="admin-logout-btn">
+          <span>Odjavi se</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="admin-container">
+      <!-- Tabs Navigation -->
+      <nav class="admin-tabs-nav" aria-label="Sekcije sadržaja">
+        <button type="button" class="admin-tab-btn is-active" data-tab="tab-home">
+          <span class="tab-icon">🏠</span> Početna stranica
+        </button>
+        <button type="button" class="admin-tab-btn" data-tab="tab-web">
+          <span class="tab-icon">💻</span> Izrada Weba
+        </button>
+        <button type="button" class="admin-tab-btn" data-tab="tab-chatgpt">
+          <span class="tab-icon">📈</span> ChatGPT Ads
+        </button>
+        <button type="button" class="admin-tab-btn" data-tab="tab-global">
+          <span class="tab-icon">⚙️</span> Kontakt & Opće
+        </button>
+      </nav>
+
+      <!-- =====================================================================
+           TAB 1: POČETNA STRANICA
+           ===================================================================== -->
+      <div class="admin-tab-pane is-active" id="tab-home">
+        <!-- 1. Hero Sekcija -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">✨ Hero Sekcija (Glavni dio)</h2>
+          <p class="admin-section-desc">Glavni naslov, rukopisni akcent i uvodni tekst koji posjetitelj prvo vidi na početnoj stranici.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-eyebrow">Eyebrow oznaka</label>
+            <input type="text" id="home-eyebrow" class="admin-input" data-path="home.eyebrow">
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-hero-title">Glavni naslov</label>
+              <input type="text" id="home-hero-title" class="admin-input" data-path="home.hero_title">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-hero-accent">Rukopisni akcent (Caveat)</label>
+              <input type="text" id="home-hero-accent" class="admin-input" data-path="home.hero_accent">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-hero-subtitle">Podnaslov / Opis ponude</label>
+            <textarea id="home-hero-subtitle" class="admin-textarea" data-path="home.hero_subtitle"></textarea>
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-hero-cta1">Tekst primarnog gumba</label>
+              <input type="text" id="home-hero-cta1" class="admin-input" data-path="home.hero_cta_primary">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-hero-cta2">Tekst sekundarnog gumba</label>
+              <input type="text" id="home-hero-cta2" class="admin-input" data-path="home.hero_cta_secondary">
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. O nama & Statistika -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">📊 O nama & Ključne brojke</h2>
+          <p class="admin-section-desc">Izjava o povjerenju, naslov i 4 statistička podatka.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-clients-statement">Izjava o povjerenju (ispod logotipa klijenata)</label>
+            <textarea id="home-clients-statement" class="admin-textarea" data-path="home.clients_statement"></textarea>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-about-title">Naslov sekcije O nama</label>
+            <input type="text" id="home-about-title" class="admin-input" data-path="home.about_title">
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-about-subtitle">Opis sekcije O nama</label>
+            <textarea id="home-about-subtitle" class="admin-textarea" data-path="home.about_subtitle"></textarea>
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-stat1-val">Statistika 1 (Brojka)</label>
+              <input type="text" id="home-stat1-val" class="admin-input" data-path="home.stat_1_val">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-stat1-lbl">Statistika 1 (Oznaka)</label>
+              <input type="text" id="home-stat1-lbl" class="admin-input" data-path="home.stat_1_lbl">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-stat2-val">Statistika 2 (Brojka)</label>
+              <input type="text" id="home-stat2-val" class="admin-input" data-path="home.stat_2_val">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-stat2-lbl">Statistika 2 (Oznaka)</label>
+              <input type="text" id="home-stat2-lbl" class="admin-input" data-path="home.stat_2_lbl">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-stat3-val">Statistika 3 (Brojka)</label>
+              <input type="text" id="home-stat3-val" class="admin-input" data-path="home.stat_3_val">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-stat3-lbl">Statistika 3 (Oznaka)</label>
+              <input type="text" id="home-stat3-lbl" class="admin-input" data-path="home.stat_3_lbl">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-stat4-val">Statistika 4 (Brojka)</label>
+              <input type="text" id="home-stat4-val" class="admin-input" data-path="home.stat_4_val">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-stat4-lbl">Statistika 4 (Oznaka)</label>
+              <input type="text" id="home-stat4-lbl" class="admin-input" data-path="home.stat_4_lbl">
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Proces rada (Početna) -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">🔄 Proces rada (4 Faze)</h2>
+          <p class="admin-section-desc">Naslovi i opisi faza rada koje objašnjavaju metodologiju klijentima.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-process-title">Glavni naslov procesa</label>
+            <input type="text" id="home-process-title" class="admin-input" data-path="home.process_title">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-process-desc">Uvodni opis procesa</label>
+            <textarea id="home-process-desc" class="admin-textarea" data-path="home.process_desc"></textarea>
+          </div>
+
+          <div class="admin-grid-2">
+            <!-- Faza 1 -->
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">Faza 01: Istraživanje & Strategija</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov faze</label>
+                <input type="text" class="admin-input" data-path="home.step_1_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis faze</label>
+                <textarea class="admin-textarea" data-path="home.step_1_desc"></textarea>
+              </div>
+            </div>
+
+            <!-- Faza 2 -->
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">Faza 02: Produkcija na terenu</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov faze</label>
+                <input type="text" class="admin-input" data-path="home.step_2_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis faze</label>
+                <textarea class="admin-textarea" data-path="home.step_2_desc"></textarea>
+              </div>
+            </div>
+
+            <!-- Faza 3 -->
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">Faza 03: Lansiranje & Optimizacija</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov faze</label>
+                <input type="text" class="admin-input" data-path="home.step_3_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis faze</label>
+                <textarea class="admin-textarea" data-path="home.step_3_desc"></textarea>
+              </div>
+            </div>
+
+            <!-- Faza 4 -->
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">Faza 04: Skaliranje & Rast</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov faze</label>
+                <input type="text" class="admin-input" data-path="home.step_4_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis faze</label>
+                <textarea class="admin-textarea" data-path="home.step_4_desc"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Cjenik paketi -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">💳 Cjenik paketa (Početna stranica)</h2>
+          <p class="admin-section-desc">Cijene i opisi za Start, Pro i Ultra pakete.</p>
+
+          <div class="admin-grid-3">
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-price-start">Start Paket (Cijena)</label>
+              <input type="text" id="home-price-start" class="admin-input" data-path="home.pricing_start_price">
+              <label class="admin-label" for="home-desc-start" style="margin-top: 10px;">Opis</label>
+              <textarea id="home-desc-start" class="admin-textarea" data-path="home.pricing_start_desc"></textarea>
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-price-pro">Pro Paket (Cijena)</label>
+              <input type="text" id="home-price-pro" class="admin-input" data-path="home.pricing_pro_price">
+              <label class="admin-label" for="home-desc-pro" style="margin-top: 10px;">Opis</label>
+              <textarea id="home-desc-pro" class="admin-textarea" data-path="home.pricing_pro_desc"></textarea>
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="home-price-ultra">Ultra Paket (Cijena)</label>
+              <input type="text" id="home-price-ultra" class="admin-input" data-path="home.pricing_ultra_price">
+              <label class="admin-label" for="home-desc-ultra" style="margin-top: 10px;">Opis</label>
+              <textarea id="home-desc-ultra" class="admin-textarea" data-path="home.pricing_ultra_desc"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. FAQ (Početna) -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">❓ Česta pitanja (FAQ) — Početna stranica</h2>
+          <p class="admin-section-desc">Uredite postojeća pitanja ili dodajte nova. Odgovori moraju biti u 3. licu.</p>
+
+          <div id="home-faq-list"></div>
+
+          <button type="button" class="admin-btn-add" id="btn-add-home-faq">
+            <span>+ Dodaj novo pitanje</span>
+          </button>
+        </div>
+
+        <!-- 6. Završni CTA Banner -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">📣 Završni CTA Banner</h2>
+          <p class="admin-section-desc">Poziv na akciju iznad podnožja početne stranice.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-cta-title">Naslov bannera</label>
+            <input type="text" id="home-cta-title" class="admin-input" data-path="home.cta_banner_title">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-cta-subtitle">Podnaslov bannera</label>
+            <input type="text" id="home-cta-subtitle" class="admin-input" data-path="home.cta_banner_subtitle">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label" for="home-cta-btn">Tekst na gumbu</label>
+            <input type="text" id="home-cta-btn" class="admin-input" data-path="home.cta_banner_btn">
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           TAB 2: IZRADA WEBA
+           ===================================================================== -->
+      <div class="admin-tab-pane" id="tab-web">
+        <!-- 1. Hero -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">💻 Izrada Web Stranica — Hero</h2>
+          <p class="admin-section-desc">Glavni naslovi i uvodni dio na stranici /izrada-web-stranica.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="web-eyebrow">Eyebrow oznaka</label>
+            <input type="text" id="web-eyebrow" class="admin-input" data-path="web_development.eyebrow">
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label" for="web-hero-title">Glavni naslov</label>
+              <input type="text" id="web-hero-title" class="admin-input" data-path="web_development.hero_title">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="web-hero-accent">Rukopisni akcent (Caveat)</label>
+              <input type="text" id="web-hero-accent" class="admin-input" data-path="web_development.hero_accent">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="web-hero-subtitle">Podnaslov</label>
+            <textarea id="web-hero-subtitle" class="admin-textarea" data-path="web_development.hero_subtitle"></textarea>
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label">Tekst primarnog gumba</label>
+              <input type="text" class="admin-input" data-path="web_development.hero_cta_primary">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label">Tekst sekundarnog gumba</label>
+              <input type="text" class="admin-input" data-path="web_development.hero_cta_secondary">
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Tehnologije & Metodologija -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">⚙️ Tehnologije & Metodologija</h2>
+          <p class="admin-section-desc">Opis tehnoloških rješenja i 4 ključna stupa izrade web stranica.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Naslov sekcije</label>
+            <input type="text" class="admin-input" data-path="web_development.tech_title">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Opis sekcije</label>
+            <textarea class="admin-textarea" data-path="web_development.tech_desc"></textarea>
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">01. Custom Code Razvoj</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.tech_1_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.tech_1_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">02. No-Code & CMS Sustavi</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.tech_2_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.tech_2_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">03. Google SEO Standardi</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.tech_3_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.tech_3_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">04. Brzina & Sigurnost</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.tech_4_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.tech_4_desc"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Standardi Kvalitete -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">🛡️ Standardi kvalitete (Uključeno u svaki projekt)</h2>
+          <p class="admin-section-desc">8 standarda koji su garantirani u svakom web paketu.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Naslov sekcije standarda</label>
+            <input type="text" class="admin-input" data-path="web_development.standards_title">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Opis sekcije standarda</label>
+            <textarea class="admin-textarea" data-path="web_development.standards_desc"></textarea>
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">📱 01. Mobile-First UX</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.std_1_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.std_1_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">🔒 02. SSL Enkripcija & HTTPS</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.std_2_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.std_2_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">⚡ 03. Brzo Učitavanje</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.std_3_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.std_3_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">📊 04. GA4 & Pixel Tracking</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.std_4_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.std_4_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">🍪 05. GDPR & Kolačići</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.std_5_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.std_5_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">🔍 06. Schema.org SEO</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.std_6_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.std_6_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">✉️ 07. Kontakt Forme</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.std_7_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.std_7_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">🎓 08. Video Edukacija & Podrška</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="web_development.std_8_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="web_development.std_8_desc"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Cijene web paketa -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">💳 Cijene web paketa</h2>
+          <p class="admin-section-desc">Cijene za Landing, Business i Custom web rješenja.</p>
+          <div class="admin-grid-3">
+            <div class="admin-form-group">
+              <label class="admin-label" for="web-price-landing">Landing Web</label>
+              <input type="text" id="web-price-landing" class="admin-input" data-path="web_development.pricing_landing_price">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="web-price-business">Business Web</label>
+              <input type="text" id="web-price-business" class="admin-input" data-path="web_development.pricing_business_price">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="web-price-custom">Custom Web App</label>
+              <input type="text" id="web-price-custom" class="admin-input" data-path="web_development.pricing_custom_price">
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. FAQ (Web) -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">❓ Česta pitanja (FAQ) — Izrada Weba</h2>
+          <p class="admin-section-desc">Pitanja i odgovori prikazani na dnu stranice Izrada web stranica.</p>
+
+          <div id="web-faq-list"></div>
+
+          <button type="button" class="admin-btn-add" id="btn-add-web-faq">
+            <span>+ Dodaj novo pitanje</span>
+          </button>
+        </div>
+
+        <!-- 6. CTA Banner -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">📣 Završni CTA Banner (Izrada Weba)</h2>
+          <p class="admin-section-desc">Završni poziv na akciju na stranici Izrada weba.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Naslov bannera</label>
+            <input type="text" class="admin-input" data-path="web_development.cta_banner_title">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Tekst na gumbu</label>
+            <input type="text" class="admin-input" data-path="web_development.cta_banner_btn">
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           TAB 3: CHATGPT ADS
+           ===================================================================== -->
+      <div class="admin-tab-pane" id="tab-chatgpt">
+        <!-- 1. Hero -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">📈 ChatGPT Ads — Hero Sekcija</h2>
+          <p class="admin-section-desc">Naslovi i uvodni opis na stranici /chatgpt-ads.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="chatgpt-eyebrow">Eyebrow oznaka</label>
+            <input type="text" id="chatgpt-eyebrow" class="admin-input" data-path="chatgpt_ads.eyebrow">
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label" for="chatgpt-hero-title">Glavni naslov</label>
+              <input type="text" id="chatgpt-hero-title" class="admin-input" data-path="chatgpt_ads.hero_title">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="chatgpt-hero-accent">Rukopisni akcent (Caveat)</label>
+              <input type="text" id="chatgpt-hero-accent" class="admin-input" data-path="chatgpt_ads.hero_accent">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label" for="chatgpt-hero-subtitle">Podnaslov</label>
+            <textarea id="chatgpt-hero-subtitle" class="admin-textarea" data-path="chatgpt_ads.hero_subtitle"></textarea>
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label">Tekst primarnog gumba</label>
+              <input type="text" class="admin-input" data-path="chatgpt_ads.hero_cta_primary">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label">Tekst sekundarnog gumba</label>
+              <input type="text" class="admin-input" data-path="chatgpt_ads.hero_cta_secondary">
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Usporedba kanala -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">⚖️ Usporedba: Google Search vs. ChatGPT Ads</h2>
+          <p class="admin-section-desc">Tekstovi koji vizualno uspoređuju klasično pretraživanje i novu AI eru.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Naslov sekcije usporedbe</label>
+            <input type="text" class="admin-input" data-path="chatgpt_ads.comp_title">
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">Tradicionalni Search (Google)</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov kartice</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.comp_trad_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.comp_trad_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">Nova AI Era (ChatGPT & OpenAI)</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov kartice</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.comp_ai_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.comp_ai_desc"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Ciljana publika -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">🎯 Ciljana publika (Tko ostvaruje najveći povrat)</h2>
+          <p class="admin-section-desc">4 ciljne skupine s primjerima korisničkih upita.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Naslov sekcije ciljane publike</label>
+            <input type="text" class="admin-input" data-path="chatgpt_ads.aud_title">
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">🏢 01. Lokalne Usluge & B2B</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.aud_1_title">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.aud_1_desc"></textarea>
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Primjer upita</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.aud_1_example">
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">🩺 02. Zdravstvo & Poliklinike</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.aud_2_title">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.aud_2_desc"></textarea>
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Primjer upita</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.aud_2_example">
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">🍷 03. Hoteli & Turizam</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.aud_3_title">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.aud_3_desc"></textarea>
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Primjer upita</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.aud_3_example">
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">🛍️ 04. E-Commerce & Premium Proizvodi</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.aud_4_title">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.aud_4_desc"></textarea>
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Primjer upita</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.aud_4_example">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Proces rada (ChatGPT) -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">🔄 Proces rada (4 Koraka)</h2>
+          <p class="admin-section-desc">Strateški koraci postavljanja i optimizacije ChatGPT oglasnih kampanja.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Naslov sekcije procesa</label>
+            <input type="text" class="admin-input" data-path="chatgpt_ads.process_title">
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">01. Kontekstualni Audit & Ključni Upiti</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.process_1_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.process_1_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">02. Postavljanje & OpenAI Integracija</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.process_2_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.process_2_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">03. Lansiranje & Kontekstualno Ciljanje</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.process_3_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.process_3_desc"></textarea>
+              </div>
+            </div>
+
+            <div class="admin-sub-card">
+              <div class="admin-sub-card-title">04. Praćenje Konverzija & Skaliranje</div>
+              <div class="admin-form-group">
+                <label class="admin-label">Naslov</label>
+                <input type="text" class="admin-input" data-path="chatgpt_ads.process_4_title">
+              </div>
+              <div class="admin-form-group" style="margin-bottom: 0;">
+                <label class="admin-label">Opis</label>
+                <textarea class="admin-textarea" data-path="chatgpt_ads.process_4_desc"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Cijena i opis paketa -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">💳 Cijena i opis paketa</h2>
+          <p class="admin-section-desc">Cijena, naziv i detaljan opis ponude ChatGPT Ads paketa.</p>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label">Naslov paketa</label>
+              <input type="text" class="admin-input" data-path="chatgpt_ads.pkg_title">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label">Mjesečna cijena</label>
+              <input type="text" class="admin-input" data-path="chatgpt_ads.pkg_price">
+            </div>
+          </div>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Opis paketa</label>
+            <textarea class="admin-textarea" data-path="chatgpt_ads.pkg_desc"></textarea>
+          </div>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label">Dodatni info ispod cijene</label>
+              <input type="text" class="admin-input" data-path="chatgpt_ads.pkg_subtext">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label">Tekst na gumbu za narudžbu</label>
+              <input type="text" class="admin-input" data-path="chatgpt_ads.pkg_cta">
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. FAQ (ChatGPT) -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">❓ Česta pitanja (FAQ) — ChatGPT Ads</h2>
+          <p class="admin-section-desc">Pitanja i odgovori prikazani na stranici ChatGPT Ads.</p>
+
+          <div id="chatgpt-faq-list"></div>
+
+          <button type="button" class="admin-btn-add" id="btn-add-chatgpt-faq">
+            <span>+ Dodaj novo pitanje</span>
+          </button>
+        </div>
+
+        <!-- 7. CTA Banner -->
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">📣 Završni CTA Banner (ChatGPT Ads)</h2>
+          <p class="admin-section-desc">Poziv na akciju na dnu stranice ChatGPT Ads.</p>
+
+          <div class="admin-form-group">
+            <label class="admin-label">Naslov bannera</label>
+            <input type="text" class="admin-input" data-path="chatgpt_ads.cta_banner_title">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Podnaslov bannera</label>
+            <input type="text" class="admin-input" data-path="chatgpt_ads.cta_banner_subtitle">
+          </div>
+          <div class="admin-form-group">
+            <label class="admin-label">Tekst na gumbu</label>
+            <input type="text" class="admin-input" data-path="chatgpt_ads.cta_banner_btn">
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================================
+           TAB 4: KONTAKT & OPĆE
+           ===================================================================== -->
+      <div class="admin-tab-pane" id="tab-global">
+        <div class="admin-section-card">
+          <h2 class="admin-section-title">⚙️ Službeni podaci & Kontakt informacije</h2>
+          <p class="admin-section-desc">Osnovni kontakt podaci prikazani u podnožju i na stranici /kontakt.</p>
+
+          <div class="admin-grid-2">
+            <div class="admin-form-group">
+              <label class="admin-label" for="global-company">Naziv obrta / tvrtke</label>
+              <input type="text" id="global-company" class="admin-input" data-path="global.company_name">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="global-oib">OIB</label>
+              <input type="text" id="global-oib" class="admin-input" data-path="global.oib">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="global-email">E-mail adresa</label>
+              <input type="email" id="global-email" class="admin-input" data-path="global.email">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="global-phone">Telefon / WhatsApp</label>
+              <input type="text" id="global-phone" class="admin-input" data-path="global.phone">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="global-location">Lokacija / Grad</label>
+              <input type="text" id="global-location" class="admin-input" data-path="global.location">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label" for="global-hours">Radno vrijeme</label>
+              <input type="text" id="global-hours" class="admin-input" data-path="global.working_hours">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Save Bar -->
+    <div class="admin-floating-bar">
+      <div class="admin-save-status">
+        <span class="admin-status-dot" id="admin-status-dot"></span>
+        <span id="admin-status-text">Spreman za izmjene</span>
+      </div>
+      <button type="button" class="admin-btn-save" id="admin-btn-save">
+        <span>💾 Spremi sve promjene</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Message -->
+  <div class="admin-toast" id="admin-toast" role="alert">
+    <span id="admin-toast-text">Promjene su uspješno spremljene!</span>
+  </div>
+
+  <script src="/admin.js?v=2.0.0"></script>
+</body>
+</html>
