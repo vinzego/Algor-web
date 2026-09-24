@@ -580,6 +580,12 @@ button:hover > .fb-roll-track .fb-roll-hover .fb-roll-char {
   transform: translateZ(0);
 }
 
+@media (max-width: 900px) {
+  .fb-bottom-glass-fade {
+    display: none !important;
+  }
+}
+
 /* Hamburger toggle for mobile */
 .fb-nav-burger {
   display: none !important;
@@ -3545,5 +3551,9 @@ body.menu-open .fb-nav-burger span:nth-child(2) {
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
+  }
+
+  .fb-bottom-glass-fade {
+    display: none !important;
   }
 }
